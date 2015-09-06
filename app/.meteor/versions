@@ -18,6 +18,7 @@ browser-policy-content@1.0.4
 browser-policy-framing@1.0.4
 callback-hook@1.0.3
 check@1.0.5
+chuangbo:cookie@1.1.0
 coffeescript@1.0.6
 cosmos:browserify@0.5.0
 dburles:mongo-collection-instances@0.3.4
@@ -29,6 +30,8 @@ fastclick@1.0.3
 flemay:less-autoprefixer@1.1.0
 force-ssl@1.0.4
 fortawesome:fontawesome@4.4.0
+gadicohen:robots-txt@0.0.10
+gadicohen:sitemaps@0.0.23
 geojson-utils@1.0.3
 gwendall:session-json@0.1.7
 html-tools@1.0.4
@@ -50,7 +53,11 @@ manuel:viewmodel-explorer@1.0.5
 matteodem:easy-security@0.1.4
 meteor@1.1.6
 meteor-platform@1.2.2
+meteorhacks:fast-render@2.9.0
+meteorhacks:inject-data@1.4.0
 meteorhacks:inject-initial@1.0.2
+meteorhacks:picker@1.0.3
+meteorhacks:subs-manager@1.6.2
 meteorhacks:zones@1.6.0
 meteortoys:toykit@0.8.7
 minifiers@1.1.5
@@ -61,6 +68,7 @@ msavin:jetsetter@1.0.20
 msavin:mongol@1.1.5
 npm-bcrypt@0.7.8_2
 observe-sequence@1.0.6
+ongoworks:spiderable@1.0.7
 ordered-dict@1.0.3
 random@1.0.3
 react@0.1.10

@@ -28,9 +28,17 @@ accounts-password
 useraccounts:flow-routing
 useraccounts:semantic-ui
 
-# WPO & optimization
-appcache
+# SEO
+ongoworks:spiderable
+meteorhacks:inject-initial
+gadicohen:sitemaps
+gadicohen:robots-txt
 
+# WPO & Meteor optimizations
+appcache
+meteorhacks:fast-render
+meteorhacks:subs-manager
+#meteorhacks:ssr
 
 # CSS
 fortawesome:fontawesome
