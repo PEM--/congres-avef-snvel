@@ -9,9 +9,11 @@ Package.onUse(function(api) {
     'react',
     'kadira:flow-router@2.5.0',
     'kadira:react-layout@1.3.0',
+    'flemay:less-autoprefixer@1.1.0',
     'pierreeric:footer@0.0.1'
   ], 'client');
   api.addFiles([
-    'home.jsx'
+    'home.jsx',
+    'home.less'
   ], 'client');
 });

@@ -6,10 +6,12 @@ Package.describe({
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.3');
   api.use([
-    'react'
+    'react',
+    'flemay:less-autoprefixer@1.1.0',
   ], 'client');
   api.addFiles([
-    'footer.jsx'
+    'footer.jsx',
+    'footer.less'
   ], 'client');
   api.export(['Footer'], 'client');
 });

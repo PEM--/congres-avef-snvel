@@ -1,7 +1,7 @@
 HomeLayout = React.createClass({
   render() {
     return (
-      <div>
+      <div className='main-layout'>
         <header>
           <h1>Congrès AVEF - SNVEL</h1>
           <p>Menu principal</p>
