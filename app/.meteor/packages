@@ -22,6 +22,11 @@ meteorhacks:zones
 #meteorhacks:kadira
 #meteorhacks:kadira-profiler
 
+# Foreign packages
+meteorhacks:npm
+cosmos:browserify
+mquandalle:bower
+
 # Authentifications
 useraccounts:core
 accounts-password
@@ -33,6 +38,10 @@ ongoworks:spiderable
 meteorhacks:inject-initial
 gadicohen:sitemaps
 gadicohen:robots-txt
+
+# Routing
+kadira:flow-router
+kadira:react-layout
 
 # WPO & Meteor optimizations
 appcache

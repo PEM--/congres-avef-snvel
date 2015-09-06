@@ -12,3 +12,11 @@ Site d'inscription commun pour le l'AVEF et le SNVEL.
 * [ReactJS](http://facebook.github.io/react/)
 * [Semantic UI](http://semantic-ui.com/)
 * [Docker](https://www.docker.com/)
+
+## External tools
+* [Kadira: Monitoring](https://kadira.io/)
+* [UptimeButler: Alerting](https://uptimebutler.com/)
+
+## Technical articles
+* [Meteor routing guide](https://kadira.io/academy/meteor-routing-guide/)
+* [Meteor & React](http://react-in-meteor.readthedocs.org/en/latest/)
