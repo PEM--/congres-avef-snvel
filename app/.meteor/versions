@@ -42,7 +42,7 @@ jquery@1.11.3_2
 json@1.0.3
 jsx@0.1.6
 kadira:blaze-layout@2.0.1
-kadira:flow-router@2.1.1
+kadira:flow-router@2.5.0
 kadira:react-layout@1.3.0
 lai:collection-extensions@0.1.4
 launch-screen@1.0.2
@@ -72,6 +72,7 @@ npm-bcrypt@0.7.8_2
 observe-sequence@1.0.6
 ongoworks:spiderable@1.0.7
 ordered-dict@1.0.3
+pierreeric:landing-page@0.0.1
 pierreeric:security@0.0.1
 random@1.0.3
 react@0.1.10

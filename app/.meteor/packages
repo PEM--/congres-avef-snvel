@@ -38,10 +38,6 @@ meteorhacks:inject-initial
 gadicohen:sitemaps
 gadicohen:robots-txt
 
-# Routing
-kadira:flow-router
-kadira:react-layout
-
 # WPO & Meteor optimizations
 appcache
 meteorhacks:fast-render
@@ -52,3 +48,6 @@ meteorhacks:subs-manager
 fortawesome:fontawesome
 flemay:less-autoprefixer
 semantic:ui
+
+# Application packages
+pierreeric:landing-page
