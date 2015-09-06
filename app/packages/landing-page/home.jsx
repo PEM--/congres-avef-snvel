@@ -9,9 +9,7 @@ HomeLayout = React.createClass({
         <main>
           <h1>Contenu</h1>
         </main>
-        <footer>
-          <p>Quelques liens</p>
-        </footer>
+        <Footer />
       </div>
     );
   }

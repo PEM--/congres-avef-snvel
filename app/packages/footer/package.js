@@ -1,17 +1,15 @@
 Package.describe({
-  name: 'pierreeric:landing-page',
+  name: 'pierreeric:footer',
   version: '0.0.1'
 });
 
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.3');
   api.use([
-    'react',
-    'kadira:flow-router@2.5.0',
-    'kadira:react-layout@1.3.0',
-    'pierreeric:footer@0.0.1'
+    'react'
   ], 'client');
   api.addFiles([
-    'home.jsx'
+    'footer.jsx'
   ], 'client');
+  api.export(['Footer'], 'client');
 });
