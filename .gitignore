@@ -1,0 +1,4 @@
+app/dev.json
+app/test.json
+app/prod.json
+app/client/lib/semanticui

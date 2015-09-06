@@ -4,6 +4,17 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
+# Official Meteor package
 meteor-platform
-autopublish
-insecure
+react
+
+# Security
+audit-argument-checks
+
+# WPO & optimization
+appcache
+
+# CSS
+fortawesome:fontawesome
+flemay:less-autoprefixer
+semantic:ui
