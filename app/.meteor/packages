@@ -14,6 +14,14 @@ browser-policy
 matteodem:easy-security
 force-ssl
 
+# Development helpers
+manuel:viewmodel-explorer
+msavin:mongol
+msavin:jetsetter
+meteorhacks:zones
+#meteorhacks:kadira
+#meteorhacks:kadira-profiler
+
 # Authentifications
 useraccounts:core
 accounts-password
