@@ -10,9 +10,19 @@ react
 
 # Security
 audit-argument-checks
+browser-policy
+matteodem:easy-security
+force-ssl
+
+# Authentifications
+useraccounts:core
+accounts-password
+useraccounts:flow-routing
+useraccounts:semantic-ui
 
 # WPO & optimization
 appcache
+
 
 # CSS
 fortawesome:fontawesome
