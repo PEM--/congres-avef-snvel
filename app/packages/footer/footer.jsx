@@ -1,24 +1,24 @@
-Footer = React.createClass({
+Footer = class Footer extends React.Component {
   render() {
-    console.log('Footer', Meteor.settings.public);
+    const settings = Meteor.settings.public;
     return (
       <footer>
-        <div className='ui container'>
-          <section>
+        <section className='ui container'>
+          <article>
             <ul>
               <li>Liens mentions légales</li>
               <li>Liens confidentialité</li>
             </ul>
-          </section>
-          <section>
-            <ul>
-              <li>Twitter</li>
-              <li>Facebook</li>
-              <li>Mail</li>
+          </article>
+          <article>
+            <ul className='fa'>
+              <li><a className='fa-facebook' href={settings.facebook.url} target='_blank'></a></li>
+              <li><a className='fa-twitter' href={settings.twitter.url} target='_blank'></a></li>
+              <li><a className='fa-envelope' href={settings.mailto.contact} target='_blank'></a></li>
             </ul>
-          </section>
-        </div>
+          </article>
+        </section>
       </footer>
     );
   }
-});
+};
