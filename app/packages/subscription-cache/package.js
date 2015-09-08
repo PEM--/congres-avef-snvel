@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'pierreeric:footer',
+  name: 'pierreeric:subscription-cache',
   version: '0.0.1'
 });
 
@@ -9,23 +9,13 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
-    'meteor-platform',
-    'react',
-    'pierreeric:subscription-cache@0.0.1'
+    'meteorhacks:subs-manager@1.6.2'
   ]);
-  // Dependencies for client only
-  api.use([
-    'flemay:less-autoprefixer@1.1.0',
-  ], 'client');
   // Included files in this packages
   // Files for server and client
   api.addFiles([
-    'footer.jsx',
+    'subscription-cache.js',
   ]);
-  // Files for client only
-  api.addFiles([
-    'footer.less'
-  ], 'client');
   // Exported symbols outside the scope of this package
-  api.export(['Footer', 'Links']);
+  api.export(['SubsManager', 'globalSubs']);
 });

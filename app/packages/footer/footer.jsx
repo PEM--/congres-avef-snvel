@@ -27,7 +27,7 @@ Footer = React.createClass({
   mixins: [ReactMeteorData],
   // Subscribe to Links (reactive methods)
   getMeteorData() {
-    var handle = Meteor.subscribe('links');
+    var handle = globalSubs.subscribe('links');
     return {
       // Use handle to show loading state
       linksLoading: ! handle.ready(),
