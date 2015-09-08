@@ -27,15 +27,12 @@ cosmos:browserify
 mquandalle:bower
 
 # SEO
-ongoworks:spiderable
 meteorhacks:inject-initial
 gadicohen:sitemaps
 gadicohen:robots-txt
 
 # WPO & Meteor optimizations
 #appcache
-meteorhacks:fast-render
-#meteorhacks:ssr
 
 # CSS
 fortawesome:fontawesome
