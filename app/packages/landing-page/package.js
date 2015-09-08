@@ -14,6 +14,10 @@ Package.onUse(function(api) {
     'kadira:react-layout@1.3.0',
     'pierreeric:footer@0.0.1'
   ]);
+  api.imply([
+    'kadira:flow-router-ssr',
+    'meteorhacks:fast-render'
+  ]);
   // Dependencies for client only
   api.use([
     'flemay:less-autoprefixer@1.1.0'
