@@ -26,12 +26,6 @@ meteorhacks:npm
 cosmos:browserify
 mquandalle:bower
 
-# Authentifications
-useraccounts:core
-accounts-password
-useraccounts:flow-routing
-useraccounts:semantic-ui
-
 # SEO
 ongoworks:spiderable
 meteorhacks:inject-initial
@@ -41,7 +35,6 @@ gadicohen:robots-txt
 # WPO & Meteor optimizations
 #appcache
 meteorhacks:fast-render
-meteorhacks:subs-manager
 #meteorhacks:ssr
 
 # CSS
@@ -51,3 +44,9 @@ semantic:ui
 
 # Application packages
 pierreeric:landing-page
+
+# Authentifications
+useraccounts:core
+accounts-password
+#useraccounts:flow-routing
+useraccounts:semantic-ui

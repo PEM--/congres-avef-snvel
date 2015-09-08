@@ -9,13 +9,12 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
-    'react',
     'kadira:flow-router-ssr@3.2.1'
   ]);
   // Included files in this packages
   // Files for server only
   api.addFiles([
-    'routing.jsx'
+    'routing.js'
   ], ['server']);
   // Exported symbols outside the scope of this package
   api.export(['FlowRouter']);

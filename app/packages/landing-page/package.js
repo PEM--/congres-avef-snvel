@@ -10,9 +10,8 @@ Package.onUse(function(api) {
   // Dependencies for server and client
   api.use([
     'react',
-    'kadira:flow-router-ssr@3.2.1',
-    'kadira:react-layout@1.3.0',
     'pierreeric:routing@0.0.1',
+    'kadira:react-layout@1.3.0',
     'pierreeric:footer@0.0.1'
   ]);
   // Dependencies for client only
