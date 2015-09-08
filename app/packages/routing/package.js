@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'pierreeric:footer',
+  name: 'pierreeric:routing',
   version: '0.0.1'
 });
 
@@ -9,22 +9,14 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
-    'meteor-platform',
-    'react'
+    'react',
+    'kadira:flow-router-ssr@3.2.1'
   ]);
-  // Dependencies for client only
-  api.use([
-    'flemay:less-autoprefixer@1.1.0',
-  ], 'client');
   // Included files in this packages
-  // Files for server and client
+  // Files for server only
   api.addFiles([
-    'footer.jsx',
-  ]);
-  // Files for client only
-  api.addFiles([
-    'footer.less'
-  ], 'client');
+    'routing.jsx'
+  ], ['server']);
   // Exported symbols outside the scope of this package
-  api.export(['Footer', 'Links']);
+  api.export(['FlowRouter']);
 });

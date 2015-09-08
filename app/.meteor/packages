@@ -39,7 +39,7 @@ gadicohen:sitemaps
 gadicohen:robots-txt
 
 # WPO & Meteor optimizations
-appcache
+#appcache
 meteorhacks:fast-render
 meteorhacks:subs-manager
 #meteorhacks:ssr
