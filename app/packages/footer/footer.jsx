@@ -30,10 +30,10 @@ Footer = React.createClass({
     var handle = globalSubs.subscribe('links');
     return {
       // Use handle to show loading state
-      linksLoading: ! handle.ready(),
+      linksLoading: !handle.ready(),
       // Expose the list as an array
       linksData: Links.find().fetch()
-    }
+    };
   },
   // Render the component
   render() {

@@ -77,6 +77,7 @@ observe-sequence@1.0.6
 ordered-dict@1.0.3
 pierreeric:footer@0.0.1
 pierreeric:landing-page@0.0.1
+pierreeric:react-motion@0.0.1
 pierreeric:routing@0.0.1
 pierreeric:security@0.0.1
 pierreeric:subscription-cache@0.0.1

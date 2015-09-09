@@ -42,6 +42,7 @@ semantic:ui
 
 # Application packages
 pierreeric:landing-page
+pierreeric:react-motion
 
 # Authentifications
 useraccounts:core
