@@ -3,5 +3,5 @@ app/test.json
 app/prod.json
 app/client/lib/semanticui
 .npm
-.cached
-.map
+*.cached
+*.map

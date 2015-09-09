@@ -36,6 +36,5 @@ Package.onUse(function(api) {
   ], 'client');
   // Exported symbols outside the scope of this package
   // Server and client
-  //api.export(['ReactMotion']);
   api.export(['ReactMotion']);
 });
