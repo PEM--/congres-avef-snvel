@@ -19,7 +19,9 @@ Package.onUse(function(api) {
     'cosmos:browserify@0.5.0'
   ], 'client');
   api.imply([
-    'react'
+    'meteor-platform',
+    'react',
+    'cosmos:browserify'
   ], 'client');
 
   // Included files in this packages
@@ -35,5 +37,5 @@ Package.onUse(function(api) {
   // Exported symbols outside the scope of this package
   // Server and client
   //api.export(['ReactMotion']);
-  api.export(['ReactMotion'], 'server');
+  api.export(['ReactMotion']);
 });
