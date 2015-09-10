@@ -1,27 +1,4 @@
-// Extrnal and internal links in the apps
-Links = new Mongo.Collection('links');
-
-// Server only
-if (Meteor.isServer) {
-  console.log('Checking default links');
-  // @TODO Set a SimpleSchema
-  // @TODO Set DB versionning
-  // Fill the links collection with a minimal set of links
-  if (Links.find().count() === 0) {
-    console.log('Inserting default Links');
-    Links.insert({title: 'Mentions légales', url: '/legal'});
-    Links.insert({title: 'Confidentialité', url: '/cookie'});
-  } else {
-    console.log('Links collection filled');
-  }
-  // Publish all links
-  console.log('Publish links');
-  Meteor.publish('links', function() {
-    return Links.find();
-  });
-}
-
-let Spring = ReactMotion.Spring,
+const Spring = ReactMotion.Spring,
   TransitionSpring = ReactMotion.Spring;
 
 // Footer component
@@ -35,14 +12,14 @@ Footer = React.createClass({
   handleMouseDown() {
     this.setState({open: !this.state.open});
   },
-  // Subscribe to Links (reactive methods)
+  // Subscribe to BasicPages (reactive methods)
   getMeteorData() {
-    var handle = globalSubs.subscribe('links');
+    const handle = globalSubs.subscribe('basicPages');
     return {
       // Use handle to show loading state
-      linksLoading: !handle.ready(),
+      basicPagesLoading: !handle.ready(),
       // Expose the list as an array
-      linksData: Links.find().fetch()
+      basicPagesData: BasicPages.find().fetch()
     };
   },
   // Render the component
@@ -53,7 +30,7 @@ Footer = React.createClass({
       <footer>
         <section className='ui container'>
           <article>
-            { this.data.linksLoading ?
+            { this.data.basicPagesLoading ?
               (<p>Loading</p>) :
               (<ul>
                 <li>Liens mentions légales</li>
