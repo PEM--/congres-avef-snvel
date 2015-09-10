@@ -1,7 +1,12 @@
 app/dev.json
 app/test.json
 app/prod.json
-app/client/lib/semanticui
 .npm
 *.cached
 *.map
+.custom.semantic.json
+semantic.less
+theme.import.less
+*.overrides
+*.variables
+app/client/lib/semanticui/definitions
