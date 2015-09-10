@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'pierreeric:footer',
+  name: 'pierreeric:client-layout',
   version: '0.0.1'
 });
 
@@ -8,19 +8,16 @@ Package.onUse(function(api) {
   api.versionsFrom('1.1.0.3');
   // Dependencies of this package
   // Dependencies for server and client
-  api.use([
-    'meteor-platform',
-    'react',
-    'flemay:less-autoprefixer',
-    'pierreeric:subscription-cache',
-    'pierreeric:basic-pages-core'
-  ]);
+  var sharedDeps = [
+    'pierreeric:main-layout',
+    'pierreeric:footer'
+  ];
+  api.use(sharedDeps);
+  // Expose packages
+  api.imply(sharedDeps);
   // Included files in this packages
   // Files for server and client
-  api.addFiles([
-    'footer.jsx',
-    'footer.less'
-  ]);
+  api.addFiles('client-layout.jsx');
   // Exported symbols outside the scope of this package
-  api.export(['Footer']);
+  api.export('ClientLayout');
 });

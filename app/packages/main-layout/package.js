@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'pierreeric:basic-pages-core',
+  name: 'pierreeric:main-layout',
   version: '0.0.1'
 });
 
@@ -8,16 +8,20 @@ Package.onUse(function(api) {
   api.versionsFrom('1.1.0.3');
   // Dependencies of this package
   // Dependencies for server and client
-  var shared = ['aldeed:collection2'];
-  api.use(['meteor-platform'].concat(shared));
-  api.imply(shared);
-  // Dependencies for server only
-  api.use(['pierreeric:markdown-server-side'], 'server');
+  var sharedDeps = [
+    'react',
+    'kadira:react-layout',
+    'flemay:less-autoprefixer'
+  ];
+  api.use(sharedDeps);
+  // Expose packages
+  api.imply(sharedDeps);
   // Included files in this packages
   // Files for server and client
   api.addFiles([
-    'basic-pages-core.js',
+    'main-layout.jsx',
+    'main-layout.less'
   ]);
   // Exported symbols outside the scope of this package
-  api.export(['BasicPages', 'BasicPagesSchema']);
+  api.export(['MainLayout']);
 });

@@ -1,4 +1,4 @@
-HomeLayout = React.createClass({
+const BasicPagesClient = React.createClass({
   displayName: 'HomeLayout',
   render() {
     return (
@@ -22,6 +22,6 @@ HomeLayout = React.createClass({
 
 FlowRouter.route('/', {
   action: function() {
-    ReactLayout.render(HomeLayout);
+    ReactLayout.render(BasicPagesClient);
   }
 });

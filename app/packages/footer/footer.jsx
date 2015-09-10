@@ -1,5 +1,5 @@
 // Basic page links
-let BasicPagesLinkItems = React.createClass({
+const BasicPagesLinkItems = React.createClass({
   displayName: 'BasicPagesLinkItems',
   propTypes: {
     url: React.PropTypes.string.isRequired,
@@ -16,7 +16,7 @@ let BasicPagesLinkItems = React.createClass({
 });
 
 // List of basic page links
-let BasicPagesLinkList = React.createClass({
+const BasicPagesLinkList = React.createClass({
   displayName: 'BasicPagesLinkItems',
   mixins: [ReactMeteorData],
   // Subscribe to BasicPages (reactive methods)

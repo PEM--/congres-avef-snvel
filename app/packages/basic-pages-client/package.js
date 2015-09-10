@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'pierreeric:landing-page',
+  name: 'pierreeric:basic-pages-client',
   version: '0.0.1'
 });
 
@@ -9,14 +9,14 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
+    'react',
     'pierreeric:routing',
-    'pierreeric:client-layout'
-  ]);
-  api.imply([
-    'pierreeric:routing',
-    'pierreeric:client-layout'
+    'pierreeric:basic-pages-core',
+    'kadira:react-layout'
   ]);
   // Included files in this packages
   // Files for server and client
-  api.addFiles('landing-page.jsx');
+  api.addFiles([
+    'basic-pages-client.jsx'
+  ]);
 });
