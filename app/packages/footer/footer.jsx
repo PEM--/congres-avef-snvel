@@ -1,10 +1,52 @@
-const Spring = ReactMotion.Spring,
-  TransitionSpring = ReactMotion.Spring;
+// Basic page links
+let BasicPagesLinkItems = React.createClass({
+  displayName: 'BasicPagesLinkItems',
+  propTypes: {
+    url: React.PropTypes.string.isRequired,
+    title: React.PropTypes.string.isRequired
+  },
+  render() {
+    return (
+      <li>
+        <a href={this.props.url}
+          dangerouslySetInnerHTML={{__html: this.props.title}}/>
+      </li>
+    );
+  }
+});
+
+// List of basic page links
+let BasicPagesLinkList = React.createClass({
+  displayName: 'BasicPagesLinkItems',
+  mixins: [ReactMeteorData],
+  // Subscribe to BasicPages (reactive methods)
+  getMeteorData() {
+    const handle = globalSubs.subscribe('basic pages titles');
+    return {
+      // Use handle to show loading state
+      loading: !handle.ready(),
+      // Expose the list as an array
+      items: BasicPages.find().fetch()
+    };
+  },
+  render() {
+    // @TODO Find a spinner
+    // Render a spinner if subscription isn't loaded
+    if (this.data.loading) { return <p>Chargement en cours</p>; }
+    // Display links as a list
+    let nodes = this.data.items.map(function(item) {
+      return <BasicPagesLinkItems
+        key={item._id}
+        url={item.url}
+        title={item.title} />;
+    });
+    return <ul>{nodes}</ul>;
+  }
+});
 
 // Footer component
 Footer = React.createClass({
   displayName: 'Footer',
-  // Get Meteor's methods
   mixins: [ReactMeteorData],
   getInitialState() {
     return {open: false};
@@ -14,7 +56,7 @@ Footer = React.createClass({
   },
   // Subscribe to BasicPages (reactive methods)
   getMeteorData() {
-    const handle = globalSubs.subscribe('basicPages');
+    const handle = globalSubs.subscribe('basic pages titles');
     return {
       // Use handle to show loading state
       basicPagesLoading: !handle.ready(),
@@ -30,13 +72,7 @@ Footer = React.createClass({
       <footer>
         <section className='ui container'>
           <article>
-            { this.data.basicPagesLoading ?
-              (<p>Loading</p>) :
-              (<ul>
-                <li>Liens mentions légales</li>
-                <li>Liens confidentialité</li>
-              </ul>)
-            }
+            <BasicPagesLinkList />
           </article>
           <article>
             <ul className='fa'>

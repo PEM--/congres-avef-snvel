@@ -8,7 +8,7 @@ Package.onUse(function(api) {
   api.versionsFrom('1.1.0.3');
   // Dependencies of this package
   // Dependencies for server and client
-  var shared = ['aldeed:simple-schema'];
+  var shared = ['aldeed:collection2'];
   api.use(['meteor-platform'].concat(shared));
   api.imply(shared);
   // Included files in this packages

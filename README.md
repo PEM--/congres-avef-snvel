@@ -13,15 +13,13 @@ Site d'inscription commun pour l'AVEF et le SNVEL.
 * [Semantic UI](http://semantic-ui.com/)
 * [Docker](https://www.docker.com/)
 
-### React specificities
-* [React Motion](https://github.com/chenglou/react-motion)
-
 ### External tools
 * [Kadira: Monitoring](https://kadira.io/)
 * [UptimeButler: Alerting](https://uptimebutler.com/)
 
 ### Technical articles
 * [Meteor routing guide](https://kadira.io/academy/meteor-routing-guide/)
+* [React Motion](https://github.com/chenglou/react-motion)
 * [Meteor & React](http://react-in-meteor.readthedocs.org/en/latest/)
 * [Getting Started with Meteor, React, and React Router](http://alexgaribay.com/2015/07/06/getting-started-with-meteor-react-and-react-router/)
 

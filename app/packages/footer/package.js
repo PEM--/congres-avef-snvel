@@ -12,8 +12,7 @@ Package.onUse(function(api) {
     'meteor-platform',
     'react',
     'pierreeric:subscription-cache',
-    'pierreeric:basic-pages-core',
-    'pierreeric:react-motion'
+    'pierreeric:basic-pages-core'
   ]);
   // Dependencies for client only
   api.use([
