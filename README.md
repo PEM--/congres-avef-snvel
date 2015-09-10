@@ -13,6 +13,9 @@ Site d'inscription commun pour l'AVEF et le SNVEL.
 * [Semantic UI](http://semantic-ui.com/)
 * [Docker](https://www.docker.com/)
 
+### React specificities
+* [React Motion](https://github.com/chenglou/react-motion)
+
 ### External tools
 * [Kadira: Monitoring](https://kadira.io/)
 * [UptimeButler: Alerting](https://uptimebutler.com/)

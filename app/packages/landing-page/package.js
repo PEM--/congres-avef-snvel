@@ -10,9 +10,9 @@ Package.onUse(function(api) {
   // Dependencies for server and client
   api.use([
     'react',
-    'pierreeric:routing@0.0.1',
-    'kadira:react-layout@1.3.0',
-    'pierreeric:footer@0.0.1'
+    'pierreeric:routing',
+    'kadira:react-layout',
+    'pierreeric:footer'
   ]);
   api.imply([
     'kadira:flow-router-ssr',
@@ -20,7 +20,7 @@ Package.onUse(function(api) {
   ]);
   // Dependencies for client only
   api.use([
-    'flemay:less-autoprefixer@1.1.0'
+    'flemay:less-autoprefixer'
   ], 'client');
   // Included files in this packages
   // Files for server and client

@@ -9,8 +9,8 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
-    'kadira:flow-router-ssr@3.2.1',
-    'meteorhacks:fast-render@2.9.0'
+    'kadira:flow-router-ssr',
+    'meteorhacks:fast-render'
   ]);
   api.imply([
     'kadira:flow-router-ssr',

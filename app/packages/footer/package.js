@@ -11,11 +11,12 @@ Package.onUse(function(api) {
   api.use([
     'meteor-platform',
     'react',
-    'pierreeric:subscription-cache@0.0.1'
+    'pierreeric:subscription-cache',
+    'pierreeric:react-motion'
   ]);
   // Dependencies for client only
   api.use([
-    'flemay:less-autoprefixer@1.1.0',
+    'flemay:less-autoprefixer',
   ], 'client');
   // Included files in this packages
   // Files for server and client

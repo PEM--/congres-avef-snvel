@@ -33,7 +33,7 @@ gadicohen:sitemaps
 gadicohen:robots-txt
 
 # WPO & Meteor optimizations
-appcache
+#appcache
 
 # CSS
 fortawesome:fontawesome

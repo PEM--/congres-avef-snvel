@@ -9,7 +9,7 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
-    'meteorhacks:subs-manager@1.6.2'
+    'meteorhacks:subs-manager'
   ]);
   // Included files in this packages
   // Files for server and client

@@ -1,6 +1,6 @@
 Package.describe({
   name: 'pierreeric:react-motion',
-  version: '0.0.1'
+  version: '0.2.7'
 });
 
 Package.onUse(function(api) {
@@ -16,7 +16,7 @@ Package.onUse(function(api) {
   api.use([
     'meteor-platform',
     'react',
-    'cosmos:browserify@0.5.0'
+    'cosmos:browserify'
   ], 'client');
   api.imply([
     'meteor-platform',
