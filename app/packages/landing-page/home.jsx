@@ -1,13 +1,18 @@
 HomeLayout = React.createClass({
+  displayName: 'HomeLayout',
   render() {
     return (
       <div className='main-layout'>
         <header>
-          <h1>Congrès AVEF - SNVEL</h1>
-          <p>Menu principal</p>
+          <section className='ui container'>
+            <h1>Congrès AVEF - SNVEL</h1>
+            <p>Menu principal</p>
+          </section>
         </header>
         <main>
-          <h1>Contenu</h1>
+          <section className='ui container'>
+            <h1>Contenu</h1>
+          </section>
         </main>
         <Footer />
       </div>

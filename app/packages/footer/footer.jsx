@@ -21,10 +21,20 @@ if (Meteor.isServer) {
   });
 }
 
+let Spring = ReactMotion.Spring,
+  TransitionSpring = ReactMotion.Spring;
+
 // Footer component
 Footer = React.createClass({
+  displayName: 'Footer',
   // Get Meteor's methods
   mixins: [ReactMeteorData],
+  getInitialState() {
+    return {open: false};
+  },
+  handleMouseDown() {
+    this.setState({open: !this.state.open});
+  },
   // Subscribe to Links (reactive methods)
   getMeteorData() {
     var handle = globalSubs.subscribe('links');
