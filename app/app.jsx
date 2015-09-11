@@ -118,18 +118,19 @@ Rc.BasicPages = createClass({
   mixins: [ReactMeteorData],
   // Subscribe to BasicPages (reactive methods)
   getMeteorData() {
-    let handle = globalSubs.subscribe('single basic page', this.props.url);
+    const { url } = this.props;
+    const handle = globalSubs.subscribe('single basic page', url);
     return {
       // Use handle to show loading state
       loading: !handle.ready(),
       // Get the content of the basic page
-      item: Col.BasicPages.findOne({url: this.props.url})
+      item: Col.BasicPages.findOne({url})
     };
   },
   render() {
     // @TODO Set a spinner here
     // if (this.data.loading) { return <p>Loading</p>; }
-    let item = this.data.item;
+    const item = this.data.item;
     return (
       <div>
         <h1>{item.title}</h1>
@@ -150,9 +151,8 @@ Rc.AdminLayout = createClass({
   },
   render() {
     console.log('Rc.AdminLayout rendering');
-    return (
-      <div>{this.props.content}</div>
-    );
+    const { content } = this.props;
+    return <div>{content}</div>;
   }
 });
 
@@ -162,9 +162,7 @@ Rc.Admin.Home = createClass({
   displayName: 'Rc.Admin.Home',
   render() {
     console.log('Rc.Admin.Home rendering');
-    return (
-      <p>Welcome in the admin interface</p>
-    );
+    return <p>Welcome in the admin interface</p>;
   }
 });
 
@@ -179,7 +177,6 @@ FlowRouter.route('/admin', {
 var setBasicPageRoutes = function() {
   let basicPages = Col.BasicPages.find().fetch();
   basicPages.forEach(function(page) {
-    console.log('Registering page:', page.title);
     FlowRouter.route(`/${page.url}`, {
       name: page.url,
       action() {
