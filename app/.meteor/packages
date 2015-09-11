@@ -30,13 +30,13 @@ semantic:ui
 
 # Application packages
 
+pierreeric:server-side-routes
+
+
+
 kadira:react-layout
 
-meteorhacks:npm
-npm-container
 
-cosmos:browserify
-meteorhacks:picker
 
 
 pierreeric:subscription-cache

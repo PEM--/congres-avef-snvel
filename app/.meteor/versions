@@ -66,7 +66,6 @@ mongo@1.1.0
 msavin:jetsetter@1.0.20
 msavin:mongol@1.1.5
 npm-bcrypt@0.7.8_2
-npm-container@1.2.0
 observe-sequence@1.0.6
 ordered-dict@1.0.3
 pierreeric:basic-pages-core@0.0.1
@@ -74,6 +73,7 @@ pierreeric:footer@0.0.1
 pierreeric:markdown-server-side@0.3.5
 pierreeric:routing@0.0.1
 pierreeric:security@0.0.1
+pierreeric:server-side-routes@0.0.1
 pierreeric:subscription-cache@0.0.1
 random@1.0.3
 react@0.1.10
