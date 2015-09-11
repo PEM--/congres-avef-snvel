@@ -33,6 +33,8 @@ semantic:ui
 kadira:react-layout
 
 meteorhacks:npm
+npm-container
+
 cosmos:browserify
 meteorhacks:picker
 
