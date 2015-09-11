@@ -11,8 +11,7 @@ Package.onUse(function(api) {
   api.use([
     'react',
     'pierreeric:routing',
-    'pierreeric:basic-pages-core',
-    'kadira:react-layout'
+    'pierreeric:basic-pages-core'
   ]);
   // Included files in this packages
   // Files for server and client

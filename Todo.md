@@ -7,3 +7,6 @@ Maps
 
 Small components
 * Mailto: http://react-components.com/component/react-mailto
+
+En cas de pb avec Appcache:
+https://github.com/kadirahq/flow-router#hashbang-urls

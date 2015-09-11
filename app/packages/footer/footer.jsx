@@ -5,14 +5,7 @@ const BasicPagesLinkItems = React.createClass({
     url: React.PropTypes.string.isRequired,
     title: React.PropTypes.string.isRequired
   },
-  render() {
-    return (
-      <li>
-        <a href={this.props.url}
-          dangerouslySetInnerHTML={{__html: this.props.title}}/>
-      </li>
-    );
-  }
+  render() { return <li><a href={this.props.url}>{this.props.title}</a></li>; }
 });
 
 // List of basic page links
@@ -30,9 +23,6 @@ const BasicPagesLinkList = React.createClass({
     };
   },
   render() {
-    // @TODO Find a spinner
-    // Render a spinner if subscription isn't loaded
-    if (this.data.loading) { return <p>Chargement en cours</p>; }
     // Display links as a list
     let nodes = this.data.items.map(function(item) {
       return <BasicPagesLinkItems
@@ -66,6 +56,7 @@ Footer = React.createClass({
   },
   // Render the component
   render() {
+    console.log('Rendering Footer');
     // Ease access to settings
     const settings = Meteor.settings.public;
     return (

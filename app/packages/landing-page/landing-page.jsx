@@ -31,17 +31,13 @@ let LandingPage = React.createClass({
 // });
 
 FlowRouter.route('/', {
+  name: 'home',
   action() {
-    ReactLayout.render(ClientLayout, {
-      content() {
-        return ReactLayout.render(LandingPage);
-      }
+    ReactLayout.render(MainLayout, {
+      content: <LandingPage />
     });
   }
 });
 
-// FlowRouter.route('/', {
-//   action() {
-//     ReactLayout.render(LandingPage);
-//   }
-// });
+// FlowRouter.wait() and FlowRouter.initialize()
+// https://github.com/kadirahq/flow-router#flowrouterwait-and-flowrouterinitialize
