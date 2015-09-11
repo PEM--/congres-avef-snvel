@@ -32,6 +32,11 @@ semantic:ui
 
 kadira:react-layout
 
+meteorhacks:npm
+cosmos:browserify
+meteorhacks:picker
+
+
 pierreeric:subscription-cache
 pierreeric:basic-pages-core
 pierreeric:routing
