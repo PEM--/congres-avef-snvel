@@ -40,7 +40,7 @@ Footer = React.createClass({
   mixins: [ReactMeteorData],
   // Subscribe to BasicPages (reactive methods)
   getMeteorData() {
-    const handle = globalSubs.subscribe('basic pages titles');
+    let handle = globalSubs.subscribe('basic pages titles');
     return {
       // Use handle to show loading state
       basicPagesLoading: !handle.ready(),

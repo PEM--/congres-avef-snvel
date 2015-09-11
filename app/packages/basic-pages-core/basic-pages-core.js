@@ -31,7 +31,9 @@ if (Meteor.isServer) {
     return BasicPages.find({}, {sort: {order: 1}, fields: {content: 0}});
   });
   // Publish one BasicPage with its content
-  Meteor.publish('single basic page', function(_id) {
-    return BasicPages.find(_id, {fields: {content: 1}});
+  Meteor.publish('single basic page', function(url) {
+    // @TODO Add better checking once SimpleSchema is properly set
+    check(url, String);
+    return BasicPages.find({url: url});
   });
 }

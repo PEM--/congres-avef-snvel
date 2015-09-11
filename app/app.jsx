@@ -44,7 +44,7 @@ subscribeToBasiPages = function(context) {
 
 FlowRouter.route('/', {
   name: 'home',
-  triggersEnter: [subscribeToBasiPages],
+  //triggersEnter: [subscribeToBasiPages],
   action() {
     console.log('Home route');
     ReactLayout.render(Rc.MainLayout, {
@@ -57,12 +57,34 @@ FlowRouter.route('/', {
 Rc.BasicPages = React.createClass({
   displayName: 'Rc.BasicPages',
   propTypes: {
-    content: React.PropTypes.string.isRequired,
+    url: React.PropTypes.string.isRequired
+  },
+  mixins: [ReactMeteorData],
+  // Subscribe to BasicPages (reactive methods)
+  getMeteorData() {
+    let handle = globalSubs.subscribe('single basic page', this.props.url);
+    return {
+      // Use handle to show loading state
+      loading: !handle.ready(),
+      // Get the content of the basic page
+      item: BasicPages.findOne({url: this.props.url})
+    };
   },
   render() {
+    if (Meteor.isServer) {
+      Meteor.setTimeout(function() {
+        console.log('Basic page defered data', this.data);
+        console.log(BasicPages.findOne());
+      }.bind(this), 100);
+    }
+    // @TODO Set a spinner here
+    if (this.data.loading) { return <p>Loading</p>; }
+    console.log('Basic page rendering', this.data);
+    const item = this.data.item;
     return (
       <div>
-        <p>Basic Page: {this.props.content}</p>
+        <h1>{item.title}</h1>
+        <div dangerouslySetInnerHTML={{__html: item.content}} />
         <p><a href={FlowRouter.path('home')}>Home</a></p>
         <p><a href='legal'>legal</a></p>
         <p><a href='cookie'>cookie</a></p>
@@ -102,13 +124,13 @@ FlowRouter.route('/admin', {
   }
 });
 
-FlowRouter.route('/:slug', {
+FlowRouter.route('/:url', {
   action(params) {
-    basicPage = BasicPages.findOne({url: params.slug});
-    let content = basicPage ? params.slug : 'notfound';
-    console.log('Basic page route', params.slug, content);
+    basicPage = BasicPages.findOne({url: params.url});
+    let url = basicPage ? params.url : 'notfound';
+    console.log('Basic page route', params.url, url);
     ReactLayout.render(Rc.MainLayout, {
-      content: <Rc.BasicPages content={content} />
+      content: <Rc.BasicPages url={url} />
     });
   }
 });
