@@ -56,7 +56,7 @@ Rc.BasicPages = React.createClass({
       // Use handle to show loading state
       loading: !handle.ready(),
       // Get the content of the basic page
-      item: BasicPages.findOne({url: this.props.url})
+      item: Col.BasicPages.findOne({url: this.props.url})
     };
   },
   render() {
@@ -107,7 +107,7 @@ FlowRouter.route('/admin', {
 });
 
 var setBasicPageRoutes = function() {
-  let basicPages = BasicPages.find().fetch();
+  let basicPages = Col.BasicPages.find().fetch();
   basicPages.forEach(function(page) {
     console.log('Registering page:', page.title);
     FlowRouter.route(`/${page.url}`, {

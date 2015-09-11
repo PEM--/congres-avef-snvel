@@ -8,7 +8,10 @@ Package.onUse(function(api) {
   api.versionsFrom('1.1.0.3');
   // Dependencies of this package
   // Dependencies for server and client
-  var shared = ['aldeed:collection2'];
+  var shared = [
+    'aldeed:collection2',
+    'pierreeric:namespaces'
+  ];
   api.use(['meteor-platform'].concat(shared));
   api.imply(shared);
   // Dependencies for server only
@@ -18,6 +21,4 @@ Package.onUse(function(api) {
   api.addFiles([
     'basic-pages-core.js',
   ]);
-  // Exported symbols outside the scope of this package
-  api.export(['BasicPages', 'BasicPagesSchema']);
 });

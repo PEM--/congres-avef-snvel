@@ -19,7 +19,7 @@ let BasicPagesLinkList = React.createClass({
       // Use handle to show loading state
       loading: !handle.ready(),
       // Expose the list as an array
-      items: BasicPages.find().fetch()
+      items: Col.BasicPages.find().fetch()
     };
   },
   render() {
@@ -45,7 +45,7 @@ Footer = React.createClass({
       // Use handle to show loading state
       basicPagesLoading: !handle.ready(),
       // Expose the list as an array
-      basicPagesData: BasicPages.find().fetch()
+      basicPagesData: Col.BasicPages.find().fetch()
     };
   },
   // Render the component
