@@ -1,15 +1,17 @@
+const { PropTypes, createClass } = React;
+
 // Basic page links
-let BasicPagesLinkItems = React.createClass({
+const BasicPagesLinkItems = createClass({
   displayName: 'BasicPagesLinkItems',
   propTypes: {
-    url: React.PropTypes.string.isRequired,
-    title: React.PropTypes.string.isRequired
+    url: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired
   },
   render() { return <li><a href={this.props.url}>{this.props.title}</a></li>; }
 });
 
 // List of basic page links
-let BasicPagesLinkList = React.createClass({
+const BasicPagesLinkList = createClass({
   displayName: 'BasicPagesLinkItems',
   mixins: [ReactMeteorData],
   // Subscribe to BasicPages (reactive methods)
@@ -35,7 +37,7 @@ let BasicPagesLinkList = React.createClass({
 });
 
 // Footer component
-Footer = React.createClass({
+Footer = createClass({
   displayName: 'Footer',
   mixins: [ReactMeteorData],
   // Subscribe to BasicPages (reactive methods)
@@ -50,7 +52,6 @@ Footer = React.createClass({
   },
   // Render the component
   render() {
-    console.log('Rendering Footer');
     // Ease access to settings
     const settings = Meteor.settings.public;
     return (

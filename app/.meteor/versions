@@ -72,6 +72,7 @@ pierreeric:basic-pages-core@0.0.1
 pierreeric:footer@0.0.1
 pierreeric:markdown-server-side@0.3.5
 pierreeric:namespaces@0.0.1
+pierreeric:react-motion@0.2.7
 pierreeric:routing@0.0.1
 pierreeric:security@0.0.1
 pierreeric:server-side-routes@0.0.1

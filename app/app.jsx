@@ -1,11 +1,78 @@
 Rc = {};
 
+const { PropTypes } = React;
+const { TransitionSpring } = ReactMotion;
+
+const RouteTransition = React.createClass({
+  displayName: 'RouteTransition',
+  propTypes: {
+    url: PropTypes.string.isRequired
+  },
+  willEnter() {
+    const { children } = this.props;
+    return {
+      handler: children,
+      opacity: { val: 0 },
+      scale: { val: 0.95 }
+    };
+  },
+  willLeave(key, value) {
+    return {
+      handler: value.handler,
+      opacity: { val: 0 },
+      scale: { val: 0.95 }
+    };
+  },
+  getEndValue() {
+    const { children, url } = this.props;
+    return {
+      [url]: {
+        handler: children,
+        opacity: { val: 1 },
+        scale: { val: 1 }
+      }
+    };
+  },
+  render() {
+    return (
+      <TransitionSpring
+        endValue={this.getEndValue}
+        willEnter={this.willEnter}
+        willLeave={this.willLeave}
+      >
+        {interpolated =>
+          <div>
+            {Object.keys(interpolated).map(key =>
+              <div
+                key={`${key}-transition`}
+                style={{
+                  position: 'absolute',
+                  opacity: interpolated[key].opacity.val,
+                  transform: `scale(${interpolated[key].scale.val})`
+                }}
+              >
+               {interpolated[key].handler}
+              </div>
+            )}
+          </div>
+        }
+      </TransitionSpring>
+    );
+  }
+});
+
 Rc.MainLayout = React.createClass({
   displayName: 'Rc.MainLayout',
+  propTypes: {
+    url: PropTypes.string.isRequired,
+    content: PropTypes.object.isRequired
+  },
   render() {
     return (
       <div className='ui container main-layout'>
-        <div>{this.props.content}</div>
+        <RouteTransition url='legal'>
+          {this.props.content}
+        </RouteTransition>
         <Footer />
       </div>
     );
@@ -34,10 +101,10 @@ Rc.LandingPage = React.createClass({
 
 FlowRouter.route('/', {
   name: 'home',
-  //triggersEnter: [subscribeToBasiPages],
   action() {
     console.log('Home route');
     ReactLayout.render(Rc.MainLayout, {
+      url: '/',
       content: <Rc.LandingPage />
     });
   }
@@ -46,7 +113,7 @@ FlowRouter.route('/', {
 Rc.BasicPages = React.createClass({
   displayName: 'Rc.BasicPages',
   propTypes: {
-    url: React.PropTypes.string.isRequired
+    url: PropTypes.string.isRequired
   },
   mixins: [ReactMeteorData],
   // Subscribe to BasicPages (reactive methods)
@@ -78,6 +145,9 @@ Rc.BasicPages = React.createClass({
 
 Rc.AdminLayout = React.createClass({
   displayName: 'Rc.AdminLayout',
+  propTypes: {
+    content: PropTypes.string.isRequired
+  },
   render() {
     console.log('Rc.AdminLayout rendering');
     return (
@@ -111,8 +181,10 @@ var setBasicPageRoutes = function() {
   basicPages.forEach(function(page) {
     console.log('Registering page:', page.title);
     FlowRouter.route(`/${page.url}`, {
+      name: page.url,
       action() {
         ReactLayout.render(Rc.MainLayout, {
+          url: `/${page.url}`,
           content: <Rc.BasicPages url={page.url} />
         });
       }
@@ -133,6 +205,7 @@ if (Meteor.isClient) {
 FlowRouter.notFound = {
   action() {
     ReactLayout.render(Rc.MainLayout, {
+      url: '/notfound',
       content: <Rc.BasicPages url='notfound' />
     });
   }
