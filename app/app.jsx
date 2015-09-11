@@ -1,9 +1,5 @@
 Rc = {};
 
-if (Meteor.isServer) {
-  console.log('Server checking', BasicPages.findOne());
-}
-
 Rc.MainLayout = React.createClass({
   displayName: 'Rc.MainLayout',
   render() {
@@ -53,7 +49,6 @@ FlowRouter.route('/', {
   }
 });
 
-
 Rc.BasicPages = React.createClass({
   displayName: 'Rc.BasicPages',
   propTypes: {
@@ -71,16 +66,9 @@ Rc.BasicPages = React.createClass({
     };
   },
   render() {
-    if (Meteor.isServer) {
-      Meteor.setTimeout(function() {
-        console.log('Basic page defered data', this.data);
-        console.log(BasicPages.findOne());
-      }.bind(this), 100);
-    }
     // @TODO Set a spinner here
-    if (this.data.loading) { return <p>Loading</p>; }
-    console.log('Basic page rendering', this.data);
-    const item = this.data.item;
+    // if (this.data.loading) { return <p>Loading</p>; }
+    let item = this.data.item;
     return (
       <div>
         <h1>{item.title}</h1>
@@ -126,8 +114,8 @@ FlowRouter.route('/admin', {
 
 FlowRouter.route('/:url', {
   action(params) {
-    basicPage = BasicPages.findOne({url: params.url});
-    let url = basicPage ? params.url : 'notfound';
+    var basicPage = BasicPages.findOne({url: params.url});
+    var url = basicPage ? params.url : 'notfound';
     console.log('Basic page route', params.url, url);
     ReactLayout.render(Rc.MainLayout, {
       content: <Rc.BasicPages url={url} />

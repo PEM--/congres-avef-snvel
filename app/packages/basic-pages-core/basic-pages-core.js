@@ -28,7 +28,7 @@ if (Meteor.isServer) {
   console.log('Publish BasicPages');
   // Publish all BasicPages without their content
   Meteor.publish('basic pages titles', function() {
-    return BasicPages.find({}, {sort: {order: 1}, fields: {content: 0}});
+    return BasicPages.find();
   });
   // Publish one BasicPage with its content
   Meteor.publish('single basic page', function(url) {
