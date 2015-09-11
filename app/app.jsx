@@ -32,12 +32,6 @@ Rc.LandingPage = React.createClass({
   }
 });
 
-subscribeToBasiPages = function(context) {
-  if (Meteor.isClient) {
-    globalSubs.subscribe('basic pages titles');
-  }
-};
-
 FlowRouter.route('/', {
   name: 'home',
   //triggersEnter: [subscribeToBasiPages],
@@ -112,13 +106,26 @@ FlowRouter.route('/admin', {
   }
 });
 
-FlowRouter.route('/:url', {
-  action(params) {
-    var basicPage = BasicPages.findOne({url: params.url});
-    var url = basicPage ? params.url : 'notfound';
-    console.log('Basic page route', params.url, url);
-    ReactLayout.render(Rc.MainLayout, {
-      content: <Rc.BasicPages url={url} />
+var setBasicPageRoutes = function() {
+  let basicPages = BasicPages.find().fetch();
+  basicPages.forEach(function(page) {
+    console.log('Registering page:', page.title);
+    FlowRouter.route(`/${page.url}`, {
+      action() {
+        ReactLayout.render(Rc.MainLayout, {
+          content: <Rc.BasicPages url={page.url} />
+        });
+      }
     });
-  }
-});
+  });
+};
+
+if (Meteor.isClient) {
+  FlowRouter.wait();
+  globalSubs.subscribe('basic pages titles', function() {
+    setBasicPageRoutes();
+    FlowRouter.initialize();
+  });
+} else {
+  setBasicPageRoutes();
+}
