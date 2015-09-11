@@ -7,7 +7,10 @@ const BasicPagesLinkItems = createClass({
     url: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired
   },
-  render() { return <li><a href={this.props.url}>{this.props.title}</a></li>; }
+  render() {
+    const { url, title } = this.props;
+    return <li><a href={url}>{title}</a></li>;
+  }
 });
 
 // List of basic page links
@@ -26,7 +29,7 @@ const BasicPagesLinkList = createClass({
   },
   render() {
     // Display links as a list
-    let nodes = this.data.items.map(function(item) {
+    const nodes = this.data.items.map(function(item) {
       return <BasicPagesLinkItems
         key={item._id}
         url={item.url}
@@ -42,7 +45,7 @@ Footer = createClass({
   mixins: [ReactMeteorData],
   // Subscribe to BasicPages (reactive methods)
   getMeteorData() {
-    let handle = globalSubs.subscribe('basic pages titles');
+    const handle = globalSubs.subscribe('basic pages titles');
     return {
       // Use handle to show loading state
       basicPagesLoading: !handle.ready(),

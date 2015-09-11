@@ -1,6 +1,6 @@
 Rc = {};
 
-const { PropTypes } = React;
+const { PropTypes, createClass } = React;
 const { TransitionSpring } = ReactMotion;
 
 const RouteTransition = React.createClass({
@@ -61,7 +61,7 @@ const RouteTransition = React.createClass({
   }
 });
 
-Rc.MainLayout = React.createClass({
+Rc.MainLayout = createClass({
   displayName: 'Rc.MainLayout',
   propTypes: {
     url: PropTypes.string.isRequired,
@@ -79,7 +79,7 @@ Rc.MainLayout = React.createClass({
   }
 });
 
-Rc.LandingPage = React.createClass({
+Rc.LandingPage = createClass({
   displayName: 'Rc.LandingPage',
   render() {
     return (
@@ -110,7 +110,7 @@ FlowRouter.route('/', {
   }
 });
 
-Rc.BasicPages = React.createClass({
+Rc.BasicPages = createClass({
   displayName: 'Rc.BasicPages',
   propTypes: {
     url: PropTypes.string.isRequired
@@ -143,7 +143,7 @@ Rc.BasicPages = React.createClass({
   }
 });
 
-Rc.AdminLayout = React.createClass({
+Rc.AdminLayout = createClass({
   displayName: 'Rc.AdminLayout',
   propTypes: {
     content: PropTypes.string.isRequired
@@ -158,7 +158,7 @@ Rc.AdminLayout = React.createClass({
 
 Rc.Admin = {};
 
-Rc.Admin.Home = React.createClass({
+Rc.Admin.Home = createClass({
   displayName: 'Rc.Admin.Home',
   render() {
     console.log('Rc.Admin.Home rendering');
