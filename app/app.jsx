@@ -1,5 +1,11 @@
-let MainLayout = React.createClass({
-  displayName: 'MainLayout',
+Rc = {};
+
+if (Meteor.isServer) {
+  console.log('Server checking', BasicPages.findOne());
+}
+
+Rc.MainLayout = React.createClass({
+  displayName: 'Rc.MainLayout',
   render() {
     return (
       <div className='ui container main-layout'>
@@ -10,8 +16,8 @@ let MainLayout = React.createClass({
   }
 });
 
-let LandingPage = React.createClass({
-  displayName: 'LandingPage',
+Rc.LandingPage = React.createClass({
+  displayName: 'Rc.LandingPage',
   render() {
     return (
       <div className='landing-page'>
@@ -41,14 +47,15 @@ FlowRouter.route('/', {
   triggersEnter: [subscribeToBasiPages],
   action() {
     console.log('Home route');
-    ReactLayout.render(MainLayout, {
-      content: <LandingPage />
+    ReactLayout.render(Rc.MainLayout, {
+      content: <Rc.LandingPage />
     });
   }
 });
 
-let BasicPages = React.createClass({
-  displayName: 'BasicPages',
+
+Rc.BasicPages = React.createClass({
+  displayName: 'Rc.BasicPages',
   propTypes: {
     content: React.PropTypes.string.isRequired,
   },
@@ -65,11 +72,43 @@ let BasicPages = React.createClass({
   }
 });
 
-FlowRouter.route('/:basicPageId', {
+Rc.AdminLayout = React.createClass({
+  displayName: 'Rc.AdminLayout',
+  render() {
+    console.log('Rc.AdminLayout rendering');
+    return (
+      <div>{this.props.content}</div>
+    );
+  }
+});
+
+Rc.Admin = {};
+
+Rc.Admin.Home = React.createClass({
+  displayName: 'Rc.Admin.Home',
+  render() {
+    console.log('Rc.Admin.Home rendering');
+    return (
+      <p>Welcome in the admin interface</p>
+    );
+  }
+});
+
+FlowRouter.route('/admin', {
   action(params) {
-    console.log('Basic page route', params.basicPageId);
-    ReactLayout.render(MainLayout, {
-      content: <BasicPages content={params.basicPageId} />
+    ReactLayout.render(Rc.AdminLayout, {
+      content: <Rc.Admin.Home />
+    });
+  }
+});
+
+FlowRouter.route('/:slug', {
+  action(params) {
+    basicPage = BasicPages.findOne({url: params.slug});
+    let content = basicPage ? params.slug : 'notfound';
+    console.log('Basic page route', params.slug, content);
+    ReactLayout.render(Rc.MainLayout, {
+      content: <Rc.BasicPages content={content} />
     });
   }
 });

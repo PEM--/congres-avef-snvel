@@ -1,9 +1,3 @@
-# Meteor packages used by this project, one per line.
-# Check this file (and the other files in this directory) into your repository.
-#
-# 'meteor add' and 'meteor remove' will edit this file for you,
-# but you can also edit it by hand.
-
 # Official Meteor package
 meteor-platform
 react
@@ -22,13 +16,7 @@ msavin:jetsetter
 #kadira:debug
 #meteorhacks:kadira-profiler
 
-# Foreign packages
-meteorhacks:npm
-cosmos:browserify
-mquandalle:bower
-
 # SEO
-meteorhacks:inject-initial
 gadicohen:sitemaps
 gadicohen:robots-txt
 
@@ -45,10 +33,11 @@ semantic:ui
 kadira:react-layout
 
 pierreeric:subscription-cache
+pierreeric:basic-pages-core
 pierreeric:routing
 pierreeric:footer
 #pierreeric:landing-page
-pierreeric:basic-pages-client
+#pierreeric:basic-pages-client
 
 
 # Authentifications

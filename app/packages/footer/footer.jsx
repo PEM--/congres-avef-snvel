@@ -38,12 +38,6 @@ const BasicPagesLinkList = React.createClass({
 Footer = React.createClass({
   displayName: 'Footer',
   mixins: [ReactMeteorData],
-  getInitialState() {
-    return {open: false};
-  },
-  handleMouseDown() {
-    this.setState({open: !this.state.open});
-  },
   // Subscribe to BasicPages (reactive methods)
   getMeteorData() {
     const handle = globalSubs.subscribe('basic pages titles');

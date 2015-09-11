@@ -12,13 +12,18 @@ if (Meteor.isServer) {
   } else {
     console.log('Inserting default BasicPages');
     BasicPages.insert({
-      title: 'Mentions légales', url: '/legal', order: 1,
+      title: 'Mentions légales', url: 'legal', order: 1,
       content: marked('Les mentions légales, personne ne les lit...')
     });
     BasicPages.insert({
-      title: 'Confidentialité', url: '/cookie', order: 2,
+      title: 'Confidentialité', url: 'cookie', order: 2,
       content: marked('La confidentialité est un mythe...')
     });
+    BasicPages.insert({
+      title: 'Not found', url: 'notfound', order: 3,
+      content: marked('On ne trouve rien sans recherche...')
+    });
+
   }
   console.log('Publish BasicPages');
   // Publish all BasicPages without their content
