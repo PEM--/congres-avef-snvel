@@ -58,7 +58,7 @@ Rc.Client.Footer = createClass({
     // Ease access to settings
     const settings = Meteor.settings.public;
     return (
-      <footer>
+      <footer className='client'>
         <section className='ui container'>
           <article>
             <BasicPagesLinkList />

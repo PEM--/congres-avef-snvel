@@ -14,7 +14,6 @@ Package.onUse(function(api) {
   ];
   api.use([
     'react',
-    'kadira:react-layout',
     'flemay:less-autoprefixer'
   ].concat(sharedDeps));
   // Expose packages
