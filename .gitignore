@@ -10,3 +10,4 @@ theme.import.less
 *.overrides
 *.variables
 app/client/lib/semanticui/definitions
+.imdone

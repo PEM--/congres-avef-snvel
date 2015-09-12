@@ -1,11 +1,47 @@
 // Basic pages
+Col.SS.BasicPages = new SimpleSchema({
+  title: {
+    type: String,
+    label: 'Titre',
+    max: 256
+  },
+  url: {
+    type: String,
+    label: 'URL',
+    max: 32
+  },
+  order: {
+    type: Number,
+    label: 'Ordonnancement',
+    min: 1,
+    max: 256
+  },
+  content: {
+    type: String,
+    label: 'Contenu'
+  }
+});
 Col.BasicPages = new Mongo.Collection('basicPages');
+Col.BasicPages.attachSchema(Col.SS.BasicPages);
+
+// Collection helpers
+var METEOR_METHOD_NAME_SUB_ALL_LINKS = 'BasicPagesPageTitles';
+var METEOR_METHOD_NAME_SUB_PAGE = 'BasicPagesSingle';
+_.extend(Col.BasicPages, {
+  // Subscribe to all page's links
+  subAllLinks: function(cb) {
+    return globalSubs.subscribe(METEOR_METHOD_NAME_SUB_ALL_LINKS, cb);
+  },
+  // Subscribe to a single page
+  subPage: function(url, cb) {
+    return globalSubs.subscribe(METEOR_METHOD_NAME_SUB_PAGE, url, cb);
+  }
+});
 
 // Server only
 if (Meteor.isServer) {
   console.log('Checking default BasicPages');
-  // @TODO Set a SimpleSchema
-  // @TODO Add marked for easing bage edition
+  // @#DONE:0 Set a SimpleSchema
   // Fill the links collection with a minimal set of links
   if (Col.BasicPages.find().count() !== 0) {
     console.log('Col.BasicPages filled');
@@ -27,13 +63,15 @@ if (Meteor.isServer) {
   }
   console.log('Publish Col.BasicPages');
   // Publish all BasicPages without their content
-  Meteor.publish('basic pages titles', function() {
+  Meteor.publish(METEOR_METHOD_NAME_SUB_ALL_LINKS, function(cb) {
+    check(cb, Match.Any);
     return Col.BasicPages.find();
   });
   // Publish one BasicPage with its content
-  Meteor.publish('single basic page', function(url) {
-    // @TODO Add better checking once SimpleSchema is properly set
-    check(url, String);
+  Meteor.publish(METEOR_METHOD_NAME_SUB_PAGE, function(url, cb) {
+    // check(url, String);
+    check(url, Col.SS.BasicPages.getDefinition('url').type);
+    check(cb, Match.Any);
     return Col.BasicPages.find({url: url});
   });
 }

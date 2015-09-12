@@ -12,7 +12,6 @@ Package.onUse(function(api) {
     'meteor-platform',
     'react',
     'flemay:less-autoprefixer',
-    'pierreeric:subscription-cache',
     'pierreeric:basic-pages-core'
   ]);
   // Included files in this packages

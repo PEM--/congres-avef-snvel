@@ -10,7 +10,7 @@
     "app/**/*.jsx"
   ],
   "dontLoad": [
-    "app/.meteor/**/*.js"
+
   ],
   "plugins": {
     "complete_strings": {},

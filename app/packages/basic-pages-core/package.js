@@ -10,9 +10,12 @@ Package.onUse(function(api) {
   // Dependencies for server and client
   var shared = [
     'aldeed:collection2',
-    'pierreeric:namespaces'
+    'pierreeric:namespaces',
+    'pierreeric:subscription-cache'
   ];
-  api.use(['meteor-platform'].concat(shared));
+  api.use([
+    'meteor-platform'
+  ].concat(shared));
   api.imply(shared);
   // Dependencies for server only
   api.use(['pierreeric:markdown-server-side'], 'server');

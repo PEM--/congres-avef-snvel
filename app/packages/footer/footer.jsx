@@ -19,7 +19,7 @@ const BasicPagesLinkList = createClass({
   mixins: [ReactMeteorData],
   // Subscribe to BasicPages (reactive methods)
   getMeteorData() {
-    const handle = globalSubs.subscribe('basic pages titles');
+    const handle = Col.BasicPages.subAllLinks();
     return {
       // Use handle to show loading state
       loading: !handle.ready(),
@@ -45,7 +45,7 @@ Footer = createClass({
   mixins: [ReactMeteorData],
   // Subscribe to BasicPages (reactive methods)
   getMeteorData() {
-    const handle = globalSubs.subscribe('basic pages titles');
+    const handle = Col.BasicPages.subAllLinks();
     return {
       // Use handle to show loading state
       basicPagesLoading: !handle.ready(),

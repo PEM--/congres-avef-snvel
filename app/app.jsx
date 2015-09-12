@@ -1,155 +1,15 @@
 // Namespace flatteinng
 const { PropTypes, createClass } = React;
-const { TransitionSpring } = ReactMotion;
-
-const RouteTransition = React.createClass({
-  displayName: 'RouteTransition',
-  propTypes: {
-    url: PropTypes.string.isRequired
-  },
-  willEnter() {
-    const { children } = this.props;
-    return {
-      handler: children,
-      opacity: { val: 0 },
-      scale: { val: 0.95 }
-    };
-  },
-  willLeave(key, value) {
-    return {
-      handler: value.handler,
-      opacity: { val: 0 },
-      scale: { val: 0.95 }
-    };
-  },
-  getEndValue() {
-    const { children, url } = this.props;
-    return {
-      [url]: {
-        handler: children,
-        opacity: { val: 1 },
-        scale: { val: 1 }
-      }
-    };
-  },
-  render() {
-    return (
-      <TransitionSpring
-        endValue={this.getEndValue}
-        willEnter={this.willEnter}
-        willLeave={this.willLeave}
-      >
-        {interpolated =>
-          <div>
-            {Object.keys(interpolated).map(key =>
-              <div
-                key={`${key}-transition`}
-                style={{
-                  position: 'absolute',
-                  opacity: interpolated[key].opacity.val,
-                  transform: `scale(${interpolated[key].scale.val})`
-                }}
-              >
-               {interpolated[key].handler}
-              </div>
-            )}
-          </div>
-        }
-      </TransitionSpring>
-    );
-  }
-});
 
 Rc.MainLayout = createClass({
   displayName: 'Rc.MainLayout',
-  propTypes: {
-    url: PropTypes.string.isRequired,
-    content: PropTypes.object.isRequired
-  },
+  propTypes: { content: PropTypes.object.isRequired },
   render() {
     return (
-      <div className='ui container main-layout'>
-        <RouteTransition url='legal'>
-          {this.props.content}
-        </RouteTransition>
+      <div className='main-layout'>
+        {this.props.content}
         <Footer />
       </div>
-    );
-  }
-});
-
-
-let Demo = React.createClass({
-  getInitialState() {
-    return {
-      blocks: {
-        a: 'I am a',
-        b: 'I am b',
-        c: 'I am c',
-      },
-    };
-  },
-
-  getEndValue() {
-    let blocks = this.state.blocks;
-    let configs = {};
-    Object.keys(blocks).forEach(key => {
-      configs[key] = {
-        height: {val: 50},
-        opacity: {val: 1},
-        text: blocks[key], // interpolate the above 2 fields only
-      };
-    });
-    return configs;
-  },
-
-  willEnter(key) {
-    return {
-      height: {val: 50},
-      opacity: {val: 1},
-      text: this.state.blocks[key],
-    };
-  },
-
-  willLeave(key, endValue, currentValue, currentSpeed) {
-    if (currentValue[key].opacity.val === 0 && currentSpeed[key].opacity.val === 0) {
-      return null; // kill component when opacity reaches 0
-    }
-    return {
-      height: {val: 0},
-      opacity: {val: 0},
-      text: currentValue[key].text,
-    };
-  },
-
-  handleClick(key) {
-    let {...newBlocks} = this.state.blocks;
-    delete newBlocks[key];
-    this.setState({blocks: newBlocks});
-  },
-
-  render() {
-    return (
-      <TransitionSpring
-        endValue={this.getEndValue}
-        willEnter={this.willEnter}
-        willLeave={this.willLeave}>
-        {currentValue =>
-          <div>
-            {Object.keys(currentValue).map((key, i) => {
-              let style = {
-                height: currentValue[key].height.val,
-                opacity: currentValue[key].opacity.val,
-              };
-              return (
-                <div key={i} onClick={this.handleClick.bind(null, key)} style={style}>
-                  {currentValue[key].text}
-                </div>
-              );
-            })}
-          </div>
-        }
-      </TransitionSpring>
     );
   }
 });
@@ -195,12 +55,14 @@ Rc.BasicPages = createClass({
   // Subscribe to BasicPages (reactive methods)
   getMeteorData() {
     const { url } = this.props;
-    const handle = globalSubs.subscribe('single basic page', url);
+    const { BasicPages } = Col;
+    // Subscribe to get the content of the page
+    const handle = BasicPages.subPage(url);
     return {
       // Use handle to show loading state
       loading: !handle.ready(),
       // Get the content of the basic page
-      item: Col.BasicPages.findOne({url})
+      item: BasicPages.findOne({url})
     };
   },
   render() {
@@ -257,7 +119,6 @@ var setBasicPageRoutes = function() {
       name: page.url,
       action() {
         ReactLayout.render(Rc.MainLayout, {
-          url: `/${page.url}`,
           content: <Rc.BasicPages url={page.url} />
         });
       }
@@ -267,7 +128,7 @@ var setBasicPageRoutes = function() {
 
 if (Meteor.isClient) {
   FlowRouter.wait();
-  globalSubs.subscribe('basic pages titles', function() {
+  Col.BasicPages.subAllLinks(function() {
     setBasicPageRoutes();
     FlowRouter.initialize();
   });
