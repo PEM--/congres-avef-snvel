@@ -1,6 +1,7 @@
 // Display Not found
 
 // Not found is based on BasicPages
+Tools.log.info('Router: global notfound');
 FlowRouter.notFound = {
   action() {
     ReactLayout.render(Rc.MainLayout, {

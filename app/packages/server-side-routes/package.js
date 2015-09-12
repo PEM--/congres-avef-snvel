@@ -11,6 +11,10 @@ Package.onUse(function(api) {
     "body-parser": "1.13.3"
   });
   // Dependencies of this package
+  api.use([
+    'pierreeric:namespaces',
+    'pierreeric:logger'
+  ]);
   // Dependencies server only
   api.use([
     'meteorhacks:npm',

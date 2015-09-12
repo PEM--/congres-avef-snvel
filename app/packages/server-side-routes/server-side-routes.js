@@ -7,7 +7,9 @@ var data = [
   {id: 2, author: 'Jordan Walke', text: 'This is *another* comment'}
 ];
 
-Picker.route('/comments.json', function(params, req, res, next) {
+SERVER_SIDE_ROUTE_COMMENTS = '/comments.json';
+Tools.log.info('ServerSideRoutes:', SERVER_SIDE_ROUTE_COMMENTS);
+Picker.route(SERVER_SIDE_ROUTE_COMMENTS, function(params, req, res, next) {
   if (req.method === 'GET') {
     res.end(JSON.stringify(data));
   } else if (req.method === 'POST') {

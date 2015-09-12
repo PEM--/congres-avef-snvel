@@ -9,7 +9,9 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
-    'meteorhacks:subs-manager'
+    'meteorhacks:subs-manager@1.6.2',
+    'pierreeric:namespaces',
+    'pierreeric:logger'
   ]);
   // Included files in this packages
   // Files for server and client

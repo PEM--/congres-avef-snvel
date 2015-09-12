@@ -1,10 +1,14 @@
+# Namespace flatteinng
+{ log } = Tools
+
+
 # Black list everything
 BrowserPolicy.framing.disallow()
 BrowserPolicy.content.disallowEval()
 # BrowserPolicy.content.disallowInlineScripts()
 BrowserPolicy.content.disallowConnect()
 # Only allow necessary protocols
-console.info 'Settings Browser Policy'
+log.info 'Settings Browser Policy'
 # Allow origin for Meteor hosting
 for origin in [
   '*.meteor.com'
@@ -13,7 +17,7 @@ for origin in [
 ]
   for protocol in ['http', 'https', 'ws', 'wss']
     url = "#{protocol}://#{origin}"
-    console.info 'Authorizing', url
+    log.info 'BrowserPolicy: Allowing', url
     BrowserPolicy.content.allowConnectOrigin url
 # Allow external CSS
 for origin in ['fonts.googleapis']
@@ -47,6 +51,7 @@ for origin in [
   Meteor.absoluteUrl('*').split('://')[1]
 ]
   for protocol in ['http', 'https']
+    log.info 'BrowserPolicy: Allowing', porigin
     porigin = "#{protocol}://#{origin}"
     BrowserPolicy.content.allowOriginForAll porigin
     BrowserPolicy.content.allowEval porigin

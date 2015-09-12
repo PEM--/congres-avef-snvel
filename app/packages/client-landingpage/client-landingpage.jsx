@@ -17,6 +17,7 @@ const { PropTypes, createClass } = React;
 Rc.Client.LandingPage = createClass({
   displayName: 'Rc.Client.LandingPage',
   render() {
+    Tools.log.debug('Rc.Client.Footer rendering');
     return (
       <div className='client landingpage'>
         <header>

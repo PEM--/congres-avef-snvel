@@ -12,6 +12,7 @@ Package.onUse(function(api) {
     'aldeed:collection2',
     'dburles:collection-helpers@1.0.3',
     'pierreeric:namespaces',
+    'pierreeric:logger',
     'pierreeric:subscription-cache'
   ];
   api.use([

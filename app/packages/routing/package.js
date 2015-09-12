@@ -8,14 +8,14 @@ Package.onUse(function(api) {
   api.versionsFrom('1.1.0.3');
   // Dependencies of this package
   // Dependencies for server and client
-  api.use([
+  var shared = [
     'kadira:flow-router-ssr',
-    'meteorhacks:fast-render'
-  ]);
-  api.imply([
-    'kadira:flow-router-ssr',
-    'meteorhacks:fast-render'
-  ]);
+    'meteorhacks:fast-render',
+    'pierreeric:namespaces',
+    'pierreeric:logger'
+  ];
+  api.use(shared);
+  api.imply(shared);
   // Included files in this packages
   // Files for server only
   api.addFiles([

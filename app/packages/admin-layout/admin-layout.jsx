@@ -10,7 +10,7 @@ Rc.Admin.Layout = createClass({
     content: PropTypes.string.isRequired
   },
   render() {
-    console.log('Rc.Admin.Layout rendering');
+    Tools.log.debug('Rc.Admin.Layout rendering');
     const { content } = this.props;
     return <div className='admin'>{content}</div>;
   }

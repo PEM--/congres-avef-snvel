@@ -11,9 +11,10 @@ Package.onUse(function(api) {
   api.use([
     'meteor-platform',
     'react',
+    'pierreeric:namespaces',
+    'pierreeric:logger',
     'flemay:less-autoprefixer@1.1.0',
     'pierreeric:col-basicpages',
-    'pierreeric:namespaces',
     'pierreeric:client-sharedstyles'
   ]);
   // Included files in this packages

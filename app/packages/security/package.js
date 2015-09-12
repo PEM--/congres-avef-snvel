@@ -5,7 +5,12 @@ Package.describe({
 
 Package.onUse(function(api) {
   api.versionsFrom('1.1.0.3');
-  api.use(['coffeescript', 'browser-policy']);
+  api.use([
+    'coffeescript',
+    'browser-policy',
+    'pierreeric:namespaces',
+    'pierreeric:logger'
+  ]);
   api.addFiles([
     'browserPolicy.coffee'
   ], 'server');

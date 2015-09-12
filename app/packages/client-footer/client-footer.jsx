@@ -2,6 +2,7 @@
 
 // Namespace flatteinng
 const { PropTypes, createClass } = React;
+const { log } = Tools;
 
 // Basic page links
 const BasicPagesLinkItems = createClass({
@@ -11,6 +12,7 @@ const BasicPagesLinkItems = createClass({
     title: PropTypes.string.isRequired
   },
   render() {
+    log.debug('BasicPagesLinkItems rendering');
     const { url, title } = this.props;
     return <li><a href={url}>{title}</a></li>;
   }
@@ -31,6 +33,7 @@ const BasicPagesLinkList = createClass({
     };
   },
   render() {
+    log.debug('BasicPagesLinkList rendering');
     // Display links as a list
     const nodes = this.data.items.map(function(item) {
       return <BasicPagesLinkItems
@@ -58,6 +61,7 @@ Rc.Client.Footer = createClass({
   },
   // Render the component
   render() {
+    log.debug('Rc.Client.Footer rendering');
     // Ease access to settings
     const settings = Meteor.settings.public;
     return (

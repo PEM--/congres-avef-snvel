@@ -1,6 +1,6 @@
 // Default log informations
 LOG_FRAMEWORK_NAME = 'Main';
-LOG_LEVEL = 'info';
+LOG_LEVEL = 'debug';
 
 // Instantiate logger
 Tools.log = bunyan.createLogger({

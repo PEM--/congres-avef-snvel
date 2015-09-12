@@ -1,10 +1,15 @@
 // Display BasicPages for the client
 
+// Namespace flatteinng
+const { PropTypes, createClass } = React;
+const { log } = Tools;
+
 // Routing
 // Isomorhic function
 var setBasicPageRoutes = function() {
   let basicPages = Col.BasicPages.find().fetch();
   basicPages.forEach(function(page) {
+    log.info('Router:', page.url);
     FlowRouter.route(`/${page.url}`, {
       name: page.url,
       action() {
@@ -29,9 +34,6 @@ if (Meteor.isClient) {
   setBasicPageRoutes();
 }
 
-// Namespace flatteinng
-const { PropTypes, createClass } = React;
-
 // BasicPages component
 Rc.Client.BasicPages = createClass({
   displayName: 'Rc.Client.BasicPages',
@@ -52,6 +54,7 @@ Rc.Client.BasicPages = createClass({
     };
   },
   render() {
+    log.debug('Rc.Client.BasicPages rendering');
     const item = this.data.item;
     return (
       <div key={item.url} className='client basicpages ui container'>

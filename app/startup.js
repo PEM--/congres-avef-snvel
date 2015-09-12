@@ -1,3 +1,3 @@
 Meteor.startup(function() {
-  console.log('Meteor started');
+  Tools.log.info('Meteor started');
 });

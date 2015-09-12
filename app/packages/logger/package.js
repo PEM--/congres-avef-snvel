@@ -17,7 +17,9 @@ Package.onUse(function(api) {
 
   // Dependencies of this package
   // Dependencies for server and client
-  api.use('pierreeric:namespaces');
+  var shared = ['pierreeric:namespaces'];
+  api.use(shared);
+  api.imply(shared);
   // Dependencies for client only
   api.use('cosmos:browserify@0.5.0', 'client');
 

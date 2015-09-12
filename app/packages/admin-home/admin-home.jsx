@@ -14,7 +14,7 @@ FlowRouter.route('/admin', {
 Rc.Admin.Home = createClass({
   displayName: 'Rc.Admin.Home',
   render() {
-    console.log('Rc.Admin.Home rendering');
+    Tools.log.debug('Rc.Admin.Home rendering');
     return (
       <div className='home'>
         <p>

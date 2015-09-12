@@ -1,4 +1,5 @@
 // Basic pages
+Tools.log.info('Col.BasicPages declared');
 Col.SS.BasicPages = new SimpleSchema({
   title: {
     type: String,
@@ -40,13 +41,12 @@ _.extend(Col.BasicPages, {
 
 // Server only
 if (Meteor.isServer) {
-  console.log('Checking default BasicPages');
   // @#DONE:0 Set a SimpleSchema
   // Fill the links collection with a minimal set of links
   if (Col.BasicPages.find().count() !== 0) {
-    console.log('Col.BasicPages filled');
+    Tools.log.info('Col.BasicPages already filled');
   } else {
-    console.log('Inserting default Col.BasicPages');
+    Tools.log.info('Col.BasicPages filled with defaults');
     Col.BasicPages.insert({
       title: 'Mentions légales', url: 'legal', order: 1,
       content: marked('Les mentions légales, personne ne les lit...')
@@ -61,7 +61,6 @@ if (Meteor.isServer) {
     });
 
   }
-  console.log('Publish Col.BasicPages');
   // Publish all BasicPages without their content
   Meteor.publish(METEOR_METHOD_NAME_SUB_ALL_LINKS, function(cb) {
     check(cb, Match.Any);
@@ -74,4 +73,5 @@ if (Meteor.isServer) {
     check(cb, Match.Any);
     return Col.BasicPages.find({url: url});
   });
+  Tools.log.info('Col.BasicPages published');
 }

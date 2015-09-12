@@ -11,8 +11,9 @@ Package.onUse(function(api) {
   api.use([
     'react',
     'kadira:react-layout@1.3.0',
-    'pierreeric:routing',
     'pierreeric:namespaces',
+    'pierreeric:logger',
+    'pierreeric:routing',
     'pierreeric:client-basicpages'
   ]);
   // Included files in this packages
