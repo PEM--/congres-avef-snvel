@@ -1,5 +1,4 @@
-Rc = {};
-
+// Namespace flatteinng
 const { PropTypes, createClass } = React;
 const { TransitionSpring } = ReactMotion;
 
@@ -79,6 +78,82 @@ Rc.MainLayout = createClass({
   }
 });
 
+
+let Demo = React.createClass({
+  getInitialState() {
+    return {
+      blocks: {
+        a: 'I am a',
+        b: 'I am b',
+        c: 'I am c',
+      },
+    };
+  },
+
+  getEndValue() {
+    let blocks = this.state.blocks;
+    let configs = {};
+    Object.keys(blocks).forEach(key => {
+      configs[key] = {
+        height: {val: 50},
+        opacity: {val: 1},
+        text: blocks[key], // interpolate the above 2 fields only
+      };
+    });
+    return configs;
+  },
+
+  willEnter(key) {
+    return {
+      height: {val: 50},
+      opacity: {val: 1},
+      text: this.state.blocks[key],
+    };
+  },
+
+  willLeave(key, endValue, currentValue, currentSpeed) {
+    if (currentValue[key].opacity.val === 0 && currentSpeed[key].opacity.val === 0) {
+      return null; // kill component when opacity reaches 0
+    }
+    return {
+      height: {val: 0},
+      opacity: {val: 0},
+      text: currentValue[key].text,
+    };
+  },
+
+  handleClick(key) {
+    let {...newBlocks} = this.state.blocks;
+    delete newBlocks[key];
+    this.setState({blocks: newBlocks});
+  },
+
+  render() {
+    return (
+      <TransitionSpring
+        endValue={this.getEndValue}
+        willEnter={this.willEnter}
+        willLeave={this.willLeave}>
+        {currentValue =>
+          <div>
+            {Object.keys(currentValue).map((key, i) => {
+              let style = {
+                height: currentValue[key].height.val,
+                opacity: currentValue[key].opacity.val,
+              };
+              return (
+                <div key={i} onClick={this.handleClick.bind(null, key)} style={style}>
+                  {currentValue[key].text}
+                </div>
+              );
+            })}
+          </div>
+        }
+      </TransitionSpring>
+    );
+  }
+});
+
 Rc.LandingPage = createClass({
   displayName: 'Rc.LandingPage',
   render() {
@@ -92,6 +167,7 @@ Rc.LandingPage = createClass({
         <main>
           <section className='ui container'>
             <h1>Contenu</h1>
+            <Demo />
           </section>
         </main>
       </div>
@@ -132,7 +208,7 @@ Rc.BasicPages = createClass({
     // if (this.data.loading) { return <p>Loading</p>; }
     const item = this.data.item;
     return (
-      <div>
+      <div key={item.url}>
         <h1>{item.title}</h1>
         <div dangerouslySetInnerHTML={{__html: item.content}} />
         <p><a href={FlowRouter.path('home')}>Home</a></p>
