@@ -10,3 +10,5 @@ Col = {
   // SimpleSchema for collection
   SS: {}
 };
+// Tools: Logger, ...
+Tools = {};

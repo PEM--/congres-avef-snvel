@@ -38,6 +38,9 @@ pierreeric:client-notfound
 # Admin only packages
 pierreeric:admin-home
 
+pierreeric:namespaces
+pierreeric:logger
+
 # Authentifications
 useraccounts:core
 accounts-password

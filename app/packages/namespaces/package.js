@@ -10,5 +10,5 @@ Package.onUse(function(api) {
   // Files for server and client
   api.addFiles('namespaces.js');
   // Exported symbols outside the scope of this package
-  api.export(['Rc', 'Col']);
+  api.export(['Rc', 'Col', 'Tools']);
 });
