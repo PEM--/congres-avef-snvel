@@ -10,7 +10,7 @@ Package.onUse(function(api) {
   // Dependencies for server and client
   var sharedDeps = [
     'pierreeric:namespaces',
-    'pierreeric:footer'
+    'pierreeric:client-footer'
   ];
   api.use([
     'react',

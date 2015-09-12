@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'pierreeric:basic-pages-core',
+  name: 'pierreeric:col-basicpages',
   version: '0.0.1'
 });
 
@@ -23,6 +23,6 @@ Package.onUse(function(api) {
   // Included files in this packages
   // Files for server and client
   api.addFiles([
-    'basic-pages-core.js',
+    'col-basicpages.js',
   ]);
 });

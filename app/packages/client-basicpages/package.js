@@ -12,7 +12,7 @@ Package.onUse(function(api) {
     'react',
     'pierreeric:routing',
     'pierreeric:namespaces',
-    'pierreeric:basic-pages-core',
+    'pierreeric:col-basicpages',
     'flemay:less-autoprefixer',
     'pierreeric:client-sharedstyles'
   ]);

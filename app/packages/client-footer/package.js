@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'pierreeric:footer',
+  name: 'pierreeric:client-footer',
   version: '0.0.1'
 });
 
@@ -12,14 +12,13 @@ Package.onUse(function(api) {
     'meteor-platform',
     'react',
     'flemay:less-autoprefixer',
-    'pierreeric:basic-pages-core'
+    'pierreeric:col-basicpages',
+    'pierreeric:namespaces'
   ]);
   // Included files in this packages
   // Files for server and client
   api.addFiles([
-    'footer.jsx',
-    'footer.less'
+    'client-footer.jsx',
+    'client-footer.less'
   ]);
-  // Exported symbols outside the scope of this package
-  api.export(['Footer']);
 });

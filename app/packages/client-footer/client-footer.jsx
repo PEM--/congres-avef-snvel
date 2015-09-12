@@ -40,7 +40,7 @@ const BasicPagesLinkList = createClass({
 });
 
 // Footer component
-Footer = createClass({
+Rc.Client.Footer = createClass({
   displayName: 'Footer',
   mixins: [ReactMeteorData],
   // Subscribe to BasicPages (reactive methods)

@@ -10,7 +10,7 @@ Rc.MainLayout = createClass({
     return (
       <div className='main-layout'>
         {this.props.content}
-        <Footer />
+        <Rc.Client.Footer />
       </div>
     );
   }
