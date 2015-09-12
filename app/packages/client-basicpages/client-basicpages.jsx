@@ -8,7 +8,7 @@ var setBasicPageRoutes = function() {
       name: page.url,
       action() {
         ReactLayout.render(Rc.MainLayout, {
-          content: <Rc.BasicPages url={page.url} />
+          content: <Rc.Client.BasicPages url={page.url} />
         });
       }
     });
@@ -32,8 +32,8 @@ if (Meteor.isClient) {
 const { PropTypes, createClass } = React;
 
 // Display BasicPages
-Rc.BasicPages = createClass({
-  displayName: 'Rc.BasicPages',
+Rc.Client.BasicPages = createClass({
+  displayName: 'Rc.Client.BasicPages',
   propTypes: {
     url: PropTypes.string.isRequired
   },
@@ -52,16 +52,12 @@ Rc.BasicPages = createClass({
     };
   },
   render() {
-
-    // @TODO Set a spinner here
-    // if (this.data.loading) { return <p>Loading</p>; }
     const item = this.data.item;
-    console.log('BasicPages rendering', item.slug, item.title, item.content);
     return (
-      <main key={item.url} className='basic-pages ui container'>
+      <main key={item.url} className='client basicpages ui container'>
         <h1>{item.title}</h1>
         <div dangerouslySetInnerHTML={{__html: item.content}} />
-        <p><a href={FlowRouter.path('home')}>Home</a></p>
+        <p><a href={FlowRouter.path('client-landingpage')}>Accueil</a></p>
       </main>
     );
   }

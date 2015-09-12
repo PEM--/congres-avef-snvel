@@ -25,6 +25,4 @@ Package.onUse(function(api) {
     'main-layout.jsx',
     'main-layout.less'
   ]);
-  // Exported symbols outside the scope of this package
-  api.export(['MainLayout']);
 });

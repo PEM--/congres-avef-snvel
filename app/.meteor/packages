@@ -4,8 +4,8 @@ react
 
 # Security
 audit-argument-checks
-matteodem:easy-security
 force-ssl
+matteodem:easy-security
 pierreeric:security
 
 # Development helpers
@@ -29,18 +29,15 @@ flemay:less-autoprefixer
 semantic:ui
 
 # Application packages
-
+# Server only packages
 pierreeric:server-side-routes
-
-
-
+# Client only packages
 kadira:react-layout
-
 
 pierreeric:routing
 pierreeric:main-layout
-#pierreeric:landing-page
-pierreeric:basic-pages-client
+pierreeric:client-landingpage
+pierreeric:client-basicpages
 
 
 # Authentifications

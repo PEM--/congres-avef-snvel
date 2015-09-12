@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'pierreeric:basic-pages-client',
+  name: 'pierreeric:client-landingpage',
   version: '0.0.1'
 });
 
@@ -12,13 +12,12 @@ Package.onUse(function(api) {
     'react',
     'pierreeric:routing',
     'pierreeric:namespaces',
-    'pierreeric:basic-pages-core',
     'flemay:less-autoprefixer'
   ]);
   // Included files in this packages
   // Files for server and client
   api.addFiles([
-    'basic-pages-client.jsx',
-    'basic-pages-client.less'
+    'client-landingpage.jsx',
+    'client-landingpage.less'
   ]);
 });

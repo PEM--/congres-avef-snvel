@@ -1,39 +1,8 @@
 // Namespace flatteinng
 const { PropTypes, createClass } = React;
 
-Rc.LandingPage = createClass({
-  displayName: 'Rc.LandingPage',
-  render() {
-    return (
-      <div className='landing-page'>
-        <header>
-          <section className='ui container'>
-            <h1>Congrès AVEF - SNVEL</h1>
-          </section>
-        </header>
-        <main>
-          <section className='ui container'>
-            <h1>Contenu</h1>
-          </section>
-        </main>
-      </div>
-    );
-  }
-});
-
-FlowRouter.route('/', {
-  name: 'home',
-  action() {
-    console.log('Home route');
-    ReactLayout.render(Rc.MainLayout, {
-      url: '/',
-      content: <Rc.LandingPage />
-    });
-  }
-});
-
-Rc.AdminLayout = createClass({
-  displayName: 'Rc.AdminLayout',
+Rc.Admin.Layout = createClass({
+  displayName: 'Rc.Admin.Layout',
   propTypes: {
     content: PropTypes.string.isRequired
   },
@@ -43,8 +12,6 @@ Rc.AdminLayout = createClass({
     return <div>{content}</div>;
   }
 });
-
-Rc.Admin = {};
 
 Rc.Admin.Home = createClass({
   displayName: 'Rc.Admin.Home',
@@ -56,7 +23,7 @@ Rc.Admin.Home = createClass({
 
 FlowRouter.route('/admin', {
   action(params) {
-    ReactLayout.render(Rc.AdminLayout, {
+    ReactLayout.render(Rc.Admin.Layout, {
       content: <Rc.Admin.Home />
     });
   }
