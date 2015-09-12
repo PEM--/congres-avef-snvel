@@ -32,18 +32,11 @@ semantic:ui
 # Server only packages
 pierreeric:server-side-routes
 # Client only packages
-
-
-kadira:react-layout
-
-pierreeric:namespaces
-
-
-pierreeric:routing
 pierreeric:client-landingpage
 pierreeric:client-basicpages
 pierreeric:client-notfound
-pierreeric:admin-layout
+# Admin only packages
+pierreeric:admin-home
 
 # Authentifications
 useraccounts:core

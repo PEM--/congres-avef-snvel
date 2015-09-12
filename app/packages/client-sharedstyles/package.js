@@ -9,7 +9,7 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
-    'flemay:less-autoprefixer'
+    'flemay:less-autoprefixer@1.1.0'
   ]);
   // Included files in this packages
   // Files for server and client

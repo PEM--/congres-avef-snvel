@@ -11,7 +11,7 @@ Package.onUse(function(api) {
   api.use([
     'meteor-platform',
     'react',
-    'flemay:less-autoprefixer',
+    'flemay:less-autoprefixer@1.1.0',
     'pierreeric:col-basicpages',
     'pierreeric:namespaces',
     'pierreeric:client-sharedstyles'

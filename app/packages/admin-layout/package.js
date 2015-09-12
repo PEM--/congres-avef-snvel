@@ -10,7 +10,7 @@ Package.onUse(function(api) {
   // Dependencies for server and client
   api.use([
     'react',
-    'flemay:less-autoprefixer',
+    'flemay:less-autoprefixer@1.1.0',
     'pierreeric:namespaces'
   ]);
   // Included files in this packages

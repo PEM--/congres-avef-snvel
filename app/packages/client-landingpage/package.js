@@ -10,10 +10,11 @@ Package.onUse(function(api) {
   // Dependencies for server and client
   api.use([
     'react',
+    'kadira:react-layout@1.3.0',
     'pierreeric:routing',
     'pierreeric:namespaces',
     'pierreeric:main-layout',
-    'flemay:less-autoprefixer',
+    'flemay:less-autoprefixer@1.1.0',
     'pierreeric:client-sharedstyles'
   ]);
   // Included files in this packages
