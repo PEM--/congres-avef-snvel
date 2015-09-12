@@ -1,3 +1,6 @@
+// Footer
+
+// Namespace flatteinng
 const { PropTypes, createClass } = React;
 
 // Basic page links

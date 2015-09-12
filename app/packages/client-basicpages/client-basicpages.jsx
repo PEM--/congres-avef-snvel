@@ -1,4 +1,5 @@
 // Display BasicPages for the client
+
 // Routing
 // Isomorhic function
 var setBasicPageRoutes = function() {
@@ -31,7 +32,7 @@ if (Meteor.isClient) {
 // Namespace flatteinng
 const { PropTypes, createClass } = React;
 
-// Display BasicPages
+// BasicPages component
 Rc.Client.BasicPages = createClass({
   displayName: 'Rc.Client.BasicPages',
   propTypes: {

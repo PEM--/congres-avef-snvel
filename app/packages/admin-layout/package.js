@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'pierreeric:client-landingpage',
+  name: 'pierreeric:admin-layout',
   version: '0.0.1'
 });
 
@@ -10,16 +10,13 @@ Package.onUse(function(api) {
   // Dependencies for server and client
   api.use([
     'react',
-    'pierreeric:routing',
-    'pierreeric:namespaces',
-    'pierreeric:main-layout',
     'flemay:less-autoprefixer',
-    'pierreeric:client-sharedstyles'
+    'pierreeric:namespaces'
   ]);
   // Included files in this packages
   // Files for server and client
   api.addFiles([
-    'client-landingpage.jsx',
-    'client-landingpage.less'
+    'admin-layout.jsx',
+    'admin-layout.less'
   ]);
 });

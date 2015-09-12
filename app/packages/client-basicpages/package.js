@@ -14,6 +14,7 @@ Package.onUse(function(api) {
     'pierreeric:namespaces',
     'pierreeric:col-basicpages',
     'flemay:less-autoprefixer',
+    'pierreeric:main-layout',
     'pierreeric:client-sharedstyles'
   ]);
   // Included files in this packages

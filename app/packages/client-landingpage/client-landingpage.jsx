@@ -13,7 +13,7 @@ FlowRouter.route('/', {
 // Namespace flatteinng
 const { PropTypes, createClass } = React;
 
-// Display landing page
+// Landing page component
 Rc.Client.LandingPage = createClass({
   displayName: 'Rc.Client.LandingPage',
   render() {

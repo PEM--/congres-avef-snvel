@@ -1,4 +1,5 @@
 // Display Not found
+
 // Not found is based on BasicPages
 FlowRouter.notFound = {
   action() {
