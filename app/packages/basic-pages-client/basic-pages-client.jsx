@@ -1,27 +1,68 @@
-// BasicPagesClient = React.createClass({
-//   displayName: 'HomeLayout',
-//   render() {
-//     return (
-//       <div className='main-layout'>
-//         <header>
-//           <section className='ui container'>
-//             <h1>Congrès AVEF - SNVEL</h1>
-//             <p>Menu principal</p>
-//           </section>
-//         </header>
-//         <main>
-//           <section className='ui container'>
-//             <h1>Contenu</h1>
-//           </section>
-//         </main>
-//         <Footer />
-//       </div>
-//     );
-//   }
-// });
+// Display BasicPages for the client
+// Routing
+// Isomorhic function
+var setBasicPageRoutes = function() {
+  let basicPages = Col.BasicPages.find().fetch();
+  basicPages.forEach(function(page) {
+    FlowRouter.route(`/${page.url}`, {
+      name: page.url,
+      action() {
+        ReactLayout.render(Rc.MainLayout, {
+          content: <Rc.BasicPages url={page.url} />
+        });
+      }
+    });
+  });
+};
 
-// FlowRouter.route('/', {
-//   action: function() {
-//     ReactLayout.render(BasicPagesClient);
-//   }
-// });
+// For the BasicPages, the route cannot be determined before Meteor has
+// subscribed to all data, which leads to these differences on the client
+// and on the server.
+if (Meteor.isClient) {
+  FlowRouter.wait();
+  Col.BasicPages.subAllLinks(function() {
+    setBasicPageRoutes();
+    FlowRouter.initialize();
+  });
+} else {
+  setBasicPageRoutes();
+}
+
+// Namespace flatteinng
+const { PropTypes, createClass } = React;
+
+// Display BasicPages
+Rc.BasicPages = createClass({
+  displayName: 'Rc.BasicPages',
+  propTypes: {
+    url: PropTypes.string.isRequired
+  },
+  mixins: [ReactMeteorData],
+  // Subscribe to BasicPages (reactive methods)
+  getMeteorData() {
+    const { url } = this.props;
+    const { BasicPages } = Col;
+    // Subscribe to get the content of the page
+    const handle = BasicPages.subPage(url);
+    return {
+      // Use handle to show loading state
+      loading: !handle.ready(),
+      // Get the content of the basic page
+      item: BasicPages.findOne({url})
+    };
+  },
+  render() {
+
+    // @TODO Set a spinner here
+    // if (this.data.loading) { return <p>Loading</p>; }
+    const item = this.data.item;
+    console.log('BasicPages rendering', item.slug, item.title, item.content);
+    return (
+      <main key={item.url} className='basic-pages ui container'>
+        <h1>{item.title}</h1>
+        <div dangerouslySetInnerHTML={{__html: item.content}} />
+        <p><a href={FlowRouter.path('home')}>Home</a></p>
+      </main>
+    );
+  }
+});

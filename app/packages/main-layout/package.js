@@ -9,11 +9,14 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   var sharedDeps = [
+    'pierreeric:namespaces',
+    'pierreeric:footer'
+  ];
+  api.use([
     'react',
     'kadira:react-layout',
     'flemay:less-autoprefixer'
-  ];
-  api.use(sharedDeps);
+  ].concat(sharedDeps));
   // Expose packages
   api.imply(sharedDeps);
   // Included files in this packages

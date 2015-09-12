@@ -11,11 +11,14 @@ Package.onUse(function(api) {
   api.use([
     'react',
     'pierreeric:routing',
-    'pierreeric:basic-pages-core'
+    'pierreeric:namespaces',
+    'pierreeric:basic-pages-core',
+    'flemay:less-autoprefixer'
   ]);
   // Included files in this packages
   // Files for server and client
   api.addFiles([
-    'basic-pages-client.jsx'
+    'basic-pages-client.jsx',
+    'basic-pages-client.less'
   ]);
 });

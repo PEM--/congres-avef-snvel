@@ -37,14 +37,10 @@ pierreeric:server-side-routes
 kadira:react-layout
 
 
-
-pierreeric:react-motion
-pierreeric:subscription-cache
-pierreeric:basic-pages-core
 pierreeric:routing
-pierreeric:footer
+pierreeric:main-layout
 #pierreeric:landing-page
-#pierreeric:basic-pages-client
+pierreeric:basic-pages-client
 
 
 # Authentifications

@@ -22,6 +22,7 @@ check@1.0.5
 chuangbo:cookie@1.1.0
 coffeescript@1.0.6
 cosmos:browserify@0.5.0
+dburles:collection-helpers@1.0.3
 dburles:mongo-collection-instances@0.3.4
 ddp@1.1.0
 deps@1.0.7
@@ -68,11 +69,12 @@ msavin:mongol@1.1.5
 npm-bcrypt@0.7.8_2
 observe-sequence@1.0.6
 ordered-dict@1.0.3
+pierreeric:basic-pages-client@0.0.1
 pierreeric:basic-pages-core@0.0.1
 pierreeric:footer@0.0.1
+pierreeric:main-layout@0.0.1
 pierreeric:markdown-server-side@0.3.5
 pierreeric:namespaces@0.0.1
-pierreeric:react-motion@0.2.7
 pierreeric:routing@0.0.1
 pierreeric:security@0.0.1
 pierreeric:server-side-routes@0.0.1

@@ -10,6 +10,7 @@ Package.onUse(function(api) {
   // Dependencies for server and client
   var shared = [
     'aldeed:collection2',
+    'dburles:collection-helpers@1.0.3',
     'pierreeric:namespaces',
     'pierreeric:subscription-cache'
   ];
