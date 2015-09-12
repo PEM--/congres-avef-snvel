@@ -13,7 +13,8 @@ Package.onUse(function(api) {
     'react',
     'flemay:less-autoprefixer',
     'pierreeric:col-basicpages',
-    'pierreeric:namespaces'
+    'pierreeric:namespaces',
+    'pierreeric:client-sharedstyles'
   ]);
   // Included files in this packages
   // Files for server and client

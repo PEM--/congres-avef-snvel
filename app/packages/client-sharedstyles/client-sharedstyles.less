@@ -1,4 +1,23 @@
-@keyframes page-enter {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+@shortAnim: .3s ease-in-out;
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translate3d(0, -20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
