@@ -72,6 +72,7 @@ ordered-dict@1.0.3
 pierreeric:basic-pages-core@0.0.1
 pierreeric:client-basicpages@0.0.1
 pierreeric:client-landingpage@0.0.1
+pierreeric:client-sharedstyles@0.0.1
 pierreeric:footer@0.0.1
 pierreeric:main-layout@0.0.1
 pierreeric:markdown-server-side@0.3.5

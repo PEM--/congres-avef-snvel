@@ -13,7 +13,8 @@ Package.onUse(function(api) {
     'pierreeric:routing',
     'pierreeric:namespaces',
     'pierreeric:basic-pages-core',
-    'flemay:less-autoprefixer'
+    'flemay:less-autoprefixer',
+    'pierreeric:client-sharedstyles'
   ]);
   // Included files in this packages
   // Files for server and client

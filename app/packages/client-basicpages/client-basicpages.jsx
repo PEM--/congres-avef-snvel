@@ -41,24 +41,23 @@ Rc.Client.BasicPages = createClass({
   // Subscribe to BasicPages (reactive methods)
   getMeteorData() {
     const { url } = this.props;
-    const { BasicPages } = Col;
     // Subscribe to get the content of the page
-    const handle = BasicPages.subPage(url);
+    const handle = Col.BasicPages.subPage(url);
     return {
       // Use handle to show loading state
       loading: !handle.ready(),
       // Get the content of the basic page
-      item: BasicPages.findOne({url})
+      item: Col.BasicPages.findOne({url})
     };
   },
   render() {
     const item = this.data.item;
     return (
-      <main key={item.url} className='client basicpages ui container'>
+      <div key={item.url} className='client basicpages ui container'>
         <h1>{item.title}</h1>
         <div dangerouslySetInnerHTML={{__html: item.content}} />
         <p><a href={FlowRouter.path('client-landingpage')}>Accueil</a></p>
-      </main>
+      </div>
     );
   }
 });

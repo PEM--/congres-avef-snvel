@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'pierreeric:client-landingpage',
+  name: 'pierreeric:client-sharedstyles',
   version: '0.0.1'
 });
 
@@ -9,16 +9,11 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
-    'react',
-    'pierreeric:routing',
-    'pierreeric:namespaces',
-    'flemay:less-autoprefixer',
-    'pierreeric:client-sharedstyles'
+    'flemay:less-autoprefixer'
   ]);
   // Included files in this packages
   // Files for server and client
   api.addFiles([
-    'client-landingpage.jsx',
-    'client-landingpage.less'
+    'client-sharedstyles.less'
   ]);
 });
