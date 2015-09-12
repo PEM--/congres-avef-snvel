@@ -38,7 +38,7 @@ pierreeric:routing
 pierreeric:main-layout
 pierreeric:client-landingpage
 pierreeric:client-basicpages
-
+pierreeric:client-notfound
 
 # Authentifications
 useraccounts:core

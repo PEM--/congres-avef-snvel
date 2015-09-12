@@ -28,12 +28,3 @@ FlowRouter.route('/admin', {
     });
   }
 });
-
-FlowRouter.notFound = {
-  action() {
-    ReactLayout.render(Rc.MainLayout, {
-      url: '/notfound',
-      content: <Rc.BasicPages url='notfound' />
-    });
-  }
-};
