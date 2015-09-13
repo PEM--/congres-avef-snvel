@@ -1,4 +1,8 @@
 // Landing-page
+
+// Create a logger
+const log = Tools.createLogger('Client BasicPages');
+
 // Routing
 FlowRouter.route('/', {
   name: 'client-landingpage',
@@ -9,6 +13,7 @@ FlowRouter.route('/', {
     });
   }
 });
+log.info('Route / declared');
 
 // Namespace flatteinng
 const { PropTypes, createClass } = React;
@@ -17,7 +22,7 @@ const { PropTypes, createClass } = React;
 Rc.Client.LandingPage = createClass({
   displayName: 'Rc.Client.LandingPage',
   render() {
-    Tools.log.debug('Rc.Client.Footer rendering');
+    log.debug('Rendering');
     return (
       <div className='client landingpage'>
         <header>
