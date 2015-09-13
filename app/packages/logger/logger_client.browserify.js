@@ -5,14 +5,14 @@ WritableStream = require('stream').Writable;
 inherits = require('util').inherits;
 logStyle = require('log-with-style');
 
-inherits(BrowserStdout, WritableStream);
-
 var BrowserStdout = function () {
   if (!(this instanceof BrowserStdout)) {
     return new BrowserStdout();
   }
   WritableStream.call(this);
 };
+
+inherits(BrowserStdout, WritableStream);
 
 BrowserStdout.prototype._write = function(chunks, encoding, cb) {
   var output = JSON.parse(chunks.toString ? chunks.toString() : chunks);

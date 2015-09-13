@@ -11,7 +11,10 @@ Package.onUse(function(api) {
   Npm.depends({
     'bunyan': '1.4.0',
     'bunyan-format': '0.2.1',
-    'process': '0.11.1',
+    'stream-browserify': '2.0.1',
+    'process': '0.11.2',
+    'util': '0.10.3',
+    'inherits': '2.0.1',
     'log-with-style': '0.1.5'
   });
 

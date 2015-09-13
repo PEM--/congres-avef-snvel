@@ -9,8 +9,8 @@ matteodem:easy-security
 pierreeric:security
 
 # Development helpers
-#msavin:mongol
-#msavin:jetsetter
+msavin:mongol
+msavin:jetsetter
 meteorhacks:zones
 #meteorhacks:kadira
 #kadira:debug
