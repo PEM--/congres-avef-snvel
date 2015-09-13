@@ -9,7 +9,7 @@ Package.onUse(function(api) {
 
   // NPM modules
   Npm.depends({
-    'bunyan': '1.4.0',
+    'bunyan': '1.5.1',
     'bunyan-format': '0.2.1',
     'stream-browserify': '2.0.1',
     'process': '0.11.2',
@@ -21,27 +21,23 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   var shared = [
-    'pierreeric:namespaces',
-    'blaze',
-    'ui',
-    'templating',
-    'spacebars',
-    'underscore'
+    'react',
+    'pierreeric:namespaces'
   ];
-  api.use([
-  ].concat(shared));
+  api.use(shared);
+  api.imply(shared);
   // Dependencies for client only
   api.use(['cosmos:browserify@0.5.1'], 'client');
-  api.imply(shared);
+
 
   // Dependecies used in this package
   // Exported files
   api.addFiles('logger_client.browserify.js', 'client');
   api.addFiles('logger_server.js', 'server');
-  api.addFiles('logger_both.js');
+  api.addFiles('logger_both.jsx');
 
   // Exported variables
-  api.export(['Tools', 'bunyan']);
-  api.export(['process', 'WritableStream', 'inherits', 'logStyle'], 'client');
-  api.export('bunyanFormat', 'server');
+  // api.export(['Tools', 'bunyan']);
+  // api.export(['process', 'WritableStream', 'inherits', 'logStyle'], 'client');
+  // api.export('bunyanFormat', 'server');
 });
