@@ -1,3 +1,5 @@
+log = Tools.createLogger('Main');
+
 Meteor.startup(function() {
-  Tools.log.info('Meteor started');
+  log.info('Started');
 });

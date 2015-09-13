@@ -4,8 +4,8 @@ Package.describe({
 });
 
 Package.onUse(function(api) {
-  // Meteor version compatibility
-  api.versionsFrom('1.0');
+  // Meteor's API version
+  api.versionsFrom('1.1.0.3');
 
   // NPM modules
   Npm.depends({
@@ -29,15 +29,15 @@ Package.onUse(function(api) {
   // Dependencies for client only
   api.use(['cosmos:browserify@0.5.1'], 'client');
 
-
-  // Dependecies used in this package
-  // Exported files
+  // Included files in this packages
+  // Files for client only
   api.addFiles('logger_client.browserify.js', 'client');
+  // Files for server only
   api.addFiles('logger_server.js', 'server');
-  api.addFiles('logger_both.jsx');
-
-  // Exported variables
-  // api.export(['Tools', 'bunyan']);
-  // api.export(['process', 'WritableStream', 'inherits', 'logStyle'], 'client');
-  // api.export('bunyanFormat', 'server');
+  // Files for server and client
+  var files = ['logger_both_loglevel_debug.jsx'];
+  if (process.env.NODE_ENV === 'production') {
+    files = ['logger_both_loglevel_info.jsx'];
+  }
+  api.addFiles(files.concat(['logger_both.jsx']));
 });

@@ -1,6 +1,3 @@
-// Default log informations
-Tools.LOG_LEVEL = 'debug';
-
 // Expose a creation function
 Tools.createLogger = function(
   name,
@@ -13,4 +10,4 @@ Tools.createLogger = function(
 // Instantiate logger
 Tools.log = Tools.createLogger('Logger');
 
-Tools.log.info('Activated');
+Tools.log.info(`Activated in ${Tools.LOG_LEVEL} mode`);
