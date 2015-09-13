@@ -2,14 +2,15 @@
 
 // Namespace flatteinng
 const { PropTypes, createClass } = React;
-const { log } = Tools;
+
+// Create a logger
+const log = Tools.createLogger('Client BasicPages');
 
 // Routing
 // Isomorhic function
 var setBasicPageRoutes = function() {
   let basicPages = Col.BasicPages.find().fetch();
   basicPages.forEach(function(page) {
-    log.info('Router:', page.url);
     FlowRouter.route(`/${page.url}`, {
       name: page.url,
       action() {
@@ -18,6 +19,7 @@ var setBasicPageRoutes = function() {
         });
       }
     });
+    log.info(`Route ${page.url} declared`);
   });
 };
 
@@ -54,7 +56,7 @@ Rc.Client.BasicPages = createClass({
     };
   },
   render() {
-    log.debug('Rc.Client.BasicPages rendering');
+    log.debug('Rendering');
     const item = this.data.item;
     return (
       <div key={item.url} className='client basicpages ui container'>

@@ -1,5 +1,7 @@
+// Create a logger
+const log = Tools.createLogger('Collection BasicPages');
+
 // Basic pages
-Tools.log.info('Col.BasicPages declared');
 Col.SS.BasicPages = new SimpleSchema({
   title: {
     type: String,
@@ -24,6 +26,7 @@ Col.SS.BasicPages = new SimpleSchema({
 });
 Col.BasicPages = new Mongo.Collection('basicPages');
 Col.BasicPages.attachSchema(Col.SS.BasicPages);
+log.info('Declared');
 
 // Collection helpers
 var METEOR_METHOD_NAME_SUB_ALL_LINKS = 'BasicPagesPageTitles';
@@ -44,9 +47,8 @@ if (Meteor.isServer) {
   // @#DONE:0 Set a SimpleSchema
   // Fill the links collection with a minimal set of links
   if (Col.BasicPages.find().count() !== 0) {
-    Tools.log.info('Col.BasicPages already filled');
+    log.info('Already filled');
   } else {
-    Tools.log.info('Col.BasicPages filled with defaults');
     Col.BasicPages.insert({
       title: 'Mentions légales', url: 'legal', order: 1,
       content: marked('Les mentions légales, personne ne les lit...')
@@ -59,7 +61,7 @@ if (Meteor.isServer) {
       title: 'Not found', url: 'notfound', order: 3,
       content: marked('On ne trouve rien sans recherche...')
     });
-
+    log.info('Filled with defaults');
   }
   // Publish all BasicPages without their content
   Meteor.publish(METEOR_METHOD_NAME_SUB_ALL_LINKS, function(cb) {
@@ -73,5 +75,5 @@ if (Meteor.isServer) {
     check(cb, Match.Any);
     return Col.BasicPages.find({url: url});
   });
-  Tools.log.info('Col.BasicPages published');
+  log.info('Published');
 }

@@ -3,6 +3,9 @@
 // Namespace flatteinng
 const { PropTypes, createClass } = React;
 
+// Create a logger
+const log = Tools.createLogger('Admin Layout');
+
 // Admin layout component
 Rc.Admin.Layout = createClass({
   displayName: 'Rc.Admin.Layout',
@@ -10,7 +13,7 @@ Rc.Admin.Layout = createClass({
     content: PropTypes.string.isRequired
   },
   render() {
-    Tools.log.debug('Rc.Admin.Layout rendering');
+    log.debug('Rendering');
     const { content } = this.props;
     return <div className='admin'>{content}</div>;
   }

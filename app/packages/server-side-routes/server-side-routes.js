@@ -1,3 +1,8 @@
+// Create server side only routes
+
+// Create a logger
+var log = Tools.createLogger('Server Side Routes');
+
 var bodyParser = Npm.require('body-parser');
 Picker.middleware(bodyParser.json());
 Picker.middleware(bodyParser.urlencoded({extended: false}));
@@ -8,7 +13,6 @@ var data = [
 ];
 
 SERVER_SIDE_ROUTE_COMMENTS = '/comments.json';
-Tools.log.info('ServerSideRoutes:', SERVER_SIDE_ROUTE_COMMENTS);
 Picker.route(SERVER_SIDE_ROUTE_COMMENTS, function(params, req, res, next) {
   if (req.method === 'GET') {
     res.end(JSON.stringify(data));
@@ -23,3 +27,4 @@ Picker.route(SERVER_SIDE_ROUTE_COMMENTS, function(params, req, res, next) {
     res.status(404).send('Not found');
   }
 });
+log.info(SERVER_SIDE_ROUTE_COMMENTS, 'created');

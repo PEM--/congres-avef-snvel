@@ -1,6 +1,7 @@
-# Namespace flatteinng
-{ log } = Tools
+# Browser policy
 
+# Create a logger
+log = Tools.createLogger 'Security'
 
 # Black list everything
 BrowserPolicy.framing.disallow()
@@ -17,7 +18,7 @@ for origin in [
 ]
   for protocol in ['http', 'https', 'ws', 'wss']
     url = "#{protocol}://#{origin}"
-    log.info 'BrowserPolicy: Allowing', url
+    log.info 'Allowing', url
     BrowserPolicy.content.allowConnectOrigin url
 # Allow external CSS
 for origin in ['fonts.googleapis']
@@ -51,7 +52,7 @@ for origin in [
   Meteor.absoluteUrl('*').split('://')[1]
 ]
   for protocol in ['http', 'https']
-    log.info 'BrowserPolicy: Allowing', porigin
+    log.info 'Allowing', porigin
     porigin = "#{protocol}://#{origin}"
     BrowserPolicy.content.allowOriginForAll porigin
     BrowserPolicy.content.allowEval porigin

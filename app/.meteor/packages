@@ -9,7 +9,7 @@ pierreeric:logger
 audit-argument-checks
 force-ssl
 matteodem:easy-security
-#pierreeric:security
+pierreeric:security
 
 # Development helpers
 msavin:mongol
@@ -33,16 +33,16 @@ semantic:ui
 
 # Application packages
 # Server only packages
-#pierreeric:server-side-routes
+pierreeric:server-side-routes
 # Client only packages
-#pierreeric:client-landingpage
-#pierreeric:client-basicpages
-#pierreeric:client-notfound
+pierreeric:client-landingpage
+pierreeric:client-basicpages
+pierreeric:client-notfound
 # Admin only packages
-#pierreeric:admin-home
+pierreeric:admin-home
 
 # Authentifications
-#useraccounts:core
-#accounts-password
-#useraccounts:flow-routing
-#useraccounts:semantic-ui
+useraccounts:core
+accounts-password
+useraccounts:flow-routing
+useraccounts:semantic-ui

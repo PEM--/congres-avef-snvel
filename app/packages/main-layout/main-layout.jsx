@@ -2,14 +2,16 @@
 
 // Namespace flatteinng
 const { PropTypes, createClass } = React;
-const { log } = Tools;
+
+// Create a logger
+const log = Tools.createLogger('MainLayout');
 
 // MainLayout component
 Rc.MainLayout = createClass({
   displayName: 'Rc.MainLayout',
   propTypes: { content: PropTypes.object.isRequired },
   render() {
-    log.debug('Rc.MainLayout rendering');
+    log.debug('Rendering');
     return (
       <div className='main-layout'>
         {this.props.content}

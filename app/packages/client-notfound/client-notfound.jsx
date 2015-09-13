@@ -1,7 +1,9 @@
 // Display Not found
 
+// Create a logger
+const log = Tools.createLogger('Client NotFound');
+
 // Not found is based on BasicPages
-Tools.log.info('Router: global notfound');
 FlowRouter.notFound = {
   action() {
     ReactLayout.render(Rc.MainLayout, {
@@ -10,3 +12,4 @@ FlowRouter.notFound = {
     });
   }
 };
+log.info('Route nofound declared');

@@ -8,6 +8,6 @@ Tools.createLogger = function(
 };
 
 // Instantiate logger
-Tools.log = Tools.createLogger('Logger');
+const log = Tools.createLogger('Logger');
 
-Tools.log.info(`Activated in ${Tools.LOG_LEVEL} mode`);
+log.info(`Activated in ${Tools.LOG_LEVEL} mode`);
