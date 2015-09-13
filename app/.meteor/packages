@@ -9,9 +9,9 @@ matteodem:easy-security
 pierreeric:security
 
 # Development helpers
-msavin:mongol
-msavin:jetsetter
-#meteorhacks:zones
+#msavin:mongol
+#msavin:jetsetter
+meteorhacks:zones
 #meteorhacks:kadira
 #kadira:debug
 #meteorhacks:kadira-profiler
@@ -39,10 +39,10 @@ pierreeric:client-notfound
 pierreeric:admin-home
 
 # Authentifications
-useraccounts:core
-accounts-password
+#useraccounts:core
+#accounts-password
 #useraccounts:flow-routing
-useraccounts:semantic-ui
+#useraccounts:semantic-ui
 
 # Utils
 pierreeric:logger

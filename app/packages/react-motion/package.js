@@ -12,17 +12,17 @@ Package.onUse(function(api) {
     'exposify': '0.4.3'
   });
   // Dependencies of this package
-  // Client only
+  // Dependencies for server and client
   api.use([
     'meteor-platform',
-    'react',
-    'cosmos:browserify'
-  ], 'client');
-  api.imply([
-    'meteor-platform',
-    'react',
-    'cosmos:browserify'
-  ], 'client');
+    'react'
+  ]);
+  // Dependencies for client only
+  var sharedClient = [
+    'cosmos:browserify@0.5.1'
+  ];
+  api.use(sharedClient, 'client');
+  api.imply(sharedClient, 'client');
 
   // Included files in this packages
   // Server only
