@@ -9,7 +9,7 @@ Package.onUse(function(api) {
 
   // NPM modules
   Npm.depends({
-    'bunyan': '1.5.1',
+    'bunyan': '1.4.0',
     'bunyan-format': '0.2.1',
     'process': '0.11.2',
     'log-with-style': '0.1.5'
