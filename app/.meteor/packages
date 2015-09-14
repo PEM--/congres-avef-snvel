@@ -20,7 +20,6 @@ meteorhacks:zones
 #meteorhacks:kadira-profiler
 
 # SEO
-gadicohen:sitemaps
 gadicohen:robots-txt
 
 # WPO & Meteor optimizations
