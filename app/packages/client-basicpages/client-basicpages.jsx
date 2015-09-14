@@ -4,7 +4,7 @@
 const { PropTypes, createClass } = React;
 
 // Create a logger
-const log = Tools.createLogger('Client BasicPages');
+const log = Logger.createLogger('Client BasicPages');
 
 // BasicPages component
 Rc.Client.BasicPages = createClass({

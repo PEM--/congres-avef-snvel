@@ -4,7 +4,7 @@
 const { PropTypes, createClass } = React;
 
 // Create a logger
-const log = Tools.createLogger('MainLayout');
+const log = Logger.createLogger('MainLayout');
 
 // MainLayout component
 Rc.MainLayout = createClass({

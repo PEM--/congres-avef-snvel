@@ -1,7 +1,7 @@
 // Routing
 
 // Create a logger
-log = Tools.createLogger('Routing Start');
+log = Logger.createLogger('Routing Start');
 
 // Block the routing untill all routes are defined (see routing-defined)
 FlowRouter.wait();

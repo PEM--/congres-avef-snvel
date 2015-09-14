@@ -4,7 +4,7 @@
 const { PropTypes, createClass } = React;
 
 // Create a logger
-const log = Tools.createLogger('Admin Home');
+const log = Logger.createLogger('Admin Home');
 
 // Admin home component
 Rc.Admin.Home = createClass({

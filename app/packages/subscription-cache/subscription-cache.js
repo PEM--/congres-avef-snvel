@@ -1,7 +1,7 @@
 // Create a subscription cache
 
 // Create a logger
-const log = Tools.createLogger('MainLayout');
+const log = Logger.createLogger('MainLayout');
 
 // Subscription cache with a cache limit and an expiration
 globalSubs = new SubsManager({

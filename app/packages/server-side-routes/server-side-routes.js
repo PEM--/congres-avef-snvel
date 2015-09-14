@@ -1,7 +1,7 @@
 // Create server side only routes
 
 // Create a logger
-var log = Tools.createLogger('Server Side Routes');
+var log = Logger.createLogger('Server Side Routes');
 
 var bodyParser = Npm.require('body-parser');
 Picker.middleware(bodyParser.json());

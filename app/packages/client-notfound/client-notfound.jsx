@@ -1,7 +1,7 @@
 // Display Not found
 
 // Create a logger
-const log = Tools.createLogger('Client NotFound');
+const log = Logger.createLogger('Client NotFound');
 
 // Not found is based on BasicPages
 FlowRouter.notFound = {

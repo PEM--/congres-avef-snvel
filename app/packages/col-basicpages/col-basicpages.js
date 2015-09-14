@@ -1,5 +1,5 @@
 // Create a logger
-const log = Tools.createLogger('Collection BasicPages');
+const log = Logger.createLogger('Collection BasicPages');
 
 // Basic pages
 Col.SS.BasicPages = new SimpleSchema({

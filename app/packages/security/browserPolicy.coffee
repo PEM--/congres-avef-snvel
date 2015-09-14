@@ -1,7 +1,7 @@
 # Browser policy
 
 # Create a logger
-log = Tools.createLogger 'Security'
+log = Logger.createLogger 'Security'
 
 # Black list everything
 BrowserPolicy.framing.disallow()

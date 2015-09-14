@@ -4,7 +4,7 @@
 const { PropTypes, createClass } = React;
 
 // Create a logger
-const log = Tools.createLogger('Admin Layout');
+const log = Logger.createLogger('Admin Layout');
 
 // Admin layout component
 Rc.Admin.Layout = createClass({

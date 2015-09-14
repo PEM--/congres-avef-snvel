@@ -4,7 +4,7 @@
 const { PropTypes, createClass } = React;
 
 // Create a logger
-const log = Tools.createLogger('Client Footer');
+const log = Logger.createLogger('Client Footer');
 
 // Basic page links
 const BasicPagesLinkItems = createClass({

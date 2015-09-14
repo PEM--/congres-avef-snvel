@@ -1,7 +1,7 @@
 // Landing-page
 
 // Create a logger
-const log = Tools.createLogger('Client LandingPage');
+const log = Logger.createLogger('Client LandingPage');
 
 // Namespace flatteinng
 const { PropTypes, createClass } = React;
