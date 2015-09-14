@@ -9,7 +9,6 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
-    'meteor-platform',
     'react',
     'ecmascript',
     'pierreeric:namespaces',

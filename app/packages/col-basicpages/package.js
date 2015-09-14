@@ -14,7 +14,7 @@ Package.onUse(function(api) {
     'pierreeric:subscription-cache'
   ];
   api.use([
-    'meteor-platform',
+    'underscore',
     'ecmascript',
     'aldeed:collection2@2.5.0',
     'dburles:collection-helpers@1.0.3'

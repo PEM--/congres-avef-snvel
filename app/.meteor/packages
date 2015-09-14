@@ -1,5 +1,19 @@
-# Official Meteor package
-react
+# Meteor official packages
+#mobile-experience
+#logging
+#blaze-html-templates
+#spacebars
+
+session
+standard-minifiers
+meteor-base
+mongo
+jquery
+tracker
+reload
+random
+ejson
+check
 
 # Utils
 pierreeric:logger
@@ -14,12 +28,12 @@ pierreeric:security
 msavin:mongol
 msavin:jetsetter
 meteorhacks:zones
-#meteorhacks:kadira
+meteorhacks:kadira
 #kadira:debug
 #meteorhacks:kadira-profiler
 
 # WPO & Meteor optimizations
-#appcache
+appcache
 
 # CSS
 fortawesome:fontawesome
@@ -44,17 +58,3 @@ pierreeric:routing-done
 #accounts-password
 #useraccounts:flow-routing
 #useraccounts:semantic-ui
-standard-minifiers
-meteor-base
-mobile-experience
-mongo
-blaze-html-templates
-session
-jquery
-tracker
-logging
-reload
-random
-ejson
-spacebars
-check
