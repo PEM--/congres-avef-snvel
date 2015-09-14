@@ -1,6 +1,6 @@
 Package.describe({
   name: 'pierreeric:markdown-server-side',
-  version: '0.3.5'
+  version: '0.0.1'
 });
 
 Package.onUse(function(api) {
@@ -11,6 +11,9 @@ Package.onUse(function(api) {
     'marked': '0.3.5',
     'highlight.js': '8.8.0'
   });
+  // Dependencies of this package
+  // Dependencies for server and client
+  api.use('ecmascript');
   // Included files in this packages
   // Server only
   api.addFiles([

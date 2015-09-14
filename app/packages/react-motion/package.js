@@ -1,6 +1,6 @@
 Package.describe({
   name: 'pierreeric:react-motion',
-  version: '0.2.7'
+  version: '0.0.1'
 });
 
 Package.onUse(function(api) {
@@ -15,10 +15,10 @@ Package.onUse(function(api) {
   // Dependencies for server and client
   api.use([
     'meteor-platform',
-    'react@0.1.12'
+    'react'
   ]);
   // Dependencies for client only
-  var sharedClient = [
+  const sharedClient = [
     'cosmos:browserify@0.5.1'
   ];
   api.use(sharedClient, 'client');

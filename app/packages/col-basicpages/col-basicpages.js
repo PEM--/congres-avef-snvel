@@ -36,15 +36,15 @@ Col.BasicPages.attachSchema(Col.SS.BasicPages);
 log.info('Declared');
 
 // Collection helpers
-var METEOR_METHOD_NAME_SUB_ALL_LINKS = 'BasicPagesPageTitles';
-var METEOR_METHOD_NAME_SUB_PAGE = 'BasicPagesSingle';
+const METEOR_METHOD_NAME_SUB_ALL_LINKS = 'BasicPagesPageTitles';
+const METEOR_METHOD_NAME_SUB_PAGE = 'BasicPagesSingle';
 _.extend(Col.BasicPages, {
   // Subscribe to all page's links
-  subAllLinks: function(cb) {
+  subAllLinks(cb) {
     return globalSubs.subscribe(METEOR_METHOD_NAME_SUB_ALL_LINKS, cb);
   },
   // Subscribe to a single page
-  subPage: function(url, cb) {
+  subPage(url, cb) {
     return globalSubs.subscribe(METEOR_METHOD_NAME_SUB_PAGE, url, cb);
   }
 });

@@ -1,18 +1,18 @@
 // Create server side only routes
 
 // Create a logger
-var log = Logger.createLogger('Server Side Routes');
+const log = Logger.createLogger('Server Side Routes');
 
-var bodyParser = Npm.require('body-parser');
+const bodyParser = Npm.require('body-parser');
 Picker.middleware(bodyParser.json());
 Picker.middleware(bodyParser.urlencoded({extended: false}));
 
-var data = [
+const data = [
   {id: 1, author: 'Pete Hunt', text: 'This is one comment'},
   {id: 2, author: 'Jordan Walke', text: 'This is *another* comment'}
 ];
 
-SERVER_SIDE_ROUTE_COMMENTS = '/comments.json';
+const SERVER_SIDE_ROUTE_COMMENTS = '/comments.json';
 Picker.route(SERVER_SIDE_ROUTE_COMMENTS, function(params, req, res, next) {
   if (req.method === 'GET') {
     res.end(JSON.stringify(data));

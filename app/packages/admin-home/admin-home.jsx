@@ -13,7 +13,6 @@ Rc.Admin.Home = createClass({
     log.debug('Rendering');
     return (
       <div className='home'>
-        
         <p>
           Welcome in the admin interface
         </p>

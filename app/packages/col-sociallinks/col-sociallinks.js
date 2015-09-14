@@ -33,10 +33,10 @@ Col.SocialLinks.attachSchema(Col.SS.SocialLinks);
 log.info('Declared');
 
 // Collection helpers
-var METEOR_METHOD_NAME_SUB_ALL_LINKS = 'SocialLinksAll';
+const METEOR_METHOD_NAME_SUB_ALL_LINKS = 'SocialLinksAll';
 _.extend(Col.SocialLinks, {
   // Subscribe to all social links
-  subAllLinks: function(cb) {
+  subAllLinks(cb) {
     return globalSubs.subscribe(METEOR_METHOD_NAME_SUB_ALL_LINKS, cb);
   }
 });
@@ -45,9 +45,9 @@ _.extend(Col.SocialLinks, {
 if (Meteor.isServer) {
   // Fill the links collection depending on the setting's content
   Meteor.settings.public.socialLinks.map(function(link) {
-    var key = Object.keys(link)[0];
-    var content = link[key];
-    var dbLink = Col.SocialLinks.findOne({url: content.url});
+    const key = Object.keys(link)[0];
+    const content = link[key];
+    const dbLink = Col.SocialLinks.findOne({url: content.url});
     if (!dbLink) {
       Col.SocialLinks.insert({
         title: key,

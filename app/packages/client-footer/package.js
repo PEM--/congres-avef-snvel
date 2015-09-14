@@ -10,7 +10,8 @@ Package.onUse(function(api) {
   // Dependencies for server and client
   api.use([
     'meteor-platform',
-    'react@0.1.12',
+    'react',
+    'ecmascript',
     'pierreeric:namespaces',
     'pierreeric:logger',
     'flemay:less-autoprefixer@1.1.0',
@@ -21,7 +22,7 @@ Package.onUse(function(api) {
   // Included files in this packages
   // Files for server and client
   api.addFiles([
-    'logger.jsx',
+    'logger.js',
     'client-footer-basicpages.jsx',
     'client-footer-sociallinks.jsx',
     'client-footer.jsx',

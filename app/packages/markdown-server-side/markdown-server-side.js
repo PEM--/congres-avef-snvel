@@ -1,8 +1,8 @@
 marked = Npm.require('marked');
-var highlight = Npm.require('highlight.js');
+const highlight = Npm.require('highlight.js');
 marked.setOptions({
   renderer: new marked.Renderer(),
-  highlight: function (code) {
+  highlight(code) {
     return highlight.highlightAuto(code).value;
   },
   gfm: true,

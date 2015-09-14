@@ -8,13 +8,14 @@ Package.onUse(function(api) {
   api.versionsFrom('METEOR@1.2-rc.14');
   // Dependencies of this package
   // Dependencies for server and client
-  var shared = [
+  const shared = [
     'pierreeric:namespaces',
     'pierreeric:logger',
     'pierreeric:subscription-cache'
   ];
   api.use([
     'meteor-platform',
+    'ecmascript',
     'aldeed:collection2@2.5.0',
     'dburles:collection-helpers@1.0.3'
   ].concat(shared));

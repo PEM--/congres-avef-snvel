@@ -8,7 +8,7 @@ Package.onUse(function(api) {
   api.versionsFrom('METEOR@1.2-rc.14');
   // Dependencies of this package
   // Dependencies for server and client
-  var shared = [
+  const shared = [
     'kadira:flow-router-ssr@3.3.0',
     'pierreeric:namespaces',
     'pierreeric:logger'
@@ -22,8 +22,5 @@ Package.onUse(function(api) {
   // Files for server and client
   api.addFiles('routing-start.js');
   // Files for server only
-  api.addFiles([
-    'robots.js',
-    'sitemaps.js'
-  ], 'server');
+  api.addFiles('robots.js', 'server');
 });

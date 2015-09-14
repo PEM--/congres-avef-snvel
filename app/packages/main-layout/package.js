@@ -14,7 +14,7 @@ Package.onUse(function(api) {
     'pierreeric:client-footer'
   ];
   api.use([
-    'react@0.1.12',
+    'react',
     'flemay:less-autoprefixer@1.1.0'
   ].concat(sharedDeps));
   // Expose packages
