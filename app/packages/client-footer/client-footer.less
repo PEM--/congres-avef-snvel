@@ -1,9 +1,16 @@
 @import (reference) url('/packages/client-sharedstyles/client-sharedstyles.less');
 
 footer.client {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: 1;
   width: 100%;
   animation: fadeInUp @shortAnim;
   padding: 1.5em 0;
+
+  div.padding {
+    background-color: red;
+  }
 
   .basic-pages-links, .social-pages-links {
     ul {
