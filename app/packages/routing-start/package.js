@@ -10,13 +10,13 @@ Package.onUse(function(api) {
   // Dependencies for server and client
   var shared = [
     'kadira:flow-router-ssr@3.3.0',
-    'meteorhacks:fast-render@2.10.0',
-    'gadicohen:robots-txt@0.0.10',
-    'gadicohen:sitemaps@0.0.23',
     'pierreeric:namespaces',
     'pierreeric:logger'
   ];
-  api.use(shared);
+  api.use([
+    'meteorhacks:fast-render@2.10.0',
+    'gadicohen:robots-txt@0.0.10'
+  ].concat(shared));
   api.imply(shared);
   // Included files in this packages
   // Files for server and client

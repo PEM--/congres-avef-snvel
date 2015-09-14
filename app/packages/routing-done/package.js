@@ -9,12 +9,16 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   var shared = [
-    'kadira:flow-router-ssr@3.3.0',
-    'meteorhacks:fast-render@2.10.0',
     'pierreeric:namespaces',
     'pierreeric:logger'
   ];
-  api.use(shared);
+  api.use([
+    'underscore',
+    'kadira:flow-router-ssr@3.3.0',
+    'meteorhacks:fast-render@2.10.0',
+    'underscorestring:underscore.string@3.2.2',
+    'gadicohen:sitemaps@0.0.23'
+  ].concat(shared));
   api.imply(shared);
   // Included files in this packages
   // Files for client only
