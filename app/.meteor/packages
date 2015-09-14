@@ -19,9 +19,6 @@ meteorhacks:zones
 #kadira:debug
 #meteorhacks:kadira-profiler
 
-# SEO
-gadicohen:robots-txt
-
 # WPO & Meteor optimizations
 #appcache
 

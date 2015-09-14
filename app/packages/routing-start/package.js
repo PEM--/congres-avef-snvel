@@ -11,8 +11,8 @@ Package.onUse(function(api) {
   var shared = [
     'kadira:flow-router-ssr@3.3.0',
     'meteorhacks:fast-render@2.10.0',
-    'gadicohen:sitemaps@0.0.23',
     'gadicohen:robots-txt@0.0.10',
+    'gadicohen:sitemaps@0.0.23',
     'pierreeric:namespaces',
     'pierreeric:logger'
   ];
@@ -25,5 +25,5 @@ Package.onUse(function(api) {
   api.addFiles([
     'robots.js',
     'sitemaps.js'
-  ]);
+  ], 'server');
 });

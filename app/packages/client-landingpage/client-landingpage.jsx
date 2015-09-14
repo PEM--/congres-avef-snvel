@@ -39,3 +39,11 @@ FlowRouter.route('/', {
   }
 });
 log.info('Route / declared');
+if (Meteor.isServer) {
+  sitemaps.add('/sitemap.xml', function() {
+    return [
+      { page: '/', lastmod: new Date() }
+    ];
+  });
+  log.info('Route / added to /sitemaps.xml');
+}

@@ -60,13 +60,6 @@ var setBasicPageRoutes = function() {
 if (Meteor.isClient) {
   Col.BasicPages.subAllLinks(function() {
     setBasicPageRoutes();
-
-
-// @TODO À placer dans un package isolé marquant la fin des déclarations de routing
-    FlowRouter.initialize();
-
-
-
   });
 } else {
   setBasicPageRoutes();
