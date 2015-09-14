@@ -17,7 +17,14 @@ Col.SS.BasicPages = new SimpleSchema({
     type: Number,
     label: 'Ordonnancement',
     min: 1,
-    max: 256
+    max: 256,
+    unique: true
+  },
+  display: {
+    type: String,
+    label: 'Affichage',
+    defaultValue: 'Aucun',
+    allowedValues: ['Aucun', 'Menu', 'Footer', 'Menu et Footer']
   },
   content: {
     type: String,
@@ -50,15 +57,15 @@ if (Meteor.isServer) {
     log.info('Already filled');
   } else {
     Col.BasicPages.insert({
-      title: 'Mentions légales', url: 'legal', order: 1,
+      title: 'Mentions légales', url: 'legal', order: 1, display: 'Footer',
       content: marked('Les mentions légales, personne ne les lit...')
     });
     Col.BasicPages.insert({
-      title: 'Confidentialité', url: 'cookie', order: 2,
+      title: 'Confidentialité', url: 'cookie', order: 2, display: 'Footer',
       content: marked('La confidentialité est un mythe...')
     });
     Col.BasicPages.insert({
-      title: 'Not found', url: 'notfound', order: 3,
+      title: 'Not found', url: 'notfound', order: 3, display: 'Aucun',
       content: marked('On ne trouve rien sans recherche...')
     });
     log.info('Filled with defaults');

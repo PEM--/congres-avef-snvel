@@ -31,7 +31,9 @@ const BasicPagesLinkList = createClass({
       // Use handle to show loading state
       loading: !handle.ready(),
       // Expose the list as an array
-      items: Col.BasicPages.find().fetch()
+      items: Col.BasicPages.find({
+        display: {$in: ['Footer', 'Menu et Footer']}
+      }).fetch()
     };
   },
   render() {
