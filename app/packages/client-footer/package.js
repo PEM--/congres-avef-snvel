@@ -10,7 +10,7 @@ Package.onUse(function(api) {
   // Dependencies for server and client
   api.use([
     'meteor-platform',
-    'react',
+    'react@0.1.10',
     'pierreeric:namespaces',
     'pierreeric:logger',
     'flemay:less-autoprefixer@1.1.0',

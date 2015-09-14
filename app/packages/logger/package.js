@@ -21,7 +21,7 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   var shared = [
-    'react',
+    'react@0.1.10',
     'pierreeric:namespaces'
   ];
   api.use(shared);

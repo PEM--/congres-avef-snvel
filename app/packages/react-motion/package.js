@@ -15,7 +15,7 @@ Package.onUse(function(api) {
   // Dependencies for server and client
   api.use([
     'meteor-platform',
-    'react'
+    'react@0.1.10'
   ]);
   // Dependencies for client only
   var sharedClient = [
