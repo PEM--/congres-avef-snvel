@@ -14,7 +14,9 @@ Rc.MainLayout = createClass({
     log.debug('Rendering');
     return (
       <div className='main-layout'>
-        {this.props.content}
+        <div className='page'>
+          {this.props.content}
+        </div>
         <Rc.Client.Footer />
       </div>
     );
