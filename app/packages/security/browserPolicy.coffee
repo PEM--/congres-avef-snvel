@@ -1,8 +1,5 @@
 # Browser policy
 
-# Create a logger
-log = Logger.createLogger 'Security'
-
 # Black list everything
 BrowserPolicy.framing.disallow()
 BrowserPolicy.content.disallowEval()

@@ -8,10 +8,13 @@ Package.onUse(function(api) {
   api.use([
     'coffeescript',
     'browser-policy',
+    'matteodem:easy-security@0.1.4',
     'pierreeric:namespaces',
     'pierreeric:logger'
   ]);
   api.addFiles([
-    'browserPolicy.coffee'
+    'logger.js',
+    'browserPolicy.coffee',
+    'rateLimiting.coffee'
   ], 'server');
 });
