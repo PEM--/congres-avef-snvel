@@ -5,7 +5,7 @@ Package.describe({
 
 Package.onUse(function(api) {
   // Meteor's API version
-  api.versionsFrom('1.1.0.3');
+  api.versionsFrom('METEOR@1.2-rc.14');
   // NPM dependencies
   Npm.depends({
     "body-parser": "1.13.3"
@@ -17,8 +17,8 @@ Package.onUse(function(api) {
   ]);
   // Dependencies server only
   api.use([
-    'meteorhacks:npm',
-    'meteorhacks:picker'
+    'meteorhacks:npm@1.5.0',
+    'meteorhacks:picker@1.0.3'
   ], 'server');
   // Included files in this packages
   // Server only

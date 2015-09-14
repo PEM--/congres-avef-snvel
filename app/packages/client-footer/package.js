@@ -5,12 +5,12 @@ Package.describe({
 
 Package.onUse(function(api) {
   // Meteor's API version
-  api.versionsFrom('1.1.0.3');
+  api.versionsFrom('METEOR@1.2-rc.14');
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
     'meteor-platform',
-    'react@0.1.10',
+    'react@0.1.12',
     'pierreeric:namespaces',
     'pierreeric:logger',
     'flemay:less-autoprefixer@1.1.0',

@@ -5,7 +5,7 @@ Package.describe({
 
 Package.onUse(function(api) {
   // Meteor's API version
-  api.versionsFrom('1.1.0.3');
+  api.versionsFrom('METEOR@1.2-rc.14');
   // Dependencies of this package
   // Dependencies for server and client
   var shared = [
@@ -15,7 +15,7 @@ Package.onUse(function(api) {
   ];
   api.use([
     'meteor-platform',
-    'aldeed:collection2',
+    'aldeed:collection2@2.5.0',
     'dburles:collection-helpers@1.0.3',
   ].concat(shared));
   api.imply(shared);

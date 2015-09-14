@@ -5,7 +5,7 @@ Package.describe({
 
 Package.onUse(function(api) {
   // Meteor's API version
-  api.versionsFrom('1.1.0.3');
+  api.versionsFrom('METEOR@1.2-rc.14');
   // Included files in this packages
   // Files for server and client
   api.addFiles('namespaces.js');

@@ -5,7 +5,7 @@ Package.describe({
 
 Package.onUse(function(api) {
   // Meteor's API version
-  api.versionsFrom('1.1.0.3');
+  api.versionsFrom('METEOR@1.2-rc.14');
   // NPM dependencies
   Npm.depends({
     'react-motion': '0.2.7',
@@ -15,7 +15,7 @@ Package.onUse(function(api) {
   // Dependencies for server and client
   api.use([
     'meteor-platform',
-    'react@0.1.10'
+    'react@0.1.12'
   ]);
   // Dependencies for client only
   var sharedClient = [

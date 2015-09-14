@@ -14,7 +14,7 @@ Rc.Client.Footer = createClass({
       <footer className='client'>
         <div className='ui container'>
           <section className='ui stackable grid'>
-            <div className='column four wide'>&nbsp;</div>
+            <div className='column four wide '>&nbsp;</div>
             <article className='column height wide basic-pages-links'>
               <BasicPagesLinkList />
             </article>
