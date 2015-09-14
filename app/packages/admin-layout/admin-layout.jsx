@@ -10,7 +10,7 @@ const log = Logger.createLogger('Admin Layout');
 Rc.Admin.Layout = createClass({
   displayName: 'Rc.Admin.Layout',
   propTypes: {
-    content: PropTypes.string.isRequired
+    content: PropTypes.object.isRequired
   },
   render() {
     log.debug('Rendering');

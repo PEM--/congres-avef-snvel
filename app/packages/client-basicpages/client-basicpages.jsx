@@ -46,6 +46,7 @@ var setBasicPageRoutes = function() {
     FlowRouter.route(`/${page.url}`, {
       name: page.url,
       action() {
+        log.info('Routing to', this.name);
         ReactLayout.render(Rc.MainLayout, {
           content: <Rc.Client.BasicPages url={page.url} />
         });

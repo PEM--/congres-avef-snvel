@@ -32,6 +32,7 @@ Rc.Client.LandingPage = createClass({
 FlowRouter.route('/', {
   name: 'client-landingpage',
   action() {
+    log.info('Routing to', this.name);
     ReactLayout.render(Rc.MainLayout, {
       url: '/',
       content: <Rc.Client.LandingPage />

@@ -1,7 +1,7 @@
 // Admin home page
 
 // Namespace flatteinng
-const { PropTypes, createClass } = React;
+const { createClass } = React;
 
 // Create a logger
 const log = Logger.createLogger('Admin Home');
@@ -24,7 +24,9 @@ Rc.Admin.Home = createClass({
 // Routing
 const ROUTE_NAME = 'admin';
 FlowRouter.route(`/${ROUTE_NAME}`, {
+  name: 'admin',
   action(params) {
+    log.info('Routing to', this.name);
     ReactLayout.render(Rc.Admin.Layout, {
       content: <Rc.Admin.Home />
     });
