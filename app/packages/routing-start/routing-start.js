@@ -3,15 +3,9 @@
 // Create a logger
 log = Tools.createLogger('Routing Start');
 
-// Routing rules for client:
-
-FlowRouter.wait();
-
-
 // Block the routing untill all routes are defined (see routing-defined)
-if (Meteor.isClient) {
-  log.debug('Blocked');
-}
+FlowRouter.wait();
+log.info('Blocked');
 
 // Routing rules for SSR
 if (Meteor.isServer) {

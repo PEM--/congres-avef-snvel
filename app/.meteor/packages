@@ -31,12 +31,6 @@ fortawesome:fontawesome
 flemay:less-autoprefixer
 semantic:ui
 
-# Authentifications
-useraccounts:core
-accounts-password
-useraccounts:flow-routing
-useraccounts:semantic-ui
-
 # Application packages
 # Server only packages
 pierreeric:server-side-routes
@@ -49,3 +43,9 @@ pierreeric:admin-home
 
 # All routes declared start: Start client side routing
 pierreeric:routing-done
+
+# Authentifications
+#useraccounts:core
+#accounts-password
+#useraccounts:flow-routing
+#useraccounts:semantic-ui
