@@ -51,7 +51,6 @@ _.extend(Col.BasicPages, {
 
 // Server only
 if (Meteor.isServer) {
-  // @#DONE:0 Set a SimpleSchema
   // Fill the links collection with a minimal set of links
   if (Col.BasicPages.find().count() !== 0) {
     log.info('Already filled');

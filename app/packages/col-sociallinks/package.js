@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'pierreeric:col-basicpages',
+  name: 'pierreeric:col-sociallinks',
   version: '0.0.1'
 });
 
@@ -16,7 +16,7 @@ Package.onUse(function(api) {
   api.use([
     'meteor-platform',
     'aldeed:collection2',
-    'dburles:collection-helpers@1.0.3'
+    'dburles:collection-helpers@1.0.3',
   ].concat(shared));
   api.imply(shared);
   // Dependencies for server only
@@ -24,6 +24,6 @@ Package.onUse(function(api) {
   // Included files in this packages
   // Files for server and client
   api.addFiles([
-    'col-basicpages.js',
+    'col-sociallinks.js',
   ]);
 });

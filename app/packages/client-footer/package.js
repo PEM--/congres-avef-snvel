@@ -15,11 +15,15 @@ Package.onUse(function(api) {
     'pierreeric:logger',
     'flemay:less-autoprefixer@1.1.0',
     'pierreeric:col-basicpages',
+    'pierreeric:col-sociallinks',
     'pierreeric:client-sharedstyles'
   ]);
   // Included files in this packages
   // Files for server and client
   api.addFiles([
+    'logger.jsx',
+    'client-footer-basicpages.jsx',
+    'client-footer-sociallinks.jsx',
     'client-footer.jsx',
     'client-footer.less'
   ]);
