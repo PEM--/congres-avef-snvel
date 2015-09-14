@@ -13,12 +13,12 @@ Rc.Client.Footer = createClass({
     return (
       <footer className='client'>
         <div className='ui container'>
-          <section className='ui stackable grid'>
-            <div className='column four wide '>&nbsp;</div>
-            <article className='column height wide basic-pages-links'>
+          <section className='ui stackable three column grid'>
+            <div className='column'>&nbsp;</div>
+            <article className='basic-pages-links column'>
               <BasicPagesLinkList />
             </article>
-            <article className='column four wide  social-pages-links'>
+            <article className='social-links column'>
               <SocialLinkList />
             </article>
           </section>
