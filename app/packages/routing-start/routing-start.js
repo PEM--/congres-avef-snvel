@@ -4,9 +4,12 @@
 log = Tools.createLogger('Routing Start');
 
 // Routing rules for client:
+
+FlowRouter.wait();
+
+
 // Block the routing untill all routes are defined (see routing-defined)
 if (Meteor.isClient) {
-  FlowRouter.wait();
   log.debug('Blocked');
 }
 
