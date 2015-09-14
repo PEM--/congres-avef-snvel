@@ -1,0 +1,30 @@
+// Import overriden SemanticUI
+@import url('/client/lib/semanticui/site/globals/site.variables.import.less');
+// Import packages
+@import (reference) url('/packages/client-sharedstyles/client-sharedstyles.less');
+
+
+// Links with an animated underline on hovering
+a, a:visited {
+  font-weight: bold;
+  transition: color @shortAnim;
+  position: relative;
+
+  &::after {
+    content: ' ';
+    position: absolute;
+    bottom: -.5em;
+    left: 0;
+    width: 100%;
+    background-color: @linkColor;
+    height: 1px;
+    transform: scale3d(0, 1, 1);
+    transition: transform @shortAnim;
+  }
+
+  &:hover {
+    &::after {
+      transform: scale3d(1, 1, 1);
+    }
+  }
+}

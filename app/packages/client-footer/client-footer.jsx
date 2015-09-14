@@ -12,14 +12,17 @@ Rc.Client.Footer = createClass({
     // Ease access to settings
     return (
       <footer className='client'>
-        <section className='ui container'>
-          <article>
-            <BasicPagesLinkList />
-          </article>
-          <article>
-            <SocialLinkList />
-          </article>
-        </section>
+        <div className='ui container'>
+          <section className='ui grid'>
+            <div className='four wide column'>&nbsp;</div>
+            <article className='height wide column basic-pages-links'>
+              <BasicPagesLinkList />
+            </article>
+            <article className='four wide column social-pages-links'>
+              <SocialLinkList />
+            </article>
+          </section>
+        </div>
       </footer>
     );
   }
