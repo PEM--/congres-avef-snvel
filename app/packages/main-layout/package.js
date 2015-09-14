@@ -14,6 +14,7 @@ Package.onUse(function(api) {
     'pierreeric:client-footer'
   ];
   api.use([
+    'blaze-html-templates',
     'react',
     'flemay:less-autoprefixer@1.1.0'
   ].concat(sharedDeps));
@@ -22,6 +23,7 @@ Package.onUse(function(api) {
   // Included files in this packages
   // Files for server and client
   api.addFiles([
+    'index.html',
     'main-layout.jsx',
     'main-layout.less'
   ]);

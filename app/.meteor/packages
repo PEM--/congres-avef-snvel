@@ -1,12 +1,11 @@
 # Meteor official packages
-#mobile-experience
-#logging
-#blaze-html-templates
-#spacebars
-
-session
-standard-minifiers
 meteor-base
+session
+mobile-experience
+logging
+blaze-html-templates
+spacebars
+standard-minifiers
 mongo
 jquery
 tracker
