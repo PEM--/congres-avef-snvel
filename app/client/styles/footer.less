@@ -1,0 +1,22 @@
+// Import overriden SemanticUI
+@import url('../lib/semanticui/site/globals/site.variables.import.less');
+
+// Override semantic defaults
+footer.client {
+  background-color: @orange-intermediary;
+  font-size: 90%;
+  a, a:visited {
+    color: @orange-light;
+    &:hover {
+      color: lighten(@orange-light, 5%);
+    }
+  }
+  a::after {
+    background-color: @primaryColor;
+  }
+  .social-pages-links {
+    a::after {
+      background-color: transparent;
+    }
+  }
+}

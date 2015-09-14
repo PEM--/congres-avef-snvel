@@ -13,7 +13,7 @@ const SocialLink = createClass({
   render() {
     log.debug('Rendering SocialLink');
     const { url, faIcon } = this.props;
-    return <li><a className={'fa '.concat(faIcon)} href={url} target='_blank'></a></li>;
+    return <li><a className={`fa ${faIcon} fa-lg`} href={url} target='_blank'></a></li>;
   }
 });
 
