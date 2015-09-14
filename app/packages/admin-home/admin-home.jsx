@@ -6,17 +6,6 @@ const { PropTypes, createClass } = React;
 // Create a logger
 const log = Tools.createLogger('Admin Home');
 
-// Routing
-const ROUTE_NAME = 'admin';
-FlowRouter.route(`/${ROUTE_NAME}`, {
-  action(params) {
-    ReactLayout.render(Rc.Admin.Layout, {
-      content: <Rc.Admin.Home />
-    });
-  }
-});
-log.info(`Route ${ROUTE_NAME} declared`);
-
 // Admin home component
 Rc.Admin.Home = createClass({
   displayName: 'Rc.Admin.Home',
@@ -31,3 +20,14 @@ Rc.Admin.Home = createClass({
     );
   }
 });
+
+// Routing
+const ROUTE_NAME = 'admin';
+FlowRouter.route(`/${ROUTE_NAME}`, {
+  action(params) {
+    ReactLayout.render(Rc.Admin.Layout, {
+      content: <Rc.Admin.Home />
+    });
+  }
+});
+log.info(`Route ${ROUTE_NAME} declared`);

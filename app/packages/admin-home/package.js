@@ -13,7 +13,7 @@ Package.onUse(function(api) {
     'kadira:react-layout@1.3.0',
     'pierreeric:namespaces',
     'pierreeric:logger',
-    'pierreeric:routing',
+    'pierreeric:routing-start',
     'pierreeric:admin-layout',
     'flemay:less-autoprefixer@1.1.0',
     'pierreeric:client-sharedstyles'

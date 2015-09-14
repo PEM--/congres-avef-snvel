@@ -6,36 +6,6 @@ const { PropTypes, createClass } = React;
 // Create a logger
 const log = Tools.createLogger('Client BasicPages');
 
-// Routing
-// Isomorhic function
-var setBasicPageRoutes = function() {
-  let basicPages = Col.BasicPages.find().fetch();
-  basicPages.forEach(function(page) {
-    FlowRouter.route(`/${page.url}`, {
-      name: page.url,
-      action() {
-        ReactLayout.render(Rc.MainLayout, {
-          content: <Rc.Client.BasicPages url={page.url} />
-        });
-      }
-    });
-    log.info(`Route ${page.url} declared`);
-  });
-};
-
-// For the BasicPages, the route cannot be determined before Meteor has
-// subscribed to all data, which leads to these differences on the client
-// and on the server.
-if (Meteor.isClient) {
-  FlowRouter.wait();
-  Col.BasicPages.subAllLinks(function() {
-    setBasicPageRoutes();
-    FlowRouter.initialize();
-  });
-} else {
-  setBasicPageRoutes();
-}
-
 // BasicPages component
 Rc.Client.BasicPages = createClass({
   displayName: 'Rc.Client.BasicPages',
@@ -67,3 +37,37 @@ Rc.Client.BasicPages = createClass({
     );
   }
 });
+
+// Routing
+// Isomorhic function
+var setBasicPageRoutes = function() {
+  let basicPages = Col.BasicPages.find().fetch();
+  basicPages.forEach(function(page) {
+    FlowRouter.route(`/${page.url}`, {
+      name: page.url,
+      action() {
+        ReactLayout.render(Rc.MainLayout, {
+          content: <Rc.Client.BasicPages url={page.url} />
+        });
+      }
+    });
+    log.info(`Route ${page.url} declared`);
+  });
+};
+// For the BasicPages, the route cannot be determined before Meteor has
+// subscribed to all data, which leads to these differences on the client
+// and on the server.
+if (Meteor.isClient) {
+  Col.BasicPages.subAllLinks(function() {
+    setBasicPageRoutes();
+
+
+// @TODO À placer dans un package isolé marquant la fin des déclarations de routing
+    FlowRouter.initialize();
+
+
+
+  });
+} else {
+  setBasicPageRoutes();
+}
