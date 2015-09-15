@@ -1,0 +1,54 @@
+// Semantic UI variables
+@import url('/client/lib/semanticui/site/globals/site.variables.import.less');
+
+// Colors
+.lightOrange {
+  background-color: @lightOrange;
+}
+
+// Justify text content by default
+p, div {
+  text-align: justify;
+}
+
+// Links with an animated underline on hovering
+a, a:visited {
+  font-weight: bold;
+  transition: color @defaultDuration @defaultEasing;
+;
+  position: relative;
+
+  &::after {
+    content: ' ';
+    position: absolute;
+    bottom: -.5em;
+    left: 0;
+    width: 100%;
+    background-color: @linkColor;
+    height: 1px;
+    transform: scale3d(0, 1, 1);
+    transition: transform @defaultDuration @defaultEasing;
+  }
+  // Animated underline links
+  &:hover {
+    &::after {
+      transform: scale3d(1, 1, 1);
+    }
+  }
+}
+
+// Hide animated underline links for social icons
+// and use a scaling animation on the icons
+.social-links {
+  a, a:visited {
+    position: relative;
+    transform: scale3d(1, 1, 1);
+    transition: transform .3s ease-in-out, color .3s ease-in-out;
+    &::after {
+      background-color: transparent;
+    }
+    &:hover {
+      transform: scale3d(1.33, 1.33, 1);
+    }
+  }
+}

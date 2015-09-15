@@ -4,15 +4,28 @@
 // Footer for the client
 footer.client {
 
+  // Remove default bullet
+  ul {
+    list-style-type: none !important;
+    li::before {
+      display: none;
+    }
+  }
+
   // Basic pages links
-  .basicpageslinks {
-    background-color: @red !important;
-    text-align: center;
+  .basicpages-links {
+    text-align: center !important;
+    ul, li {
+      text-align: inherit;
+    }
   }
 
   // Social links
-  .sociallinks {
-    text-align: right;
+  .social-links {
+    text-align: right !important;
+    ul, li {
+      text-align: inherit;
+    }
   }
 
   // Mobile specifics
@@ -22,8 +35,28 @@ footer.client {
       display: none !important;
     }
     // Center social links
-    .sociallinks {
-      text-align: center;
+    .social-links {
+      text-align: center !important;
+      ul, li {
+        text-align: inherit;
+      }
+    }
+  }
+
+  // Link colors
+  a, a:visited {
+    // Reduce the overal font-size
+    font-size: 90% !important;
+    // Adjust colors
+    color: @veryLightOrange;
+    &::after {
+      background-color: @veryLightOrange;
+    }
+    &:hover {
+      color: white;
+      &::after {
+        background-color: white;
+      }
     }
   }
 }

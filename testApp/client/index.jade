@@ -27,12 +27,26 @@ body
             h1.ui.header Contenu
             p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus dolor autem voluptates consequatur, deserunt ipsa accusamus eum, facilis commodi aliquam corporis vel inventore illo animi fugit delectus, consectetur explicabo molestias.
 
-    footer.client.row
-      .orange.sixteen.wide.column
-        .ui.centered.stackable.grid.container(style='background: brown;')
-          .footer-spacer.grey.four.wide.column
-            p Empty footer part
-          .yellow.height.wide.column
-            .basicpageslinks Main links footer part
-          .blue.four.wide.column
-            .sociallinks Social links footer part
+    footer.client.lightOrange.row
+      .sixteen.wide.column
+        .ui.centered.stackable.grid.container
+          .footer-spacer.four.wide.column
+          .basicpages-links.height.wide.column
+            ul.ui.horizontal.divided.list
+              li.item
+                a(href='#') Mentions légales
+              li.item
+                a(href='#') Confidentialité
+              li.item
+                a(href='#') Conditions générales de ventes
+          .social-links.four.wide.column
+            ul.ui.horizontal.divided.list
+              li.item
+                a(href='#')
+                  .i.fa.fa-facebook.fa-lg
+              li.item
+                a(href='#')
+                  .i.fa.fa-twitter.fa-lg
+              li.item
+                a(href='#')
+                  .i.fa.fa-envelope.fa-lg
