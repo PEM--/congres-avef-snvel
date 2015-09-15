@@ -19,5 +19,8 @@
     "gulp-util": "^3.0.4",
     "gulp-webp": "^2.3.0",
     "imagemin-pngquant": "^4.1.0"
+  },
+  "dependencies": {
+    "underscore": "^1.8.3"
   }
 }

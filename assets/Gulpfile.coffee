@@ -61,31 +61,57 @@ gulp.task 'screenshot', ['video'], ->
     .pipe p.exec.reporter reporterOptions
 
 # Resize images
-gulp.task 'resize-medium', ['screenshot'], ->
-  gulp.src 'src/*.jpg'
-    .pipe p.imageResize width: 800
-    .pipe p.rename (path) -> path.basename += '-medium'
-    .pipe gulp.dest imgDist
-gulp.task 'resize-small', ['screenshot'], ->
-  gulp.src 'src/*.jpg'
-    .pipe p.imageResize width: 320
-    .pipe p.rename (path) -> path.basename += '-small'
-    .pipe gulp.dest imgDist
+# See breakpoints in site.variables.import.less
+profiles = [
+  {widescreenMonitor: 1920}
+  {largeMonitor: 1200}
+  {computer: 992}
+  {tablet: 768}
+  {mobile: 320}
+]
 
-# Optimize images
-gulp.task 'imagemin', ['resize-medium', 'resize-small'], ->
-  gulp.src "#{imgDist}/*.{jpg,png,gif,svg}"
-    .pipe p.imagemin
-      progressive: true
-      svgoPlugins: [{removeViewBox: false}]
-      use: [pngquant()]
-    .pipe gulp.dest imgDist
+_ = require 'underscore'
 
-# Create all webp images
-gulp.task 'webp', ['imagemin'], ->
-  gulp.src "#{imgDist}/*.jpg"
-    .pipe p.webp()
-    .pipe gulp.dest imgDist
+for profile in profiles
+  type = (Object.keys profile)[0]
+  gulp.task "resize-#{type}", ->
+    gulp.src 'src/*.jpg'
+      .pipe p.imageResize width: profile[type]
+      .pipe p.rename (path) -> path.basename += "_#{type}"
+      .pipe gulp.dest imgDist
 
-# Default task call every tasks created so far
-gulp.task 'default', ['webp']
+
+#
+# gulp.task 'resize-large', ->
+#   gulp.src 'src/*.jpg'
+#     .pipe p.imageResize width: 1280
+#     .pipe p.rename (path) -> path.basename += '-large'
+#     .pipe gulp.dest imgDist
+# gulp.task 'resize-medium', ['resize-large'], ->
+#   gulp.src 'src/*.jpg'
+#     .pipe p.imageResize width: 768
+#     .pipe p.rename (path) -> path.basename += '-medium'
+#     .pipe gulp.dest imgDist
+# gulp.task 'resize-small', ['screenshot'], ->
+#   gulp.src 'src/*.jpg'
+#     .pipe p.imageResize width: 320
+#     .pipe p.rename (path) -> path.basename += '-small'
+#     .pipe gulp.dest imgDist
+#
+# # Optimize images
+# gulp.task 'imagemin', ['resize-large', 'resize-medium', 'resize-small'], ->
+#   gulp.src "#{imgDist}/*.{jpg,png,gif,svg}"
+#     .pipe p.imagemin
+#       progressive: true
+#       svgoPlugins: [{removeViewBox: false}]
+#       use: [pngquant()]
+#     .pipe gulp.dest imgDist
+#
+# # Create all webp images
+# gulp.task 'webp', ['imagemin'], ->
+#   gulp.src "#{imgDist}/*.jpg"
+#     .pipe p.webp()
+#     .pipe gulp.dest imgDist
+#
+# # Default task call every tasks created so far
+# gulp.task 'default', ['webp']
