@@ -1,20 +1,14 @@
-// .main-layout {
-//   min-height: 100vh;
-//   display: flex;
-//   flex-direction: column;
-//   .client.menu {
-//     flex-grow: 0;
-//     flex-shrink: 0;
-//     flex-basis: 1;
-//   }
-//   .client.page {
-//     flex-grow: 1;
-//     flex-shrink: 0;
-//     flex-basis: 1;
-//   }
-//   .client.footer {
-//     flex-grow: 0;
-//     flex-shrink: 0;
-//     flex-basis: 1;
-//   }
-// }
+.main-layout {
+  display: flex;
+  flex-direction: column !important;
+  min-height: 100vh;
+  margin-top: 0 !important;
+  >nav.client, >section.client, >footer.client {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 1;
+  }
+  >section.client:last-of-type {
+    flex-grow: 1;
+  }
+}

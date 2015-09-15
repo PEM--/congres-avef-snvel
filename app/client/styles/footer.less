@@ -1,34 +1,20 @@
-// Import overriden SemanticUI
-@import url('../lib/semanticui/site/globals/site.variables.import.less');
-// Import packages
-@import (reference) url('/packages/client-sharedstyles/client-sharedstyles.less');
+// Semantic UI variables
+@import url('/client/lib/semanticui/site/globals/site.variables.import.less');
 
-// Override semantic defaults
+// Footer for the client
 footer.client {
-  // background-color: @orange-intermediary;
-  font-size: 90%;
-  // Set colors for footer's items
+  background-color: @lightOrange;
+  // Link colors
   a, a:visited {
-    color: @orange-light;
+    // Adjust colors
+    color: @veryLightOrange;
+    &::after {
+      background-color: @veryLightOrange;
+    }
     &:hover {
       color: white;
-    }
-  }
-  a::after {
-    background-color: white;
-  }
-  // Hide animated underline links for social icons
-  // and use a scaling animation on the icons
-  .social-links {
-    a, a:visited {
-      position: relative;
-      transform: scale3d(1, 1, 1);
-      transition: transform @shortAnim, color @shortAnim;
       &::after {
-        background-color: transparent;
-      }
-      &:hover {
-        transform: scale3d(1.33, 1.33, 1);
+        background-color: white;
       }
     }
   }
