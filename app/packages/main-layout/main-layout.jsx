@@ -32,24 +32,10 @@ Rc.MainLayout = createClass({
     //   </div>
     // );
     return (
-      <div className='main-layout ui grid'>
-        <header className='orange row'>
-          <div className='red column'>
-            <div className='ui centered grid container'>
-              <div className='brown column'>
-                <h1>Menu</h1>
-              </div>
-            </div>
-          </div>
-        </header>
-        <div className='pink row'>
-          <div className='violet column'>
-            <div className='ui centered grid container'>
-              <div className='purple column'>
-                <h1>Contenu</h1>
-              </div>
-            </div>
-          </div>
+      <div className='ui grid'>
+        <div className='one wide column'>
+          <div className='red'>Menu</div>
+          <div className='blue'>Contenu</div>
         </div>
       </div>
     );
