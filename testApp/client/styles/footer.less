@@ -1,0 +1,29 @@
+// Semantic UI variables
+@import url('/client/lib/semanticui/site/globals/site.variables.import.less');
+
+// Footer for the client
+footer.client {
+
+  // Basic pages links
+  .basicpageslinks {
+    background-color: @red !important;
+    text-align: center;
+  }
+
+  // Social links
+  .sociallinks {
+    text-align: right;
+  }
+
+  // Mobile specifics
+  @media screen and (max-width: 768px) {
+    // Remove spacer
+    .footer-spacer {
+      display: none !important;
+    }
+    // Center social links
+    .sociallinks {
+      text-align: center;
+    }
+  }
+}
