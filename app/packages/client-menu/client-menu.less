@@ -3,7 +3,26 @@
 
 // Menu for the client
 nav.client {
-  background-color: red;
+  .congress-title {
+    position: relative;
+    h1 {
+      position: absolute;
+    }
+  }
+  // Logos
+  a, a:visited {
+    position: relative;
+    display: inline-block;
+    width: 49%;
+    img {
+      position: absolute;
+      top: -1.9rem;
+      left: 0;
+      width: 8rem;
+    }
+    // Remove animated link
+    &::after { display: none; }
+  }
   .menu-button {
     // @TODO Set this in app style
     color: @orange;

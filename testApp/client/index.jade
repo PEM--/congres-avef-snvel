@@ -10,13 +10,16 @@ head
 body
   .ui.grid.main-layout
     nav.client.row
-      .yellow.sixteen.wide.column
-        .ui.centered.stackable.grid.container
-          .red.height.wide.column
+      .sixteen.wide.column
+        .ui.centered.grid.container
+          .congress-title.eight.wide.column
             h1.ui.header CONGRES AVEF/SNVEL 2015
-          .yellow.seven.wide.column
-            h1.ui.header LOGO
-          .blue.one.wide.column
+          .seven.wide.column
+            a(href='http://www.avef.fr', target='_blank')
+              img(src='/img/avef.svg', alt='AVEF')
+            a(href='http://www.snvel.fr', target='_blank')
+              img(src='/img/snvel.svg', alt='SNVEL')
+          .one.wide.column
             .menu-button
               i.fa.fa-bars
     section.client.row
