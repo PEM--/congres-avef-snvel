@@ -40,16 +40,38 @@ a, a:visited {
     a, a:visited {
       pointer-events: auto;
       position: relative;
-      transform: scale3d(1, 1, 1);
-      transition: font-size @defaultDuration @defaultEasing,
-                  color @defaultDuration @defaultEasing;
+      display: inline-block;
+      transition: color @defaultDuration @defaultEasing;
+      z-index: 1;
+      width: 1.4rem !important;
+      height: 1.4rem !important;
+      text-align: center !important;
+      // Increase icon's size slightly
+      i { font-size: 1.2rem; }
       // Remove animated underline
       &::after { display: none; }
+      // Add a circle animation
+      &::before {
+        content: '';
+        position: absolute;
+        top: -.4rem;
+        left: -.3rem;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 50%;
+        z-index: -1;
+        opacity: .0001;
+        transform: scale3d(.0001, .0001, .0001);
+        transition: opacity @defaultDuration @defaultEasing,
+                    transform @defaultDuration @defaultEasing;
+      }
     }
     &:hover {
       a, a:visited {
-        color: orange;
-        font-size: 120% !important;
+        &::before {
+          opacity: .9999;
+          transform: scale3d(.9999, .9999, .9999);
+        }
       }
     }
   }
