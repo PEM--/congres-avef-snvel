@@ -15,7 +15,6 @@ p, div {
 a, a:visited {
   font-weight: bold;
   transition: color @defaultDuration @defaultEasing;
-;
   position: relative;
 
   &::after {
@@ -38,17 +37,25 @@ a, a:visited {
 }
 
 // Hide animated underline links for social icons
-// and use a scaling animation on the icons
 .social-links {
-  a, a:visited {
-    position: relative;
-    transform: scale3d(1, 1, 1);
-    transition: transform .3s ease-in-out, color .3s ease-in-out;
-    &::after {
-      background-color: transparent;
+  li {
+    * {
+      pointer-events: none;
+    }
+    a, a:visited {
+      pointer-events: auto;
+      position: relative;
+      transform: scale3d(1, 1, 1);
+      transition: font-size @defaultDuration @defaultEasing,
+                  color @defaultDuration @defaultEasing;
+      // Remove animated underline
+      &::after { display: none; }
     }
     &:hover {
-      transform: scale3d(1.33, 1.33, 1);
+      a, a:visited {
+        color: orange;
+        font-size: 120% !important;
+      }
     }
   }
 }
