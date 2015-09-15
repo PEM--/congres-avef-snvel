@@ -1,18 +1,38 @@
 head
   title Integration test project
+  meta(charset='utf-8')
+  meta(name='viewport', content='width=device-width, maximum-scale=1, initial-scale=1, user-scalable=no')
+  meta(name='apple-mobile-web-app-capable', content='yes')
+  meta(name='apple-mobile-web-app-status-bar-style', content='black')
+  meta(name='apple-mobile-web-app-capable', content='yes')
+  meta(name='mobile-web-app-capable', content='yes')
 
 body
-  .ui.grid
-    .row
-      .sixteen.wide.green.column
-        .ui.centered.container
-          div(style='background: red; width: 100%;') Menu
-    .row
-      .pink.four.wide.column
-        .ui.centered.container(style='background: violet;') Contenu
-    .row
+  .ui.grid.main-layout
+    nav.client.row
+      .green.sixteen.wide.column
+        .ui.centered.stackable.grid.container
+          .olive.sixteen.wide.column
+            h1.ui.header Menu
+    section.client.row
+      .pink.sixteen.wide.column
+        .ui.centered.stackable.grid.container
+          .violet.sixteen.wide.column
+            h1.ui.header Contenu
+            p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus dolor autem voluptates consequatur, deserunt ipsa accusamus eum, facilis commodi aliquam corporis vel inventore illo animi fugit delectus, consectetur explicabo molestias.
+    section.client.row
+      .brown.sixteen.wide.column
+        .ui.centered.stackable.grid.container
+          .black.sixteen.wide.column
+            h1.ui.header Contenu
+            p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Natus dolor autem voluptates consequatur, deserunt ipsa accusamus eum, facilis commodi aliquam corporis vel inventore illo animi fugit delectus, consectetur explicabo molestias.
+
+    footer.client.row
       .orange.sixteen.wide.column
-        .ui.centered.grid.container(style='background: brown;')
-          .Footer
-    
-        
+        .ui.centered.stackable.grid.container(style='background: brown;')
+          .grey.four.wide.column
+            .footer-spacer Empty footer part
+          .yellow.height.wide.column
+            .basicpageslinks Main links footer part
+          .blue.four.wide.column
+            .sociallinks Social links footer part
