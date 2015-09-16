@@ -3,27 +3,22 @@
 
 // Menu for the client
 nav.client {
+  width: 100%
   height: 2 * @h1;
 
   // Link in menu don't have animated underline
   a, a:visited { &::after { display: none; } }
 
-  // Main site title
-  .congress-title {
-    position: relative;
-    h1 { position: absolute; }
-  }
-
   // Logos
   .brand {
     a, a:visited {
-      position: relative;
-      display: inline-block;
-      width: 49%;
+      // position: relative;
+      // display: inline-block;
+      // width: 49%;
       img {
-        position: absolute;
-        top: -1.5rem;
-        left: 0;
+        // position: absolute;
+        // top: -1.5rem;
+        // left: 0;
         width: 6rem;
         transform: scale3d(1, 1, 1);
         transition: transform @defaultDuration @defaultEasing;
@@ -38,8 +33,6 @@ nav.client {
   .hamburger {
     // @TODO Set this in app style
     color: @orange;
-    font-size: @h1;
-    text-align: right;
   }
 
   // Computer specifics
