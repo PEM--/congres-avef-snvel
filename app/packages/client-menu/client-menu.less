@@ -4,16 +4,14 @@
 // Menu for the client
 nav.client {
   // Link in menu don't have animated underline
-  a, a:visited {
-    // Remove animated link
-    &::after { display: none; }
-  }
+  a, a:visited { &::after { display: none; } }
+
+  // Main site title
   .congress-title {
     position: relative;
-    h1 {
-      position: absolute;
-    }
+    h1 { position: absolute; }
   }
+
   // Logos
   .brand {
     a, a:visited {
@@ -28,16 +26,23 @@ nav.client {
         transform: scale3d(1, 1, 1);
         transition: transform @defaultDuration @defaultEasing;
         &:hover {
-          transform: scale3d(1.1, 1.1, 1);
+          transform: scale3d(1.05, 1.05, 1);
         }
       }
     }
   }
+
   // Hamburger menu
   .menu-button {
     // @TODO Set this in app style
     color: @orange;
     font-size: @h1;
     text-align: right;
+  }
+
+  // Computer specifics
+  @media screen and (min-width: @computerBreakpoint) {
+    // Remove hamburger button
+    .menu-button { display: none; }
   }
 }
