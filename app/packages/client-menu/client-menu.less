@@ -3,6 +3,8 @@
 
 // Menu for the client
 nav.client {
+  height: 2 * @h1;
+
   // Link in menu don't have animated underline
   a, a:visited { &::after { display: none; } }
 
@@ -33,7 +35,7 @@ nav.client {
   }
 
   // Hamburger menu
-  .menu-button {
+  .hamburger {
     // @TODO Set this in app style
     color: @orange;
     font-size: @h1;
@@ -42,7 +44,7 @@ nav.client {
 
   // Computer specifics
   @media screen and (min-width: @computerBreakpoint) {
-    // Remove hamburger button
-    .menu-button { display: none; }
+    // Remove hamburger button as the aside menu is always displayed
+    .hamburger { display: none !important; }
   }
 }
