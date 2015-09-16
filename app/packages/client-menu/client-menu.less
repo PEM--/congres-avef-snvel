@@ -50,12 +50,12 @@ nav.client {
 
   // Mobile specifics
   @media screen and (max-width: @tabletBreakpoint) {
-    .ui.centered.grid.container {
+    .navgrid.ui.centered.grid.container {
       flex-grow: 1;
-      flex-shri: 1;
+      flex-shrink: 1;
       flex-basis: 100%;
-      margin-left: 0 !important;
-      .navitem.row {
+      margin-left: -1rem !important;
+      .navitems.row {
         margin-left: 0 !important;
       }
     }
