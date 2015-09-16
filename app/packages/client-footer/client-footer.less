@@ -3,8 +3,13 @@
 
 // Footer for the client
 footer.client {
+  // Link sizes
+  a, a:visited {
+    // Reduce the overal font-size
+    font-size: 90% !important;
+  }
 
-  // Remove default bullet
+  // Remove default bullets
   ul {
     list-style-type: none !important;
     li::before {
@@ -12,28 +17,8 @@ footer.client {
     }
   }
 
-  // Basic pages links
-  .basicpages-links {
-    text-align: center !important;
-    ul, li {
-      text-align: inherit;
-    }
-  }
-
-  // Social links
-  .social-links {
-    text-align: right !important;
-    ul, li {
-      text-align: inherit;
-    }
-  }
-
   // Mobile specifics
   @media screen and (max-width: @tabletBreakpoint) {
-    // Remove spacer
-    .footer-spacer {
-      display: none !important;
-    }
     // Center social links
     .social-links {
       text-align: center !important;
@@ -43,9 +28,31 @@ footer.client {
     }
   }
 
-  // Link sizes
-  a, a:visited {
-    // Reduce the overal font-size
-    font-size: 90% !important;
+  // Tablet specifics
+  @media screen and (min-width: @tabletBreakpoint) and (max-width: @computerBreakpoint) {
+    // Center social links
+    .basicpages-links {
+      text-align: left !important;
+      ul, li {
+        text-align: inherit;
+      }
+    }
   }
+
+  // Basic pages links
+  // .basicpages-links {
+  //   text-align: center !important;
+  //   ul, li {
+  //     text-align: inherit;
+  //   }
+  // }
+
+  // Social links
+  // .social-links {
+  //   text-align: right !important;
+  //   ul, li {
+  //     text-align: inherit;
+  //   }
+  // }
+
 }
