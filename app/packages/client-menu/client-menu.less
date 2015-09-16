@@ -3,8 +3,18 @@
 
 // Menu for the client
 nav.client {
-  width: 100%
-  height: 2 * @h1;
+  width: 100%;
+  height: 3.5rem;
+
+  div {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    div div { padding-bottom: 0 !important; }
+  }
+
+  .congress-title, .hamburger {
+    padding-top: 0 !important;
+  }
 
   // Link in menu don't have animated underline
   a, a:visited { &::after { display: none; } }
@@ -12,13 +22,13 @@ nav.client {
   // Logos
   .brand {
     a, a:visited {
-      // position: relative;
-      // display: inline-block;
-      // width: 49%;
+      position: relative;
+      display: inline-block;
+      width: 49%;
       img {
-        // position: absolute;
-        // top: -1.5rem;
-        // left: 0;
+        position: absolute;
+        top: -1.1rem;
+        left: 0;
         width: 6rem;
         transform: scale3d(1, 1, 1);
         transition: transform @defaultDuration @defaultEasing;
@@ -31,8 +41,24 @@ nav.client {
 
   // Hamburger menu
   .hamburger {
+    padding-top: .3rem !important;
+    padding-left: 0 !important;
+    font-size: @h1;
     // @TODO Set this in app style
     color: @orange;
+  }
+
+  // Mobile specifics
+  @media screen and (max-width: @tabletBreakpoint) {
+    .ui.centered.grid.container {
+      flex-grow: 1;
+      flex-shri: 1;
+      flex-basis: 100%;
+      margin-left: 0 !important;
+      .navitem.row {
+        margin-left: 0 !important;
+      }
+    }
   }
 
   // Computer specifics
