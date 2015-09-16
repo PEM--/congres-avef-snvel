@@ -3,6 +3,11 @@
 
 // Menu for the client
 nav.client {
+  // Link in menu don't have animated underline
+  a, a:visited {
+    // Remove animated link
+    &::after { display: none; }
+  }
   .congress-title {
     position: relative;
     h1 {
@@ -10,23 +15,38 @@ nav.client {
     }
   }
   // Logos
-  a, a:visited {
-    position: relative;
-    display: inline-block;
-    width: 49%;
-    img {
-      position: absolute;
-      top: -1.9rem;
-      left: 0;
-      width: 8rem;
+  .brand {
+    a, a:visited {
+      position: relative;
+      display: inline-block;
+      width: 49%;
+      img {
+        position: absolute;
+        top: -1.5rem;
+        left: 0;
+        width: 6rem;
+        transform: scale3d(1, 1, 1);
+        transition: transform @defaultDuration @defaultEasing;
+        &:hover {
+          transform: scale3d(1.1, 1.1, 1);
+        }
+      }
     }
-    // Remove animated link
-    &::after { display: none; }
   }
+  // Hamburger menu
   .menu-button {
     // @TODO Set this in app style
     color: @orange;
     font-size: @h1;
     text-align: right;
+  }
+
+  // Mobile specifics
+  @media screen and (max-width: @tabletBreakpoint) {
+    // Remove logos
+    .brand {
+      display: none !important;
+    }
+
   }
 }

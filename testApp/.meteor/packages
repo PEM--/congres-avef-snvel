@@ -4,3 +4,5 @@ semantic:ui
 flemay:less-autoprefixer
 mquandalle:jade
 pierreeric:client-sharedstyles
+kadira:flow-router
+kadira:blaze-layout

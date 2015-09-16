@@ -18,6 +18,7 @@ Site d'inscription commun pour l'AVEF et le SNVEL.
 * [UptimeButler: Alerting](https://uptimebutler.com/)
 
 ### Technical articles
+* [Learn SemanticUI](http://learnsemantic.com/preface/introduction.html)
 * [Meteor routing guide](https://kadira.io/academy/meteor-routing-guide/)
 * [React Motion](https://github.com/chenglou/react-motion)
 * [Meteor & React](http://react-in-meteor.readthedocs.org/en/latest/)
