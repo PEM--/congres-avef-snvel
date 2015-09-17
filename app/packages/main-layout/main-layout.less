@@ -1,15 +1,28 @@
 .main-layout {
-  padding-top: 3.5rem;
-  // display: flex;
-  // flex-direction: column !important;
-  // min-height: 100vh;
-  // margin-top: 0 !important;
-  // >nav.client, >section.client, >footer.client {
-  //   flex-grow: 0;
-  //   flex-shrink: 0;
-  //   flex-basis: 1;
-  // }
-  // >section.client:last-of-type {
-  //   flex-grow: 1;
-  // }
+  // Spacing for the menu
+  padding-top: 4.5rem;
+  margin-top: 0 !important;
+
+  // Make the main-layout take the whole page height
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  >.main-content.ui.grid, >footer.client {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 1;
+  }
+  >.main-content.ui.grid {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    >section {
+      flex-grow: 0;
+      flex-shrink: 0;
+      flex-basis: 1;
+      &:last-of-type {
+        flex-grow: 1;
+      }
+    }
+  }
 }

@@ -14,8 +14,6 @@ random
 ejson
 check
 
-browser-policy
-
 # Utils
 pierreeric:logger
 
