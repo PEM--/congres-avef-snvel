@@ -1,3 +1,7 @@
+// Semantic UI variables
+@import url('/client/lib/semanticui/site/globals/site.variables.import.less');
+
+// Main layout
 .main-layout {
   // Spacing for the menu
   padding: 3.6rem 0 0 0 !important;
@@ -25,6 +29,21 @@
       flex-basis: 1;
       &:last-of-type {
         flex-grow: 1;
+      }
+    }
+  }
+
+  // Mobile specifics
+  @media screen and (max-width: @tabletBreakpoint) {
+    >.main-content {
+      // Remove unecessary padding when stacked
+      .grid, .row, .column {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+      >.row .column .grid {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
       }
     }
   }
