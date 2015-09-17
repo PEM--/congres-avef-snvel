@@ -7,15 +7,13 @@ nav.client {
   width: 100%;
   height: 3.5rem;
 
-  div {
+  // Fix grid padding
+  .navgrid {
     padding-top: 0 !important;
     padding-bottom: 0 !important;
     div div { padding-bottom: 0 !important; }
   }
-
-  .congress-title, .hamburger {
-    padding-top: 0 !important;
-  }
+  .congress-title, .hamburger { padding-top: 0 !important; }
 
   // Logos
   .brand {
@@ -43,17 +41,19 @@ nav.client {
     padding-left: 0 !important;
     font-size: @h1;
   }
-
-  // Mobile specifics
-  @media screen and (max-width: @tabletBreakpoint) {
-    .navgrid.ui.centered.grid.container {
+}
+// Mobile specifics
+@media screen and (max-width: @tabletBreakpoint) {
+  nav.client {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    .navgrid {
       flex-grow: 1;
       flex-shrink: 1;
       flex-basis: 100%;
       margin-left: -1rem !important;
-      .navitems.row {
-        margin-left: 0 !important;
-      }
+      margin: 0 !important;
+      .navitems.row { margin-left: 0 !important; }
     }
   }
 }
