@@ -14,7 +14,18 @@ FlowRouter.route('/menu', {
 
 Template.popupMenu.events({
   'click .hamburger': function() {
-    console.log('Hmaburger clicked');
+    console.log('Hamburger clicked');
     $('aside.client').toggleClass('open');
+  },
+  'tap .hamburger': function() {
+    console.log('Hamburger tapped');
+    $('aside.client').toggleClass('open');
+  },
+  'mouseover .hamburger': function() {
+    console.log('Hamburger hovered');
+    $el = $('aside.client');
+    if (!$el.hasClass('open')) {
+      $el.addClass('open');
+    }
   }
 });

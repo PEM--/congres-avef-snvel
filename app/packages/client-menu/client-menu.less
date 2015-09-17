@@ -70,17 +70,17 @@ aside.client {
   height: 100vh;
   min-width: 17rem;
   top: 0;
-  right: 120px;
+  right: 0;
   border-radius: 0 !important;
   border-top: 0 !important;
   opacity: 0;
-  transform: translate3d(50%,0,0) perspective(2000px) rotateY(40deg);
+  transform: perspective(2000px) rotateY(45deg) translate3d(50%,0,0);
   transform-origin: center;
   transition: opacity @defaultDuration @defaultEasing,
               transform @defaultDuration @defaultEasing;
   &.open {
     opacity: 1;
-    transform: translate3d(0,0,0) perspective(2000px) rotateY(0);
+    transform: perspective(2000px) rotateY(0) translate3d(0,0,0);
   }
 
   // Close butotn
