@@ -6,6 +6,7 @@ BrowserPolicy.content.disallowEval()
 # BrowserPolicy.content.disallowInlineScripts()
 BrowserPolicy.content.disallowConnect()
 # Only allow necessary protocols
+BrowserPolicy.content.allowFontDataUrl()
 log.info 'Settings Browser Policy'
 # Allow origin for Meteor hosting
 for origin in [

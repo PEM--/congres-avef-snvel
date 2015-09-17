@@ -23,8 +23,20 @@ Site d'inscription commun pour l'AVEF et le SNVEL.
 * [React Motion](https://github.com/chenglou/react-motion)
 * [Meteor & React](http://react-in-meteor.readthedocs.org/en/latest/)
 * [Getting Started with Meteor, React, and React Router](http://alexgaribay.com/2015/07/06/getting-started-with-meteor-react-and-react-router/)
+* [WebPack with Meteor + ReactRouter SSR](https://github.com/thereactivestack/meteor-webpack-react-kickstart)
+
+### Stack tooling: ES6, React, WebPack, Redux
+* [Using WebPack with Meteor](https://www.youtube.com/watch?v=QpixFzvf8U8)
+* [React Mixin](https://github.com/brigand/react-mixin)
+* [Alt](https://github.com/goatslacker/alt-devtool)
+* [Radium](http://projects.formidablelabs.com/radium/)
+* [React Jade](https://github.com/jadejs/react-jade)
+* [Meteor 1.2 update guide](http://www.okgrow.com/posts/2015/09/11/meteor-12-upgrade-guide)
+* [ES6 tools](http://www.super-script.us/2015/es6-tools.html)
+
 
 ### Specific to React animations
+* [Page transitions](https://forums.meteor.com/t/page-transitions-in-meteor-react/9837/4)
 * https://github.com/Khan/react-components
 * https://www.npmjs.com/package/react-cast
 * http://unitstep.net/blog/2015/03/03/using-react-animations-to-transition-between-ui-states/
