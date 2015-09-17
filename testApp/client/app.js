@@ -12,15 +12,9 @@ FlowRouter.route('/menu', {
   }
 });
 
-// Template.popupMenu.onRendered(function() {
-//   $('.hamburger.right.aligned.column h1').popup({
-//     inline: true,
-//     lastResort: true,
-//     hoverable: true,
-//     position: 'bottom left',
-//     // delay: {
-//     //   show: 300,
-//     //   hide: 800
-//     // }
-//   });
-// });
+Template.popupMenu.events({
+  'click .hamburger': function() {
+    console.log('Hmaburger clicked');
+    $('aside.client').toggleClass('open');
+  }
+});

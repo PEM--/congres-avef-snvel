@@ -2,9 +2,7 @@
 @import url('/client/lib/semanticui/site/globals/site.variables.import.less');
 
 // Justify text content by default
-p, div {
-  text-align: justify;
-}
+p, div { text-align: justify; }
 
 // Links with an animated underline on hovering
 a.animated, a.animated:visited {
@@ -24,19 +22,13 @@ a.animated, a.animated:visited {
     transition: transform @defaultDuration @defaultEasing;
   }
   // Animated underline links
-  &:hover {
-    &::after {
-      transform: scale3d(1, 1, 1);
-    }
-  }
+  &:hover { &::after { transform: scale3d(1, 1, 1); } }
 }
 
 // Hide animated underline links for social icons
 .social-links {
   li {
-    * {
-      pointer-events: none;
-    }
+    * { pointer-events: none; }
     a, a:visited {
       pointer-events: auto;
       position: relative;

@@ -41,8 +41,6 @@ nav.client {
     padding-top: .3rem !important;
     padding-left: 0 !important;
     font-size: @h1;
-    // @TODO Set this in app style
-    color: @orange;
   }
 
   // Mobile specifics
@@ -70,8 +68,20 @@ aside.client {
   margin-top: 0 !important;
   position: fixed;
   height: 100vh;
+  min-width: 17rem;
   top: 0;
-  right: 0;
+  right: 120px;
+  border-radius: 0 !important;
+  border-top: 0 !important;
+  opacity: 0;
+  transform: translate3d(50%,0,0) perspective(2000px) rotateY(40deg);
+  transform-origin: center;
+  transition: opacity @defaultDuration @defaultEasing,
+              transform @defaultDuration @defaultEasing;
+  &.open {
+    opacity: 1;
+    transform: translate3d(0,0,0) perspective(2000px) rotateY(0);
+  }
 
   // Close butotn
   .close {
@@ -80,13 +90,15 @@ aside.client {
     text-align: left;
     cursor: pointer;
     transition: color @defaultDuration @defaultEasing;
-    &:hover {
-      color: @red;
-    }
   }
 
   // Menu items
   .item {
     text-align: left;
+    font-weight: bold;
+    >.fa {
+      margin-right: 1rem;
+      opacity: .5;
+    }
   }
 }

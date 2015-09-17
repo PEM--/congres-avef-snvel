@@ -1,0 +1,28 @@
+// Semantic UI variables
+@import url('/client/lib/semanticui/site/globals/site.variables.import.less');
+
+// Menu for the client
+nav.client {
+  // Hamburger menu
+  .hamburger {
+    color: @orange;
+  }
+}
+
+// Popup menu
+aside.client {
+  background-color: @orange !important;
+
+  // Close button
+  .close {
+    color: red;
+    &:hover {
+      color: darken(red, 10%);
+    }
+  }
+
+  // Menu items
+  .item {
+    color: @veryLightOrange !important;
+  }
+}
