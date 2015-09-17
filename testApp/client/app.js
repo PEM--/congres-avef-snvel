@@ -5,3 +5,9 @@ FlowRouter.route('/', {
     BlazeLayout.render('home');
   }
 });
+
+FlowRouter.route('/menu', {
+  action: function() {
+    BlazeLayout.render('popupMenu');
+  }
+});
