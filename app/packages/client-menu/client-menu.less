@@ -64,3 +64,29 @@ nav.client {
     .hamburger { display: none !important; }
   }
 }
+
+// Aside popup menu
+aside.client {
+  margin-top: 0 !important;
+  position: fixed;
+  height: 100vh;
+  top: 0;
+  right: 0;
+
+  // Close butotn
+  .close {
+    margin: .1rem 0 0 .1rem;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    transition: color @defaultDuration @defaultEasing;
+    &:hover {
+      color: @red;
+    }
+  }
+
+  // Menu items
+  .item {
+    text-align: left;
+  }
+}
