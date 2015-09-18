@@ -4,13 +4,39 @@
 // Presentation styles
 section.client.presentation.row {
   // Background image
-  background-image: url('img/presentation_background_computer.jpg');
+  background-image: url('img/presentation_background_widescreenMonitor.jpg');
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
 
   // Text colors
-  h1, h2, h3, h4, h5, h6 {
-    color: @veryLightOrange;
+  h1, h2, h3, h4, h5, h6 { color: @veryLightOrange; }
+}
+
+// Mobile specifics
+@media screen and (max-width: @tabletBreakpoint) {
+  section.client.presentation.row {
+    background: transparent;
+  }
+}
+
+// Tablet specifics
+@media screen and (max-width: @computerBreakpoint) {
+  section.client.presentation.row {
+    background-image: url('img/presentation_background_tablet.jpg');
+  }
+}
+
+// Computer specifics
+@media screen and (max-width: @largeMonitorBreakpoint) {
+  section.client.presentation.row {
+    background-image: url('img/presentation_background_computer.jpg');
+  }
+}
+
+// Large monitor specifics
+@media screen and (max-width: @widescreenMonitorBreakpoint) {
+  section.client.presentation.row {
+    background-image: url('img/presentation_background_largeMonitor.jpg');
   }
 }
