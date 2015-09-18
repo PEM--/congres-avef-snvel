@@ -16,26 +16,26 @@ section.client.presentation.row {
 // Mobile specifics
 @media screen and (max-width: @tabletBreakpoint) {
   section.client.presentation.row {
-    background: transparent;
+    background: none;
   }
 }
 
 // Tablet specifics
-@media screen and (max-width: @computerBreakpoint) {
+@media screen and (min-width: @tabletBreakpoint) and (max-width: @computerBreakpoint) {
   section.client.presentation.row {
     background-image: url('img/presentation_background_tablet.jpg');
   }
 }
 
 // Computer specifics
-@media screen and (max-width: @largeMonitorBreakpoint) {
+@media screen and (min-width: @computerBreakpoint) and (max-width: @largeMonitorBreakpoint) {
   section.client.presentation.row {
     background-image: url('img/presentation_background_computer.jpg');
   }
 }
 
 // Large monitor specifics
-@media screen and (max-width: @widescreenMonitorBreakpoint) {
+@media screen and (min-width: @largeMonitorBreakpoint) and (max-width: @widescreenMonitorBreakpoint) {
   section.client.presentation.row {
     background-image: url('img/presentation_background_largeMonitor.jpg');
   }
