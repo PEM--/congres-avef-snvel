@@ -43,6 +43,7 @@ Site d'inscription commun pour l'AVEF et le SNVEL.
 
 ### [React components](http://react-components.com)
 * [Mailto](https://www.npmjs.com/package/react-mailto)
+* [Responsive Image](https://github.com/jackmahoney/react-responsive-image/blob/master/app/react-responsive-image.js)
 * [Burger menu](http://react-components.com/component/react-burger-menu)
 * [Quill WYSIWYG editor](http://react-components.com/component/react-quill)
 * [Waypoints](http://brigade.github.io/react-waypoint/)
