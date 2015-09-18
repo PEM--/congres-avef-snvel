@@ -9,3 +9,11 @@ section.client.partners.row {
     color: @green;
   }
 }
+
+// Mobile specifics
+@media screen and (max-width: @tabletBreakpoint) {
+  section.client.partners.row {
+    background: none;
+    h1 { color: @veryLightOrange; }
+  }
+}

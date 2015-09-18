@@ -4,7 +4,13 @@
 // Program styles
 section.client.program.row {
   // Text colors
-  h1, h2, h3, h4, h5, h6 {
-    color: @orange;
+  h1, h2, h3, h4, h5, h6 { color: @orange; }
+}
+
+// Mobile specifics
+@media screen and (max-width: @tabletBreakpoint) {
+  section.client.program.row {
+    background: none;
+    h1 { color: @veryLightOrange; }
   }
 }

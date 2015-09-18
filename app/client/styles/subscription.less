@@ -3,8 +3,16 @@
 
 // Subscription styles
 section.client.subscription.row {
+  background: @green;
   // Text colors
   h1, h2, h3, h4, h5, h6 {
     color: @veryLightOrange;
+  }
+}
+
+// Mobile specifics
+@media screen and (max-width: @tabletBreakpoint) {
+  section.client.subscription.row {
+    background: none;
   }
 }

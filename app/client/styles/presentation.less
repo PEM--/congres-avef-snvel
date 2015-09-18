@@ -17,26 +17,30 @@ section.client.presentation.row {
 @media screen and (max-width: @tabletBreakpoint) {
   section.client.presentation.row {
     background: none;
+    .intro {
+      div:nth-child(2) {
+        background-color: transparent !important;
+        text-align: right !important;
+        img {
+          margin-top: -3rem;
+          width: 30%;
+        }
+      }
+    }
   }
 }
 
 // Tablet specifics
 @media screen and (min-width: @tabletBreakpoint) and (max-width: @computerBreakpoint) {
-  section.client.presentation.row {
-    background-image: url('img/presentation_background_tablet.jpg');
-  }
+  section.client.presentation.row { background-image: url('img/presentation_background_tablet.jpg'); }
 }
 
 // Computer specifics
 @media screen and (min-width: @computerBreakpoint) and (max-width: @largeMonitorBreakpoint) {
-  section.client.presentation.row {
-    background-image: url('img/presentation_background_computer.jpg');
-  }
+  section.client.presentation.row { background-image: url('img/presentation_background_computer.jpg'); }
 }
 
 // Large monitor specifics
 @media screen and (min-width: @largeMonitorBreakpoint) and (max-width: @widescreenMonitorBreakpoint) {
-  section.client.presentation.row {
-    background-image: url('img/presentation_background_largeMonitor.jpg');
-  }
+  section.client.presentation.row { background-image: url('img/presentation_background_largeMonitor.jpg'); }
 }
