@@ -14,7 +14,7 @@ section.client.presentation.row {
 }
 
 // Mobile specifics
-@media screen and (max-width: @tabletBreakpoint) {
+@media screen and (max-width: @largestMobileScreen) {
   section.client.presentation.row {
     background: none;
     .intro {
@@ -31,16 +31,16 @@ section.client.presentation.row {
 }
 
 // Tablet specifics
-@media screen and (min-width: @tabletBreakpoint) and (max-width: @computerBreakpoint) {
+@media screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
   section.client.presentation.row { background-image: url('img/presentation_background_tablet.jpg'); }
 }
 
 // Computer specifics
-@media screen and (min-width: @computerBreakpoint) and (max-width: @largeMonitorBreakpoint) {
+@media screen and (min-width: @computerBreakpoint) and (max-width: @largestSmallMonitor) {
   section.client.presentation.row { background-image: url('img/presentation_background_computer.jpg'); }
 }
 
 // Large monitor specifics
-@media screen and (min-width: @largeMonitorBreakpoint) and (max-width: @widescreenMonitorBreakpoint) {
+@media screen and (min-width: @largeMonitorBreakpoint) and (max-width: @largestLargeMonitor) {
   section.client.presentation.row { background-image: url('img/presentation_background_largeMonitor.jpg'); }
 }
