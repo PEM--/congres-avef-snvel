@@ -68,3 +68,25 @@ a.animated, a.animated:visited {
     }
   }
 }
+
+// Animations
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translate3d(-20px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(20px, 0, 0);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
