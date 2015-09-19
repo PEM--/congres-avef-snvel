@@ -24,6 +24,7 @@ Site d'inscription commun pour l'AVEF et le SNVEL.
 * [Meteor & React](http://react-in-meteor.readthedocs.org/en/latest/)
 * [Getting Started with Meteor, React, and React Router](http://alexgaribay.com/2015/07/06/getting-started-with-meteor-react-and-react-router/)
 * [WebPack with Meteor + ReactRouter SSR](https://github.com/thereactivestack/meteor-webpack-react-kickstart)
+* [Functional programming: usage of closure instead of OO](https://forums.meteor.com/t/use-functional-programming-to-simplify-your-meteor-code/9915)
 
 ### Stack tooling: ES6, React, WebPack, Redux
 * [Using WebPack with Meteor](https://www.youtube.com/watch?v=QpixFzvf8U8)
@@ -44,6 +45,7 @@ Site d'inscription commun pour l'AVEF et le SNVEL.
 ### [React components](http://react-components.com)
 * [Mailto](https://www.npmjs.com/package/react-mailto)
 * [Responsive Image](https://github.com/jackmahoney/react-responsive-image/blob/master/app/react-responsive-image.js)
+* [Autosuggest](https://github.com/moroshko/react-autosuggest)
 * [Burger menu](http://react-components.com/component/react-burger-menu)
 * [Quill WYSIWYG editor](http://react-components.com/component/react-quill)
 * [Waypoints](http://brigade.github.io/react-waypoint/)
