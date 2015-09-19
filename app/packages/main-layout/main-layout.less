@@ -53,14 +53,14 @@
         flex-shrink: 1 !important;
         // Entrance animation
         opacity: 0;
-        animation: fadeInRight @defaultDuration @defaultEasing forwards;
+        animation: fadeInRight @defaultDuration @defaultDuration @defaultEasing forwards;
         &:nth-of-type(2) {
-          animation-delay: @defaultDuration;
+          animation-delay: 2 * @defaultDuration;
           animation-name: fadeInLeft;
         }
-        &:nth-of-type(3) { animation-delay: 2 * @defaultDuration; }
+        &:nth-of-type(3) { animation-delay: 3 * @defaultDuration; }
         &:nth-of-type(4) {
-          animation-delay: 3 * @defaultDuration;
+          animation-delay: 4 * @defaultDuration;
           animation-name: fadeInLeft;
         }
         // Small separator

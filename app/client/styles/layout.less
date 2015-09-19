@@ -4,8 +4,10 @@
 // Client main content
 // Mobile specifics
 @media screen and (max-width: @tabletBreakpoint) {
+  body {
+    background-color: @green !important;
+  }
   .client.main-content {
-    background-color: @green;
     position: relative;
     // Background image with delayed fade in animation
     &::before {

@@ -8,6 +8,43 @@ section.client.partners.row {
   h1, h2, h3, h4, h5, h6 {
     color: @green;
   }
+
+  // Partner's logos
+  .logo {
+    margin-right: 2rem;
+    display: inline-block;
+    width: 30%;
+    max-width: 10rem;
+    img { width: 100%; }
+    // Border for readability
+    position: relative;
+    top: .5rem;
+    left: .5rem;
+    &:before {
+      content: '';
+      z-index: -1;
+      position: absolute;
+      top: -.5rem;
+      left: -.5rem;
+      width: calc(~"100% + 1rem");
+      height: calc(~"100% + 1rem");
+      background-color: @veryLightGreen;
+      border-radius: 3px;
+    }
+    // Entrance animation
+    opacity: 0;
+    animation: fadeInUp @defaultDuration @defaultEasing forwards;
+    // Set delay for entrance animation for 10 logos
+    @partnersLogoIdx: 10;
+    @partnersLogoInitialDelay: 5 * @defaultDuration;
+    .partnersLogoMixin (@i) when (@i>0) {
+      &:nth-of-type(@{i}) {
+        animation-delay: @partnersLogoInitialDelay + @i * @defaultDuration;
+      }
+      .partnersLogoMixin(@i - 1);
+    }
+    .partnersLogoMixin(@partnersLogoIdx);
+  }
 }
 
 // Mobile specifics
