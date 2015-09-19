@@ -3,10 +3,8 @@
 
 // Client main content
 // Mobile specifics
-@media screen and (max-width: @tabletBreakpoint) {
-  body {
-    background-color: @green !important;
-  }
+@media screen and (max-width: @largestMobileScreen) {
+  body { background: @green linear-gradient(darken(@green,10%), @green); }
   .client.main-content {
     position: relative;
     // Background image with delayed fade in animation
