@@ -5,10 +5,24 @@
 // Mobile specifics
 @media screen and (max-width: @tabletBreakpoint) {
   .client.main-content {
-    // Background image
-    background-image: url('img/eiffel_tower_tablet.jpg');
-    background-repeat: no-repeat;
-    background-position: top center;
-    background-size: cover;
+    background-color: @green;
+    position: relative;
+    // Background image with delayed fade in animation
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      // Background image
+      background-image: url('img/eiffel_tower_tablet.jpg');
+      background-repeat: no-repeat;
+      background-position: top center;
+      background-size: cover;
+      // Entrance animation with a 2s delay
+      animation: fadeIn 1s 2s @defaultEasing forwards;
+    }
   }
 }
