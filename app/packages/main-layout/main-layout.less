@@ -30,6 +30,19 @@
       &:last-of-type {
         flex-grow: 1;
       }
+
+      // Entrance animation on each section
+      opacity: 0;
+      animation: fadeInRight @defaultDuration @defaultDuration @defaultEasing forwards;
+      &:nth-of-type(2) {
+        animation-delay: 2 * @defaultDuration;
+        animation-name: fadeInLeft;
+      }
+      &:nth-of-type(3) { animation-delay: 3 * @defaultDuration; }
+      &:nth-of-type(4) {
+        animation-delay: 4 * @defaultDuration;
+        animation-name: fadeInLeft;
+      }
     }
   }
 
@@ -46,23 +59,10 @@
         margin-right: 0 !important;
       }
       // Each section for mobile has an iso height, a small separator
-      // and an animation entrance
       >section {
         // Section's size
         flex-grow: 1 !important;
         flex-shrink: 1 !important;
-        // Entrance animation
-        opacity: 0;
-        animation: fadeInRight @defaultDuration @defaultDuration @defaultEasing forwards;
-        &:nth-of-type(2) {
-          animation-delay: 2 * @defaultDuration;
-          animation-name: fadeInLeft;
-        }
-        &:nth-of-type(3) { animation-delay: 3 * @defaultDuration; }
-        &:nth-of-type(4) {
-          animation-delay: 4 * @defaultDuration;
-          animation-name: fadeInLeft;
-        }
         // Small separator
         &:not(:last-of-type) {
           position: relative;
@@ -70,8 +70,8 @@
             content: '';
             position: absolute;
             bottom: 0;
-            left: 10%;
-            width: 80%;
+            left: 1rem;
+            width: calc(~"100% - 2rem");
             height: 1px;
           }
         }
