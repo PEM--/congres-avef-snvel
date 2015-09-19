@@ -16,6 +16,7 @@
       width: 100%;
       height: 100%;
       opacity: 0;
+
       // Background image
       background-image: url('img/eiffel_tower_tablet.jpg');
       background-repeat: no-repeat;
@@ -23,6 +24,14 @@
       background-size: cover;
       // Entrance animation with a 2s delay
       animation: fadeIn 1s 2s @defaultEasing forwards;
+    }
+
+    // Colors for section separator
+    >section {
+      // Small separator
+      &:not(:last-of-type) {
+        &::after { background: @veryLightOrange; }
+      }
     }
   }
 }
