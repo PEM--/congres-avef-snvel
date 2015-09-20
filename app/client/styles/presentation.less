@@ -3,14 +3,13 @@
 
 // Presentation styles
 section.client.presentation.row {
-  // Background image
-  background-image: url('img/presentation_background_widescreenMonitor.jpg');
-  background-repeat: no-repeat;
-  background-position: center center;
-  background-size: cover;
+  background: none;
 
   // Text colors
-  h1, h2, h3, h4, h5, h6 { color: @veryLightOrange; }
+  h1 {
+    color: @veryLightOrange;
+    text-shadow: 0 0 1px black;
+  }
 }
 
 // Mobile specifics
@@ -27,6 +26,17 @@ section.client.presentation.row {
         }
       }
     }
+  }
+}
+
+// Not mobile screen resolutions
+@media screen and (min-width: @tabletBreakpoint) {
+  section.client.presentation.row {
+    // Background image
+    background-image: url('img/presentation_background_widescreenMonitor.jpg');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
   }
 }
 

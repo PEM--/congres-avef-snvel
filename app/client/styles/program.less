@@ -3,14 +3,21 @@
 
 // Program styles
 section.client.program.row {
+  background: none;
   // Text colors
-  h1, h2, h3, h4, h5, h6 { color: @orange; }
+  h1 {
+    color: @veryLightOrange;
+    text-shadow: 0 0 1px black;
+  }
 }
 
-// Mobile specifics
-@media screen and (max-width: @largestMobileScreen) {
+// Not mobile screen resolutions
+@media screen and (min-width: @tabletBreakpoint) {
   section.client.program.row {
-    background: none;
-    h1 { color: @veryLightOrange; }
+    background: @veryLightOrange;
+    h1 {
+      color: @orange;
+      text-shadow: 0 0 1px white;
+    }
   }
 }

@@ -3,10 +3,11 @@
 
 // Partners styles
 section.client.partners.row {
-  background-color: @veryLightGreen;
+  background-color: none;
   // Text colors
-  h1, h2, h3, h4, h5, h6 {
-    color: @green;
+  h1 {
+    color: @veryLightOrange;
+    text-shadow: 0 0 1px black;
   }
 
   // Partner's logos
@@ -47,10 +48,13 @@ section.client.partners.row {
   }
 }
 
-// Mobile specifics
-@media screen and (max-width: @largestMobileScreen) {
+// Not mobile screen resolutions
+@media screen and (min-width: @tabletBreakpoint) {
   section.client.partners.row {
-    background: none;
-    h1 { color: @veryLightOrange; }
+    background-color: @veryLightGreen;
+    h1 {
+      color: @green;
+      text-shadow: 0 0 1px white;
+    }
   }
 }
