@@ -1,0 +1,27 @@
+<svg viewBox="0 0 1200 270.6" xmlns="http://www.w3.org/2000/svg"><path d="M874 .3L899 51l-24.5 49H1200V0z" fill-rule="evenodd" fill="#ff7100"/><path d="M0 0c175 0 225 100 301.7 100h275l24.8-49.6-25-49.8S207 0 0 0z" fill-rule="evenodd" fill="#007e5f"/><path d="M576.6.6l25 49.8-25 49.6h298L899 51 874 1 576.6.6z" fill-rule="evenodd" fill="#fca94f"/>
+  <text fill="#fff9e1" font-family="Impact" font-size="22.5" font-stretch="condensed" letter-spacing="0" style="line-height:125%;-inkscape-font-specification:'Impact Condensed';text-align:center" text-anchor="middle" transform="translate(0 -752.362)"
+    word-spacing="0" x="450" y="811.3">
+    <tspan x="450" y="811.3">3 novembre</tspan>
+  </text>
+  <text fill="#fff9e1" font-family="Impact" font-size="22.5" font-stretch="condensed" letter-spacing="0" style="line-height:125%;-inkscape-font-specification:'Impact Condensed';text-align:center" text-anchor="middle" transform="translate(0 -752.362)"
+    word-spacing="0" x="750.3" y="811.1">
+    <tspan x="750.3" y="811.1">4 novembre</tspan>
+  </text>
+  <text fill="#fff9e1" font-family="Impact" font-size="22.5" font-stretch="condensed" letter-spacing="0" style="line-height:125%;-inkscape-font-specification:'Impact Condensed';text-align:center" text-anchor="middle" transform="translate(0 -752.362)"
+    word-spacing="0" x="1050" y="811.1">
+    <tspan x="1050" y="811.1">5 novembre</tspan>
+  </text><path d="M319 191l-9.4 5.4-9.4 5.4 9.4 5.4 9.3 5.5V205h262v7.7l9-5.5 9.4-5.4-9.4-5.4-9.3-5.4v7.3H319V191z" fill="#007e5f"/>
+  <text fill="#007e5f" font-family="Impact" font-size="27.5" font-stretch="condensed" letter-spacing="0" style="line-height:125%;-inkscape-font-specification:'Impact Condensed';text-align:center" text-anchor="middle" transform="translate(0 -752.362)"
+    word-spacing="0" x="450.1" y="988.2">
+    <tspan x="450.1" y="988.2">Journée pré-congrès</tspan>
+  </text><path d="M619 191l-9.4 5.4-9.4 5.4 9.4 5.4 9.3 5.5V205h562v7.7l9-5.5 9.4-5.4-9.4-5.4-9.3-5.4v7.3H619V191z" fill="#fca94f"/>
+  <text fill="#007e5f" font-family="Impact" font-size="27.5" font-stretch="condensed" letter-spacing="0" style="line-height:125%;-inkscape-font-specification:'Impact Condensed';text-align:center" text-anchor="middle" transform="translate(0 -752.362)"
+    word-spacing="0" x="900.1" y="988.2">
+    <tspan x="900.1" y="988.2">Journées scientifiques et socio-écnomiques</tspan>
+    <tspan x="900.1" y="1022.5">AVEF/SNVEL/EMBS</tspan>
+  </text><path d="M319 115l-9.4 5.4-9.4 5.4 9.4 5.4 9.3 5.5V129h862v7.7l9-5.5 9.4-5.4-9.4-5.4-9.3-5.4v7.3H319V115z" fill="#ff7100"/>
+  <text fill="#ff7100" font-family="Impact" font-size="35" font-stretch="condensed" letter-spacing="0" style="line-height:125%;-inkscape-font-specification:'Impact Condensed';text-align:center" text-anchor="middle" transform="translate(0 -752.362)"
+    word-spacing="0" x="750.3" y="919.1">
+    <tspan x="750.3" y="919.1">CONGRÈS AVEF/SNVEL 2015</tspan>
+  </text>
+</svg>

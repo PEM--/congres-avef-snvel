@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="1200"
+   height="270.62039"
+   viewBox="0 0 1200 270.62039"
+   id="svg5004"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="program.svg">
+  <defs
+     id="defs5006" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.71416667"
+     inkscape:cx="662.3824"
+     inkscape:cy="204.29123"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:window-width="1362"
+     inkscape:window-height="723"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     units="px"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0">
+    <sodipodi:guide
+       position="650,170.62038"
+       orientation="0,1"
+       id="guide5579" />
+    <inkscape:grid
+       type="xygrid"
+       id="grid5581"
+       dotted="true"
+       spacingx="5"
+       spacingy="5"
+       originx="0"
+       originy="-29.379616" />
+    <sodipodi:guide
+       position="300,245.62038"
+       orientation="1,0"
+       id="guide5628" />
+    <sodipodi:guide
+       position="600,245.62038"
+       orientation="1,0"
+       id="guide5630" />
+    <sodipodi:guide
+       position="900,145.62038"
+       orientation="1,0"
+       id="guide5632" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata5009">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Calque 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-752.36216)">
+    <path
+       style="fill:#ff7100;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 874,752.66204 25,50.70012 -24.5,49 325.5,0 0,-100 z"
+       id="path5609"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cccccc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:condensed;font-size:17.5px;line-height:125%;font-family:Impact;-inkscape-font-specification:'Impact Condensed';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="190.43175"
+       y="920.74023"
+       id="text5571"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5573"
+         x="190.43175"
+         y="920.74023" /></text>
+    <path
+       style="fill:#007e5f;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 0,0 c 175,0 225,100 301.73242,100 l 275,0 L 601.5293,50.400391 576.625,0.5859375 C 576.625,0.5859375 206.93671,0.02382769 0,0 Z"
+       transform="translate(0,752.36216)"
+       id="path5595"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="cscccc" />
+    <path
+       style="fill:#fca94f;fill-opacity:1;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 576.625,752.9481 24.9043,49.81445 -24.79688,49.59961 297.76758,0 24.5,-49 -25,-50 c 0,0 -151.80436,-0.21606 -297.375,-0.41406 z"
+       id="path5611"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:condensed;font-size:22.5px;line-height:125%;font-family:Impact;-inkscape-font-specification:'Impact Condensed';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#fff9e1;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="450.00549"
+       y="811.25562"
+       id="text5575"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5577"
+         x="450.00549"
+         y="811.25562">3  novembre</tspan></text>
+    <text
+       sodipodi:linespacing="125%"
+       id="text5583"
+       y="811.12378"
+       x="750.2691"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:condensed;font-size:22.5px;line-height:125%;font-family:Impact;-inkscape-font-specification:'Impact Condensed';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#fff9e1;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="811.12378"
+         x="750.2691"
+         id="tspan5585"
+         sodipodi:role="line">4  novembre</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:condensed;font-size:22.5px;line-height:125%;font-family:Impact;-inkscape-font-specification:'Impact Condensed';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#fff9e1;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="1049.9724"
+       y="811.08533"
+       id="text5587"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5589"
+         x="1049.9724"
+         y="811.08533">5  novembre</tspan></text>
+    <path
+       style="opacity:1;fill:#007e5f;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 318.94922,943.36216 -9.375,5.41211 -9.375,5.41406 9.375,5.41211 9.375,5.41211 0,-7.55273 261.95117,0 0,7.55273 9.375,-5.41211 9.375,-5.41211 -9.375,-5.41406 -9.375,-5.41211 0,7.30078 -261.95117,0 0,-7.30078 z"
+       id="rect5644"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:condensed;font-size:27.5px;line-height:125%;font-family:Impact;-inkscape-font-specification:'Impact Condensed';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#007e5f;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="450.09399"
+       y="988.151"
+       id="text5646"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5648"
+         x="450.09399"
+         y="988.151">Journée pré-congrès</tspan></text>
+    <path
+       style="opacity:1;fill:#fca94f;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 618.94922,943.36216 -9.375,5.41211 -9.375,5.41406 9.375,5.41211 9.375,5.41211 0,-7.55273 561.95118,0 0,7.55273 9.375,-5.41211 9.375,-5.41211 -9.375,-5.41406 -9.375,-5.41211 0,7.30078 -561.95118,0 0,-7.30078 z"
+       id="rect5666"
+       inkscape:connector-curvature="0" />
+    <text
+       sodipodi:linespacing="125%"
+       id="text5668"
+       y="988.151"
+       x="900.09399"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:condensed;font-size:27.5px;line-height:125%;font-family:Impact;-inkscape-font-specification:'Impact Condensed';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#007e5f;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       xml:space="preserve"><tspan
+         y="988.151"
+         x="900.09399"
+         id="tspan5670"
+         sodipodi:role="line">Journées scientifiques et socio-écnomiques</tspan><tspan
+         y="1022.526"
+         x="900.09399"
+         sodipodi:role="line"
+         id="tspan5676">AVEF/SNVEL/EMBS</tspan></text>
+    <path
+       style="opacity:1;fill:#ff7100;fill-opacity:1;stroke:none;stroke-width:1;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0"
+       d="m 318.94922,115 -9.375,5.41211 -9.375,5.41406 9.375,5.41211 9.375,5.41211 0,-7.55273 861.95118,0 0,7.55273 9.375,-5.41211 9.375,-5.41211 -9.375,-5.41406 -9.375,-5.41211 0,7.30078 -861.95118,0 0,-7.30078 z"
+       transform="translate(0,752.36216)"
+       id="path5678"
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:condensed;font-size:35px;line-height:125%;font-family:Impact;-inkscape-font-specification:'Impact Condensed';text-align:center;letter-spacing:0px;word-spacing:0px;text-anchor:middle;fill:#ff7100;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="750.2691"
+       y="919.12378"
+       id="text5684"
+       sodipodi:linespacing="125%"><tspan
+         sodipodi:role="line"
+         id="tspan5686"
+         x="750.2691"
+         y="919.12378">CONGRÈS AVEF/SNVEL 2015</tspan></text>
+  </g>
+</svg>
