@@ -15,13 +15,17 @@ section.client.subscription.row {
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: space-between;
+    width: 100%;
     .subscription-type {
       flex-grow: 1;
-      flex-shrink: 1;
-      flex-basis: 33%;
-      text-align: center !important;
+      flex-shrink: 0;
+      flex-basis: 33.3%;
+      img { max-height: 6rem; }
+      &:first-of-type {
+        flex-grow: 0;
+      }
       &:last-of-type {
-        text-align: right !important;
+        flex-grow: 0;
       }
     }
   }
