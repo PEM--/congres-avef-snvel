@@ -31,6 +31,20 @@ section.client.presentation.row {
 
 // Not mobile screen resolutions
 @media screen and (min-width: @tabletBreakpoint) {
+  section.client.presentation.row, .intro.row {
+    // Ensure proper view height for background image
+    height: 33vh;
+    // Logo for the dock of Paris
+    div { height: 33vh; }
+    .green.column {
+      position: relative;
+      img {
+        position: absolute;
+        top: 50%;
+        transform: translate3d(0, -50%, 0);
+      }
+    }
+  }
   section.client.presentation.row {
     // Background image
     background-image: url('img/presentation_background_widescreenMonitor.jpg');
