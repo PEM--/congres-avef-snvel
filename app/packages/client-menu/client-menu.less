@@ -44,6 +44,7 @@ nav.client {
     padding-top: .3rem !important;
     padding-left: 0 !important;
     font-size: @h1;
+    cursor: pointer;
   }
 }
 // Mobile specifics
@@ -73,13 +74,13 @@ aside.client {
   border-radius: 0 !important;
   border-top: 0 !important;
   opacity: 0;
-  transform: perspective(2000px) rotateY(45deg) translate3d(50%,0,0);
-  transform-origin: center;
+  transform: perspective(2000px) translate3d(100%,0,0) rotateY(90deg);
+  transform-origin: left center;
   transition: opacity @defaultDuration @defaultEasing,
               transform @defaultDuration @defaultEasing;
   &.open {
-    opacity: 1;
-    transform: perspective(2000px) rotateY(0) translate3d(0,0,0);
+    opacity: .95;
+    transform: perspective(2000px) translate3d(0,0,0) rotateY(0);
   }
 
   // Close butotn
@@ -100,4 +101,19 @@ aside.client {
       opacity: .5;
     }
   }
+}
+
+// Tablet specifics
+@media screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
+  aside.client { right: calc(~"50% " - @tabletBreakpoint/2); }
+}
+
+// Computer specifics
+@media screen and (min-width: @computerBreakpoint) and (max-width: @largestSmallMonitor) {
+  aside.client { right: calc(~"50% " - @computerBreakpoint/2); }
+}
+
+// Large monitor and over specifics
+@media screen and (min-width: @largeMonitorBreakpoint) {
+  aside.client { right: calc(~"50% " - @largeMonitorBreakpoint/2); }
 }

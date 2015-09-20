@@ -12,20 +12,20 @@ FlowRouter.route('/menu', {
   }
 });
 
-Template.popupMenu.events({
+Template.MainMenu.events({
   'click .hamburger': function() {
     console.log('Hamburger clicked');
     $('aside.client').toggleClass('open');
   },
-  'tap .hamburger': function() {
-    console.log('Hamburger tapped');
-    $('aside.client').toggleClass('open');
-  },
-  'mouseover .hamburger': function() {
-    console.log('Hamburger hovered');
-    $el = $('aside.client');
-    if (!$el.hasClass('open')) {
-      $el.addClass('open');
-    }
-  }
+  // 'tap .hamburger': function() {
+  //   console.log('Hamburger tapped');
+  //   $('aside.client').toggleClass('open');
+  // },
+  // 'mouseover .hamburger': function() {
+  //   console.log('Hamburger hovered');
+  //   $el = $('aside.client');
+  //   if (!$el.hasClass('open')) {
+  //     $el.addClass('open');
+  //   }
+  // }
 });
