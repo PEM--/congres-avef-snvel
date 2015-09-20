@@ -3,17 +3,31 @@
 
 // Subscription styles
 section.client.subscription.row {
-  background: @green;
+  background: none;
   // Text colors
   h1 {
     color: @veryLightOrange;
     text-shadow: 0 0 1px black;
   }
+  // Infography on landing page
+  .subscription-types {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    img {
+      flex-grow: 1;
+      flex-shrink: 1;
+      flex-basis: 33%;
+      text-align: center !important;
+      &:last-of-type {
+        text-align: right !important;
+      }
+    }
+  }
 }
 
-// Mobile specifics
-@media screen and (max-width: @largestMobileScreen) {
-  section.client.subscription.row {
-    background: none;
-  }
+// Not mobile screen resolutions
+@media screen and (min-width: @tabletBreakpoint) {
+  section.client.subscription.row { background: @green; }
 }
