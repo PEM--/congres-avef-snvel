@@ -56,8 +56,8 @@ a.animated, a.animated:visited {
         height: 2rem;
         border-radius: 50%;
         z-index: -1;
-        opacity: .0001;
-        transform: scale3d(.0001, .0001, .0001);
+        opacity: 0;
+        transform: scale3d(0, 0, 0);
         transition: opacity @defaultDuration @defaultEasing,
                     transform @defaultDuration @defaultEasing;
       }
@@ -65,56 +65,10 @@ a.animated, a.animated:visited {
     &:hover {
       a, a:visited {
         &::before {
-          opacity: .9999;
-          transform: scale3d(.9999, .9999, .9999);
+          opacity: 1;
+          transform: scale3d(1, 1, 1);
         }
       }
     }
-  }
-}
-
-// Animations
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-@keyframes fadeInRight {
-  from {
-    opacity: 0;
-    transform: translate3d(-20px, 0, 0);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-@keyframes fadeInLeft {
-  from {
-    opacity: 0;
-    transform: translate3d(20px, 0, 0);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 20px, 0);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-@keyframes fadeInDown {
-  from {
-    opacity: 0;
-    transform: translate3d(0, -20px, 0);
-  }
-  to {
-    opacity: 1;
-    transform: none;
   }
 }
