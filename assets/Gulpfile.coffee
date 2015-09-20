@@ -24,6 +24,7 @@ path = require 'path'
 # Distribution folders
 videoDist = '../app/public/videos/'
 imgDist = '../app/public/img/'
+fontDist = '../app/public/fonts/'
 faviconsDist = '../app/public/'
 
 # Video compression

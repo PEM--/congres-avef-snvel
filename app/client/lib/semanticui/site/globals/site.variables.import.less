@@ -4,14 +4,26 @@
 /*-------------------
        Fonts
 --------------------*/
-@fontName          : 'Open Sans Condensed';
+@font-face {
+    font-family: 'impactregular';
+    src: url('fonts/unicode.impact-webfont.eot');
+    src: url('fonts/unicode.impact-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/unicode.impact-webfont.woff2') format('woff2'),
+         url('fonts/unicode.impact-webfont.woff') format('woff'),
+         url('fonts/unicode.impact-webfont.ttf') format('truetype'),
+         url('fonts/unicode.impact-webfont.svg#impactregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@fontName          : 'impactregular';
 @fontSmoothing     : antialiased;
 
 @headerFont        : @fontName, 'Helvetica Neue', Arial, Helvetica, sans-serif;
 @pageFont          : 'Helvetica Neue', Arial, Helvetica, sans-serif;
 
 @googleFontName    : 'Open+Sans+Condensed';
-@importGoogleFonts : true;
+@importGoogleFonts : false;
 @googleFontSizes   : '300,700';
 @googleSubset      : 'latin';
 
@@ -55,7 +67,8 @@
   Page Heading
 ---------------*/
 
-@headerFontWeight : bold;
+//@headerFontWeight : bold;
+@headerFontWeight : normal;
 @headerLineHeight : 1.2857em;
 
 @h1 : 2rem;

@@ -16,10 +16,9 @@
     "gulp-imagemin": "^2.3.0",
     "gulp-load-plugins": "^0.10.0",
     "gulp-rename": "^1.2.2",
-    "gulp-util": "^3.0.4",
+    "gulp-util": "^3.0.6",
     "gulp-webp": "^2.3.0",
-    "imagemin-pngquant": "^4.1.0",
-    "gulp-ttf2woff": "^1.1.0"
+    "imagemin-pngquant": "^4.2.0"
   },
   "dependencies": {
     "underscore": "^1.8.3"
