@@ -23,12 +23,12 @@ SocialLinkList = createClass({
   mixins: [ReactMeteorData],
   // Subscribe to SocialLinks (reactive methods)
   getMeteorData() {
-    const handle = Col.SocialLinks.subAllLinks();
+    const handle = Col.socialLinks.subAllLinks();
     return {
       // Use handle to show loading state
       loading: !handle.ready(),
       // Expose the list as an array
-      items: Col.SocialLinks.find({}, {
+      items: Col.socialLinks.collection.find({}, {
         sort: {order: 1}
       }).fetch()
     };

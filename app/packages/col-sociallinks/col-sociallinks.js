@@ -1,5 +1,5 @@
 // Options used on the server and the client
-let options = {
+const options = {
   name: 'SocialLinks',
   schema: {
     title: { type: String, label: 'Réseau social', max: 256 },

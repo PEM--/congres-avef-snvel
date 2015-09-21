@@ -4,7 +4,7 @@
 
 // Base class for Collection. Takes car of default value and ensure indexes.
 class BaseCollection {
-  constructor({ name, schema, defaults, indexes }) {
+  constructor({ name, schema }) {
     // Assign arguments as class properties
     let [ args, dummy ] = [...arguments];
     for (let prop of Object.keys(args)) {

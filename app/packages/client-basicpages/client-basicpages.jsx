@@ -17,12 +17,12 @@ Rc.Client.BasicPages = createClass({
   getMeteorData() {
     const { url } = this.props;
     // Subscribe to get the content of the page
-    const handle = Col.BasicPages.subPage(url);
+    const handle = Col.basicPages.subPage(url);
     return {
       // Use handle to show loading state
       loading: !handle.ready(),
       // Get the content of the basic page
-      item: Col.BasicPages.findOne({url})
+      item: Col.basicPages.collection.findOne({url})
     };
   },
   render() {
@@ -41,7 +41,7 @@ Rc.Client.BasicPages = createClass({
 // Routing
 // Isomorhic function
 var setBasicPageRoutes = function() {
-  let basicPages = Col.BasicPages.find().fetch();
+  let basicPages = Col.basicPages.collection.find().fetch();
   basicPages.forEach(function(page) {
     FlowRouter.route(`/${page.url}`, {
       name: page.url,
@@ -59,7 +59,7 @@ var setBasicPageRoutes = function() {
 // subscribed to all data, which leads to these differences on the client
 // and on the server.
 if (Meteor.isClient) {
-  Col.BasicPages.subAllLinks(function() {
+  Col.basicPages.subAllLinks(function() {
     setBasicPageRoutes();
   });
 } else {

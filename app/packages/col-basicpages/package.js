@@ -9,15 +9,15 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   const shared = [
-    'pierreeric:namespaces',
-    'pierreeric:logger',
-    'pierreeric:subscription-cache'
+    'pierreeric:namespaces'
   ];
   api.use([
     'underscore',
     'ecmascript',
     'aldeed:collection2@2.5.0',
-    'dburles:collection-helpers@1.0.3'
+    'dburles:collection-helpers@1.0.3',
+    'pierreeric:subscription-cache',
+    'pierreeric:col-basecollection'
   ].concat(shared));
   api.imply(shared);
   // Dependencies for server only

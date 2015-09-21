@@ -23,12 +23,12 @@ BasicPagesLinkList = createClass({
   mixins: [ReactMeteorData],
   // Subscribe to BasicPages (reactive methods)
   getMeteorData() {
-    const handle = Col.BasicPages.subAllLinks();
+    const handle = Col.basicPages.subAllLinks();
     return {
       // Use handle to show loading state
       loading: !handle.ready(),
       // Expose the list as an array
-      items: Col.BasicPages.find({
+      items: Col.basicPages.collection.find({
         display: {$in: ['Footer', 'Menu et Footer']}
       }, {
         sort: {order: 1}

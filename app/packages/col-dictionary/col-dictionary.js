@@ -1,5 +1,5 @@
 // Options used on the server and the client
-let options = {
+const options = {
   name: 'Dictionary',
   schema: {
     title: { type: String, label: 'Titre', min: 5, max: 256 },

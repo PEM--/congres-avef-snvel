@@ -1,25 +1,53 @@
-// Create a logger
-const log = Logger.createLogger('Collection BasicPages');
+// Options used on the server and the client
+const options = {
+  name: 'BasicPages',
+  schema: {
+    title: { type: String, label: 'Titre', min: 4, max: 256 },
+    url: { type: String, label: 'URL', min: 3, max: 32 },
+    order: { type: Number, label: 'Ordonnancement', min: 1, max: 256, unique: true },
+    display: {
+      type: String, label: 'Affichage', defaultValue: 'Aucun',
+      allowedValues: ['Aucun', 'Menu', 'Footer', 'Menu et Footer']
+    },
+    content: { type: String, label: 'Contenu' }
+  }
+};
 
-// Basic pages
-Col.SS.BasicPages = new SimpleSchema({
-  title: { type: String, label: 'Titre', min: 4, max: 256 },
-  url: { type: String, label: 'URL', min: 3, max: 32 },
-  order: { type: Number, label: 'Ordonnancement', min: 1, max: 256, unique: true },
-  display: {
-    type: String, label: 'Affichage', defaultValue: 'Aucun',
-    allowedValues: ['Aucun', 'Menu', 'Footer', 'Menu et Footer']
-  },
-  content: { type: String, label: 'Contenu' }
-});
-Col.BasicPages = new Mongo.Collection('basicPages');
-Col.BasicPages.attachSchema(Col.SS.BasicPages);
-log.info('Declared');
+// Client only
+if (Meteor.isClient) {
+  class BasicPages extends Col.BaseCollection {}
+  // Export instance
+  Col.basicPages = new BasicPages(options);
+}
+
+// Server only
+if (Meteor.isServer) {
+  class BasicPages extends Col.ServerBaseCollection {}
+  // Export instance
+  Col.basicPages = new BasicPages(options, {
+    // Options specific to server
+    defaults: [
+      {
+        title: 'Mentions légales', url: 'legal', order: 1, display: 'Footer',
+        content: 'Yo' //marked('Les mentions légales, personne ne les lit...')
+      },
+      {
+        title: 'Confidentialité', url: 'cookie', order: 2, display: 'Footer',
+        content: 'Bro' //marked('La confidentialité est un mythe...')
+      },
+      {
+        title: 'Not found', url: 'notfound', order: 3, display: 'Aucun',
+        content: 'Gus' //marked('On ne trouve rien sans recherche...')
+      }
+    ]
+    // , indexes:
+  });
+}
 
 // Collection helpers
 const SUB_ALL_LINKS = 'BasicPagesPageTitles';
 const SINGLE_PAGE = 'BasicPagesSingle';
-_.extend(Col.BasicPages, {
+_.extend(Col.basicPages, {
   // Subscribe to all page's links
   subAllLinks(cb) {
     return globalSubs.subscribe(SUB_ALL_LINKS, cb);
@@ -32,35 +60,16 @@ _.extend(Col.BasicPages, {
 
 // Server only
 if (Meteor.isServer) {
-  // Fill the links collection with a minimal set of links
-  if (Col.BasicPages.find().count() !== 0) {
-    log.info('Already filled');
-  } else {
-    Col.BasicPages.insert({
-      title: 'Mentions légales', url: 'legal', order: 1, display: 'Footer',
-      content: marked('Les mentions légales, personne ne les lit...')
-    });
-    Col.BasicPages.insert({
-      title: 'Confidentialité', url: 'cookie', order: 2, display: 'Footer',
-      content: marked('La confidentialité est un mythe...')
-    });
-    Col.BasicPages.insert({
-      title: 'Not found', url: 'notfound', order: 3, display: 'Aucun',
-      content: marked('On ne trouve rien sans recherche...')
-    });
-    log.info('Filled with defaults');
-  }
   // Publish all BasicPages without their content
   Meteor.publish(SUB_ALL_LINKS, function(cb) {
     check(cb, Match.Any);
-    return Col.BasicPages.find();
+    return Col.basicPages.collection.find();
   });
   // Publish one BasicPage with its content
   Meteor.publish(SINGLE_PAGE, function(url, cb) {
-    // check(url, String);
-    check(url, Col.SS.BasicPages.getDefinition('url').type);
+    check(url, Col.basicPages.schema.getDefinition('url').type);
     check(cb, Match.Any);
-    return Col.BasicPages.find({url: url});
+    return Col.basicPages.collection.find({url: url});
   });
-  log.info('Published');
+  // log.info('Published');
 }
