@@ -16,3 +16,5 @@ app/client/lib/semanticui/definitions
 .imdone
 app/public/img
 node_modules
+*.key
+*.csr

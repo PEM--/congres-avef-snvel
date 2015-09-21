@@ -5,9 +5,9 @@
 // Create a logger
 const log = Logger.createLogger('Collection Dictionary');
 
-// Base class for collection
-class BaseCollection {
-  constructor({ name, logger = log, defaults, indexes }) {
+// Base class for Collection. Takes car of default value and ensure indexes.
+class MainCollection {
+  constructor({ name, logger, defaults, indexes }) {
     // Assign arguments as class properties
     let [ args, dummy ] = [...arguments];
     for (let prop of Object.keys(args)) {
@@ -15,8 +15,22 @@ class BaseCollection {
     }
     // Create a Meteor collection
     this.collection = new Meteor.Collection(this.name);
-    logger.info('Creating collection:', this.name);
-
+    this.logger.info('Creating collection:', this.name);
+    // Create indexes if provided
+    if (this.indexes) {
+      this._createIndexes();
+    }
+    // Create or update default data if provided
+    if (this.defaults) {
+      this._createDefaults();
+    }
+  }
+  _createIndexes() {
+    this.collection._ensureIndex(this.indexes);
+    this.logger.info('Indexes created');
+  }
+  _createDefaults() {
+    this.logger.info('Creating or updating defaults');
   }
   subscribe() {
 
