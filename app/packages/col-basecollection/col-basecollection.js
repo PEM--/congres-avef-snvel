@@ -4,19 +4,21 @@
 
 // Base class for Collection. Takes car of default value and ensure indexes.
 class BaseCollection {
-  constructor({ name, logger, schema, defaults, indexes }) {
+  constructor({ name, schema, defaults, indexes }) {
     // Assign arguments as class properties
     let [ args, dummy ] = [...arguments];
     for (let prop of Object.keys(args)) {
       this[prop] = args[prop];
     }
+    // Create a logger
+    this.logger = Logger.createLogger(`Collection ${this.name}`);
     // Create a Meteor collection
     this.collection = new Meteor.Collection(this.name);
-    this.logger.info('Collection', this.name, 'created');
+    this.logger.info('created');
     // Create Schema and attach it to the collection
     this.schema = new SimpleSchema(schema);
     this.collection.attachSchema(this.schema);
-    this.logger.info('Schema created for', this.name);
+    this.logger.info('schema attached');
   }
 }
 // Export class
@@ -38,7 +40,7 @@ if (Meteor.isServer) {
     }
     _createIndexes() {
       this.collection._ensureIndex(this.indexes);
-      this.logger.info('Indexes created on', this.name);
+      this.logger.info('Indexes created');
     }
     _createDefaults() {
       if (this.collection.find().count() !== 0) {
@@ -53,7 +55,7 @@ if (Meteor.isServer) {
         if (err) {
           return this.logger.error(err);
         }
-        this.logger.info('Creating defaults');
+        this.logger.info('Defaults created');
       });
     }
   }

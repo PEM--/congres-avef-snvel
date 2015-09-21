@@ -16,8 +16,7 @@ Package.onUse(function(api) {
     'aldeed:collection2@2.5.0',
     'dburles:collection-helpers@1.0.3'
   ];
-  api.use([
-  ].concat(shared));
+  api.use(shared);
   api.imply(shared);
   // Included files in this packages
   // Files for server and client
