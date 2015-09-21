@@ -39,8 +39,11 @@ if (Meteor.isServer) {
         title: 'Not found', url: 'notfound', order: 3, display: 'Aucun',
         content: 'Gus' //marked('On ne trouve rien sans recherche...')
       }
-    ]
-    // , indexes:
+    ],
+    // A seach by URL is speed up via indexes
+    indexes: {
+      url: 1
+    }
   });
 }
 
