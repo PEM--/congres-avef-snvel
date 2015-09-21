@@ -16,7 +16,6 @@ check
 
 # Utils
 pierreeric:logger
-pierreeric:col-dictionary
 
 # Security
 audit-argument-checks
@@ -58,3 +57,5 @@ pierreeric:routing-done
 #accounts-password
 #useraccounts:flow-routing
 #useraccounts:semantic-ui
+
+pierreeric:col-dictionary

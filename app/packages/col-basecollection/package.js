@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'pierreeric:col-dictionary',
+  name: 'pierreeric:col-basecollection',
   version: '0.0.1'
 });
 
@@ -9,15 +9,19 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   const shared = [
-    'pierreeric:namespaces'
+    'pierreeric:namespaces',
+    'pierreeric:logger',
+    'pierreeric:subscription-cache',
+    'ecmascript',
+    'aldeed:collection2@2.5.0',
+    'dburles:collection-helpers@1.0.3'
   ];
   api.use([
-    'pierreeric:col-basecollection'
   ].concat(shared));
   api.imply(shared);
   // Included files in this packages
   // Files for server and client
   api.addFiles([
-    'col-dictionary.js',
+    'col-basecollection.js',
   ]);
 });

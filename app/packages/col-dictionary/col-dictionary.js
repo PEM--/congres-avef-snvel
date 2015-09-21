@@ -1,79 +1,37 @@
-// Technical articles :
-// * http://joshowens.me/how-to-optimize-your-mongo-database-for-meteor-js/
-// * https://github.com/andrewreedy/meteor-collection-setup/blob/master/src/CollectionSetup.js
-
 // Create a logger
 const log = Logger.createLogger('Collection Dictionary');
 
-// Base class for Collection. Takes car of default value and ensure indexes.
-class MainCollection {
-  constructor({ name, logger, defaults, indexes }) {
-    // Assign arguments as class properties
-    let [ args, dummy ] = [...arguments];
-    for (let prop of Object.keys(args)) {
-      this[prop] = args[prop];
-    }
-    // Create a Meteor collection
-    this.collection = new Meteor.Collection(this.name);
-    this.logger.info('Creating collection:', this.name);
-    // Create indexes if provided
-    if (this.indexes) {
-      this._createIndexes();
-    }
-    // Create or update default data if provided
-    if (this.defaults) {
-      this._createDefaults();
-    }
+// Options used on the server and the client
+let options = {
+  name: 'Dictionary',
+  logger: log,
+  schema: {
+    title: { type: String, label: 'Titre', max: 256 },
+    shortTitle: { type: String, label: 'Titre court', max: 32 },
+    msTileColor: { type: String, label: 'Couleur des tuiles Microsoft', min: 7, max: 7}
   }
-  _createIndexes() {
-    this.collection._ensureIndex(this.indexes);
-    this.logger.info('Indexes created');
-  }
-  _createDefaults() {
-    this.logger.info('Creating or updating defaults');
-  }
-  subscribe() {
+};
 
-  }
+// Client only
+if (Meteor.isClient) {
+  // Class Dictionnary
+  class Dictionary extends Col.BaseCollection {}
+  // Export class
+  Col.dictionary = new Dictionary(options);
 }
 
-// Export class
-Col.MainCollection = MainCollection;
+// Server only
+if (Meteor.isServer) {
+  // Extend option for the server
+  options.default = [Meteor.settings.public.dictionary];
+  // Class Dictionnary
+  class Dictionary extends Col.ServerBaseCollection {}
+  // Export class
+  Col.dictionary = new Dictionary(options);
+}
 
-// Basic pages
-// Col.SS.Dictionary = new SimpleSchema({
-//   title: {
-//     type: String,
-//     label: 'Titre',
-//     max: 256
-//   },
-//   url: {
-//     type: String,
-//     label: 'URL',
-//     max: 32
-//   },
-//   order: {
-//     type: Number,
-//     label: 'Ordonnancement',
-//     min: 1,
-//     max: 256,
-//     unique: true
-//   },
-//   display: {
-//     type: String,
-//     label: 'Affichage',
-//     defaultValue: 'Aucun',
-//     allowedValues: ['Aucun', 'Menu', 'Footer', 'Menu et Footer']
-//   },
-//   content: {
-//     type: String,
-//     label: 'Contenu'
-//   }
-// });
-// Col.BasicPages = new Mongo.Collection('basicPages');
-// Col.BasicPages.attachSchema(Col.SS.BasicPages);
-// log.info('Declared');
-//
+
+
 // // Collection helpers
 // const METEOR_METHOD_NAME_SUB_ALL_LINKS = 'BasicPagesPageTitles';
 // const METEOR_METHOD_NAME_SUB_PAGE = 'BasicPagesSingle';
