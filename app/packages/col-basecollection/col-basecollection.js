@@ -19,23 +19,22 @@ class BaseCollection {
     this.logger.info('Schema created for', this.name);
   }
 }
-
 // Export class
 Col.BaseCollection = BaseCollection;
 
 // Server only
 if (Meteor.isServer) {
   class ServerBaseCollection extends BaseCollection {
-    constructor(options) {
-      super(options);
+    constructor(sharedOptions, serverOptions) {
+      super(sharedOptions);
+      // Assign serverOptions as class properties
+      for (let prop of Object.keys(serverOptions)) {
+        this[prop] = serverOptions[prop];
+      }
       // Create indexes if provided
-      if (this.indexes) {
-        this._createIndexes();
-      }
+      if (this.indexes) { this._createIndexes(); }
       // Create default data if provided
-      if (this.defaults) {
-        this._createDefaults();
-      }
+      if (this.defaults) { this._createDefaults(); }
     }
     _createIndexes() {
       this.collection._ensureIndex(this.indexes);

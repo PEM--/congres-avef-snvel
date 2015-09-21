@@ -6,8 +6,8 @@ let options = {
   name: 'Dictionary',
   logger: log,
   schema: {
-    title: { type: String, label: 'Titre', max: 256 },
-    shortTitle: { type: String, label: 'Titre court', max: 32 },
+    title: { type: String, label: 'Titre', min: 5, max: 256 },
+    shortTitle: { type: String, label: 'Titre court', min: 5, max: 32 },
     msTileColor: { type: String, label: 'Couleur des tuiles Microsoft', min: 7, max: 7}
   }
 };
@@ -22,12 +22,13 @@ if (Meteor.isClient) {
 
 // Server only
 if (Meteor.isServer) {
-  // Extend option for the server
-  options.default = [Meteor.settings.public.dictionary];
   // Class Dictionnary
   class Dictionary extends Col.ServerBaseCollection {}
   // Export class
-  Col.dictionary = new Dictionary(options);
+  Col.dictionary = new Dictionary(options, {
+    // Options specific to server
+    defaults: [Meteor.settings.public.dictionary]
+  });
 }
 
 
