@@ -1,3 +1,6 @@
+
+// @TODO https://github.com/andrewreedy/meteor-collection-setup/blob/master/src/CollectionSetup.js
+
 // Create a logger
 const log = Logger.createLogger('Collection SocialLinks');
 

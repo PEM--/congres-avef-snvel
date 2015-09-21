@@ -25,6 +25,8 @@ Site d'inscription commun pour l'AVEF et le SNVEL.
 * [Getting Started with Meteor, React, and React Router](http://alexgaribay.com/2015/07/06/getting-started-with-meteor-react-and-react-router/)
 * [WebPack with Meteor + ReactRouter SSR](https://github.com/thereactivestack/meteor-webpack-react-kickstart)
 * [Functional programming: usage of closure instead of OO](https://forums.meteor.com/t/use-functional-programming-to-simplify-your-meteor-code/9915)
+* [Optimize Mongo](http://joshowens.me/how-to-optimize-your-mongo-database-for-meteor-js/)
+* [ES6 decorators](https://medium.com/google-developers/exploring-es7-decorators-76ecb65fb841)
 
 ### Stack tooling: ES6, React, WebPack, Redux
 * [Using WebPack with Meteor](https://www.youtube.com/watch?v=QpixFzvf8U8)

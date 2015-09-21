@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'pierreeric:main-layout',
+  name: 'pierreeric:col-dictionary',
   version: '0.0.1'
 });
 
@@ -8,24 +8,21 @@ Package.onUse(function(api) {
   api.versionsFrom('METEOR@1.2-rc.17');
   // Dependencies of this package
   // Dependencies for server and client
-  var sharedDeps = [
+  const shared = [
     'pierreeric:namespaces',
     'pierreeric:logger',
-    'pierreeric:client-footer'
+    'pierreeric:subscription-cache'
   ];
   api.use([
-    'blaze-html-templates',
-    'react',
-    'kadira:dochead@1.1.0',
-    'flemay:less-autoprefixer@1.1.0'
-  ].concat(sharedDeps));
-  // Expose packages
-  api.imply(sharedDeps);
+    'underscore',
+    'ecmascript',
+    'aldeed:collection2@2.5.0',
+    'dburles:collection-helpers@1.0.3'
+  ].concat(shared));
+  api.imply(shared);
   // Included files in this packages
   // Files for server and client
   api.addFiles([
-    'index.html',
-    'main-layout.jsx',
-    'main-layout.less'
+    'col-dictionary.js',
   ]);
 });

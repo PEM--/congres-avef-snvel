@@ -1,6 +1,9 @@
 app/dev.json
+app/dev.yml
 app/test.json
+app/test.yml
 app/prod.json
+app/prod.yml
 .npm
 *.cached
 *.map
