@@ -5,7 +5,9 @@ const options = {
     title: { type: String, label: 'Titre', min: 5, max: 256 },
     shortTitle: { type: String, label: 'Titre court', min: 5, max: 32 },
     msTileColor: { type: String, label: 'Couleur des tuiles Microsoft', min: 7, max: 7}
-  }
+  },
+  // Available subscriptions and publications
+  subs: {}
 };
 
 // Client only

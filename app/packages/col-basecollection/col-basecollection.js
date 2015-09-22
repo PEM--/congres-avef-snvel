@@ -4,7 +4,7 @@
 
 // Base class for Collection. Takes car of default value and ensure indexes.
 class BaseCollection {
-  constructor({ name, schema }) {
+  constructor({ name, schema, subs }) {
     // Assign arguments as class properties
     let [ args, dummy ] = [...arguments];
     for (let prop of Object.keys(args)) {
@@ -14,11 +14,21 @@ class BaseCollection {
     this.logger = Logger.createLogger(`Collection ${this.name}`);
     // Create a Meteor collection
     this.collection = new Meteor.Collection(this.name);
-    this.logger.info('created');
+    this.logger.info('Created');
     // Create Schema and attach it to the collection
     this.schema = new SimpleSchema(schema);
     this.collection.attachSchema(this.schema);
-    this.logger.info('schema attached');
+    this.logger.info('Schema attached');
+    // Create subscription methods
+    for (let key of Object.keys(this.subs)) {
+      Object.defineProperty(this, `sub${key}`, {
+        // @TODO
+        value: (cb) => {
+          this.logger.info('Subscribing to', key);
+          return globalSubs.subscribe(`${this.name}${key}`, cb);
+        }
+      });
+    }
   }
 }
 // Export class
@@ -37,6 +47,8 @@ if (Meteor.isServer) {
       if (this.indexes) { this._createIndexes(); }
       // Create default data if provided
       if (this.defaults) { this._createDefaults(); }
+      // Publish data for the subscriptions
+      if (this.subs) { this._createPublications(); }
     }
     _createIndexes() {
       this.collection._ensureIndex(this.indexes);
@@ -57,6 +69,18 @@ if (Meteor.isServer) {
         }
         this.logger.info('Defaults created');
       });
+    }
+    _createPublications() {
+      for (let key of Object.keys(this.subs)) {
+        this.logger.info(`Publishing ${this.name}${key}`);
+        // @TODO add sorting
+        Meteor.publish(`${this.name}${key}`, (cb) => {
+          this.logger.info('Publishing', key, 'for user', Meteor.userId());
+          check(cb, Match.Any);
+          return this.collection.find();
+        });
+      }
+      this.logger.info('Data published');
     }
   }
   // Export class

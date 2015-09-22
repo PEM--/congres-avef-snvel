@@ -10,7 +10,9 @@ const options = {
       allowedValues: ['Aucun', 'Menu', 'Footer', 'Menu et Footer']
     },
     content: { type: String, label: 'Contenu' }
-  }
+  },
+  // Available subscriptions and publications
+  subs: {}
 };
 
 // Client only
@@ -25,6 +27,7 @@ if (Meteor.isServer) {
   class BasicPages extends Col.ServerBaseCollection {}
   // Export instance
   Col.basicPages = new BasicPages(options, {
+    // @TODO Create a Markdown importer in a specific 'legal' package, server only
     // Options specific to server
     defaults: [
       {
@@ -40,12 +43,16 @@ if (Meteor.isServer) {
         content: 'Gus' //marked('On ne trouve rien sans recherche...')
       }
     ],
-    // A seach by URL is speed up via indexes
+    // Set indexes on collection
     indexes: {
-      url: 1
+      url: 1,
+      order: 1
     }
   });
 }
+
+
+// @TODO Create a subscription / publication pattern
 
 // Collection helpers
 const SUB_ALL_LINKS = 'BasicPagesPageTitles';

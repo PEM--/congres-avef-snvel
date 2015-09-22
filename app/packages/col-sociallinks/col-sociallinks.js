@@ -6,6 +6,15 @@ const options = {
     url: { type: String, label: 'URL', max: 256 },
     order: { type: Number, label: 'Ordonnancement', min: 1, max: 256, unique: true },
     faIcon: { type: String, label: 'Icone', min: 1, max: 32 }
+  },
+  // Set indexes on collection
+  indexes: {
+    url: 1,
+    order: 1
+  },
+  // Available subscriptions and publications
+  subs: {
+    AllLinks: { $sort: {order: 1} }
   }
 };
 
@@ -26,21 +35,21 @@ if (Meteor.isServer) {
   });
 }
 
-// Collection helpers
-const SUB_ALL_LINKS = 'SocialLinksAll';
-_.extend(Col.socialLinks, {
-  // Subscribe to all social links
-  subAllLinks(cb) {
-    return globalSubs.subscribe(SUB_ALL_LINKS, cb);
-  }
-});
-
-// Server only
-if (Meteor.isServer) {
-  // Publish all social links
-  Meteor.publish(SUB_ALL_LINKS, function(cb) {
-    check(cb, Match.Any);
-    return Col.socialLinks.collection.find();
-  });
-  // @TODO log.info('Published');
-}
+// // Collection helpers
+// const SUB_ALL_LINKS = 'SocialLinksAll';
+// _.extend(Col.socialLinks, {
+//   // Subscribe to all social links
+//   subAllLinks(cb) {
+//     return globalSubs.subscribe(SUB_ALL_LINKS, cb);
+//   }
+// });
+//
+// // Server only
+// if (Meteor.isServer) {
+//   // Publish all social links
+//   Meteor.publish(SUB_ALL_LINKS, function(cb) {
+//     check(cb, Match.Any);
+//     return Col.socialLinks.collection.find();
+//   });
+//   // @TODO log.info('Published');
+// }
