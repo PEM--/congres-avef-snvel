@@ -13,7 +13,7 @@ const options = {
   },
   // Available subscriptions and publications
   subs: {
-    AllLinks: {}
+    AllLinks: { options: {sort: {order: 1} } }
   }
 };
 

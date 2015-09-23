@@ -7,7 +7,9 @@ const options = {
     msTileColor: { type: String, label: 'Couleur des tuiles Microsoft', min: 7, max: 7}
   },
   // Available subscriptions and publications
-  subs: {}
+  subs: {
+    AllLinks: {}
+  }
 };
 
 // Client only
@@ -26,5 +28,3 @@ if (Meteor.isServer) {
     defaults: [Meteor.settings.public.dictionary]
   });
 }
-
-// @TODO Subscribe and publish required

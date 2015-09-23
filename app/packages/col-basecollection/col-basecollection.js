@@ -92,8 +92,10 @@ if (Meteor.isServer) {
                     this.schema.getDefinition(this.subs[subName].query[varIdx]).type);
               query[this.subs[subName].query[varIdx]] = arguments[varIdx];
             }
+            // Get query options
+            let options = this.subs[subName].options ? this.subs[subName].options : {};
             // When a query parameter is used, consider the return a a single element
-            return this.collection.find(query);
+            return this.collection.find(query, options);
           }.bind(this);
           Meteor.publish(`${this.name}${subName}`, publishFct);
         })(key);

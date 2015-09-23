@@ -17,7 +17,7 @@ const options = {
   },
   // Available subscriptions and publications
   subs: {
-    AllLinks: {},
+    AllLinks: { options: {sort: {order: 1} } },
     WithUrl: { query: ['url'] }
   }
 };
@@ -55,27 +55,5 @@ if (Meteor.isServer) {
       url: 1,
       order: 1
     }
-  });
-}
-
-
-// @TODO Create a subscription / publication pattern
-
-// Collection helpers
-const SINGLE_PAGE = 'BasicPagesSingle';
-_.extend(Col.basicPages, {
-  // Subscribe to a single page
-  subPage(url, cb) {
-    return globalSubs.subscribe(SINGLE_PAGE, url, cb);
-  }
-});
-
-// Server only
-if (Meteor.isServer) {
-  // Publish one BasicPage with its content
-  Meteor.publish(SINGLE_PAGE, function(url, cb) {
-    check(url, Col.basicPages.schema.getDefinition('url').type);
-    check(cb, Match.Any);
-    return Col.basicPages.collection.find({url});
   });
 }

@@ -17,7 +17,7 @@ Rc.Client.BasicPages = createClass({
   getMeteorData() {
     const { url } = this.props;
     // Subscribe to get the content of the page
-    const handle = Col.basicPages.subPage(url);
+    const handle = Col.basicPages.subWithUrl(url);
     return {
       // Use handle to show loading state
       loading: !handle.ready(),
