@@ -25,10 +25,11 @@ class BaseCollection {
       ((subName) => {
         this.logger.info(`Subscrition method ${this.name}${subName} declared`);
         // Create the method
-        let subscribeFct = () => {
+        let subscribeFct = function() {
           this.logger.info('Subscribing to', subName);
           let initialArgs = [...arguments];
           let boundVars = [`${this.name}${subName}`].concat(initialArgs);
+          console.log('boundVars', boundVars);
           return globalSubs.subscribe.apply(globalSubs, boundVars);
         };
         //let subscribeFct = this.apply
