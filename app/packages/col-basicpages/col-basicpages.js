@@ -64,10 +64,6 @@ if (Meteor.isServer) {
 // Collection helpers
 const SINGLE_PAGE = 'BasicPagesSingle';
 _.extend(Col.basicPages, {
-  // Subscribe to all page's links
-  subAllLinks(cb) {
-    return globalSubs.subscribe(SUB_ALL_LINKS, cb);
-  },
   // Subscribe to a single page
   subPage(url, cb) {
     return globalSubs.subscribe(SINGLE_PAGE, url, cb);
@@ -80,6 +76,6 @@ if (Meteor.isServer) {
   Meteor.publish(SINGLE_PAGE, function(url, cb) {
     check(url, Col.basicPages.schema.getDefinition('url').type);
     check(cb, Match.Any);
-    return Col.basicPages.collection.find({url: url});
+    return Col.basicPages.collection.find({url});
   });
 }

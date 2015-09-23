@@ -22,7 +22,7 @@ class BaseCollection {
     // Create subscription methods
     for (let key of Object.keys(this.subs)) {
       // Ensure immediate call
-      ((subName) => {
+      (subName => {
         this.logger.info(`Subscrition method ${this.name}${subName} declared`);
         // Create the method
         let subscribeFct = function() {
@@ -82,7 +82,7 @@ if (Meteor.isServer) {
         this.logger.info(`Publishing ${this.name}${key}`);
         // @TODO unique publication
         // Ensure immediate call
-        ((subName) => {
+        (subName => {
           Meteor.publish(`${this.name}${subName}`, (cb) => {
             if (this.subs[subName].data) {
               this.logger.error('Key', subName);
