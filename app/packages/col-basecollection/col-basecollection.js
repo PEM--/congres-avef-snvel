@@ -25,10 +25,13 @@ class BaseCollection {
       ((subName) => {
         this.logger.info(`Subscrition method ${this.name}${subName} declared`);
         // Create the method
-        let subscribeFct = (cb) => {
+        let subscribeFct = () => {
           this.logger.info('Subscribing to', subName);
-          return globalSubs.subscribe(`${this.name}${subName}`, cb);
+          let initialArgs = [...arguments];
+          let boundVars = [`${this.name}${subName}`].concat(initialArgs);
+          return globalSubs.subscribe.apply(globalSubs, boundVars);
         };
+        //let subscribeFct = this.apply
         Object.defineProperty(this, `sub${subName}`, { value: subscribeFct });
       })(key);
     }
@@ -79,11 +82,11 @@ if (Meteor.isServer) {
         // @TODO unique publication
         // Ensure immediate call
         ((subName) => {
-          Meteor.publish(`${this.name}${key}`, (cb) => {
-            if (this.subs[key].data) {
-              this.logger.error('Key', key);
+          Meteor.publish(`${this.name}${subName}`, (cb) => {
+            if (this.subs[subName].data) {
+              this.logger.error('Key', subName);
             }
-            this.logger.info('Publishing', key, 'for user', this.userId);
+            this.logger.info('Publishing', subName, 'for user', this.userId);
             check(cb, Match.Any);
             return this.collection.find({});
           });
