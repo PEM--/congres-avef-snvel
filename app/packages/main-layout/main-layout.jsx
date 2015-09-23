@@ -13,16 +13,16 @@ class MainLayout extends Component {
   render() {
     log.debug('Rendering');
     return (
-      <div className='main-layout ui equal width stackable centered aligned padded grid'>
-        <Rc.Client.Menu />
-        <div className='red row'>
-          <div className='column'>
-            <div className='ui container'>
-              {this.props.content}
-            </div>
-          </div>
+      <div>
+        <div className="client menu ui fixed">
+          <Rc.Client.Menu />
         </div>
-        <Rc.Client.Footer />
+        <div className="main-layout">
+          <div className="client main-content ui grid">
+            {this.props.content}
+          </div>
+          <Rc.Client.Footer />
+        </div>
       </div>
     );
   }
