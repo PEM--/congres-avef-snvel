@@ -28,11 +28,9 @@ class BasicPagesLinkList extends Rc.MeteorReactBaseComponent {
       // Use handle to show loading state
       loading: !handle.ready(),
       // Expose the list as an array
-      items: Col.basicPages.collection.find({
-        display: {$in: ['Footer', 'Menu et Footer']}
-      }, {
-        sort: {order: 1}
-      }).fetch()
+      items: Col.basicPages.collection.find(
+        Col.basicPages.subs.FooterLinks.filter,
+        Col.basicPages.subs.FooterLinks.options).fetch()
     };
   }
   render() {

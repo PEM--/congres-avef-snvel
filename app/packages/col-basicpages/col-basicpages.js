@@ -19,10 +19,7 @@ const options = {
   subs: {
     AllPages: {},
     FooterLinks: {
-      filter: { $or: [
-        {display: 'Footer'},
-        {display: 'Menu et Footer'}
-      ]},
+      filter: { display: {$in: ['Footer', 'Menu et Footer']} },
       options: {sort: {order: 1} }
     },
     WithUrl: { query: ['url'] }

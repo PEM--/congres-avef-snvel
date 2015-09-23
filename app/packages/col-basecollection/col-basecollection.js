@@ -98,8 +98,6 @@ if (Meteor.isServer) {
             }
             // Get query options
             let options = this.subs[subName].options ? this.subs[subName].options : {};
-            // Get filter options
-
             // When a query parameter is used, consider the return a a single element
             return this.collection.find(query, options);
           }.bind(this);
