@@ -1,26 +1,25 @@
 // List of social links links
 
 // Namespace flatteinng
-const { PropTypes, createClass } = React;
+const { PropTypes, Component } = React;
 
 // Social link
-const SocialLink = createClass({
-  displayName: 'SocialLink',
+class SocialLink extends Component {
+  displayName: 'SocialLink'
   propTypes: {
     url: PropTypes.string.isRequired,
     faIcon: PropTypes.string.isRequired
-  },
+  }
   render() {
     log.debug('Rendering SocialLink');
     const { url, faIcon } = this.props;
     return <li><a className={`fa ${faIcon} fa-lg`} href={url} target='_blank'></a></li>;
   }
-});
+}
 
 // List of social links
-SocialLinkList = createClass({
-  displayName: 'SocialLinkList',
-  mixins: [ReactMeteorData],
+class SocialLinkList extends Rc.MeteorReactBaseComponent {
+  displayName: 'SocialLinkList'
   // Subscribe to SocialLinks (reactive methods)
   getMeteorData() {
     const handle = Col.socialLinks.subAllLinks();
@@ -32,7 +31,7 @@ SocialLinkList = createClass({
         sort: {order: 1}
       }).fetch()
     };
-  },
+  }
   render() {
     log.debug('Rendering SocialLinkList');
     // Display links as a list
@@ -44,4 +43,7 @@ SocialLinkList = createClass({
     });
     return <ul>{nodes}</ul>;
   }
-});
+}
+
+// Export class
+Rc.Client.SocialLinkList = SocialLinkList;

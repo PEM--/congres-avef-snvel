@@ -9,10 +9,9 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
-    'react',
     'kadira:react-layout@1.3.0',
-    'pierreeric:namespaces',
     'pierreeric:logger',
+    'pierreeric:client-basecomponents',
     'pierreeric:routing-start',
     'pierreeric:client-basicpages'
   ]);

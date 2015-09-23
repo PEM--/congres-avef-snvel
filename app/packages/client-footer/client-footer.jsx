@@ -1,11 +1,11 @@
 // Footer
 
 // Namespace flatteinng
-const { PropTypes, createClass } = React;
+const { PropTypes, Component } = React;
 
 // Footer component
-Rc.Client.Footer = createClass({
-  displayName: 'Footer',
+class Footer extends Component {
+  displayName: 'Footer'
   // Render the component
   render() {
     log.debug('Rendering Footer');
@@ -17,10 +17,10 @@ Rc.Client.Footer = createClass({
             <aside className='row'>
               <div className='grey column'>&nbsp;</div>
               <nav className='blue column'>
-                <BasicPagesLinkList />
+                <Rc.Client.BasicPagesLinkList />
               </nav>
               <nav className='yellow column'>
-                <SocialLinkList />
+                <Rc.Client.SocialLinkList />
               </nav>
             </aside>
           </div>
@@ -28,4 +28,7 @@ Rc.Client.Footer = createClass({
       </footer>
     );
   }
-});
+}
+
+// Export class
+Rc.Client.Footer = Footer;

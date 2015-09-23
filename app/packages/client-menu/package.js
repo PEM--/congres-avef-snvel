@@ -9,11 +9,9 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
-    'react',
-    'ecmascript',
-    'pierreeric:namespaces',
-    'pierreeric:logger',
     'flemay:less-autoprefixer@1.1.0',
+    'pierreeric:logger',
+    'pierreeric:client-basecomponents',
     'pierreeric:col-basicpages',
     'pierreeric:col-sociallinks',
     'pierreeric:client-sharedstyles'

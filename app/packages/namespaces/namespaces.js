@@ -6,7 +6,4 @@ Rc = {
   Admin: {}
 };
 // Collections
-Col = {
-  // SimpleSchema for collection
-  SS: {}
-};
+Col = {};

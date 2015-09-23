@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'pierreeric:admin-layout',
+  name: 'pierreeric:client-basecomponents',
   version: '0.0.1'
 });
 
@@ -8,15 +8,15 @@ Package.onUse(function(api) {
   api.versionsFrom('1.2.0.1');
   // Dependencies of this package
   // Dependencies for server and client
-  api.use([
-    'pierreeric:client-basecomponents',
-    'flemay:less-autoprefixer@1.1.0',
-    'pierreeric:logger'
-  ]);
+  const shared = [
+    'react',
+    'pierreeric:namespaces'
+  ];
+  api.use(shared);
+  api.imply(shared);
   // Included files in this packages
   // Files for server and client
   api.addFiles([
-    'admin-layout.jsx',
-    'admin-layout.less'
+    'client-basecomponents.jsx'
   ]);
 });
