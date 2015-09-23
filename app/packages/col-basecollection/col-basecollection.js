@@ -78,7 +78,6 @@ if (Meteor.isServer) {
     _createPublications() {
       for (let key of Object.keys(this.subs)) {
         this.logger.info(`Publishing ${this.name}${key}`);
-        // @TODO Ordering
         // Ensure immediate call
         (subName => {
           const publishFct = function() {
@@ -87,7 +86,6 @@ if (Meteor.isServer) {
             // Check arguments and build a potential mongo query selector
             let query = {};
             for (let varIdx in arguments) {
-              console.log('Checking arg', varIdx, arguments[varIdx]);
               check(arguments[varIdx],
                     this.schema.getDefinition(this.subs[subName].query[varIdx]).type);
               query[this.subs[subName].query[varIdx]] = arguments[varIdx];
