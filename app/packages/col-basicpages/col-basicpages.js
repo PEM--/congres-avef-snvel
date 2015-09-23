@@ -50,7 +50,7 @@ if (Meteor.isServer) {
         content: marked('La confidentialité est un mythe...')
       },
       {
-        title: 'Conditions générales de ventes', url: 'cgu', order: 3, display: 'Menu et Footer',
+        title: 'Conditions générales de ventes', url: 'cgv', order: 3, display: 'Menu et Footer',
         content: marked('On vend tout ce qu\'on peut...')
       },
       {

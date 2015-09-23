@@ -20,7 +20,6 @@ class BasicPagesLink extends Component {
 // List of basic page links
 class BasicPagesLinkList extends Rc.MeteorReactBaseComponent {
   displayName: 'BasicPagesLinkList'
-  mixins: [ReactMeteorData]
   // Subscribe to BasicPages (reactive methods)
   getMeteorData() {
     const handle = Col.basicPages.subFooterLinks();
