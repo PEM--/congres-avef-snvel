@@ -13,10 +13,11 @@ const options = {
   },
   // Set indexes on collection
   indexes: {
-    url: 1, order: 1
+    url: 1, display: 1, order: 1
   },
   // Available subscriptions and publications
   subs: {
+    // @TODO Query filtering on menu and footer
     AllLinks: { options: {sort: {order: 1} } },
     WithUrl: { query: ['url'] }
   }
@@ -38,15 +39,19 @@ if (Meteor.isServer) {
     // Options specific to server
     defaults: [
       {
-        title: 'Mentions légales', url: 'legal', order: 1, display: 'Footer',
+        title: 'Mentions légales', url: 'legal', order: 1, display: 'Menu et Footer',
         content: marked('Les mentions légales, personne ne les lit...')
       },
       {
-        title: 'Confidentialité', url: 'cookie', order: 2, display: 'Footer',
+        title: 'Confidentialité', url: 'cookie', order: 2, display: 'Menu et Footer',
         content: marked('La confidentialité est un mythe...')
       },
       {
-        title: 'Not found', url: 'notfound', order: 3, display: 'Aucun',
+        title: 'Conditions générales de ventes', url: 'cgu', order: 3, display: 'Menu et Footer',
+        content: marked('On vend tout ce qu\'on peut...')
+      },
+      {
+        title: 'Not found', url: 'notfound', order: 4, display: 'Aucun',
         content: marked('On ne trouve rien sans recherche...')
       }
     ],
