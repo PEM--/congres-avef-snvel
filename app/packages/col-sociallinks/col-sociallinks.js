@@ -9,12 +9,11 @@ const options = {
   },
   // Set indexes on collection
   indexes: {
-    url: 1,
-    order: 1
+    url: 1, order: 1
   },
   // Available subscriptions and publications
   subs: {
-    AllLinks: { $sort: {order: 1} }
+    AllLinks: {}
   }
 };
 
@@ -34,22 +33,3 @@ if (Meteor.isServer) {
     defaults: Meteor.settings.public.socialLinks
   });
 }
-
-// // Collection helpers
-// const SUB_ALL_LINKS = 'SocialLinksAll';
-// _.extend(Col.socialLinks, {
-//   // Subscribe to all social links
-//   subAllLinks(cb) {
-//     return globalSubs.subscribe(SUB_ALL_LINKS, cb);
-//   }
-// });
-//
-// // Server only
-// if (Meteor.isServer) {
-//   // Publish all social links
-//   Meteor.publish(SUB_ALL_LINKS, function(cb) {
-//     check(cb, Match.Any);
-//     return Col.socialLinks.collection.find();
-//   });
-//   // @TODO log.info('Published');
-// }

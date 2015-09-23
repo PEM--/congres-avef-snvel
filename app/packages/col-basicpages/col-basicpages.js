@@ -11,8 +11,14 @@ const options = {
     },
     content: { type: String, label: 'Contenu' }
   },
+  // Set indexes on collection
+  indexes: {
+    url: 1, order: 1
+  },
   // Available subscriptions and publications
-  subs: {}
+  subs: {
+    AllLinks: {}
+  }
 };
 
 // Client only
@@ -32,15 +38,15 @@ if (Meteor.isServer) {
     defaults: [
       {
         title: 'Mentions légales', url: 'legal', order: 1, display: 'Footer',
-        content: 'Yo' //marked('Les mentions légales, personne ne les lit...')
+        content: marked('Les mentions légales, personne ne les lit...')
       },
       {
         title: 'Confidentialité', url: 'cookie', order: 2, display: 'Footer',
-        content: 'Bro' //marked('La confidentialité est un mythe...')
+        content: marked('La confidentialité est un mythe...')
       },
       {
         title: 'Not found', url: 'notfound', order: 3, display: 'Aucun',
-        content: 'Gus' //marked('On ne trouve rien sans recherche...')
+        content: marked('On ne trouve rien sans recherche...')
       }
     ],
     // Set indexes on collection
@@ -55,7 +61,6 @@ if (Meteor.isServer) {
 // @TODO Create a subscription / publication pattern
 
 // Collection helpers
-const SUB_ALL_LINKS = 'BasicPagesPageTitles';
 const SINGLE_PAGE = 'BasicPagesSingle';
 _.extend(Col.basicPages, {
   // Subscribe to all page's links
@@ -70,16 +75,10 @@ _.extend(Col.basicPages, {
 
 // Server only
 if (Meteor.isServer) {
-  // Publish all BasicPages without their content
-  Meteor.publish(SUB_ALL_LINKS, function(cb) {
-    check(cb, Match.Any);
-    return Col.basicPages.collection.find();
-  });
   // Publish one BasicPage with its content
   Meteor.publish(SINGLE_PAGE, function(url, cb) {
     check(url, Col.basicPages.schema.getDefinition('url').type);
     check(cb, Match.Any);
     return Col.basicPages.collection.find({url: url});
   });
-  // log.info('Published');
 }

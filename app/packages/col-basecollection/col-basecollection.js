@@ -21,13 +21,16 @@ class BaseCollection {
     this.logger.info('Schema attached');
     // Create subscription methods
     for (let key of Object.keys(this.subs)) {
-      Object.defineProperty(this, `sub${key}`, {
-        // @TODO
-        value: (cb) => {
-          this.logger.info('Subscribing to', key);
-          return globalSubs.subscribe(`${this.name}${key}`, cb);
-        }
-      });
+      // Ensure immediate call
+      ((subName) => {
+        this.logger.info(`Subscrition method ${this.name}${subName} declared`);
+        // Create the method
+        let subscribeFct = (cb) => {
+          this.logger.info('Subscribing to', subName);
+          return globalSubs.subscribe(`${this.name}${subName}`, cb);
+        };
+        Object.defineProperty(this, `sub${subName}`, { value: subscribeFct });
+      })(key);
     }
   }
 }
@@ -73,12 +76,18 @@ if (Meteor.isServer) {
     _createPublications() {
       for (let key of Object.keys(this.subs)) {
         this.logger.info(`Publishing ${this.name}${key}`);
-        // @TODO add sorting
-        Meteor.publish(`${this.name}${key}`, (cb) => {
-          this.logger.info('Publishing', key, 'for user', Meteor.userId());
-          check(cb, Match.Any);
-          return this.collection.find();
-        });
+        // @TODO unique publication
+        // Ensure immediate call
+        ((subName) => {
+          Meteor.publish(`${this.name}${key}`, (cb) => {
+            if (this.subs[key].data) {
+              this.logger.error('Key', key);
+            }
+            this.logger.info('Publishing', key, 'for user', this.userId);
+            check(cb, Match.Any);
+            return this.collection.find({});
+          });
+        })(key);
       }
       this.logger.info('Data published');
     }
