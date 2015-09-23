@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'pierreeric:client-footer',
+  name: 'pierreeric:client-menu',
   version: '0.0.1'
 });
 
@@ -12,17 +12,12 @@ Package.onUse(function(api) {
     'flemay:less-autoprefixer@1.1.0',
     'pierreeric:logger',
     'pierreeric:client-basecomponents',
-    'pierreeric:col-basicpages',
-    'pierreeric:col-sociallinks',
     'pierreeric:client-sharedstyles'
   ]);
   // Included files in this packages
   // Files for server and client
   api.addFiles([
-    'logger.js',
-    'client-footer-basicpages.jsx',
-    'client-footer-sociallinks.jsx',
-    'client-footer.jsx',
-    'client-footer.less'
+    'client-menu.jsx',
+    'client-menu.less'
   ]);
 });

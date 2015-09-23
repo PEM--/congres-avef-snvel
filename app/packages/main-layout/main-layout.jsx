@@ -14,13 +14,7 @@ class MainLayout extends Component {
     log.debug('Rendering');
     return (
       <div className='main-layout ui equal width stackable centered aligned padded grid'>
-        <div className='orange row'>
-          <div className='column'>
-            <div className='ui container'>
-              <h1>Menu</h1>
-            </div>
-          </div>
-        </div>
+        <Rc.Client.Menu />
         <div className='red row'>
           <div className='column'>
             <div className='ui container'>

@@ -10,6 +10,7 @@ Package.onUse(function(api) {
   // Dependencies for server and client
   var sharedDeps = [
     'pierreeric:client-basecomponents',
+    'pierreeric:client-menu',
     'pierreeric:client-footer'
   ];
   api.use([
