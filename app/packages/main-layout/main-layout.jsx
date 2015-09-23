@@ -18,9 +18,7 @@ class MainLayout extends Component {
           <Rc.Client.Menu />
         </div>
         <div className="main-layout">
-          <div className="client main-content ui grid">
-            {this.props.content}
-          </div>
+          {this.props.content}
           <Rc.Client.Footer />
         </div>
       </div>

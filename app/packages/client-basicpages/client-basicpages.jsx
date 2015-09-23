@@ -28,7 +28,7 @@ class BasicPages extends Rc.MeteorReactBaseComponent {
     log.debug('Rendering: loading status', this.data.loading);
     const item = this.data.item;
     return (
-      <div key={item.url} className='client basicpages ui container'>
+      <div key={item.url} className="client main-content ui grid fadeInUp basicpages">
         <h1>{item.title}</h1>
         <div dangerouslySetInnerHTML={{__html: item.content}} />
         <p><a href={FlowRouter.path('client-landingpage')}>Accueil</a></p>
