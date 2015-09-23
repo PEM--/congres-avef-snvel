@@ -4,11 +4,11 @@
 const log = Logger.createLogger('Client LandingPage');
 
 // Namespace flatteinng
-const { PropTypes, createClass } = React;
+const { PropTypes, Component } = React;
 
 // Landing page component
-Rc.Client.LandingPage = createClass({
-  displayName: 'Rc.Client.LandingPage',
+class LandingPage extends Component {
+  displayName: 'LandingPage'
   render() {
     log.debug('Rendering');
     return (
@@ -26,7 +26,7 @@ Rc.Client.LandingPage = createClass({
       </div>
     );
   }
-});
+}
 
 // Routing
 FlowRouter.route('/', {
@@ -35,7 +35,7 @@ FlowRouter.route('/', {
     log.info('Routing to', this.name);
     ReactLayout.render(Rc.MainLayout, {
       url: '/',
-      content: <Rc.Client.LandingPage />
+      content: <LandingPage />
     });
   }
 });

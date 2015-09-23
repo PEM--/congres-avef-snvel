@@ -1,15 +1,15 @@
 // Main layout of the client and admin applications
 
 // Namespace flatteinng
-const { PropTypes, createClass } = React;
+const { PropTypes, Component } = React;
 
 // Create a logger
 const log = Logger.createLogger('MainLayout');
 
 // MainLayout component
-Rc.MainLayout = createClass({
-  displayName: 'Rc.MainLayout',
-  propTypes: { content: PropTypes.object.isRequired },
+class MainLayout extends Component {
+  displayName: 'MainLayout'
+  propTypes: { content: PropTypes.object.isRequired }
   render() {
     log.debug('Rendering');
     return (
@@ -32,4 +32,7 @@ Rc.MainLayout = createClass({
       </div>
     );
   }
-});
+}
+
+// Export class
+Rc.MainLayout = MainLayout;

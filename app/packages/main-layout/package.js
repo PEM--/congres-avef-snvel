@@ -9,15 +9,14 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   var sharedDeps = [
-    'pierreeric:namespaces',
-    'pierreeric:logger',
+    'pierreeric:client-basecomponents',
     'pierreeric:client-footer'
   ];
   api.use([
     'blaze-html-templates',
-    'react',
     'kadira:dochead@1.1.0',
-    'flemay:less-autoprefixer@1.1.0'
+    'flemay:less-autoprefixer@1.1.0',
+    'pierreeric:logger',
   ].concat(sharedDeps));
   // Expose packages
   api.imply(sharedDeps);
