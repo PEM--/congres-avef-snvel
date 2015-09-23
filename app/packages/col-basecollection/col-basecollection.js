@@ -26,12 +26,9 @@ class BaseCollection {
         this.logger.info(`Subscrition method ${this.name}${subName} declared`);
         // Create the method
         let subscribeFct = function() {
-          this.logger.info('Subscribing to', subName);
-          for (let varIdx in arguments) {
-            console.log('Sub with arg', varIdx, ':', arguments[varIdx]);
-          }
-          let boundVars = [`${this.name}${subName}`].concat(arguments[0]);
-          console.log('boundVars', boundVars);
+          let variables = [...arguments];
+          this.logger.info('Subscribing to', subName, 'with', variables);
+          let boundVars = [`${this.name}${subName}`].concat(variables);
           return globalSubs.subscribe.apply(globalSubs, boundVars);
         };
         Object.defineProperty(this, `sub${subName}`, { value: subscribeFct });
@@ -81,34 +78,22 @@ if (Meteor.isServer) {
     _createPublications() {
       for (let key of Object.keys(this.subs)) {
         this.logger.info(`Publishing ${this.name}${key}`);
-        // @TODO unique publication
+        // @TODO Ordering
         // Ensure immediate call
         (subName => {
           const publishFct = function() {
-            console.log('Received args', arguments);
+            this.logger.debug('Received args', arguments);
             this.logger.info(`Publishing ${subName} for user ${this.userId} with ${arguments.length} args`);
-            // Check arguments
+            // Check arguments and build a potential mongo query selector
+            let query = {};
             for (let varIdx in arguments) {
-
-
               console.log('Checking arg', varIdx, arguments[varIdx]);
-              check(arguments[varIdx], Match.Any);
-              // Check for transmitted callback
-              if (varIdx === (arguments.length - 1)) {
-                console.log('Checking callback');
-                check(arguments[varIdx], Match.Any);
-              }
+              check(arguments[varIdx],
+                    this.schema.getDefinition(this.subs[subName].query[varIdx]).type);
+              query[this.subs[subName].query[varIdx]] = arguments[varIdx];
             }
-            // Check the injected query parameters
-            // if (this.subs[subName].query) {
-            //
-            //   check(arguments[0], this.schema.getDefinition(this.subs[subName]).type);
-            //   let query = {};
-            //   query[this.subs[subName].query] = arguments[0];
-            //   return this.collection.findOne(query);
-            // }
-
-            return this.collection.find({});
+            // When a query parameter is used, consider the return a a single element
+            return this.collection.find(query);
           }.bind(this);
           Meteor.publish(`${this.name}${subName}`, publishFct);
         })(key);

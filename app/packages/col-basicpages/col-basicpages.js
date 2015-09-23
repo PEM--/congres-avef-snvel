@@ -18,7 +18,7 @@ const options = {
   // Available subscriptions and publications
   subs: {
     AllLinks: {},
-    WithUrl: { query: 'url' }
+    WithUrl: { query: ['url'] }
   }
 };
 
