@@ -5,7 +5,7 @@ Package.describe({
 
 Package.onUse(function(api) {
   // Meteor's API version
-  api.versionsFrom('METEOR@1.2-rc.17');
+  api.versionsFrom('1.2.0.1');
   // Dependencies of this package
   // Dependencies for server and client
   api.use([

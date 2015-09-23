@@ -20,7 +20,6 @@ pierreeric:logger
 # Security
 audit-argument-checks
 force-ssl
-matteodem:easy-security
 pierreeric:security
 
 # Development helpers

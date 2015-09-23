@@ -4,7 +4,7 @@ Package.describe({
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('METEOR@1.2-rc.17');
+  api.versionsFrom('1.2.0.1');
   api.use([
     'coffeescript',
     'browser-policy',
