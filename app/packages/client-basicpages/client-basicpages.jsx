@@ -25,7 +25,7 @@ class BasicPages extends Rc.MeteorReactBaseComponent {
     };
   }
   render() {
-    log.debug('Rendering');
+    log.debug('Rendering: loading status', this.data.loading);
     const item = this.data.item;
     return (
       <div key={item.url} className='client basicpages ui container'>
@@ -61,7 +61,7 @@ var setBasicPageRoutes = function() {
 // subscribed to all data, which leads to these differences on the client
 // and on the server.
 if (Meteor.isClient) {
-  Col.basicPages.subAllLinks(function() {
+  Col.basicPages.subAllPages(function() {
     setBasicPageRoutes();
   });
 } else {

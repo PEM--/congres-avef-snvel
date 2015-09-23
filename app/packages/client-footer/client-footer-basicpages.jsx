@@ -23,7 +23,7 @@ class BasicPagesLinkList extends Rc.MeteorReactBaseComponent {
   mixins: [ReactMeteorData]
   // Subscribe to BasicPages (reactive methods)
   getMeteorData() {
-    const handle = Col.basicPages.subAllLinks();
+    const handle = Col.basicPages.subFooterLinks();
     return {
       // Use handle to show loading state
       loading: !handle.ready(),

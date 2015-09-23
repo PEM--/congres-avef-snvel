@@ -17,8 +17,14 @@ const options = {
   },
   // Available subscriptions and publications
   subs: {
-    // @TODO Query filtering on menu and footer
-    AllLinks: { options: {sort: {order: 1} } },
+    AllPages: {},
+    FooterLinks: {
+      filter: { $or: [
+        {display: 'Footer'},
+        {display: 'Menu et Footer'}
+      ]},
+      options: {sort: {order: 1} }
+    },
     WithUrl: { query: ['url'] }
   }
 };

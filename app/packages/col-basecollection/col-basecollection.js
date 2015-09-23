@@ -85,13 +85,21 @@ if (Meteor.isServer) {
             this.logger.info(`Publishing ${subName} for user ${this.userId} with ${arguments.length} args`);
             // Check arguments and build a potential mongo query selector
             let query = {};
-            for (let varIdx in arguments) {
-              check(arguments[varIdx],
-                    this.schema.getDefinition(this.subs[subName].query[varIdx]).type);
-              query[this.subs[subName].query[varIdx]] = arguments[varIdx];
+            if (this.subs[subName].query) {
+              // Subscription is on a query
+              for (let varIdx in arguments) {
+                check(arguments[varIdx],
+                      this.schema.getDefinition(this.subs[subName].query[varIdx]).type);
+                query[this.subs[subName].query[varIdx]] = arguments[varIdx];
+              }
+            } else if (this.subs[subName].filter) {
+              // Subscription is on a filter
+              query = this.subs[subName].filter;
             }
             // Get query options
             let options = this.subs[subName].options ? this.subs[subName].options : {};
+            // Get filter options
+
             // When a query parameter is used, consider the return a a single element
             return this.collection.find(query, options);
           }.bind(this);
