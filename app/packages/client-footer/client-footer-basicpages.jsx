@@ -13,7 +13,7 @@ class BasicPagesLink extends Component {
   render() {
     log.debug('Rendering BasicPagesLink');
     const { url, title } = this.props;
-    return <li><a href={url}>{title}</a></li>;
+    return <li className="item"><a href={url} className="animated">{title}</a></li>;
   }
 }
 
@@ -44,7 +44,13 @@ class BasicPagesLinkList extends Rc.MeteorReactBaseComponent {
         url={item.url}
         title={item.title} />;
     });
-    return <ul>{nodes}</ul>;
+    return (
+      <div className="basicpages-links center aligned twelve wide tablet height wide computer column">
+        <ul className="ui horizontal divided list readability-black">
+          {nodes}
+        </ul>
+      </div>
+    );
   }
 }
 

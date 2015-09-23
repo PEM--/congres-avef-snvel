@@ -13,7 +13,7 @@ class SocialLink extends Component {
   render() {
     log.debug('Rendering SocialLink');
     const { url, faIcon } = this.props;
-    return <li><a className={`fa ${faIcon} fa-lg`} href={url} target='_blank'></a></li>;
+    return <li className="item"><a href={url}><i className={`fa ${faIcon}`} target='_blank'></i></a></li>;
   }
 }
 
@@ -41,7 +41,13 @@ class SocialLinkList extends Rc.MeteorReactBaseComponent {
         url={item.url}
         faIcon={item.faIcon} />;
     });
-    return <ul>{nodes}</ul>;
+    return (
+      <div id="social-links" className="right aligned four wide column">
+        <ul className="ui horizontal divided list readability-black">
+          {nodes}
+        </ul>
+      </div>
+    );
   }
 }
 
