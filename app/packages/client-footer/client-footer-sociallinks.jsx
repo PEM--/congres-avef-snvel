@@ -27,9 +27,8 @@ class SocialLinkList extends Rc.MeteorReactBaseComponent {
       // Use handle to show loading state
       loading: !handle.ready(),
       // Expose the list as an array
-      items: Col.socialLinks.collection.find({}, {
-        sort: {order: 1}
-      }).fetch()
+      items: Col.socialLinks.collection.find({},
+        Col.socialLinks.subs.AllLinks.options).fetch()
     };
   }
   render() {

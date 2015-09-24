@@ -28,7 +28,7 @@ const BasicPages = createClass({
   render() {
     log.debug('Rendering: loading status', this.data.loading);
     if (this.data.loading) {
-      return <p>Loading</p>;
+      return null;
     }
     const item = this.data.item;
     return (

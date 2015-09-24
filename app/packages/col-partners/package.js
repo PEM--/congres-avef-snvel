@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'pierreeric:routing-done',
+  name: 'pierreeric:col-partners',
   version: '0.0.1'
 });
 
@@ -9,19 +9,20 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   const shared = [
-    'pierreeric:namespaces',
-    'pierreeric:logger'
+    'pierreeric:namespaces'
   ];
   api.use([
-    'ecmascript',
     'underscore',
-    'kadira:flow-router-ssr@3.3.0',
-    'meteorhacks:fast-render@2.10.0',
-    'underscorestring:underscore.string@3.2.2',
-    'gadicohen:sitemaps@0.0.23'
+    'ecmascript',
+    'aldeed:collection2@2.5.0',
+    'dburles:collection-helpers@1.0.3',
+    'pierreeric:subscription-cache',
+    'pierreeric:col-basecollection'
   ].concat(shared));
   api.imply(shared);
   // Included files in this packages
-  // Files for client only
-  api.addFiles('routing-done.js');
+  // Files for server and client
+  api.addFiles([
+    'col-partners.js',
+  ]);
 });

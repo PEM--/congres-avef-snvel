@@ -49,7 +49,7 @@ pierreeric:client-notfound
 pierreeric:admin-home
 
 # All routes declared start: Start client side routing
-pierreeric:routing-done
+
 
 # Authentifications
 #useraccounts:core
@@ -58,3 +58,6 @@ pierreeric:routing-done
 #useraccounts:semantic-ui
 
 pierreeric:col-dictionary
+
+
+pierreeric:routing-done

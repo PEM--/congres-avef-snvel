@@ -15,7 +15,8 @@ Package.onUse(function(api) {
     'pierreeric:client-basecomponents',
     'pierreeric:routing-start',
     'pierreeric:main-layout',
-    'pierreeric:client-sharedstyles'
+    'pierreeric:client-sharedstyles',
+    'pierreeric:col-partners'
   ]);
   // Included files in this packages
   // Files for server and client

@@ -4,8 +4,10 @@
 const log = Logger.createLogger('Routing Done');
 
 // Release router for routing once all routes are declared
-FlowRouter.initialize();
-log.info('Released');
+Meteor.startup(() => {
+  FlowRouter.initialize();
+  log.info('Released');
+});
 
 // Creating sitemaps for all routes
 if (Meteor.isServer) {

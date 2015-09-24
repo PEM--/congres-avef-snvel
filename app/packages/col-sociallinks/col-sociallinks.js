@@ -7,10 +7,6 @@ const options = {
     order: { type: Number, label: 'Ordonnancement', min: 1, max: 256, unique: true },
     faIcon: { type: String, label: 'Icone', min: 1, max: 32 }
   },
-  // Set indexes on collection
-  indexes: {
-    url: 1, order: 1
-  },
   // Available subscriptions and publications
   subs: {
     AllLinks: { options: {sort: {order: 1} } }
@@ -30,6 +26,10 @@ if (Meteor.isServer) {
   // Export instance
   Col.socialLinks = new SocialLinks(options, {
     // Options specific to server
-    defaults: Meteor.settings.public.socialLinks
+    defaults: Meteor.settings.public.socialLinks,
+    // Set indexes on collection
+    // indexes: {
+    //   url: 1, order: 1
+    // }
   });
 }

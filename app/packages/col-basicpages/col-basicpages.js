@@ -11,10 +11,6 @@ const options = {
     },
     content: { type: String, label: 'Contenu' }
   },
-  // Set indexes on collection
-  indexes: {
-    url: 1, display: 1, order: 1
-  },
   // Available subscriptions and publications
   subs: {
     AllPages: {},
@@ -60,8 +56,7 @@ if (Meteor.isServer) {
     ],
     // Set indexes on collection
     indexes: {
-      url: 1,
-      order: 1
+      url: 1, display: 1, order: 1
     }
   });
 }
