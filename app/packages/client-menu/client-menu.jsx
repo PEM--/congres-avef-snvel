@@ -1,23 +1,28 @@
 // Menu
 
 // Namespace flatteinng
-const { PropTypes, Component } = React;
+const { PropTypes, createClass } = React;
 
 // Create a logger
 const log = Logger.createLogger('Client Menu');
 
 // Popup menu
 //class PopupMenu extends Rc.MeteorReactBaseComponent {
-class PopupMenu extends Component {
-  displayName: 'PopupMenu'
-  constructor(props) {
-    super(props);
-  }
+const PopupMenu = createClass({
+  displayName: 'PopupMenu',
+  propTypes: {
+    menuState: React.PropTypes.bool.isRequired
+  },
+  getInitialState() {
+    return {
+      menuState: this.props.menuState
+    };
+  },
   // Render the component
   render() {
     log.debug('Rendering PopupMenu');
     return (
-      <aside className={`client ui vertical menu ${this.props.menuState ? 'open': ''}`}>
+      <aside className={`client ui vertical menu ${this.state.menuState ? 'open': ''}`}>
         <i className="fa fa-close close fa-2x"></i>
         <a href="#" className="item">
           <i className="fa fa-user"></i>
@@ -50,13 +55,12 @@ class PopupMenu extends Component {
       </aside>
     );
   }
-}
-PopupMenu.defaultProps = { menuState: false };
-PopupMenu.propTypes = { menuState: React.PropTypes.bool.isRequired };
+});
+// PopupMenu.defaultProps = { menuState: false };
+// PopupMenu.propTypes = { menuState: React.PropTypes.bool.isRequired };
 
 // Menu component
-//class Menu extends Rc.MeteorReactBaseComponent {
-const Menu = React.createClass({
+const Menu = createClass({
   displayName: 'Menu',
   getInitialState() {
     return {

@@ -13,6 +13,7 @@ Package.onUse(function(api) {
     'pierreeric:logger',
     'pierreeric:client-basecomponents',
     'pierreeric:routing-start',
+    'pierreeric:main-layout',
     'pierreeric:client-basicpages'
   ]);
   // Included files in this packages
