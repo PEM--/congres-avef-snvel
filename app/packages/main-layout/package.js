@@ -9,6 +9,7 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
+    'pierreeric:client-browserupdate',
     'react',
     'pierreeric:namespaces',
     'pierreeric:client-menu',
