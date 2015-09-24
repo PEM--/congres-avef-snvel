@@ -1,5 +1,7 @@
 @import url('/client/lib/semanticui/site/globals/site.variables.import.less');
-@import url('/packages/client-spinkit/spinkit-less/mixins/cube-grid.less');
+//@import url('/packages/client-spinkit/spinkit-less/mixins/cube-grid.less');
+//@import url('/packages/client-spinkit/spinkit-less/mixins/double-bounce.less');
+@import url('/packages/client-spinkit/spinkit-less/mixins/three-bounce.less');
 
 @spinner: spinner;
 @spinner-margin: 0 auto;
@@ -7,5 +9,7 @@
 @spinner-duration: 1.2s;
 
 .@{spinner} {
-  .spinner-cube-grid();
+  //.spinner-cube-grid();
+  //.spinner-double-bounce();
+  .spinner-three-bounce();
 }
