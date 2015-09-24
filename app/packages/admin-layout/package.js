@@ -9,8 +9,8 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
-    'flemay:less-autoprefixer@1.1.0',
     'react',
+    'flemay:less-autoprefixer@1.1.0',
     'pierreeric:namespaces',
     'pierreeric:logger'
   ]);

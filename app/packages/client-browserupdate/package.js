@@ -16,8 +16,9 @@ Package.onUse(function(api) {
   api.use([
     'ecmascript',
     'cosmos:browserify@0.7.0',
-    'fourseven:scss@3.2.0'
   ]);
+  // Dependencies for server only
+  api.use(['fourseven:scss@3.2.0'], 'server');
   // Included files in this packages
   // Files for client only
   api.addFiles([

@@ -1,3 +1,6 @@
+# Must be the 1st package
+pierreeric:client-browserupdate
+
 # Meteor official packages
 meteor-base
 session
