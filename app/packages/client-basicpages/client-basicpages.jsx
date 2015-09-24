@@ -44,7 +44,9 @@ const BasicPages = createClass({
               </section>
               <section className="row">
                 <nav className="sixteen wide column">
-                  <a href={FlowRouter.path('client-landingpage')}>Accueil</a>
+                  <p>
+                    Revenez à l'<a href={FlowRouter.path('client-landingpage')}>Accueil</a>.
+                  </p>
                 </nav>
               </section>
             </div>

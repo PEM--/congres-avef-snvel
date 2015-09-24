@@ -1,11 +1,11 @@
 DEFAULT_CGV = `
 ## Préambule
-L'AVEF, est une association de type loi 1901, à but non lucratif, fondée en 1965. Elle est immatriculée au répertoire SIREN sous le numéro et son siège social est situé 34, rue Bréguet à Paris (75 011).   Les relations courtoises entre confrères ayant une activité en médecine et chirurgie équine, l’enrichissement scientifique et technique par l’échange » sont restés les
-principes fondamentaux de l’association. Depuis, l’AVEF a développé son activité, notamment dans la formation continue, mais aussi dans différentes actions de valorisation, de défense et de représentation de la profession.
-Le SNVEL est un syndicat professionnel fondé en 1993, immatriculé sous le numéro SIREN
+L'[AVEF](http://www.avef.fr), est une association de type loi 1901, à but non lucratif, fondée en 1965. Elle est immatriculée au répertoire SIREN sous le numéro et son siège social est situé 34, rue Bréguet à Paris (75 011).   Les relations courtoises entre confrères ayant une activité en médecine et chirurgie équine, l’enrichissement scientifique et technique par l’échange » sont restés les
+principes fondamentaux de l’association. Depuis, l’[AVEF](http://www.avef.fr) a développé son activité, notamment dans la formation continue, mais aussi dans différentes actions de valorisation, de défense et de représentation de la profession.
+Le [SNVEL](http://www.snvel.fr) est un syndicat professionnel fondé en 1993, immatriculé sous le numéro SIREN
 
 ## Conditions générales de vente des inscriptions pour le "Congrès AVEF/SNVEL 2015" » (ci-après l'Événement).
-L'évènement est organisé conjointement par l'AVEF et le SNVEL (ci-après « Les organisateurs »).
+L'évènement est organisé conjointement par l'[AVEF](http://www.avef.fr) et le [SNVEL](http://www.snvel.fr) (ci-après « Les organisateurs »).
 La vente des inscription s’effectuera en ligne sur le site https://congres-avef-snvel.fr (ci-après « le site »). La commande en ligne à l’Événement confère au visiteur la qualité de « Client » et emporte de plein droit son adhésion et son acceptation des présentes conditions générales de vente. La commande du Client est soumise aux présentes conditions générales qui prévalent sur tout document émanant du Client. L’Organisateur pourra modifier unilatéralement les présentes conditions générales. Toute modification de ces dispositions sera opposable au Client dès sa communication, et cela par quelque moyen que ce soit.
 
 ## Article 1 : Objet du Contrat
@@ -14,7 +14,7 @@ Les présentes Conditions générales de vente ont pour objet de définir les mo
 ## Article 2 : Description de l’offre
 Sauf mention contraire, et sous réserve du respect des présentes, sont inclus dans l’offre et par options : l’accès à l’exposition commerciale, la participation aux conférences, aux ateliers et évènements. Les diverses activités sont énoncées dans la programmation de https://congres-avef-snvel.fr.
 
-##Article 3 : Modalités de commande
+## Article 3 : Modalités de commande
 Le Client passe commande en remplissant le formulaire d’inscription du Site. Le Client s’engage à donner des informations exactes et exhaustives. En cliquant sur le bouton « Je m’inscris » pendant le processus de commande, et après avoir vérifié le contenu de sa commande et, le cas échéant, de l’avoir modifiée, le Client déclare accepter pleinement et sans réserve l’intégralité des présentes Conditions générales. Le Client confirme alors le contenu de sa commande et donne ainsi son consentement ferme et définitif. L’Organisateur lui fait ensuite parvenir un récapitulatif de sa commande à l’adresse e-mail communiquée lors de l’inscription à l’Événement. Après réception du paiement, l’acceptation de la commande par l’Organisateur sera confirmée par envoi d’un courrier électronique, une facture sera alors délivrée au Client.
 
 Lorsque le Client opte pour un paiement par chèque, l’inscription ne sera valide qu’après réception du chèque et finalisation de la transaction. Un courriel de confirmation d’inscription sera alors envoyé à l’adresse email communiquée lors de son inscription.
@@ -22,7 +22,7 @@ Lorsque le Client opte pour un paiement par chèque, l’inscription ne sera val
 Aucune annulation ultérieure du Client hors délai légal permettant l’exercice du droit à rétractation, ne donnera droit à un remboursement et/ou une quelconque indemnisation de la part de l’Organisateur.
 
 ## Article 4 : Délai de rétractation
-Conformément aux articles L. 121-20 et suivants du Code de la consommation le Client bénéficie d’un droit de rétractation. Le Client s’il est une personne physique non professionnelle, peut exercer son droit de rétractation, sans motif, dans un délai de quatorze (14) jours à compter du paiement de la commande. Pour revenir sur son consentement et annuler la commande, le Client doit en informer l'AVEF par courriel. Le droit de rétractation, s’il a été valablement exercé, permet au Client d’obtenir le remboursement de sa commande.
+Conformément aux articles L. 121-20 et suivants du Code de la consommation le Client bénéficie d’un droit de rétractation. Le Client s’il est une personne physique non professionnelle, peut exercer son droit de rétractation, sans motif, dans un délai de quatorze (14) jours à compter du paiement de la commande. Pour revenir sur son consentement et annuler la commande, le Client doit en informer l'[AVEF](http://www.avef.fr) par courriel. Le droit de rétractation, s’il a été valablement exercé, permet au Client d’obtenir le remboursement de sa commande.
 
 ## Article 5 : Conditions financières
 Le prix des accès est indiqué sur le Site dans la rubrique « inscriptions ». Les montants indiqués s’entendent hors taxes. Le prix devra être réglé dans son intégralité, à défaut la commande sera annulée.
@@ -36,7 +36,7 @@ Le compte bancaire du Client sera débité du montant de la commande, dès la va
 Un justificatif de paiement lorsque le Client choisi d’effectuer un paiement par carte bancaire sera automatiquement envoyé par courriel au Client, à l’issue de la transaction, sur l’adresse email communiquée.
 
 ## Article 6 : Sécurisation des paiements
-Les paiements électroniques effectués dans le cadre des transactions réalisées sur le site https://congres-avef-snvel.fr sont sécurisés, par utilisation du procédé de cryptage « SSL ». L'AVEF utilise pour les dits paiements électroniques, la solution « Braintree » fournie par «Braintree ».
+Les paiements électroniques effectués dans le cadre des transactions réalisées sur le site https://congres-avef-snvel.fr sont sécurisés, par utilisation du procédé de cryptage « SSL ». L'[AVEF](http://www.avef.fr) utilise pour les dits paiements électroniques, la solution « Braintree » fournie par «Braintree ».
 
 ## Article 7 : Conditions d’accès
 Le jour de l’Événement, le Client dont la commande aura été acceptée se présentera à l’accueil et se verra remettre son badge d’accès après présentation d'un justificatif d'inscription, au personnel en charge de l’accueil des participants.
@@ -53,7 +53,7 @@ Tout différend entre le Client et l’Organisateur relatif à l’exécution de
 ### 10. 1 Collecte des données personnelles
 Lors de la passation de la commande, l'organisateur est amené à collecter auprès du Client certaines informations et données à caractère personnel telles que notamment nom et prénom, adresse e-mail, numéro de téléphone mobile sans que cette liste ne soit limitative.
 
-En application du dispositif n° 78-17 du 6 janvier 1978 relative à l’informatique, aux fichiers et aux libertés, le traitement des informations nominatives relatives aux utilisateurs des services fournis par l’association a fait l’objet d’une déclaration auprès de la CNIL (n° de déclaration : en cours).
+En application du dispositif n° 78-17 du 6 janvier 1978 relative à l’informatique, aux fichiers et aux libertés, le traitement des informations nominatives relatives aux utilisateurs des services fournis par l’association a fait l’objet d’une déclaration auprès de la [CNIL](http://www.cnil.fr/) (n° de déclaration : en cours).
 
 ### 10.2 Finalités du traitement
 Les informations et données concernant le Client sont nécessaires à la gestion de la commande et de la relation commerciale. Les informations et données sont également conservées à des fins de sécurité et afin de respecter les obligations légales et règlementaires de conservation des données.
@@ -73,7 +73,7 @@ S’il souhaite ultérieurement ne plus recevoir d’informations d’e l'organi
 ### 10.5 Droits d’opposition, d’accès, de rectification
 Comme le prévoient les dispositions de la loi « informatique et libertés » du 6 janvier 1978, le client bénéficie d’un droit d’accès et de rectification aux informations qui le concerne. Il peut également, pour des motifs légitimes, s’opposer au traitement des données le concernant.
 
-Pour exercer ces droits, le client pourra adresser sa requête à : congres-avef-snvel@avef.fr ou à : AVEF - 34, rue Breguet - 75011 Paris.
+Pour exercer ces droits, le client pourra adresser sa requête à : congres-avef-snvel@avef.fr ou à : [AVEF](http://www.avef.fr) - 34, rue Breguet - 75011 Paris.
 
 Conformément à la réglementation en vigueur, le courrier doit être signé et accompagné de la photocopie d’un titre d’identité portant la signature du client et préciser l’adresse à laquelle doit parvenir la réponse.
 

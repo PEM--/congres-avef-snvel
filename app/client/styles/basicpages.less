@@ -1,10 +1,17 @@
 // Semantic UI variables
 @import url('/client/lib/semanticui/site/globals/site.variables.import.less');
 
+.client.basicpages {
+    a, a:visited {
+      color: @orange;
+      &::after { background-color: @orange !important; }
+    }
+}
+
 // Mobile specifics
 @media screen and (max-width: @largestMobileScreen) {
   .client.basicpages {
-    h1, h2, h3, h4, h5, h6, label, p, a, ul li {
+    h1, h2, h3, h4, h5, h6, label, p, ul li {
       color: @veryLightOrange;
     }
     a, a:visited {
