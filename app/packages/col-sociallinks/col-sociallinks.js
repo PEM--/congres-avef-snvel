@@ -28,8 +28,8 @@ if (Meteor.isServer) {
     // Options specific to server
     defaults: Meteor.settings.public.socialLinks,
     // Set indexes on collection
-    // indexes: {
-    //   url: 1, order: 1
-    // }
+    indexes: {
+      url: 1, order: 1
+    }
   });
 }

@@ -116,7 +116,7 @@ const PartnerList = createClass({
     });
     return (
       <section className="client partners row">
-        <a href="/partners" className="sixteen wide column">
+        <div className="sixteen wide column">
           <div className="ui centered stackable grid container">
             <div className="intro row">
               <div className="sixteen wide column">
@@ -127,7 +127,7 @@ const PartnerList = createClass({
               </div>
             </div>
           </div>
-        </a>
+        </div>
       </section>
     );
   }
@@ -140,6 +140,9 @@ const LandingPage = createClass({
     log.debug('Rendering LandingPage');
     return (
       <div className="client main-content ui grid">
+        <Presentation />
+        <Program />
+        <Subscription />
         <PartnerList />
       </div>
     );

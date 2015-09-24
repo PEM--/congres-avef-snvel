@@ -35,8 +35,6 @@ if (Meteor.isServer) {
         title: 'SNVEL', url: 'http://www.snvel.fr',
         src: '/img/snvel.svg', order: 2
       },
-    ],
-    // Set indexes on collection
-    // indexes: { order: 1 }
+    ]
   });
 }
