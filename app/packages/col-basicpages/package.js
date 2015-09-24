@@ -17,7 +17,8 @@ Package.onUse(function(api) {
     'aldeed:collection2@2.5.0',
     'dburles:collection-helpers@1.0.3',
     'pierreeric:subscription-cache',
-    'pierreeric:col-basecollection'
+    'pierreeric:col-basecollection',
+    'pierreeric:custom-basicpages'
   ].concat(shared));
   api.imply(shared);
   // Dependencies for server only

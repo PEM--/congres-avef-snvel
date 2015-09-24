@@ -39,19 +39,19 @@ if (Meteor.isServer) {
     defaults: [
       {
         title: 'Mentions légales', url: 'legal', order: 1, display: 'Menu et Footer',
-        content: marked('Les mentions légales, personne ne les lit...')
+        content: marked(DEFAULT_LEGAL)
       },
       {
         title: 'Confidentialité', url: 'cookie', order: 2, display: 'Menu et Footer',
-        content: marked('La confidentialité est un mythe...')
+        content: marked(DEFAULT_COOKIE)
       },
       {
         title: 'Conditions générales de ventes', url: 'cgv', order: 3, display: 'Menu et Footer',
-        content: marked('On vend tout ce qu\'on peut...')
+        content: marked(DEFAULT_CGV)
       },
       {
         title: 'Not found', url: 'notfound', order: 4, display: 'Aucun',
-        content: marked('On ne trouve rien sans recherche...')
+        content: marked(DEFAULT_NOTFOUND)
       }
     ],
     // Set indexes on collection
