@@ -1,0 +1,14 @@
+// Semantic UI variables
+@import url('/client/lib/semanticui/site/globals/site.variables.import.less');
+
+// Mobile specifics
+@media screen and (max-width: @largestMobileScreen) {
+  .client.basicpages {
+    h1, h2, h3, h4, h5, h6, label, p, a {
+      color: @veryLightOrange;
+    }
+    a, a:visited {
+      &::after { background-color: @veryLightOrange !important; }
+    }
+  }
+}

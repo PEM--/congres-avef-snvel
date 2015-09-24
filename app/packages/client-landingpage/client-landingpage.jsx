@@ -57,8 +57,12 @@ class LandingPage extends Component {
               <div className="intro row">
                 <div className="sixteen wide column">
                   <h1>Partenaires &amp; exposants</h1>
-                  <div href="http://www.avef.fr" target="_blank" className="logo"><img src="img/avef.svg" alt="AVEF" className="svg"/></div>
-                  <div href="http://www.snvel.fr" target="_blank" className="logo"><img src="img/snvel.svg" alt="SNVEL" className="svg"/></div>
+                  <a href="http://www.avef.fr" target="_blank" className="logo">
+                    <img src="img/avef.svg" alt="AVEF" className="svg"/>
+                  </a>
+                  <a href="http://www.snvel.fr" target="_blank" className="logo">
+                    <img src="img/snvel.svg" alt="SNVEL" className="svg"/>
+                  </a>
                 </div>
               </div>
             </div>

@@ -29,9 +29,23 @@ class BasicPages extends Rc.MeteorReactBaseComponent {
     const item = this.data.item;
     return (
       <div key={item.url} className="client main-content ui grid basicpages">
-        <h1>{item.title}</h1>
-        <div dangerouslySetInnerHTML={{__html: item.content}} />
-        <p><a href={FlowRouter.path('client-landingpage')}>Accueil</a></p>
+        <div className="row">
+          <div className="sixteen wide column">
+            <div className="ui grid container">
+              <section className="row">
+                <div className="sixteen wide column">
+                  <h1>{item.title}</h1>
+                  <div dangerouslySetInnerHTML={{__html: item.content}} />
+                </div>
+              </section>
+              <section className="row">
+                <nav className="sixteen wide column">
+                  <a href={FlowRouter.path('client-landingpage')}>Accueil</a>
+                </nav>
+              </section>
+            </div>
+          </div>
+        </div>
       </div>
     );
   }
