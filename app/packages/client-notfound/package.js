@@ -11,7 +11,6 @@ Package.onUse(function(api) {
   api.use([
     'kadira:react-layout@1.3.0',
     'pierreeric:logger',
-    'pierreeric:client-basecomponents',
     'pierreeric:routing-start',
     'pierreeric:main-layout',
     'pierreeric:client-basicpages'

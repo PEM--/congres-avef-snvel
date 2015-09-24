@@ -1,25 +1,26 @@
 // List of basic page links
 
 // Namespace flatteinng
-const { PropTypes, Component } = React;
+const { PropTypes, createClass } = React;
 
 // Basic page link
-class BasicPagesLink extends Component {
-  displayName: 'BasicPagesLink'
+const BasicPagesLink = createClass({
+  displayName: 'BasicPagesLink',
   propTypes: {
     url: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired
-  }
+  },
   render() {
     log.debug('Rendering BasicPagesLink');
     const { url, title } = this.props;
     return <li className="item"><a href={url} className="animated">{title}</a></li>;
   }
-}
+});
 
 // List of basic page links
-class BasicPagesLinkList extends Rc.MeteorReactBaseComponent {
-  displayName: 'BasicPagesLinkList'
+BasicPagesLinkList = createClass({
+  displayName: 'BasicPagesLinkList',
+  mixins: [ReactMeteorData],
   // Subscribe to BasicPages (reactive methods)
   getMeteorData() {
     const handle = Col.basicPages.subFooterLinks();
@@ -31,7 +32,7 @@ class BasicPagesLinkList extends Rc.MeteorReactBaseComponent {
         Col.basicPages.subs.FooterLinks.filter,
         Col.basicPages.subs.FooterLinks.options).fetch()
     };
-  }
+  },
   render() {
     log.debug('Rendering BasicPagesLinkList');
     // Display links as a list
@@ -49,7 +50,4 @@ class BasicPagesLinkList extends Rc.MeteorReactBaseComponent {
       </div>
     );
   }
-}
-
-// Export class
-Rc.Client.BasicPagesLinkList = BasicPagesLinkList;
+});

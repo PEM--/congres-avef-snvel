@@ -11,7 +11,8 @@ Package.onUse(function(api) {
   api.use([
     'flemay:less-autoprefixer@1.1.0',
     'pierreeric:logger',
-    'pierreeric:client-basecomponents',
+    'react',
+    'pierreeric:namespaces',
     'pierreeric:client-sharedstyles'
   ]);
   // Included files in this packages

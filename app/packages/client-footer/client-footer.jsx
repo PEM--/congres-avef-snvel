@@ -1,11 +1,11 @@
 // Footer
 
 // Namespace flatteinng
-const { PropTypes, Component } = React;
+const { PropTypes, createClass } = React;
 
 // Footer component
-class Footer extends Component {
-  displayName: 'Footer'
+const Footer = createClass({
+  displayName: 'Footer',
   // Render the component
   render() {
     log.debug('Rendering Footer');
@@ -15,14 +15,14 @@ class Footer extends Component {
         <div className="sixteen wide column">
           <div className="footer-grid ui centered stackable grid container">
             <div className="four wide computer only column"></div>
-            <Rc.Client.BasicPagesLinkList />
-            <Rc.Client.SocialLinkList />
+            <BasicPagesLinkList />
+            <SocialLinkList />
           </div>
         </div>
       </footer>
     );
   }
-}
+});
 
 // Export class
 Rc.Client.Footer = Footer;

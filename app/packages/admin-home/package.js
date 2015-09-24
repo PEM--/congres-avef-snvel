@@ -11,7 +11,8 @@ Package.onUse(function(api) {
   api.use([
     'kadira:react-layout@1.3.0',
     'flemay:less-autoprefixer@1.1.0',
-    'pierreeric:client-basecomponents',
+    'react',
+    'pierreeric:namespaces',
     'pierreeric:logger',
     'pierreeric:routing-start',
     'pierreeric:admin-layout',

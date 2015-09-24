@@ -9,8 +9,9 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
-    'pierreeric:client-basecomponents',
     'flemay:less-autoprefixer@1.1.0',
+    'react',
+    'pierreeric:namespaces',
     'pierreeric:logger'
   ]);
   // Included files in this packages

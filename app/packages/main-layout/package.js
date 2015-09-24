@@ -8,19 +8,16 @@ Package.onUse(function(api) {
   api.versionsFrom('1.2.0.1');
   // Dependencies of this package
   // Dependencies for server and client
-  var sharedDeps = [
-    'pierreeric:client-basecomponents',
-    'pierreeric:client-menu',
-    'pierreeric:client-footer'
-  ];
   api.use([
+    'react',
+    'pierreeric:namespaces',
+    'pierreeric:client-menu',
+    'pierreeric:client-footer',
     'blaze-html-templates',
     'kadira:dochead@1.1.0',
     'flemay:less-autoprefixer@1.1.0',
     'pierreeric:logger',
-  ].concat(sharedDeps));
-  // Expose packages
-  api.imply(sharedDeps);
+  ]);
   // Included files in this packages
   // Files for server and client
   api.addFiles([

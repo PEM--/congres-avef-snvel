@@ -13,6 +13,11 @@ const PopupMenu = createClass({
   propTypes: {
     menuState: React.PropTypes.bool.isRequired
   },
+  getDefaultProps() {
+    return {
+      menuState: false
+    };
+  },
   getInitialState() {
     return {
       menuState: this.props.menuState
@@ -56,15 +61,21 @@ const PopupMenu = createClass({
     );
   }
 });
-// PopupMenu.defaultProps = { menuState: false };
-// PopupMenu.propTypes = { menuState: React.PropTypes.bool.isRequired };
 
 // Menu component
 const Menu = createClass({
   displayName: 'Menu',
-  getInitialState() {
+  propTypes: {
+    popupMenuToggle: React.PropTypes.bool
+  },
+  getDefaultProps() {
     return {
       popupMenuToggle: false
+    };
+  },
+  getInitialState() {
+    return {
+      popupMenuToggle: this.props.popupMenuToggle
     };
   },
   menuToggle(e) {
