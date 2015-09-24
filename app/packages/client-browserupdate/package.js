@@ -16,14 +16,13 @@ Package.onUse(function(api) {
   api.use([
     'ecmascript',
     'cosmos:browserify@0.7.0',
+    'flemay:less-autoprefixer@1.1.0'
   ]);
-  // Dependencies for server only
-  api.use(['fourseven:scss@3.2.0'], 'server');
   // Included files in this packages
   // Files for client only
   api.addFiles([
+    'client-browserupdate.less',
     'client-browserupdate.browserify.js',
     'client-browserupdate.browserify.options.json'
   ], 'client');
-
 });
