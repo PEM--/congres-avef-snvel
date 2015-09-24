@@ -40,11 +40,12 @@ nav.client {
   }
 
   // Hamburger menu
-  .hamburger {
+  button.hamburger {
+    border: none;
+    background-color: transparent;
     padding-top: .3rem !important;
     padding-left: 0 !important;
     font-size: @h1;
-    cursor: pointer;
   }
 }
 // Mobile specifics
@@ -79,6 +80,7 @@ aside.client {
   transition: opacity @defaultDuration @defaultEasing,
               transform @defaultDuration @defaultEasing;
   &.open {
+    visibility: visible !important;
     opacity: .95;
     transform: perspective(2000px) translate3d(0,0,0) rotateY(0);
   }
