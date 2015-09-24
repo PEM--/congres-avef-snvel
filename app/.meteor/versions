@@ -23,7 +23,7 @@ callback-hook@1.0.4
 check@1.0.6
 chuangbo:cookie@1.1.0
 coffeescript@1.0.9
-cosmos:browserify@0.5.1
+cosmos:browserify@0.7.0
 dburles:collection-helpers@1.0.3
 dburles:mongo-collection-instances@0.3.4
 ddp@1.2.2
@@ -94,6 +94,7 @@ pierreeric:client-landingpage@0.0.1
 pierreeric:client-menu@0.0.1
 pierreeric:client-notfound@0.0.1
 pierreeric:client-sharedstyles@0.0.1
+pierreeric:client-spinkit@0.0.1
 pierreeric:col-basecollection@0.0.1
 pierreeric:col-basicpages@0.0.1
 pierreeric:col-dictionary@0.0.1

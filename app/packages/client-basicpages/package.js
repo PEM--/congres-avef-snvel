@@ -16,7 +16,8 @@ Package.onUse(function(api) {
     'pierreeric:routing-start',
     'pierreeric:col-basicpages',
     'pierreeric:main-layout',
-    'pierreeric:client-sharedstyles'
+    'pierreeric:client-sharedstyles',
+    'pierreeric:client-spinkit'
   ]);
   // Included files in this packages
   // Files for server and client

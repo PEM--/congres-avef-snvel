@@ -1,0 +1,22 @@
+//
+// Usage:
+//
+// <div class="spinner-pulse"></div>
+//
+.spinner-pulse() {
+  margin: @spinner-margin;
+  background-color: @spinner-color;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  animation: pulseScaleOut 1.0s infinite ease-in-out;
+
+  @keyframes pulseScaleOut {
+    0% {
+      transform: scale(0.0);
+    } 100% {
+      transform: scale(1.0);
+      opacity: 0;
+    }
+  }
+}

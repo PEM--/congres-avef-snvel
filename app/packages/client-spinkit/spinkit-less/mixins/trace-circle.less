@@ -1,0 +1,30 @@
+@spinner-size: 50px;
+@spinner-trace-color: rgba(0,100,200,.15);
+@spinner-highlight-color: rgba(0,100,200,.8);
+@spinner-trace-size: 5px;
+@spinner-duration: 1s;
+
+//
+// Usage:
+//
+// <div class="spinner-trace-circle"></div>
+//
+.spinner-trace-circle(){
+  height: @spinner-size;
+  width: @spinner-size;
+  margin: 0px auto;
+  position: relative;
+  animation: circleRotation @spinner-duration infinite linear;
+  border: @spinner-trace-size solid @spinner-trace-color;
+  border-top-color: @spinner-highlight-color;
+  border-radius:100%;
+
+  @keyframes circleRotation {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(359deg);
+    }
+  }
+}

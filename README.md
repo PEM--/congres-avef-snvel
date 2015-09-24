@@ -68,7 +68,7 @@ Site d'inscription commun pour l'AVEF et le SNVEL.
 * [Applink](https://www.npmjs.com/search?q=react&page=7)
 * [Leaflet](https://www.npmjs.com/package/react-leaflet)
 * [Maps](https://github.com/dcousens/react-maps)
-* [SpinKit](https://www.npmjs.com/package/react-spinkit)
+* -- Dead on SSR [SpinKit](https://www.npmjs.com/package/react-spinkit)--
 * [Pdf.js](https://www.npmjs.com/package/react-pdf)
 * [InlineSVG](https://www.npmjs.com/package/react-inlinesvg)
 * [SparkLine](http://borisyankov.github.io/react-sparklines/)

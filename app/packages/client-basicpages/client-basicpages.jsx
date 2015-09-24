@@ -27,20 +27,28 @@ const BasicPages = createClass({
   },
   render() {
     log.debug('Rendering: loading status', this.data.loading);
-    if (this.data.loading) {
-      return null;
+    let nodes = (
+      <div className="sixteen wide column">
+        <p>Chargement en cours...</p>
+        <Rc.Client.Spinkit />
+      </div>
+    );
+    if (!this.data.loading) {
+      const item = this.data.item;
+      nodes = (
+        <div className="fadeIn sixteen wide column">
+          <h1>{item.title}</h1>
+          <div dangerouslySetInnerHTML={{__html: item.content}} />
+        </div>
+      );
     }
-    const item = this.data.item;
     return (
-      <div key={item.url} className="client main-content ui grid basicpages">
+      <div key={this.props.url} className="client main-content ui grid basicpages">
         <div className="row">
           <div className="sixteen wide column">
             <div className="ui grid container">
               <section className="row">
-                <div className="sixteen wide column">
-                  <h1>{item.title}</h1>
-                  <div dangerouslySetInnerHTML={{__html: item.content}} />
-                </div>
+                {nodes}
               </section>
               <section className="row">
                 <nav className="sixteen wide column">

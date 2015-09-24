@@ -1,0 +1,36 @@
+//
+// Usage:
+//
+// <div class="spinner-wordpress"></div>
+//
+.spinner-wordpress(){
+  background: @spinner-color;
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  border-radius: 30px;
+  position: relative;
+  margin: @spinner-margin;
+  animation: innerCircle 1s linear infinite;
+
+  &:before {
+    content: '';
+    display: block;
+    background: #fff;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    border-radius: 8px;
+    top: 5px;
+    left: 5px;
+  }
+
+  @keyframes innerCircle {
+    0% {
+      transform: rotate(0);
+    }
+    100% { 
+      transform: rotate(360deg);
+    }
+  }
+}
