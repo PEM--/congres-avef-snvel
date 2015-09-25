@@ -12,20 +12,6 @@ const sharedOptions = {
     All: { options: {sort: {order: 1} } }
   }
 };
-// Options used only on the server
-const serverOptions = {
-  defaults: [
-    {
-      title: 'AVEF', url: 'http://www.avef.fr',
-      src: '/img/avef.svg', order: 1
-    },
-    {
-      title: 'SNVEL', url: 'http://www.snvel.fr',
-      src: '/img/snvel.svg', order: 2
-    },
-  ]
-};
-
 
 // Client only
 if (Meteor.isClient) {
@@ -36,6 +22,19 @@ if (Meteor.isClient) {
 
 // Server only
 if (Meteor.isServer) {
+  // Options used only on the server
+  const serverOptions = {
+    defaults: [
+      {
+        title: 'AVEF', url: 'http://www.avef.fr',
+        src: '/img/avef.svg', order: 1
+      },
+      {
+        title: 'SNVEL', url: 'http://www.snvel.fr',
+        src: '/img/snvel.svg', order: 2
+      },
+    ]
+  };
   class Partners extends Col.ServerBaseCollection {}
   // Export instance
   Col.partners = new Partners(sharedOptions, serverOptions);

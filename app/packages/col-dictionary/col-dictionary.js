@@ -11,10 +11,6 @@ const sharedOptions = {
     AllLinks: {}
   }
 };
-// Options used only on the server
-const serverOptions = {
-  defaults: [Meteor.settings.public.dictionary]
-};
 
 // Client only
 if (Meteor.isClient) {
@@ -24,6 +20,11 @@ if (Meteor.isClient) {
 }
 
 // Server only
+if (Meteor.isServer) {
+  // Options used only on the server
+  const serverOptions = {
+    defaults: [Meteor.settings.public.dictionary]
+  };
 if (Meteor.isServer) {
   class Dictionary extends Col.ServerBaseCollection {}
   // Export instance

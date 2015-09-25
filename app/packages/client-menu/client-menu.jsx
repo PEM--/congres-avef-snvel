@@ -6,14 +6,12 @@ const { PropTypes, createClass, Component } = React;
 // Create a logger
 const log = Logger.createLogger('Client Menu');
 
-// @TODO Component
-
 // Signon-Signoff item
-const SignonSignoffItem = createClass({
-  displayName: 'SignonSignoffItem',
-  propTypes: {
+class SignonSignoffItem extends Component {
+  static displayName: 'SignonSignoffItem'
+  static propTypes: {
     currentUser: PropTypes.object
-  },
+  }
   render() {
     const currentUser = this.props.currentUser;
     return (
@@ -23,14 +21,14 @@ const SignonSignoffItem = createClass({
       </a>
     );
   }
-});
+}
 
 // Admin access item
-const AdminAccessIem = createClass({
-  displayName: 'AdminAccessIem',
-  propTypes: {
+class AdminAccessIem extends Component {
+  static displayName: 'AdminAccessIem'
+  static propTypes: {
     currentUser: PropTypes.object
-  },
+  }
   render() {
     const disableClass = this.props.currentUser ? '' : 'disabled';
     return (
@@ -40,7 +38,7 @@ const AdminAccessIem = createClass({
       </a>
     );
   }
-});
+}
 
 // Popup menu
 const PopupMenu = createClass({

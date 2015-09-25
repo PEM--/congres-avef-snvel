@@ -12,13 +12,6 @@ const sharedOptions = {
     AllLinks: { options: {sort: {order: 1} } }
   }
 };
-// Options used only on the server
-const serverOptions = {
-  // Options specific to server
-  defaults: Meteor.settings.public.socialLinks,
-  // Set indexes on collection
-  indexes: { url: 1, order: 1 }
-};
 
 // Client only
 if (Meteor.isClient) {
@@ -29,6 +22,13 @@ if (Meteor.isClient) {
 
 // Server only
 if (Meteor.isServer) {
+  // Options used only on the server
+  const serverOptions = {
+    // Options specific to server
+    defaults: Meteor.settings.public.socialLinks,
+    // Set indexes on collection
+    indexes: { url: 1, order: 1 }
+  };
   class SocialLinks extends Col.ServerBaseCollection {}
   // Export instance
   Col.socialLinks = new SocialLinks(sharedOptions, serverOptions);

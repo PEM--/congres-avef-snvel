@@ -10,6 +10,7 @@ Package.onUse(function(api) {
   // Dependencies for server and client
   api.use([
     'react',
+    'ecmascript',
     'flemay:less-autoprefixer@1.1.0',
     'babel-runtime@0.1.4',
     'pierreeric:logger',
