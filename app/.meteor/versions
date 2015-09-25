@@ -38,6 +38,7 @@ ecmascript@0.1.4
 ecmascript-collections@0.1.6
 ejson@1.0.7
 email@1.0.7
+es5-shim@4.1.13
 fastclick@1.0.7
 flemay:less-autoprefixer@1.1.0
 force-ssl@1.0.6
@@ -111,6 +112,7 @@ pierreeric:routing-start@0.0.1
 pierreeric:security@0.0.1
 pierreeric:server-side-routes@0.0.1
 pierreeric:subscription-cache@0.0.1
+pierreeric:useraccounts-flow-ssr-react@0.0.1
 promise@0.4.8
 random@1.0.4
 rate-limit@1.0.0

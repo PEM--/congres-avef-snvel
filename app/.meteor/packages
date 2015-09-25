@@ -17,6 +17,9 @@ random
 ejson
 check
 
+# Compatibility
+es5-shim
+
 # Utils
 pierreeric:logger
 
@@ -54,7 +57,7 @@ pierreeric:admin-home
 # Authentifications
 useraccounts:semantic-ui
 accounts-password
-#pierreeric:useraccounts-flow-ssr-react
+pierreeric:useraccounts-flow-ssr-react
 
 # All routes declared start: Start client side routing
 # Must be the last one that create a routing

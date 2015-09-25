@@ -1,10 +1,12 @@
 // Menu
 
 // Namespace flatteinng
-const { PropTypes, createClass } = React;
+const { PropTypes, createClass, Component } = React;
 
 // Create a logger
 const log = Logger.createLogger('Client Menu');
+
+// @TODO Component
 
 // Signon-Signoff item
 const SignonSignoffItem = createClass({

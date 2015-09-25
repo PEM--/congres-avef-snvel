@@ -1,5 +1,5 @@
 // Options used on the server and the client
-const options = {
+const sharedOptions = {
   name: 'SocialLinks',
   schema: {
     title: { type: String, label: 'Réseau social', max: 256 },
@@ -12,24 +12,24 @@ const options = {
     AllLinks: { options: {sort: {order: 1} } }
   }
 };
+// Options used only on the server
+const serverOptions = {
+  // Options specific to server
+  defaults: Meteor.settings.public.socialLinks,
+  // Set indexes on collection
+  indexes: { url: 1, order: 1 }
+};
 
 // Client only
 if (Meteor.isClient) {
   class SocialLinks extends Col.BaseCollection {}
   // Export instance
-  Col.socialLinks = new SocialLinks(options);
+  Col.socialLinks = new SocialLinks(sharedOptions);
 }
 
 // Server only
 if (Meteor.isServer) {
   class SocialLinks extends Col.ServerBaseCollection {}
   // Export instance
-  Col.socialLinks = new SocialLinks(options, {
-    // Options specific to server
-    defaults: Meteor.settings.public.socialLinks,
-    // Set indexes on collection
-    indexes: {
-      url: 1, order: 1
-    }
-  });
+  Col.socialLinks = new SocialLinks(sharedOptions, serverOptions);
 }

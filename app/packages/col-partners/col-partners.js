@@ -1,5 +1,5 @@
 // Options used on the server and the client
-const options = {
+const sharedOptions = {
   name: 'Partners',
   schema: {
     title: { type: String, label: 'Titre', min: 4, max: 256 },
@@ -12,29 +12,31 @@ const options = {
     All: { options: {sort: {order: 1} } }
   }
 };
+// Options used only on the server
+const serverOptions = {
+  defaults: [
+    {
+      title: 'AVEF', url: 'http://www.avef.fr',
+      src: '/img/avef.svg', order: 1
+    },
+    {
+      title: 'SNVEL', url: 'http://www.snvel.fr',
+      src: '/img/snvel.svg', order: 2
+    },
+  ]
+};
+
 
 // Client only
 if (Meteor.isClient) {
   class Partners extends Col.BaseCollection {}
   // Export instance
-  Col.partners = new Partners(options);
+  Col.partners = new Partners(sharedOptions);
 }
 
 // Server only
 if (Meteor.isServer) {
   class Partners extends Col.ServerBaseCollection {}
   // Export instance
-  Col.partners = new Partners(options, {
-    // Options specific to server
-    defaults: [
-      {
-        title: 'AVEF', url: 'http://www.avef.fr',
-        src: '/img/avef.svg', order: 1
-      },
-      {
-        title: 'SNVEL', url: 'http://www.snvel.fr',
-        src: '/img/snvel.svg', order: 2
-      },
-    ]
-  });
+  Col.partners = new Partners(sharedOptions, serverOptions);
 }

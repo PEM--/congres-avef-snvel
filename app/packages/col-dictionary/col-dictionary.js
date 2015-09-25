@@ -1,5 +1,5 @@
 // Options used on the server and the client
-const options = {
+const sharedOptions = {
   name: 'Dictionary',
   schema: {
     title: { type: String, label: 'Titre', min: 5, max: 256 },
@@ -11,20 +11,21 @@ const options = {
     AllLinks: {}
   }
 };
+// Options used only on the server
+const serverOptions = {
+  defaults: [Meteor.settings.public.dictionary]
+};
 
 // Client only
 if (Meteor.isClient) {
   class Dictionary extends Col.BaseCollection {}
   // Export instance
-  Col.dictionary = new Dictionary(options);
+  Col.dictionary = new Dictionary(sharedOptions);
 }
 
 // Server only
 if (Meteor.isServer) {
   class Dictionary extends Col.ServerBaseCollection {}
   // Export instance
-  Col.dictionary = new Dictionary(options, {
-    // Options specific to server
-    defaults: [Meteor.settings.public.dictionary]
-  });
+  Col.dictionary = new Dictionary(sharedOptions, serverOptions);
 }

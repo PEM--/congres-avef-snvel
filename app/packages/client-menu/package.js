@@ -9,9 +9,10 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
-    'flemay:less-autoprefixer@1.1.0',
-    'pierreeric:logger',
     'react',
+    'flemay:less-autoprefixer@1.1.0',
+    'babel-runtime@0.1.4',
+    'pierreeric:logger',
     'pierreeric:namespaces',
     'pierreeric:client-sharedstyles'
   ]);
