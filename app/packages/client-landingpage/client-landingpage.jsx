@@ -4,10 +4,10 @@
 const log = Logger.createLogger('Client LandingPage');
 
 // Namespace flatteinng
-const { PropTypes, createClass } = React;
+const { PropTypes, Component } = React;
 
-const Presentation = createClass({
-  displayNme: 'Presentation',
+class Presentation extends Component {
+  displayNme: 'Presentation'
   render() {
     log.debug('Rendering Presentation');
     return (
@@ -26,12 +26,12 @@ const Presentation = createClass({
       </section>
     );
   }
-});
+}
 
-const Program = createClass({
-  displayNme: 'Program',
+class Program extends Component {
+  displayNme: 'Program'
   render() {
-    log.debug('Rendering Program');
+    log.debug('Rendering Program', this.displayName);
     return (
       <section className="client program row">
         <a href="/program" className="sixteen wide column">
@@ -47,10 +47,10 @@ const Program = createClass({
       </section>
     );
   }
-});
+}
 
-const Subscription = createClass({
-  displayNme: 'Subscription',
+class Subscription extends Component {
+  displayNme: 'Subscription'
   render() {
     log.debug('Rendering Subscription');
     return (
@@ -72,15 +72,15 @@ const Subscription = createClass({
       </section>
     );
   }
-});
+}
 
-const Partner = createClass({
-  displayNme: 'Partner',
-  propTypes: {
+class Partner extends Component {
+  displayNme: 'Partner'
+  static propTypes: {
     title: PropTypes.string.isRequired,
     url: PropTypes.string.isRequired,
     src: PropTypes.string.isRequired
-  },
+  }
   render() {
     const { url, title, src } = this.props;
     return (
@@ -89,11 +89,10 @@ const Partner = createClass({
       </a>
     );
   }
-});
+}
 
-const PartnerList = createClass({
-  displayNme: 'PartnerList',
-  mixins: [ReactMeteorData],
+class PartnerList extends Rc.BaseReactMeteor {
+  displayNme: 'PartnerList'
   // Subscribe to Partners (reactive methods)
   getMeteorData() {
     const handle = Col.partners.subAll();
@@ -104,7 +103,7 @@ const PartnerList = createClass({
       items: Col.partners.collection.find({},
         Col.partners.subs.All.options).fetch()
     };
-  },
+  }
   render() {
     log.debug('Rendering PartnerList');
     const nodes = this.data.items.map(function(item) {
@@ -131,11 +130,11 @@ const PartnerList = createClass({
       </section>
     );
   }
-});
+}
 
 // Landing page component
-const LandingPage = createClass({
-  displayName: 'LandingPage',
+class LandingPage extends Component {
+  displayName: 'LandingPage'
   render() {
     log.debug('Rendering LandingPage');
     return (
@@ -147,7 +146,7 @@ const LandingPage = createClass({
       </div>
     );
   }
-});
+}
 
 // Routing
 Meteor.startup(() => {

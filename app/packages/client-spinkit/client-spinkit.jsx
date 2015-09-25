@@ -4,8 +4,8 @@
 const log = Logger.createLogger('Admin Home');
 
 // Create the component
-const Spinkit = React.createClass({
-  displayName: 'Spinkit',
+class Spinkit extends React.Component {
+  displayName: 'Spinkit'
   render() {
     log.debug('Rendering');
     // let nodes = [];
@@ -20,6 +20,6 @@ const Spinkit = React.createClass({
     }
     return (<div className="spinner spinner-three-bounce">{nodes}</div>);
   }
-});
+}
 
 Rc.Client.Spinkit = Spinkit;

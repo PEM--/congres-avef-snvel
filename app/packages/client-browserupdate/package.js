@@ -16,7 +16,7 @@ Package.onUse(function(api) {
   api.use([
     'ecmascript',
     'cosmos:browserify@0.7.0',
-    'flemay:less-autoprefixer@1.1.0'
+    'flemay:less-autoprefixer@1.1.0',
   ]);
   // Included files in this packages
   // Files for client only

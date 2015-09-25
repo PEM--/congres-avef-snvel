@@ -1,7 +1,7 @@
 // Menu
 
 // Namespace flatteinng
-const { PropTypes, createClass, Component } = React;
+const { PropTypes, Component } = React;
 
 // Create a logger
 const log = Logger.createLogger('Client Menu');
@@ -41,30 +41,24 @@ class AdminAccessIem extends Component {
 }
 
 // Popup menu
-const PopupMenu = createClass({
-  displayName: 'PopupMenu',
-  propTypes: {
+class PopupMenu extends Rc.BaseReactMeteor {
+  static displayName: 'PopupMenu'
+  static propTypes: {
     menuState: PropTypes.bool.isRequired,
     closeMenu: PropTypes.func.isRequired
-  },
-  getDefaultProps() {
-    return {
-      menuState: false
-    };
-  },
+  }
+  static defaultProps: {
+    menuState: false
+  }
   // Handle menu closing
   handleClose(e) {
     log.debug('Closing PopupMenu');
     e.preventDefault();
     this.props.closeMenu();
-  },
-  // Handle connexion and admin access
-  mixins: [ReactMeteorData],
+  }
   getMeteorData() {
-    return {
-      currentUser: Meteor.user()
-    };
-  },
+    return { currentUser: Meteor.user() };
+  }
   // Render the component
   render() {
     log.debug('Rendering PopupMenu');
@@ -92,43 +86,42 @@ const PopupMenu = createClass({
       </aside>
     );
   }
-});
+}
 
 // Menu component
-const Menu = createClass({
-  displayName: 'Menu',
-  getInitialState() {
-    return {
-      popupMenuToggle: false
+class Menu extends Component {
+  static displayName: 'Menu'
+  constructor() {
+    super();
+    this.state = { popupMenuToggle: false };
+    // Bound functions
+    this.menuToggle = (e) => {
+      e.preventDefault();
+      log.debug('Toggling PopupMenu');
+      this.setState({popupMenuToggle: !this.state.popupMenuToggle});
     };
-  },
-  menuToggle(e) {
-    e.preventDefault();
-    log.debug('Toggling PopupMenu');
-    this.setState({popupMenuToggle: !this.state.popupMenuToggle});
-  },
-  // Render the component
-  render() {
-    log.debug('Rendering Menu');
-    // Ease access to settings
-    return (
-      <nav className="client item">
-        <div className="navgrid ui centered grid container">
-          <div className="navitems row">
-            <div className="congress-title fourteen wide mobile eight wide tablet eight wide computer column">
-              <h1 className="readability-white">
-                <a href="/">CONGRÈS 2015</a>
-              </h1>
+    this.render = () => {
+      log.debug('Rendering Menu');
+      // Ease access to settings
+      return (
+        <nav className="client item">
+          <div className="navgrid ui centered grid container">
+            <div className="navitems row">
+              <div className="congress-title fourteen wide mobile eight wide tablet eight wide computer column">
+                <h1 className="readability-white">
+                  <a href="/">CONGRÈS 2015</a>
+                </h1>
+              </div>
+              <div className="brand seven wide tablet only seven wide computer only column"><a href="http://www.avef.fr" target="_blank"><img src="/img/avef.svg" alt="AVEF" className="svg"/></a><a href="http://www.snvel.fr" target="_blank"><img src="/img/snvel.svg" alt="SNVEL" className="svg"/></a></div>
+              <button onClick={this.menuToggle} className="hamburger right aligned two wide mobile one wide tablet one wide computer column"><i className="fa fa-bars"></i></button>
+              <PopupMenu closeMenu={this.menuToggle} menuState={this.state.popupMenuToggle}/>
             </div>
-            <div className="brand seven wide tablet only seven wide computer only column"><a href="http://www.avef.fr" target="_blank"><img src="/img/avef.svg" alt="AVEF" className="svg"/></a><a href="http://www.snvel.fr" target="_blank"><img src="/img/snvel.svg" alt="SNVEL" className="svg"/></a></div>
-            <button onClick={this.menuToggle} className="hamburger right aligned two wide mobile one wide tablet one wide computer column"><i className="fa fa-bars"></i></button>
-            <PopupMenu closeMenu={this.menuToggle} menuState={this.state.popupMenuToggle}/>
           </div>
-        </div>
-      </nav>
-    );
+        </nav>
+      );
+    };
   }
-});
+}
 
 // Export class
 Rc.Client.Menu = Menu;

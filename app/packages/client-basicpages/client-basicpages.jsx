@@ -1,18 +1,17 @@
 // Display BasicPages for the client
 
 // Namespace flatteinng
-const { PropTypes, createClass } = React;
+const { PropTypes, Component } = React;
 
 // Create a logger
 const log = Logger.createLogger('Client BasicPages');
 
 // BasicPages component
-const BasicPages = createClass({
-  displayName: 'BasicPages',
-  propTypes: {
+class BasicPages extends Rc.BaseReactMeteor {
+  static displayName: 'BasicPages'
+  static propTypes: {
     url: PropTypes.string.isRequired
-  },
-  mixins: [ReactMeteorData],
+  }
   // Subscribe to BasicPages (reactive methods)
   getMeteorData() {
     const { url } = this.props;
@@ -24,7 +23,7 @@ const BasicPages = createClass({
       // Get the content of the basic page
       item: handle.ready() ? Col.basicPages.collection.findOne({url}) : ''
     };
-  },
+  }
   render() {
     log.debug('Rendering: loading status', this.data.loading);
     let nodes = (
@@ -63,7 +62,7 @@ const BasicPages = createClass({
       </div>
     );
   }
-});
+}
 
 // Export class
 Rc.Client.BasicPages = BasicPages;

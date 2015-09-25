@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'pierreeric:admin-layout',
+  name: 'pierreeric:basereactmeteor',
   version: '0.0.1'
 });
 
@@ -8,14 +8,18 @@ Package.onUse(function(api) {
   api.versionsFrom('1.2.0.1');
   // Dependencies of this package
   // Dependencies for server and client
-  api.use([
-    'flemay:less-autoprefixer@1.1.0',
-    'pierreeric:basereactmeteor'
-  ]);
+  const shared = [
+    'react',
+    'ecmascript',
+    'babel-runtime@0.1.4',
+    'pierreeric:logger',
+    'pierreeric:namespaces'
+  ];
+  api.use(shared);
+  api.imply(shared);
   // Included files in this packages
   // Files for server and client
   api.addFiles([
-    'admin-layout.jsx',
-    'admin-layout.less'
+    'basereactmeteor.jsx',
   ]);
 });

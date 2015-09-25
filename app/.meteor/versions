@@ -90,6 +90,7 @@ observe-sequence@1.0.7
 ordered-dict@1.0.4
 pierreeric:admin-home@0.0.1
 pierreeric:admin-layout@0.0.1
+pierreeric:basereactmeteor@0.0.1
 pierreeric:client-basicpages@0.0.1
 pierreeric:client-browserupdate@0.0.1
 pierreeric:client-footer@0.0.1

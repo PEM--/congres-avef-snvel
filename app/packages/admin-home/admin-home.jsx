@@ -1,14 +1,14 @@
 // Admin home page
 
 // Namespace flatteinng
-const { createClass } = React;
+const { Component } = React;
 
 // Create a logger
 const log = Logger.createLogger('Admin Home');
 
 // Admin home component
-const Home = createClass({
-  displayName: 'Home',
+class Home extends Component {
+  displayName: 'Home'
   render() {
     log.debug('Rendering');
     return (
@@ -19,7 +19,7 @@ const Home = createClass({
       </div>
     );
   }
-});
+}
 
 // Routing
 const ROUTE_NAME = 'admin';

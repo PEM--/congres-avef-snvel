@@ -9,12 +9,8 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
-    'react',
-    'ecmascript',
     'flemay:less-autoprefixer@1.1.0',
-    'babel-runtime@0.1.4',
-    'pierreeric:logger',
-    'pierreeric:namespaces',
+    'pierreeric:basereactmeteor',
     'pierreeric:client-sharedstyles'
   ]);
   // Included files in this packages
