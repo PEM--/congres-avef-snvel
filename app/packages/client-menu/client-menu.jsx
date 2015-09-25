@@ -6,8 +6,41 @@ const { PropTypes, createClass } = React;
 // Create a logger
 const log = Logger.createLogger('Client Menu');
 
+// Signon-Signoff item
+const SignonSignoffItem = createClass({
+  displayName: 'SignonSignoffItem',
+  propTypes: {
+    currentUser: PropTypes.object
+  },
+  render() {
+    const currentUser = this.props.currentUser;
+    return (
+      <a href={currentUser ? '/logout' : '/login'} className="item">
+        <i className={`fa ${currentUser ? 'fa-unlock' : 'fa-user'}`}></i>
+        <span className="readability-black">{currentUser ? 'Déconnexion' : 'Connexion'}</span>
+      </a>
+    );
+  }
+});
+
+// Admin access item
+const AdminAccessIem = createClass({
+  displayName: 'AdminAccessIem',
+  propTypes: {
+    currentUser: PropTypes.object
+  },
+  render() {
+    const disableClass = this.props.currentUser ? '' : 'disabled';
+    return (
+      <a href="/admin" className={`item ${disableClass}`}>
+        <i className="fa fa-cogs"></i>
+        <span className="readability-black">Administration</span>
+      </a>
+    );
+  }
+});
+
 // Popup menu
-//class PopupMenu extends Rc.MeteorReactBaseComponent {
 const PopupMenu = createClass({
   displayName: 'PopupMenu',
   propTypes: {
@@ -25,40 +58,37 @@ const PopupMenu = createClass({
     e.preventDefault();
     this.props.closeMenu();
   },
+  // Handle connexion and admin access
+  mixins: [ReactMeteorData],
+  getMeteorData() {
+    return {
+      currentUser: Meteor.user()
+    };
+  },
   // Render the component
   render() {
     log.debug('Rendering PopupMenu');
     return (
       <aside className={`client ui vertical menu ${this.props.menuState ? 'open' : ''}`}>
         <i onClick={this.props.closeMenu} className="fa fa-close close fa-2x"></i>
-        <a href="#" className="item">
-          <i className="fa fa-user"></i>
-          <span className="readability-black">Connexion</span>
-        </a>
-        <a href="#" className="item">
-          <i className="fa fa-unlock"></i>
-          <span className="readability-black">Déconnexion</span>
-        </a>
-        <a href="#" className="active item">
+        <SignonSignoffItem currentUser={this.data.createUser} />
+        <a href="/" className="active item">
           <i className="fa fa-home"></i>
           <span className="readability-black">Accueil</span>
         </a>
-        <a href="#" className="item">
+        <a href="/presentation" className="item">
           <i className="fa fa-bullhorn"></i>
           <span className="readability-black">Présentation</span>
         </a>
-        <a href="#" className="item">
+        <a href="/program" className="item">
           <i className="fa fa-calendar"></i>
           <span className="readability-black">Programme</span>
         </a>
-        <a href="#" className="item">
+        <a href="/subscription" className="item">
           <i className="fa fa-ticket"></i>
           <span className="readability-black">Inscriptions</span>
         </a>
-        <a href="#" className="item">
-          <i className="fa fa-thumbs-o-up"></i>
-          <span className="readability-black">Partenaires &amp; exposants</span>
-        </a>
+        <AdminAccessIem currentUser={this.data.createUser} />
       </aside>
     );
   }

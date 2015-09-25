@@ -3,7 +3,7 @@
 // Create a logger
 const log = Logger.createLogger('Admin Home');
 
-//
+// Create the component
 const Spinkit = React.createClass({
   displayName: 'Spinkit',
   render() {
@@ -16,7 +16,7 @@ const Spinkit = React.createClass({
     //return (<div className="spinner spinner-double-bounce"></div>);
     let nodes = [];
     for (let idx = 0; idx < 3; idx++) {
-      nodes.push(<div />);
+      nodes.push(<div key={`spinner${idx}`} />);
     }
     return (<div className="spinner spinner-three-bounce">{nodes}</div>);
   }

@@ -51,16 +51,11 @@ pierreeric:client-notfound
 # Admin only packages
 pierreeric:admin-home
 
-# All routes declared start: Start client side routing
-
-
 # Authentifications
-#useraccounts:core
-#accounts-password
+accounts-password
 #useraccounts:flow-routing
 #useraccounts:semantic-ui
 
-pierreeric:col-dictionary
-
-
+# All routes declared start: Start client side routing
+# Must be the last one that create a routing
 pierreeric:routing-done
