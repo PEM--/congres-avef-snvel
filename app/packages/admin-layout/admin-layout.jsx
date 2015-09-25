@@ -15,7 +15,7 @@ const Layout = createClass({
   render() {
     log.debug('Rendering');
     const { content } = this.props;
-    return <div className='admin'>{content}</div>;
+    return (<div className='admin'>{content}</div>);
   }
 });
 

@@ -28,7 +28,7 @@ FlowRouter.route(`/${ROUTE_NAME}`, {
   action(params) {
     log.info('Routing to', this.name);
     ReactLayout.render(Rc.Admin.Layout, {
-      content: <Rc.Admin.Home />
+      content: <Home />
     });
   }
 });
