@@ -11,24 +11,26 @@ const log = Logger.createLogger('Client Menu');
 const PopupMenu = createClass({
   displayName: 'PopupMenu',
   propTypes: {
-    menuState: React.PropTypes.bool.isRequired
+    menuState: PropTypes.bool.isRequired,
+    closeMenu: PropTypes.func.isRequired
   },
   getDefaultProps() {
     return {
       menuState: false
     };
   },
-  getInitialState() {
-    return {
-      menuState: this.props.menuState
-    };
+  // Handle menu closing
+  handleClose(e) {
+    log.debug('Closing PopupMenu');
+    e.preventDefault();
+    this.props.closeMenu();
   },
   // Render the component
   render() {
     log.debug('Rendering PopupMenu');
     return (
-      <aside className={`client ui vertical menu ${this.state.menuState ? 'open': ''}`}>
-        <i className="fa fa-close close fa-2x"></i>
+      <aside className={`client ui vertical menu ${this.props.menuState ? 'open' : ''}`}>
+        <i onClick={this.props.closeMenu} className="fa fa-close close fa-2x"></i>
         <a href="#" className="item">
           <i className="fa fa-user"></i>
           <span className="readability-black">Connexion</span>
@@ -65,23 +67,15 @@ const PopupMenu = createClass({
 // Menu component
 const Menu = createClass({
   displayName: 'Menu',
-  propTypes: {
-    popupMenuToggle: React.PropTypes.bool
-  },
-  getDefaultProps() {
-    return {
-      popupMenuToggle: false
-    };
-  },
   getInitialState() {
     return {
-      popupMenuToggle: this.props.popupMenuToggle
+      popupMenuToggle: false
     };
   },
   menuToggle(e) {
     e.preventDefault();
     log.debug('Toggling PopupMenu');
-    this.setState({popupMenuToggle: true});
+    this.setState({popupMenuToggle: !this.state.popupMenuToggle});
   },
   // Render the component
   render() {
@@ -98,7 +92,7 @@ const Menu = createClass({
             </div>
             <div className="brand seven wide tablet only seven wide computer only column"><a href="http://www.avef.fr" target="_blank"><img src="/img/avef.svg" alt="AVEF" className="svg"/></a><a href="http://www.snvel.fr" target="_blank"><img src="/img/snvel.svg" alt="SNVEL" className="svg"/></a></div>
             <button onClick={this.menuToggle} className="hamburger right aligned two wide mobile one wide tablet one wide computer column"><i className="fa fa-bars"></i></button>
-            <PopupMenu menuState={this.state.popupMenuToggle}/>
+            <PopupMenu closeMenu={this.menuToggle} menuState={this.state.popupMenuToggle}/>
           </div>
         </div>
       </nav>
