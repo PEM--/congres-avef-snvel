@@ -6,16 +6,27 @@ const { PropTypes, Component } = React;
 // Create a logger
 const log = Logger.createLogger('Client Menu');
 
+// Basic menu item
+class BasicMenuItem extends Component {
+  static displayName: 'BasicMenuItem'
+  // Handle menu closing
+  render() {
+    const { closeMenu, href, faIcon, text } = this.props;
+    return (
+      <a href={href} onClick={closeMenu} className="active item">
+        <i className={`fa ${faIcon}`}></i>
+        <span className="readability-black">{text}</span>
+      </a>);
+  }
+}
+
 // Signon-Signoff item
 class SignonSignoffItem extends Component {
   static displayName: 'SignonSignoffItem'
-  static propTypes: {
-    currentUser: PropTypes.object
-  }
   render() {
-    const currentUser = this.props.currentUser;
+    const { currentUser, closeMenu } = this.props;
     return (
-      <a href={currentUser ? '/logout' : '/login'} className="item">
+      <a href={currentUser ? '/logout' : '/login'} onClick={closeMenu} className="item">
         <i className={`fa ${currentUser ? 'fa-unlock' : 'fa-user'}`}></i>
         <span className="readability-black">{currentUser ? 'Déconnexion' : 'Connexion'}</span>
       </a>
@@ -26,13 +37,11 @@ class SignonSignoffItem extends Component {
 // Admin access item
 class AdminAccessIem extends Component {
   static displayName: 'AdminAccessIem'
-  static propTypes: {
-    currentUser: PropTypes.object
-  }
   render() {
-    const disableClass = this.props.currentUser ? '' : 'disabled';
+    const { closeMenu, currentUser } = this.props;
+    const disableClass = currentUser ? '' : 'disabled';
     return (
-      <a href="/admin" className={`item ${disableClass}`}>
+      <a href="/admin" onClick={closeMenu} className={`item ${disableClass}`}>
         <i className="fa fa-cogs"></i>
         <span className="readability-black">Administration</span>
       </a>
@@ -43,46 +52,22 @@ class AdminAccessIem extends Component {
 // Popup menu
 class PopupMenu extends Rc.BaseReactMeteor {
   static displayName: 'PopupMenu'
-  static propTypes: {
-    menuState: PropTypes.bool.isRequired,
-    closeMenu: PropTypes.func.isRequired
-  }
-  static defaultProps: {
-    menuState: false
-  }
-  // Handle menu closing
-  handleClose(e) {
-    log.debug('Closing PopupMenu');
-    e.preventDefault();
-    this.props.closeMenu();
-  }
   getMeteorData() {
     return { currentUser: Meteor.user() };
   }
   // Render the component
   render() {
     log.debug('Rendering PopupMenu');
+    const { menuState, closeMenu } = this.props, { currentUser } = this.data;
     return (
-      <aside className={`client ui vertical menu ${this.props.menuState ? 'open' : ''}`}>
-        <i onClick={this.props.closeMenu} className="fa fa-close close fa-2x"></i>
-        <SignonSignoffItem currentUser={this.data.createUser} />
-        <a href="/" className="active item">
-          <i className="fa fa-home"></i>
-          <span className="readability-black">Accueil</span>
-        </a>
-        <a href="/presentation" className="item">
-          <i className="fa fa-bullhorn"></i>
-          <span className="readability-black">Présentation</span>
-        </a>
-        <a href="/program" className="item">
-          <i className="fa fa-calendar"></i>
-          <span className="readability-black">Programme</span>
-        </a>
-        <a href="/subscription" className="item">
-          <i className="fa fa-ticket"></i>
-          <span className="readability-black">Inscriptions</span>
-        </a>
-        <AdminAccessIem currentUser={this.data.createUser} />
+      <aside className={`client ui vertical menu ${menuState ? 'open' : ''}`}>
+        <i onClick={closeMenu} className="fa fa-close close fa-2x"></i>
+        <SignonSignoffItem closeMenu={closeMenu} currentUser={currentUser} />
+        <BasicMenuItem closeMenu={closeMenu} href='/' faIcon='fa-home' text='Accueil' />
+        <BasicMenuItem closeMenu={closeMenu} href='/presentation' faIcon='fa-bullhorn' text='Présentation' />
+        <BasicMenuItem closeMenu={closeMenu} href='/program' faIcon='fa-calendar' text='Programme' />
+        <BasicMenuItem closeMenu={closeMenu} href='/subscription' faIcon='fa-ticket' text='Inscriptions' />
+        <AdminAccessIem closeMenu={closeMenu} currentUser={currentUser} />
       </aside>
     );
   }
