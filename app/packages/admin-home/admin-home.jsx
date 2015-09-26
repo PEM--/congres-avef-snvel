@@ -23,7 +23,7 @@ class Home extends Component {
 // Routing
 const ROUTE_NAME = 'admin';
 FlowRouter.route(`/${ROUTE_NAME}`, {
-  name: 'admin',
+  name: ROUTE_NAME,
   action(params) {
     log.info('Routing to', this.name);
     ReactLayout.render(Rc.Admin.Layout, {

@@ -4,8 +4,10 @@
 log = Logger.createLogger('Routing Start');
 
 // Block the routing untill all routes are defined (see routing-defined)
-FlowRouter.wait();
-log.info('Blocked');
+if (Meteor.isClient) {
+  FlowRouter.wait();
+  log.info('Blocked');
+}
 
 // Routing rules for SSR
 if (Meteor.isServer) {

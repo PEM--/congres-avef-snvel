@@ -8,21 +8,19 @@ Package.onUse(function(api) {
   api.versionsFrom('1.2');
   // Dependencies of this package
   // Dependencies for server and client
-  const shared = [
-    'pierreeric:namespaces',
-    'pierreeric:logger'
-  ];
   api.use([
+    'react',
     'ecmascript',
     'es5-shim',
     'underscore',
     'kadira:flow-router-ssr@3.3.0',
     'meteorhacks:fast-render@2.10.0',
     'underscorestring:underscore.string@3.2.2',
-    'gadicohen:sitemaps@0.0.23'
-  ].concat(shared));
-  api.imply(shared);
+    'gadicohen:sitemaps@0.0.23',
+    'pierreeric:namespaces',
+    'pierreeric:logger'
+  ]);
   // Included files in this packages
   // Files for client only
-  api.addFiles('routing-done.js');
+  api.addFiles('routing-done.jsx');
 });

@@ -62,33 +62,3 @@ class BasicPages extends Rc.BaseReactMeteor {
 
 // Export class
 Rc.Client.BasicPages = BasicPages;
-
-// Routing
-Meteor.startup(() => {
-  // Isomorhic function
-  var setBasicPageRoutes = function() {
-    let basicPages = Col.basicPages.collection.find().fetch();
-    basicPages.forEach(function(page) {
-      FlowRouter.route(`/${page.url}`, {
-        name: page.url,
-        action() {
-          log.info('Routing to', this.name);
-          ReactLayout.render(Rc.MainLayout, {
-            content: <Rc.Client.BasicPages url={page.url} />
-          });
-        }
-      });
-      log.info(`Route ${page.url} declared`);
-    });
-  };
-  // For the BasicPages, the route cannot be determined before Meteor has
-  // subscribed to all data, which leads to these differences on the client
-  // and on the server.
-  if (Meteor.isClient) {
-    Col.basicPages.subAllPages(function() {
-      setBasicPageRoutes();
-    });
-  } else {
-    setBasicPageRoutes();
-  }
-});

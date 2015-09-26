@@ -138,16 +138,14 @@ class LandingPage extends Component {
 }
 
 // Routing
-Meteor.startup(() => {
-  FlowRouter.route('/', {
-    name: 'client-landingpage',
-    action() {
-      log.info('Routing to', this.name);
-      ReactLayout.render(Rc.MainLayout, {
-        url: '/',
-        content: <LandingPage />
-      });
-    }
-  });
-  log.info('Route / declared');
+FlowRouter.route('/', {
+  name: 'client-landingpage',
+  action() {
+    log.info('Routing to', this.name);
+    ReactLayout.render(Rc.MainLayout, {
+      url: '/',
+      content: <LandingPage />
+    });
+  }
 });
+log.info('Route / declared');
