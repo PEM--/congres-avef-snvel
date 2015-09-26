@@ -8,7 +8,8 @@ Package.onUse(function(api) {
   api.versionsFrom('1.2');
   const shared = [
     'ecmascript',
-    'babel-runtime@0.1.4',
+    'es5-shim',
+    'babel-compiler@5.8.24_1',
   ];
   api.use(shared);
   api.imply(shared);

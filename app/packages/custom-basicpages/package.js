@@ -8,7 +8,10 @@ Package.onUse(function(api) {
   api.versionsFrom('1.2');
   // Dependencies of this package
   // Dependencies for server and client
-  api.use('ecmascript');
+  api.use([
+    'ecmascript',
+    'es5-shim'
+  ]);
   // Included files in this packages
   // Files for server only
   api.addFiles([
