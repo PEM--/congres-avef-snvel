@@ -5,7 +5,7 @@ Package.describe({
 
 Package.onUse(function(api) {
   // Meteor's API version
-  api.versionsFrom('1.2.0.1');
+  api.versionsFrom('1.2');
   // NPM dependencies
   Npm.depends({
     "body-parser": "1.13.3"

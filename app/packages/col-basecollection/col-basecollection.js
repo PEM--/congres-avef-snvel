@@ -3,6 +3,7 @@
 // * https://github.com/andrewreedy/meteor-collection-setup/blob/master/src/CollectionSetup.js
 
 // Base class for Collection. Takes car of default value and ensure indexes.
+//@optionsAsThis()
 class BaseCollection {
   constructor({ name, schema, subs }) {
     // Assign arguments as class properties

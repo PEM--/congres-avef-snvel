@@ -18,6 +18,10 @@ Site d'inscription commun pour l'AVEF et le SNVEL.
 * [UptimeButler: Alerting](https://uptimebutler.com/)
 
 ### Technical articles
+* [QR Code generator](https://www.npmjs.com/package/qr-image)
+  + Secret to set security!!!!
+* [QR Code reader](http://cirocosta.github.io/qcode-decoder/)
+* [getUserMedia](https://simpl.info/getusermedia/sources/)
 * [Learn SemanticUI](http://learnsemantic.com/preface/introduction.html)
 * [Meteor routing guide](https://kadira.io/academy/meteor-routing-guide/)
 * [React Motion](https://github.com/chenglou/react-motion)

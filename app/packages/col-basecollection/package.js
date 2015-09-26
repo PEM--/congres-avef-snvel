@@ -5,16 +5,16 @@ Package.describe({
 
 Package.onUse(function(api) {
   // Meteor's API version
-  api.versionsFrom('1.2.0.1');
+  api.versionsFrom('1.2');
   // Dependencies of this package
   // Dependencies for server and client
   const shared = [
+    'aldeed:collection2@2.5.0',
+    'dburles:collection-helpers@1.0.3',
+    'pierreeric:decorators',
     'pierreeric:namespaces',
     'pierreeric:logger',
-    'pierreeric:subscription-cache',
-    'ecmascript',
-    'aldeed:collection2@2.5.0',
-    'dburles:collection-helpers@1.0.3'
+    'pierreeric:subscription-cache'
   ];
   api.use(shared);
   api.imply(shared);

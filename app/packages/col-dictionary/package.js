@@ -5,16 +5,10 @@ Package.describe({
 
 Package.onUse(function(api) {
   // Meteor's API version
-  api.versionsFrom('1.2.0.1');
+  api.versionsFrom('1.2');
   // Dependencies of this package
   // Dependencies for server and client
-  const shared = [
-    'pierreeric:namespaces'
-  ];
-  api.use([
-    'pierreeric:col-basecollection'
-  ].concat(shared));
-  api.imply(shared);
+  api.use('pierreeric:col-basecollection');
   // Included files in this packages
   // Files for server and client
   api.addFiles([

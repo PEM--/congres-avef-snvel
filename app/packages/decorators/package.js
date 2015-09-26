@@ -5,7 +5,13 @@ Package.describe({
 
 Package.onUse(function(api) {
   // Meteor's API version
-  api.versionsFrom('1.2.0.1');
+  api.versionsFrom('1.2');
+  const shared = [
+    'ecmascript',
+    'babel-runtime@0.1.4',
+  ];
+  api.use(shared);
+  api.imply(shared);
   // Included files in this packages
   // Files for server and client
   api.addFiles('decorators.js');

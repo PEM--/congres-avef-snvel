@@ -5,7 +5,7 @@ Package.describe({
 
 Package.onUse(function(api) {
   // Meteor's API version
-  api.versionsFrom('1.2.0.1');
+  api.versionsFrom('1.2');
   // Dependencies of this package
   // Dependencies for server and client
   const shared = [
@@ -14,6 +14,7 @@ Package.onUse(function(api) {
   ];
   api.use([
     'ecmascript',
+    'es5-shim',
     'underscore',
     'kadira:flow-router-ssr@3.3.0',
     'meteorhacks:fast-render@2.10.0',

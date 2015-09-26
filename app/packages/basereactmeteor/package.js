@@ -5,13 +5,13 @@ Package.describe({
 
 Package.onUse(function(api) {
   // Meteor's API version
-  api.versionsFrom('1.2.0.1');
+  api.versionsFrom('1.2');
   // Dependencies of this package
   // Dependencies for server and client
   const shared = [
     'react',
     'ecmascript',
-    'babel-runtime@0.1.4',
+    'es5-shim',
     'pierreeric:logger',
     'pierreeric:namespaces'
   ];

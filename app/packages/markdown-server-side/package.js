@@ -5,7 +5,7 @@ Package.describe({
 
 Package.onUse(function(api) {
   // Meteor's API version
-  api.versionsFrom('1.2.0.1');
+  api.versionsFrom('1.2');
   // NPM dependencies
   Npm.depends({
     'marked': '0.3.5',
@@ -13,7 +13,10 @@ Package.onUse(function(api) {
   });
   // Dependencies of this package
   // Dependencies for server and client
-  api.use('ecmascript');
+  api.use([
+    'ecmascript',
+    'es5-shim'
+  ]);
   // Included files in this packages
   // Server only
   api.addFiles([
