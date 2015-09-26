@@ -1,17 +1,13 @@
 // Display BasicPages for the client
 
 // Namespace flatteinng
-const { PropTypes, Component } = React;
+const { Component } = React;
 
 // Create a logger
 const log = Logger.createLogger('Client BasicPages');
 
 // BasicPages component
 class BasicPages extends Rc.BaseReactMeteor {
-  static displayName: 'BasicPages'
-  static propTypes: {
-    url: PropTypes.string.isRequired
-  }
   // Subscribe to BasicPages (reactive methods)
   getMeteorData() {
     const { url } = this.props;

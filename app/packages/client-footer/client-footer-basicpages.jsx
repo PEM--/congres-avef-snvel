@@ -1,15 +1,10 @@
 // List of basic page links
 
 // Namespace flatteinng
-const { PropTypes, Component } = React;
+const { Component } = React;
 
 // Basic page link
 class BasicPagesLink extends Component {
-  displayName: 'BasicPagesLink'
-  static propTypes: {
-    url: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired
-  }
   render() {
     log.debug('Rendering BasicPagesLink');
     const { url, title } = this.props;
@@ -19,7 +14,6 @@ class BasicPagesLink extends Component {
 
 // List of basic page links
 class BasicPagesLinkList extends Rc.BaseReactMeteor {
-  static displayName: 'BasicPagesLinkList'
   // Subscribe to BasicPages (reactive methods)
   getMeteorData() {
     const handle = Col.basicPages.subFooterLinks();

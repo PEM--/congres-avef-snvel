@@ -1,11 +1,10 @@
 // Footer
 
 // Namespace flatteinng
-const { PropTypes, createClass } = React;
+const { Component } = React;
 
 // Footer component
-const Footer = createClass({
-  displayName: 'Footer',
+class Footer extends Component {
   // Render the component
   render() {
     log.debug('Rendering Footer');
@@ -22,7 +21,7 @@ const Footer = createClass({
       </footer>
     );
   }
-});
+}
 
 // Export class
 Rc.Client.Footer = Footer;

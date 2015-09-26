@@ -4,10 +4,9 @@
 const log = Logger.createLogger('Client LandingPage');
 
 // Namespace flatteinng
-const { PropTypes, Component } = React;
+const { Component } = React;
 
 class Presentation extends Component {
-  displayNme: 'Presentation'
   render() {
     log.debug('Rendering Presentation');
     return (
@@ -29,9 +28,8 @@ class Presentation extends Component {
 }
 
 class Program extends Component {
-  displayNme: 'Program'
   render() {
-    log.debug('Rendering Program', this.displayName);
+    log.debug('Rendering Program');
     return (
       <section className="client program row">
         <a href="/program" className="sixteen wide column">
@@ -50,7 +48,6 @@ class Program extends Component {
 }
 
 class Subscription extends Component {
-  displayNme: 'Subscription'
   render() {
     log.debug('Rendering Subscription');
     return (
@@ -75,12 +72,6 @@ class Subscription extends Component {
 }
 
 class Partner extends Component {
-  displayNme: 'Partner'
-  static propTypes: {
-    title: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
-    src: PropTypes.string.isRequired
-  }
   render() {
     const { url, title, src } = this.props;
     return (
@@ -92,7 +83,6 @@ class Partner extends Component {
 }
 
 class PartnerList extends Rc.BaseReactMeteor {
-  displayNme: 'PartnerList'
   // Subscribe to Partners (reactive methods)
   getMeteorData() {
     const handle = Col.partners.subAll();
@@ -134,7 +124,6 @@ class PartnerList extends Rc.BaseReactMeteor {
 
 // Landing page component
 class LandingPage extends Component {
-  displayName: 'LandingPage'
   render() {
     log.debug('Rendering LandingPage');
     return (

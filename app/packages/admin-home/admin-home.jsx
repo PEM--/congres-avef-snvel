@@ -8,7 +8,6 @@ const log = Logger.createLogger('Admin Home');
 
 // Admin home component
 class Home extends Component {
-  displayName: 'Home'
   render() {
     log.debug('Rendering');
     return (

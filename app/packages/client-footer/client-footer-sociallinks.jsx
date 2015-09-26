@@ -1,15 +1,10 @@
 // List of social links links
 
 // Namespace flatteinng
-const { PropTypes, Component } = React;
+const { Component } = React;
 
 // Social link
 class SocialLink extends Component {
-  static displayName: 'SocialLink'
-  static propTypes: {
-    url: PropTypes.string.isRequired,
-    faIcon: PropTypes.string.isRequired
-  }
   render() {
     log.debug('Rendering SocialLink');
     const { url, faIcon } = this.props;
@@ -19,7 +14,6 @@ class SocialLink extends Component {
 
 // List of social links
 class SocialLinkList extends Rc.BaseReactMeteor {
-  static displayName: 'SocialLinkList'
   // Subscribe to SocialLinks (reactive methods)
   getMeteorData() {
     const handle = Col.socialLinks.subAllLinks();

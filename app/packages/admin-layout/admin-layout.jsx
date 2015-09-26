@@ -1,17 +1,13 @@
 // Admin layout
 
 // Namespace flatteinng
-const { PropTypes, Component } = React;
+const { Component } = React;
 
 // Create a logger
 const log = Logger.createLogger('Admin Layout');
 
 // Admin layout component
 class Layout extends Component {
-  displayName: 'Layout'
-  static propTypes: {
-    content: PropTypes.object.isRequired
-  }
   render() {
     log.debug('Rendering');
     const { content } = this.props;

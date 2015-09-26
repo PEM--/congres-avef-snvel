@@ -1,14 +1,13 @@
 // Menu
 
 // Namespace flatteinng
-const { PropTypes, Component } = React;
+const { Component } = React;
 
 // Create a logger
 const log = Logger.createLogger('Client Menu');
 
 // Basic menu item
 class BasicMenuItem extends Component {
-  static displayName: 'BasicMenuItem'
   // Handle menu closing
   render() {
     const { closeMenu, href, faIcon, text } = this.props;
@@ -22,7 +21,6 @@ class BasicMenuItem extends Component {
 
 // Signon-Signoff item
 class SignonSignoffItem extends Component {
-  static displayName: 'SignonSignoffItem'
   render() {
     const { currentUser, closeMenu } = this.props;
     return (
@@ -36,7 +34,6 @@ class SignonSignoffItem extends Component {
 
 // Admin access item
 class AdminAccessIem extends Component {
-  static displayName: 'AdminAccessIem'
   render() {
     const { closeMenu, currentUser } = this.props;
     const disableClass = currentUser ? '' : 'disabled';
@@ -51,7 +48,6 @@ class AdminAccessIem extends Component {
 
 // Popup menu
 class PopupMenu extends Rc.BaseReactMeteor {
-  static displayName: 'PopupMenu'
   getMeteorData() {
     return { currentUser: Meteor.user() };
   }
@@ -75,7 +71,6 @@ class PopupMenu extends Rc.BaseReactMeteor {
 
 // Menu component
 class Menu extends Component {
-  static displayName: 'Menu'
   constructor() {
     super();
     this.state = { popupMenuToggle: false };

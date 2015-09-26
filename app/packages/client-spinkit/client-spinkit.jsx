@@ -5,7 +5,6 @@ const log = Logger.createLogger('Admin Home');
 
 // Create the component
 class Spinkit extends React.Component {
-  displayName: 'Spinkit'
   render() {
     log.debug('Rendering');
     // let nodes = [];

@@ -1,7 +1,7 @@
 // Menu
 
 // Namespace flatteinng
-const { PropTypes, createClass } = React;
+const { createClass } = React;
 
 const BaseReactMeteor = createClass({
   // Handle connexion and admin access
