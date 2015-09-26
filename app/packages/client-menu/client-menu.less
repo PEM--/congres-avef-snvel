@@ -116,15 +116,15 @@ aside.client {
 
 // Tablet specifics
 @media screen and (min-width: @tabletBreakpoint) and (max-width: @largestTabletScreen) {
-  aside.client { right: calc(~"50% " - @tabletBreakpoint/2); }
+  aside.client { right: calc(~"50% - " @tabletBreakpoint/2); }
 }
 
 // Computer specifics
 @media screen and (min-width: @computerBreakpoint) and (max-width: @largestSmallMonitor) {
-  aside.client { right: calc(~"50% " - @computerBreakpoint/2); }
+  aside.client { right: calc(~"50% - " @computerBreakpoint/2); }
 }
 
 // Large monitor and over specifics
 @media screen and (min-width: @largeMonitorBreakpoint) {
-  aside.client { right: calc(~"50% " - @largeMonitorBreakpoint/2); }
+  aside.client { right: calc(~"50% - " @largeMonitorBreakpoint/2); }
 }
