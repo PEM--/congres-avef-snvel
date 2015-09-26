@@ -8,7 +8,7 @@ class BasicPagesLink extends Component {
   render() {
     log.debug('Rendering BasicPagesLink');
     const { url, title } = this.props;
-    return <li className="item"><a href={url} className="animated">{title}</a></li>;
+    return <li className='item'><a href={url} className='animated'>{title}</a></li>;
   }
 }
 
@@ -36,8 +36,8 @@ class BasicPagesLinkList extends Rc.BaseReactMeteor {
         title={item.title} />;
     });
     return (
-      <div className="basicpages-links center aligned twelve wide tablet height wide computer column">
-        <ul className="ui horizontal divided list readability-black">
+      <div className='basicpages-links center aligned twelve wide tablet height wide computer column'>
+        <ul className='ui horizontal divided list readability-black'>
           {nodes}
         </ul>
       </div>

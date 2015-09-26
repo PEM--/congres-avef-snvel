@@ -23,7 +23,7 @@ class BasicPages extends Rc.BaseReactMeteor {
   render() {
     log.debug('Rendering: loading status', this.data.loading);
     let nodes = (
-      <div className="sixteen wide column">
+      <div className='sixteen wide column'>
         <p>Chargement en cours...</p>
         <Rc.Client.Spinkit />
       </div>
@@ -31,22 +31,22 @@ class BasicPages extends Rc.BaseReactMeteor {
     if (!this.data.loading) {
       const item = this.data.item;
       nodes = (
-        <div className="fadeIn sixteen wide column">
+        <div className='fadeIn sixteen wide column'>
           <h1>{item.title}</h1>
           <div dangerouslySetInnerHTML={{__html: item.content}} />
         </div>
       );
     }
     return (
-      <div key={this.props.url} className="client main-content ui grid basicpages">
-        <div className="row">
-          <div className="sixteen wide column">
-            <div className="ui grid container">
-              <section className="row">
+      <div key={this.props.url} className='client main-content ui grid basicpages'>
+        <div className='row'>
+          <div className='sixteen wide column'>
+            <div className='ui grid container'>
+              <section className='row'>
                 {nodes}
               </section>
-              <section className="row">
-                <nav className="sixteen wide column">
+              <section className='row'>
+                <nav className='sixteen wide column'>
                   <p>
                     Revenez à l'<a href={FlowRouter.path('client-landingpage')}>Accueil</a>.
                   </p>

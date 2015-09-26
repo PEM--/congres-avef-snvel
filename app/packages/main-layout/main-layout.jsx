@@ -12,10 +12,10 @@ class MainLayout extends Component {
     log.debug('Rendering');
     return (
       <div>
-        <div className="client menu ui fixed">
+        <div className='client menu ui fixed'>
           <Rc.Client.Menu />
         </div>
-        <div className="main-layout">
+        <div className='main-layout'>
           {this.props.content}
           <Rc.Client.Footer />
         </div>
