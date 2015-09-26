@@ -3,6 +3,10 @@
 // Technical articles :
 // * https://www.youtube.com/watch?v=AfWYO8t7ed4
 
+// if (Meteor.isServer) {
+//   let babelOptions = Babel.getDefaultOptions();
+//   babelOptions.whitelist.push('es7.decorators');
+// }
 
 // High order function as a decorator for injecting a `optionsAsThis` method
 // that can be used at class level.

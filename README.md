@@ -18,12 +18,15 @@ Site d'inscription commun pour l'AVEF et le SNVEL.
 * [UptimeButler: Alerting](https://uptimebutler.com/)
 
 ### Technical articles
+* [Mixing Blaze and React](https://github.com/timbrandin/meteor-sideburns)
+* [Automatic documentation](https://github.com/fabienb4/meteor-jsdoc)
 * [Cookie](https://github.com/chuangbo/meteor-cookie)
 * [QR Code generator](https://www.npmjs.com/package/qr-image)
   + Secret to set security!!!!
 * [QR Code reader](http://cirocosta.github.io/qcode-decoder/)
 * [getUserMedia](https://simpl.info/getusermedia/sources/)
 * [Learn SemanticUI](http://learnsemantic.com/preface/introduction.html)
+  :warning: Add fabienb4:autoform-semantic-ui
 * [Meteor routing guide](https://kadira.io/academy/meteor-routing-guide/)
 * [React Motion](https://github.com/chenglou/react-motion)
 * [Meteor & React](http://react-in-meteor.readthedocs.org/en/latest/)

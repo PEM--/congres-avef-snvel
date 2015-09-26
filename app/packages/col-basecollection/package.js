@@ -9,9 +9,10 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   const shared = [
+    'ecmascript',
+    'es5-shim',
     'aldeed:collection2@2.5.0',
     'dburles:collection-helpers@1.0.3',
-    'pierreeric:decorators',
     'pierreeric:namespaces',
     'pierreeric:logger',
     'pierreeric:subscription-cache'
