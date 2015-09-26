@@ -18,6 +18,7 @@ Site d'inscription commun pour l'AVEF et le SNVEL.
 * [UptimeButler: Alerting](https://uptimebutler.com/)
 
 ### Technical articles
+* [Cookie](https://github.com/chuangbo/meteor-cookie)
 * [QR Code generator](https://www.npmjs.com/package/qr-image)
   + Secret to set security!!!!
 * [QR Code reader](http://cirocosta.github.io/qcode-decoder/)

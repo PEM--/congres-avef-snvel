@@ -3,11 +3,11 @@ pierreeric:client-browserupdate
 
 # Meteor official packages
 meteor-base
-session
+#session
 mobile-experience
 logging
-blaze-html-templates
-spacebars
+#blaze-html-templates
+#spacebars
 standard-minifiers
 mongo
 jquery
