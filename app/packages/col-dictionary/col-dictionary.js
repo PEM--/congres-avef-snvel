@@ -8,7 +8,7 @@ const sharedOptions = {
   },
   // Available subscriptions and publications
   subs: {
-    AllLinks: {}
+    All: {}
   }
 };
 
@@ -25,7 +25,6 @@ if (Meteor.isServer) {
   const serverOptions = {
     defaults: [Meteor.settings.public.dictionary]
   };
-if (Meteor.isServer) {
   class Dictionary extends SD.Structure.ServerBaseCollection {}
   // Export instance
   SD.Structure.dictionary = new Dictionary(sharedOptions, serverOptions);

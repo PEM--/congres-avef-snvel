@@ -17,6 +17,7 @@ Package.onUse(function(api) {
     'kadira:dochead@1.1.0',
     'flemay:less-autoprefixer@1.1.0',
     'pierreeric:logger',
+    'pierreeric:col-dictionary'
   ]);
   // Included files in this packages
   // Files for server and client
