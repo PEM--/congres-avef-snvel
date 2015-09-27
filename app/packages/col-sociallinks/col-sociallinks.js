@@ -15,9 +15,9 @@ const sharedOptions = {
 
 // Client only
 if (Meteor.isClient) {
-  class SocialLinks extends Col.BaseCollection {}
+  class SocialLinks extends SD.Structure.BaseCollection {}
   // Export instance
-  Col.socialLinks = new SocialLinks(sharedOptions);
+  SD.Structure.socialLinks = new SocialLinks(sharedOptions);
 }
 
 // Server only
@@ -29,7 +29,7 @@ if (Meteor.isServer) {
     // Set indexes on collection
     indexes: { url: 1, order: 1 }
   };
-  class SocialLinks extends Col.ServerBaseCollection {}
+  class SocialLinks extends SD.Structure.ServerBaseCollection {}
   // Export instance
-  Col.socialLinks = new SocialLinks(sharedOptions, serverOptions);
+  SD.Structure.socialLinks = new SocialLinks(sharedOptions, serverOptions);
 }

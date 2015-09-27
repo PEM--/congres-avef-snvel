@@ -10,4 +10,4 @@ const BaseReactMeteor = createClass({
   render() { return null; }
 });
 
-Rc.BaseReactMeteor = BaseReactMeteor;
+SD.Views.BaseReactMeteor = BaseReactMeteor;

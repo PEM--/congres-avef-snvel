@@ -10,7 +10,7 @@ Package.onUse(function(api) {
   // Dependencies for server and client
   const shared = [
     'kadira:flow-router-ssr@3.3.0',
-    'pierreeric:namespaces',
+    'spacedrop:namespaces',
     'pierreeric:logger'
   ];
   api.use([

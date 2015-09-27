@@ -12,10 +12,10 @@ class MainLayout extends Component {
     log.debug('Rendering');
     return (
       <div>
-        <Rc.Client.Menu />
+        <SD.Views.Client.Menu />
         <div className='main-layout'>
           {this.props.content}
-          <Rc.Client.Footer />
+          <SD.Views.Client.Footer />
         </div>
       </div>
     );
@@ -23,4 +23,4 @@ class MainLayout extends Component {
 }
 
 // Export class
-Rc.MainLayout = MainLayout;
+SD.Views.MainLayout = MainLayout;

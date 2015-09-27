@@ -24,9 +24,9 @@ const sharedOptions = {
 
 // Client only
 if (Meteor.isClient) {
-  class BasicPages extends Col.BaseCollection {}
+  class BasicPages extends SD.Structure.BaseCollection {}
   // Export instance
-  Col.basicPages = new BasicPages(sharedOptions);
+  SD.Structure.basicPages = new BasicPages(sharedOptions);
 }
 
 // Server only
@@ -54,7 +54,7 @@ if (Meteor.isServer) {
     // Set indexes on collection
     indexes: { url: 1, display: 1, order: 1 }
   };
-  class BasicPages extends Col.ServerBaseCollection {}
+  class BasicPages extends SD.Structure.ServerBaseCollection {}
   // Export instance
-  Col.basicPages = new BasicPages(sharedOptions, serverOptions);
+  SD.Structure.basicPages = new BasicPages(sharedOptions, serverOptions);
 }

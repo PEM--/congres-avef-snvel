@@ -6,14 +6,14 @@ const log = Logger.createLogger('Routing Done');
 // Routing bor BasicPages
 // Isomorhic function
 var setBasicPageRoutes = function() {
-  let basicPages = Col.basicPages.collection.find().fetch();
+  let basicPages = SD.Structure.basicPages.collection.find().fetch();
   basicPages.forEach(function(page) {
     FlowRouter.route(`/${page.url}`, {
       name: page.url,
       action() {
         log.info('Routing to', this.name);
-        ReactLayout.render(Rc.MainLayout, {
-          content: <Rc.Client.BasicPages url={page.url} />
+        ReactLayout.render(SD.Views.MainLayout, {
+          content: <SD.Views.Client.BasicPages url={page.url} />
         });
       }
     });
@@ -24,7 +24,7 @@ var setBasicPageRoutes = function() {
 // subscribed to all data, which leads to these differences on the client
 // and on the server.
 if (Meteor.isClient) {
-  Col.basicPages.subAllPages(function() {
+  SD.Structure.basicPages.subAllPages(function() {
     setBasicPageRoutes();
     // Release router for routing once all routes are declared
     Meteor.startup(() => {

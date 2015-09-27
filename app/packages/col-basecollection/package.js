@@ -13,7 +13,7 @@ Package.onUse(function(api) {
     'es5-shim',
     'aldeed:collection2@2.5.0',
     'dburles:collection-helpers@1.0.3',
-    'pierreeric:namespaces',
+    'spacedrop:namespaces',
     'pierreeric:logger',
     'pierreeric:subscription-cache'
   ];

@@ -13,16 +13,16 @@ class SocialLink extends Component {
 }
 
 // List of social links
-class SocialLinkList extends Rc.BaseReactMeteor {
+class SocialLinkList extends SD.Views.BaseReactMeteor {
   // Subscribe to SocialLinks (reactive methods)
   getMeteorData() {
-    const handle = Col.socialLinks.subAllLinks();
+    const handle = SD.Structure.socialLinks.subAllLinks();
     return {
       // Use handle to show loading state
       loading: !handle.ready(),
       // Expose the list as an array
-      items: Col.socialLinks.collection.find({},
-        Col.socialLinks.subs.AllLinks.options).fetch()
+      items: SD.Structure.socialLinks.collection.find({},
+        SD.Structure.socialLinks.subs.AllLinks.options).fetch()
     };
   }
   render() {
@@ -44,4 +44,4 @@ class SocialLinkList extends Rc.BaseReactMeteor {
   }
 }
 
-Rc.Client.SocialLinkList = SocialLinkList;
+SD.Views.Client.SocialLinkList = SocialLinkList;

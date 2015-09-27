@@ -8,9 +8,9 @@ FlowRouter.notFound = {
   action() {
     Meteor.startup(() => {
       log.info('Routing to global notfound');
-      ReactLayout.render(Rc.MainLayout, {
+      ReactLayout.render(SD.Views.MainLayout, {
         url: '/notfound',
-        content: <Rc.Client.BasicPages url='notfound' />
+        content: <SD.Views.Client.BasicPages url='notfound' />
       });
     });
   }

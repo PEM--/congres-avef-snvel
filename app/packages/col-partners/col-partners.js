@@ -15,9 +15,9 @@ const sharedOptions = {
 
 // Client only
 if (Meteor.isClient) {
-  class Partners extends Col.BaseCollection {}
+  class Partners extends SD.Structure.BaseCollection {}
   // Export instance
-  Col.partners = new Partners(sharedOptions);
+  SD.Structure.partners = new Partners(sharedOptions);
 }
 
 // Server only
@@ -35,7 +35,7 @@ if (Meteor.isServer) {
       },
     ]
   };
-  class Partners extends Col.ServerBaseCollection {}
+  class Partners extends SD.Structure.ServerBaseCollection {}
   // Export instance
-  Col.partners = new Partners(sharedOptions, serverOptions);
+  SD.Structure.partners = new Partners(sharedOptions, serverOptions);
 }

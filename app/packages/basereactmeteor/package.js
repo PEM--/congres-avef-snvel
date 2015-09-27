@@ -13,7 +13,7 @@ Package.onUse(function(api) {
     'ecmascript',
     'es5-shim',
     'pierreeric:logger',
-    'pierreeric:namespaces'
+    'spacedrop:namespaces'
   ];
   api.use(shared);
   api.imply(shared);

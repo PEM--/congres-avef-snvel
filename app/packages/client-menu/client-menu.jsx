@@ -47,7 +47,7 @@ class AdminAccessIem extends Component {
 }
 
 // Popup menu
-class PopupMenu extends Rc.BaseReactMeteor {
+class PopupMenu extends SD.Views.BaseReactMeteor {
   getMeteorData() {
     return { currentUser: Meteor.user() };
   }
@@ -106,4 +106,4 @@ class Menu extends Component {
 }
 
 // Export class
-Rc.Client.Menu = Menu;
+SD.Views.Client.Menu = Menu;

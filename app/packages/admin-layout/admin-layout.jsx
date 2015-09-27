@@ -16,4 +16,4 @@ class Layout extends Component {
 }
 
 // Export class
-Rc.Admin.Layout = Layout;
+SD.Views.Admin.Layout = Layout;

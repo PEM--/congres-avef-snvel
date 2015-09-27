@@ -14,9 +14,9 @@ const sharedOptions = {
 
 // Client only
 if (Meteor.isClient) {
-  class Dictionary extends Col.BaseCollection {}
+  class Dictionary extends SD.Structure.BaseCollection {}
   // Export instance
-  Col.dictionary = new Dictionary(sharedOptions);
+  SD.Structure.dictionary = new Dictionary(sharedOptions);
 }
 
 // Server only
@@ -26,7 +26,7 @@ if (Meteor.isServer) {
     defaults: [Meteor.settings.public.dictionary]
   };
 if (Meteor.isServer) {
-  class Dictionary extends Col.ServerBaseCollection {}
+  class Dictionary extends SD.Structure.ServerBaseCollection {}
   // Export instance
-  Col.dictionary = new Dictionary(sharedOptions, serverOptions);
+  SD.Structure.dictionary = new Dictionary(sharedOptions, serverOptions);
 }

@@ -9,7 +9,7 @@ Package.onUse(function(api) {
     'coffeescript',
     'browser-policy',
     'matteodem:easy-security@0.1.4',
-    'pierreeric:namespaces',
+    'spacedrop:namespaces',
     'pierreeric:logger'
   ]);
   api.addFiles([

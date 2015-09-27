@@ -17,7 +17,7 @@ Package.onUse(function(api) {
     'meteorhacks:fast-render@2.10.0',
     'underscorestring:underscore.string@3.2.2',
     'gadicohen:sitemaps@0.0.23',
-    'pierreeric:namespaces',
+    'spacedrop:namespaces',
     'pierreeric:logger'
   ]);
   // Included files in this packages

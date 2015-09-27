@@ -10,7 +10,7 @@ Package.onUse(function(api) {
   // Dependencies for server and client
   api.use([
     'react',
-    'pierreeric:namespaces',
+    'spacedrop:namespaces',
     'pierreeric:client-menu',
     'pierreeric:client-footer',
     'blaze-html-templates',

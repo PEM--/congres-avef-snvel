@@ -82,16 +82,16 @@ class Partner extends Component {
   }
 }
 
-class PartnerList extends Rc.BaseReactMeteor {
+class PartnerList extends SD.Views.BaseReactMeteor {
   // Subscribe to Partners (reactive methods)
   getMeteorData() {
-    const handle = Col.partners.subAll();
+    const handle = SD.Structure.partners.subAll();
     return {
       // Use handle to show loading state
       loading: !handle.ready(),
       // Expose the list as an array
-      items: Col.partners.collection.find({},
-        Col.partners.subs.All.options).fetch()
+      items: SD.Structure.partners.collection.find({},
+        SD.Structure.partners.subs.All.options).fetch()
     };
   }
   render() {
@@ -142,7 +142,7 @@ FlowRouter.route('/', {
   name: 'client-landingpage',
   action() {
     log.info('Routing to', this.name);
-    ReactLayout.render(Rc.MainLayout, {
+    ReactLayout.render(SD.Views.MainLayout, {
       url: '/',
       content: <LandingPage />
     });

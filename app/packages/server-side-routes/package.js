@@ -12,7 +12,7 @@ Package.onUse(function(api) {
   });
   // Dependencies of this package
   api.use([
-    'pierreeric:namespaces',
+    'spacedrop:namespaces',
     'pierreeric:logger'
   ]);
   // Dependencies server only

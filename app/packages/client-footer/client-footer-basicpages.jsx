@@ -13,17 +13,17 @@ class BasicPagesLink extends Component {
 }
 
 // List of basic page links
-class BasicPagesLinkList extends Rc.BaseReactMeteor {
+class BasicPagesLinkList extends SD.Views.BaseReactMeteor {
   // Subscribe to BasicPages (reactive methods)
   getMeteorData() {
-    const handle = Col.basicPages.subFooterLinks();
+    const handle = SD.Structure.basicPages.subFooterLinks();
     return {
       // Use handle to show loading state
       loading: !handle.ready(),
       // Expose the list as an array
-      items: Col.basicPages.collection.find(
-        Col.basicPages.subs.FooterLinks.filter,
-        Col.basicPages.subs.FooterLinks.options).fetch()
+      items: SD.Structure.basicPages.collection.find(
+        SD.Structure.basicPages.subs.FooterLinks.filter,
+        SD.Structure.basicPages.subs.FooterLinks.options).fetch()
     };
   }
   render() {
@@ -45,4 +45,4 @@ class BasicPagesLinkList extends Rc.BaseReactMeteor {
   }
 }
 
-Rc.Client.BasicPagesLinkList = BasicPagesLinkList;
+SD.Views.Client.BasicPagesLinkList = BasicPagesLinkList;

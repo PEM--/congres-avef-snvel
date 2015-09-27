@@ -15,4 +15,4 @@ class Spinkit extends React.Component {
   }
 }
 
-Rc.Client.Spinkit = Spinkit;
+SD.Views.Client.Spinkit = Spinkit;

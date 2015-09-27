@@ -7,17 +7,17 @@ const { Component } = React;
 const log = Logger.createLogger('Client BasicPages');
 
 // BasicPages component
-class BasicPages extends Rc.BaseReactMeteor {
+class BasicPages extends SD.Views.BaseReactMeteor {
   // Subscribe to BasicPages (reactive methods)
   getMeteorData() {
     const { url } = this.props;
     // Subscribe to get the content of the page
-    const handle = Col.basicPages.subWithUrl(url);
+    const handle = SD.Structure.basicPages.subWithUrl(url);
     return {
       // Use handle to show loading state
       loading: !handle.ready(),
       // Get the content of the basic page
-      item: handle.ready() ? Col.basicPages.collection.findOne({url}) : ''
+      item: handle.ready() ? SD.Structure.basicPages.collection.findOne({url}) : ''
     };
   }
   render() {
@@ -25,7 +25,7 @@ class BasicPages extends Rc.BaseReactMeteor {
     let nodes = (
       <div className='sixteen wide column'>
         <p>Chargement en cours...</p>
-        <Rc.Client.Spinkit />
+        <SD.Views.Client.Spinkit />
       </div>
     );
     if (!this.data.loading) {
@@ -61,4 +61,4 @@ class BasicPages extends Rc.BaseReactMeteor {
 }
 
 // Export class
-Rc.Client.BasicPages = BasicPages;
+SD.Views.Client.BasicPages = BasicPages;

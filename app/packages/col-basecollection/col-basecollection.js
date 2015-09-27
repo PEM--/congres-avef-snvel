@@ -38,7 +38,7 @@ class BaseCollection {
   }
 }
 // Export class
-Col.BaseCollection = BaseCollection;
+SD.Structure.BaseCollection = BaseCollection;
 
 // Server only
 if (Meteor.isServer) {
@@ -109,5 +109,5 @@ if (Meteor.isServer) {
     }
   }
   // Export class
-  Col.ServerBaseCollection = ServerBaseCollection;
+  SD.Structure.ServerBaseCollection = ServerBaseCollection;
 }
