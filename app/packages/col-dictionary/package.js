@@ -8,7 +8,7 @@ Package.onUse(function(api) {
   api.versionsFrom('1.2');
   // Dependencies of this package
   // Dependencies for server and client
-  api.use('pierreeric:col-basecollection');
+  api.use('spacedrop:basecollection');
   // Included files in this packages
   // Files for server and client
   api.addFiles([

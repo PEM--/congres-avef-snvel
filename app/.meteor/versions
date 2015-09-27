@@ -87,7 +87,6 @@ pierreeric:client-menu@0.0.1
 pierreeric:client-notfound@0.0.1
 pierreeric:client-sharedstyles@0.0.1
 pierreeric:client-spinkit@0.0.1
-pierreeric:col-basecollection@0.0.1
 pierreeric:col-basicpages@0.0.1
 pierreeric:col-partners@0.0.1
 pierreeric:col-sociallinks@0.0.1
@@ -95,12 +94,10 @@ pierreeric:custom-basicpages@0.0.1
 pierreeric:logger@0.0.1
 pierreeric:main-layout@0.0.1
 pierreeric:markdown-server-side@0.0.1
-spacedrop:namespaces@0.0.1
 pierreeric:routing-done@0.0.1
 pierreeric:routing-start@0.0.1
 pierreeric:security@0.0.1
 pierreeric:server-side-routes@0.0.1
-pierreeric:subscription-cache@0.0.1
 pierreeric:useraccounts-flow-ssr-react@0.0.1
 promise@0.4.8
 random@1.0.4
@@ -122,6 +119,9 @@ sha@1.0.4
 softwarerero:accounts-t9n@1.0.9
 spacebars@1.0.7
 spacebars-compiler@1.0.7
+spacedrop:basecollection@0.0.1
+spacedrop:namespaces@0.0.1
+spacedrop:subscription-cache@0.0.1
 srp@1.0.4
 standard-minifiers@1.0.0
 templating@1.1.3

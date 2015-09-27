@@ -8,7 +8,7 @@ Package.onUse(function(api) {
   api.versionsFrom('1.2');
   // Dependencies of this package
   // Dependencies for server and client
-  api.use('pierreeric:col-basecollection');
+  api.use('spacedrop:basecollection');
   // Dependencies for server only
   api.use([
     'pierreeric:markdown-server-side',
