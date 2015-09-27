@@ -83,10 +83,15 @@ pierreeric:client-basicpages@0.0.1
 pierreeric:client-browserupdate@0.0.1
 pierreeric:client-footer@0.0.1
 pierreeric:client-landingpage@0.0.1
+pierreeric:client-login@0.0.1
+pierreeric:client-logout@0.0.1
 pierreeric:client-menu@0.0.1
 pierreeric:client-notfound@0.0.1
+pierreeric:client-presentation@0.0.1
+pierreeric:client-program@0.0.1
 pierreeric:client-sharedstyles@0.0.1
 pierreeric:client-spinkit@0.0.1
+pierreeric:client-subscription@0.0.1
 pierreeric:col-basicpages@0.0.1
 pierreeric:col-partners@0.0.1
 pierreeric:col-sociallinks@0.0.1
@@ -98,7 +103,6 @@ pierreeric:routing-done@0.0.1
 pierreeric:routing-start@0.0.1
 pierreeric:security@0.0.1
 pierreeric:server-side-routes@0.0.1
-pierreeric:useraccounts-flow-ssr-react@0.0.1
 promise@0.4.8
 random@1.0.4
 rate-limit@1.0.0
@@ -116,7 +120,6 @@ semantic:ui@2.1.4
 semantic:ui-data@2.1.4
 service-configuration@1.0.5
 sha@1.0.4
-softwarerero:accounts-t9n@1.0.9
 spacebars@1.0.7
 spacebars-compiler@1.0.7
 spacedrop:basecollection@0.0.1
@@ -131,7 +134,5 @@ ui@1.0.8
 underscore@1.0.4
 underscorestring:underscore.string@3.2.2
 url@1.0.5
-useraccounts:core@1.12.3
-useraccounts:semantic-ui@1.12.3
 webapp@1.2.2
 webapp-hashing@1.0.5

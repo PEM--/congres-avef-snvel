@@ -50,14 +50,17 @@ pierreeric:server-side-routes
 # Client only packages
 pierreeric:client-landingpage
 pierreeric:client-basicpages
+pierreeric:client-presentation
+pierreeric:client-program
+pierreeric:client-login
+pierreeric:client-logout
 pierreeric:client-notfound
 # Admin only packages
 pierreeric:admin-home
 
 # Authentifications
-useraccounts:semantic-ui
 accounts-password
-pierreeric:useraccounts-flow-ssr-react
+pierreeric:client-subscription
 
 # All routes declared start: Start client side routing
 # Must be the last one that create a routing

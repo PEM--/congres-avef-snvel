@@ -39,7 +39,14 @@ if (Meteor.isClient) {
 // Creating sitemaps for all routes
 if (Meteor.isServer) {
   const allRoutes = _.filter(_.pluck(FlowRouter._routes, 'path'), function(route) {
-    return !s.include(route, 'admin') && !s.include(route, 'notfound');
+    // Filter unwanted toutes in SEO
+    return (
+      // Remove all admin routes
+      !s.include(route, 'admin') &&
+      // Remove not found route
+      !s.include(route, 'notfound') &&
+      // Remove all login, logout routes
+      !s.include(route, 'log'));
   });
   const pages = allRoutes.map(function(route) {
     log.info('Route', route, 'added to /sitemap.xml');
