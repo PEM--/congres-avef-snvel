@@ -1,6 +1,16 @@
 // Main layout of the client and admin applications
 
 // Metatags: http://www.metatags.org
+// Twitter cards:
+// * Specs: https://dev.twitter.com/cards/types
+// * Validator: https://cards-dev.twitter.com/validator
+// Open Graph:
+// * Specs: http://ogp.me/
+// * FaceBook validator: https://developers.facebook.com/tools/debug/
+// * Google validator: https://developers.google.com/structured-data/testing-tool/
+// Rich snippets v2:
+// * https://developers.google.com/structured-data/rich-snippets/
+// * Validator + Example: https://developers.google.com/structured-data/testing-tool/
 
 // Namespace flatteinng
 const { Component } = React;
@@ -32,7 +42,7 @@ class MainLayout extends SD.Views.BaseReactMeteor {
       DocHead.addMeta({name: 'msapplication-TileColor', content: dict.msTileColor});
       DocHead.addMeta({name: 'theme-color', content: dict.msTileColor});
       // Others meta tags
-      for (const meta of [
+      [
         'description',
         'author',
         'copyright',
@@ -41,9 +51,42 @@ class MainLayout extends SD.Views.BaseReactMeteor {
         'rating',
         'reply-to',
         'web-author'
-      ]) {
-        DocHead.addMeta({name: meta, content: dict[meta]});
-      }
+      ].map(function (meta) {
+        const obj = {name: meta, content: dict[meta]};
+        log.debug('Meta', obj);
+        DocHead.addMeta(obj);
+      });
+      log.info('Title, description and metatags added');
+      // Social tags
+      // Twitter card
+      [
+        {name: 'twitter:card', content: 'summary_large_image'},
+        {name: 'twitter:site', content: '@AVEF_'},
+        {name: 'twitter:creator', content: '@AVEF_'},
+        {name: 'twitter:title', content: 'Je me suis inscrit au congrès - Inscrivez-vous !'},
+        {name: 'twitter:description', content: dict.description},
+        // 499x350
+        {name: 'twitter:image', content: `${Meteor.settings.public.proxy.url}img/twitter_card.jpg`}
+      ].map(function(meta) {
+        const obj = {name: meta.name, content: meta.content};
+        log.debug('Meta', obj);
+        DocHead.addMeta(obj);
+      });
+      log.info('Twitter card added');
+      // Open graph
+      [
+        {name: 'og:title', content: dict.shortTitle},
+        {name: 'og:type', content: 'website'},
+        {name: 'og:site_name', content: Meteor.settings.public.proxy.url},
+        {name: 'og:locale', content: 'fr_FR'},
+        // 484x252
+        {name: 'og:image', content: `${Meteor.settings.public.proxy.url}img/open_graph.jpg`}
+      ].map(function(meta) {
+        const obj = {name: meta.name, content: meta.content};
+        log.debug('Meta', obj);
+        DocHead.addMeta(obj);
+      });
+      log.info('Open graph added');
     }
     log.debug('Rendering');
     return (

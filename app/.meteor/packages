@@ -65,3 +65,6 @@ pierreeric:client-subscription
 # All routes declared start: Start client side routing
 # Must be the last one that create a routing
 pierreeric:routing-done
+
+
+spacedrop:namespaces
