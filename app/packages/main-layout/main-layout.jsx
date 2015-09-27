@@ -11,6 +11,12 @@
 // Rich snippets v2:
 // * https://developers.google.com/structured-data/rich-snippets/
 // * Validator + Example: https://developers.google.com/structured-data/testing-tool/
+//
+// Needs additional socials for:
+// * Pinterest
+// * LinkedIn
+//   * https://developer.linkedin.com/docs/share-on-linkedin
+// * G+
 
 // Namespace flatteinng
 const { Component } = React;
@@ -87,6 +93,8 @@ class MainLayout extends SD.Views.BaseReactMeteor {
         DocHead.addMeta(obj);
       });
       log.info('Open graph added');
+      // Rich snippets v2
+
     }
     log.debug('Rendering');
     return (
