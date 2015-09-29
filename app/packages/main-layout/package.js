@@ -10,6 +10,7 @@ Package.onUse(function(api) {
   // Dependencies for server and client
   api.use([
     'react',
+    'underscore',
     'spacedrop:namespaces',
     'pierreeric:client-menu',
     'pierreeric:client-footer',
@@ -17,7 +18,8 @@ Package.onUse(function(api) {
     'kadira:dochead@1.1.0',
     'flemay:less-autoprefixer@1.1.0',
     'pierreeric:logger',
-    'pierreeric:col-dictionary'
+    'pierreeric:col-dictionary',
+    'pierreeric:col-sociallinks'
   ]);
   // Included files in this packages
   // Files for server and client

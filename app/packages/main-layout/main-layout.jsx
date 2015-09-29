@@ -28,17 +28,22 @@ const log = Logger.createLogger('MainLayout');
 class MainLayout extends SD.Views.BaseReactMeteor {
   getMeteorData() {
     // Subscribe to get the dictionary content
-    const handle = SD.Structure.dictionary.subAll();
+    const handleDict = SD.Structure.dictionary.subAll();
+    const handleSocial = SD.Structure.socialLinks.subAll();
     return {
       // Use handle to show loading state
-      loading: !handle.ready(),
-      // Get the content of the basic page
-      dict: handle.ready() ? SD.Structure.dictionary.collection.findOne() : ''
+      loading: !(handleDict.ready() && handleSocial.ready()),
+      // Get the content of dictionary
+      dict: handleDict.ready() ? SD.Structure.dictionary.collection.findOne() : '',
+      // Get the content of social links
+      socialLinks: handleSocial.ready() ? SD.Structure.socialLinks.collection.find({
+        title: { $ne: 'mailto' }
+      }, SD.Structure.socialLinks.subs.All.options).fetch() : ''
     };
   }
   render() {
-    const { loading, dict } = this.data;
-    if (!loading) {
+    const { loading, dict, socialLinks } = this.data;
+    if (!loading && Meteor.isServer) {
       // Title
       DocHead.setTitle(dict.title);
       // Title for mobile bookmarks and shortcuts
@@ -94,18 +99,22 @@ class MainLayout extends SD.Views.BaseReactMeteor {
       });
       log.info('Open graph added');
       // Rich snippets v2
-      [
-        // Contact, logo, social links
+      let snippets = [
+        // Main rich snippet
         {
           '@context': 'http://schema.org',
           '@type': 'Organization',
           url: `${Meteor.settings.public.proxy.url}`,
           logo: `${Meteor.settings.public.proxy.url}img/logo.svg`,
-          contactPoint: {
-            '@type': 'ContactPoint',
-            email: dict['reply-to'],
-            contactType: 'Information et contact'
-          }
+          // Does not work like this, need either a real URL contact form
+          // or a phone number.
+          // contactPoint: {
+          //   '@type': 'ContactPoint',
+          //   url: 'mailto://avef.paris@wanadoo.fr',
+          //   contactType: 'customer service'
+          // },
+          // Events
+          // Search
         },
         // AVEF
         {
@@ -121,7 +130,10 @@ class MainLayout extends SD.Views.BaseReactMeteor {
           url: 'http://www.snvel.fr',
           logo: `${Meteor.settings.public.proxy.url}img/snvel.svg`
         },
-      ].map(function(snippet) {
+      ];
+      // Add social links for main snippet
+      snippets[0].sameAs = _.pluck(socialLinks, 'url');
+      snippets.map(function(snippet) {
         DocHead.addLdJsonScript(snippet);
       });
     }

@@ -16,13 +16,13 @@ class SocialLink extends Component {
 class SocialLinkList extends SD.Views.BaseReactMeteor {
   // Subscribe to SocialLinks (reactive methods)
   getMeteorData() {
-    const handle = SD.Structure.socialLinks.subAllLinks();
+    const handle = SD.Structure.socialLinks.subAll();
     return {
       // Use handle to show loading state
       loading: !handle.ready(),
       // Expose the list as an array
       items: SD.Structure.socialLinks.collection.find({},
-        SD.Structure.socialLinks.subs.AllLinks.options).fetch()
+        SD.Structure.socialLinks.subs.All.options).fetch()
     };
   }
   render() {

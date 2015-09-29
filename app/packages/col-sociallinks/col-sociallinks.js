@@ -9,7 +9,7 @@ const sharedOptions = {
   },
   // Available subscriptions and publications
   subs: {
-    AllLinks: { options: {sort: {order: 1} } }
+    All: { options: {sort: {order: 1} } }
   }
 };
 
@@ -27,7 +27,7 @@ if (Meteor.isServer) {
     // Options specific to server
     defaults: Meteor.settings.public.socialLinks,
     // Set indexes on collection
-    indexes: { url: 1, order: 1 }
+    indexes: { title: 1, url: 1, order: 1 }
   };
   class SocialLinks extends SD.Structure.ServerBaseCollection {}
   // Export instance
