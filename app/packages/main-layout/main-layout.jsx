@@ -43,7 +43,7 @@ class MainLayout extends SD.Views.BaseReactMeteor {
   }
   render() {
     const { loading, dict, socialLinks } = this.data;
-    if (!loading && Meteor.isServer) {
+    if (!loading) {
       // Title
       DocHead.setTitle(dict.title);
       // Title for mobile bookmarks and shortcuts
