@@ -39,6 +39,18 @@ SD.Structure.SchemaUser = new SimpleSchema({
 Meteor.users.attachSchema(SD.Structure.SchemaUser);
 log.info('Schema defined');
 
+// A reduced Schema for Login validation purpose
+SD.Structure.LoginSchema = new SimpleSchema({
+  email: {
+    type: String,
+    regEx: SimpleSchema.RegEx.Email
+  },
+  password: {
+    type: String,
+    min: 7, max: 256
+  }
+})
+
 // Create default admin users
 if (Meteor.isServer) {
   // Only create admin users if none has been created before

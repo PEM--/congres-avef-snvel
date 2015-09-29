@@ -22,14 +22,42 @@ class AlreadyLoggedIn extends Component {
 class LogInForm extends Component {
   constructor(props) {
     super(props);
+    this.state = { error: '' };
+    // Handle submit
     this.handleSubmit = (e) => {
       e.preventDefault();
+      // Reset former error
+      this.setState({error: ''});
       const email = React.findDOMNode(this.refs.email).value.trim().toLowerCase();
       const password = React.findDOMNode(this.refs.password).value.trim();
       log.debug('Submit with value', email);
+      try {
+        check({email, password}, SD.Structure.LoginSchema);
+        log.info('Correct transmitted user\'s value');
+        // Reset potential former error
+        this.setState({error: ''});
+
+        // #TODO Proceed to LogIn
+
+      } catch (error) {
+        log.debug('Error while checking LogInForm values', error);
+        this.setState({error: error.message});
+      } finally {
+        // Empty password field in any case
+        React.findDOMNode(this.refs.password).value = '';
+      }
     };
+    // Render the component
     this.render = () => {
-      log.debug('Rendering LogInForm');
+      log.debug('Rendering LogInForm', this.state.error);
+      const errorMessage = this.state.error !== '' ? (
+        <div className='ui error message'>
+          <div className='error content'>
+            <div className='header'><i className='fa fa-warning'></i>Votre identification n'est pas correcte.</div>
+            <p>{this.state.error}</p>
+          </div>
+        </div>
+      ) : '';
       return (
         <div className='column'>
           <h2>Connectez-vous à votre compte</h2>
@@ -49,8 +77,8 @@ class LogInForm extends Component {
               </div>
               <button type='submit' className='ui fluid large submit button primary'>Connectez-vous</button>
             </div>
-            <div className='ui error message'></div>
           </form>
+          {errorMessage}
           <div className='ui message'>
             Pas encore inscrit ? <a className='animated' href='/subscription'>Inscrivez-vous</a>
           </div>

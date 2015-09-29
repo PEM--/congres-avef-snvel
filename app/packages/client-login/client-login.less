@@ -7,6 +7,28 @@
   // Entrance animation
   opacity: 0;
   animation: fadeInUp @defaultDuration @defaultEasing forwards;
+
+  // Set a minimal space between each message
+  .message {
+    margin-top: 1rem;
+  }
+
+  // Animate entranace of error messages
+  .error.message {
+    position: relative;
+    height: 0;
+    overflow-y: hidden;
+    animation: errorMessage @defaultDuration @defaultEasing forwards;
+    .error.content {
+      position: absolute;
+      height: 3.5rem;
+    }
+  }
+}
+
+@keyframes errorMessage {
+  from {  height: 0; }
+  to { height: 4.5rem; }
 }
 
 // Mobile specifics
@@ -59,7 +81,8 @@
 
     // Set a maximum width for the login form
     form, .message {
-      margin: auto;
+      margin-left: auto;
+      margin-right: auto;
       max-width: 36rem;
     }
   }
