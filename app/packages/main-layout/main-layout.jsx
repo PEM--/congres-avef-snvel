@@ -29,6 +29,7 @@ class MainLayout extends SD.Views.BaseReactMeteor {
   getMeteorData() {
     // Subscribe to get the dictionary content
     const handleDict = SD.Structure.dictionary.subAll();
+    // Subscribe to social links for the rich snippets
     const handleSocial = SD.Structure.socialLinks.subAll();
     return {
       // Use handle to show loading state

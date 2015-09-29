@@ -18,34 +18,36 @@ class LogIn extends Component {
         <div className='row'>
           <div className='sixteen wide column'>
             <div className='ui middle aligned center aligned grid container'>
-              <div className="column">
-                <h2 className="ui image header">
-                  <div className="content">
-                    Connectez-vous à votre compte
-                  </div>
-                </h2>
-                <form className="ui large form">
-                  <div className="ui stacked segment">
-                    <div className="field">
-                      <div className="ui left icon input">
-                        <i className="user icon"></i>
-                        <input type="text" name="email" placeholder="E-mail address"/>
-                      </div>
+              <section className='row'>
+                <div className='column'>
+                  <h2 className='ui image header'>
+                    <div className='content'>
+                      Connectez-vous à votre compte
                     </div>
-                    <div className="field">
-                      <div className="ui left icon input">
-                        <i className="fa fa-lock icon"></i>
-                        <input type="password" name="password" placeholder="Password"/>
+                  </h2>
+                  <form className='ui large form'>
+                    <div className='ui stacked segment'>
+                      <div className='field'>
+                        <div className='ui left icon input'>
+                          <i className='user icon'></i>
+                          <input type='text' name='email' placeholder='Votre e-mail'/>
+                        </div>
                       </div>
+                      <div className='field'>
+                        <div className='ui left icon input'>
+                          <i className='fa fa-lock icon'></i>
+                          <input type='password' name='password' placeholder="Votre mot de passe"/>
+                        </div>
+                      </div>
+                      <button className='ui fluid large submit button primary'>Login</button>
                     </div>
-                    <div className="ui fluid large submit button">Login</div>
+                    <div className='ui error message'></div>
+                  </form>
+                  <div className='ui message'>
+                    Pas encore inscrit ? <a className='animated' href='/subscription'>Inscrivez-vous</a>
                   </div>
-                  <div className="ui error message"></div>
-                </form>
-                <div className="ui message">
-                  Pas encore inscrit ? <a className='animated' href='/subscription'>Inscrivez-vous</a>
                 </div>
-              </div>
+              </section>
             </div>
           </div>
         </div>

@@ -69,6 +69,28 @@ class PopupMenu extends SD.Views.BaseReactMeteor {
   }
 }
 
+// Site title
+class SiteTitle extends SD.Views.BaseReactMeteor {
+  getMeteorData() {
+    // Subscribe to get the dictionary content
+    const handle = SD.Structure.dictionary.subAll();
+    return {
+      // Use handle to show loading state
+      loading: !handle.ready(),
+      // Get the content of dictionary
+      dict: handle.ready() ? SD.Structure.dictionary.collection.findOne() : '',
+    };
+  }
+  render() {
+    log.debug('Rendering Site title');
+    return (
+      <h1 className='readability-white'>
+        <a href='/'>{this.data.dict.shortTitle}</a>
+      </h1>
+    );
+  }
+}
+
 // Menu component
 class Menu extends Component {
   constructor() {
@@ -89,9 +111,7 @@ class Menu extends Component {
             <div className='navgrid ui centered grid container'>
               <div className='navitems row'>
                 <div className='congress-title fourteen wide mobile eight wide tablet eight wide computer column'>
-                  <h1 className='readability-white'>
-                    <a href='/'>CONGRÈS 2015</a>
-                  </h1>
+                  <SiteTitle />
                 </div>
                 <div className='brand seven wide tablet only seven wide computer only column'><a href='http://www.avef.fr' target='_blank'><img src='/img/avef.svg' alt='AVEF' className='svg'/></a><a href='http://www.snvel.fr' target='_blank'><img src='/img/snvel.svg' alt='SNVEL' className='svg'/></a></div>
                 <button onClick={this.menuToggle} className='hamburger right aligned two wide mobile one wide tablet one wide computer column'><i className='fa fa-bars'></i></button>
