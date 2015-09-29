@@ -30,6 +30,10 @@ SD.Structure.SchemaUser = new SimpleSchema({
     type: [String],
     optional: true,
     defaultValue: ['public']
+  },
+  lastConnection: {
+    type: Date,
+    defaultValue: new Date()
   }
 });
 Meteor.users.attachSchema(SD.Structure.SchemaUser);

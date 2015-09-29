@@ -20,34 +20,43 @@ class AlreadyLoggedIn extends Component {
 
 // LogIn form component
 class LogInForm extends Component {
-  render() {
-    log.debug('Rendering LogInForm');
-    return (
-      <div className='column'>
-        <h2>Connectez-vous à votre compte</h2>
-        <form className='ui large form'>
-          <div className='ui stacked segment'>
-            <div className='field'>
-              <div className='ui left icon input'>
-                <i className='fa fa-envelope icon'></i>
-                <input type='text' name='email' placeholder='Votre e-mail'/>
+  constructor(props) {
+    super(props);
+    this.handleSubmit = (e) => {
+      e.preventDefault();
+      const email = React.findDOMNode(this.refs.email).value.trim().toLowerCase();
+      const password = React.findDOMNode(this.refs.password).value.trim();
+      log.debug('Submit with value', email);
+    };
+    this.render = () => {
+      log.debug('Rendering LogInForm');
+      return (
+        <div className='column'>
+          <h2>Connectez-vous à votre compte</h2>
+          <form className='ui large form' onSubmit={this.handleSubmit}>
+            <div className='ui stacked segment'>
+              <div className='field'>
+                <div className='ui left icon input'>
+                  <i className='fa fa-envelope icon'></i>
+                  <input type='text' name='email' ref='email' placeholder='Votre e-mail'/>
+                </div>
               </div>
-            </div>
-            <div className='field'>
-              <div className='ui left icon input'>
-                <i className='fa fa-unlock icon'></i>
-                <input type='password' name='password' placeholder="Votre mot de passe"/>
+              <div className='field'>
+                <div className='ui left icon input'>
+                  <i className='fa fa-unlock icon'></i>
+                  <input type='password' name='password' ref='password' placeholder="Votre mot de passe"/>
+                </div>
               </div>
+              <button type='submit' className='ui fluid large submit button primary'>Connectez-vous</button>
             </div>
-            <button className='ui fluid large submit button primary'>Connectez-vous</button>
+            <div className='ui error message'></div>
+          </form>
+          <div className='ui message'>
+            Pas encore inscrit ? <a className='animated' href='/subscription'>Inscrivez-vous</a>
           </div>
-          <div className='ui error message'></div>
-        </form>
-        <div className='ui message'>
-          Pas encore inscrit ? <a className='animated' href='/subscription'>Inscrivez-vous</a>
         </div>
-      </div>
-    );
+      );
+    };
   }
 }
 
