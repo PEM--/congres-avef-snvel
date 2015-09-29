@@ -7,10 +7,8 @@ const log = Logger.createLogger('Internationalization');
 getUserLanguage = function() {
   return 'fr';
 };
-
 if (Meteor.isClient) {
   TAPi18n.setLanguage(getUserLanguage);
-  //TAPi18n.setLanguage(getUserLanguage());
 }
 
 // Settings for Accounts
