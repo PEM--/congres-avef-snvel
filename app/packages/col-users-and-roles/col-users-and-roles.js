@@ -13,12 +13,10 @@ SD.Structure.SchemaUser = new SimpleSchema({
   },
   'emails.$.address': {
     type: String,
-    regEx: SimpleSchema.RegEx.Email,
-    unique: true
+    regEx: SimpleSchema.RegEx.Email
   },
   'emails.$.verified': {
-    type: Boolean,
-    defaultValue: false
+    type: Boolean
   },
   createdAt: {
     type: Date,
@@ -51,3 +49,9 @@ if (Meteor.isServer) {
     });
   }
 }
+
+// Accounts options
+Accounts.config({
+  sendVerificationEmail: true,
+  forbidClientAccountCreation: false
+});
