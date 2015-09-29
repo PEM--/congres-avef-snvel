@@ -94,7 +94,36 @@ class MainLayout extends SD.Views.BaseReactMeteor {
       });
       log.info('Open graph added');
       // Rich snippets v2
-
+      [
+        // Contact, logo, social links
+        {
+          '@context': 'http://schema.org',
+          '@type': 'Organization',
+          url: `${Meteor.settings.public.proxy.url}`,
+          logo: `${Meteor.settings.public.proxy.url}img/logo.svg`,
+          contactPoint: {
+            '@type': 'ContactPoint',
+            email: dict['reply-to'],
+            contactType: 'Information et contact'
+          }
+        },
+        // AVEF
+        {
+          '@context': 'http://schema.org',
+          '@type': 'Organization',
+          url: 'http://www.avef.fr',
+          logo: `${Meteor.settings.public.proxy.url}img/avef.svg`
+        },
+        // SNVEL
+        {
+          '@context': 'http://schema.org',
+          '@type': 'Organization',
+          url: 'http://www.snvel.fr',
+          logo: `${Meteor.settings.public.proxy.url}img/snvel.svg`
+        },
+      ].map(function(snippet) {
+        DocHead.addLdJsonScript(snippet);
+      });
     }
     log.debug('Rendering');
     return (
