@@ -32,13 +32,19 @@ class LogInForm extends Component {
       const password = React.findDOMNode(this.refs.password).value.trim();
       log.debug('Submit with value', email);
       try {
+        // Check user's imputs
         check({email, password}, SD.Structure.LoginSchema);
         log.info('Correct transmitted user\'s value');
         // Reset potential former error
         this.setState({error: ''});
-
-        // #TODO Proceed to LogIn
-
+        // Login
+        Meteor.loginWithPassword(email, password, (error) => {
+          if (error) {
+            throw error;
+          }
+          log.info('Logged In success');
+          FlowRouter.go('/');
+        });
       } catch (error) {
         log.debug('Error while checking LogInForm values', error);
         this.setState({error: error.message});
