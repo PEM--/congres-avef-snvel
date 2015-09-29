@@ -17,8 +17,8 @@ class LogIn extends Component {
       <div className='client main-content ui grid login'>
         <div className='row'>
           <div className='sixteen wide column'>
-            <div className='ui middle aligned center aligned grid container'>
-              <section className='row'>
+            <section className='ui grid container'>
+              <div className='row'>
                 <div className='column'>
                   <h2 className='ui image header'>
                     <div className='content'>
@@ -47,8 +47,8 @@ class LogIn extends Component {
                     Pas encore inscrit ? <a className='animated' href='/subscription'>Inscrivez-vous</a>
                   </div>
                 </div>
-              </section>
-            </div>
+              </div>
+            </section>
           </div>
         </div>
       </div>

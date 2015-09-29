@@ -289,15 +289,14 @@
 // @transparentWhite           : rgba(255, 255, 255, 0.08);
 // @strongTransparentWhite     : rgba(255, 255, 255, 0.15);
 
-@subtleTransparentBlack     : fade(@orange, 10%);
-@transparentBlack           : fade(@orange, 20%);
-@strongTransparentBlack     : fade(@orange, 30%);
-@veryStrongTransparentBlack : fade(@orange, 45%);
+@subtleTransparentBlack     : fade(@primaryColor, 30%);
+@transparentBlack           : fade(@primaryColor, 60%);
+@strongTransparentBlack     : fade(@primaryColor, 80%);
+@veryStrongTransparentBlack : fade(@primaryColor, 95%);
 
-@subtleTransparentWhite     : fade(@green, 2%);
-@transparentWhite           : fade(@green, 8%);
-@strongTransparentWhite     : fade(@green, 15%);
-
+@subtleTransparentWhite     : fade(@white, 80%);
+@transparentWhite           : fade(@white, 90%);
+@strongTransparentWhite     : fade(@white, 95%);
 
 
 /*-------------------
@@ -320,8 +319,8 @@
   0px 1px 2px 0 @borderColor
 ;
 @floatingShadow:
-  0px 2px 4px 0px rgba(34, 36, 38, 0.12),
-  0px 2px 10px 0px rgba(34, 36, 38, 0.08)
+  0px 2px 4px 0px fade(@borderColor, 50%),
+  0px 2px 10px 0px fade(@borderColor, 20%)
 ;
 
 
@@ -508,8 +507,8 @@
 // @strongSelectedBorderColor : rgba(34, 36, 38, 0.5);
 // @disabledBorderColor       : rgba(34, 36, 38, 0.5);
 
-@borderColor               : fade(@orange, 15%);
-@strongBorderColor         : fade(@orange, 22%);
+@borderColor               : fade(@orange, 5%);
+@strongBorderColor         : fade(@orange, 15%);
 @internalBorderColor       : fade(@orange, 10%);
 @selectedBorderColor       : fade(@orange, 35%);
 @strongSelectedBorderColor : fade(@orange, 50%);
