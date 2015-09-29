@@ -38,15 +38,12 @@ class LogIn extends Component {
                         <input type="password" name="password" placeholder="Password"/>
                       </div>
                     </div>
-                    <div className="ui fluid large teal submit button">Login</div>
+                    <div className="ui fluid large submit button">Login</div>
                   </div>
-
                   <div className="ui error message"></div>
-
                 </form>
-
                 <div className="ui message">
-                  New to us? <a href="#">Sign Up</a>
+                  Pas encore inscrit ? <a className='animated' href='/subscription'>Inscrivez-vous</a>
                 </div>
               </div>
             </div>

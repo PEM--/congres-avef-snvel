@@ -15,13 +15,19 @@ Package.onUse(function(api) {
     'rzymek:moment-locale-fr@2.9.0',
     'numeral:languages@1.5.3'
   ];
-  api.use(['pierreeric:logger'].shared);
+  api.use([
+    'pierreeric:logger'
+  ].concat(shared));
   api.imply(shared);
   // Included files in this packages
   // Files for server and client
   api.addFiles([
-    'internationalization.js',
+    'internationalization.js'
+  ]);
+  api.addAssets([
     'package-tap.i18n',
     'i18n/fr.i18n.json'
-  ]);
+  ], ['client', 'server']);
+  // Exporting symbols
+  api.export(['getUserLanguage']);
 });
