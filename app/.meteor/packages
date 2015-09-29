@@ -47,6 +47,7 @@ semantic:ui
 # Application packages
 # Server only packages
 pierreeric:server-side-routes
+pierreeric:internationalization
 # Client only packages
 pierreeric:client-landingpage
 pierreeric:client-basicpages

@@ -9,6 +9,7 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
+    'accounts-base',
     'kadira:react-layout@1.3.1',
     'flemay:less-autoprefixer@1.1.0',
     'pierreeric:basereactmeteor',
