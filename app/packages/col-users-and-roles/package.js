@@ -8,8 +8,14 @@ Package.onUse(function(api) {
   api.versionsFrom('1.2');
   // Dependencies of this package
   // Dependencies for server and client
-  const shared = ['alanning:roles@1.2.13'];
-  api.use(shared.concat(['spacedrop:basecollection']));
+  const shared = [
+    'alanning:roles@1.2.13'
+  ];
+  api.use(shared.concat([
+    'accounts-base',
+    'spacedrop:basecollection',
+    'pierreeric:logger'
+  ]));
   api.imply(shared);
   // Included files in this packages
   // Files for server and client
