@@ -12,7 +12,7 @@ Package.onUse(function(api) {
     'alanning:roles@1.2.13'
   ];
   api.use(shared.concat([
-    'accounts-base',
+    'accounts-password',
     'spacedrop:basecollection',
     'pierreeric:logger'
   ]));

@@ -3,6 +3,40 @@
 // Create a logger
 const log = Logger.createLogger('Collection Users and Roless');
 
+// Schema for client and server
+SD.Structure.SchemaUser = new SimpleSchema({
+  emails: {
+    type: Array,
+  },
+  'emails.$': {
+    type: Object
+  },
+  'emails.$.address': {
+    type: String,
+    regEx: SimpleSchema.RegEx.Email,
+    unique: true
+  },
+  'emails.$.verified': {
+    type: Boolean,
+    defaultValue: false
+  },
+  createdAt: {
+    type: Date,
+  },
+  services: {
+    type: Object,
+    optional: true,
+    blackbox: true
+  },
+  roles: {
+    type: [String],
+    optional: true,
+    defaultValue: ['public']
+  }
+});
+Meteor.users.attachSchema(SD.Structure.SchemaUser);
+log.info('Schema defined');
+
 // Create default admin users
 if (Meteor.isServer) {
   // Only create admin users if none has been created before
@@ -17,33 +51,3 @@ if (Meteor.isServer) {
     });
   }
 }
-
-// Schema for client and server
-SD.Structure.SchemaUser = new SimpleSchema({
-  emails: {
-    type: Array,
-    min: 1, max: 1
-  },
-  'emails.$': {
-    type: Object
-  },
-  'emails.$.address': {
-    type: String,
-    regEx: SimpleSchema.RegEx.Email,
-    unique: true
-  },
-  'emails.$.verified': {
-    type: Boolean,
-    default: false
-  },
-  createdAt: {
-    type: Date,
-    default: new Date()
-  },
-  roles: {
-    type: [String],
-    optional: true,
-    default: ['public']
-  }
-});
-Meteor.users.attachSchema(SD.Structure.SchemaUser);
