@@ -20,22 +20,18 @@ class LogIn extends Component {
             <section className='ui grid container'>
               <div className='row'>
                 <div className='column'>
-                  <h2 className='ui image header'>
-                    <div className='content'>
-                      Connectez-vous à votre compte
-                    </div>
-                  </h2>
+                  <h2>Connectez-vous à votre compte</h2>
                   <form className='ui large form'>
                     <div className='ui stacked segment'>
                       <div className='field'>
                         <div className='ui left icon input'>
-                          <i className='user icon'></i>
+                          <i className='fa fa-envelope icon'></i>
                           <input type='text' name='email' placeholder='Votre e-mail'/>
                         </div>
                       </div>
                       <div className='field'>
                         <div className='ui left icon input'>
-                          <i className='fa fa-lock icon'></i>
+                          <i className='fa fa-unlock icon'></i>
                           <input type='password' name='password' placeholder="Votre mot de passe"/>
                         </div>
                       </div>

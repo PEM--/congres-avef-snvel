@@ -7,16 +7,60 @@
   // Entrance animation
   opacity: 0;
   animation: fadeInUp @defaultDuration @defaultEasing forwards;
+}
 
-  // Center login screen
-  .row {
-    flex-grow: 1;
-    >.column {
-      align-items: stretch;
-      display: flex;
-      >.grid {
+// Mobile specifics
+@media screen and (max-width: @largestMobileScreen) {
+  .client.login {
+
+    // Center login screen
+    >.row {
+      flex-grow: 1;
+      >.column {
         align-items: stretch;
+        display: inline-block;
+        position: relative;
+        >.grid {
+          position: absolute;
+          min-width: 100%;
+          min-height: 100%;
+          align-items: stretch;
+          >.row {
+            align-items: center !important;
+            >.column h2 { text-align: center; }
+          }
+        }
       }
+    }
+
+    // Set a little margin on the login form
+    form, .message { margin: 1rem; }
+  }
+}
+
+// Other specifics
+@media screen and (min-width: @tabletBreakpoint) {
+  .client.login {
+    // Center login screen
+    >.row {
+      flex-grow: 1;
+      >.column {
+        align-items: stretch;
+        display: flex !important;
+        >.grid {
+          align-items: stretch;
+          >.row {
+            align-items: center !important;
+            >.column h2 { text-align: center; }
+          }
+        }
+      }
+    }
+
+    // Set a maximum width for the login form
+    form, .message {
+      margin: auto;
+      max-width: 36rem;
     }
   }
 }
