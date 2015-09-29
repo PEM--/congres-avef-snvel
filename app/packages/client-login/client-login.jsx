@@ -39,7 +39,7 @@ class LogIn extends Component {
                           <input type='password' name='password' placeholder="Votre mot de passe"/>
                         </div>
                       </div>
-                      <button className='ui fluid large submit button primary'>Login</button>
+                      <button className='ui fluid large submit button primary'>Connectez-vous</button>
                     </div>
                     <div className='ui error message'></div>
                   </form>
