@@ -49,20 +49,29 @@ SD.Structure.LoginSchema = new SimpleSchema({
     type: String,
     min: 7, max: 256
   }
-})
+});
 
-// Create default admin users
+// Create default accounts
 if (Meteor.isServer) {
-  // Only create admin users if none has been created before
+  // Only create accounts if none has been created before
   if (Meteor.users.find().count() === 0) {
+    // Create admin users
     Meteor.settings.admins.map(function(admin) {
-      adminId = Accounts.createUser({
+      const adminId = Accounts.createUser({
         email: admin.email,
         password: admin.password
       });
       Roles.addUsersToRoles(adminId, ['public', 'admin']);
       log.info('User created:', admin.email);
     });
+    // Create a test account
+    const { testAccount } = Meteor.settings;
+    const testId = Accounts.createUser({
+      email: testAccount.email,
+      password: testAccount.password
+    });
+    Roles.addUsersToRoles(testId, ['public']);
+    log.info('User created:', testAccount.email);
   }
 }
 

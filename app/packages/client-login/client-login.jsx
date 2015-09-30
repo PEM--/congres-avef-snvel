@@ -40,7 +40,9 @@ class LogInForm extends Component {
         // Login
         Meteor.loginWithPassword(email, password, (error) => {
           if (error) {
-            throw error;
+            log.debug('Error while checking LogInForm values', error);
+            this.setState({error: error.message});
+            return;
           }
           log.info('Logged In success');
           FlowRouter.go('/');
