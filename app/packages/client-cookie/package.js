@@ -10,10 +10,10 @@ Package.onUse(function(api) {
   // Dependencies for server and client
   const shared = [
     'tracker',
-    'session',
-    'chuangbo:cookie@1.1.0'
+    'session'
   ];
   api.use(shared.concat([
+    'chuangbo:cookie@1.1.0',
     'flemay:less-autoprefixer@1.1.0',
     'pierreeric:basereactmeteor'
   ]));
