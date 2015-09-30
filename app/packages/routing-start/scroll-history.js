@@ -27,14 +27,20 @@ let jumpToPrevScrollPosition = function(context) {
   }
   if (scrollPosition === 0) {
     // we can scroll right away since we don't need to wait for rendering
-    $('body').animate({scrollTop: scrollPosition}, 0);
+    $('body')
+      .velocity('scroll', {
+        duration: 300, offset: scrollPosition, easing: 'spring'
+      });
   } else {
     // Now we need to wait a bit for blaze/react does rendering.
     // We assume, there's subs-manager and we've previous page's data.
     // Here 10 millis deley is a arbitary value with some testing.
     setTimeout(function () {
-      $('body').animate({scrollTop: scrollPosition}, 0);
-    }, 10);
+      $('body')
+        .velocity('scroll', {
+          duration: 300, offset: scrollPosition, easing: 'spring'
+        });
+    }, 15);
   }
 };
 
