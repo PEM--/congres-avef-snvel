@@ -8,7 +8,7 @@ const { Component } = React;
 
 // Client only
 // Create the component
-class Cookie extends Component {
+class Cookie extends SD.Views.ReactDictionary {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,15 +16,10 @@ class Cookie extends Component {
     };
     this.componentDidMount = () => {
       if (Meteor.isClient) {
-        Tracker.autorun(() => {
-          let isRouterStarted = Session.get(SD.Utils.IS_ROUTER_STARTED);
+        Tracker.autorun((computation) => {
+          const isRouterStarted = Session.get(SD.Utils.IS_ROUTER_STARTED);
           if (isRouterStarted) {
-            //Cookie.get()
-
-
-
-
-
+            //SD.Utils.Cookie.get().
             this.setState({show: true});
             log.debug('Router started');
           } else {
@@ -37,6 +32,7 @@ class Cookie extends Component {
     this.render = () => {
       log.debug('Rendering');
       const { show } = this.state;
+      const { dict } = this.data;
       return (
         <div className={`client cookie ${show ? 'show' : ''}`}>
           <div className="ui grid container">
@@ -46,7 +42,7 @@ class Cookie extends Component {
                   <div className="row">
                     <div className="one wide column"><i className="fa fa-bullhorn fa-lg red"></i></div>
                     <div className="fifteen wide column">
-                      <div className="rom"><span>En poursuivant votre navigation sur ce site, vous acceptez l'utilisation des cookies pour vous proposer des services et offres adaptés. </span></div>
+                      <div className="rom"><span>{dict.cookie.text}</span></div>
                       <div className="row">
                         <button className="ui green tiny button">
                           <div className="visible content"><i className="fa fa-check"></i>J'ai compris</div>

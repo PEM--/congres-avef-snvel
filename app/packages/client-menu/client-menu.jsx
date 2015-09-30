@@ -86,16 +86,9 @@ class PopupMenu extends SD.Views.BaseReactMeteor {
 }
 
 // Site title
-class SiteTitle extends SD.Views.BaseReactMeteor {
-  getMeteorData() {
-    // Subscribe to get the dictionary content
-    const handle = SD.Structure.dictionary.subAll();
-    return {
-      // Use handle to show loading state
-      loading: !handle.ready(),
-      // Get the content of dictionary
-      dict: handle.ready() ? SD.Structure.dictionary.collection.findOne() : '',
-    };
+class SiteTitle extends SD.Views.ReactDictionary {
+  constructor(props) {
+    super(props);
   }
   render() {
     log.debug('Rendering Site title');

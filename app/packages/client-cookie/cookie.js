@@ -2,30 +2,31 @@
 
 // Base class for cookies
 class BaseCookie {
-  constructor({ dict, domain, path, expires }) {
+  constructor(
+    dict,
+    domain = Meteor.settings.public.proxy.url,
+    path = '/',
+    expires = 45
+  ) {
     // Assign arguments as class properties
     let [ args, dummy ] = [...arguments];
     for (let prop of Object.keys(args)) {
       this[prop] = args[prop];
     }
-    // Set default if none provided
-    if (!this.domain) {
-      this.domain = Meteor.settings.public.proxy.url;
-    }
-    if (!this.path) {
-      this.path = '/';
-    }
-    if (!this.expires) {
-      this.expires = 45;
-    }
     this.currentValue = {};
   }
-  // isAccepted() {
-  //   if (Cookie.get(dict.cookieName))
-  // }
+  isAccepted() {
+    if (Cookie.get(dict.cookie.name)) {
+      return true;
+    }
+    return false;
+  }
   // get(name) {
   //   return Cookie.get(name, {})
   // }
 }
+
+BaseCookie.instance = null;
+BaseCookie.get = (dict) => BaseCookie.instance === null ? new BaseCookie(dict) : BaseCookie.instance;
 
 SD.Utils.Cookie = BaseCookie;
