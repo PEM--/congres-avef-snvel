@@ -18,3 +18,4 @@ app/public/img
 node_modules
 *.key
 *.csr
+bundle

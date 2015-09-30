@@ -2,7 +2,7 @@
 
 // Base class for cookies
 class BaseCookie {
-  constructor({ domain, path, expires }) {
+  constructor({ dict, domain, path, expires }) {
     // Assign arguments as class properties
     let [ args, dummy ] = [...arguments];
     for (let prop of Object.keys(args)) {
@@ -18,7 +18,11 @@ class BaseCookie {
     if (!this.expires) {
       this.expires = 45;
     }
+    this.currentValue = {};
   }
+  // isAccepted() {
+  //   if (Cookie.get(dict.cookieName))
+  // }
   // get(name) {
   //   return Cookie.get(name, {})
   // }
