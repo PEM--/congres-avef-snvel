@@ -5,7 +5,7 @@
 
 // we only need to keep history for two paths at once
 // first path is what we need to check always
-let previousPaths = [null, null];
+previousPaths = [null, null];
 
 let saveScrollPosition = function(context) {
   var pathInfo = {
@@ -14,8 +14,8 @@ let saveScrollPosition = function(context) {
   };
   // add a new path and remove the first path
   // using as a queue
-  this._previousPaths.push(pathInfo);
-  this._previousPaths.shift();
+  previousPaths.push(pathInfo);
+  previousPaths.shift();
 };
 
 let jumpToPrevScrollPosition = function(context) {

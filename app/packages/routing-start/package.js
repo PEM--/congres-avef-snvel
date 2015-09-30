@@ -9,6 +9,8 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   const shared = [
+    'ecmascript',
+    'es5-shim',
     'kadira:flow-router-ssr@3.3.0',
     'spacedrop:namespaces',
     'pierreeric:logger'
