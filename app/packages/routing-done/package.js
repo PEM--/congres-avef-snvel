@@ -19,9 +19,14 @@ Package.onUse(function(api) {
     'underscorestring:underscore.string@3.2.2',
     'gadicohen:sitemaps@0.0.23',
     'spacedrop:namespaces',
-    'pierreeric:logger'
+    'pierreeric:logger',
   ]);
   // Included files in this packages
-  // Files for client only
-  api.addFiles('routing-done.jsx');
+  // Files for server and client
+  api.addFiles([
+    'logger.js',
+    'routing-done.jsx'
+  ]);
+  // Files for server only
+  api.addFiles('sitemap.js', 'server');
 });

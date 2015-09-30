@@ -15,12 +15,15 @@ Package.onUse(function(api) {
   ];
   api.use([
     'meteorhacks:fast-render@2.10.0',
-    'gadicohen:robots-txt@0.0.10'
+    'gadicohen:robots-txt@0.0.10',
+    'velocityjs:velocityjs@1.2.1'
   ].concat(shared));
   api.imply(shared);
   // Included files in this packages
   // Files for server and client
   api.addFiles('routing-start.js');
+  // Files for client only
+  api.addFiles('scroll-history.js', 'client');
   // Files for server only
   api.addFiles('robots.js', 'server');
 });

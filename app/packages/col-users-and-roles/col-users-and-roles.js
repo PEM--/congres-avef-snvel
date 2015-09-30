@@ -80,6 +80,19 @@ Accounts.config({
   sendVerificationEmail: true,
   forbidClientAccountCreation: false
 });
+// Client only
+if (Meteor.isClient) {
+  // When user logged in, we go back to the previous URL, he was visiting.
+  Accounts.onLogin(function() {
+    const path = FlowRouter.current().path;
+    log.debug('Historizing current URL before login', path);
+    // If user was visiting the login page directly, we orient it on the home page
+    if (path === '/login') {
+      FlowRouter.go('/');
+    }
+  });
+}
+// Server only
 if (Meteor.isServer) {
   // On login, update last connection date
   Accounts.onLogin(function() {
