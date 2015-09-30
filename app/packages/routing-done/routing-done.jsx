@@ -46,7 +46,7 @@ if (Meteor.isServer) {
       // Remove not found route
       !s.include(route, 'notfound') &&
       // Remove all login, logout routes
-      !s.include(route, 'log'));
+      !s.include(route, 'login'));
   });
   const pages = allRoutes.map(function(route) {
     log.info('Route', route, 'added to /sitemap.xml');

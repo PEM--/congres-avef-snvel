@@ -21,14 +21,25 @@ class BasicMenuItem extends Component {
 
 // Signon-Signoff item
 class SignonSignoffItem extends Component {
-  render() {
-    const { isLoggedIn, closeMenu } = this.props;
-    return (
-      <a href={isLoggedIn ? '/logout' : '/login'} onClick={closeMenu} className='item'>
-        <i className={`fa ${isLoggedIn ? 'fa-unlock' : 'fa-user'}`}></i>
-        <span className='readability-black'>{isLoggedIn ? 'Déconnexion' : 'Connexion'}</span>
-      </a>
-    );
+  constructor(props) {
+    super(props);
+    this.handleLogout = (e) => {
+      if (e) {e.preventDefault(); }
+      log.info('User logged out');
+      Meteor.logout();
+      this.props.closeMenu(e);
+    };
+    this.render = () => {
+      const { isLoggedIn, closeMenu } = this.props;
+      return (
+        <a href={isLoggedIn ? '#' : '/login'}
+          onClick={isLoggedIn ? this.handleLogout : closeMenu}
+          className='item'>
+          <i className={`fa ${isLoggedIn ? 'fa-unlock' : 'fa-user'}`}></i>
+          <span className='readability-black'>{isLoggedIn ? 'Déconnexion' : 'Connexion'}</span>
+        </a>
+      );
+    };
   }
 }
 
@@ -103,7 +114,7 @@ class Menu extends Component {
     this.state = { popupMenuToggle: false };
     // Bound functions
     this.menuToggle = (e) => {
-      e.preventDefault();
+      if (e) {e.preventDefault(); }
       log.debug('Toggling PopupMenu');
       this.setState({popupMenuToggle: !this.state.popupMenuToggle});
     };
