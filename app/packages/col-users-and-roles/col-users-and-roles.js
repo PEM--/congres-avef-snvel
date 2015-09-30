@@ -80,3 +80,21 @@ Accounts.config({
   sendVerificationEmail: true,
   forbidClientAccountCreation: false
 });
+if (Meteor.isServer) {
+  // On login, update last connection date
+  Accounts.onLogin(function() {
+    const user = Meteor.user();
+    log.info('User logged-in: ', user.emails[0].address);
+    Meteor.users.update(user._id, {$set: {lastConnection: new Date()}});
+  });
+  // When a failed login attempt is done, log information on origin and cause
+  Accounts.onLoginFailure(function(obj) {
+    log.warn('User log-in failed: ', obj.error.message);
+    log.warn('IP:', obj.connection.clientAddress);
+    if (obj.user) {
+      log.warn('User:', obj.user.emails[0].address);
+    } else {
+      log.warn('No user information retrieved');
+    }
+  });
+}
