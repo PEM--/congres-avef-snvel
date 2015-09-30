@@ -1,0 +1,23 @@
+// Semantic UI variables
+@import url('/client/lib/semanticui/site/globals/site.variables.import.less');
+// Share themes variables
+@import (reference) url('/packages/client-sharedstyles/client-sharedstyles.less');
+
+.client.cookie {
+  z-index: 2000;
+  position: fixed;
+  background-color: @lightOrange;
+  width: 100%;
+  top: 0;
+  color: white;
+  border-bottom: 3px solid @orange;
+  padding: 1rem 0;
+  opacity: 1;
+  transform: translate3d(0, -1%, 0);
+  a, a:visited { color: @veryLightOrange; }
+  //transition: opacity @defaultDuration @defaultEasing, transform  @defaultDuration @defaultEasing;
+  // &.show {
+  //   opacity: 1;
+  //   transform: none;
+  // }
+}

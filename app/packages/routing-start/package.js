@@ -11,6 +11,7 @@ Package.onUse(function(api) {
   const shared = [
     'ecmascript',
     'es5-shim',
+    'session',
     'kadira:flow-router-ssr@3.3.0',
     'spacedrop:namespaces',
     'pierreeric:logger'

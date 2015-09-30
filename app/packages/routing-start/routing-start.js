@@ -5,6 +5,9 @@ log = Logger.createLogger('Routing Start');
 
 // Block the routing untill all routes are defined (see routing-defined)
 if (Meteor.isClient) {
+  const IS_ROUTER_STARTED = 'isRouterStarted';
+  SD.Utils.IS_ROUTER_STARTED = IS_ROUTER_STARTED;
+  Session.setDefault(IS_ROUTER_STARTED, false);
   FlowRouter.wait();
   log.info('Blocked');
 }

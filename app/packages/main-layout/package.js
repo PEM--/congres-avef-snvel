@@ -12,6 +12,7 @@ Package.onUse(function(api) {
     'react',
     'underscore',
     'spacedrop:namespaces',
+    'pierreeric:client-cookie',
     'pierreeric:client-menu',
     'pierreeric:client-footer',
     'blaze-html-templates',

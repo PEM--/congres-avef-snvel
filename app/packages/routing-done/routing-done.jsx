@@ -26,6 +26,7 @@ if (Meteor.isClient) {
     // Release router for routing once all routes are declared
     Meteor.startup(() => {
       FlowRouter.initialize();
+      Session.set(SD.Utils.IS_ROUTER_STARTED, true);
       log.info('Released');
     });
   });

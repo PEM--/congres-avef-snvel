@@ -141,6 +141,7 @@ class MainLayout extends SD.Views.BaseReactMeteor {
     log.debug('Rendering');
     return (
       <div>
+        <SD.Views.Client.Cookie />
         <SD.Views.Client.Menu />
         <div className='main-layout'>
           {this.props.content}

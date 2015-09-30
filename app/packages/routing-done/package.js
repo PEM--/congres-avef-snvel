@@ -8,7 +8,11 @@ Package.onUse(function(api) {
   api.versionsFrom('1.2');
   // Dependencies of this package
   // Dependencies for server and client
-  api.use([
+  const shared = [
+    'session',
+    'tracker'
+  ];
+  api.use(shared.concat([
     'react',
     'ecmascript',
     'es5-shim',
@@ -20,7 +24,8 @@ Package.onUse(function(api) {
     'gadicohen:sitemaps@0.0.23',
     'spacedrop:namespaces',
     'pierreeric:logger',
-  ]);
+  ]));
+  api.imply(shared);
   // Included files in this packages
   // Files for server and client
   api.addFiles([
