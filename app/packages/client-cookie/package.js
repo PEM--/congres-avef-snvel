@@ -10,7 +10,8 @@ Package.onUse(function(api) {
   // Dependencies for server and client
   const shared = [
     'tracker',
-    'session'
+    'session',
+    'chuangbo:cookie@1.1.0'
   ];
   api.use(shared.concat([
     'chuangbo:cookie@1.1.0',
