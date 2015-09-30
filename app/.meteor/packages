@@ -67,5 +67,6 @@ pierreeric:client-subscription
 # Must be the last one that create a routing
 pierreeric:routing-done
 
+pierreeric:client-cookie
 
 spacedrop:namespaces

@@ -19,6 +19,12 @@ class Cookie extends Component {
         Tracker.autorun(() => {
           let isRouterStarted = Session.get(SD.Utils.IS_ROUTER_STARTED);
           if (isRouterStarted) {
+            //Cookie.get()
+
+
+
+
+
             this.setState({show: true});
             log.debug('Router started');
           } else {

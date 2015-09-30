@@ -18,7 +18,7 @@ Package.onUse(function(api) {
   ]);
   // Dependencies for client only
   const sharedClient = [
-    'cosmos:browserify@0.7.0'
+    'cosmos:browserify@0.7.2'
   ];
   api.use(sharedClient, 'client');
   api.imply(sharedClient, 'client');

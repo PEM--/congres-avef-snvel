@@ -10,7 +10,8 @@ Package.onUse(function(api) {
   // Dependencies for server and client
   const shared = [
     'tracker',
-    'session'
+    'session',
+    'chuangbo:cookie@1.1.0'
   ];
   api.use(shared.concat([
     'flemay:less-autoprefixer@1.1.0',
@@ -23,4 +24,8 @@ Package.onUse(function(api) {
     'client-cookie.jsx',
     'client-cookie.less'
   ]);
+  // Files for client only
+  api.addFiles([
+    'cookie.js'
+  ], 'client');
 });
