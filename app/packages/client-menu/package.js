@@ -11,7 +11,8 @@ Package.onUse(function(api) {
   api.use([
     'flemay:less-autoprefixer@1.1.0',
     'pierreeric:basereactmeteor',
-    'pierreeric:client-sharedstyles'
+    'pierreeric:client-sharedstyles',
+    'pierreeric:col-users-and-roles'
   ]);
   // Included files in this packages
   // Files for server and client

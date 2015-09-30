@@ -22,11 +22,11 @@ class BasicMenuItem extends Component {
 // Signon-Signoff item
 class SignonSignoffItem extends Component {
   render() {
-    const { currentUser, closeMenu } = this.props;
+    const { isLoggedIn, closeMenu } = this.props;
     return (
-      <a href={currentUser ? '/logout' : '/login'} onClick={closeMenu} className='item'>
-        <i className={`fa ${currentUser ? 'fa-unlock' : 'fa-user'}`}></i>
-        <span className='readability-black'>{currentUser ? 'Déconnexion' : 'Connexion'}</span>
+      <a href={isLoggedIn ? '/logout' : '/login'} onClick={closeMenu} className='item'>
+        <i className={`fa ${isLoggedIn ? 'fa-unlock' : 'fa-user'}`}></i>
+        <span className='readability-black'>{isLoggedIn ? 'Déconnexion' : 'Connexion'}</span>
       </a>
     );
   }
@@ -35,8 +35,8 @@ class SignonSignoffItem extends Component {
 // Admin access item
 class AdminAccessIem extends Component {
   render() {
-    const { closeMenu, currentUser } = this.props;
-    const disableClass = currentUser ? '' : 'disabled';
+    const { closeMenu, isAdminUser } = this.props;
+    const disableClass = isAdminUser ? '' : 'disabled';
     return (
       <a href='/admin' onClick={closeMenu} className={`item ${disableClass}`}>
         <i className='fa fa-cogs'></i>
@@ -49,21 +49,26 @@ class AdminAccessIem extends Component {
 // Popup menu
 class PopupMenu extends SD.Views.BaseReactMeteor {
   getMeteorData() {
-    return { currentUser: Meteor.user() };
+    const user = Meteor.user();
+    return {
+      isLoggedIn: user ? true : false,
+      isAdminUser: user ? Roles.userIsInRole(user._id, 'admin') : false
+    };
   }
   // Render the component
   render() {
     log.debug('Rendering PopupMenu');
-    const { menuState, closeMenu } = this.props, { currentUser } = this.data;
+    const { menuState, closeMenu } = this.props,
+      { isLoggedIn, isAdminUser } = this.data;
     return (
       <aside className={`client ui vertical menu${menuState ? ' open' : ''}`}>
         <i onClick={closeMenu} className='fa fa-close close fa-2x'></i>
-        <SignonSignoffItem closeMenu={closeMenu} currentUser={currentUser} />
+        <SignonSignoffItem closeMenu={closeMenu} isLoggedIn={isLoggedIn} />
         <BasicMenuItem closeMenu={closeMenu} href='/' faIcon='fa-home' text='Accueil' />
         <BasicMenuItem closeMenu={closeMenu} href='/presentation' faIcon='fa-bullhorn' text='Présentation' />
         <BasicMenuItem closeMenu={closeMenu} href='/program' faIcon='fa-calendar' text='Programme' />
         <BasicMenuItem closeMenu={closeMenu} href='/subscription' faIcon='fa-ticket' text='Inscriptions' />
-        <AdminAccessIem closeMenu={closeMenu} currentUser={currentUser} />
+        <AdminAccessIem closeMenu={closeMenu} isAdminUser={isAdminUser} />
       </aside>
     );
   }
