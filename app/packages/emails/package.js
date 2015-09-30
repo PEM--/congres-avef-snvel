@@ -5,7 +5,7 @@ Package.describe({
 
 Package.onUse(function(api) {
   // Meteor's API version
-  api.versionsFrom('1.2');
+    api.versionsFrom('1.2.0.2');
 
   // Package dependencies
   const sharedServerAndClient = [
