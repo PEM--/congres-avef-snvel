@@ -10,7 +10,9 @@ Package.onUse(function(api) {
   // Dependencies for server and client
   api.use([
     'flemay:less-autoprefixer@1.1.0',
-    'pierreeric:basereactmeteor'
+    'pierreeric:basereactmeteor',
+    'pierreeric:col-users-and-roles',
+    'pierreeric:routing-start'
   ]);
   // Included files in this packages
   // Files for server and client
