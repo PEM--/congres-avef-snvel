@@ -1,9 +1,8 @@
 // Client only
 
 // Base class for cookies
-class BaseCookie extends Cookie {
-  constructor({domain, path, expires}) {
-    super();
+class BaseCookie {
+  constructor({ domain, path, expires }) {
     // Assign arguments as class properties
     let [ args, dummy ] = [...arguments];
     for (let prop of Object.keys(args)) {
@@ -21,7 +20,7 @@ class BaseCookie extends Cookie {
     }
   }
   // get(name) {
-  //   return super.get(name, {})
+  //   return Cookie.get(name, {})
   // }
 }
 
