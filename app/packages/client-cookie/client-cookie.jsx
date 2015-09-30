@@ -32,17 +32,27 @@ class Cookie extends Component {
       log.debug('Rendering');
       const { show } = this.state;
       return (
-        <section className={`client cookie${show ? 'show' : ''}`}>
-          <div className='content'>
-            <i className='fa fa-bullhorn fa-lg red'></i>
-            <p className='header'>Cookie</p>
-            <button className='ui green button'>
-              <i className='fa fa-check'></i>
-              J'ai compris
-            </button>
-            <a href='/cookie' className='animated'>Je souhaite en savoir plus...</a>
+        <div className={`client cookie ${show ? 'show' : ''}`}>
+          <div className="ui grid container">
+            <div className="row">
+              <div className="sixteen wide column">
+                <div className="ui centered grid container">
+                  <div className="row">
+                    <div className="one wide column"><i className="fa fa-bullhorn fa-lg red"></i></div>
+                    <div className="fifteen wide column">
+                      <div className="rom"><span>En poursuivant votre navigation sur ce site, vous acceptez l'utilisation des cookies pour vous proposer des services et offres adaptés. </span></div>
+                      <div className="row">
+                        <button className="ui green tiny button">
+                          <div className="visible content"><i className="fa fa-check"></i>J'ai compris</div>
+                        </button><a href="/cookie" className="animated">En savoir plus...</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-        </section>
+        </div>
       );
     };
   }
