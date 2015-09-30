@@ -14,10 +14,14 @@
   padding: 1rem 0;
   opacity: 0;
   transform: translate3d(0, -100%, 0);
-  a, a:visited { color: @veryLightOrange; }
+  a, a:visited {
+    color: @veryLightOrange;
+    &::after { background-color: @veryLightOrange; }
+  }
   transition: opacity @defaultDuration @defaultEasing, transform  @defaultDuration @defaultEasing;
   &.show {
     opacity: 1;
     transform: none;
   }
+  i.fa, button { margin-right: 1rem; }
 }
