@@ -5,7 +5,7 @@ Package.describe({
 
 Package.onUse(function(api) {
   // Meteor's API version
-    api.versionsFrom('1.2.0.2');
+  api.versionsFrom('1.2.0.2');
   // NPM dependencies
   Npm.depends({
     'react-motion': '0.2.7',
@@ -18,7 +18,7 @@ Package.onUse(function(api) {
   ]);
   // Dependencies for client only
   const sharedClient = [
-    'cosmos:browserify@0.7.2'
+    'cosmos:browserify@0.8.0'
   ];
   api.use(sharedClient, 'client');
   api.imply(sharedClient, 'client');

@@ -16,7 +16,8 @@ Package.onUse(function(api) {
     'mquandalle:jade@0.4.3_1',
     'pierreeric:basereactmeteor',
     'pierreeric:client-sharedstyles',
-    'pierreeric:routing-start'
+    'pierreeric:routing-start',
+    'pierreeric:col-dictionary'
   ]);
   // Included files in this packages
   // Files for server and client

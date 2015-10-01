@@ -22,7 +22,15 @@ const sharedOptions = {
     socialSharers: { type: [Object], label: 'Partage des réseaux sociaux' },
     'socialSharers.$.social': { type: String, label: 'Réseau social', allowedValues: ['Twitter', 'Facebook', 'LinkedIn'] },
     'socialSharers.$.message': { type: String, label: 'Message', min: 1, max: 140 },
-    'socialSharers.$.account': { type: String, label: 'Compte', optional: true }
+    'socialSharers.$.account': { type: String, label: 'Compte', optional: true },
+    location: { type: Object, label: 'Emplacement' },
+    'location.map': { type: Object, label: 'Carte' },
+    'location.map.lat': { type: Number, decimal: true, label: 'Lattitude' },
+    'location.map.long': { type: Number, decimal: true, label: 'Longitude' },
+    'location.map.zoom': { type: Number, min: 2, max: 21, label: 'Zoom (12 pour une ville)' },
+    'location.name': { type: String, min: 2, max: 256, label: 'Nom' },
+    'location.address': { type: String, min: 2, max: 256, label: 'Adresse' },
+    'location.site': { type: String, max: 256, optional: true, label: 'Site' }
   },
   // Available subscriptions and publications
   subs: {

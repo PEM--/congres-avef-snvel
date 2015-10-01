@@ -15,12 +15,19 @@ if (Meteor.isClient) {
   });
 
   // Customize GoogleMaps
+  Template.BlazeContainerMap.onCreated(() => {
+    this.handle = SD.Structure.dictionary.subAll();
+    //   // Use handle to show loading state
+    //   loading: !handle.ready(),
+    //   // Get the content of dictionary
+    //   dict: handle.ready() ? SD.Structure.dictionary.collection.findOne() : '',
+  });
   Template.BlazeContainerMap.helpers({
     mapOptions: function() {
       if (GoogleMaps.loaded()) {
         return {
           center: new google.maps.LatLng(-37.8136, 144.9631),
-          zoom: 8
+          zoom: 12
         };
       }
     }
