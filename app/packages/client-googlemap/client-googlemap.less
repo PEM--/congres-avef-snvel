@@ -5,8 +5,9 @@
 
 .client {
   .googlemap {
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
     height: 20rem;
-    background-color: fade(@veryLightOrange, 30%);
     .googlemapContainer {
       width: 100%;
       position: relative;
@@ -32,10 +33,7 @@
 
 // Other specifics
 @media screen and (min-width: @tabletBreakpoint) {
-  .client .googlemap {
-    background-color: @green;
-    .googlemapContainer&::after {
-      font-size: 200%;
-    }
+  .client .googlemap .googlemapContainer&::after {
+    font-size: 200%;
   }
 }

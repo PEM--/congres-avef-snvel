@@ -1,6 +1,11 @@
 // Semantic UI variables
 @import url('/client/lib/semanticui/site/globals/site.variables.import.less');
 
-.client .googlemap .googlemapContainer&::after {
-  color: @veryLightOrange;
+.client .googlemap {
+  .googlemapContainer::after { color: @veryLightOrange; }
+}
+
+// Other specifics
+@media screen and (min-width: @tabletBreakpoint) {
+  .client .googlemap { background-color: @green !important; }
 }

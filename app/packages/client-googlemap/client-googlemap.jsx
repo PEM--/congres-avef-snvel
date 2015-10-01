@@ -40,12 +40,12 @@ class ReactGoogleMap extends SD.Views.ReactDictionary {
         </div>
       );
     };
-    // this.componentDidMount = () => {
-    //   this.view = Blaze.render(Template.BlazeContainerMap, findDOMNode(this.refs.googlemapContainer));
-    // };
-    // this.componentWillUnmount = () => {
-    //   Blaze.remove(this.view);
-    // };
+    this.componentDidMount = () => {
+      this.view = Blaze.render(Template.BlazeContainerMap, findDOMNode(this.refs.googlemapContainer));
+    };
+    this.componentWillUnmount = () => {
+      Blaze.remove(this.view);
+    };
   }
 }
 
