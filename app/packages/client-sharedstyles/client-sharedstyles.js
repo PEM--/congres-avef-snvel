@@ -1,5 +1,5 @@
 // Color theme
-Client.Views.ColorTheme = {
+SD.Views.Client.ColorTheme = {
   brandColor: '#FF7100',
   transBrandColor: 'rgba(255, 113, 0, .2)',
   bgBrandColor: '#007E5F',
