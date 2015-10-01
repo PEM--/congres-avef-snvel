@@ -11,7 +11,9 @@
     .googlemapContainer {
       width: 100%;
       position: relative;
+      z-index: 1;
       &::after {
+        z-index: -1;
         content: 'La carte est en cours de chargement...';
         position: absolute;
         top: 50%;
@@ -23,6 +25,7 @@
         animation: fadeIn @defaultDuration @defaultEasing forwards;
       }
       .map-canvas {
+        z-index: 2;
         opacity: 0;
         animation: fadeIn @defaultDuration @defaultEasing forwards;
         height: 20rem !important;

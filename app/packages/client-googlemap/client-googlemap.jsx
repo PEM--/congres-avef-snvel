@@ -17,18 +17,36 @@ if (Meteor.isClient) {
   // Customize GoogleMaps
   Template.BlazeContainerMap.onCreated(() => {
     this.handle = SD.Structure.dictionary.subAll();
-    //   // Use handle to show loading state
-    //   loading: !handle.ready(),
-    //   // Get the content of dictionary
-    //   dict: handle.ready() ? SD.Structure.dictionary.collection.findOne() : '',
+    // Add a marker at the middle of the map which is already centered on the event
+    GoogleMaps.ready('map', (map) => {
+      const marker = new google.maps.Marker({
+        position: map.options.center,
+        map: map.instance,
+        // Animate the marker with a bounce effect
+        animation: google.maps.Animation.BOUNCE,
+        title: this.dict.name,
+        icon: {
+          url: '/img/pin.svg',
+          size: new google.maps.Size(40, 55),
+          origin: new google.maps.Point(0, 0),
+          anchor: new google.maps.Point(20, 55)
+        }
+      });
+    });
   });
   Template.BlazeContainerMap.helpers({
-    mapOptions: function() {
-      if (GoogleMaps.loaded()) {
-        return {
-          center: new google.maps.LatLng(-37.8136, 144.9631),
-          zoom: 12
-        };
+    mapOptions: () => {
+      if (this.handle.ready()) {
+        if (GoogleMaps.loaded()) {
+          this.dict = SD.Structure.dictionary.collection.findOne();
+          log.info('Map informations', this.dict.location.map);
+          return {
+            center: new google.maps.LatLng(
+              this.dict.location.map.lat,
+              this.dict.location.map.long),
+            zoom: this.dict.location.map.zoom
+          };
+        }
       }
     }
   });
