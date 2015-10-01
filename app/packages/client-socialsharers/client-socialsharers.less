@@ -14,11 +14,13 @@
         border-right: 1px solid fade(@white, 20%);
       }
       >span {
-        padding: 0 .25rem;
+        padding: 0;
         font-size: 90% !important;
-        font-weight: 300 !important;
+        font-weight: 400 !important;
         position: relative;
-        top: -.0625rem;
+        top: -.07rem;
+        &:first-of-type { padding-left: .25rem; }
+        &:last-of-type { padding-right: .25rem; }
       }
     }
   }

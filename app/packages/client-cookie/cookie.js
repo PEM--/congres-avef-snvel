@@ -2,10 +2,10 @@
 
 // Base class for cookies
 class BaseCookie {
-  constructor(dict, path = '/', expires = 60) {
+  constructor(dict, path = '/') {
     this.dict = dict;
     this.path = path;
-    this.expires = expires;
+    this.expires = dict.cookie.expires;
     this.currentValue = null;
     this.getAll = () => {
       if (this.currentValue === null) {

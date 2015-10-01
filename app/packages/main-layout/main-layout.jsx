@@ -1,6 +1,6 @@
 // Main layout of the client and admin applications
 
-// Metatags: http://www.metatags.org
+// Metatags: http://www.metatags.org/all_metatags
 // Twitter cards:
 // * Specs: https://dev.twitter.com/cards/types
 // * Validator: https://cards-dev.twitter.com/validator
@@ -64,7 +64,7 @@ class MainLayout extends SD.Views.BaseReactMeteor {
         'reply-to',
         'web-author'
       ].map(function (meta) {
-        const obj = {name: meta, content: dict[meta]};
+        const obj = {name: meta, content: dict.meta[meta]};
         log.debug('Meta', obj);
         DocHead.addMeta(obj);
       });
