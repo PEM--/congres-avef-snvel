@@ -4,7 +4,7 @@
 const log = Logger.createLogger('Client LogIn');
 
 // Namespace flatteinng
-const { Component } = React;
+const { Component, findDOMNode } = React;
 
 // Already LoggedIn component
 class AlreadyLoggedIn extends Component {
@@ -28,8 +28,8 @@ class LogInForm extends Component {
       e.preventDefault();
       // Reset former error
       this.setState({error: ''});
-      const email = React.findDOMNode(this.refs.email).value.trim().toLowerCase();
-      const password = React.findDOMNode(this.refs.password).value.trim();
+      const email = findDOMNode(this.refs.email).value.trim().toLowerCase();
+      const password = findDOMNode(this.refs.password).value.trim();
       log.debug('Submit with value', email);
       try {
         // Check user's imputs
@@ -52,7 +52,7 @@ class LogInForm extends Component {
         this.setState({error: error.message});
       } finally {
         // Empty password field in any case
-        React.findDOMNode(this.refs.password).value = '';
+        findDOMNode(this.refs.password).value = '';
       }
     };
     // Render the component

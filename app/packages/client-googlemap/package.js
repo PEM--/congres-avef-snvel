@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'pierreeric:client-presentation',
+  name: 'pierreeric:client-googlemap',
   version: '0.0.1'
 });
 
@@ -9,19 +9,19 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
-    'kadira:react-layout@1.3.1',
     'flemay:less-autoprefixer@1.1.0',
+    'dburles:google-maps@1.1.4',
+    'mquandalle:jade@0.4.3_1',
     'pierreeric:basereactmeteor',
-    'pierreeric:routing-start',
-    'pierreeric:main-layout',
     'pierreeric:client-sharedstyles',
-    'pierreeric:client-socialsharers',
-    'pierreeric:client-googlemap'
+    'pierreeric:routing-start'
   ]);
   // Included files in this packages
   // Files for server and client
   api.addFiles([
-    'client-presentation.jsx',
-    'client-presentation.less'
+    'googleMap.tpl.jade',
+    'googleMap.js',
+    'client-googlemap.jsx',
+    'client-googlemap.less'
   ]);
 });
