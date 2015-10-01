@@ -50,6 +50,7 @@ semantic:ui
 pierreeric:server-side-routes
 pierreeric:internationalization
 # Client only packages
+dburles:google-maps
 pierreeric:client-landingpage
 pierreeric:client-basicpages
 pierreeric:client-presentation

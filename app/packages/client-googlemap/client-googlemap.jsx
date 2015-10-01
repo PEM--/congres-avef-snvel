@@ -6,15 +6,29 @@ const log = Logger.createLogger('Client GoogleMap');
 // Namespace flatteinng
 const { Component, findDOMNode } = React;
 
-// Load GoogleMaps
+// Client only
 if (Meteor.isClient) {
+  // Load GoogleMaps
   Meteor.startup(() => {
     GoogleMaps.load();
+    log.info('Google map loaded');
+  });
+
+  // Customize GoogleMaps
+  Template.BlazeContainerMap.helpers({
+    mapOptions: function() {
+      if (GoogleMaps.loaded()) {
+        return {
+          center: new google.maps.LatLng(-37.8136, 144.9631),
+          zoom: 8
+        };
+      }
+    }
   });
 }
 
 // GoogleMap compoment
-class GoogleMap extends SD.Views.ReactDictionary {
+class ReactGoogleMap extends SD.Views.ReactDictionary {
   constructor(props) {
     super(props);
     this.render = () => {
@@ -29,9 +43,12 @@ class GoogleMap extends SD.Views.ReactDictionary {
       );
     };
     this.componentDidMount = () => {
-      this.view = Blaze.render(Template.googleMap, findDOMNode(this.refs.googlemapContainer));
+      this.view = Blaze.render(Template.BlazeContainerMap, findDOMNode(this.refs.googlemapContainer));
+    };
+    this.componentWillUnmount = () => {
+      Blaze.remove(this.view);
     };
   }
 }
 
-SD.Views.Client.GoogleMap = GoogleMap;
+SD.Views.Client.ReactGoogleMap = ReactGoogleMap;

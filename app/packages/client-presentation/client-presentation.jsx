@@ -24,7 +24,7 @@ class Presentation extends Component {
             </div>
           </div>
         </div>
-        <SD.Views.Client.GoogleMap />
+        <SD.Views.Client.ReactGoogleMap />
       </div>
     );
   }

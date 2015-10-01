@@ -9,6 +9,8 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
+    'spacebars',
+    'blaze-html-templates',
     'flemay:less-autoprefixer@1.1.0',
     'dburles:google-maps@1.1.4',
     'mquandalle:jade@0.4.3_1',
@@ -19,8 +21,7 @@ Package.onUse(function(api) {
   // Included files in this packages
   // Files for server and client
   api.addFiles([
-    'googleMap.tpl.jade',
-    'googleMap.js',
+    'BlazeContainerMap.tpl.jade',
     'client-googlemap.jsx',
     'client-googlemap.less'
   ]);

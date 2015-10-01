@@ -7,9 +7,14 @@
   .googlemap {
     background-color: red !important;
     height: 20rem;
-    .googlemap-container {
+    .googlemapContainer {
       background-color: yellow !important;
       width: 100%;
+      .map-canvas {
+        opacity: 0;
+        animation: fadeIn @defaultDuration @defaultEasing forwards;
+        height: 20rem !important;
+      }
     }
   }
 }
