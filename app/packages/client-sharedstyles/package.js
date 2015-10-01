@@ -5,15 +5,19 @@ Package.describe({
 
 Package.onUse(function(api) {
   // Meteor's API version
-    api.versionsFrom('1.2.0.2');
+  api.versionsFrom('1.2.0.2');
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
-    'flemay:less-autoprefixer@1.1.0'
+    'ecmascript',
+    'es5-shim',
+    'flemay:less-autoprefixer@1.1.0',
+    'spacedrop:namespaces'
   ]);
   // Included files in this packages
   // Files for server and client
   api.addFiles([
+    'client-sharedstyles.js',
     'client-sharedstyles.less'
   ]);
 });
