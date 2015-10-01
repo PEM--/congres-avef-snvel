@@ -36,18 +36,16 @@ class ReactGoogleMap extends SD.Views.ReactDictionary {
       const { dict } = this.data;
       return (
         <div className='row client googlemap'>
-          <div ref='googlemapContainer' className='googlemapContainer'>
-            La carte est en cours de chargement.
-          </div>
+          <div ref='googlemapContainer' className='googlemapContainer' />
         </div>
       );
     };
-    this.componentDidMount = () => {
-      this.view = Blaze.render(Template.BlazeContainerMap, findDOMNode(this.refs.googlemapContainer));
-    };
-    this.componentWillUnmount = () => {
-      Blaze.remove(this.view);
-    };
+    // this.componentDidMount = () => {
+    //   this.view = Blaze.render(Template.BlazeContainerMap, findDOMNode(this.refs.googlemapContainer));
+    // };
+    // this.componentWillUnmount = () => {
+    //   Blaze.remove(this.view);
+    // };
   }
 }
 
