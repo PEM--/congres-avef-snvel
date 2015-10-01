@@ -1,0 +1,25 @@
+// Semantic UI variables
+@import url('/client/lib/semanticui/site/globals/site.variables.import.less');
+// Share themes variables
+@import (reference) url('/packages/client-sharedstyles/client-sharedstyles.less');
+
+.client {
+  .socialsharers {
+    text-align: center;
+    .sharerbutton {
+      padding: .25em !important;
+      border-radius: 1px !important;
+      >i.fa {
+        padding-right: .25rem;
+        border-right: 1px solid fade(@white, 20%);
+      }
+      >span {
+        padding: 0 .25rem;
+        font-size: 90% !important;
+        font-weight: 300 !important;
+        position: relative;
+        top: -.0625rem;
+      }
+    }
+  }
+}

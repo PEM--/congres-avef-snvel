@@ -20,6 +20,7 @@ class Presentation extends Component {
                   <h1>Présentation</h1>
                 </div>
               </section>
+              <SD.Views.Client.SocialSharers />
             </div>
           </div>
         </div>
