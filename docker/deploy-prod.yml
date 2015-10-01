@@ -1,24 +1,24 @@
 # Persistence layer: Mongo
 db:
-  image: YOUR_DOCKER_HUB_LOGIN/mongo:v1.0.0
+  image: pemarchandet/mongo-congres-avef-snvel:v1.0.0
   extends:
     file: common.yml
     service: db
   restart: always
 # Application server: NodeJS (Meteor)
 server:
-  image: YOUR_DOCKER_HUB_LOGIN/meteor:v1.0.0
+  image: pemarchandet/meteor-congres-avef-snvel:v1.0.0
   extends:
     file: common.yml
     service: server
   links:
     - db
   environment:
-    ROOT_URL: "https://YOUR_SITE_FQDN"
+    ROOT_URL: "https://congres-avef-snvel.fr"
   restart: always
 # Front layer, static file, SSL, proxy cache: NGinx
 front:
-  image: YOUR_DOCKER_HUB_LOGIN/nginx:v1.0.0
+  image: pemarchandet/nginx-congres-avef-snvel:v1.0.0
   extends:
     file: common.yml
     service: front
