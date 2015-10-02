@@ -14,6 +14,8 @@ SD.Views.Client.ColorTheme = {
 // Link modifier
 SD.Utils.prettyLink = function(text) {
   return text
-    .replace('AVEF', '<a class="animated" href="http://www.avef.fr" target="_blank">AVEF</a>')
-    .replace('SNVEL', '<a class="animated" href="http://www.snvel.fr" target="_blank">SNVEL</a>');
+    .replace(/AVEF/g,
+      '<a class="animated" href="http://www.avef.fr" target="_blank">AVEF</a>')
+    .replace(/SNVEL/g,
+      '<a class="animated" href="http://www.snvel.fr" target="_blank">SNVEL</a>');
 };
