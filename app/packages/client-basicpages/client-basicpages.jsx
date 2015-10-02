@@ -23,13 +23,11 @@ class BasicPages extends SD.Views.BaseReactMeteor {
   render() {
     log.debug('Rendering BasicPages');
     const { loading, item } = this.data;
-    let nodes = loading ? (
-      <div className='sixteen wide column'>
-        <p>Chargement en cours...</p>
-        <SD.Views.Client.Spinkit />
-      </div>
-    ) : (
-      <div className='fadeIn sixteen wide column'>
+    if (loading) {
+      return this.loadingRenderer();
+    }
+    let nodes = (
+      <div className='fadeIn'>
         <h1>{item.title}</h1>
         <div
           dangerouslySetInnerHTML={{__html: SD.Utils.prettyLink(marked(item.content))}}
@@ -42,7 +40,9 @@ class BasicPages extends SD.Views.BaseReactMeteor {
           <div className='sixteen wide column'>
             <div className='ui grid container'>
               <section className='row'>
-                {nodes}
+                <div className='sixteen wide column'>
+                  {nodes}
+                </div>
               </section>
               <section className='row'>
                 <nav className='sixteen wide column'>

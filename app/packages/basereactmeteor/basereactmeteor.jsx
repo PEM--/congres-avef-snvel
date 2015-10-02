@@ -7,7 +7,15 @@ const BaseReactMeteor = createClass({
   // Handle connexion and admin access
   mixins: [ReactMeteorData],
   // Overide this
-  render() { return null; }
+  render() { return null; },
+  loadingRenderer() {
+    return (
+      <div>
+        <p>Chargement en cours...</p>
+        <SD.Views.Client.Spinkit />
+      </div>
+    );
+  }
 });
 
 class ReactDictionary extends BaseReactMeteor {

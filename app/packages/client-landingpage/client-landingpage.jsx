@@ -90,13 +90,17 @@ class PartnerList extends SD.Views.BaseReactMeteor {
       // Use handle to show loading state
       loading: !handle.ready(),
       // Expose the list as an array
-      items: SD.Structure.partners.collection.find({},
-        SD.Structure.partners.subs.All.options).fetch()
+      items: handle.ready() ? SD.Structure.partners.collection.find({},
+        SD.Structure.partners.subs.All.options).fetch() : ''
     };
   }
   render() {
     log.debug('Rendering PartnerList');
-    const nodes = this.data.items.map(function(item) {
+    const { loading, items } = this.data;
+    if (loading) {
+      return this.loadingRenderer();
+    }
+    const nodes = items.map(function(item) {
       return <Partner
         key={item._id}
         title={item.title}

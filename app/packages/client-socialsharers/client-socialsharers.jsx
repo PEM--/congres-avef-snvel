@@ -60,20 +60,23 @@ class SharerButton extends SD.Views.ReactDictionary {
 class SocialSharers extends SD.Views.ReactDictionary {
   constructor(props) {
     super(props);
-    this.render = () => {
-      log.debug('Rendering Social sharer');
-      const { dict } = this.data;
-      const nodes = dict.socialSharers.map(
-        (sharer) => <SharerButton key={sharer.social} social={sharer.social} message={sharer.message} />
-      );
-      return (
-        <section className='row'>
-          <div className='sixteen wide column socialsharers'>
-            {nodes}
-          </div>
-      </section>
-      );
-    };
+  }
+  render() {
+    log.debug('Rendering Social sharer');
+    const { loading, dict } = this.data;
+    if (loading) {
+      return this.loadingRenderer();
+    }
+    const nodes = dict.socialSharers.map(
+      (sharer) => <SharerButton key={sharer.social} social={sharer.social} message={sharer.message} />
+    );
+    return (
+      <section className='row'>
+        <div className='sixteen wide column socialsharers'>
+          {nodes}
+        </div>
+    </section>
+    );
   }
 }
 

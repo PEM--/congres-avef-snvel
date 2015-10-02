@@ -21,14 +21,18 @@ class SocialLinkList extends SD.Views.BaseReactMeteor {
       // Use handle to show loading state
       loading: !handle.ready(),
       // Expose the list as an array
-      items: SD.Structure.socialLinks.collection.find({},
-        SD.Structure.socialLinks.subs.All.options).fetch()
+      items: handle.ready() ? SD.Structure.socialLinks.collection.find({},
+        SD.Structure.socialLinks.subs.All.options).fetch() : ''
     };
   }
   render() {
     log.debug('Rendering SocialLinkList');
+    const { loading, items } = this.data;
+    if (loading) {
+      return this.loadingRenderer();
+    }
     // Display links as a list
-    const nodes = this.data.items.map(function(item) {
+    const nodes = items.map(function(item) {
       return <SocialLink
         key={item._id}
         url={item.url}

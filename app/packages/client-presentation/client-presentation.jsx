@@ -14,7 +14,10 @@ class Presentation extends SD.Views.ReactDictionary {
   }
   render() {
     log.debug('Rendering Presentation');
-    const { dict } = this.data;
+    const { loading, dict } = this.data;
+    if (loading) {
+      return this.loadingRenderer();
+    }
     return (
       <div className='client main-content ui grid presentation'>
         <div className='row'>

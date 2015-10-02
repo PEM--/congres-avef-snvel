@@ -26,20 +26,17 @@ class LineText extends SD.Views.BaseReactMeteor {
     log.warn('*** render');
     log.debug('Rendering LineText', this.props.page, this.props.text);
     const { loading, item } = this.data;
-    const nodes = loading ? (
-      <div>
-        <p>Chargement en cours...</p>
-        <SD.Views.Client.Spinkit />
-      </div>
-    ) : (
+    if (loading) {
+      return this.loadingRenderer();
+    }
+    const nodes = (
       <div className='fadeIn'>
         <div
           dangerouslySetInnerHTML={{__html: SD.Utils.prettyLink(marked(item.content))}}
         />
       </div>
     );
-    return (<div className='sixteen wide column'>{nodes}</div>
-    );
+    return (<div className='sixteen wide column'>{nodes}</div>);
   }
 }
 

@@ -21,15 +21,19 @@ class BasicPagesLinkList extends SD.Views.BaseReactMeteor {
       // Use handle to show loading state
       loading: !handle.ready(),
       // Expose the list as an array
-      items: SD.Structure.basicPages.collection.find(
+      items: handle.ready() ? SD.Structure.basicPages.collection.find(
         SD.Structure.basicPages.subs.FooterLinks.filter,
-        SD.Structure.basicPages.subs.FooterLinks.options).fetch()
+        SD.Structure.basicPages.subs.FooterLinks.options).fetch() : ''
     };
   }
   render() {
     log.debug('Rendering BasicPagesLinkList');
+    const { loading, items } = this.data;
+    if (loading) {
+      return this.loadingRenderer();
+    }
     // Display links as a list
-    const nodes = this.data.items.map(function(item) {
+    const nodes = items.map(function(item) {
       return <BasicPagesLink
         key={item._id}
         url={item.url}
