@@ -12,7 +12,6 @@ class LineText extends SD.Views.BaseReactMeteor {
     super(props);
   }
   getMeteorData() {
-    log.warn('*** getMeteorData');
     const { page, text } = this.props;
     const handle = SD.Structure.texts.subWithPageWithText(page, text);
     return {
@@ -23,7 +22,6 @@ class LineText extends SD.Views.BaseReactMeteor {
     };
   }
   render() {
-    log.warn('*** render');
     log.debug('Rendering LineText', this.props.page, this.props.text);
     const { loading, item } = this.data;
     if (loading) {
