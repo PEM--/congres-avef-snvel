@@ -10,7 +10,7 @@ Package.onUse(function(api) {
   // Dependencies for server and client
   api.use('spacedrop:basecollection');
   // Dependencies for server only
-  api.use(['pierreeric:markdown-server-side'], 'server');
+  api.use(['pierreeric:markdown'], 'server');
   // Included files in this packages
   // Files for server and client
   api.addFiles([

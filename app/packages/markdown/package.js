@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'pierreeric:markdown-server-side',
+  name: 'pierreeric:markdown',
   version: '0.0.1'
 });
 
@@ -15,14 +15,14 @@ Package.onUse(function(api) {
   // Dependencies for server and client
   api.use([
     'ecmascript',
-    'es5-shim'
+    'es5-shim',
+    'cosmos:browserify@0.8.0'
   ]);
   // Included files in this packages
-  // Server only
-  api.addFiles([
-    'markdown-server-side.js'
-  ], 'server');
+  // Client only
+  api.addFiles('markdown.browserify.js', 'client');
+  // Server and client
+  api.addFiles('markdown.js');
   // Exported symbols outside the scope of this package
-  // Server only
-  api.export(['marked'], 'server');
+  api.export(['marked']);
 });

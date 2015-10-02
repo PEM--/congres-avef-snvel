@@ -1,5 +1,8 @@
-marked = Npm.require('marked');
-const highlight = Npm.require('highlight.js');
+if (Meteor.isServer) {
+  marked = Npm.require('marked');
+  highlight = Npm.require('highlight.js');
+}
+
 marked.setOptions({
   renderer: new marked.Renderer(),
   highlight(code) {

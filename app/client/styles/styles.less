@@ -85,6 +85,11 @@ i.fa {
   &.green { color: @green; }
 }
 
+// Remove default style on address
+address {
+  font-style: normal;
+}
+
 // Mobile specifics
 @media screen and (max-width: @largestMobileScreen) {
   .client.presentation, .client.program, .client.subscription {

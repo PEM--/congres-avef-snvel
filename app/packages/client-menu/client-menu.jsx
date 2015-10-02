@@ -91,10 +91,11 @@ class SiteTitle extends SD.Views.ReactDictionary {
     super(props);
   }
   render() {
+    const { dict } = this.data;
     log.debug('Rendering Site title');
     return (
       <h1 className='readability-white'>
-        <a href='/'>{this.data.dict.shortTitle}</a>
+        <a href='/'>{dict.shortTitle}</a>
       </h1>
     );
   }
