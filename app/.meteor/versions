@@ -100,6 +100,7 @@ pierreeric:client-cookie@0.0.1
 pierreeric:client-footer@0.0.1
 pierreeric:client-googlemap@0.0.1
 pierreeric:client-landingpage@0.0.1
+pierreeric:client-linetext@0.0.1
 pierreeric:client-login@0.0.1
 pierreeric:client-menu@0.0.1
 pierreeric:client-notfound@0.0.1
@@ -113,8 +114,10 @@ pierreeric:col-basicpages@0.0.1
 pierreeric:col-dictionary@0.0.1
 pierreeric:col-partners@0.0.1
 pierreeric:col-sociallinks@0.0.1
+pierreeric:col-texts@0.0.1
 pierreeric:col-users-and-roles@0.0.1
 pierreeric:custom-basicpages@0.0.1
+pierreeric:custom-texts@0.0.1
 pierreeric:emails@0.0.1
 pierreeric:internationalization@0.0.1
 pierreeric:logger@0.1.0

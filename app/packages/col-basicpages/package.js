@@ -11,7 +11,6 @@ Package.onUse(function(api) {
   api.use('spacedrop:basecollection');
   // Dependencies for server only
   api.use([
-    'pierreeric:markdown',
     'pierreeric:custom-basicpages'
   ], 'server');
   // Included files in this packages

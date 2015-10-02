@@ -13,8 +13,8 @@ Package.onUse(function(api) {
     'es5-shim'
   ]);
   // Included files in this packages
-  // Server and client
-  api.addFiles('custom-texts.js');
+  // Server only
+  api.addFiles('custom-texts.js', 'server');
   // Export default basic pages
   api.export('ALL_TEXTS', 'server');
 });

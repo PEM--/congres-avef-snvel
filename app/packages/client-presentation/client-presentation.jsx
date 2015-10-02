@@ -1,10 +1,11 @@
-// Landing-page
+// Presentation-page
 
 // Create a logger
 const log = Logger.createLogger('Client Presentation');
 
 // Namespace flatteinng
 const { Component } = React;
+const { LineText, SocialSharers, ReactGoogleMap } = SD.Views.Client;
 
 // Presentation page component
 class Presentation extends SD.Views.ReactDictionary {
@@ -20,14 +21,9 @@ class Presentation extends SD.Views.ReactDictionary {
           <div className='sixteen wide column'>
             <div className='ui grid container'>
               <section className='row'>
-                <div className='sixteen wide column'>
-                  <h1>Présentation</h1>
-                  <h2>Introduction</h2>
-                  <p>Le prochain Congrès <a href='http://www.avef.fr' className='animated'>AVEF</a> & <a href='http://www.avef.fr' className='animated'>SNVEL</a> aura lieu à Paris du 3 au 5 novembre 2015 et abordera des thématiques allant de la technique à l'actualité professionnelle.</p>
-                  <p>Nous souhaitons faire de cet évènement un moment d’échanges fructueux permettant aux vétérinaires de s’informer sur les dernières innovations en matière de pratique équine mais également de faire le point sur les sujets politiques majeurs pour la Profession.</p>
-                </div>
+                <LineText key='presentation-introduction' page='presentation' text='introduction' />
               </section>
-              <SD.Views.Client.SocialSharers />
+              <SocialSharers />
               <section className='row'>
                 <div className='sixteen wide column'>
                   <h2>Dates</h2>
@@ -53,16 +49,14 @@ class Presentation extends SD.Views.ReactDictionary {
             </div>
           </div>
         </div>
-        <SD.Views.Client.ReactGoogleMap />
+        <ReactGoogleMap />
         <div className='row'>
           <div className='sixteen wide column'>
             <div className='ui grid container'>
               <section className='row'>
-                <div className='sixteen wide column'>
-                  <h2>Points forts</h2>
-                </div>
+                <LineText key='presentation-focus' page='presentation' text='focus' />
               </section>
-              <SD.Views.Client.SocialSharers />
+              <SocialSharers />
             </div>
           </div>
         </div>
