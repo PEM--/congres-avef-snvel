@@ -84,3 +84,12 @@ i.fa {
   &.orange { color: @orange; }
   &.green { color: @green; }
 }
+
+// Mobile specifics
+@media screen and (max-width: @largestMobileScreen) {
+  .client.presentation, .client.program, .client.subscription {
+    h1, h2, h3, h4, h5, h6, label, p, ul li {
+      color: @veryLightOrange;
+    }
+  }
+}

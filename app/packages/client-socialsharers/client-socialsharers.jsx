@@ -20,21 +20,21 @@ class SharerButton extends SD.Views.ReactDictionary {
       switch (social) {
       case 'Twitter':
         href = 'https://twitter.com/intent/tweet' +
-          '?text=' + encodeURIComponent(sharerDict.message + ' : ' + settings.proxy.url + FlowRouter.current().path) +
+          '?text=' + encodeURIComponent(sharerDict.message + ' : ') +
+          '&url=' + settings.proxy.url + FlowRouter.current().path.slice(1) +
           '&via=' + sharerDict.account +
-          '&url=' + settings.proxy.url + FlowRouter.current().path +
           '&source=' + sharerDict.account +
           '&related=' + sharerDict.account;
         break;
       case 'Facebook':
         href = 'https://www.facebook.com/sharer/sharer.php' +
-          '?u=' + encodeURIComponent(settings.proxy.url + FlowRouter.current().path) +
+          '?u=' + encodeURIComponent(settings.proxy.url + FlowRouter.current().path.slice(1)) +
           '&t=' + encodeURIComponent(sharerDict.message);
         break;
       case 'LinkedIn':
         href = 'https://www.linkedin.com/shareArticle' +
           '?mini=true' +
-          '&url=' + encodeURIComponent(settings.proxy.url + FlowRouter.current().path) +
+          '&url=' + encodeURIComponent(settings.proxy.url + FlowRouter.current().path.slice(1)) +
           '&title=' + encodeURIComponent(sharerDict.message) +
           '&summary=' + encodeURIComponent(dict.meta.description) +
           '&source=';

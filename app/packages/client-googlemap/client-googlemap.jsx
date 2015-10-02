@@ -25,7 +25,7 @@ if (Meteor.isClient) {
         map: map.instance,
         // Animate the marker with a bounce effect
         animation: google.maps.Animation.DROP,
-        title: this.dict.name,
+        title: this.dict.location.name,
         icon: {
           url: '/img/pin.svg',
           size: new google.maps.Size(40, 55),
@@ -34,7 +34,7 @@ if (Meteor.isClient) {
         }
       });
       marker.addListener('click', () => {
-        window.open(this.dict.site, '_blank');
+        window.open(this.dict.location.site);
       });
     });
   });
@@ -49,6 +49,7 @@ if (Meteor.isClient) {
               this.dict.location.map.lat,
               this.dict.location.map.long),
             zoom: this.dict.location.map.zoom,
+            scrollwheel: false,
             panControl: false,
             mapTypeControl: false,
             scaleControl: false,
