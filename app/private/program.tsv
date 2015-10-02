@@ -1,166 +1,0 @@
-Jour	programme	horaire - début	horaire - fin	intitulé session	modérateur session	intitulé conf	intervenants conf	Salle	places	type inscription	droit	inclut dans journée
-Mardi	AVEF	14h00	14h30	Les bonnes pratiques de la prescription de maréchalerie	B. Baup	Les structures à protéger dans le pied	L. d’Arpe	Pays-Bas		atelier marechalerie	AM1	atelier marechalerie
-Mardi	AVEF	14h30	15h00	Les bonnes pratiques de la prescription de maréchalerie	B. Baup	La gestion des seimes	P. Doffemont	Pays-Bas			AM1	TP
-Mardi	AVEF	15h00	15h30	Les bonnes pratiques de la prescription de maréchalerie	B. Baup	La gestion de la ligne blanche	A. Zaccone	Pays-Bas			AM1	TD
-Mardi	AVEF	15h30	16h00	Les bonnes pratiques de la prescription de maréchalerie	B. Baup	Lexique des termes de maréchalerie à employer pour une bonne communication vétérinaire/maréchal	M. Gilson	Pays-Bas			AM1	TR
-Mardi	AVEF	16h00	16h30	Les bonnes pratiques de la prescription de maréchalerie	B. Baup	Les outils d’aide au diagnostic et la prescription ; ce que l’on voudrait faire et ce que l’on peut faire : l’ordonnance raisonnée	D. Leveillard, B. Baup	Pays-Bas			AM1	
-Mardi	AVEF	16h30	17h00	Les bonnes pratiques de la prescription de maréchalerie	B. Baup	Panel de ferrures mécaniques transformées	A. Zaccone	Pays-Bas			AM1	
-Mardi	AVEF	17h00	17h30	Les bonnes pratiques de la prescription de maréchalerie	B. Baup	Nouvelles techniques, nouveaux matériaux, ce qu’il faut savoir	M. Paricio	Pays-Bas			AM1	
-Mardi	AVEF	18h00	19h00	AG de l'AVEF				Amphithéatre		réservé adhérent AVEF	gratuit	
-Mardi	AVEF/SNVEL	19h00	20h30	Conférence-Débat Bien-Être Animal				Amphithéatre		gratuit	gratuit	
-Mardi	AVEF	14h00	17h30	Gouters des Commissions				Italie + Espagne		Gouter des Commissions	GdC	
-Mercredi	AVEF	08h30	08h45	1965-2015 : 50 ans tournés vers l’avenir !	J-Y Gauchot	Introduction «historique» de l’AVEF	R. Corde	Amphithéatre		inclut dans journée	Jour1	
-Mercredi	AVEF	08h45	09h45	1965-2015 : 50 ans tournés vers l’avenir !	J-Y Gauchot	Évolution de la médecine vétérinaire.	C. Degueurce	Amphithéatre			Jour1	
-Mercredi	AVEF	09h45	10h00	1965-2015 : 50 ans tournés vers l’avenir !	J-Y Gauchot	Que pourrait être l’AVEF demain ?	C-F. Louf & E. Richard	Amphithéatre			Jour1	
-Mercredi	AVEF	08h30	09h00	Maréchalerie sur le parvis	B. Baup	Development of a dynamic biomechanical system for the analysis of biometric data in the equine locomotor apparatus	D. Cellaro	Grèce			AM1	
-Mercredi	AVEF	09h00	09h30	Maréchalerie sur le parvis	B. Baup	Preliminary biometric analysis of the equine digit by means of a dynamic biomechanical system	D. Cellaro	Grèce			AM1	
-Mercredi	AVEF	09h30	10h00	Maréchalerie sur le parvis	B. Baup	Le Dondolino ou ferrure amovible pour la nuit ou le repos : intérêt pour la santé du pied	L. d’Arpe	Grèce			AM1	
-Mercredi	SNVEL	08h30	09h00	Le mandat sanitaire a toujours une place dans nos activités libérales !		Visites sanitaires obligatoires en élevage : avicole, apicole, petits ruminants, porcine, bovine, et aussi canine !	J. Frasson	Espagne			Jour1	
-Mercredi	SNVEL	09h00	09h30	Le mandat sanitaire a toujours une place dans nos activités libérales !		Certification à l’export : faut-il signer ?	L. Perrin	Espagne			Jour1	
-Mercredi	SNVEL	09h30	10h00	Le mandat sanitaire a toujours une place dans nos activités libérales !		Tuberculose : une menace pour les élevages bovins ? Plan national et négociations sur la tarification.	L. Perrin	Espagne			Jour1	
-Mercredi	AVEF	10h45	11h15	Échographie : Ce que l’on doit voir et ne pas voir …	F. Audigié - CV sur scène	Démo en live : Échographie du larynx.	A. Lechartier	Amphithéatre			Jour1	
-Mercredi	AVEF	11h15	12h15	Échographie : Ce que l’on doit voir et ne pas voir …	F. Audigié - CV sur scène	Démo en live : Échographie thoracique & abdominale.	V. Busoni	Amphithéatre			Jour1	
-Mercredi	AVEF	10h45	11h45	Médecine vétérinaire factuelle	A. Couroucé-Malblanc (UK speaking)	How I quack and what is the evidence for my quackery?	K. Corley	Pays-Bas			Jour1	
-Mercredi	AVEF	11h45	12h15	Médecine vétérinaire factuelle	A. Couroucé-Malblanc (UK speaking)	Corticostéroides et cartilage articulaire : les études chez l’animal ont-elles tout dit ?	J-M. Vandeweerd	Pays-Bas			Jour1	
-Mercredi	AVEF	10h45	11h15	Maréchalerie sur le parvis	B. Baup	La ferrure du cheval de sport aux USA	M. Paricio	Grèce			AM1	
-Mercredi	AVEF	11h15	11h45	Maréchalerie sur le parvis	B. Baup	Les entités patholgiques du cheval de sport : ferrures adaptées	JM. Denoix	Grèce			AM1	
-Mercredi	AVEF	11h45	12h15	Maréchalerie sur le parvis	B. Baup	Les entités pathologiques du trotteur : ferrures adaptées	JM. Denoix	Grèce			AM1	
-Mercredi	AVEF	10h45	12h15	Cushing & syndrome métabolique : quelles sont les preuves ?		Table ronde	V. Deniau & M. Depecker	Rome			TR1	
-Mercredi	AVEF	10h45	11h30	Comment faire face à une hyperthermie non expliquée ?		Travaux dirigés	H. Amory	Genève			TD1	
-Mercredi	AVEF	11h30	12h15	Comment faire face à une hyperthermie non expliquée ?		Travaux dirigés	H. Amory	Genève			TD2	
-Mercredi	AVEF	10h45	11h30	Comment lire des cytologies pneumo-utérines ?		Travaux pratiques	J-M. Betsch,E. Chollet, L. Mangold	Liège			TP1	
-Mercredi	AVEF	11h30	12h15	Comment opérer en cuisine (pastèques & gigots) ?		Travaux pratiques	C. Mespoulhes-Rivière et M. Lacourt	Liège			TP2	
-Mercredi	SNVEL	10h45	11h00	Médicament : la prescription à quel prix ?		Comment concilier éthique et économie en matière d’antibiotiques ?	D. Quint	Espagne			Jour1	
-Mercredi	SNVEL	11h00	11h30	Médicament : la prescription à quel prix ?		Quels outils de pilotage pour un positionnement concurrentiel ? 	E. Lejeau	Espagne			Jour1	
-Mercredi	SNVEL	11h30	11h45	Médicament : la prescription à quel prix ?		Se préparer à une inspection.	E. Lejeau	Espagne			Jour1	
-Mercredi	SNVEL	11h45	12h15	Médicament : la prescription à quel prix ?		Les attentes actuelles des vétérinaires vis-à-vis de leurs Centrales d’achat sont-elles identifiées ? 	JY. Gauchot	Espagne			Jour1	
-Mercredi	AVEF	13h45	14h15	Diagnostic: Bien se servir de nos outils; ne pas sur-interpréter 	E. Richard	Que nous a apporté l’imagerie au cours du dernier ¼ de siècle ?	J-M. Denoix	Amphithéatre			Jour1	
-Mercredi	AVEF	14h15	14h45	Diagnostic: Bien se servir de nos outils; ne pas sur-interpréter 	E. Richard	Comment (bien) interpréter les images de mon endoscope?	A. Couroucé-Malblanc	Amphithéatre			Jour1	
-Mercredi	AVEF	14h45	15h15	Diagnostic: Bien se servir de nos outils; ne pas sur-interpréter 	E. Richard	Que nous apporte la biologie moléculaire en 2015 ?	S. Pronost	Amphithéatre			Jour1	
-Mercredi	AVEF	13h45	14h15	Dentisterie factuelle	P. Chuit (UK speaking)	Evidence-based dentistry; part 1.	J. Carmalt	Pays-Bas			Jour1	compris dans Jour1 pour veto
-Mercredi	AVEF	14h15	14h45	Dentisterie factuelle	P. Chuit (UK speaking)	Evidence-based dentistry; part 2.	J. Carmalt	Pays-Bas			Jour1	
-Mercredi	AVEF	14h45	15h00	Dentisterie factuelle	P. Chuit (UK speaking)	Retour d’expérience: Dentisterie en Amérique du Sud	C. Lorenzo	Pays-Bas			Jour1	
-Mercredi	AVEF	15h00	15h15	Dentisterie factuelle	P. Chuit (UK speaking)	Table ronde EBM	J. Carmalt, P. Chuit, J-Y.Gauchot, C-F. Louf, Guimbellot	Pays-Bas			Jour1	
-Mercredi	AVEF	13h45	14h00	Courtes Communications	M. Lacourt	Influence de deux techniques de prélèvements de moelle osseuse au niveau du sternum sur la qualité des échantillons	Cousty et al.	Grèce			Jour1	
-Mercredi	AVEF	14h00	14h15	Courtes Communications	M. Lacourt	Gestion chirurgicale de fractures sagittales de l’os carpal III chez le trotteur : 14 cas (2003-2015)	Chassagne et al.	Grèce			Jour1	
-Mercredi	AVEF	14h15	14h30	Courtes Communications	M. Lacourt	Utilisation du V-LovTM180 dans la fermeture de l’espace néphro-splénique chez le cheval sous laparoscopie	De Fourmestraux et al.	Grèce			Jour1	
-Mercredi	AVEF	14h30	14h45	Courtes Communications	M. Lacourt	Retrospective Study of Pars Plana Vitrectomy in Private Practice in 95 Horses to Treat Equine Recurrent Uveitis	Leser et al.	Grèce			Jour1	
-Mercredi	AVEF	14h45	15h00	Courtes Communications	M. Lacourt	Metallic Implants at the Cricoid Lead to Less Loss of Abduction and More Biomechanical Stability in Equine Laryngoplasty in Ex Vivo Testing and in Vivo Clinical Cases	Brandenberger et al.	Grèce			Jour1	
-Mercredi	AVEF	15h00	15h15	Courtes Communications	M. Lacourt	Description d’une nouvelle technique de réinnervation laryngée sélective dans le traitement du cornage: étude rétrospective sur 10 chevaux	Rossignol et al.	Grèce			Jour1	
-Mercredi	AVEF	13h45	15h15	Retour d’expérience … Je m’y suis cassé les dents !		Table ronde	O. Lepage; C. Mespoulhes-Rivière; I. Desjardins et A. Giraudet	Rome			TR2	
-Mercredi	AVEF	13h45	14h30	Tout nouveau, pas beau : Quand référer mon nouveau-né ? 		Travaux dirigés	K. Corley & V. Picandet	Genève			TD3	
-Mercredi	AVEF	14h30	15h15	Tout nouveau, pas beau : Quand référer mon nouveau-né ? 		Travaux dirigés	K. Corley & V. Picandet	Genève			TD4	
-Mercredi	AVEF	13h45	14h30	Ce que je (ne) dois (pas) entendre avec mon stéthoscope ? 	CV in box	Travaux pratiques	V. Deniau & M. Depecker	Liège			TP3	
-Mercredi	AVEF	14h30	15h15	Ce que je (ne) dois (pas) entendre avec mon stéthoscope ? 	CV in box	Travaux pratiques	V. Deniau & M. Depecker	Liège			TP4	
-Mercredi	SNVEL	13h45	14h15	Prospective : le modèle économique libéral d’aujourd’hui et de demain		Votre service de garde est-il rentable ? 	J. Devos - Valovet	Espagne			Jour1	
-Mercredi	SNVEL	14h15	14h45	Prospective : le modèle économique libéral d’aujourd’hui et de demain		Chaînes de cliniques : Expériences Pays-Bas, etc 	B. Carrière	Espagne			Jour1	
-Mercredi	SNVEL	14h45	15h15	Prospective : le modèle économique libéral d’aujourd’hui et de demain		La productivité de nos entreprises optimisée grâce à l’organisation vétérinaires/ASV. 	F. Perez - Apform	Espagne			Jour1	
-Mercredi	AVEF	16h00	16H30	Traitements (très) originaux 	V. Picandet	Setton & onguents vésicatoires	F. Desbrosse	Amphithéatre			Jour1	
-Mercredi	AVEF	16H30	17h00	Traitements (très) originaux 	V. Picandet	Larvothérapie and co.	O. Lepage	Amphithéatre			Jour1	
-Mercredi	AVEF	17h00	17h30	Traitements (très) originaux 	V. Picandet	Miel et autres produits pas chers.	G.Kay	Amphithéatre			Jour1	
-Mercredi	AVEF	16h00	16H30	Dentisterie pratique & avancée	P. Chuit (UK speaking)	Decision tree for removal vs. endodontics	J. Carmalt	Pays-Bas			Dent1	
-Mercredi	AVEF	16H30	17h00	Dentisterie pratique & avancée	P. Chuit (UK speaking)	Intra-oral vs. extra-oral extraction.	J. Carmalt	Pays-Bas			Dent1	
-Mercredi	AVEF	17h00	17h30	Dentisterie pratique & avancée	P. Chuit (UK speaking)	Temporo-mandibular joint.	J. Carmalt	Pays-Bas			Dent1	
-Mercredi	AVEF	16h00	16h15	Courtes Communications	A. Couroucé-Malblanc	Test d’effort standardisé pour les jeunes chevaux d’endurance	Robert et al.	Grèce			Jour1	
-Mercredi	AVEF	16h15	16H30	Courtes Communications	A. Couroucé-Malblanc	Influence de la biotine sur la croissance et la qualité de la corne	Moiroud et al.	Grèce			Jour1	
-Mercredi	AVEF	16H30	16h45	Courtes Communications	A. Couroucé-Malblanc	Cas d’une encéphalomyélite chez un cheval eurasien dont l’agent étiologique présente des similitudes avec Sarcocystis neurona	Gueniot et al.	Grèce			Jour1	
-Mercredi	AVEF	16h45	17h00	Courtes Communications	A. Couroucé-Malblanc	Impact de l’âge à la première vaccination contre la grippe équine, à court et à moyen termes, sur le taux d’anticorps protecteurs chez des poulains pur-sang	Fougerolle et al.	Grèce			Jour1	
-Mercredi	AVEF	17h00	17h30	Courtes Communications	A. Couroucé-Malblanc	Cardioversion électrique transveineuse d’une fibrillation atriale sur 50 chevaux à la Faculté Vétérinaire de l’Université de Gand (Belgique)	De Clerq et al.	Grèce			Jour1	
-Mercredi	AVEF	16h00	17h30	Détection & gestion de la douleur (chronique) en pratique		Table ronde	G. Touzot-Jourde; I. Desjardins; V. Coudry	Rome			TR3	
-Mercredi	AVEF	16h00	16h45	Comment bien lire les images (radiographies, échographies) ?		Travaux dirigés	F. Audigié	Genève			TD5	
-Mercredi	AVEF	16h45	17h30	Comment prendre la bonne décision en suivi gynécologique ?		Travaux dirigés	E. Chollet, L. Mangold	Genève			TD6	
-Mercredi	AVEF	16h00	16h45	Comment faire la coprologie dans l’arrière-cuisine ?		Travaux pratiques	P. Camuset; P-H. Pitel	Liège			TP5	
-Mercredi	SNVEL	16h00	17h30	Assemblée Générale		Bilan Moral / Bilan Financier / Modification des Statuts /Stratégie du groupe SNVEL					Jour1	
-Mercredi	AVEF/SNVEL	18h00	19h00	Temps politique SNVEL/AVEF				Amphithéatre			Jour1	
-Mercredi	AVEF/SNVEL	19h30	21h00	Happy hour des partenaires				Expo commerciale			Exhib	
-Mercredi	AVEF/SNVEL	21h00	02h00	Soirée AVEF/SNVEL				Dock Haussman			Diner	
-Jeudi	AVEF	9h00	9h30	Coliques chroniques et intermittentes	V. Picandet	Problématique, définition & méthodes diagnostiques.	H. Amory	Amphithéatre			Jour2	
-Jeudi	AVEF	9h30	10h00	Coliques chroniques et intermittentes	V. Picandet	Ulcères et impaction chronique de l’estomac.		Amphithéatre			Jour2	
-Jeudi	AVEF	10h00	10h30	Coliques chroniques et intermittentes	V. Picandet	Autour du grêle : cas cliniques intestinaux.	A. Couroucé-Malblan	Amphithéatre			Jour2	
-Jeudi	AVEF	9h00	9h30	Imagerie infectieuse	V Coudry	Infections synoviales (articulations et gaines tendineuses).	M.Schramme	Pays-Bas			Jour2	
-Jeudi	AVEF	9h30	10h00	Imagerie infectieuse	V Coudry	Autres infections des membres.	M.Schramme	Pays-Bas			Jour2	
-Jeudi	AVEF	10h00	10h30	Imagerie infectieuse	V Coudry	Infection des régions axiales (abdomen, thorax et al.).	V. Busoni	Pays-Bas			Jour2	
-Jeudi	AVEF	9h00	9h30	Déontologie … en pratique vétérinaire	M Martin-Sisteron	Contractualisation de la continuité des soins, communication auprès des tiers.	M. Veilly	Grèce			Jour2	
-Jeudi	AVEF	9h30	10h00	Déontologie … en pratique vétérinaire	M Martin-Sisteron	Update sur le consentement éclairé.	P. Lassalas	Grèce			Jour2	
-Jeudi	AVEF	10h00	10h30	Déontologie … en pratique vétérinaire	M Martin-Sisteron	Nouveau référentiel en ostéopathie vétérinaire.	I. Lussot	Grèce			Jour2	
-Jeudi	AVEF	9h00	9h15	Courtes Communications	K. Pader	Evaluation of non invasive and continuous monitoring of hemoglobin in anesthetized horses	Scicluna et al.	Rome			Jour2	
-Jeudi	AVEF	9h15	9h30	Courtes Communications	K. Pader	Comparaison de deux tests diagnostiques mesurant la concentration en SAA (Equine Serum Amyloid A) sur les structures synoviales inflammatoires non septiques et septiques	Stack et al.	Rome			Jour2	
-Jeudi	AVEF	9h30	9h45	Courtes Communications	K. Pader	The antimicrobial activity of local anaesthetics against bacterial strains isolated from horses	Adler et al.	Rome			Jour2	
-Jeudi	AVEF	9h45	10h00	Courtes Communications	K. Pader	Ligature de l’artère carotide commune ipsilatérale et traitement topique pour le traitement de l’épistaxis dû à une mycose des poches gutturales (24 chevaux)	Cousty et al.	Rome			Jour2	
-Jeudi	AVEF	10h00	10H15	Courtes Communications	K. Pader	Traitement des sarcoïdes des équidés par injections intralésionnelles de calcium et électro-perméabilisation : étude préliminaire	Galant et al.	Rome			Jour2	
-Jeudi	AVEF	10H15	10h30	Courtes Communications	K. Pader			Rome			Jour2	
-Jeudi	AVEF	9h00	9h45	Comment prendre la bonne décision en suivi gynécologique ?		Travaux dirigés	E. Chollet &L. Mangold	Genève			TD7	
-Jeudi	AVEF	9h45	10h30	Quel prélèvement / conditionnement pour quelle(s) analyse(s) ?		Travaux dirigés	A. Giraudet	Genève			TD8	
-Jeudi	AVEF	9h00	9h45	Comment faire la coprologie dans l’arrière-cuisine ?		Travaux pratiques	P. Camuset &P-H. Pitel	Liège			TP6	
-Jeudi	SNVEL	9h00	9h25	Contraintes règlementaires : plus ou moins ?		Exonéré ou dérogataire ? Le quizz de la délivrance.	D. Quint	Espagne			Jour2	
-Jeudi	SNVEL	9h25	9h50	Contraintes règlementaires : plus ou moins ?		Le Code de déontologie raconté par	Michel Baussier	Espagne			Jour2	
-Jeudi	SNVEL	9h50	10h10	Contraintes règlementaires : plus ou moins ?		Communication : quel budget, quels supports ?	A Daumas & PY Anglaret	Espagne			Jour2	
-Jeudi	SNVEL	10H10	10h30	Contraintes règlementaires : plus ou moins ?		Complémentaire santé obligatoire : les organismes recommandés. 	J. Martinez	Espagne			Jour2	
-Jeudi	AVEF	11h15	11h45	Coliques intermittentes et récidivantes	C. Mespoulhes-Rivière	Gestion des distensions de colon.	V. Picandet	Amphithéatre			Jour2	
-Jeudi	AVEF	11h45	12h15	Coliques intermittentes et récidivantes	C. Mespoulhes-Rivière	Déplacement et torsion de colon récidivante.	M. Lacourt	Amphithéatre			Jour2	
-Jeudi	AVEF	12h15	12h45	Coliques intermittentes et récidivantes	C. Mespoulhes-Rivière	Comment prévenir et gérer les adhérences ?	K. Pader	Amphithéatre			Jour2	
-Jeudi	AVEF	11h15	11h40	Le RESPE ou l’itinéraire d’une réussite contagieuse	G. Fortier	L’expérience du passé.	S. Zientara	Pays-Bas			Jour2	
-Jeudi	AVEF	11h40	12h05	Le RESPE ou l’itinéraire d’une réussite contagieuse	G. Fortier	La situation présente.	A. Couroucé-Malblanc	Pays-Bas			Jour2	
-Jeudi	AVEF	12h05	12h20	Le RESPE ou l’itinéraire d’une réussite contagieuse	G. Fortier	Breaking news :West Nile en France ! 	S. Zientara	Pays-Bas			Jour2	
-Jeudi	AVEF	12h20	12h45	Le RESPE ou l’itinéraire d’une réussite contagieuse	G. Fortier	Quid du futur ?	C. Marcillaud-Pitel	Pays-Bas			Jour2	
-Jeudi	AVEF	11h15	11h45	Arsenal thérapeutique … en pratique	C-F. Louf	Comment valoriser ce qu’on a (et se passer de ce qu’on ne peut avoir) ?	G. Kay	Rome			Jour2	
-Jeudi	AVEF	11h45	12h15	Arsenal thérapeutique … en pratique	C-F. Louf	Médicaments en Équine : respecter les règles.	C. Scicluna	Rome			Jour2	
-Jeudi	AVEF	12h15	12h45	Arsenal thérapeutique … en pratique	C-F. Louf	Bonnes pratiques en pharmaco-vigilance.	E. Fresnay	Rome			Jour2	
-Jeudi	AVEF	11h15	11h30	Courtes Communications	P-H. Pitel	Alimentation de la jument allaitante : pâturer sans concentrés, c’est possible !	Collas et al.	Rome			Jour2	
-Jeudi	AVEF	11h30	11h45	Courtes Communications	P-H. Pitel	Étude des coûts et bénéfices liés à la vermifugation sélective basée sur la coproscopie	Sallé et al.	Rome			Jour2	
-Jeudi	AVEF	11h45	12H00	Courtes Communications	P-H. Pitel	Amaigrissements et troubles locomoteurs atypiques dans un élevage bas-normand	Hamon et al.	Rome			Jour2	
-Jeudi	AVEF	12H00	12h15	Courtes Communications	P-H. Pitel	Multiples cas d’Equine Grass Sickness (EGS) ou Maladie de l’Herbe	Leleu et al.	Rome			Jour2	
-Jeudi	AVEF	12h15	12h30	Courtes Communications	P-H. Pitel			Rome			Jour2	
-Jeudi	AVEF	12h30	12h45	Courtes Communications	P-H. Pitel			Rome			Jour2	
-Jeudi	AVEF	11h15	12H00	Comment bien lire les images (radiographies, échographies) ?		Travaux dirigés	F. Audigié	Genève			TD9	
-Jeudi	AVEF	12h00	12h45	Comment respecter la règlementation en radioprotection équine ?		Travaux dirigés	C. Roy	Genève			TD10	
-Jeudi	AVEF	12h00	12h45	Comment lire des cytologies pneumo-utérines ?		Travaux pratiques	J-M. Betsch; E. Chollet;L. Mangold	Liège			TP7	
-Jeudi	SNVEL	11h15	11h35	Formation continue : que choisir ?		FIF-PL : les nouveaux barêmes	E. Février	Espagne			Jour2	
-Jeudi	SNVEL	11H35	12h00	Formation continue : que choisir ?		Formation Continue : quelle place pour les nouveaux outils ?	M. Gogny	Espagne			Jour2	
-Jeudi	SNVEL	12h00	12h20	Formation continue : que choisir ?		Une marque «formation» SNVEL qui partage nos valeurs	V. Luddeni	Espagne			Jour2	
-Jeudi	SNVEL	12h20	12h45	Formation continue : que choisir ?		Du stage de fin d’étude à l’apprentissage : quelles évolutions possibles ?	H. Hiard/S. Martinot	Espagne			Jour2	
-Jeudi	AVEF	14h15	14h45	Antiobiothérapie - EcoAntibio 2017		Antibio …-gramme et/ou …-tiques	JY Madec	Amphithéatre			Jour2	
-Jeudi	AVEF	14h45	15h45	Antiobiothérapie - EcoAntibio 2017		Fiches BP Antibiothérapieen équine	P. Ciantar,L. Mangold, C. Scicluna,S. Paul Jean Jean et A. Sensenbrenner	Amphithéatre			Jour2	
-Jeudi	AVEF	14h15	14h45	Contusions osseuses : du mythe à la réalité ...	M. Schramme	Contusions osseuses : définition et application au pied.	F. Audigié	Pays-Bas			Jour2	
-Jeudi	AVEF	14h45	15h00	Contusions osseuses : du mythe à la réalité ...	M. Schramme	C.C. Les lésions de contusion osseuse du condyle métacarpien chez les chevaux de sport : étude sur 135 cas.	de Guio et al.	Pays-Bas			Jour2	
-Jeudi	AVEF	15h00	15h15	Contusions osseuses : du mythe à la réalité ...	M. Schramme	Consusions osseuses du boulet chez le cheval de course.	V. Coudry	Pays-Bas			Jour2	
-Jeudi	AVEF	15h15	15h45	Contusions osseuses : du mythe à la réalité ...	M. Schramme	Contusions osseuses des régions moyennes et proximales.	S. Jacquet	Pays-Bas			Jour2	
-Jeudi	AVEF	14h15	14h30	Courtes Communications	J-M. Betsch	Modifications cliniques, biologiques et histologiques induites par une immunisation anti-GnRH chez l’étalon	Dréau et al.	Grèce			Jour2	
-Jeudi	AVEF	14h30	14h45	Courtes Communications	J-M. Betsch	La taille du follicule préovulatoire est-il répétable chez la même jument ?	Bruyas et al.	Grèce			Jour2	
-Jeudi	AVEF	14h45	15h00	Courtes Communications	J-M. Betsch	Une injection unique de 3 mg de buséréline par voie sous-cutanée est-elle aussi efficace qu’une injection de 6 mg pour induire l’ovulation chez la jument?	Normandin et al.	Grèce			Jour2	
-Jeudi	AVEF	15h00	15h15	Courtes Communications	J-M. Betsch	Mise en évidence et suivi par échographie ovarienne transrectale de nouveaux critères pour identifier le follicule dominant et déterminer l’imminence de l’ovulation chez la jument en oestrus - comparaison de différents échographes	Bruyas et al.	Grèce			Jour2	
-Jeudi	AVEF	15h15	15h30	Courtes Communications	J-M. Betsch	Importance de l’état corporel périconceptionnel pour le développement de l’unité fœto-placentaire et le métabolisme des poulains chez le cheval	Robles et al.	Grèce			Jour2	
-Jeudi	AVEF	15h30	15h45	Courtes Communications	J-M. Betsch	Suivi biométrique de la croissance du fœtus équin par échographie transrectale à partir de 180 jours de gestation	Madelaine et al.	Grèce			Jour2	
-Jeudi	AVEF	14h15	15h00	Quel prélèvement / conditionnement pour quelle(s) analyse(s) ?		Travaux dirigés	A. Giraudet	Genève			TD11	
-Jeudi	AVEF	15h00	15h45	Comment respecter la règlementation en radioprotection équine ?		Travaux dirigés	C. Roy	Genève			TD12	
-Jeudi	AVEF	14h15	15h00	Comment opérer en cuisine (pastèques & gigots) ?		Travaux pratiques	C. Mespoulhes-Rivière & M. Lacourt				TP8	
-Jeudi	AVEF/SNVEL	14h15	14h45	Module AVEF - SNVEL «Chef d’Entreprise»	F. Bussieras	Evolution des revenus des vétérinaires libéraux.	F. Courouble	Espagne			Jour2	
-Jeudi	AVEF/SNVEL	14h45	15h15	Module AVEF - SNVEL «Chef d’Entreprise»	F. Bussieras	Enquête sur le temps de travail des libéraux.	O. Serre	Espagne			Jour2	
-Jeudi	AVEF/SNVEL	15h15	15h45	Module AVEF - SNVEL «Chef d’Entreprise»	F. Bussieras	Le financement des soins : les plans de prévention en canine/équine, le forfait mensuel en rurale	J. Finez, P. Buisson, PY. Anglaret	Espagne			Jour2	
-Jeudi	AVEF	16h30	16h50	Thérapie articulaire	M. Gogny	Acide hyaluronique :le retour	S. Wittreck	Amphithéatre			Jour2	
-Jeudi	AVEF	16h50	17h10	Thérapie articulaire	M. Gogny	Thérapie articulaire chez l’homme.	H. Lellouche	Amphithéatre			Jour2	
-Jeudi	AVEF	17h10	17h30	Thérapie articulaire	M. Gogny	Thérapie articulaire chez le cheval.	R. Perrin	Amphithéatre			Jour2	
-Jeudi	AVEF	17h30	18h00	Thérapie articulaire	M. Gogny	Débat et questionnaire pour la salle		Amphithéatre			Jour2	
-Jeudi	AVEF	16h30	18h00	Séance débat : les laparotomies		out ce que vous avez toujours voulu savoir sur les laparos petites ou grandes sans jamais oser le demanderavec dans les rôles principaux : 	K. Pader, C. Bussy, M. Lacourt ; sur une mise en scène de X. Gluntz	Grèce			Jour2	
-Jeudi	AVEF	16h30	16h45	Courtes Communications	S. Jacquet	Intérêt de l’IRM debout dans le traitement chirurgical des fractures du membre chez le cheval	Vila et al.	Grèce			Jour2	
-Jeudi	AVEF	16h45	17h00	Courtes Communications	S. Jacquet	Techniques et indications de l’échographie per-opératoire chez le cheval (113 cas)	Stack et al.	Grèce			Jour2	
-Jeudi	AVEF	17h00	17h15	Courtes Communications	S. Jacquet	La tenosynovite septique de la bourse bicipitale : une pathologie d’origine divers avec un pronostic favorable malgré la sévérité des lésions	Vitte et al.	Grèce			Jour2	
-Jeudi	AVEF	17h15	17h30	Courtes Communications	S. Jacquet	Description de 16 cas de ténosynovite aseptique de la gaine digitale due à des fissures longitudinales des tendons fléchisseurs chez 15 chevaux	Robert et al.	Grèce			Jour2	
-Jeudi	AVEF	17h30	17h45	Courtes Communications	S. Jacquet	Comment faire et interpréter les images échographiques du ligament annulaire palmaire chez le cheval	Tallaj et al.	Grèce			Jour2	
-Jeudi	AVEF	17h45	18h00	Courtes Communications	S. Jacquet	L’échographie du larynx est-elle une aide à la détection précoce de l’hémiplégie laryngée chez le yearling pur-sang ?	Lechartier et al.	Grèce			Jour2	
-Jeudi		16h30	18h00	VétosEntraide				Genève			gratuit	
-Jeudi	AVEF/SNVEL	16h30	17h00	Module AVEF - SNVEL «Chef d’Entreprise»	F. Bussieras	Pourquoi préférer la collaboration libérale ?	P. Cavanna - Resovet	Espagne			Jour2	
-Jeudi	AVEF/SNVEL	17h00	18h00	Module AVEF - SNVEL «Chef d’Entreprise»	F. Bussieras	Nos prix : atelier «fixation des prix» à partir du modèle équin, adaptation à la canine et à la rurale.	L. Faget & J. Loomans.	Espagne			Jour2	
-Monday	EBMS	08h15	10h30	Compensation of Equine Veterinarians - The Challenges	Jim Woodrum, Bob Magnus						EBMS1	
-Monday	EBMS	10h45	12h00	Compensation of Equine Veterinarians - The Challenges	Jim Woodrum, Bob Magnus	Compensation (Continued)					EBMS1	
-Monday	EBMS	13h00	14h30	Compensation of Equine Veterinarians - The Challenges	Jim Woodrum, Bob Magnus	Compensation (Continued)					EBMS2	
-Monday	EBMS	14h45	17h00	Compensation of Equine Veterinarians - The Challenges	Jim Woodrum, Bob Magnus	Compensation (Continued)					EBMS2	
-Tuesday	EBMS	08h15	10h30	Pricing Strategy and its Effect on your Bottom Line	Chuck Johnson, Mike Pownall, Laurent Faget						EBMS3	
-Tuesday	EBMS	10h45	12h00	Pricing Strategy and its Effect on your Bottom Line	Chuck Johnson, Mike Pownall, Laurent Faget	Pricing Strategy (Continued)					EBMS3	
-Tuesday	EBMS	13h00	14h30	Pricing Strategy and its Effect on your Bottom Line	Chuck Johnson, Mike Pownall, Laurent Faget	Pricing Strategy (Continued)					EBMS4	
-Tuesday	EBMS	14h45	17h00	Pricing Strategy and its Effect on your Bottom Line	Chuck Johnson, Mike Pownall, Laurent Faget	Pricing Strategy (Continued)					EBMS4	
-Wednesday	EBMS	08h15	10h30	The Art of Staying Engaged – Matching Professional Demands with Personal Needs	Nicole Mastenbroek, Joop Loomans						EBMS5	
-	EBMS	10h45	12h00	Performance Appraisal	Nicole Mastenbroek Joop Loomans						EBMS5	
-	EBMS			Coaching	Nicole Mastenbroek Joop Loomans						EBMS6	
-	EBMS			Lessons Learned							EBMS6	
-				Leadership & Goal Setting - Practical & Useful Approaches								
