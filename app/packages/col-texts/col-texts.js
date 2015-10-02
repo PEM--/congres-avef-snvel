@@ -1,8 +1,8 @@
 // Options used on the server and the client
 const sharedOptions = {
-  name: 'BasicPages',
+  name: 'Texts',
   schema: {
-    title: { type: String, label: 'Titre', min: 4, max: 256 },
+    page: { type: String, label: 'Titre', min: 4, max: 256 },
     url: { type: String, label: 'URL', min: 3, max: 32 },
     order: { type: Number, label: 'Ordonnancement', min: 1, max: 256, unique: true },
     display: {
@@ -36,19 +36,19 @@ if (Meteor.isServer) {
     defaults: [
       {
         title: 'Mentions légales', url: 'legal', order: 1, display: 'Menu et Footer',
-        content: marked(DEFAULT_LEGAL)
+        content: DEFAULT_LEGAL
       },
       {
         title: 'Confidentialité', url: 'cookie', order: 2, display: 'Menu et Footer',
-        content: marked(DEFAULT_COOKIE)
+        content: DEFAULT_COOKIE
       },
       {
         title: 'Conditions générales de ventes', url: 'cgv', order: 3, display: 'Menu et Footer',
-        content: marked(DEFAULT_CGV)
+        content: DEFAULT_CGV
       },
       {
         title: 'Information non trouvée', url: 'notfound', order: 4, display: 'Aucun',
-        content: marked(DEFAULT_NOTFOUND)
+        content: DEFAULT_NOTFOUND
       }
     ],
     // Set indexes on collection

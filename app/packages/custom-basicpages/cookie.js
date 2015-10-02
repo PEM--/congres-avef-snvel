@@ -1,6 +1,6 @@
 DEFAULT_COOKIE = `
 ## 1. Qui sommes-nous ?
-Bienvenue sur le site https://congres-avef-snvel.fr édité par l'[AVEF](http://www.avef.fr)
+Bienvenue sur le site https://congres-avef-snvel.fr édité par l'AVEF
 ([consultez nos mentions légales](/legal)).
 
 Cette rubrique est consacrée à notre politique de gestion des cookies. Elle vous

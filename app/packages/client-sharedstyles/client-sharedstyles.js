@@ -10,3 +10,10 @@ SD.Views.Client.ColorTheme = {
   roadColor: '#FCA94F',
   grassColor: '#007E5F'
 };
+
+// Link modifier
+SD.Utils.prettyLink = function(text) {
+  return text
+    .replace('AVEF', '<a class="animated" href="http://www.avef.fr" target="_blank">AVEF</a>')
+    .replace('SNVEL', '<a class="animated" href="http://www.snvel.fr" target="_blank">SNVEL</a>');
+};

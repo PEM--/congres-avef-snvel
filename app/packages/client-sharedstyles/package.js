@@ -12,6 +12,7 @@ Package.onUse(function(api) {
     'ecmascript',
     'es5-shim',
     'flemay:less-autoprefixer@1.1.0',
+    'underscorestring:underscore.string@3.2.2',
     'spacedrop:namespaces'
   ]);
   // Included files in this packages

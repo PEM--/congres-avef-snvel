@@ -30,10 +30,11 @@ class BasicPages extends SD.Views.BaseReactMeteor {
     );
     if (!this.data.loading) {
       const item = this.data.item;
+      const html = SD.Utils.prettyLink(marked(item.content));
       nodes = (
         <div className='fadeIn sixteen wide column'>
           <h1>{item.title}</h1>
-          <div dangerouslySetInnerHTML={{__html: item.content}} />
+          <div dangerouslySetInnerHTML={{__html: html}} />
         </div>
       );
     }

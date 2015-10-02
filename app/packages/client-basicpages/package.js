@@ -16,7 +16,8 @@ Package.onUse(function(api) {
     'pierreeric:col-basicpages',
     'pierreeric:main-layout',
     'pierreeric:client-sharedstyles',
-    'pierreeric:client-spinkit'
+    'pierreeric:client-spinkit',
+    'pierreeric:markdown'
   ]);
   // Included files in this packages
   // Files for server and client
