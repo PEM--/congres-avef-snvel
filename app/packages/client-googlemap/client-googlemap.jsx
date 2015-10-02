@@ -33,6 +33,9 @@ if (Meteor.isClient) {
           anchor: new google.maps.Point(20, 55)
         }
       });
+      marker.addListener('click', () => {
+        window.open(this.dict.site, '_blank');
+      });
     });
   });
   Template.BlazeContainerMap.helpers({
