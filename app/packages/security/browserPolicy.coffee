@@ -11,6 +11,9 @@ log.info 'Settings Browser Policy'
 # Allow origin for Meteor hosting
 for origin in [
   '*.meteor.com'
+  '*.meteor.com/*'
+  Meteor.settings.public.proxy.url.split('://')[1]
+  "#{Meteor.settings.public.proxy.url.split('://')[1]}*"
   Meteor.absoluteUrl().split('://')[1]
   Meteor.absoluteUrl('*').split('://')[1]
 ]

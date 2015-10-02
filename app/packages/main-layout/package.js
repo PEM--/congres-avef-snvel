@@ -5,12 +5,13 @@ Package.describe({
 
 Package.onUse(function(api) {
   // Meteor's API version
-    api.versionsFrom('1.2.0.2');
+  api.versionsFrom('1.2.0.2');
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
     'react',
     'underscore',
+    'momentjs:moment',
     'spacedrop:namespaces',
     'pierreeric:client-cookie',
     'pierreeric:client-menu',

@@ -117,6 +117,26 @@ class MainLayout extends SD.Views.BaseReactMeteor {
           // Events
           // Search
         },
+        // Event
+        {
+          '@context': 'http://schema.org',
+          '@type': 'Event',
+          name: dict.title,
+          startDate: moment(dict.startDate).format(),
+          endDate: moment(dict.endDate).format(),
+          url: Meteor.settings.public.proxy.url,
+          location: {
+            '@type': 'Place',
+            sameAs: dict.location.site,
+            name: dict.location.name,
+            address: {
+              '@type': 'PostalAddress',
+              streetAddress: dict.location.address.streetAddress,
+              addressLocality: dict.location.address.addressLocality,
+              postalCode: dict.location.address.postalCode
+            }
+          }
+        },
         // AVEF
         {
           '@context': 'http://schema.org',

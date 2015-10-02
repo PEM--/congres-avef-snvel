@@ -5,6 +5,8 @@ const sharedOptions = {
     title: { type: String, label: 'Titre', min: 5, max: 256 },
     shortTitle: { type: String, label: 'Titre court', min: 5, max: 32 },
     msTileColor: { type: String, label: 'Couleur des tuiles Microsoft', min: 7, max: 7},
+    startDate: { type: String, label: 'Date de démarrage de l\'événement', min: 10, max: 10 },
+    endDate: { type: String, label: 'Date de fin de l\'événement', min: 10, max: 10 },
     cookie: { type: Object, label: 'Définition du cookie' },
     'cookie.name': { type: String, label: 'Nom' },
     'cookie.text': { type: String, label: 'Texte d\'information', min: 10, max: 512 },
@@ -29,7 +31,10 @@ const sharedOptions = {
     'location.map.long': { type: Number, decimal: true, label: 'Longitude' },
     'location.map.zoom': { type: Number, min: 2, max: 21, label: 'Zoom (12 pour une ville)' },
     'location.name': { type: String, min: 2, max: 256, label: 'Nom' },
-    'location.address': { type: String, min: 2, max: 256, label: 'Adresse' },
+    'location.address': { type: Object, label: 'Adresse' },
+    'location.address.streetAddress': { type: String, label: 'Rue', min: 5, max: 256 },
+    'location.address.addressLocality': { type: String, label: 'Rue', min: 2, max: 256 },
+    'location.address.postalCode': { type: String, label: 'Rue', min: 5, max: 128 },
     'location.site': { type: String, max: 256, optional: true, label: 'Site' }
   },
   // Available subscriptions and publications
