@@ -2,11 +2,11 @@
 SD.Views.Client.ColorTheme = {
   brandColor: '#FF7100',
   transBrandColor: 'rgba(255, 113, 0, .2)',
-  bgBrandColor: '#007E5F',
-  textColor: '#FFF9E1',
-  bgColor: '#008DDA',
+  bgBrandColor: '#7bb4ab',
+  textColor: '#000000',
+  bgColor: '#7bb4ab',
   waterColor: '#008DDA',
-  highwayColor: '#ab2222',
+  highwayColor: '#FF7100',
   roadColor: '#FCA94F',
-  grassColor: '#7bb4ab'
+  grassColor: '#007E5F'
 };
