@@ -125,6 +125,8 @@ class MainLayout extends SD.Views.BaseReactMeteor {
           startDate: moment(dict.startDate).format(),
           endDate: moment(dict.endDate).format(),
           url: Meteor.settings.public.proxy.url,
+          image: `${Meteor.settings.public.proxy.url}/favicon-96x96.png`,
+          // Location
           location: {
             '@type': 'Place',
             sameAs: dict.location.site,
@@ -135,6 +137,15 @@ class MainLayout extends SD.Views.BaseReactMeteor {
               addressLocality: dict.location.address.addressLocality,
               postalCode: dict.location.address.postalCode
             }
+          },
+          // Offers
+          offers: {
+            '@type': 'AggregateOffer',
+            // @TODO Get this from the program and the pricing table
+            lowPrice: 70,
+            highPrice: 1200,
+            priceCurrency: 'EUR',
+            url: `${Meteor.settings.public.proxy.url}/subscription`
           }
         },
         // AVEF
