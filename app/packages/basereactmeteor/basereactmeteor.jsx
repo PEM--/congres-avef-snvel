@@ -1,4 +1,4 @@
-// Menu
+// Base class for React component using Meteor data
 
 // Namespace flatteinng
 const { createClass } = React;
