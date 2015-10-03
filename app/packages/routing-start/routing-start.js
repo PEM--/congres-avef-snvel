@@ -21,3 +21,8 @@ if (Meteor.isServer) {
   FlowRouter.setDeferScriptLoading(true);
   log.info('SSR cache set');
 }
+
+// Log route
+FlowRouter.triggers.enter([
+  () => log.info('Routing to', FlowRouter.current().route.name)
+]);

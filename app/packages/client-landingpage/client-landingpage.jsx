@@ -145,7 +145,6 @@ class LandingPage extends Component {
 FlowRouter.route('/', {
   name: 'client-landingpage',
   action() {
-    log.info('Routing to', this.name);
     ReactLayout.render(SD.Views.MainLayout, {
       url: '/',
       content: <LandingPage />

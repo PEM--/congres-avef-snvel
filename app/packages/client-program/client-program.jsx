@@ -93,7 +93,6 @@ const ROUTE_NAME = 'program';
 FlowRouter.route(`/${ROUTE_NAME}`, {
   name: ROUTE_NAME,
   action() {
-    log.info('Routing to', this.name);
     ReactLayout.render(MainLayout, {
       content: <Program />
     });

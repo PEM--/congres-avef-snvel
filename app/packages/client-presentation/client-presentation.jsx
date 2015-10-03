@@ -73,7 +73,6 @@ const ROUTE_NAME = 'presentation';
 FlowRouter.route(`/${ROUTE_NAME}`, {
   name: ROUTE_NAME,
   action() {
-    log.info('Routing to', this.name);
     ReactLayout.render(SD.Views.MainLayout, {
       content: <Presentation />
     });

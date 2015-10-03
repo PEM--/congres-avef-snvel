@@ -25,7 +25,6 @@ const ROUTE_NAME = 'admin';
 FlowRouter.route(`/${ROUTE_NAME}`, {
   name: ROUTE_NAME,
   action(params) {
-    log.info('Routing to', this.name);
     ReactLayout.render(SD.Views.Admin.Layout, {
       content: <Home />
     });
