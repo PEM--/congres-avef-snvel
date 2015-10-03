@@ -24,6 +24,8 @@ kadira:flow-router-ssr
 kadira:react-layout
 cosmos:browserify
 meteorhacks:npm
+velocityjs:velocityjs
+flemay:less-autoprefixer
 
 npm-container
 

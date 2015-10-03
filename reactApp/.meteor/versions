@@ -29,6 +29,7 @@ ecmascript-collections@0.1.6
 ejson@1.0.7
 es5-shim@4.1.13
 fastclick@1.0.7
+flemay:less-autoprefixer@1.1.0
 geojson-utils@1.0.4
 hot-code-push@1.0.0
 html-tools@1.0.5
@@ -85,5 +86,6 @@ tracker@1.0.9
 ui@1.0.8
 underscore@1.0.4
 url@1.0.5
+velocityjs:velocityjs@1.2.1
 webapp@1.2.2
 webapp-hashing@1.0.5

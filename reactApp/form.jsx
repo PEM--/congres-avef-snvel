@@ -12,11 +12,18 @@ class Selector extends Component {
       </option>
     );
     return (
-      <select value={value} className={`ui dropdown ${type}`}>
+      <select value={value} className={`ui fluid search dropdown ${type}`} style={{opacity: 0}}>
         <option value=''>{unselectedValue}</option>
         {nodes}
       </select>
     );
+  }
+  componentDidMount() {
+    $(`.dropdown.${this.props.type}`).velocity({opacity: 1}).dropdown({
+      action: function(e) {
+        console.log('Received', e);
+      }
+    });
   }
 }
 
@@ -49,23 +56,35 @@ class Form extends Component {
     const days = ['Mardi', 'Mercredi', 'Jeudi'];
     const { selectedProgram, selectedDay } = this.state;
     return (
-      <form onChange={this.onProgramChange} className='ui form'>
-        <Selector
-          type='program'
-          value={selectedProgram}
-          unselectedValue='Sélectionner un programme'
-          options={programs}
-        />
-        {
-          selectedProgram === '' ? '' :
-            <Selector
-              type= 'day'
-              value={selectedDay}
-              unselectedValue='Sélectionner un jour'
-              options={days}
-            />
-        }
-      </form>
+      <div className='client main-content ui grid program'>
+        <div className='row'>
+          <div className='sixteen wide column'>
+            <div className='ui grid container'>
+              <section className='row'>
+                <div className='sixteen wide column'>
+                  <form onChange={this.onProgramChange} className='ui form'>
+                    <Selector
+                      type='program'
+                      value={selectedProgram}
+                      unselectedValue='Sélectionner un programme'
+                      options={programs}
+                    />
+                    {
+                      selectedProgram === '' ? '' :
+                        <Selector
+                          type= 'day'
+                          value={selectedDay}
+                          unselectedValue='Sélectionner un jour'
+                          options={days}
+                        />
+                    }
+                  </form>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 }
