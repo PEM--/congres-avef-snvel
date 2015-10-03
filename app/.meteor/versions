@@ -92,6 +92,7 @@ npm-mongo@1.4.39_1
 numeral:languages@1.5.3
 numeral:numeral@1.5.3_1
 observe-sequence@1.0.7
+okgrow:analytics@0.4.1
 ordered-dict@1.0.4
 pierreeric:admin-home@0.0.1
 pierreeric:admin-layout@0.0.1

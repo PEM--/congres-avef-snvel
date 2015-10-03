@@ -507,18 +507,27 @@
 // @strongSelectedBorderColor : rgba(34, 36, 38, 0.5);
 // @disabledBorderColor       : rgba(34, 36, 38, 0.5);
 
-@borderColor               : fade(@orange, 5%);
-@strongBorderColor         : fade(@orange, 15%);
-@internalBorderColor       : fade(@orange, 10%);
-@selectedBorderColor       : fade(@orange, 35%);
-@strongSelectedBorderColor : fade(@orange, 50%);
+// @solidInternalBorderColor  : #FAFAFA;
+// @solidBorderColor          : #D4D4D5;
+// @solidSelectedBorderColor  : #BCBDBD;
+//
+// @whiteBorderColor              : rgba(255, 255, 255, 0.1);
+// @selectedWhiteBorderColor      : rgba(255, 255, 255, 0.8);
+//
+// @solidWhiteBorderColor         : #555555;
+// @selectedSolidWhiteBorderColor : #999999;
+
+
+@borderColor               : fade(@orange, 25%);
+@strongBorderColor         : fade(@orange, 45%);
+@internalBorderColor       : fade(@orange, 20%);
+@selectedBorderColor       : fade(@orange, 45%);
+@strongSelectedBorderColor : fade(@orange, 60%);
 @disabledBorderColor       : fade(@orange, 50%);
 
-
-
-@solidInternalBorderColor  : #FAFAFA;
-@solidBorderColor          : #D4D4D5;
-@solidSelectedBorderColor  : #BCBDBD;
+@solidInternalBorderColor  : @veryLightOrange;
+@solidBorderColor          : @lightOrange;
+@solidSelectedBorderColor  : @orange;
 
 @whiteBorderColor              : rgba(255, 255, 255, 0.1);
 @selectedWhiteBorderColor      : rgba(255, 255, 255, 0.8);

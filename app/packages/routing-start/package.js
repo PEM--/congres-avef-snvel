@@ -13,6 +13,7 @@ Package.onUse(function(api) {
     'es5-shim',
     'session',
     'kadira:flow-router-ssr@3.3.0',
+    'okgrow:analytics@0.4.1',
     'spacedrop:namespaces',
     'pierreeric:logger'
   ];
