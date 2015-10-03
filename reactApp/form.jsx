@@ -11,6 +11,7 @@ class Selector extends Component {
         key={option} value={option}>{option}
       </option>
     );
+    console.log('Rendering Selector', type, value);
     return (
       <select value={value} className={`ui fluid search dropdown ${type}`} style={{opacity: 0}}>
         <option value=''>{unselectedValue}</option>
@@ -26,6 +27,13 @@ class Selector extends Component {
       }
     });
   }
+  componentWillReceiveProps(nextProps) {
+    console.log('Received props change', this.props.type, this.props.value, nextProps);
+    // Force reset when parent changes the props
+    if (nextProps.value === '') {
+      $(`.dropdown.${this.props.type}`).dropdown('restore defaults');
+    }
+  }
 }
 
 class Form extends Component {
@@ -33,32 +41,20 @@ class Form extends Component {
     super(props);
     this.state = {
       selectedProgram: '',
-      selectedDay: ''
-    };
-    this.onProgramChange = (e) => {
-      console.log('Change', e.target.value, e.target);
-      const $target = $(e.target);
-      if ($target.hasClass('program')) {
-        console.log('Changing program must invalidate day and hours');
-        this.setState({
-          selectedProgram: e.target.value,
-          selectedDay: ''
-        });
-      } else if ($target.hasClass('day')) {
-        console.log('Changing day must invalidate hours');
-        this.setState({
-          selectedDay: e.target.value
-        });
-      }
+      selectedDay: '',
+      selectedHour: ''
     };
     this.handleChange = (type, value) => {
       console.log('Received child change', type, value);
       switch (type) {
       case 'program':
-        this.setState({selectedProgram: value, selectedDay: ''});
+        this.setState({selectedProgram: value, selectedDay: '', selectedHour: ''});
         break;
       case 'day':
-        this.setState({selectedDay: value});
+        this.setState({selectedDay: value, selectedHour: ''});
+        break;
+      case 'hour':
+        this.setState({selectedHour: value});
         break;
       default:
         console.warn('Unknown type', type);
@@ -68,7 +64,8 @@ class Form extends Component {
   render() {
     const programs = ['AVEF', 'SNVEL', 'EBMS'];
     const days = ['Mardi', 'Mercredi', 'Jeudi'];
-    const { selectedProgram, selectedDay } = this.state;
+    const hours = ['8h-9h', '9h-10h', '10h-11h', '11h-12h', '12h-13h', '14h-15h', '15h-16h', '16h-17h', '17h-18h', '18h-19h', '19h-20h', '21h-22h', '22h-23h', '23h-24h'];
+    const { selectedProgram, selectedDay, selectedHour } = this.state;
     return (
       <div className='client main-content ui grid program'>
         <div className='row'>
@@ -76,25 +73,37 @@ class Form extends Component {
             <div className='ui grid container'>
               <section className='row'>
                 <div className='sixteen wide column'>
-                  <form onChange={this.onProgramChange} className='ui form'>
-                    <Selector
-                      type='program'
-                      value={selectedProgram}
-                      unselectedValue='Sélectionner un programme'
-                      options={programs}
-                      handleChange={this.handleChange}
-                    />
-                    {
-                      selectedProgram === '' ? '' :
-                        <Selector
-                          type= 'day'
-                          value={selectedDay}
-                          unselectedValue='Sélectionner un jour'
-                          options={days}
-                          handleChange={this.handleChange}
-                        />
-                    }
-                  </form>
+                  <Selector
+                    type='program'
+                    value={selectedProgram}
+                    unselectedValue='Sélectionner un programme'
+                    options={programs}
+                    handleChange={this.handleChange}
+                  />
+                  {
+                    selectedProgram === '' ? '' :
+                      <Selector
+                        type= 'day'
+                        value={selectedDay}
+                        unselectedValue='Sélectionner un jour'
+                        options={days}
+                        handleChange={this.handleChange}
+                      />
+                  }
+                  {
+                    selectedDay === '' ? '' :
+                      <Selector
+                        type='hour'
+                        value={selectedHour}
+                        unselectedValue='Sélectionner un horraire'
+                        options={hours}
+                        handleChange={this.handleChange}
+                      />
+                  }
+                  {
+                    selectedHour === '' ? '' :
+                    <p>Available program</p>
+                  }
                 </div>
               </section>
             </div>
