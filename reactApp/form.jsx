@@ -39,22 +39,38 @@ class Selector extends Component {
 class Form extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      selectedProgram: '',
-      selectedDay: '',
-      selectedHour: ''
-    };
+    console.warn('C-tor props', props);
+    this.programs = ['AVEF', 'SNVEL', 'EBMS'];
+    this.days = ['Mardi', 'Mercredi', 'Jeudi'];
+    this.hours = ['8h-9h', '9h-10h', '10h-11h', '11h-12h', '12h-13h', '14h-15h', '15h-16h', '16h-17h', '17h-18h', '18h-19h', '19h-20h', '21h-22h', '22h-23h', '23h-24h'];
+    let selectedProgram = '', selectedDay = '', selectedHour = '';
+    console.log(props.program);
+    console.log(props.program in this.programs);
+    if (props.program && this.programs.find((item) => props.program === item)) {
+      selectedProgram = props.program;
+      if (props.day && this.days.find((item) => props.day === item)) {
+        selectedDay = props.day;
+        if (props.hour && this.hours.find((item) => props.hour === item)) {
+          selectedHour = props.hour;
+        }
+      }
+    }
+    this.state = { selectedProgram, selectedDay, selectedHour };
+    console.warn(this.state);
     this.handleChange = (type, value) => {
       console.log('Received child change', type, value);
       switch (type) {
       case 'program':
         this.setState({selectedProgram: value, selectedDay: '', selectedHour: ''});
+        FlowRouter.setQueryParams({program: value, day: null, hour: null});
         break;
       case 'day':
         this.setState({selectedDay: value, selectedHour: ''});
+        FlowRouter.setQueryParams({day: value, hour: null});
         break;
       case 'hour':
         this.setState({selectedHour: value});
+        FlowRouter.setQueryParams({hour: value});
         break;
       default:
         console.warn('Unknown type', type);
@@ -62,9 +78,6 @@ class Form extends Component {
     };
   }
   render() {
-    const programs = ['AVEF', 'SNVEL', 'EBMS'];
-    const days = ['Mardi', 'Mercredi', 'Jeudi'];
-    const hours = ['8h-9h', '9h-10h', '10h-11h', '11h-12h', '12h-13h', '14h-15h', '15h-16h', '16h-17h', '17h-18h', '18h-19h', '19h-20h', '21h-22h', '22h-23h', '23h-24h'];
     const { selectedProgram, selectedDay, selectedHour } = this.state;
     return (
       <div className='client main-content ui grid program'>
@@ -77,7 +90,7 @@ class Form extends Component {
                     type='program'
                     value={selectedProgram}
                     unselectedValue='Sélectionner un programme'
-                    options={programs}
+                    options={this.programs}
                     handleChange={this.handleChange}
                   />
                   {
@@ -86,7 +99,7 @@ class Form extends Component {
                         type= 'day'
                         value={selectedDay}
                         unselectedValue='Sélectionner un jour'
-                        options={days}
+                        options={this.days}
                         handleChange={this.handleChange}
                       />
                   }
@@ -96,7 +109,7 @@ class Form extends Component {
                         type='hour'
                         value={selectedHour}
                         unselectedValue='Sélectionner un horraire'
-                        options={hours}
+                        options={this.hours}
                         handleChange={this.handleChange}
                       />
                   }

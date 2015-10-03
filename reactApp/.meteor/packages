@@ -26,6 +26,7 @@ cosmos:browserify
 meteorhacks:npm
 velocityjs:velocityjs
 flemay:less-autoprefixer
+underscorestring:underscore.string
 
 npm-container
 

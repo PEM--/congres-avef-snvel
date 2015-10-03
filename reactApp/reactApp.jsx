@@ -13,14 +13,10 @@ Home = React.createClass({
   }
 });
 
-FlowRouter.route('/', {
-  action: function() { ReactLayout.render(Home); }
-});
+FlowRouter.route('/', { action: () => ReactLayout.render(Home) });
 
-FlowRouter.route('/map', {
-  action: function() { ReactLayout.render(MapWrapper); }
-});
+FlowRouter.route('/map', { action: () => ReactLayout.render(MapWrapper) });
 
 FlowRouter.route('/form', {
-  action: function() { ReactLayout.render(Views.Form); }
+  action: (params, queryParams) => ReactLayout.render(Views.Form, queryParams)
 });
