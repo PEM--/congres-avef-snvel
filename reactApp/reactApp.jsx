@@ -16,7 +16,3 @@ Home = React.createClass({
 FlowRouter.route('/', { action: () => ReactLayout.render(Home) });
 
 FlowRouter.route('/map', { action: () => ReactLayout.render(MapWrapper) });
-
-FlowRouter.route('/form', {
-  action: (params, queryParams) => ReactLayout.render(Views.Form, queryParams)
-});

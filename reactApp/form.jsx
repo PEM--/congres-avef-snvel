@@ -128,3 +128,26 @@ class Form extends Component {
 }
 
 Views.Form = Form;
+
+class FormLayout extends Component {
+  render() {
+    return (
+      <div>
+      <h1>Form</h1>
+      {this.props.content}
+      </div>
+    );
+  }
+}
+
+FlowRouter.route('/form', {
+  action(params, queryParams) {
+    ReactLayout.render(FormLayout, {
+      content: <Views.Form
+        program={queryParams.program}
+        day={queryParams.day}
+        hout={queryParams.hour}
+      />
+    });
+  }
+});
