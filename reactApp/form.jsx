@@ -27,33 +27,28 @@ class Selector extends Component {
       }
     });
   }
-  componentWillReceiveProps(nextProps) {
-    console.log('Received props change', this.props.type, this.props.value, nextProps);
-    // Force reset when parent changes the props
-    if (nextProps.value === '') {
-      $(`.dropdown.${this.props.type}`).dropdown('restore defaults');
-    }
-  }
 }
 
 class Form extends Component {
   constructor(props) {
     super(props);
-    this.state = { selectedProgram: '', selectedDay: '', selectedHour: '' };
     this.handleChange = (type, value) => {
       console.log('Received child change', type, value);
       switch (type) {
       case 'program':
-        this.setState({selectedProgram: value, selectedDay: '', selectedHour: ''});
-        FlowRouter.setQueryParams({program: value, day: null, hour: null});
+        FlowRouter.setQueryParams({
+          program: value, day: null, hour: null
+        });
         break;
       case 'day':
-        this.setState({selectedDay: value, selectedHour: ''});
-        FlowRouter.setQueryParams({day: value, hour: null});
+        FlowRouter.setQueryParams({
+          day: value, hour: null
+        });
         break;
       case 'hour':
-        this.setState({selectedHour: value});
-        FlowRouter.setQueryParams({hour: value});
+        FlowRouter.setQueryParams({
+          hour: value
+        });
         break;
       default:
         console.warn('Unknown type', type);
@@ -61,16 +56,20 @@ class Form extends Component {
     };
   }
   _setParams() {
-    let { selectedProgram, selectedDay, selectedHour } = this.state;
     const { program, day, hour } = this.props;
     if (program && this.programs.find((item) => program === item)) {
-      selectedProgram = program;
       if (day && this.days.find((item) => day === item)) {
-        selectedDay = day;
         if (hour && this.hours.find((item) => hour === item)) {
-          selectedHour = hour;
+          //selectedHour = hour;
+          console.log('Router state', program, day, hour);
+        } else if (Meteor.isClient) {
+          FlowRouter.setQueryParams({hour: null});
         }
+      } else if (Meteor.isClient) {
+        FlowRouter.setQueryParams({day: null, hour: null});
       }
+    } else if (Meteor.isClient) {
+      FlowRouter.setQueryParams({program: null, day: null, hour: null});
     }
   }
   render() {
@@ -78,7 +77,8 @@ class Form extends Component {
     this.days = ['Mardi', 'Mercredi', 'Jeudi'];
     this.hours = ['8h-9h', '9h-10h', '10h-11h', '11h-12h', '12h-13h', '14h-15h', '15h-16h', '16h-17h', '17h-18h', '18h-19h', '19h-20h', '21h-22h', '22h-23h', '23h-24h'];
     this._setParams();
-    const { selectedProgram, selectedDay, selectedHour } = this.state;
+    const { program, day, hour } = this.props;
+    console.log('program', program, 'day', day, 'hour', hour);
     return (
       <div className='client main-content ui grid program'>
         <div className='row'>
@@ -87,34 +87,37 @@ class Form extends Component {
               <section className='row'>
                 <div className='sixteen wide column'>
                   <Selector
+                    key={program}
                     type='program'
-                    value={selectedProgram}
+                    value={program}
                     unselectedValue='Sélectionner un programme'
                     options={this.programs}
                     handleChange={this.handleChange}
                   />
                   {
-                    selectedProgram === '' ? '' :
+                    !program ? '' :
                       <Selector
+                        key={day}
                         type= 'day'
-                        value={selectedDay}
+                        value={day}
                         unselectedValue='Sélectionner un jour'
                         options={this.days}
                         handleChange={this.handleChange}
                       />
                   }
                   {
-                    selectedDay === '' ? '' :
+                    !day ? '' :
                       <Selector
+                        key={hour}
                         type='hour'
-                        value={selectedHour}
+                        value={hour}
                         unselectedValue='Sélectionner un horraire'
                         options={this.hours}
                         handleChange={this.handleChange}
                       />
                   }
                   {
-                    selectedHour === '' ? '' :
+                    !hour ? '' :
                     <p>Available program</p>
                   }
                 </div>
@@ -146,7 +149,7 @@ FlowRouter.route('/form', {
       content: <Views.Form
         program={queryParams.program}
         day={queryParams.day}
-        hout={queryParams.hour}
+        hour={queryParams.hour}
       />
     });
   }

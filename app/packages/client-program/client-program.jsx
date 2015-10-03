@@ -49,23 +49,16 @@ class Selector extends Component {
 class Program extends BaseReactMeteor {
   constructor(props) {
     super(props);
-    this.state = { selectedProgram: '', selectedDay: '', selectedHour: '' };
     this.handleChange = (type, value) => {
       log.debug('Received child change', type, value);
       switch (type) {
       case 'program':
-        //delete this.props.day;
-        //delete this.props.hour;
-        this.setState({selectedProgram: value, selectedDay: '', selectedHour: ''});
         FlowRouter.setQueryParams({program: value, day: null, hour: null});
         break;
       case 'day':
-        //delete this.props.hour;
-        this.setState({selectedDay: value, selectedHour: ''});
         FlowRouter.setQueryParams({day: value, hour: null});
         break;
       case 'hour':
-        this.setState({selectedHour: value});
         FlowRouter.setQueryParams({hour: value});
         break;
       default:
@@ -84,19 +77,18 @@ class Program extends BaseReactMeteor {
     this.programsOptions = _.uniq(_.flatten(_.pluck(items, 'programs')));
     const { program, day, hour } = this.props;
     if (program && this.programsOptions.find((item) => program === item)) {
-      this.state.selectedProgram = program;
-    }
-    if (this.state.selectedProgram !== '') {
       const reducedItemsOnProgram = _.filter(items,
-        (item) => _.contains(item.programs, this.state.selectedProgram));
+        (item) => _.contains(item.programs, program));
       this.daysOptions = _.uniq(_.pluck(reducedItemsOnProgram, 'day'));
       if (day && this.daysOptions.find((item) => day === item)) {
-        this.state.selectedDay = day;
-      }
-      if (this.state.selectedDay) {
-        const reducedItemsOnDays = _.where(reducedItemsOnProgram, {day: this.state.selectedDay});
+        const reducedItemsOnDays = _.where(reducedItemsOnProgram, {day});
         this.hoursOptions = [];
+        // @TODO
+      } else if (Meteor.isClient) {
+        FlowRouter.setQueryParams({day: null, hour: null});
       }
+    } else if (Meteor.isClient) {
+      FlowRouter.setQueryParams({program: null, day: null, hour: null});
     }
   }
   render() {
@@ -106,7 +98,7 @@ class Program extends BaseReactMeteor {
       return this.loadingRenderer();
     }
     this._setParams();
-    const { selectedProgram, selectedDay, selectedHour } = this.state;
+    const { program, day, hour } = this.props;
     return (
       <div className='client main-content ui grid program'>
         <div className='row'>
@@ -116,39 +108,39 @@ class Program extends BaseReactMeteor {
                 <div className='sixteen wide column'>
                   <Selector
                     type='program'
-                    value={selectedProgram}
+                    value={program}
                     unselectedValue='Sélectionner un programme'
                     options={this.programsOptions}
                     handleChange={this.handleChange}
                   />
                   {
-                    selectedProgram === '' ? '' :
+                    !program ? '' :
                       <Selector
                         type= 'day'
-                        value={selectedDay}
+                        value={day}
                         unselectedValue='Sélectionner un jour'
                         options={this.daysOptions}
                         handleChange={this.handleChange}
                       />
                   }
                   {
-                    selectedDay === '' ? '' :
+                    !day ? '' :
                       <Selector
                         type='hour'
-                        value={selectedHour}
-                        unselectedValue='Sélectionner un horraire'
+                        value={hour}
+                        unselectedValue='Sélectionner un horraire de début'
                         options={this.hoursOptions}
                         handleChange={this.handleChange}
                       />
                   }
                   {
-                    selectedHour === '' ? '' :
+                    !hour ? '' :
                     <p>Available program</p>
                   }
                 </div>
               </section>
               {
-                selectedHour === '' ? '' :
+                !hour ? '' :
                 <SocialSharers />
               }
             </div>
