@@ -12,27 +12,41 @@ const { programs } = SD.Structure;
 class Selector extends Component {
   constructor(props) {
     super(props);
-    this.onSelect = (e) => {
-      log.debug('Selected', e);
-      this.props.selectCb();
-    };
-    this.render = () => {
-      const { type, unselectedValue, options } = this.props;
-      const nodes = options.map(function(option) {
-        return <option key={option} value={option}>{option}</option>;
-      });
-      return (
-        <select value='' name={type} className={`ui fluid search dropdown ${type}`} style={{opacity: 0}}>
-          <option value=''>{unselectedValue}</option>
-          {nodes}
-        </select>
-      );
-    };
+  }
+  render() {
+    const { value, type, unselectedValue, options } = this.props;
+    const nodes = options.map(
+      (option) => <option
+        key={option} value={option}>{option}
+      </option>
+    );
+    console.log('Rendering Selector', type, value);
+    return (
+      <select value={value} className={`ui fluid search dropdown ${type}`} style={{opacity: 0}}>
+        <option value=''>{unselectedValue}</option>
+        {nodes}
+      </select>
+    );
   }
   componentDidMount() {
-    $('.dropdown').velocity({opacity: 1}).dropdown();
+    $(`.dropdown.${this.props.type}`).velocity({opacity: 1}).dropdown({
+      onChange: (value, text, $choice) => {
+        console.log('Received', value, text, $choice, this.props);
+        this.props.handleChange(this.props.type, value);
+      }
+    });
+  }
+  componentWillReceiveProps(nextProps) {
+    console.log('Received props change', this.props.type, this.props.value, nextProps);
+    // Force reset when parent changes the props
+    if (nextProps.value === '') {
+      $(`.dropdown.${this.props.type}`).dropdown('restore defaults');
+    }
   }
 }
+
+
+
 
 // Program page component
 class Program extends BaseReactMeteor {
@@ -98,4 +112,6 @@ FlowRouter.route(`/${ROUTE_NAME}`, {
     });
   }
 });
-log.info(`Route ${ROUTE_NAME} declared`);
+if (Meteor.isServer) {
+  log.info(`Route ${ROUTE_NAME} declared`);
+}

@@ -38,4 +38,6 @@ FlowRouter.route(`/${ROUTE_NAME}`, {
     });
   }
 });
-log.info(`Route ${ROUTE_NAME} declared`);
+if (Meteor.isServer) {
+  log.info(`Route ${ROUTE_NAME} declared`);
+}

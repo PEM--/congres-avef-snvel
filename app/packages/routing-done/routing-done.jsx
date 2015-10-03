@@ -2,7 +2,7 @@
 
 // Routing bor BasicPages
 // Isomorhic function
-var setBasicPageRoutes = function() {
+const setBasicPageRoutes = function() {
   let basicPages = SD.Structure.basicPages.collection.find().fetch();
   basicPages.forEach(function(page) {
     FlowRouter.route(`/${page.url}`, {
@@ -13,7 +13,9 @@ var setBasicPageRoutes = function() {
         });
       }
     });
-    log.info(`Route ${page.url} declared`);
+    if (Meteor.isServer) {
+      log.info(`Route ${page.url} declared`);
+    }
   });
 };
 // For the BasicPages, the route cannot be determined before Meteor has
