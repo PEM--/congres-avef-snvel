@@ -1,4 +1,5 @@
 {
+  "ecmaVersion": 6,
   "libs": [
     "browser",
     "jquery"
@@ -6,9 +7,6 @@
   "loadEagerly": [
     "app/**/*.js",
     "app/**/*.jsx"
-  ],
-  "dontLoad": [
-
   ],
   "plugins": {
     "complete_strings": {},
