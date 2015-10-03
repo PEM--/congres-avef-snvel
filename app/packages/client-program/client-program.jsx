@@ -82,8 +82,12 @@ class Program extends BaseReactMeteor {
       this.daysOptions = _.uniq(_.pluck(reducedItemsOnProgram, 'day'));
       if (day && this.daysOptions.find((item) => day === item)) {
         const reducedItemsOnDays = _.where(reducedItemsOnProgram, {day});
-        this.hoursOptions = [];
-        // @TODO
+        this.hoursOptions = _.uniq(_.pluck(reducedItemsOnDays, 'begin'));
+        if (hour && this.hoursOptions.find((item) => hour === item)) {
+          log.debug('Router state', program, day, hour);
+        } else if (Meteor.icClient) {
+          FlowRouter.setQueryParams({hour: null});
+        }
       } else if (Meteor.isClient) {
         FlowRouter.setQueryParams({day: null, hour: null});
       }
