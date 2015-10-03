@@ -20,8 +20,9 @@ class Selector extends Component {
   }
   componentDidMount() {
     $(`.dropdown.${this.props.type}`).velocity({opacity: 1}).dropdown({
-      action: function(e) {
-        console.log('Received', e);
+      onChange: (value, text, $choice) => {
+        console.log('Received', value, text, $choice, this.props);
+        this.props.handleChange(this.props.type, value);
       }
     });
   }
@@ -50,6 +51,19 @@ class Form extends Component {
         });
       }
     };
+    this.handleChange = (type, value) => {
+      console.log('Received child change', type, value);
+      switch (type) {
+      case 'program':
+        this.setState({selectedProgram: value, selectedDay: ''});
+        break;
+      case 'day':
+        this.setState({selectedDay: value});
+        break;
+      default:
+        console.warn('Unknown type', type);
+      }
+    };
   }
   render() {
     const programs = ['AVEF', 'SNVEL', 'EBMS'];
@@ -68,6 +82,7 @@ class Form extends Component {
                       value={selectedProgram}
                       unselectedValue='Sélectionner un programme'
                       options={programs}
+                      handleChange={this.handleChange}
                     />
                     {
                       selectedProgram === '' ? '' :
@@ -76,6 +91,7 @@ class Form extends Component {
                           value={selectedDay}
                           unselectedValue='Sélectionner un jour'
                           options={days}
+                          handleChange={this.handleChange}
                         />
                     }
                   </form>
