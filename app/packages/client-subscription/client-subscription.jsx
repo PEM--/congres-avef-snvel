@@ -58,27 +58,34 @@ class Steps extends Component {
 // Signup page component
 class Subscription extends Component {
   setRouterParams() {
+    let step = this.props.step;
     // Check provided step as URL
-    if (!this.props.step || this.props.step < 1 || this.props.step > 4) {
-      FlowRouter.setQueryParams({step: 1});
+    if (!step || step < 1 || step > 4) {
+      step = 1;
     }
-  }
-  isSubscriptionCompleted() {
+    // Check user's connection
     const userId = Meteor.userId();
     if (!userId) {
-      return false;
+      step = 1;
+    // Check user's roles
+    } else if (Roles.userIsInRole(userId, ['admin', 'registered'])) {
+      step = 'report';
+    } else if (Roles.userIsInRole(userId, 'step2')) {
+      step = 2;
+    } else if (Roles.userIsInRole(userId, 'step3')) {
+      step = 3;
+    } else if (Roles.userIsInRole(userId, 'step4')) {
+      step = 4;
     }
-    // Admins have full access and doesn't need to register
-    if (Roles.userIsInRole(userId, 'admin')) {
-      return true;
+    // Redirect to the appropriate step
+    if (Meteor.isClient) {
+      FlowRouter.setQueryParams({step});
     }
-    // @TODO Check this against DB
-    return false;
   }
   render() {
-    log.debug('Rendering Subscription', this.props.step);
-    this.setRouterParams();
     const { step } = this.props;
+    log.debug('Rendering Subscription', step);
+    this.setRouterParams();
     return (
       <div className='client main-content ui grid subscription'>
         <div className='row'>
@@ -94,8 +101,8 @@ class Subscription extends Component {
                       </div>
                   }
                   {
-                    this.isSubscriptionCompleted() ?
-                      <SubscriptionRecap /> :
+                    step === 'report' ?
+                      <SubscriptionReport /> :
                       <Steps step={step} />
                   }
                 </div>
@@ -113,6 +120,9 @@ const ROUTE_NAME = 'subscription';
 FlowRouter.route(`/${ROUTE_NAME}`, {
   name: ROUTE_NAME,
   action(params, queryParams) {
+    if (Meteor.isServer) {
+      console.log('***', Meteor.user());
+    }
     ReactLayout.render(SD.Views.MainLayout, {
       content: <Subscription step={queryParams.step} />
     });

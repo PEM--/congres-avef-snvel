@@ -27,6 +27,10 @@ class SignonSignoffItem extends Component {
       if (e) {e.preventDefault(); }
       log.info('User logged out');
       Meteor.logout();
+      // Case of a connection in the subscription screens
+      if (FlowRouter.current().context.pathname === '/subscription') {
+        FlowRouter.go('/');
+      }
       this.props.closeMenu(e);
     };
     this.render = () => {

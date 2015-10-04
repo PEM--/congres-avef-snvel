@@ -70,7 +70,9 @@ pierreeric:client-subscription
 # Must be the last one that create a routing
 pierreeric:routing-done
 
-spacedrop:namespaces
-pierreeric:col-subscribers
-underscorestring:underscore.string
-alanning:roles
+# Dev only
+#spacedrop:namespaces
+#pierreeric:col-subscribers
+#underscorestring:underscore.string
+#alanning:roles
+#kadira:flow-router-ssr

@@ -83,7 +83,7 @@ class LogInForm extends Component {
                   <input type='password' name='password' ref='password' placeholder="Votre mot de passe"/>
                 </div>
               </div>
-              <button type='submit' className='ui fluid large submit button primary'>Connectez-vous</button>
+              <button type='submit' className='ui fluid large submit button primary'>Je me connecte</button>
             </div>
           </form>
           {errorMessage}

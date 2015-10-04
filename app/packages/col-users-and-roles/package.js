@@ -14,7 +14,8 @@ Package.onUse(function(api) {
   api.use(shared.concat([
     'accounts-password',
     'spacedrop:basecollection',
-    'pierreeric:logger'
+    'pierreeric:logger',
+    'pierreeric:routing-start'
   ]));
   api.imply(shared);
   // Included files in this packages

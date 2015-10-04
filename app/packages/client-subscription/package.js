@@ -9,6 +9,8 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
+    'tracker',
+    'alanning:roles@1.2.13',
     'kadira:react-layout@1.3.1',
     'flemay:less-autoprefixer@1.1.0',
     'pierreeric:basereactmeteor',
