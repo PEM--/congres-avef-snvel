@@ -36,7 +36,6 @@ section.client.subscription.row {
     background-color: @veryLightOrange;
     &::after { background-color: @veryLightOrange; }
     i.icon.fa::before { color: @orange !important; }
-    button { color: @veryLightOrange !important; }
   }
   .ui.attached.segment {
     border-top: 1px solid fade(@orange, 30%) !important;
@@ -49,9 +48,7 @@ section.client.subscription.row {
     .ui.message span { color: @veryLightOrange; }
     .ui.attached.segment {
       background-color: white !important;
-      * {
-        color: @green !important;
-      }
+      *:not(button) { color: @green !important; }
     }
   }
 }

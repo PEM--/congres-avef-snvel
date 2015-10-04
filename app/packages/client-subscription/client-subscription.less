@@ -3,11 +3,14 @@
 // Share themes variables
 @import (reference) url('/packages/client-sharedstyles/client-sharedstyles.less');
 
-.client.subscription {
+div.client.subscription {
   // Entrance animation
   opacity: 0;
   animation: fadeInUp @defaultDuration @defaultEasing forwards;
   .ui.steps .step .content .description { text-align: left; }
+  section:last-of-type {
+    margin-bottom: 1.5rem;
+  }
 
   // Mobile specifics
   @media screen and (max-width: @largestMobileScreen) {

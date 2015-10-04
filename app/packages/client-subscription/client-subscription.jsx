@@ -58,8 +58,50 @@ class Steps extends Component {
 
 // Signup page component
 class Subscription extends Component {
-  setRouterParams() {
-    let step = this.props.step;
+  render() {
+    const { step } = this.props;
+    log.debug('Rendering Subscription', step);
+    return (
+      <div className='client main-content ui grid subscription'>
+        <div className='row'>
+          <div className='sixteen wide column'>
+            <div className='ui grid container'>
+              <section className='row'>
+                <div className='sixteen wide column'>
+                  <h1>Inscription</h1>
+                  {
+                    Meteor.user() ? '' :
+                      <div className='ui message'>
+                        Déjà inscrit ? <a className='animated' href='/login'>Connectez-vous</a>
+                      </div>
+                  }
+                </div>
+              </section>
+              <SocialSharers />
+              <section className='row'>
+                <div className='sixteen wide column'>
+                  {
+                    step === 'report' ?
+                      <SubscriptionReport /> :
+                      <Steps step={step} />
+                  }
+                </div>
+              </section>
+              <SocialSharers />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+}
+
+// Routing
+const ROUTE_NAME = 'subscription';
+FlowRouter.route(`/${ROUTE_NAME}`, {
+  name: ROUTE_NAME,
+  action(params, queryParams) {
+    let step = queryParams.step;
     // Check provided step as URL
     if (!step || step < 1 || step > 4) {
       step = 1;
@@ -82,51 +124,8 @@ class Subscription extends Component {
     if (Meteor.isClient) {
       FlowRouter.setQueryParams({step});
     }
-  }
-  render() {
-    const { step } = this.props;
-    log.debug('Rendering Subscription', step);
-    this.setRouterParams();
-    return (
-      <div className='client main-content ui grid subscription'>
-        <div className='row'>
-          <div className='sixteen wide column'>
-            <div className='ui grid container'>
-              <SocialSharers />
-              <section className='row'>
-                <div className='sixteen wide column'>
-                  <h1>Inscription</h1>
-                  {
-                    Meteor.user() ? '' :
-                      <div className='ui message'>
-                        Déjà inscrit ? <a className='animated' href='/login'>Connectez-vous</a>
-                      </div>
-                  }
-                  {
-                    step === 'report' ?
-                      <SubscriptionReport /> :
-                      <Steps step={step} />
-                  }
-                </div>
-              </section>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
-
-// Routing
-const ROUTE_NAME = 'subscription';
-FlowRouter.route(`/${ROUTE_NAME}`, {
-  name: ROUTE_NAME,
-  action(params, queryParams) {
-    if (Meteor.isServer) {
-      console.log('***', Meteor.user());
-    }
     ReactLayout.render(SD.Views.MainLayout, {
-      content: <Subscription step={queryParams.step} />
+      content: <Subscription step={step} />
     });
   }
 });
