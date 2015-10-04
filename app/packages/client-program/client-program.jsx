@@ -118,7 +118,7 @@ class ProgramList extends Component {
       );
     });
     return (
-      <section className='row'>
+      <section className='row program-list'>
         <div className='sixteen wide column'>
           <div className="ui relaxed divided list">
             {nodes}
