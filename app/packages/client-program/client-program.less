@@ -7,4 +7,39 @@
   // Entrance animation
   opacity: 0;
   animation: fadeInUp @defaultDuration @defaultEasing forwards;
+
+  // Ensure footer does't overlap on small heigh screen
+  min-height: 20rem;
+  // Selectors
+  .row.selectors {
+    height: 10rem;
+    select {
+      margin-bottom: .5rem;
+    }
+  }
+  // List of items (programs)
+  .item {
+    // List of flags contained in a flexbox for restricting their global width
+    .ui.image {
+      max-width: 6rem;
+      width: 6rem;
+      min-height: 5rem;
+      .flags {
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: stretch;
+        flex-direction: column;
+        .svg-container {
+          flex-grow: 1;
+          flex-shrink: 1;
+          flex-basis: 1;
+          width: 100%;
+          margin-bottom: .5rem !important;
+          img {
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
 }

@@ -20,7 +20,8 @@ const REGION_CODES = [
   {room: 'Rome', region: 'IT'},
   {room: 'Expo commerciale', region: 'UM'},
   {room: 'Dock Haussman', region: 'CN'},
-  {room: 'Terrasse Hotel', region: 'BR'}
+  {room: 'Terrasse Hotel', region: 'BR'},
+  {room: 'NA', region: 'CN'}
 ];
 
 class Selector extends Component {
@@ -63,34 +64,68 @@ class ProgramList extends Component {
   render() {
     const { selectedItems } = this.props;
     log.debug('selectedItems', selectedItems);
-    const nodes = selectedItems.map((item) => {
+    const nodes = selectedItems.map((item, idx) => {
       return (
-        <div>
-          <section className='row'>
-            <div className='four wide column'>
+        <div className='item' key={idx}>
+          <div className='ui image'>
+            <div className='flags'>
               {
                 item.rooms.map((room) => {
                   return (
-                    <img key={room}
-                      className='flag'
-                      src={`/img/${_.findWhere(REGION_CODES, {room}).region}.svg`}
-                      alt={room} />
+                    <div key={room} className='svg-container'>
+                      <img
+                        src={`/img/${_.findWhere(REGION_CODES, {room}).region}.svg`}
+                        alt={room} />
+                    </div>
                     );
                 })
               }
             </div>
-            <div className='twelve wide column'>
-              <h2>{item.session}</h2>
+          </div>
+          <div className='content'>
+            <h2>{item.session}</h2>
+            <div className='description'>
               {
                 item.conference === 'NA' ? '' :
                   <h3>{item.conference}</h3>
               }
+              <p>
+                <b>Horaires</b> : <time>{item.begin}</time>-<time>{item.end}</time>
+              </p>
+              <p>
+                <b>Salle(s)</b> : <ul>
+                  {
+                    item.rooms.map((room) => <li key={room}>{room}</li>)
+                  }
+                </ul>
+              </p>
+              {
+                item.moderator === 'NA' ? '' :
+                  <p>
+                    <b>Modérateur</b> : {item.moderator}
+                  </p>
+              }
+              <p>
+                <b>Intervenant(s)</b> : <ul>
+                  {
+                    item.speakers.map((speaker) => <li key={speaker}>{speaker}</li>)
+                  }
+                </ul>
+              </p>
             </div>
-          </section>
+          </div>
         </div>
       );
     });
-    return (<div>{nodes}</div>);
+    return (
+      <section className='row'>
+        <div className='sixteen wide column'>
+          <div className="ui list">
+            {nodes}
+          </div>
+        </div>
+      </section>
+    );
   }
 }
 
@@ -158,7 +193,7 @@ class Program extends BaseReactMeteor {
         <div className='row'>
           <div className='sixteen wide column'>
             <div className='ui grid container'>
-              <section className='row'>
+              <section className='row selectors'>
                 <div className='sixteen wide column'>
                   <Selector
                     type='program'
