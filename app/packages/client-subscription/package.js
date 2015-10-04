@@ -19,6 +19,12 @@ Package.onUse(function(api) {
   // Included files in this packages
   // Files for server and client
   api.addFiles([
+    'logger.js',
+    'step1.jsx',
+    'step2.jsx',
+    'step3.jsx',
+    'step4.jsx',
+    'report.jsx',
     'client-subscription.jsx',
     'client-subscription.less'
   ]);

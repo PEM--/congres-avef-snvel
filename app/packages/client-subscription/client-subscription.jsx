@@ -1,28 +1,8 @@
 // Landing-page
 
-// Create a logger
-const log = Logger.createLogger('Client Subscription');
-
 // Namespace flatteinng
 const { Component } = React;
-
-class SubscribedScreen extends Component {
-  render() {
-    return (
-      <div>
-        <h2>Voici le contenu de votre inscription</h2>
-        <p>
-          <ul>
-            <li>Un message de bienvenu</li>
-            <li>Le QR code en pleine page</li>
-            <li>Les droits souscrits</li>
-            <li>Les conférences disponibles pour ces droits</li>
-          </ul>
-        </p>
-      </div>
-    );
-  }
-}
+const { SubscriptionStep2 } = SD.Views.Client;
 
 class Steps extends Component {
   getStepClass(templateStep) {
@@ -59,27 +39,39 @@ class Steps extends Component {
           {nodes}
         </div>
         <div className='ui attached segment'>
-          <p>
-            Step 1 content
-          </p>
+          {step === 1 ? <SubscriptionStep1 /> : ''}
+          {step === 2 ? <SubscriptionStep2 /> : ''}
+          {step === 3 ? <SubscriptionStep3 /> : ''}
+          {step === 4 ? <SubscriptionStep4 /> : ''}
         </div>
       </div>
     );
   }
 }
 
-
 // Signup page component
 class Subscription extends Component {
-  _setParams() {
+  setRouterParams() {
     // Check provided step as URL
     if (!this.props.step || this.props.step < 1 || this.props.step > 4) {
       FlowRouter.setQueryParams({step: 1});
     }
   }
+  isSubscriptionCompleted() {
+    const userId = Meteor.userId();
+    if (!userId) {
+      return false;
+    }
+    // Admins have full access and doesn't need to register
+    if (Roles.userIsInRole(userId, 'admin')) {
+      return true;
+    }
+    // @TODO Check this against DB
+    return false;
+  }
   render() {
     log.debug('Rendering Subscription', this.props.step);
-    this._setParams();
+    this.setRouterParams();
     const { step } = this.props;
     return (
       <div className='client main-content ui grid subscription'>
@@ -96,8 +88,8 @@ class Subscription extends Component {
                       </div>
                   }
                   {
-                    Meteor.user() ?
-                      <SubscribedScreen /> :
+                    this.isSubscriptionCompleted() ?
+                      <SubscriptionRecap /> :
                       <Steps step={step} />
                   }
                 </div>

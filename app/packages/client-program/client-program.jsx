@@ -156,7 +156,7 @@ class Program extends BaseReactMeteor {
     const items = loading ? [] : programs.collection.find().fetch();
     return { loading, items };
   }
-  _setParams() {
+  setRouterParams() {
     const { items } = this.data;
     this.programsOptions = _.chain(items)
       .pluck('programs').flatten().uniq()
@@ -190,7 +190,7 @@ class Program extends BaseReactMeteor {
     if (loading) {
       return this.loadingRenderer();
     }
-    this._setParams();
+    this.setRouterParams();
     const { program, day, hour } = this.props;
     return (
       <div className='client main-content ui grid program'>
