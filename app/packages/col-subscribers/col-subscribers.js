@@ -10,6 +10,8 @@ const sharedOptions = {
     postalcode: {type: String, label: 'Code postal', optional: true, min: 5, max: 5},
     city: {type: String, label: 'Ville', optional: true, min: 2, max: 128},
     email: {type: String, regEx: SimpleSchema.RegEx.Email, label: 'E-mail', optional: true},
+    createdAt: {type: Date },
+    modifiedAt: {type: Date }
   },
   // Available subscriptions and publications
   // @TODO Restrict the list on subscription for the admin only
@@ -49,7 +51,9 @@ if (Meteor.isServer) {
         city: _.chain(s(tokens[6]).words())
           .map((element) => s.capitalize(element, true))
           .value().join(' '),
-        email: tokens[7].trim().toLowerCase()
+        email: tokens[7].trim().toLowerCase(),
+        createdAt: new Date(),
+        modifiedAt: new Date()
       });
     }
   });

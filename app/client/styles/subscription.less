@@ -31,6 +31,30 @@ section.client.subscription.row {
   }
 }
 
+.client.subscription {
+  .ui.steps .active.step {
+    background-color: @veryLightOrange;
+    &::after { background-color: @veryLightOrange; }
+    i.icon.fa::before { color: @orange !important; }
+  }
+  .ui.attached.segment {
+    border-top: 1px solid fade(@orange, 30%) !important;
+  }
+}
+
+// Mobile specifics
+@media screen and (max-width: @largestMobileScreen) {
+  .client.subscription {
+    .ui.message span { color: @veryLightOrange; }
+    .ui.attached.segment {
+      background-color: white !important;
+      * {
+        color: @green !important;
+      }
+    }
+  }
+}
+
 // Not mobile screen resolutions
 @media screen and (min-width: @tabletBreakpoint) {
   section.client.subscription.row { background: @green; }

@@ -7,4 +7,19 @@
   // Entrance animation
   opacity: 0;
   animation: fadeInUp @defaultDuration @defaultEasing forwards;
+  .ui.steps .step .content .description {
+    text-align: left;
+  }
+
+  // Mobile specifics
+  @media screen and (max-width: @largestMobileScreen) {
+    .ui.steps {
+      .step .content .title {
+        text-align: center;
+      }
+      .completed.step, .disabled.step {
+        display: none;
+      }
+    }
+  }
 }
