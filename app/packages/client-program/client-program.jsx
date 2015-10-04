@@ -120,7 +120,7 @@ class ProgramList extends Component {
     return (
       <section className='row'>
         <div className='sixteen wide column'>
-          <div className="ui list">
+          <div className="ui relaxed divided list">
             {nodes}
           </div>
         </div>

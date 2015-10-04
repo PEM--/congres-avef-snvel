@@ -13,12 +13,17 @@
   // Selectors
   .row.selectors {
     height: 10rem;
-    select {
-      margin-bottom: .5rem;
+    select, .ui.fluid.search.dropdown {
+      margin-bottom: .5rem !important;
     }
   }
   // List of items (programs)
   .item {
+    // Avoid justification on item's content in the list
+    * {
+      text-align: left !important;
+    }
+    padding-top: 1rem !important;
     // List of flags contained in a flexbox for restricting their global width
     .ui.image {
       max-width: 6rem;

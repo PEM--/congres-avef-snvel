@@ -11,6 +11,15 @@ section.client.program.row {
   }
 }
 
+.client.program {
+  // Mobile specifics
+  @media screen and (max-width: @largestMobileScreen) {
+    .item {
+      border-top-color: fade(@veryLightOrange, 30%) !important;
+    }
+  }
+}
+
 // Not mobile screen resolutions
 @media screen and (min-width: @tabletBreakpoint) {
   section.client.program.row {
