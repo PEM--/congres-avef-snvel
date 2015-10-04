@@ -71,8 +71,8 @@ pierreeric:client-subscription
 pierreeric:routing-done
 
 # Dev only
-#spacedrop:namespaces
-#pierreeric:col-subscribers
+spacedrop:namespaces
+pierreeric:col-subscribers
 #underscorestring:underscore.string
 #alanning:roles
 #kadira:flow-router-ssr

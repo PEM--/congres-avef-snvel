@@ -16,7 +16,7 @@ const sharedOptions = {
   // Available subscriptions and publications
   // @TODO Restrict the list on subscription for the admin only
   subs: {
-    All: {}
+    All: { roles: ['admin'] }
   }
 };
 

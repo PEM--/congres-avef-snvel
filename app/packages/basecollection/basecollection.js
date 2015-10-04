@@ -96,28 +96,39 @@ if (Meteor.isServer) {
         this.logger.info(`Publishing ${this.name}${key}`);
         // Ensure immediate call
         (subName => {
-          const publishFct = function() {
-            this.logger.debug('Received args', arguments);
-            this.logger.info(`Publishing ${subName} for user ${this.userId} with ${arguments.length} args`);
+          const publishFct = function(meteorContext, ...args) {
+            this.logger.debug('Received args', args);
+            this.logger.info(`Publishing ${subName} for user ${this.userId} with ${args.length} args`);
+            const subOpts = this.subs[subName];
+            // Check restrictions
+            if (subOpts.roles) {
+              if (!meteorContext.userId || !Roles.userIsInRole(meteorContext.userId, subOpts.roles)) {
+                this.logger.warn('Request attempt by', meteorContext.userId, 'on restricted function', subName, 'whith roles', subOpts.roles);
+                throw new Meteor.Error(403, 'Access denied');
+              }
+            }
             // Check arguments and build a potential mongo query selector
             let query = {};
-            if (this.subs[subName].query) {
+            if (subOpts.query) {
               // Subscription is on a query
-              for (let varIdx in arguments) {
-                check(arguments[varIdx],
-                      this.schema.getDefinition(this.subs[subName].query[varIdx]).type);
-                query[this.subs[subName].query[varIdx]] = arguments[varIdx];
+              for (let varIdx in args) {
+                check(args[varIdx],
+                      this.schema.getDefinition(subOpts.query[varIdx]).type);
+                query[subOpts.query[varIdx]] = args[varIdx];
               }
-            } else if (this.subs[subName].filter) {
+            } else if (subOpts.filter) {
               // Subscription is on a filter
-              query = this.subs[subName].filter;
+              query = subOpts.filter;
             }
             // Get query options
-            let options = this.subs[subName].options ? this.subs[subName].options : {};
+            let options = subOpts.options ? subOpts.options : {};
             // When a query parameter is used, consider the return a a single element
             return this.collection.find(query, options);
           }.bind(this);
-          Meteor.publish(`${this.name}${subName}`, publishFct);
+          // Publish and preserve Meteor's context
+          Meteor.publish(`${this.name}${subName}`, function(...args) {
+            return publishFct(this, ...args);
+          });
         })(key);
       }
       this.logger.info('Data published');
