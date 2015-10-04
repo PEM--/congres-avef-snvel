@@ -25,38 +25,38 @@ class SubscribedScreen extends Component {
 }
 
 class Steps extends Component {
+  getStepClass(templateStep) {
+    const { step } = this.props;
+    if (templateStep < step) {
+      return 'completed';
+    }
+    if (templateStep > step) {
+      return 'disabled';
+    }
+    return 'active';
+  }
   render() {
+    const templateSteps = [
+      { icon: 'pencil', title: 'Inscription', description: 'Inscrivez-vous' },
+      { icon: 'envelope-o', title: 'Validation', description: 'Validez votre email' },
+      { icon: 'check-square-o', title: 'Sélection', description: 'Sélectionnez vos options' },
+      { icon: 'credit-card', title: 'Paiement', description: 'Effectuez votre paiement' },
+    ];
+    const nodes = templateSteps.map((tplStep, idx) => {
+      return (
+        <div key={`step-${idx}`} className={`${this.getStepClass(idx + 1)} step`}>
+          <i className={`icon fa fa-${tplStep.icon} fa-2x`}></i>
+          <div className='content'>
+            <div className='title'>{tplStep.title}</div>
+            <div className='description'>{tplStep.description}</div>
+          </div>
+        </div>
+      );
+    });
     return (
       <div>
         <div className='ui four top attached steps'>
-          <div className='completed step'>
-            <i className='icon fa fa-pencil fa-2x'></i>
-            <div className='content'>
-              <div className='title'>Inscription</div>
-              <div className='description'>Inscrivez-vous</div>
-            </div>
-          </div>
-          <div className='active step'>
-            <i className='icon fa fa-envelope-o fa-2x'></i>
-            <div className='content'>
-              <div className='title'>Validation</div>
-              <div className='description'>Validez votre email</div>
-            </div>
-          </div>
-          <div className='disabled step'>
-            <i className='icon fa fa-check-square-o fa-2x'></i>
-            <div className='content'>
-              <div className='title'>Sélection</div>
-              <div className='description'>Sélectionnez vos options</div>
-            </div>
-          </div>
-          <div className='disabled step'>
-            <i className='icon fa fa-credit-card fa-2x'></i>
-            <div className='content'>
-              <div className='title'>Paiement</div>
-              <div className='description'>Effectuez votre paiement</div>
-            </div>
-          </div>
+          {nodes}
         </div>
         <div className='ui attached segment'>
           <p>
@@ -71,8 +71,16 @@ class Steps extends Component {
 
 // Signup page component
 class Subscription extends Component {
+  _setParams() {
+    // Check provided step as URL
+    if (!this.props.step || this.props.step < 1 || this.props.step > 4) {
+      FlowRouter.setQueryParams({step: 1});
+    }
+  }
   render() {
-    log.debug('Rendering Subscription');
+    log.debug('Rendering Subscription', this.props.step);
+    this._setParams();
+    const { step } = this.props;
     return (
       <div className='client main-content ui grid subscription'>
         <div className='row'>
@@ -90,7 +98,7 @@ class Subscription extends Component {
                   {
                     Meteor.user() ?
                       <SubscribedScreen /> :
-                      <Steps />
+                      <Steps step={step} />
                   }
                 </div>
               </section>
