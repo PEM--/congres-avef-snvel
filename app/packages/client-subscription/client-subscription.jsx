@@ -8,7 +8,7 @@ const {
   SubscriptionStep3,
   SubscriptionStep4,
   SubscriptionReport,
-  SocialSharer } = SD.Views.Client;
+  SocialSharers } = SD.Views.Client;
 
 class Steps extends Component {
   getStepClass(templateStep) {

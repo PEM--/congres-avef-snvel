@@ -197,6 +197,7 @@ class Program extends BaseReactMeteor {
         <div className='row'>
           <div className='sixteen wide column'>
             <div className='ui grid container'>
+              <h1>Programme</h1>
               <section className='row selectors'>
                 <div className='sixteen wide column'>
                   <Selector
