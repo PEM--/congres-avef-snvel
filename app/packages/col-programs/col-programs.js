@@ -31,23 +31,27 @@ if (Meteor.isClient) {
 
 // Server only
 if (Meteor.isServer) {
+  const log = Logger.createLogger('Collection Program');
   // Get programs as CSV
   const programCsv = Assets.getText('programs.csv');
   let defaults = [];
-  programCsv.split('\n').slice(1).map(function(programLine) {
-    const tokens = programLine.split(',');
-    defaults.push({
-      programs: tokens[0].split('/'),
-      session: tokens[1],
-      conference: tokens[2],
-      day: tokens[3],
-      begin: tokens[4],
-      end: tokens[5],
-      moderator: tokens[6],
-      speakers: tokens[7].split('/'),
-      rooms: tokens[8].split('/'),
-      right: tokens[9]
-    });
+  programCsv.split('\n').slice(1).map((programLine, idx) => {
+    log.info('Analyzing line', idx, 'with content', programLine);
+    if (programLine !== '') {
+      const tokens = programLine.split(',');
+      defaults.push({
+        programs: tokens[0].split('/'),
+        session: tokens[1],
+        conference: tokens[2],
+        day: tokens[3],
+        begin: tokens[4],
+        end: tokens[5],
+        moderator: tokens[6],
+        speakers: tokens[7].split('/'),
+        rooms: tokens[8].split('/'),
+        right: tokens[9]
+      });
+    }
   });
   // Options used only on the server
   const serverOptions = {

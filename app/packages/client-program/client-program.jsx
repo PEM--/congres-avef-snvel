@@ -9,6 +9,20 @@ const { MainLayout, BaseReactMeteor, Client } = SD.Views;
 const { SocialSharers } = Client;
 const { programs } = SD.Structure;
 
+const REGION_CODES = [
+  {room: 'Pays-Bas', region: 'NL'},
+  {room: 'Amphithéatre', region: 'EU'},
+  {room: 'Italie', region: 'IT'},
+  {room: 'Espagne', region: 'ES'},
+  {room: 'Grèce', region: 'GR'},
+  {room: 'Genève', region: 'CH'},
+  {room: 'Liège', region: 'BE'},
+  {room: 'Rome', region: 'IT'},
+  {room: 'Expo commerciale', region: 'UM'},
+  {room: 'Dock Haussman', region: 'CN'},
+  {room: 'Terrasse Hotel', region: 'BR'}
+];
+
 class Selector extends Component {
   constructor(props) {
     super(props);
@@ -42,6 +56,41 @@ class Selector extends Component {
     if (nextProps.value === '') {
       $(`.dropdown.${this.props.type}`).dropdown('restore defaults');
     }
+  }
+}
+
+class ProgramList extends Component {
+  render() {
+    const { selectedItems } = this.props;
+    log.debug('selectedItems', selectedItems);
+    const nodes = selectedItems.map((item) => {
+      return (
+        <div>
+          <section className='row'>
+            <div className='four wide column'>
+              {
+                item.rooms.map((room) => {
+                  return (
+                    <img key={room}
+                      className='flag'
+                      src={`/img/${_.findWhere(REGION_CODES, {room}).region}.svg`}
+                      alt={room} />
+                    );
+                })
+              }
+            </div>
+            <div className='twelve wide column'>
+              <h2>{item.session}</h2>
+              {
+                item.conference === 'NA' ? '' :
+                  <h3>{item.conference}</h3>
+              }
+            </div>
+          </section>
+        </div>
+      );
+    });
+    return (<div>{nodes}</div>);
   }
 }
 
@@ -84,7 +133,8 @@ class Program extends BaseReactMeteor {
         const reducedItemsOnDays = _.where(reducedItemsOnProgram, {day});
         this.hoursOptions = _.uniq(_.pluck(reducedItemsOnDays, 'begin'));
         if (hour && this.hoursOptions.find((item) => hour === item)) {
-          log.debug('Router state', program, day, hour);
+          this.selectedItems = _.where(reducedItemsOnDays, {begin: hour});
+          log.debug('Selected items', this.selectedItems);
         } else if (Meteor.icClient) {
           FlowRouter.setQueryParams({hour: null});
         }
@@ -137,15 +187,15 @@ class Program extends BaseReactMeteor {
                         handleChange={this.handleChange}
                       />
                   }
-                  {
-                    !hour ? '' :
-                    <p>Available program</p>
-                  }
                 </div>
               </section>
               {
                 !hour ? '' :
-                <SocialSharers />
+                  <ProgramList selectedItems={this.selectedItems} />
+              }
+              {
+                !hour ? '' :
+                  <SocialSharers />
               }
             </div>
           </div>
