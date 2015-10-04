@@ -2,7 +2,12 @@
 
 // Namespace flatteinng
 const { Component } = React;
-const { SubscriptionStep2 } = SD.Views.Client;
+const {
+  SubscriptionStep1,
+  SubscriptionStep2,
+  SubscriptionStep3,
+  SubscriptionStep4,
+  SubscriptionReport } = SD.Views.Client;
 
 class Steps extends Component {
   getStepClass(templateStep) {
@@ -33,6 +38,7 @@ class Steps extends Component {
         </div>
       );
     });
+    const step = Number(this.props.step);
     return (
       <div>
         <div className='ui four top attached steps'>
