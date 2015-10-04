@@ -19,3 +19,4 @@ node_modules
 *.key
 *.csr
 bundle
+subscribers.csv
