@@ -12,6 +12,7 @@ Package.onUse(function(api) {
     'pierreeric:basereactmeteor',
     'pierreeric:client-sharedstyles',
     'pierreeric:client-spinkit',
+    'pierreeric:markdown',
     'pierreeric:col-texts'
   ]);
   // Included files in this packages
