@@ -41,15 +41,15 @@ if (Meteor.isServer) {
       const tokens = programLine.split(',');
       defaults.push({
         programs: tokens[0].split('/'),
-        session: tokens[1],
-        conference: tokens[2],
-        day: tokens[3],
-        begin: tokens[4],
-        end: tokens[5],
-        moderator: tokens[6],
+        session: tokens[1].trim(),
+        conference: tokens[2].trim(),
+        day: tokens[3].trim(),
+        begin: tokens[4].trim(),
+        end: tokens[5].trim(),
+        moderator: tokens[6].trim(),
         speakers: tokens[7].split('/'),
         rooms: tokens[8].split('/'),
-        right: tokens[9]
+        right: tokens[9].trim()
       });
     }
   });

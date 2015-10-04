@@ -158,15 +158,19 @@ class Program extends BaseReactMeteor {
   }
   _setParams() {
     const { items } = this.data;
-    this.programsOptions = _.uniq(_.flatten(_.pluck(items, 'programs')));
+    this.programsOptions = _.chain(items)
+      .pluck('programs').flatten().uniq()
+      .value();
     const { program, day, hour } = this.props;
     if (program && this.programsOptions.find((item) => program === item)) {
       const reducedItemsOnProgram = _.filter(items,
         (item) => _.contains(item.programs, program));
-      this.daysOptions = _.uniq(_.pluck(reducedItemsOnProgram, 'day'));
+      this.daysOptions = _.chain(reducedItemsOnProgram)
+        .pluck('day').uniq().value();
       if (day && this.daysOptions.find((item) => day === item)) {
         const reducedItemsOnDays = _.where(reducedItemsOnProgram, {day});
-        this.hoursOptions = _.uniq(_.pluck(reducedItemsOnDays, 'begin'));
+        this.hoursOptions = _.chain(reducedItemsOnDays)
+          .pluck('begin').uniq().value();
         if (hour && this.hoursOptions.find((item) => hour === item)) {
           this.selectedItems = _.where(reducedItemsOnDays, {begin: hour});
           log.debug('Selected items', this.selectedItems);

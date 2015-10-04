@@ -58,6 +58,7 @@ pierreeric:client-presentation
 pierreeric:client-program
 pierreeric:client-login
 pierreeric:client-notfound
+pierreeric:client-cookie
 # Admin only packages
 pierreeric:admin-home
 
@@ -69,9 +70,6 @@ pierreeric:client-subscription
 # Must be the last one that create a routing
 pierreeric:routing-done
 
-pierreeric:client-cookie
-
 spacedrop:namespaces
-kadira:flow-router-ssr
-
-pierreeric:markdown
+pierreeric:col-subscribers
+underscorestring:underscore.string

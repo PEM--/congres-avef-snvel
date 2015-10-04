@@ -8,7 +8,10 @@ Package.onUse(function(api) {
   api.versionsFrom('1.2.0.2');
   // Dependencies of this package
   // Dependencies for server and client
-  api.use('spacedrop:basecollection');
+  api.use([
+    'underscorestring:underscore.string@3.2.2',
+    'spacedrop:basecollection'
+  ]);
   // Included files in this packages
   // Files for server and client
   api.addFiles([

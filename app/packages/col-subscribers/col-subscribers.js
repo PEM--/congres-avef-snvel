@@ -1,22 +1,18 @@
 // Options used on the server and the client
 const sharedOptions = {
-  name: 'Programs',
+  name: 'Subscribers',
   schema: {
-    programs: { type: [String], label: 'Programme(s)', min: 1, max: 8 },
-    'programs.$': { type: String, label: 'Programme', min: 2, max: 256 },
-    session: { type: String, label: 'Session', min: 2, max: 256 },
-    conference: { type: String, label: 'Conférence', min: 2, max: 256 },
-    day: { type: String, label: 'Jour', min: 2, max: 256 },
-    begin: { type: String, label: 'Début', min: 2, max: 256 },
-    end: { type: String, label: 'Fin', min: 2, max: 256 },
-    moderator: { type: String, label: 'Modérateur', min: 2, max: 256 },
-    speakers: { type: Array, label: 'Intervenant(s)', min: 1, max: 16 },
-    'speakers.$': { type: String, label: 'Intervenant', min: 2, max: 256 },
-    rooms: { type: Array, label: 'Salle(s)', min: 1, max: 4 },
-    'rooms.$': { type: String, label: 'Salle', min: 2, max: 256 },
-    right: { type: String, label: 'Droit', min: 2, max: 256 },
+    status: { type: String, label: 'Statut', optional: true, min: 2, max: 8 },
+    avef: {type: String, label: 'N° adhérent AVEF', optional: true, min: 4, max: 16},
+    snvel: {type: String, label: 'N° ordinal pour adhérent SNVEL', min: 1, max: 16},
+    lastname: {type: String, label: 'Nom', min: 2, max: 256},
+    firstname: {type: String, label: 'Prénom', min: 2, max: 256},
+    postalcode: {type: String, label: 'Code postal', optional: true, min: 5, max: 5},
+    city: {type: String, label: 'Ville', optional: true, min: 2, max: 128},
+    email: {type: String, regEx: SimpleSchema.RegEx.Email, label: 'E-mail', optional: true},
   },
   // Available subscriptions and publications
+  // @TODO Restrict the list on subscription for the admin only
   subs: {
     All: {}
   }
@@ -24,32 +20,30 @@ const sharedOptions = {
 
 // Client only
 if (Meteor.isClient) {
-  class Programs extends SD.Structure.BaseCollection {}
+  class Subscribers extends SD.Structure.BaseCollection {}
   // Export instance
-  SD.Structure.programs = new Programs(sharedOptions);
+  SD.Structure.subscribers = new Subscribers(sharedOptions);
 }
 
 // Server only
 if (Meteor.isServer) {
-  const log = Logger.createLogger('Collection Program');
+  const log = Logger.createLogger('Collection Subscribers');
   // Get programs as CSV
-  const programCsv = Assets.getText('programs.csv');
+  const subscribersCsv = Assets.getText('subscribers.csv');
   let defaults = [];
-  programCsv.split('\n').slice(1).map((programLine, idx) => {
-    log.info('Analyzing line', idx, 'with content', programLine);
-    if (programLine !== '') {
-      const tokens = programLine.split(',');
+  subscribersCsv.split('\n').slice(1).map((subscriberLine, idx) => {
+    log.info('Analyzing line', idx, 'with content', subscriberLine);
+    if (subscriberLine !== '') {
+      const tokens = subscriberLine.split(',');
       defaults.push({
-        programs: tokens[0].split('/'),
-        session: tokens[1],
-        conference: tokens[2],
-        day: tokens[3],
-        begin: tokens[4],
-        end: tokens[5],
-        moderator: tokens[6],
-        speakers: tokens[7].split('/'),
-        rooms: tokens[8].split('/'),
-        right: tokens[9]
+        status: tokens[0].trim(),
+        avef: tokens[1].trim(),
+        snvel: tokens[2].trim(),
+        lastname: s.capitalize(tokens[3].trim(), true),
+        firstname: s.capitalize(tokens[4].trim(), true),
+        postalcode: tokens[5].trim(),
+        city: s.capitalize(tokens[6].trim(), true),
+        email: tokens[7].trim().toLowerCase()
       });
     }
   });
@@ -57,9 +51,9 @@ if (Meteor.isServer) {
   const serverOptions = {
     defaults,
     // Set indexes on collection
-    indexes: { programs: 1, session: 1, day: 1 }
+    indexes: { lastname: 1, firstname: 1, email: 1, city: 1, postalcode: 1 }
   };
-  class Programs extends SD.Structure.ServerBaseCollection {}
+  class Subscribers extends SD.Structure.ServerBaseCollection {}
   // Export instance
-  SD.Structure.programs = new Programs(sharedOptions, serverOptions);
+  SD.Structure.subscribers = new Subscribers(sharedOptions, serverOptions);
 }

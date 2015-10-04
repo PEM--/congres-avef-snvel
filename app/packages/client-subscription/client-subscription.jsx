@@ -18,6 +18,12 @@ class Subscription extends Component {
               <section className='row'>
                 <div className='sixteen wide column'>
                   <h1>Inscription</h1>
+                  {
+                    !Meteor.user() ? '' :
+                      <div className='ui message'>
+                        Déjà inscrit ? <a className='animated' href='/login'>Connectez-vous</a>
+                      </div>
+                  }
                 </div>
               </section>
             </div>
