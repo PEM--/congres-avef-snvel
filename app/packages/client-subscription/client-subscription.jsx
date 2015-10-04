@@ -7,7 +7,8 @@ const {
   SubscriptionStep2,
   SubscriptionStep3,
   SubscriptionStep4,
-  SubscriptionReport } = SD.Views.Client;
+  SubscriptionReport,
+  SocialSharer } = SD.Views.Client;
 
 class Steps extends Component {
   getStepClass(templateStep) {
@@ -91,6 +92,7 @@ class Subscription extends Component {
         <div className='row'>
           <div className='sixteen wide column'>
             <div className='ui grid container'>
+              <SocialSharers />
               <section className='row'>
                 <div className='sixteen wide column'>
                   <h1>Inscription</h1>

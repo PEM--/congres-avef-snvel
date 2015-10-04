@@ -1,7 +1,7 @@
 // A line of social sharer buttons
 
 // Create a logger
-const log = Logger.createLogger('Client SocialSharer');
+const log = Logger.createLogger('Client SocialSharers');
 
 // Namespace flatteinng
 const { Component } = React;

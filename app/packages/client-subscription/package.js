@@ -16,7 +16,8 @@ Package.onUse(function(api) {
     'pierreeric:basereactmeteor',
     'pierreeric:routing-start',
     'pierreeric:main-layout',
-    'pierreeric:client-sharedstyles'
+    'pierreeric:client-sharedstyles',
+    'pierreeric:client-socialsharers'
   ]);
   // Included files in this packages
   // Files for server and client
