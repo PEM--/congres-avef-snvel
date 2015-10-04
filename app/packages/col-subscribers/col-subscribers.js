@@ -39,10 +39,16 @@ if (Meteor.isServer) {
         status: tokens[0].trim(),
         avef: tokens[1].trim(),
         snvel: tokens[2].trim(),
-        lastname: s.capitalize(tokens[3].trim(), true),
-        firstname: s.capitalize(tokens[4].trim(), true),
+        lastname: _.chain(s(tokens[3]).words())
+          .map((element) => s.capitalize(element, true))
+          .value().join(' '),
+        firstname: _.chain(s(tokens[4]).words())
+          .map((element) => s.capitalize(element, true))
+          .value().join(' '),
         postalcode: tokens[5].trim(),
-        city: s.capitalize(tokens[6].trim(), true),
+        city: _.chain(s(tokens[6]).words())
+          .map((element) => s.capitalize(element, true))
+          .value().join(' '),
         email: tokens[7].trim().toLowerCase()
       });
     }
