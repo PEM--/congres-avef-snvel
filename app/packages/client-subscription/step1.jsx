@@ -27,29 +27,46 @@ class SubscriptionStep1 extends Component {
         </div>
       </div>
     ) : '';
+    const segments = [
+      {
+        name: 'Authentification', fields: [
+          {icon: 'envelope', name: 'email', text: 'Votre e-mail'},
+          {icon: 'unlock', name: 'password', text: 'Votre mot de passe'},
+          {icon: 'unlock', name: 'repassword', text: 'Confirmer votre mot de passe'}
+        ]
+      },
+      {
+        name: 'Identification', fields: [
+          {icon: 'user', name: 'lastname', text: 'Votre nom'},
+          {icon: 'user', name: 'firstname', text: 'Votre prénom'},
+        ]
+      }
+    ];
+    const nodes = segments.map((segment) => {
+      return (
+        <div key={segment.name} className='ui segment'>
+          <h3>{segment.name}</h3>
+          {
+            segment.fields.map((field) => {
+              return (
+                <div key={`${segment.name}-${field.name}`} className='field'>
+                  <div className='ui left icon input'>
+                    <i className={`fa fa-${field.icon} icon`}></i>
+                    <input type='text' name={field.name} ref={field.name} placeholder={field.text} />
+                  </div>
+                </div>
+              );
+            })
+          }
+        </div>
+      );
+    });
     return (
       <div>
         <h2>Créer votre compte</h2>
         <form className='ui large form' onSubmit={this.handleSubmit} onChange={this.infoEntered}>
           <div className='ui stacked segment'>
-            <div className='field'>
-              <div className='ui left icon input'>
-                <i className='fa fa-envelope icon'></i>
-                <input type='text' name='email' ref='email' placeholder='Votre e-mail'/>
-              </div>
-            </div>
-            <div className='field'>
-              <div className='ui left icon input'>
-                <i className='fa fa-unlock icon'></i>
-                <input type='password' name='password' ref='password' placeholder="Votre mot de passe"/>
-              </div>
-            </div>
-            <div className='field'>
-              <div className='ui left icon input'>
-                <i className='fa fa-unlock icon'></i>
-                <input type='password' name='repassword' ref='repassword' placeholder="Confirmez votre mot de passe"/>
-              </div>
-            </div>
+            {nodes}
             <button type='submit' className='ui fluid large submit button primary'>Je m'inscris</button>
           </div>
         </form>
