@@ -106,9 +106,9 @@ class Subscription extends Component {
 const ROUTE_NAME = 'subscription';
 FlowRouter.route(`/${ROUTE_NAME}`, {
   name: ROUTE_NAME,
-  action() {
+  action(params, queryParams) {
     ReactLayout.render(SD.Views.MainLayout, {
-      content: <Subscription />
+      content: <Subscription step={queryParams.step} />
     });
   }
 });
