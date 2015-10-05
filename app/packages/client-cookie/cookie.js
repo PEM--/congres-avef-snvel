@@ -22,6 +22,11 @@ class BaseCookie {
       }
       return false;
     };
+    this.isSubscribed = () => {
+      if (this.currentValue.subscribed) {
+        return true;
+      }
+    };
     this.write = () => {
       const options = {
         path: this.path,
@@ -32,6 +37,10 @@ class BaseCookie {
     };
     this.accept = () => {
       this.currentValue = {};
+      this.write();
+    };
+    this.subscribe = () => {
+      this.currentValue.subscribed = true;
       this.write();
     };
   }

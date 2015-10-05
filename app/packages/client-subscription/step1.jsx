@@ -1,8 +1,10 @@
 // Namespace flatteinng
 const { Component, findDOMNode } = React;
-const { ErrorMessage } = SD.Views.Client;
+const { ReactDictionary, Client } = SD.Views;
+const { ErrorMessage } = Client;
+const { Cookie } = SD.Utils;
 
-class SubscriptionStep1 extends Component {
+class SubscriptionStep1 extends ReactDictionary {
   constructor(props) {
     super(props);
     this.state = {
@@ -38,6 +40,7 @@ class SubscriptionStep1 extends Component {
             return;
           }
           log.info('Account creation success');
+          Cookie.get(dict).subscribe();
           FlowRouter.setQueryParams({step: 2});
         });
       } catch (error) {
@@ -53,6 +56,11 @@ class SubscriptionStep1 extends Component {
   }
   render() {
     log.debug('Rendering SubscriptionStep1');
+    const { loading, dict } = this.data;
+    if (loading) {
+      return this.loadingRenderer();
+    }
+    const isCookieAcceped = Cookie.get(dict).isAccepted();
     const segments = [
       {
         name: 'Authentification', fields: [
@@ -75,7 +83,10 @@ class SubscriptionStep1 extends Component {
           {
             segment.fields.map((field) => {
               return (
-                <div key={`${segment.name}-${field.name}`} className='field'>
+                <div
+                    key={`${segment.name}-${field.name}`}
+                    className={`field ${isCookieAccepted ? '' : disabled}`}
+                  >
                   <div className='ui left icon input'>
                     <i className={`fa fa-${field.icon} icon`}></i>
                     <input type={field.type} name={field.name} ref={field.name} placeholder={field.text} />
@@ -95,7 +106,7 @@ class SubscriptionStep1 extends Component {
             {nodes}
             <button
               type='submit'
-              className='ui fluid large submit button primary'
+              className={`ui fluid large submit button primary ${isCookieAccepted ? '' : disabled}`}
             >
               Je m'inscris
             </button>

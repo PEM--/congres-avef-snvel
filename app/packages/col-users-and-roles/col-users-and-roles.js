@@ -173,15 +173,15 @@ if (Meteor.isServer) {
       console.warn(accountInfo);
       check(accountInfo, SD.Structure.AccountCreationSchema);
       check(cb, Match.Any);
-      const userId = Accounts.createUser({
+      const _id = Accounts.createUser({
         email: accountInfo.login.email,
         password: accountInfo.login.password
       });
-      Roles.addUsersToRoles(userId, ['public']);
-      //Meteor.users._collection.update(userId, {$set: {userinfo: accountInfo.userInfo}});
+      Roles.addUsersToRoles(_id, ['public']);
+      Meteor.users._collection.update({_id}, {$set: {userinfo: accountInfo.userInfo}});
       log.info('User created:', accountInfo.login.email);
       this.unblock();
-      Accounts.sendVerificationEmail(userId);
+      Accounts.sendVerificationEmail(_id);
       return true;
     }
   });
