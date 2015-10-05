@@ -22,11 +22,6 @@ class BaseCookie {
       }
       return false;
     };
-    this.isSubscribed = () => {
-      if (this.currentValue.subscribed) {
-        return true;
-      }
-    };
     this.write = () => {
       const options = {
         path: this.path,
@@ -36,10 +31,12 @@ class BaseCookie {
       document.cookie = Cookie.set(this.dict.cookie.name, JSON.stringify(this.currentValue), options);
     };
     this.accept = () => {
-      this.currentValue = {};
+      this.currentValue = { subscribed: false };
       this.write();
     };
+    this.isSubscribed = () => this.getAll().currentValue.subscribed;
     this.subscribe = () => {
+      this.currentValue = this.getAll();
       this.currentValue.subscribed = true;
       this.write();
     };

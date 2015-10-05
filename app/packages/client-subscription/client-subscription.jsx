@@ -108,18 +108,17 @@ FlowRouter.route(`/${ROUTE_NAME}`, {
     }
     // Check user's connection
     const userId = Meteor.userId();
-    if (!userId) {
-      step = 1;
+    if (userId) {
     // Check user's roles
-    } else if (Roles.userIsInRole(userId, [
-      'admin', 'subscribed'
-    ])) {
-      step = 'report';
-    } else if (Roles.userIsInRole(userId, 'public')) {
-      const user = Meteor.user();
-      step = user.emails[0].verified ? 3 : 2;
-    } else if (Roles.userIsInRole(userId, 'step4')) {
-      step = 4;
+      if (Roles.userIsInRole(userId, [
+        'admin', 'subscribed'
+      ])) {
+        step = 'report';
+      } else if (Roles.userIsInRole(userId, 'public')) {
+        step = 3;
+      } else if (Roles.userIsInRole(userId, 'step4')) {
+        step = 4;
+      }
     }
     // Redirect to the appropriate step
     if (Meteor.isClient) {

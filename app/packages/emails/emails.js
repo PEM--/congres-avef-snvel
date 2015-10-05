@@ -47,7 +47,6 @@ const inlinedHtml = juice.inlineContent(rawHtml, rawCss);
 Accounts.emailTemplates.from = Meteor.settings.mailjet.emailAccount;
 Accounts.emailTemplates.verifyEmail.subject = () => Meteor.settings.transactionalEmails.emailConfirmation.title;
 Accounts.emailTemplates.verifyEmail.html = (user, url) => {
-  log.warn('Verify Email for', user, url);
   return s.replaceAll(
     inlinedHtml,
     'HTML_TEMPLATE_VALIDATE_URL',

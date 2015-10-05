@@ -40,8 +40,8 @@ class SubscriptionStep1 extends ReactDictionary {
             return;
           }
           log.info('Account creation success');
-          Cookie.get(dict).subscribe();
-          FlowRouter.setQueryParams({step: 2});
+          Cookie.get(this.data.dict).subscribe();
+          FlowRouter.go('/subscription?step=2');
         });
       } catch (error) {
         log.debug('Error while checking SubscriptionStep1 values', error);
@@ -51,7 +51,6 @@ class SubscriptionStep1 extends ReactDictionary {
         findDOMNode(this.refs.password).value = '';
         findDOMNode(this.refs.repassword).value = '';
       }
-
     };
   }
   render() {
@@ -60,7 +59,7 @@ class SubscriptionStep1 extends ReactDictionary {
     if (loading) {
       return this.loadingRenderer();
     }
-    const isCookieAcceped = Cookie.get(dict).isAccepted();
+    const isCookieAccepted = Meteor.isClient ? Cookie.get(dict).isAccepted() : false;
     const segments = [
       {
         name: 'Authentification', fields: [
@@ -85,7 +84,7 @@ class SubscriptionStep1 extends ReactDictionary {
               return (
                 <div
                     key={`${segment.name}-${field.name}`}
-                    className={`field ${isCookieAccepted ? '' : disabled}`}
+                    className={`field ${isCookieAccepted ? '' : 'disabled'}`}
                   >
                   <div className='ui left icon input'>
                     <i className={`fa fa-${field.icon} icon`}></i>
@@ -106,7 +105,7 @@ class SubscriptionStep1 extends ReactDictionary {
             {nodes}
             <button
               type='submit'
-              className={`ui fluid large submit button primary ${isCookieAccepted ? '' : disabled}`}
+              className={`ui fluid large submit button primary ${isCookieAccepted ? '' : 'disabled'}`}
             >
               Je m'inscris
             </button>

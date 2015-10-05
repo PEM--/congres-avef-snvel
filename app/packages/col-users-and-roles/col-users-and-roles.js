@@ -170,7 +170,6 @@ if (Meteor.isServer) {
   // Method for creating account
   Meteor.methods({
     createAccount(accountInfo, cb) {
-      console.warn(accountInfo);
       check(accountInfo, SD.Structure.AccountCreationSchema);
       check(cb, Match.Any);
       const _id = Accounts.createUser({
@@ -182,6 +181,7 @@ if (Meteor.isServer) {
       log.info('User created:', accountInfo.login.email);
       this.unblock();
       Accounts.sendVerificationEmail(_id);
+      log.info('Verification email sent for:', accountInfo.login.email);
       return true;
     }
   });
