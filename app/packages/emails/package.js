@@ -41,5 +41,5 @@ Package.onUse(function(api) {
   ], 'server');
   // Exported symbols
   // Symbols for server only
-  api.export('sendEmail', 'server');
+  api.export(['sendEmail', 'testEmail'], 'server');
 });

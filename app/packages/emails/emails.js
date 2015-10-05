@@ -19,6 +19,7 @@ const HTML_TEMPLATE_ACTION_SUB_MESSAGE = "Nous avons besoin de vous envoyer des 
 const HTML_TEMPLATE_ACTION_BUTTON = "Je confirme mon email";
 // @TODO Add the specific server side route
 const HTML_TEMPLATE_VALIDATE_URL = Meteor.settings.public.proxy.url;
+const HTML_TEMPLATE_COMPANY = 'AVEF';
 
 let rawHtml = Assets.getText('templates/action.html');
 rawHtml = s(rawHtml)
@@ -27,19 +28,8 @@ rawHtml = s(rawHtml)
   .replaceAll('HTML_TEMPLATE_ACTION_SUB_MESSAGE', HTML_TEMPLATE_ACTION_SUB_MESSAGE)
   .replaceAll('HTML_TEMPLATE_ACTION_BUTTON', HTML_TEMPLATE_ACTION_BUTTON)
   .replaceAll('HTML_TEMPLATE_VALIDATE_URL', HTML_TEMPLATE_VALIDATE_URL)
+  .replaceAll('HTML_TEMPLATE_COMPANY', HTML_TEMPLATE_COMPANY)
   .value();
-
-// SD.Views.Client.ColorTheme
-//   brandColor: '#FF7100',
-//   transBrandColor: 'rgba(255, 113, 0, .2)',
-//   bgBrandColor: '#7bb4ab',
-//   textColor: '#000000',
-//   bgColor: '#7bb4ab',
-//   waterColor: '#008DDA',
-//   highwayColor: '#FF7100',
-//   roadColor: '#FCA94F',
-//   grassColor: '#007E5F'
-
 
 const CSS_TEMPLATE_BACKGROUND_COLOR = SD.Views.Client.ColorTheme.invertedTextColor;
 const CSS_TEMPLATE_HEADER_COLOR = SD.Views.Client.ColorTheme.grassColor;
@@ -51,17 +41,21 @@ const CSS_TEMPLATE_FOOTER_COLOR = SD.Views.Client.ColorTheme.bgBrandColor;
 
 let rawCss = Assets.getText('templates/styles.css');
 rawCss = s(rawCss)
-  .replaceAll(rawCss, 'CSS_TEMPLATE_BACKGROUND_COLOR', CSS_TEMPLATE_BACKGROUND_COLOR)
-  .replaceAll(rawCss, 'CSS_TEMPLATE_HEADER_COLOR', CSS_TEMPLATE_HEADER_COLOR)
-  .replaceAll(rawCss, 'CSS_TEMPLATE_HEADER_FONT', CSS_TEMPLATE_HEADER_FONT)
-  .replaceAll(rawCss, 'CSS_TEMPLATE_BORDER_COLOR', CSS_TEMPLATE_BORDER_COLOR)
-  .replaceAll(rawCss, 'CSS_TEMPLATE_PRIMARY_COLOR', CSS_TEMPLATE_PRIMARY_COLOR)
-  .replaceAll(rawCss, 'CSS_TEMPLATE_FOOTER_COLOR', CSS_TEMPLATE_FOOTER_COLOR)
+  .replaceAll('CSS_TEMPLATE_BACKGROUND_COLOR', CSS_TEMPLATE_BACKGROUND_COLOR)
+  .replaceAll('CSS_TEMPLATE_HEADER_COLOR', CSS_TEMPLATE_HEADER_COLOR)
+  .replaceAll('CSS_TEMPLATE_HEADER_FONT', CSS_TEMPLATE_HEADER_FONT)
+  .replaceAll('CSS_TEMPLATE_BORDER_COLOR', CSS_TEMPLATE_BORDER_COLOR)
+  .replaceAll('CSS_TEMPLATE_PRIMARY_COLOR', CSS_TEMPLATE_PRIMARY_COLOR)
+  .replaceAll('CSS_TEMPLATE_FOOTER_COLOR', CSS_TEMPLATE_FOOTER_COLOR)
   .value();
 
 // Inlined template
 const juice = Npm.require('juice');
 const inllinedHtml = juice.inlineContent(rawHtml, rawCss);
+
+testEmail = function() {
+  console.log(inllinedHtml);
+};
 
 sendEmail = function() {
   Email.send({
