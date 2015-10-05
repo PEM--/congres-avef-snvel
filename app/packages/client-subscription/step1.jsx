@@ -1,5 +1,6 @@
 // Namespace flatteinng
 const { Component, findDOMNode } = React;
+const { ErrorMessage } = SD.Views.Client;
 
 class SubscriptionStep1 extends Component {
   constructor(props) {
@@ -20,7 +21,11 @@ class SubscriptionStep1 extends Component {
       log.debug('Submit with value', email);
       try {
         // Check user's imputs
-        check({email, password, repassword, firstname, lastname}, SD.Structure.AccountCreationSchema);
+        check({
+          login: {email, password},
+          repassword,
+          userInfo: {firstname, lastname}
+        }, SD.Structure.AccountCreationSchema);
         log.info('Correct transmitted user\'s value');
         // Reset potential former error
         this.setState({error: ''});
@@ -47,25 +52,18 @@ class SubscriptionStep1 extends Component {
   }
   render() {
     log.debug('Rendering SubscriptionStep1');
-    const errorMessage = this.state.error !== '' ? (
-      <div className='ui error message'>
-        <div className='error content'>
-          <div className='header'><i className='fa fa-warning'></i>Votre inscription n'est pas correcte.</div>
-        </div>
-      </div>
-    ) : '';
     const segments = [
       {
         name: 'Authentification', fields: [
-          {icon: 'envelope', name: 'email', text: 'Votre e-mail'},
-          {icon: 'unlock', name: 'password', text: 'Votre mot de passe'},
-          {icon: 'unlock', name: 'repassword', text: 'Confirmer votre mot de passe'}
+          {icon: 'envelope', type: 'text', name: 'email', text: 'Votre e-mail'},
+          {icon: 'unlock', type: 'password', name: 'password', text: 'Votre mot de passe'},
+          {icon: 'unlock', type: 'password', name: 'repassword', text: 'Confirmer votre mot de passe'}
         ]
       },
       {
         name: 'Identification', fields: [
-          {icon: 'user', name: 'lastname', text: 'Votre nom'},
-          {icon: 'user', name: 'firstname', text: 'Votre prénom'}
+          {icon: 'user', type: 'text', name: 'lastname', text: 'Votre nom'},
+          {icon: 'user', type: 'text', name: 'firstname', text: 'Votre prénom'}
         ]
       }
     ];
@@ -79,7 +77,7 @@ class SubscriptionStep1 extends Component {
                 <div key={`${segment.name}-${field.name}`} className='field'>
                   <div className='ui left icon input'>
                     <i className={`fa fa-${field.icon} icon`}></i>
-                    <input type='text' name={field.name} ref={field.name} placeholder={field.text} />
+                    <input type={field.type} name={field.name} ref={field.name} placeholder={field.text} />
                   </div>
                 </div>
               );
@@ -94,7 +92,6 @@ class SubscriptionStep1 extends Component {
         <form className='ui large form' onSubmit={this.handleSubmit}>
           <div className='ui stacked segment'>
             {nodes}
-            <p>{this.state.error}</p>
             <button
               type='submit'
               className='ui fluid large submit button primary'
@@ -103,7 +100,10 @@ class SubscriptionStep1 extends Component {
             </button>
           </div>
         </form>
-        {errorMessage}
+        <ErrorMessage
+          title="Votre inscription n'est pas correcte."
+          error={ErrorMessage.asProps(this.state.error)}
+        />
       </div>
     );
   }

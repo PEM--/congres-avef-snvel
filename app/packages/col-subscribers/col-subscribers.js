@@ -1,7 +1,7 @@
 const UserSubscriberSharedSchema = new SimpleSchema({
-  status: { type: String, label: 'Statut', optional: true, min: 2, max: 8 },
-  avef: {type: String, label: 'N° adhérent AVEF', optional: true, min: 4, max: 16},
-  snvel: {type: String, label: 'N° ordinal pour adhérent SNVEL', min: 1, max: 16},
+  status: { type: String, label: 'Statut', optional: true},
+  avef: {type: String, label: 'N° adhérent AVEF', optional: true},
+  snvel: {type: String, label: 'N° ordinal pour adhérent SNVEL', optional: true},
   lastname: {type: String, label: 'Nom', min: 2, max: 256},
   firstname: {type: String, label: 'Prénom', min: 2, max: 256},
   postalcode: {

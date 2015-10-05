@@ -63,7 +63,7 @@ Meteor.users.attachSchema(SD.Structure.SchemaUser);
 log.info('Schema defined');
 
 // A reduced Schema for Login validation purpose
-SD.Structure.LoginSchema = new SimpleSchema({
+LoginSchema = new SimpleSchema({
   email: {
     label: 'Email',
     type: String,
@@ -76,24 +76,27 @@ SD.Structure.LoginSchema = new SimpleSchema({
   }
 });
 
+SD.Structure.LoginSchema = LoginSchema;
+
 // Enhanced Schema for Account creation
 SimpleSchema.messages({
   passwordsDiffer: 'La confirmation de mot de passe n\'est pas égale au mot de passe.'
 });
 
 SD.Structure.AccountCreationSchema = new SimpleSchema({
-  loginSchema: { type: SD.Structure.LoginSchema },
+  login: { type: SD.Structure.LoginSchema },
   repassword: {
     label: 'Confirmation du mot de passe',
     type: String, min: 7, max: 256,
-    custom: () => {
-      if (this.field('password').value !== this.value) {
+    custom: function() {
+      //console.log('*** Custom', this.field('login'), this.field('password'), this.field('login.password'));
+      if (this.field('login.password').value !== this.value) {
         return 'passwordsDiffer';
       }
       return null;
     }
   },
-  userSubscriberSharedSchema: { type: SD.Structure.UserSubscriberSharedSchema }
+  userInfo: { type: SD.Structure.UserSubscriberSharedSchema }
 });
 
 // Create default accounts
