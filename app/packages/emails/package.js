@@ -26,6 +26,7 @@ Package.onUse(function(api) {
   api.imply(sharedServerAndClient);
   const serverOnly = [
     'email',
+    'accounts-base',
     'pierreeric:server-side-routes'
   ];
   api.use(serverOnly, 'server');

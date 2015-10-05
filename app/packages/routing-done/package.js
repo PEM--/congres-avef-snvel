@@ -17,13 +17,15 @@ Package.onUse(function(api) {
     'ecmascript',
     'es5-shim',
     'underscore',
+    'accounts-base',
+    'alanning:roles@1.2.14',
     'kadira:flow-router-ssr@3.3.0',
     'kadira:react-layout@1.3.1',
     'meteorhacks:fast-render@2.10.0',
     'underscorestring:underscore.string@3.2.2',
     'gadicohen:sitemaps@0.0.23',
     'spacedrop:namespaces',
-    'pierreeric:logger',
+    'pierreeric:logger'
   ]));
   api.imply(shared);
   // Included files in this packages
@@ -33,5 +35,8 @@ Package.onUse(function(api) {
     'routing-done.jsx'
   ]);
   // Files for server only
-  api.addFiles('sitemap.js', 'server');
+  api.addFiles([
+    'sitemap.js',
+    'routing-email-confirm.js'
+  ], 'server');
 });

@@ -41,13 +41,24 @@ rawCss = s(rawCss)
 
 // Inlined template
 const juice = Npm.require('juice');
-const inllinedHtml = juice.inlineContent(rawHtml, rawCss);
+const inlinedHtml = juice.inlineContent(rawHtml, rawCss);
+
+// Configure accounts
+Accounts.emailTemplates.from = Meteor.settings.mailjet.emailAccount;
+Accounts.emailTemplates.verifyEmail.subject = () => Meteor.settings.transactionalEmails.emailConfirmation.title;
+Accounts.emailTemplates.verifyEmail.html = (user, url) => {
+  log.warn('Verify Email for', user, url);
+  return s.replaceAll(
+    inlinedHtml,
+    'HTML_TEMPLATE_VALIDATE_URL',
+    `${settings.public.proxy.url}confirm/${idx}`);
+};
 
 sendConfirmationEmail = function(to, idx) {
   Email.send({
     from: Meteor.settings.mailjet.emailAccount,
     to,
     subject: Meteor.settings.transactionalEmails.emailConfirmation.title,
-    html: s.replaceAll(inllinedHtml, 'HTML_TEMPLATE_VALIDATE_URL', `${settings.public.proxy.url}confirm/${idx}`)
+    html: s.replaceAll(inlinedHtml, 'HTML_TEMPLATE_VALIDATE_URL', `${settings.public.proxy.url}confirm/${idx}`)
   });
 };
