@@ -65,3 +65,11 @@ html, body {
     transform: none;
   }
 }
+
+@keyframes hourglass {
+  0% { transform: rotateZ(0); }
+  40% { transform: rotateZ(0); }
+  50% { transform: rotateZ(179.99deg); }
+  90%  { transform: rotateZ(179.99deg); }
+  100% { transform: rotateZ(359.99deg); }
+}

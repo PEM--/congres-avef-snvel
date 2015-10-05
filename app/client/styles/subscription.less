@@ -31,7 +31,8 @@ section.client.subscription.row {
   }
 }
 
-.client.subscription {
+div.client.subscription {
+  // Main screen
   .ui.steps .active.step {
     background-color: @veryLightOrange;
     &::after { background-color: @veryLightOrange; }
@@ -39,6 +40,14 @@ section.client.subscription.row {
   }
   .ui.attached.segment {
     border-top: 1px solid fade(@orange, 30%) !important;
+  }
+
+  // Step 2
+  div.ui.icon.message.step2 {
+    background-color: @veryLightOrange;
+    i.fa.fa-hourglass-half {
+      color: @orange;
+    }
   }
 }
 
@@ -48,7 +57,7 @@ section.client.subscription.row {
     .ui.message span { color: @veryLightOrange; }
     .ui.attached.segment {
       background-color: white !important;
-      *:not(button) { color: @green !important; }
+      *:not(button):not(i) { color: @green !important; }
     }
   }
 }
