@@ -50,7 +50,7 @@ class LogInForm extends Component {
         });
       } catch (error) {
         log.debug('Error while checking LogInForm values', error);
-        this.setState({error: error.invalidKeys[0].message});
+        this.setState({error});
       } finally {
         // Empty password field in any case
         findDOMNode(this.refs.password).value = '';

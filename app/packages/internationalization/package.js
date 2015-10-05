@@ -9,6 +9,8 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   const shared = [
+    'underscore',
+    'templating',
     'softwarerero:accounts-t9n@1.1.4',
     'tap:i18n@1.6.1',
     'aldeed:simple-schema@1.3.3',

@@ -8,12 +8,15 @@ Package.onUse(function(api) {
   api.versionsFrom('1.2.0.2');
   // Dependencies of this package
   // Dependencies for server and client
-  api.use([
+  const shared = [
+    'pierreeric:internationalization'
+  ];
+  api.use(shared.concat([
     'flemay:less-autoprefixer@1.1.0',
     'pierreeric:basereactmeteor',
-    'pierreeric:client-sharedstyles',
-    'pierreeric:internationalization'
-  ]);
+    'pierreeric:client-sharedstyles'
+  ]));
+  api.imply(shared);
   // Included files in this packages
   // Files for server and client
   api.addFiles([

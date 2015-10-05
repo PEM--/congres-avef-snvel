@@ -62,10 +62,12 @@ log.info('Schema defined');
 // A reduced Schema for Login validation purpose
 SD.Structure.LoginSchema = new SimpleSchema({
   email: {
+    label: 'Email',
     type: String,
     regEx: SimpleSchema.RegEx.Email
   },
   password: {
+    label: 'Mot de passe',
     type: String,
     min: 7, max: 256
   }
@@ -77,6 +79,7 @@ SD.Structure.AccountCreationSchema = new SimpleSchema({
     type: SD.Structure.LoginSchema
   },
   repassword: {
+    label: 'Confirmation du mot de passe',
     type: String,
     min: 7, max: 256
   }
