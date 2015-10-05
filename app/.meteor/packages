@@ -47,9 +47,6 @@ flemay:less-autoprefixer
 semantic:ui
 
 # Application packages
-# Server only packages
-pierreeric:server-side-routes
-pierreeric:internationalization
 # Client only packages
 dburles:google-maps
 pierreeric:client-landingpage

@@ -23,7 +23,6 @@ callback-hook@1.0.4
 cfs:http-methods@0.0.30
 check@1.0.6
 chuangbo:cookie@1.1.0
-cmather:handlebars-server@2.0.0
 coffeescript@1.0.10
 cosmos:browserify@0.8.0
 dburles:collection-helpers@1.0.3
@@ -47,7 +46,6 @@ fortawesome:fontawesome@4.4.0
 gadicohen:robots-txt@0.0.10
 gadicohen:sitemaps@0.0.23
 geojson-utils@1.0.4
-handlebars@1.0.4
 hot-code-push@1.0.0
 html-tools@1.0.5
 htmljs@1.0.5
@@ -168,4 +166,3 @@ url@1.0.5
 velocityjs:velocityjs@1.2.1
 webapp@1.2.2
 webapp-hashing@1.0.5
-yogiben:pretty-email@0.0.6
