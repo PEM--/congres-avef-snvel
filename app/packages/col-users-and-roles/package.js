@@ -13,6 +13,7 @@ Package.onUse(function(api) {
   ];
   api.use(shared.concat([
     'accounts-password',
+    'accounts-base',
     'spacedrop:basecollection',
     'pierreeric:internationalization',
     'pierreeric:logger',

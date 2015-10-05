@@ -143,7 +143,12 @@ if (Meteor.isClient) {
       FlowRouter.go('/');
     }
   });
+  Accounts.onEmailVerificationLink(function(token, done) {
+    logger.warn('Received confirmation', token);
+    done();
+  });
 }
+
 // Server only
 if (Meteor.isServer) {
   // On login, update last connection date
@@ -179,7 +184,7 @@ if (Meteor.isServer) {
       Roles.addUsersToRoles(userId, ['public']);
       log.info('User created:', email);
       this.unblock();
-      // @ TODO Accounts.verifyEmail(token, [callback])
+      Accounts.sendVerificationEmail(userId);
       return true;
     }
   });

@@ -51,7 +51,7 @@ Accounts.emailTemplates.verifyEmail.html = (user, url) => {
   return s.replaceAll(
     inlinedHtml,
     'HTML_TEMPLATE_VALIDATE_URL',
-    `${settings.public.proxy.url}confirm/${idx}`);
+    url.replace('/#', ''));
 };
 
 sendConfirmationEmail = function(to, idx) {

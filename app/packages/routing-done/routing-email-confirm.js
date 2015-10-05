@@ -1,15 +1,17 @@
-// Server only route for email confirmations
-
-Meteor.startup(() => {
-  FlowRouter.route('/confirm/:id', {
-    action(params) {
-      check(params.id, Meteor.Collection.ObjectID);
-      const userId = Meteor.users._collection.findOne(params.id);
-      if (!userId) {
-        log.warn('Attenpt to confirm an email on unexisting account', userId);
-        return FlowRouter.redirect('/notfound');
-      }
-      log.info('Confirming Email for', params.id);
+// http://localhost:3000/verify-email/Ywfq7Ww2HFU751S-2SUJ43FT2IDDqNmBZLkqCTZVZrc
+FlowRouter.route('/verify-email/:token', {
+  action(params) {
+    log.warn(params);
+    check(params.token, String);
+    if (Meteor.isClient) {
+      Accounts.verifyEmail(params.token, function(error) {
+        if (error) {
+          log.warn('Email verification failed', error);
+          return FlowRouter.redirect('/notfound');
+        }
+        log.info('Verfication email success');
+        FlowRouter.redirect('/subscription?step=2');
+      });
     }
-  });
+  }
 });

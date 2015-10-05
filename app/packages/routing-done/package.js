@@ -32,11 +32,11 @@ Package.onUse(function(api) {
   // Files for server and client
   api.addFiles([
     'logger.js',
+    'routing-email-confirm.js',
     'routing-done.jsx'
   ]);
   // Files for server only
   api.addFiles([
-    'sitemap.js',
-    'routing-email-confirm.js'
+    'sitemap.js'
   ], 'server');
 });

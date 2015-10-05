@@ -27,6 +27,7 @@ Package.onUse(function(api) {
   const serverOnly = [
     'email',
     'accounts-base',
+    'accounts-password',
     'pierreeric:server-side-routes'
   ];
   api.use(serverOnly, 'server');
