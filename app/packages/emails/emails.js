@@ -21,13 +21,11 @@ const HTML_TEMPLATE_ACTION_BUTTON = "Je confirme mon email";
 const HTML_TEMPLATE_VALIDATE_URL = Meteor.settings.public.proxy.url;
 
 let rawHtml = Assets.getText('templates/action.html');
-s(rawHtml)
-  .replaceAll('HTML_TEMPLATE_TITLE', HTML_TEMPLATE_TITLE)
-  .replaceAll('HTML_TEMPLATE_ACTION_MESSAGE', HTML_TEMPLATE_ACTION_MESSAGE)
-  .replaceAll('HTML_TEMPLATE_ACTION_SUB_MESSAGE', HTML_TEMPLATE_ACTION_SUB_MESSAGE)
-  .replaceAll('HTML_TEMPLATE_ACTION_BUTTON', HTML_TEMPLATE_ACTION_BUTTON)
-  .replaceAll('HTML_TEMPLATE_VALIDATE_URL', HTML_TEMPLATE_VALIDATE_URL)
-  .value();
+s.replaceAll(rawHtml, 'HTML_TEMPLATE_TITLE', HTML_TEMPLATE_TITLE);
+s.replaceAll(rawHtml, 'HTML_TEMPLATE_ACTION_MESSAGE', HTML_TEMPLATE_ACTION_MESSAGE);
+s.replaceAll(rawHtml, 'HTML_TEMPLATE_ACTION_SUB_MESSAGE', HTML_TEMPLATE_ACTION_SUB_MESSAGE);
+s.replaceAll(rawHtml, 'HTML_TEMPLATE_ACTION_BUTTON', HTML_TEMPLATE_ACTION_BUTTON);
+s.replaceAll(rawHtml, 'HTML_TEMPLATE_VALIDATE_URL', HTML_TEMPLATE_VALIDATE_URL);
 
 
 // SD.Views.Client.ColorTheme
@@ -43,13 +41,19 @@ s(rawHtml)
 
 
 const CSS_TEMPLATE_BACKGROUND_COLOR = '#FFF9E1';
+const CSS_TEMPLATE_HEADER_COLOR = SD.Views.Client.ColorTheme.grassColor;
+const CSS_TEMPLATE_HEADER_FONT = '"Impact", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif';
 const CSS_TEMPLATE_BORDER_COLOR = SD.Views.Client.ColorTheme.brandColor;
+const CSS_TEMPLATE_PRIMARY_COLOR = SD.Views.Client.ColorTheme.brandColor;
+const CSS_TEMPLATE_FOOTER_COLOR = SD.Views.Client.ColorTheme.bgBrandColor;
 
 let rawCss = Assets.getText('templates/styles.css');
-s(rawCss)
-  .replaceAll('CSS_TEMPLATE_BACKGROUND_COLOR', CSS_TEMPLATE_BACKGROUND_COLOR)
-  .replaceAll('CSS_TEMPLATE_BORDER_COLOR', CSS_TEMPLATE_BORDER_COLOR)
-  .value();
+s.replaceAll(rawCss, 'CSS_TEMPLATE_BACKGROUND_COLOR', CSS_TEMPLATE_BACKGROUND_COLOR);
+s.replaceAll(rawCss, 'CSS_TEMPLATE_HEADER_COLOR', CSS_TEMPLATE_HEADER_COLOR);
+s.replaceAll(rawCss, 'CSS_TEMPLATE_HEADER_FONT', CSS_TEMPLATE_HEADER_FONT);
+s.replaceAll(rawCss, 'CSS_TEMPLATE_BORDER_COLOR', CSS_TEMPLATE_BORDER_COLOR);
+s.replaceAll(rawCss, 'CSS_TEMPLATE_PRIMARY_COLOR', CSS_TEMPLATE_PRIMARY_COLOR);
+s.replaceAll(rawCss, 'CSS_TEMPLATE_FOOTER_COLOR', CSS_TEMPLATE_FOOTER_COLOR);
 
 // Inlined template
 const juice = Npm.require('juice');

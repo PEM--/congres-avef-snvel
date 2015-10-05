@@ -80,11 +80,11 @@ body {
 .footer {
   width: 100%;
   clear: both;
-  color: #999;
+  color: CSS_TEMPLATE_FOOTER_COLOR;
   padding: 20px;
 }
 .footer p, .footer a, .footer td {
-  color: #999;
+  color: CSS_TEMPLATE_FOOTER_COLOR;
   font-size: 12px;
 }
 
@@ -92,8 +92,8 @@ body {
     TYPOGRAPHY
 ------------------------------------- */
 h1, h2, h3 {
-  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-  color: #000;
+  font-family: CSS_TEMPLATE_HEADER_FONT;
+  color: CSS_TEMPLATE_HEADER_COLOR;
   margin: 40px 0 0;
   line-height: 1.2em;
   font-weight: 400;
@@ -136,15 +136,15 @@ p li, ul li, ol li {
     LINKS & BUTTONS
 ------------------------------------- */
 a {
-  color: #348eda;
+  color: CSS_TEMPLATE_PRIMARY_COLOR;
   text-decoration: underline;
 }
 
 .btn-primary {
   text-decoration: none;
   color: #FFF;
-  background-color: #348eda;
-  border: solid #348eda;
+  background-color: CSS_TEMPLATE_PRIMARY_COLOR;
+  border: solid CSS_TEMPLATE_PRIMARY_COLOR;
   border-width: 10px 20px;
   line-height: 2em;
   /* 2em * 14px = 28px, use px to get airier line-height also in Thunderbird, and Yahoo!, Outlook.com, AOL webmail clients */
