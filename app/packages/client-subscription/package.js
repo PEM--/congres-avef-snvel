@@ -20,7 +20,8 @@ Package.onUse(function(api) {
     'pierreeric:client-socialsharers',
     'pierreeric:client-errormessage',
     'pierreeric:col-users-and-roles',
-    'pierreeric:col-subscribers'
+    'pierreeric:col-subscribers',
+    'pierreeric:cookie'
   ]);
   // Included files in this packages
   // Files for server and client

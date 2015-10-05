@@ -4,6 +4,6 @@ EasySecurity.config
   #methods:
   #  createMethod: type: 'rateLimit', ms: 1000 * 10
   #  commentMethod: type: 'throttle', ms: 500
-  #ignoredMethods: ['someOtherMethod']
+  ignoredMethods: ['createAccount']
   maxQueueLength: 200
 log.info 'Rate limiting to prevent brute force or server flood'

@@ -169,20 +169,17 @@ if (Meteor.isServer) {
   });
   // Method for creating account
   Meteor.methods({
-    createAccount(email, password, repassword, firstname, lastname, cb) {
-      check({
-        login: {email, password},
-        repassword,
-        userInfo: {firstname, lastname}
-      }, SD.Structure.AccountCreationSchema);
+    createAccount(accountInfo, cb) {
+      console.warn(accountInfo);
+      check(accountInfo, SD.Structure.AccountCreationSchema);
       check(cb, Match.Any);
       const userId = Accounts.createUser({
-        email,
-        password,
-        userInfo: { firstname, lastname }
+        email: accountInfo.login.email,
+        password: accountInfo.login.password
       });
       Roles.addUsersToRoles(userId, ['public']);
-      log.info('User created:', email);
+      //Meteor.users._collection.update(userId, {$set: {userinfo: accountInfo.userInfo}});
+      log.info('User created:', accountInfo.login.email);
       this.unblock();
       Accounts.sendVerificationEmail(userId);
       return true;

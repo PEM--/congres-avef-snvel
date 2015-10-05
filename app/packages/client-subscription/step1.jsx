@@ -20,17 +20,18 @@ class SubscriptionStep1 extends Component {
       const firstname = findDOMNode(this.refs.firstname).value.trim();
       log.debug('Submit with value', email);
       try {
-        // Check user's imputs
-        check({
+        let accountInfo = {
           login: {email, password},
           repassword,
           userInfo: {firstname, lastname}
-        }, SD.Structure.AccountCreationSchema);
+        };
+        // Check user's imputs
+        check(accountInfo, SD.Structure.AccountCreationSchema);
         log.info('Correct transmitted user\'s value');
         // Reset potential former error
         this.setState({error: ''});
         // Create account
-        Meteor.call('createAccount', email, password, repassword, firstname, lastname, (error) => {
+        Meteor.call('createAccount', accountInfo, (error) => {
           if (error) {
             log.debug('Error while checking SubscriptionStep1 values', error);
             this.setState({error});
