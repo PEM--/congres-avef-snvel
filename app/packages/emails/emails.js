@@ -12,56 +12,42 @@ Meteor.startup(() => {
   log.info('SMTP declared');
 });
 
-
-const HTML_TEMPLATE_TITLE = 'Veuillez confirmer votre email';
-const HTML_TEMPLATE_ACTION_MESSAGE = "S'il vous plait, veuillez confirmer votre adresse en cliquant sur le lien ci-dessous.";
-const HTML_TEMPLATE_ACTION_SUB_MESSAGE = "Nous avons besoin de vous envoyer des informations critiques sur le bon fonctionnement de notre service. Ce dernier ne peut fonctionner sans une adresse email valide.";
-const HTML_TEMPLATE_ACTION_BUTTON = "Je confirme mon email";
-// @TODO Add the specific server side route
-const HTML_TEMPLATE_VALIDATE_URL = Meteor.settings.public.proxy.url;
-const HTML_TEMPLATE_COMPANY = 'AVEF';
+// Flatten namespace
+const { settings } = Meteor;
+const { emailConfirmation } = settings.transactionalEmails;
 
 let rawHtml = Assets.getText('templates/action.html');
 rawHtml = s(rawHtml)
-  .replaceAll('HTML_TEMPLATE_TITLE', HTML_TEMPLATE_TITLE)
-  .replaceAll('HTML_TEMPLATE_ACTION_MESSAGE', HTML_TEMPLATE_ACTION_MESSAGE)
-  .replaceAll('HTML_TEMPLATE_ACTION_SUB_MESSAGE', HTML_TEMPLATE_ACTION_SUB_MESSAGE)
-  .replaceAll('HTML_TEMPLATE_ACTION_BUTTON', HTML_TEMPLATE_ACTION_BUTTON)
-  .replaceAll('HTML_TEMPLATE_VALIDATE_URL', HTML_TEMPLATE_VALIDATE_URL)
-  .replaceAll('HTML_TEMPLATE_COMPANY', HTML_TEMPLATE_COMPANY)
+  .replaceAll('HTML_TEMPLATE_TITLE', emailConfirmation.title)
+  .replaceAll('HTML_TEMPLATE_ACTION_MESSAGE', emailConfirmation.message)
+  .replaceAll('HTML_TEMPLATE_ACTION_SUB_MESSAGE', emailConfirmation.subMessage)
+  .replaceAll('HTML_TEMPLATE_ACTION_BUTTON', emailConfirmation.callToAction)
+  .replaceAll('HTML_TEMPLATE_COMPANY', emailConfirmation.signature)
+  .replaceAll('HTML_TEMPLATE_TWITTER_URL', emailConfirmation.twitterUrl)
+  .replaceAll('HTML_TEMPLATE_TWITTER_ACCOUNT', emailConfirmation.twitterAccount)
+  .replaceAll('HTML_TEMPLATE_FACEBOOK_URL', emailConfirmation.facebookUrl)
+  .replaceAll('HTML_TEMPLATE_FACEBOOK_ACCOUNT', emailConfirmation.facebookAccount)
   .value();
-
-const CSS_TEMPLATE_BACKGROUND_COLOR = SD.Views.Client.ColorTheme.invertedTextColor;
-const CSS_TEMPLATE_HEADER_COLOR = SD.Views.Client.ColorTheme.grassColor;
-const CSS_TEMPLATE_HEADER_FONT = SD.Views.Client.Fonts.header;
-const CSS_TEMPLATE_BODY_FONT = SD.Views.Client.Fonts.body;
-const CSS_TEMPLATE_BORDER_COLOR = SD.Views.Client.ColorTheme.brandColor;
-const CSS_TEMPLATE_PRIMARY_COLOR = SD.Views.Client.ColorTheme.brandColor;
-const CSS_TEMPLATE_FOOTER_COLOR = SD.Views.Client.ColorTheme.bgBrandColor;
 
 let rawCss = Assets.getText('templates/styles.css');
 rawCss = s(rawCss)
-  .replaceAll('CSS_TEMPLATE_BACKGROUND_COLOR', CSS_TEMPLATE_BACKGROUND_COLOR)
-  .replaceAll('CSS_TEMPLATE_HEADER_COLOR', CSS_TEMPLATE_HEADER_COLOR)
-  .replaceAll('CSS_TEMPLATE_HEADER_FONT', CSS_TEMPLATE_HEADER_FONT)
-  .replaceAll('CSS_TEMPLATE_BORDER_COLOR', CSS_TEMPLATE_BORDER_COLOR)
-  .replaceAll('CSS_TEMPLATE_PRIMARY_COLOR', CSS_TEMPLATE_PRIMARY_COLOR)
-  .replaceAll('CSS_TEMPLATE_FOOTER_COLOR', CSS_TEMPLATE_FOOTER_COLOR)
+  .replaceAll('CSS_TEMPLATE_BACKGROUND_COLOR', SD.Views.Client.ColorTheme.invertedTextColor)
+  .replaceAll('CSS_TEMPLATE_HEADER_COLOR', SD.Views.Client.ColorTheme.grassColor)
+  .replaceAll('CSS_TEMPLATE_HEADER_FONT', SD.Views.Client.Fonts.header)
+  .replaceAll('CSS_TEMPLATE_BORDER_COLOR', SD.Views.Client.Fonts.body)
+  .replaceAll('CSS_TEMPLATE_PRIMARY_COLOR', SD.Views.Client.ColorTheme.brandColor)
+  .replaceAll('CSS_TEMPLATE_FOOTER_COLOR', SD.Views.Client.ColorTheme.bgBrandColor)
   .value();
 
 // Inlined template
 const juice = Npm.require('juice');
 const inllinedHtml = juice.inlineContent(rawHtml, rawCss);
 
-testEmail = function() {
-  console.log(inllinedHtml);
-};
-
-sendEmail = function() {
+sendConfirmationEmail = function(to, idx) {
   Email.send({
-    from: 'pemarchandet@gmail.com',
-    to: 'pemarchandet@gmail.com',
-    subject: 'Styled HTML',
-    html: inllinedHtml
+    from: Meteor.settings.mailjet.emailAccount,
+    to,
+    subject: Meteor.settings.transactionalEmails.emailConfirmation.title,
+    html: s.replaceAll(inllinedHtml, 'HTML_TEMPLATE_VALIDATE_URL', `${settings.public.proxy.url}confirm/${idx}`)
   });
 };
