@@ -18,16 +18,19 @@ SD.Structure.AvailableRoles = AvailableRoles;
 SD.Structure.SchemaUser = new SimpleSchema({
   emails: {
     type: Array,
+    label: 'Emails'
   },
   'emails.$': {
     type: Object
   },
   'emails.$.address': {
     type: String,
+    label: 'Email',
     regEx: SimpleSchema.RegEx.Email
   },
   'emails.$.verified': {
-    type: Boolean
+    type: Boolean,
+    label: 'Email vérifié'
   },
   createdAt: {
     type: Date,
@@ -41,11 +44,13 @@ SD.Structure.SchemaUser = new SimpleSchema({
   },
   services: {
     type: Object,
+    label: 'Services d\'authentification',
     optional: true,
     blackbox: true
   },
   roles: {
     type: [String],
+    label: 'Rôles',
     optional: true,
     defaultValue: ['public']
   },
