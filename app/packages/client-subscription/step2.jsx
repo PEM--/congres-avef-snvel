@@ -13,6 +13,12 @@ class SubscriptionStep2 extends Component {
             Une fois reçu, veuillez cliquer le lien contenu dans ce dernier
             pour passer à la prochaine étape de votre inscription.
           </p>
+          <p>
+            Si vous avez démarré votre inscription sur un navigateur
+            ou appareil différent, il est nécessaire de
+            &nbsp;<a className='animated' href='/login'>vous connecter</a>&nbsp;
+            pour poursuivre.
+          </p>
         </div>
       </div>
     );
