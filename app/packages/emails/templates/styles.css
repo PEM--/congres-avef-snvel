@@ -119,15 +119,18 @@ h3 {
 }
 
 h4 {
+  font-family: CSS_TEMPLATE_BODY_FONT;
   font-size: 14px;
   font-weight: 600;
 }
 
 p, ul, ol {
+  font-family: CSS_TEMPLATE_BODY_FONT;
   margin-bottom: 10px;
   font-weight: normal;
 }
 p li, ul li, ol li {
+  font-family: CSS_TEMPLATE_BODY_FONT;
   margin-left: 5px;
   list-style-position: inside;
 }
