@@ -56,6 +56,11 @@ SD.Structure.SchemaUser = new SimpleSchema({
     type: Date,
     label: 'Dernière connexion réalisée le',
     defaultValue: new Date()
+  },
+  userInfo: {
+    type: SD.Structure.UserSubscriberSharedSchema,
+    label: 'Information utilisateur',
+    optional: true
   }
 });
 
@@ -89,7 +94,6 @@ SD.Structure.AccountCreationSchema = new SimpleSchema({
     label: 'Confirmation du mot de passe',
     type: String, min: 7, max: 256,
     custom: function() {
-      //console.log('*** Custom', this.field('login'), this.field('password'), this.field('login.password'));
       if (this.field('login.password').value !== this.value) {
         return 'passwordsDiffer';
       }
@@ -159,5 +163,24 @@ if (Meteor.isServer) {
     }
   });
   // Method for creating account
-  // @TODO Meteor.method('createAccount', email, password, repassword, firstname, lastname)
+  Meteor.methods({
+    createAccount(email, password, repassword, firstname, lastname, cb) {
+      check({
+        login: {email, password},
+        repassword,
+        userInfo: {firstname, lastname}
+      }, SD.Structure.AccountCreationSchema);
+      check(cb, Match.Any);
+      const userId = Accounts.createUser({
+        email,
+        password,
+        userInfo: { firstname, lastname }
+      });
+      Roles.addUsersToRoles(userId, ['public']);
+      log.info('User created:', email);
+      this.unblock();
+      // @ TODO Accounts.verifyEmail(token, [callback])
+      return true;
+    }
+  });
 }

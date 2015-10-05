@@ -12,6 +12,7 @@ Meteor.startup(() => {
   log.info('SMTP declared');
 });
 
+
 sendEmail = function() {
   Email.send({
     from: 'pemarchandet@gmail.com',

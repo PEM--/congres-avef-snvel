@@ -30,15 +30,15 @@ class SubscriptionStep1 extends Component {
         // Reset potential former error
         this.setState({error: ''});
         // Create account
-        // @TODO Meteor.call('createAccount', email, password, repassword, firstname, lastname, (error) => {
-        //   if (error) {
-        //     log.debug('Error while checking SubscriptionStep1 values', error);
-        //     this.setState({error});
-        //     return;
-        //   }
+        Meteor.call('createAccount', email, password, repassword, firstname, lastname, (error) => {
+          if (error) {
+            log.debug('Error while checking SubscriptionStep1 values', error);
+            this.setState({error});
+            return;
+          }
           log.info('Account creation success');
           FlowRouter.setQueryParams({step: 2});
-        // });
+        });
       } catch (error) {
         log.debug('Error while checking SubscriptionStep1 values', error);
         this.setState({error});

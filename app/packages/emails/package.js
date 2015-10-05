@@ -18,8 +18,7 @@ Package.onUse(function(api) {
   ]));
   api.imply(sharedServerAndClient);
   const serverOnly = [
-    'email',
-    'yogiben:pretty-email@0.0.6'
+    'email'
   ];
   api.use(serverOnly, 'server');
   api.imply(serverOnly, 'server');
