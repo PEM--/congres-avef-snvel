@@ -1,5 +1,5 @@
 // Namespace flatteinng
-const { Component } = React;
+const { Component, findDOMNode } = React;
 
 class SubscriptionStep1 extends Component {
   constructor(props) {
@@ -15,30 +15,32 @@ class SubscriptionStep1 extends Component {
       const email = findDOMNode(this.refs.email).value.trim().toLowerCase();
       const password = findDOMNode(this.refs.password).value.trim();
       const repassword = findDOMNode(this.refs.repassword).value.trim();
+      const lastname = findDOMNode(this.refs.lastname).value.trim();
       const firstname = findDOMNode(this.refs.firstname).value.trim();
       log.debug('Submit with value', email);
       try {
         // Check user's imputs
-        check({email, password}, SD.Structure.LoginSchema);
+        check({email, password, repassword, firstname, lastname}, SD.Structure.AccountCreationSchema);
         log.info('Correct transmitted user\'s value');
         // Reset potential former error
         this.setState({error: ''});
-        // Login
-        Meteor.loginWithPassword(email, password, (error) => {
-          if (error) {
-            log.debug('Error while checking LogInForm values', error);
-            this.setState({error: 'Email ou mot de passe incorrect'});
-            return;
-          }
-          log.info('Logged In success');
-          FlowRouter.go('/');
-        });
+        // Create account
+        // @TODO Meteor.call('createAccount', email, password, repassword, firstname, lastname, (error) => {
+        //   if (error) {
+        //     log.debug('Error while checking SubscriptionStep1 values', error);
+        //     this.setState({error});
+        //     return;
+        //   }
+          log.info('Account creation success');
+          FlowRouter.setQueryParams({step: 2});
+        // });
       } catch (error) {
-        log.debug('Error while checking LogInForm values', error);
+        log.debug('Error while checking SubscriptionStep1 values', error);
         this.setState({error});
       } finally {
         // Empty password field in any case
         findDOMNode(this.refs.password).value = '';
+        findDOMNode(this.refs.repassword).value = '';
       }
 
     };

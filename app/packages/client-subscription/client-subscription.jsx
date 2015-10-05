@@ -111,12 +111,13 @@ FlowRouter.route(`/${ROUTE_NAME}`, {
     if (!userId) {
       step = 1;
     // Check user's roles
-    } else if (Roles.userIsInRole(userId, ['admin', 'registered'])) {
+    } else if (Roles.userIsInRole(userId, [
+      'admin', 'subscribed'
+    ])) {
       step = 'report';
-    } else if (Roles.userIsInRole(userId, 'step2')) {
-      step = 2;
-    } else if (Roles.userIsInRole(userId, 'step3')) {
-      step = 3;
+    } else if (Roles.userIsInRole(userId, 'public')) {
+      const user = Meteor.user();
+      step = user.emails[0].verified ? 3 : 2;
     } else if (Roles.userIsInRole(userId, 'step4')) {
       step = 4;
     }

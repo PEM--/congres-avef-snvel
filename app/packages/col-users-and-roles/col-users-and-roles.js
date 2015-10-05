@@ -5,8 +5,6 @@ const log = Logger.createLogger('Collection Users and Roless');
 
 const AvailableRoles = [
   'public',
-  'email_pending',
-  'option_pending',
   'payment_pending',
   'subscribed',
   'admin'
@@ -79,12 +77,21 @@ SD.Structure.LoginSchema = new SimpleSchema({
 });
 
 // Enhanced Schema for Account creation
+SimpleSchema.messages({
+  passwordsDiffer: 'La confirmation de mot de passe n\'est pas égale au mot de passe.'
+});
+
 SD.Structure.AccountCreationSchema = new SimpleSchema({
   loginSchema: { type: SD.Structure.LoginSchema },
   repassword: {
     label: 'Confirmation du mot de passe',
-    type: String,
-    min: 7, max: 256
+    type: String, min: 7, max: 256,
+    custom: () => {
+      if (this.field('password').value !== this.value) {
+        return 'passwordsDiffer';
+      }
+      return null;
+    }
   },
   userSubscriberSharedSchema: { type: SD.Structure.UserSubscriberSharedSchema }
 });
@@ -148,4 +155,6 @@ if (Meteor.isServer) {
       log.warn('No user information retrieved');
     }
   });
+  // Method for creating account
+  // @TODO Meteor.method('createAccount', email, password, repassword, firstname, lastname)
 }
