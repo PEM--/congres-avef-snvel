@@ -5,6 +5,7 @@ const log = Logger.createLogger('Client LogIn');
 
 // Namespace flatteinng
 const { Component, findDOMNode } = React;
+const { ErrorMessage } = SD.Views.Client;
 
 // Already LoggedIn component
 class AlreadyLoggedIn extends Component {
@@ -58,14 +59,6 @@ class LogInForm extends Component {
     // Render the component
     this.render = () => {
       log.debug('Rendering LogInForm', this.state.error);
-      const errorMessage = this.state.error !== '' ? (
-        <div className='ui error message'>
-          <div className='error content'>
-            <div className='header'><i className='fa fa-warning'></i>Votre identification n'est pas correcte.</div>
-            <p>{this.state.error}</p>
-          </div>
-        </div>
-      ) : '';
       return (
         <div className='column'>
           <h2>Connectez-vous à votre compte</h2>
@@ -86,7 +79,10 @@ class LogInForm extends Component {
               <button type='submit' className='ui fluid large submit button primary'>Je me connecte</button>
             </div>
           </form>
-          {errorMessage}
+          <ErrorMessage
+            title='Votre authentification est incorrecte.'
+            error={ErrorMessage.asProps(this.state.error)}
+          />
           <div className='ui message'>
             Pas encore inscrit ? <a className='animated' href='/subscription'>Inscrivez-vous</a>
           </div>

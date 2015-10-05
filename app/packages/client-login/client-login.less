@@ -12,18 +12,6 @@ div.client.login {
   .message {
     margin-top: 1rem;
   }
-
-  // Animate entranace of error messages
-  .error.message {
-    position: relative;
-    height: 0;
-    overflow-y: hidden;
-    animation: errorMessage @defaultDuration @defaultEasing forwards;
-    .error.content {
-      position: absolute;
-      height: 3.5rem;
-    }
-  }
 }
 
 @keyframes errorMessage {

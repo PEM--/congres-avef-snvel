@@ -1,0 +1,23 @@
+// Semantic UI variables
+@import url('/client/lib/semanticui/site/globals/site.variables.import.less');
+// Share themes variables
+@import (reference) url('/packages/client-sharedstyles/client-sharedstyles.less');
+
+.client {
+  // Animate entranace of error messages
+  .error.message {
+    position: relative;
+    height: 0;
+    overflow-y: hidden;
+    animation: errorMessage @defaultDuration @defaultEasing forwards;
+    .error.content {
+      position: absolute;
+      height: 3.5rem;
+    }
+  }
+}
+
+@keyframes errorMessage {
+  from {  height: 0; }
+  to { height: 4.5rem; }
+}
