@@ -14,7 +14,7 @@ Package.onUse(function(api) {
   const shared = [
     'ecmascript',
     'es5-shim',
-    'alanning:roles@1.2.13',
+    'alanning:roles@1.2.14',
     'aldeed:collection2@2.5.0',
     'dburles:collection-helpers@1.0.3',
     'spacedrop:namespaces',

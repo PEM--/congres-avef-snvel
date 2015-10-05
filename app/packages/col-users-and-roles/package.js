@@ -9,7 +9,7 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   const shared = [
-    'alanning:roles@1.2.13'
+    'alanning:roles@1.2.14'
   ];
   api.use(shared.concat([
     'accounts-password',

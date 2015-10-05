@@ -17,8 +17,9 @@ Package.onUse(function(api) {
   ]);
   // Dependencies server only
   api.use([
-    'meteorhacks:npm@1.5.0',
-    'meteorhacks:picker@1.0.3'
+    'accounts-base',
+    'meteorhacks:picker@1.0.3',
+    'alanning:roles@1.2.14'
   ], 'server');
   // Included files in this packages
   // Server only
