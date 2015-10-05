@@ -41,7 +41,7 @@ class LogInForm extends Component {
         Meteor.loginWithPassword(email, password, (error) => {
           if (error) {
             log.debug('Error while checking LogInForm values', error);
-            this.setState({error: error.message});
+            this.setState({error: 'Email ou mot de passe incorrect'});
             return;
           }
           log.info('Logged In success');
@@ -49,7 +49,7 @@ class LogInForm extends Component {
         });
       } catch (error) {
         log.debug('Error while checking LogInForm values', error);
-        this.setState({error: error.message});
+        this.setState({error: error.invalidKeys[0].message});
       } finally {
         // Empty password field in any case
         findDOMNode(this.refs.password).value = '';

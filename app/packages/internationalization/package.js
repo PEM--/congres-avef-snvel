@@ -11,7 +11,7 @@ Package.onUse(function(api) {
   const shared = [
     'softwarerero:accounts-t9n@1.1.4',
     'tap:i18n@1.6.1',
-    'gwendall:simple-schema-i18n@0.1.9',
+    'aldeed:simple-schema@1.3.3',
     'rzymek:moment-locale-fr@2.9.0',
     'numeral:languages@1.5.3'
   ];
@@ -22,11 +22,11 @@ Package.onUse(function(api) {
   // Included files in this packages
   // Files for server and client
   api.addFiles([
-    'internationalization.js'
+    'internationalization.js',
+    'i18n/fr.i18n.json'
   ]);
   api.addAssets([
-    'package-tap.i18n',
-    'i18n/fr.i18n.json'
+    'package-tap.i18n'
   ], ['client', 'server']);
   // Exporting symbols
   api.export(['getUserLanguage']);

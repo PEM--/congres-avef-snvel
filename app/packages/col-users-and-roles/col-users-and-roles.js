@@ -3,6 +3,17 @@
 // Create a logger
 const log = Logger.createLogger('Collection Users and Roless');
 
+const AvailableRoles = [
+  'public',
+  'email_pending',
+  'option_pending',
+  'payment_pending',
+  'subscribed',
+  'admin'
+];
+
+SD.Structure.AvailableRoles = AvailableRoles;
+
 // Schema for client and server
 SD.Structure.SchemaUser = new SimpleSchema({
   emails: {
@@ -20,6 +31,13 @@ SD.Structure.SchemaUser = new SimpleSchema({
   },
   createdAt: {
     type: Date,
+    label: 'Créé le',
+    defaultValue: new Date()
+  },
+  modifiedAt: {
+    type: Date,
+    label: 'Modifié le',
+    defaultValue: new Date()
   },
   services: {
     type: Object,
@@ -33,9 +51,11 @@ SD.Structure.SchemaUser = new SimpleSchema({
   },
   lastConnection: {
     type: Date,
+    label: 'Dernière connexion réalisée le',
     defaultValue: new Date()
   }
 });
+
 Meteor.users.attachSchema(SD.Structure.SchemaUser);
 log.info('Schema defined');
 
@@ -46,6 +66,17 @@ SD.Structure.LoginSchema = new SimpleSchema({
     regEx: SimpleSchema.RegEx.Email
   },
   password: {
+    type: String,
+    min: 7, max: 256
+  }
+});
+
+// Enhanced Schema for Account creation
+SD.Structure.AccountCreationSchema = new SimpleSchema({
+  loginSchema: {
+    type: SD.Structure.LoginSchema
+  },
+  repassword: {
     type: String,
     min: 7, max: 256
   }

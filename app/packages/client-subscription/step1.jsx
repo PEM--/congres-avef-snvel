@@ -8,10 +8,6 @@ class SubscriptionStep1 extends Component {
       error: '',
       message: ''
     };
-    this.infoEntered = (e) => {
-      e.preventDefault();
-      log.debug('User entered info:', e);
-    };
     this.handleSubmit = (e) => {
       e.preventDefault();
       log.debug('User submit form:', e);
@@ -23,7 +19,6 @@ class SubscriptionStep1 extends Component {
       <div className='ui error message'>
         <div className='error content'>
           <div className='header'><i className='fa fa-warning'></i>Votre inscription n'est pas correcte.</div>
-          <p>{this.state.error}</p>
         </div>
       </div>
     ) : '';
@@ -38,7 +33,7 @@ class SubscriptionStep1 extends Component {
       {
         name: 'Identification', fields: [
           {icon: 'user', name: 'lastname', text: 'Votre nom'},
-          {icon: 'user', name: 'firstname', text: 'Votre prénom'},
+          {icon: 'user', name: 'firstname', text: 'Votre prénom'}
         ]
       }
     ];
@@ -64,10 +59,16 @@ class SubscriptionStep1 extends Component {
     return (
       <div>
         <h2>Créer votre compte</h2>
-        <form className='ui large form' onSubmit={this.handleSubmit} onChange={this.infoEntered}>
+        <form className='ui large form' onSubmit={this.handleSubmit}>
           <div className='ui stacked segment'>
             {nodes}
-            <button type='submit' className='ui fluid large submit button primary'>Je m'inscris</button>
+            <p>{this.state.error}</p>
+            <button
+              type='submit'
+              className='ui fluid large submit button primary'
+            >
+              Je m'inscris
+            </button>
           </div>
         </form>
         {errorMessage}
