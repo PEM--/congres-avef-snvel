@@ -1,15 +1,25 @@
+const UserSubscriberSharedSchema = new SimpleSchema({
+  status: { type: String, label: 'Statut', optional: true, min: 2, max: 8 },
+  avef: {type: String, label: 'N° adhérent AVEF', optional: true, min: 4, max: 16},
+  snvel: {type: String, label: 'N° ordinal pour adhérent SNVEL', min: 1, max: 16},
+  lastname: {type: String, label: 'Nom', min: 2, max: 256},
+  firstname: {type: String, label: 'Prénom', min: 2, max: 256},
+  postalcode: {
+    type: String, label: 'Code postal',
+    regEx: /^((0[1-9])|([1-8][0-9])|(9[0-8])|(2A)|(2B))[0-9]{3}$/,
+    optional: true, min: 5, max: 5
+  },
+  city: {type: String, label: 'Ville', optional: true, min: 2, max: 128},
+  email: {type: String, regEx: SimpleSchema.RegEx.Email, label: 'E-mail', optional: true}
+});
+
+SD.Structure.UserSubscriberSharedSchema = UserSubscriberSharedSchema;
+
 // Options used on the server and the client
 const sharedOptions = {
   name: 'Subscribers',
   schema: {
-    status: { type: String, label: 'Statut', optional: true, min: 2, max: 8 },
-    avef: {type: String, label: 'N° adhérent AVEF', optional: true, min: 4, max: 16},
-    snvel: {type: String, label: 'N° ordinal pour adhérent SNVEL', min: 1, max: 16},
-    lastname: {type: String, label: 'Nom', min: 2, max: 256},
-    firstname: {type: String, label: 'Prénom', min: 2, max: 256},
-    postalcode: {type: String, label: 'Code postal', optional: true, min: 5, max: 5},
-    city: {type: String, label: 'Ville', optional: true, min: 2, max: 128},
-    email: {type: String, regEx: SimpleSchema.RegEx.Email, label: 'E-mail', optional: true},
+    userSubscriberSharedSchema: { type: SD.Structure.UserSubscriberSharedSchema },
     createdAt: {type: Date },
     modifiedAt: {type: Date }
   },
@@ -27,6 +37,8 @@ if (Meteor.isClient) {
   SD.Structure.subscribers = new Subscribers(sharedOptions);
 }
 
+textInputFormatter = (text) => _.chain(s(text).words()).map((element) => s.capitalize(element, true)).value().join(' ');
+
 // Server only
 if (Meteor.isServer) {
   const log = Logger.createLogger('Collection Subscribers');
@@ -41,16 +53,10 @@ if (Meteor.isServer) {
         status: tokens[0].trim(),
         avef: tokens[1].trim(),
         snvel: tokens[2].trim(),
-        lastname: _.chain(s(tokens[3]).words())
-          .map((element) => s.capitalize(element, true))
-          .value().join(' '),
-        firstname: _.chain(s(tokens[4]).words())
-          .map((element) => s.capitalize(element, true))
-          .value().join(' '),
+        lastname: textInputFormatter(tokens[3]),
+        firstname: textInputFormatter(tokens[4]),
         postalcode: tokens[5].trim(),
-        city: _.chain(s(tokens[6]).words())
-          .map((element) => s.capitalize(element, true))
-          .value().join(' '),
+        city: textInputFormatter(tokens[6]),
         email: tokens[7].trim().toLowerCase(),
         createdAt: new Date(),
         modifiedAt: new Date()

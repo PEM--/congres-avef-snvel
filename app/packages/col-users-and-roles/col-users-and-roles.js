@@ -80,14 +80,13 @@ SD.Structure.LoginSchema = new SimpleSchema({
 
 // Enhanced Schema for Account creation
 SD.Structure.AccountCreationSchema = new SimpleSchema({
-  loginSchema: {
-    type: SD.Structure.LoginSchema
-  },
+  loginSchema: { type: SD.Structure.LoginSchema },
   repassword: {
     label: 'Confirmation du mot de passe',
     type: String,
     min: 7, max: 256
-  }
+  },
+  userSubscriberSharedSchema: { type: SD.Structure.UserSubscriberSharedSchema }
 });
 
 // Create default accounts

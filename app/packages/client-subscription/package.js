@@ -18,6 +18,7 @@ Package.onUse(function(api) {
     'pierreeric:main-layout',
     'pierreeric:client-sharedstyles',
     'pierreeric:client-socialsharers',
+    'pierreeric:client-errormessage',
     'pierreeric:col-users-and-roles',
     'pierreeric:col-subscribers'
   ]);

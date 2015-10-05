@@ -16,7 +16,8 @@ Package.onUse(function(api) {
     'spacedrop:basecollection',
     'pierreeric:internationalization',
     'pierreeric:logger',
-    'pierreeric:routing-start'
+    'pierreeric:routing-start',
+    'pierreeric:col-subscribers'
   ]));
   api.imply(shared);
   // Included files in this packages
