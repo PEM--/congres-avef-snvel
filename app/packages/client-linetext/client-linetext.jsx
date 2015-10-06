@@ -5,9 +5,9 @@ const log = Logger.createLogger('Client LineText');
 
 // Namespace flatteinng
 const { Component } = React;
+const { BaseReactMeteor } = SD.Views;
 
-// LineText component
-class LineText extends SD.Views.BaseReactMeteor {
+class SimpleText extends BaseReactMeteor {
   constructor(props) {
     super(props);
   }
@@ -22,19 +22,35 @@ class LineText extends SD.Views.BaseReactMeteor {
     };
   }
   render() {
-    log.debug('Rendering LineText', this.props.page, this.props.text);
+    log.debug('Rendering SimpleText', this.props.page, this.props.text);
     const { loading, item } = this.data;
     if (loading) {
       return this.loadingRenderer();
     }
-    const nodes = (
-      <div className='fadeIn'>
-        <div
-          dangerouslySetInnerHTML={{__html: SD.Utils.prettyLink(marked(item.content))}}
-        />
+    const content = SD.Utils.prettyLink(marked(item.content));
+    return (
+      <div
+        dangerouslySetInnerHTML={{
+          __html: content
+        }}/>
+    );
+  }
+}
+
+SD.Views.Client.SimpleText = SimpleText;
+
+// LineText component
+class LineText extends Component {
+  render() {
+    log.debug('Rendering LineText');
+    const { page, text } = this.props;
+    return (
+      <div className='sixteen wide column'>
+        <div className='fadeIn'>
+          <SimpleText page={page} text={text} />
+        </div>
       </div>
     );
-    return (<div className='sixteen wide column'>{nodes}</div>);
   }
 }
 
