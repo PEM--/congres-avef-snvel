@@ -34,6 +34,7 @@ let relevantAmountTranslator = function(token) {
   const smallToken = token.trim().toLowerCase();
   let relevancy = false, amount = 0;
   if (smallToken !== 'na') {
+    relevancy = true;
     amount = Number(smallToken);
   }
   return { relevancy, amount };

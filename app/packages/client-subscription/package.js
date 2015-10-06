@@ -22,7 +22,8 @@ Package.onUse(function(api) {
     'pierreeric:col-users-and-roles',
     'pierreeric:col-subscribers',
     'pierreeric:col-dictionary',
-    'pierreeric:client-cookie'
+    'pierreeric:client-cookie',
+    'pierreeric:col-pricings'
   ]);
   // Included files in this packages
   // Files for server and client
