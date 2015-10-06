@@ -19,7 +19,7 @@ SD.Structure.UserSubscriberSharedSchema = UserSubscriberSharedSchema;
 const sharedOptions = {
   name: 'Subscribers',
   schema: {
-    userSubscriberSharedSchema: { type: SD.Structure.UserSubscriberSharedSchema },
+    userInfo: { type: SD.Structure.UserSubscriberSharedSchema },
     createdAt: {type: Date },
     modifiedAt: {type: Date }
   },
@@ -49,14 +49,16 @@ if (Meteor.isServer) {
     if (subscriberLine !== '') {
       const tokens = subscriberLine.split(',');
       defaults.push({
-        status: tokens[0].trim(),
-        avef: tokens[1].trim(),
-        snvel: tokens[2].trim(),
-        lastname: textInputFormatter(tokens[3]),
-        firstname: textInputFormatter(tokens[4]),
-        postalcode: tokens[5].trim(),
-        city: textInputFormatter(tokens[6]),
-        email: tokens[7].trim().toLowerCase(),
+        userInfo: {
+          status: tokens[0].trim(),
+          avef: tokens[1].trim(),
+          snvel: tokens[2].trim(),
+          lastname: textInputFormatter(tokens[3]),
+          firstname: textInputFormatter(tokens[4]),
+          postalcode: tokens[5].trim(),
+          city: textInputFormatter(tokens[6]),
+          email: tokens[7].trim().toLowerCase()
+        },
         createdAt: new Date(),
         modifiedAt: new Date()
       });

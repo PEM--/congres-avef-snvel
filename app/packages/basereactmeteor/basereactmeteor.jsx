@@ -18,6 +18,8 @@ const BaseReactMeteor = createClass({
   }
 });
 
+SD.Views.BaseReactMeteor = BaseReactMeteor;
+
 class ReactDictionary extends BaseReactMeteor {
   constructor(props) {
     super(props);
@@ -34,5 +36,4 @@ class ReactDictionary extends BaseReactMeteor {
   }
 }
 
-SD.Views.BaseReactMeteor = BaseReactMeteor;
 SD.Views.ReactDictionary = ReactDictionary;
