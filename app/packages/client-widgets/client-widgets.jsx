@@ -16,7 +16,7 @@ class AnimatedButton extends Component {
     return (
       <button
         type='submit'
-        className={`ui fluid large submit animated ${animName} ${disabledClass} button primary`} tabindex="0">
+        className={`ui fluid large submit animated ${animName} ${disabledClass} button primary`}>
         <div className='visible content'>{text}</div>
         <div className='hidden content'>
           <i className={`fa fa-lg fa-${icon} icon`}></i>
