@@ -42,5 +42,28 @@ Nous souhaitons faire de cet évènement un moment d’échanges fructueux perme
   * Management dans les cliniques vétérinaires équines
   * Présentation du MBA pour les vétérinaires équins
   * Economie des cliniques vétérinaires équines en Europe`
+  },
+  {
+    page: 'spuscription_step2',
+    text: 'title',
+    content: `Validation de votre email`,
+  },
+  {
+    page: 'spuscription_step2',
+    text: 'message',
+    content: `Un email de vérification vous a été transmis dans lequel vous trouverez un bouton de confirmation.`,
+  },
+  {
+    page: 'spuscription_step2',
+    text: 'submessage',
+    content: `Veuillez cliquer sur ce bouton pour passer à l’étape suivante de votre inscription.`,
+  },
+  {
+    page: 'spuscription_step2',
+    text: 'warning',
+    content: `Si vous avez validé votre email mais démarré votre inscription
+sur un navigateur ou appareil différent, il est nécessaire de
+&nbsp;<a className='animated' href='/login'>vous connecter</a>&nbsp;
+pour poursuivre.`,
   }
 ];
