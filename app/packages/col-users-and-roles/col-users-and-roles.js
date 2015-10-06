@@ -144,7 +144,7 @@ if (Meteor.isClient) {
     }
   });
   Accounts.onEmailVerificationLink(function(token, done) {
-    logger.warn('Received confirmation', token);
+    logger.info('Received confirmation', token);
     done();
   });
 }

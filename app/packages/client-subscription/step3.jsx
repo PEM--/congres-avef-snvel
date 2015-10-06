@@ -37,7 +37,12 @@ class InnerStep1 extends Component {
   }
 }
 
-class SubscriptionStep3 extends Component {
+class SubscriptionStep3 extends BaseReactMeteor {
+  getMeteorData() {
+    return {
+      user: Meteor.user()
+    };
+  }
   render() {
     return (
       <div>
