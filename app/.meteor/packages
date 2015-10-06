@@ -23,6 +23,7 @@ ecmascript
 
 # Utils
 pierreeric:logger
+pierreeric:client-sharedstyles
 pierreeric:emails
 
 # Security

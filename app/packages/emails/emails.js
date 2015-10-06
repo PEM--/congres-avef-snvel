@@ -8,8 +8,10 @@ log = Logger.createLogger('Emails');
 // Define Meteor's SMTP
 Meteor.startup(() => {
   const settings = Meteor.settings.mailjet;
-  process.env.MAIL_URL = `smtp://${settings.apiKey}:${settings.secretKey}@in-v3.mailjet.com:587/`;
-  log.info('SMTP declared');
+  if (settings) {
+    process.env.MAIL_URL = `smtp://${settings.apiKey}:${settings.secretKey}@in-v3.mailjet.com:587/`;
+    log.info('SMTP declared');
+  }
 });
 
 // Flatten namespace
@@ -32,7 +34,7 @@ rawHtml = s(rawHtml)
 let rawCss = Assets.getText('templates/styles.css');
 rawCss = s(rawCss)
   .replaceAll('CSS_TEMPLATE_BACKGROUND_COLOR', SD.Views.Client.ColorTheme.invertedTextColor)
-  .replaceAll('CSS_TEMPLATE_HEADER_COLOR', SD.Views.Client.ColorTheme.grassColor)
+  .replaceAll('CSS_TEMPLATE_HEADER_COLOR', SD.Views.Client.ColorTheme.secondaryColor)
   .replaceAll('CSS_TEMPLATE_HEADER_FONT', SD.Views.Client.Fonts.header)
   .replaceAll('CSS_TEMPLATE_BORDER_COLOR', SD.Views.Client.Fonts.body)
   .replaceAll('CSS_TEMPLATE_PRIMARY_COLOR', SD.Views.Client.ColorTheme.brandColor)

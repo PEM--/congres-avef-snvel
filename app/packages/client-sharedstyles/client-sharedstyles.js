@@ -1,6 +1,7 @@
 // Color theme
 SD.Views.Client.ColorTheme = {
   brandColor: '#FF7100',
+  secondaryColor: '#007E5F',
   transBrandColor: 'rgba(255, 113, 0, .2)',
   bgBrandColor: '#7bb4ab',
   textColor: '#000000',
