@@ -20,6 +20,12 @@ div.client.subscription {
     }
   }
 
+  .inner-step {
+    // Entrance animation
+    opacity: 0;
+    animation: fadeInLeft @defaultDuration @defaultEasing forwards;
+  }
+
   // Mobile specifics
   @media screen and (max-width: @largestMobileScreen) {
     .ui.steps {
