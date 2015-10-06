@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'pierreeric:col-pricing',
+  name: 'pierreeric:col-pricings',
   version: '0.0.1'
 });
 
@@ -19,7 +19,7 @@ Package.onUse(function(api) {
   // Included files in this packages
   // Files for server and client
   api.addFiles([
-    'col-pricing.js',
+    'col-pricings.js',
   ]);
-  api.addAssets(['pricing.csv'], 'server');
+  api.addAssets(['pricings.csv'], 'server');
 });
