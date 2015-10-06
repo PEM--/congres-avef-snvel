@@ -17,7 +17,8 @@ Package.onUse(function(api) {
     'pierreeric:main-layout',
     'pierreeric:client-sharedstyles',
     'pierreeric:col-users-and-roles',
-    'pierreeric:client-errormessage'
+    'pierreeric:client-errormessage',
+    'pierreeric:client-widgets'
   ]);
   // Included files in this packages
   // Files for server and client

@@ -14,7 +14,7 @@ class ErrorMessage extends Component {
     const errorMessage = error !== '' ? (
       <div className='ui error message'>
         <div className='error content'>
-          <div className='header'><i className='fa fa-warning'></i>
+          <div className='header'><i className='fa fa-warning'></i>&nbsp;
             {title}
           </div>
           <p>{error}</p>

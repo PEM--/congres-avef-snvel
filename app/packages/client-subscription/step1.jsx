@@ -1,7 +1,7 @@
 // Namespace flatteinng
 const { Component, findDOMNode } = React;
 const { ReactDictionary, Client } = SD.Views;
-const { ErrorMessage } = Client;
+const { ErrorMessage, AnimatedButton } = Client;
 const { Cookie } = SD.Utils;
 
 class SubscriptionStep1 extends ReactDictionary {
@@ -103,12 +103,7 @@ class SubscriptionStep1 extends ReactDictionary {
         <form className='ui large form' onSubmit={this.handleSubmit}>
           <div className='ui stacked segment'>
             {nodes}
-            <button
-              type='submit'
-              className={`ui fluid large submit button primary ${isCookieAccepted ? '' : 'disabled'}`}
-            >
-              Je m'inscris
-            </button>
+            <AnimatedButton disabled={!isCookieAccepted} anim='fade' icon='pencil' text="Je m'inscris" />
           </div>
         </form>
         <ErrorMessage

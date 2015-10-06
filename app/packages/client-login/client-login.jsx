@@ -5,7 +5,7 @@ const log = Logger.createLogger('Client LogIn');
 
 // Namespace flatteinng
 const { Component, findDOMNode } = React;
-const { ErrorMessage } = SD.Views.Client;
+const { ErrorMessage, AnimatedButton } = SD.Views.Client;
 
 // Already LoggedIn component
 class AlreadyLoggedIn extends Component {
@@ -76,7 +76,7 @@ class LogInForm extends Component {
                   <input type='password' name='password' ref='password' placeholder="Votre mot de passe"/>
                 </div>
               </div>
-              <button type='submit' className='ui fluid large submit button primary'>Je me connecte</button>
+              <AnimatedButton anim='fade' icon='key' text='Je me connecte' />
             </div>
           </form>
           <ErrorMessage

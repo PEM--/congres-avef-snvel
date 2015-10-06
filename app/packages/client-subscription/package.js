@@ -19,6 +19,7 @@ Package.onUse(function(api) {
     'pierreeric:client-sharedstyles',
     'pierreeric:client-socialsharers',
     'pierreeric:client-errormessage',
+    'pierreeric:client-widgets',
     'pierreeric:col-users-and-roles',
     'pierreeric:col-subscribers',
     'pierreeric:col-dictionary',
