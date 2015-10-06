@@ -65,5 +65,13 @@ Nous souhaitons faire de cet évènement un moment d’échanges fructueux perme
 sur un navigateur ou appareil différent, il est nécessaire de
 &nbsp;<a class='animated' href='/login'>vous connecter</a>&nbsp;
 pour poursuivre.`,
+  },
+  {
+    page: 'subscription_step3',
+    text: 'check_info',
+    content: `<i class='fa fa-exclamation-circle fa-lg'></i>&nbsp;Si les informations retrouvées ne sont pas bonnes, n'hésitez pas
+&nbsp;<a class='animated' href='mailto://avef.paris@wanadoo.fr'>à nous contacter</a>
+.`,
   }
+
 ];

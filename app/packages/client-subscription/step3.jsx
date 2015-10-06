@@ -1,7 +1,7 @@
 // Namespace flatteinng
 const { Component } = React;
 const { BaseReactMeteor, Client } = SD.Views;
-const { AnimatedButton } = Client;
+const { AnimatedButton, SimpleText } = Client;
 
 class InnerStep1 extends Component {
   render() {
@@ -29,6 +29,7 @@ class InnerStep1 extends Component {
               </div>
             </div>
             <AnimatedButton icon='arrow-right' text='Je valide ces informations' />
+            <p><SimpleText page='subscription_step3' text='check_info' /></p>
           </form>
         </div>
       </div>
