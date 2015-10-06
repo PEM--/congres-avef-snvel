@@ -57,7 +57,7 @@ SD.Structure.SchemaUser = new SimpleSchema({
     label: 'Dernière connexion réalisée le',
     defaultValue: new Date()
   },
-  userInfo: {
+  profile: {
     type: SD.Structure.UserSubscriberSharedSchema,
     label: 'Information utilisateur',
     optional: true
@@ -174,15 +174,40 @@ if (Meteor.isServer) {
       check(cb, Match.Any);
       const _id = Accounts.createUser({
         email: accountInfo.login.email,
-        password: accountInfo.login.password
+        password: accountInfo.login.password,
+        profile: accountInfo.userInfo
       });
       Roles.addUsersToRoles(_id, ['public']);
-      Meteor.users._collection.update({_id}, {$set: {userinfo: accountInfo.userInfo}});
+      //Meteor.users._collection.update({_id}, {$set: {userinfo: accountInfo.userInfo}});
       log.info('User created:', accountInfo.login.email);
       this.unblock();
       Accounts.sendVerificationEmail(_id);
       log.info('Verification email sent for:', accountInfo.login.email);
       return true;
+    },
+    availableSubscriberInfo(cb) {
+      const user = Meteor.user();
+      if (!user) {
+        throw new Meteor.Error('User retrieval', '403: Non authorized');
+      }
+      check(cb, Match.Any);
+      // Start by checking email
+      let subscriber = SD.Structure.subscribers.collection.findOne({
+        'userInfo.email': user.email[0].address });
+      // If not found, check fistname and lastname
+      if (!subscriber) {
+        subscriber = SD.Structure.subscribers.collection.findOne({
+          $and: [
+            {'userInfo.lastname': user.profile.lastname},
+            {'userInfo.firstname': user.profile.firstname}
+          ]
+        });
+      }
+      if (subscriber) {
+        log.info('Found subscriber', subscriber);
+        return subscriber;
+      }
+      return subscriber;
     }
   });
 }

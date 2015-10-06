@@ -68,7 +68,11 @@ if (Meteor.isServer) {
   const serverOptions = {
     defaults,
     // Set indexes on collection
-    indexes: { lastname: 1, firstname: 1, email: 1, city: 1, postalcode: 1 }
+    indexes: {
+      'userInfo.lastname': 1,
+      'userInfo.firstname': 1,
+      'userInfo.email': 1
+    }
   };
   class Subscribers extends SD.Structure.ServerBaseCollection {}
   // Export instance

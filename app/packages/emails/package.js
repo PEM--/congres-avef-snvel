@@ -1,6 +1,9 @@
 Package.describe({
   name: 'pierreeric:emails',
-  version: '0.0.1'
+  version: '0.0.1',
+  summary: 'Responsibe Email templates',
+  git: 'https://github.com/PEM--/congres-avef-snvel/tree/master/app/packages/emails',
+  documentation: 'README.md'
 });
 
 Package.onUse(function(api) {
@@ -16,8 +19,7 @@ Package.onUse(function(api) {
   const sharedServerAndClient = [
     'ecmascript',
     'es5-shim',
-    'underscorestring:underscore.string@3.2.2',
-    'pierreeric:client-sharedstyles'
+    'underscorestring:underscore.string@3.2.2'
   ];
   api.use(sharedServerAndClient.concat([
     'spacedrop:namespaces',
@@ -27,8 +29,7 @@ Package.onUse(function(api) {
   const serverOnly = [
     'email',
     'accounts-base',
-    'accounts-password',
-    'pierreeric:server-side-routes'
+    'accounts-password'
   ];
   api.use(serverOnly, 'server');
   api.imply(serverOnly, 'server');

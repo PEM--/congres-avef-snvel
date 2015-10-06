@@ -38,10 +38,22 @@ class InnerStep1 extends Component {
 }
 
 class SubscriptionStep3 extends BaseReactMeteor {
-  getMeteorData() {
-    return {
-      user: Meteor.user()
+  constructor(props) {
+    super(props);
+    this.state = {
+      availableSubscriberInfo: {}
     };
+  }
+  getMeteorData() {
+    const user = Meteor.user();
+    Meteor.call('availableSubscriberInfo', (error, availableSubscriberInfo) => {
+      if (error) {
+        log.warn('Error received', error);
+      }
+      log.info('User found as a registered subscriber', availableSubscriberInfo);
+      this.setState({availableSubscriberInfo});
+    });
+    return { user };
   }
   render() {
     return (
