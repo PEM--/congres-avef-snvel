@@ -9,13 +9,13 @@ const sharedOptions = {
   name: 'Pricings',
   schema: {
     right: { type: String, label: 'Droit', min: 3, max: 32},
-    basic: {type: SD.Structure.RelevantAmountSchema, label: 'Non adhérent'},
+    basic: {type: SD.Structure.RelevantAmountSchema, label: 'Vétérinaire non-adhérent'},
     avef: {type: SD.Structure.RelevantAmountSchema, label: 'Adhérent AVEF'},
     snvel: {type: SD.Structure.RelevantAmountSchema, label: 'Adhérent SNVEL'},
     snvelDelegate: {type: SD.Structure.RelevantAmountSchema, label: 'Délégué SNVEL'},
     seniorJuniorVetCcp: {type: SD.Structure.RelevantAmountSchema, label: 'Sénior/Jeune vétérinaire/CCP'},
     nurseDentistSmith: {type: SD.Structure.RelevantAmountSchema, label: 'ASV/TDE/Maréchal'},
-    junior: {type: SD.Structure.RelevantAmountSchema, label: 'Junior (Jour1+Jour2)'}
+    junior: {type: SD.Structure.RelevantAmountSchema, label: 'Vétérinaire junior (Jour1+Jour2)'}
   },
   // Available subscriptions and publications
   subs: {
