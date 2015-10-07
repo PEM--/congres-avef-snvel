@@ -116,11 +116,6 @@ class InnerStepJob extends Component {
     this.state = {
       error: ''
     };
-    this.goBack = (e) => {
-      e.preventDefault();
-      log.info('User is going back');
-      FlowRouter.go('/subscription?step=3');
-    };
     this.handleSubmit = (e) => {
       e.preventDefault();
       let selectedJob = null;
@@ -207,11 +202,6 @@ class InnerStepSubscriber extends Component {
     this.state = {
       error: ''
     };
-    this.goBack = (e) => {
-      e.preventDefault();
-      log.info('User is going back');
-      FlowRouter.go('/subscription?step=3');
-    };
     this.handleSubmit = (e) => {
       e.preventDefault();
       log.info('Valid forms');
@@ -284,17 +274,7 @@ class InnerStepSubscriber extends Component {
 class InnerStepProgram extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      error: ''
-    };
-    this.goBack = (e) => {
-      e.preventDefault();
-      log.info('User is going back');
-
-      // @TODO Check current profile
-
-      FlowRouter.go('/subscription?step=3');
-    };
+    this.state = { error: '' };
     this.handleSubmit = (e) => {
       e.preventDefault();
       log.info('Valid forms');
@@ -337,6 +317,8 @@ class InnerStepProgram extends Component {
     };
   }
   render() {
+    const job = Meteor.user().profile.job;
+    const backStep = (job === 'avef' || job === 'snvel' || job === 'snvelDelegate') ? 'subscriber' : 'job';
     log.info('Rendering InnerStepProgram');
     return (
       <div className='ui segments inner-step'>
@@ -347,7 +329,7 @@ class InnerStepProgram extends Component {
           <form className='ui large form' onSubmit={this.handleSubmit} >
             <div className='fields'>
               <div className='three wide field'>
-                <BackButton url='/subscription?step=3'text='Retour' />
+                <BackButton url={`/subscription?step=3&substep=${backStep}`} text='Retour' />
               </div>
               <div className='thirteen wide field'>
                 <AnimatedButton icon='arrow-right' text='Je confirme ces informations' />
@@ -364,7 +346,6 @@ class InnerStepProgram extends Component {
     );
   }
 }
-
 
 class SubscriptionStep3 extends Component {
   constructor(props) {
