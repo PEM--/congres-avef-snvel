@@ -19,13 +19,23 @@ class InnerStep1 extends Component {
       e.preventDefault();
       log.info('Valid forms', this.state.city, this.state.postalcode);
       try {
-        check({postalcode: this.state.postalcode, city: this.state.city},
-          SD.Structure.CitySchema);
+        const fullCity = {
+          postalcode: this.state.postalcode,
+          city: this.state.city
+        };
+        check(fullCity, SD.Structure.CitySchema);
         // Insert data on base if different from props
         if (this.props.postalcode !== this.state.postalcode ||
             this.props.postalcode !== this.state.postalcode) {
-          Meteor.call('updateCity', this.state.postalcode, this.state.city);
+          Meteor.call('updateCity', fullCity, (error) => {
+            if (error) {
+              log.debug('Error while checking SubscriptionStep1 values', error);
+              this.setState({error});
+            }
+          });
         }
+        // Reset potential displayed error
+        this.setState({error: ''});
         // Go to next step
       } catch (error) {
         log.debug('Error while checking InnerStep1 values', error);
