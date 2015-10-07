@@ -131,7 +131,12 @@ FlowRouter.route(`/${ROUTE_NAME}`, {
     // Check send parameter
     if (substep && !(_.contains([
       'job',
-      'subscriber'
+      'subscriber',
+      'program',
+      'monday',
+      'thursday',
+      'wednesday',
+      'tuesday'
     ], substep))) {
       log.warn('Unrecognised substep', substep);
       substep = null;

@@ -225,6 +225,17 @@ if (Meteor.isServer) {
         }
       });
       return true;
+    },
+    updateProfile(profile, cb) {
+      if (!this.userId) {
+        throw new Meteor.Error('User retrieval', '403: Non authorized');
+      }
+      check(profile, SD.Structure.UserSubscriberSharedSchema);
+      check(cb, Match.Any);
+      const user = Meteor.users.findOne(this.userId);
+      log.info('User', user.emails[0].address, 'updates', profile);
+      Meteor.users._collection.update({_id: this.userId}, { $set: { profile } });
+      return true;
     }
   });
 }
