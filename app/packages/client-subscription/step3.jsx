@@ -1,7 +1,7 @@
 // Namespace flatteinng
 const { Component, findDOMNode } = React;
 const { BaseReactMeteor, Client } = SD.Views;
-const { AnimatedButton, SimpleText, ErrorMessage } = Client;
+const { AnimatedButton, BackButton, SimpleText, ErrorMessage } = Client;
 
 class InnerStep1 extends Component {
   constructor(props) {
@@ -105,8 +105,49 @@ class InnerStep1 extends Component {
 }
 
 class InnerStep2 extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: ''
+    };
+    this.goBack = (e) => {
+      e.preventDefault();
+      log.info('User is going back');
+      FlowRouter.go('/subscription?step=3');
+    };
+
+    this.handleSubmit = (e) => {
+      e.preventDefault();
+      log.info('User select', e.target);
+    };
+  }
   render() {
-    return (<p>Next!</p>);
+    log.info('Rendering InnerStep2');
+    return (
+      <div className='ui segments inner-step'>
+        <div className='ui segment'>
+          <h3>Votre profession</h3>
+        </div>
+        <div className='ui segment'>
+          <form className='ui large form' onSubmit={this.handleSubmit} >
+            <div className='fields'>
+              <div className='three wide field'>
+                <BackButton url='/subscription?step=3'text='Retour' />
+              </div>
+              <div className='twelve wide field'>
+                <BackButton text='Je valide ma profession' />
+              </div>
+            </div>
+            <p><SimpleText page='subscription_step3' text='check_info' /></p>
+          </form>
+          <ErrorMessage
+            title="Votre profession n'est pas correcte."
+            error={ErrorMessage.asProps(this.state.error)}
+          />
+        </div>
+      </div>
+
+    );
   }
 }
 
@@ -151,7 +192,7 @@ class SubscriptionStep3 extends Component {
           !this.props.substep ? <InnerStep1 postalcode={postalcode} city={city} /> : ''
         }
         {
-          this.props.substep ? <InnerStep2 postalcode={postalcode} city={city} /> : ''
+          this.props.substep === 2 ? <InnerStep2 postalcode={postalcode} city={city} /> : ''
         }
       </div>
     );
