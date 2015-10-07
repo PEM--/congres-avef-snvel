@@ -72,6 +72,12 @@ pour poursuivre.`,
     content: `<i class='fa fa-exclamation-circle fa-lg'></i>&nbsp;Si les informations retrouvées ne sont pas corrected, n'hésitez pas
 &nbsp;<a class='animated' href='mailto://avef.paris@wanadoo.fr'>à nous contacter</a>
 .`,
+  },
+  {
+    page: 'subscription_step3',
+    text: 'no_subscriber_info',
+    content: `<i class='fa fa-question-circle fa-lg'></i>&nbsp;Vous n'êtes pas encore adhérent ?
+&nbsp;<a class='animated' href='mailto://avef.paris@wanadoo.fr'>Contactez-nous</a>
+.`,
   }
-
 ];

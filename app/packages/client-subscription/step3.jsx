@@ -3,7 +3,7 @@ const { Component, findDOMNode } = React;
 const { BaseReactMeteor, Client } = SD.Views;
 const { AnimatedButton, BackButton, SimpleText, ErrorMessage } = Client;
 
-class InnerStep1 extends Component {
+class InnerStepCity extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -37,15 +37,20 @@ class InnerStep1 extends Component {
         // Reset potential displayed error
         this.setState({error: ''});
         // Go to next inner step
-        FlowRouter.go('/subscription?step=3&substep=2');
+        let substep = 'job';
+        // User was found as a subscriber
+        if (this.props.postalcode) {
+          substep = 'subscriber';
+        }
+        FlowRouter.go('/subscription?step=3&substep=job');
       } catch (error) {
-        log.debug('Error while checking InnerStep1 values', error);
+        log.debug('Error while checking InnerStepCity values', error);
         this.setState({error});
       }
     };
   }
   render() {
-    log.info('Rendering InnerStep1', this.state.postalcode, this.state.city);
+    log.info('Rendering InnerStepCity', this.state.postalcode, this.state.city);
     return (
       <div className='ui segments inner-step'>
         <div className='ui segment'>
@@ -104,7 +109,7 @@ class InnerStep1 extends Component {
   }
 }
 
-class InnerStep2 extends Component {
+class InnerStepJob extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -122,7 +127,23 @@ class InnerStep2 extends Component {
     };
   }
   render() {
-    log.info('Rendering InnerStep2');
+    log.info('Rendering InnerStepJob');
+    const jobs = [
+      {value: 'veterinary', text: 'Vétérinaire ou Etudiant'},
+      {value: 'nurse', text: 'ASV ou TDE'},
+      {value: 'smith', text: 'Maréchal Ferrant'}
+    ];
+    const choices = jobs.map((job) => {
+      return (
+        <div className='field'>
+          <div className='ui radio checkbox'>
+            <input type='radio' key={job.value} value={job.value} name='jobs' tabIndex='0' className='hidden' />
+            <label>{job.text}</label>
+          </div>
+        </div>
+      );
+    });
+    // const subscriberMessage =
     return (
       <div className='ui segments inner-step'>
         <div className='ui segment'>
@@ -130,12 +151,16 @@ class InnerStep2 extends Component {
         </div>
         <div className='ui segment'>
           <form className='ui large form' onSubmit={this.handleSubmit} >
+            <p><SimpleText page='subscription_step3' text='no_subscriber_info' /></p>
+            <div className='grouped fields'>
+              {choices}
+            </div>
             <div className='fields'>
               <div className='three wide field'>
                 <BackButton url='/subscription?step=3'text='Retour' />
               </div>
-              <div className='twelve wide field'>
-                <BackButton text='Je valide ma profession' />
+              <div className='thirteen wide field'>
+                <AnimatedButton icon='arrow-right' text='Je valide ma profession' />
               </div>
             </div>
             <p><SimpleText page='subscription_step3' text='check_info' /></p>
@@ -146,8 +171,73 @@ class InnerStep2 extends Component {
           />
         </div>
       </div>
-
     );
+  }
+  componentDidMount() {
+    $('.ui.radio.checkbox').checkbox();
+  }
+}
+
+class InnerStepSubscriber extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: ''
+    };
+    this.goBack = (e) => {
+      e.preventDefault();
+      log.info('User is going back');
+      FlowRouter.go('/subscription?step=3');
+    };
+    this.handleSubmit = (e) => {
+      e.preventDefault();
+      log.info('User select', e.target);
+    };
+  }
+  render() {
+    log.info('Rendering InnerStepSubscriber');
+    // const jobs = [
+    //   {value: 'veterinary', text: 'Vétérinaire ou Etudiant'},
+    //   {value: 'nurse', text: 'ASV ou TDE'},
+    //   {value: 'smith', text: 'Maréchal Ferrant'}
+    // ];
+    // const choices = jobs.map((job) => {
+    //   return (
+    //     <div className='field'>
+    //       <div className='ui radio checkbox'>
+    //         <input type='radio' key={job.value} value={job.value} name='jobs' tabIndex='0' className='hidden' />
+    //         <label>{job.text}</label>
+    //       </div>
+    //     </div>
+    //   );
+    // });
+    return (
+      <div className='ui segments inner-step'>
+        <div className='ui segment'>
+          <h3>Votre type d'adhésion</h3>
+        </div>
+        <div className='ui segment'>
+          <form className='ui large form' onSubmit={this.handleSubmit} >
+            <div className='fields'>
+              <div className='three wide field'>
+                <BackButton url='/subscription?step=3'text='Retour' />
+              </div>
+              <div className='thirteen wide field'>
+                <AnimatedButton icon='arrow-right' text='Je valide ma profession' />
+              </div>
+            </div>
+            <p><SimpleText page='subscription_step3' text='check_info' /></p>
+          </form>
+          <ErrorMessage
+            title="Votre type d'adhésion n'est pas correct."
+            error={ErrorMessage.asProps(this.state.error)}
+          />
+        </div>
+      </div>
+    );
+  }
+  componentDidMount() {
+    $('.ui.radio.checkbox').checkbox();
   }
 }
 
@@ -189,10 +279,13 @@ class SubscriptionStep3 extends Component {
       <div>
         <h2>Sélection des options</h2>
         {
-          !this.props.substep ? <InnerStep1 postalcode={postalcode} city={city} /> : ''
+          !this.props.substep ? <InnerStepCity postalcode={postalcode} city={city} /> : ''
         }
         {
-          this.props.substep === 2 ? <InnerStep2 postalcode={postalcode} city={city} /> : ''
+          this.props.substep === 'job' ? <InnerStepJob /> : ''
+        }
+        {
+          this.props.substep === 'subscriber' ? <InnerStepSubscriber /> : ''
         }
       </div>
     );

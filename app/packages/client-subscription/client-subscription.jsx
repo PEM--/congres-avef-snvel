@@ -40,7 +40,7 @@ class Steps extends Component {
       );
     });
     const step = Number(this.props.step);
-    const substep = this.props.substep ? Number(this.props.substep) : null;
+    const substep = this.props.substep;
     return (
       <div>
         <div className='ui four top attached steps'>
@@ -61,7 +61,7 @@ class Steps extends Component {
 class Subscription extends Component {
   render() {
     const { step, substep } = this.props;
-    log.debug('Rendering Subscription', step);
+    log.debug('Rendering Subscription', step, substep);
     return (
       <div className='client main-content ui grid subscription'>
         <div className='row'>
@@ -102,6 +102,7 @@ const ROUTE_NAME = 'subscription';
 FlowRouter.route(`/${ROUTE_NAME}`, {
   name: ROUTE_NAME,
   action(params, queryParams) {
+    log.debug(`Routing to ${ROUTE_NAME}`, params, queryParams);
     // Checking current step
     let step = queryParams.step;
     // Check provided step as URL
@@ -127,7 +128,14 @@ FlowRouter.route(`/${ROUTE_NAME}`, {
       FlowRouter.setQueryParams({step});
     }
     let substep = queryParams.substep;
-    // @TODO enfore paramater check
+    // Check send parameter
+    if (substep && !(_.contains([
+      'job',
+      'subscriber'
+    ], substep))) {
+      log.warn('Unrecognised substep', substep);
+      substep = null;
+    }
     ReactLayout.render(SD.Views.MainLayout, {
       content: <Subscription step={step} substep={substep} />
     });
