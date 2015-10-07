@@ -22,8 +22,8 @@ Package.onUse(function(api) {
     'underscorestring:underscore.string@3.2.2'
   ];
   api.use(sharedServerAndClient.concat([
-    'spacedrop:namespaces',
-    'pierreeric:logger'
+    'spacedrop:namespaces@0.0.1',
+    'pierreeric:logger@0.0.3'
   ]));
   api.imply(sharedServerAndClient);
   const serverOnly = [

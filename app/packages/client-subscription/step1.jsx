@@ -7,10 +7,7 @@ const { Cookie } = SD.Utils;
 class SubscriptionStep1 extends ReactDictionary {
   constructor(props) {
     super(props);
-    this.state = {
-      error: '',
-      message: ''
-    };
+    this.state = { error: '' };
     this.handleSubmit = (e) => {
       e.preventDefault();
       // Reset former error

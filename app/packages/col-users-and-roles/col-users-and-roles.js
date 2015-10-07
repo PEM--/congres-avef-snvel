@@ -186,14 +186,15 @@ if (Meteor.isServer) {
       return true;
     },
     availableSubscriberInfo(cb) {
-      const user = Meteor.user();
-      if (!user) {
+      if (!this.userId) {
         throw new Meteor.Error('User retrieval', '403: Non authorized');
       }
       check(cb, Match.Any);
+      const user = Meteor.users.findOne(this.userId);
+      log.info('User', user.emails[0].address, 'is requesting subscriber info');
       // Start by checking email
       let subscriber = SD.Structure.subscribers.collection.findOne({
-        'userInfo.email': user.email[0].address });
+        'userInfo.email': user.emails[0].address });
       // If not found, check fistname and lastname
       if (!subscriber) {
         subscriber = SD.Structure.subscribers.collection.findOne({

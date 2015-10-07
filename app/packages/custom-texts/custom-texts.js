@@ -69,7 +69,7 @@ pour poursuivre.`,
   {
     page: 'subscription_step3',
     text: 'check_info',
-    content: `<i class='fa fa-exclamation-circle fa-lg'></i>&nbsp;Si les informations retrouvées ne sont pas bonnes, n'hésitez pas
+    content: `<i class='fa fa-exclamation-circle fa-lg'></i>&nbsp;Si les informations retrouvées ne sont pas corrected, n'hésitez pas
 &nbsp;<a class='animated' href='mailto://avef.paris@wanadoo.fr'>à nous contacter</a>
 .`,
   }
