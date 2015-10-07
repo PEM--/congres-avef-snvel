@@ -40,6 +40,7 @@ class Steps extends Component {
       );
     });
     const step = Number(this.props.step);
+    const substep = this.props.substep ? Number(this.props.substep) : null;
     return (
       <div>
         <div className='ui four top attached steps'>
@@ -48,7 +49,7 @@ class Steps extends Component {
         <div className='ui attached segment'>
           {step === 1 ? <SubscriptionStep1 /> : ''}
           {step === 2 ? <SubscriptionStep2 /> : ''}
-          {step === 3 ? <SubscriptionStep3 /> : ''}
+          {step === 3 ? <SubscriptionStep3 substep={substep} /> : ''}
           {step === 4 ? <SubscriptionStep4 /> : ''}
         </div>
       </div>
@@ -59,7 +60,7 @@ class Steps extends Component {
 // Signup page component
 class Subscription extends Component {
   render() {
-    const { step } = this.props;
+    const { step, substep } = this.props;
     log.debug('Rendering Subscription', step);
     return (
       <div className='client main-content ui grid subscription'>
@@ -83,7 +84,7 @@ class Subscription extends Component {
                   {
                     step === 'report' ?
                       <SubscriptionReport /> :
-                      <Steps step={step} />
+                      <Steps step={step} substep={substep} />
                   }
                 </div>
               </section>
@@ -101,6 +102,7 @@ const ROUTE_NAME = 'subscription';
 FlowRouter.route(`/${ROUTE_NAME}`, {
   name: ROUTE_NAME,
   action(params, queryParams) {
+    // Checking current step
     let step = queryParams.step;
     // Check provided step as URL
     if (!step || step < 1 || step > 4) {
@@ -124,8 +126,10 @@ FlowRouter.route(`/${ROUTE_NAME}`, {
     if (Meteor.isClient) {
       FlowRouter.setQueryParams({step});
     }
+    let substep = queryParams.substep;
+    // @TODO enfore paramater check
     ReactLayout.render(SD.Views.MainLayout, {
-      content: <Subscription step={step} />
+      content: <Subscription step={step} substep={substep} />
     });
   }
 });

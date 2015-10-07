@@ -36,7 +36,8 @@ class InnerStep1 extends Component {
         }
         // Reset potential displayed error
         this.setState({error: ''});
-        // Go to next step
+        // Go to next inner step
+        FlowRouter.go('/subscription?step=3&substep=2');
       } catch (error) {
         log.debug('Error while checking InnerStep1 values', error);
         this.setState({error});
@@ -103,13 +104,21 @@ class InnerStep1 extends Component {
   }
 }
 
+class InnerStep2 extends Component {
+  render() {
+    return (<p>Next!</p>);
+  }
+}
+
 class SubscriptionStep3 extends Component {
   constructor(props) {
     super(props);
+    log.info('Inner step', props.substep);
+    const user = Meteor.user();
     this.state = {
+      user,
       subscriber: {}
     };
-    const user = Meteor.user();
     Meteor.call('availableSubscriberInfo', (error, subscriber) => {
       if (error) {
         log.warn('Error received', error);
@@ -124,14 +133,26 @@ class SubscriptionStep3 extends Component {
     });
   }
   render() {
-    log.info('Rendering SubscriptionStep3', this.state.subscriber);
-    const { subscriber } = this.state;
-    const postalcode = subscriber.userInfo ? subscriber.userInfo.postalcode : null;
-    const city = subscriber.userInfo ? subscriber.userInfo.city : null;
+    log.info('Rendering SubscriptionStep3', this.state.subscriber, this.props.substep);
+    const { user, subscriber } = this.state;
+    let postalcode = null, city = null;
+    if (user.profile) {
+      postalcode = user.profile.postalcode;
+      city = user.profile.city;
+    }
+    if (subscriber && (!postalcode || !city)) {
+      postalcode = subscriber.userInfo.postalcode;
+      city = subscriber.userInfo.city;
+    }
     return (
       <div>
         <h2>Sélection des options</h2>
-        <InnerStep1 postalcode={postalcode} city={city} />
+        {
+          !this.props.substep ? <InnerStep1 postalcode={postalcode} city={city} /> : ''
+        }
+        {
+          this.props.substep ? <InnerStep2 postalcode={postalcode} city={city} /> : ''
+        }
       </div>
     );
   }
