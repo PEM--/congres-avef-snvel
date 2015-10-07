@@ -209,6 +209,22 @@ if (Meteor.isServer) {
         return subscriber;
       }
       return subscriber;
+    },
+    updateCity(postalcode, city, cb) {
+      if (!this.userId) {
+        throw new Meteor.Error('User retrieval', '403: Non authorized');
+      }
+      check({postalcode, city}, SD.Structure.CitySchema);
+      check(cb, Match.Any);
+      const user = Meteor.users.findOne(this.userId);
+      log.info('User', user.emails[0].address, 'updates', postalcode, city);
+      Meteor.users_.collection.update({_id: this.userId}, {
+        $set: {
+          'profile.postalcode': postalcode,
+          'profile.city': city
+        }
+      });
+      return true;
     }
   });
 }

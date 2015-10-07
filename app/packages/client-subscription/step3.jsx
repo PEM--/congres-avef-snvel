@@ -10,22 +10,27 @@ class InnerStep1 extends Component {
       error: '', postalcode: props.postalcode, city: props.city
     };
     this.onChange = (e) => {
-      console.log(e.target.attr('name'));
-      console.log(e.target.value);
-      this.setState({[e.target.attr('name')]: e.target.value});
+      if (e.target) {
+        console.log(e.target.value, e.target);
+        this.setState({[e.target.getAttribute('name')]: e.target.value});
+      }
     };
     this.handleSubmit = (e) => {
       e.preventDefault();
-      const postalcode = findDOMNode(this.refs.postalcode).value.trim();
-      const city = textInputFormatter(findDOMNode(this.refs.city).value);
-      log.info('Valid forms', city, postalcode);
-      // try {
-      //   // Insert data on base if different from props
-      //   // Go to next step
-      //
-      // } catch(error) {
-      //
-      // }
+      log.info('Valid forms', this.state.city, this.state.postalcode);
+      try {
+        check({postalcode: this.state.postalcode, city: this.state.city},
+          SD.Structure.CitySchema);
+        // Insert data on base if different from props
+        if (this.props.postalcode !== this.state.postalcode ||
+            this.props.postalcode !== this.state.postalcode) {
+          Meteor.call('updateCity', this.state.postalcode, this.state.city);
+        }
+        // Go to next step
+      } catch (error) {
+        log.debug('Error while checking InnerStep1 values', error);
+        this.setState({error});
+      }
     };
   }
   render() {
@@ -71,11 +76,11 @@ class InnerStep1 extends Component {
             </div>
             <AnimatedButton icon='arrow-right' text='Je valide ces informations' />
             <p><SimpleText page='subscription_step3' text='check_info' /></p>
-            <ErrorMessage
-              title="Votre identité n'est pas correcte."
-              error={ErrorMessage.asProps(this.state.error)}
-            />
           </form>
+          <ErrorMessage
+            title="Votre identité n'est pas correcte."
+            error={ErrorMessage.asProps(this.state.error)}
+          />
         </div>
       </div>
     );

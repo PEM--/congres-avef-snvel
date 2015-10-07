@@ -36,6 +36,9 @@ SimpleSchema.messages({
   keyNotInSchema: "Le champ [key] n'est pas permis par le schéma.",
   regEx: [
     {
+      msg: "Le champ [label] n'a pas un format reconnu."
+    },
+    {
       exp: SimpleSchema.RegEx.Email,
       msg: "Le champ [label] doit être une adresse e-mail valide."
     },
@@ -70,9 +73,6 @@ SimpleSchema.messages({
     {
       exp: SimpleSchema.RegEx.Id,
       msg: "Le champ [label] doit être un identifiant alphanumérique valide."
-    },
-    {
-      msg: "Le champ [label] n'a pas un format reconnu."
     }
   ]
 });
