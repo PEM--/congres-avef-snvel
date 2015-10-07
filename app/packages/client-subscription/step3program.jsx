@@ -7,6 +7,11 @@ class InnerStepProgram extends Component {
   constructor(props) {
     super(props);
     this.state = { error: '' };
+    const programs = [
+      { name: 'avef', text: 'AVEF'},
+      { name: 'snvel', text: 'SNVEL'},
+      { name: 'ebms', text: 'EBMS'}
+    ];
     this.handleSubmit = (e) => {
       e.preventDefault();
       log.info('Valid forms');
@@ -52,6 +57,14 @@ class InnerStepProgram extends Component {
     const job = Meteor.user().profile.job;
     const backStep = (job === 'avef' || job === 'snvel' || job === 'snvelDelegate') ? 'subscriber' : 'job';
     log.info('Rendering InnerStepProgram');
+    const nodes = this.programs.map((program) => {
+      return (
+        <div className='ui toggle checkbox'>
+          <input type='checkbox' ref={program.name} name={program.name} />
+          <label>{program.text}</label>
+        </div>
+      );
+    });
     return (
       <div className='ui segments inner-step'>
         <div className='ui segment'>
@@ -60,6 +73,7 @@ class InnerStepProgram extends Component {
         <div className='ui segment'>
           <form className='ui large form' onSubmit={this.handleSubmit} >
             <div className='fields'>
+              {nodes}
               <div className='three wide field'>
                 <BackButton url={`/subscription?step=3&substep=${backStep}`} text='Retour' />
               </div>
@@ -70,7 +84,7 @@ class InnerStepProgram extends Component {
             <p><SimpleText page='subscription_step3' text='check_info' /></p>
           </form>
           <ErrorMessage
-            title="Votre type d'adhésion n'est pas correct."
+            title="Votre sélection de programmes n'est pas valide."
             error={ErrorMessage.asProps(this.state.error)}
           />
         </div>
