@@ -1,12 +1,19 @@
 // Namespace flatteinng
 const { Component, findDOMNode } = React;
 const { BaseReactMeteor, Client } = SD.Views;
-const { AnimatedButton, SimpleText } = Client;
+const { AnimatedButton, SimpleText, ErrorMessage } = Client;
 
 class InnerStep1 extends Component {
   constructor(props) {
     super(props);
-    this.state = { error: '' };
+    this.state = {
+      error: '', postalcode: props.postalcode, city: props.city
+    };
+    this.onChange = (e) => {
+      console.log(e.target.attr('name'));
+      console.log(e.target.value);
+      this.setState({[e.target.attr('name')]: e.target.value});
+    };
     this.handleSubmit = (e) => {
       e.preventDefault();
       const postalcode = findDOMNode(this.refs.postalcode).value.trim();
@@ -22,15 +29,14 @@ class InnerStep1 extends Component {
     };
   }
   render() {
-    const { postalcode, city } = this.props;
-    log.info('Rendering InnerStep1', postalcode, city);
+    log.info('Rendering InnerStep1', this.state.postalcode, this.state.city);
     return (
       <div className='ui segments inner-step'>
         <div className='ui segment'>
           <h3>Identité complémentaire</h3>
         </div>
         <div className='ui segment'>
-          <form className='ui large form' onSubmit={this.handleSubmit}>
+          <form className='ui large form' onSubmit={this.handleSubmit} >
             <div className='fields'>
               <div className='six wide field'>
                 <label>Code postal</label>
@@ -39,7 +45,8 @@ class InnerStep1 extends Component {
                   <input
                     type='text'
                     ref='postalcode'
-                    value={postalcode}
+                    value={this.state.postalcode}
+                    onChange={this.onChange}
                     name='postalcode'
                     ref='postalcode'
                     placeholder='Code postal'
@@ -53,7 +60,8 @@ class InnerStep1 extends Component {
                   <input
                     type='text'
                     ref='city'
-                    value={city}
+                    value={this.state.city}
+                    onChange={this.onChange}
                     name='city'
                     ref='city'
                     placeholder='Ville'
@@ -71,6 +79,12 @@ class InnerStep1 extends Component {
         </div>
       </div>
     );
+  }
+  componentWillReceiveProps(props) {
+    this.setState({
+      postalcode: props.postalcode,
+      city: props.city
+    });
   }
 }
 
