@@ -42,7 +42,6 @@ class InnerStepDay extends BaseReactMeteor {
       try {
         let newRights = [], removedRights = [];
         this.programPrices.map((prgPrice, idx) => {
-          console.warn('program', prgPrice.session, prgPrice.right);
           const isSelected = findDOMNode(this.refs[String(idx)]).checked;
           if (isSelected) {
             newRights.push(prgPrice._id);

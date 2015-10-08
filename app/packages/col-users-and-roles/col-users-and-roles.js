@@ -257,6 +257,36 @@ if (Meteor.isServer) {
         {$set: {'profile.rights': finalizedRight}}
       );
       return true;
+    },
+    updateProducts(newProducts, removedRights, cb) {
+      if (!this.userId) {
+        throw new Meteor.Error('User retrieval', '403: Non authorized');
+      }
+      check(newProducts, [String]);
+      check(removedProducts, [String]);
+      check(cb, Match.Any);
+      const user = Meteor.users.findOne(this.userId);
+      log.info('User', user.emails[0].address, 'adds products', newProducts, removedProducts);
+      const currentProducts = user.profile.products ? user.profile.products : [];
+      let finalizedProducts = _.chain(currentProducts)
+        .union(newProducts)
+        .difference(removedProducts)
+        .value();
+      Meteor.users._collection.update(
+        {_id: this.userId},
+        {$set: {'profile.products': finalizedProducts}}
+      );
+      return true;
+    },
+    setPaymentPending(cb) {
+      if (!this.userId) {
+        throw new Meteor.Error('User retrieval', '403: Non authorized');
+      }
+      check(cb, Match.Any);
+      const user = Meteor.users.findOne(this.userId);
+      log.info('User', user.emails[0].address, 'proceeds to payment');
+      Roles.addUsersToRoles(this.userId, 'payment_pending');
+      return true;
     }
   });
 }

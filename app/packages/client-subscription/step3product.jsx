@@ -15,36 +15,40 @@ class InnerStepProduct extends BaseReactMeteor {
     this.handleSubmit = (e) => {
       e.preventDefault();
       log.info('Valid forms');
-      // try {
-      //   let selectedPrograms = [];
-      //   this.programs.map((program) => {
-      //     const checkbox = findDOMNode(this.refs[program.name]);
-      //     log.debug(program.name, checkbox.checked);
-      //     if (checkbox.checked) {
-      //       selectedPrograms.push(program.name);
-      //     }
-      //   });
-      //   log.debug('User\'s selection:', selectedPrograms);
-      //   const profile = _.extend(_.clone(Meteor.user().profile), {
-      //     programs: selectedPrograms
-      //   });
-      //   check(profile, SD.Structure.UserSubscriberSharedSchema);
-      //   Meteor.call('updateProfile', profile, (error) => {
-      //     if (error) {
-      //       log.debug('Error while checking SubscriptionStep1 values', error);
-      //       this.setState({error});
-      //       return;
-      //     }
-      //     // Reset potential displayed error
-      //     this.setState({error: ''});
-      //     // Go to next inner step
-      //     // @TODO Check program's availability FlowRouter.go(`/subscription?step=3&substep=program`);
-      //     FlowRouter.go('/subscription?step=3&substep=Lundi');
-      //   });
-      // } catch (error) {
-      //   log.debug('Error while checking InnerStepProduct values', error);
-      //   this.setState({error});
-      // }
+      try {
+        let newProducts = [], removedProducts = [];
+        this.programPrices.map((prdPrice, idx) => {
+          const isSelected = findDOMNode(this.refs[String(idx)]).checked;
+          if (isSelected) {
+            newProducts.push(prdPrice._id);
+          } else {
+            removedProducts.push(prdPrice._id);
+          }
+        });
+        check(newProducts, [String]);
+        check(removedProducts, [String]);
+        Meteor.call('updateProducts', newProducts, removedProducts, (error) => {
+          if (error) {
+            log.debug('Error while checking InnerStepProduct values', error);
+            this.setState({error});
+            return;
+          }
+          Meteor.call('setPaymentPending', (errorStep2) => {
+            if (errorStep2) {
+              log.debug('Error while setting user in InnerStepProduct to payment_pending', errorStep2);
+              this.setState({errorStep2});
+              return;
+            }
+            // Reset potential displayed error
+            this.setState({error: ''});
+            // Go to next inner step
+            FlowRouter.go('/subscription?step=4');
+          });
+        });
+      } catch (error) {
+        log.debug('Error while checking InnerStepProduct values', error);
+        this.setState({error});
+      }
     };
   }
   getMeteorData() {
@@ -128,7 +132,7 @@ class InnerStepProduct extends BaseReactMeteor {
                 <BackButton url='/subscription?step=3&substep=Jeudi' text='Retour' />
               </div>
               <div className='thirteen wide field'>
-                <AnimatedButton icon='arrow-right' text='Je valide ma sélection' />
+                <AnimatedButton icon='shopping-cart' text='Je valide ma sélection et procède au paiement' />
               </div>
             </div>
             <p><SimpleText page='subscription_step3' text='price_info' /></p>

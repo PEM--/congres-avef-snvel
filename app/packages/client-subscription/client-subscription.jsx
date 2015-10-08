@@ -119,7 +119,7 @@ FlowRouter.route(`/${ROUTE_NAME}`, {
         step = 'report';
       } else if (Roles.userIsInRole(userId, 'public')) {
         step = 3;
-      } else if (Roles.userIsInRole(userId, 'step4')) {
+      } else if (Roles.userIsInRole(userId, 'payment_pending')) {
         step = 4;
       }
     }
