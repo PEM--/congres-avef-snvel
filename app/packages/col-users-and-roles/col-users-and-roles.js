@@ -237,6 +237,26 @@ if (Meteor.isServer) {
       log.info('User', user.emails[0].address, 'updates', profile);
       Meteor.users._collection.update({_id: this.userId}, { $set: { profile } });
       return true;
+    },
+    updateRights(newRights, removedRights, cb) {
+      if (!this.userId) {
+        throw new Meteor.Error('User retrieval', '403: Non authorized');
+      }
+      check(newRights, [String]);
+      check(removedRights, [String]);
+      check(cb, Match.Any);
+      const user = Meteor.users.findOne(this.userId);
+      log.info('User', user.emails[0].address, 'adds rights', newRights, removedRights);
+      const currentRights = user.profile.rights ? user.profile.rights : [];
+      let finalizedRight = _.chain(currentRights)
+        .union(newRights)
+        .difference(removedRights)
+        .value();
+      Meteor.users._collection.update(
+        {_id: this.userId},
+        {$set: {'profile.rights': finalizedRight}}
+      );
+      return true;
     }
   });
 }

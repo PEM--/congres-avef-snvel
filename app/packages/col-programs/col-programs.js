@@ -57,7 +57,7 @@ if (Meteor.isServer) {
   const serverOptions = {
     defaults,
     // Set indexes on collection
-    indexes: { programs: 1, session: 1, day: 1 }
+    indexes: { programs: 1, session: 1, day: 1, begin: 1 }
   };
   class Programs extends SD.Structure.ServerBaseCollection {}
   // Export instance

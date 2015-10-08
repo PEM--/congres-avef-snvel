@@ -16,7 +16,9 @@ const UserSubscriberSharedSchema = new SimpleSchema({
   programs: {type: Array, optional: true, min: 1, label: 'Programmes sélectionnés'},
   'programs.$': {type: String, optional: true, label: 'Programme', allowedValues: ['AVEF', 'SNVEL', 'EBMS']},
   rigths: {type: Array, optional: true, label: 'Droits'},
-  'rigths.$': {type: String, optional: true, label: 'Droit', allowedValues: ['AM1', 'GdC', 'Jour1', 'TR1', 'TD1', 'TD2', 'TP1', 'TP2', 'TR2', 'TD3', 'TD4', 'TP3', 'TP4', 'TR3', 'TD5', 'TD6', 'TP5', 'Exhib', 'Diner', 'Jour2', 'si Jour1+Jour2', 'TD7', 'TD8', 'TP6', 'TD9', 'TD10', 'TP7', 'TD11', 'TD12', 'TP8', 'EBMS1', 'EBMS2', 'EBMS3', 'EBMS3', 'EBMS4', 'EBMS5', 'EBMS6', 'proceeding paper avec inscription', 'proceeding paper sans jour 1 ou jour 2']},
+  'rigths.$': {type: String, optional: true, label: 'Droit'},
+  products: {type: Array, optional: true, label: 'Produits'},
+  'products.$': {type: String, optional: true, label: 'Produit'},
   paymentType: {type: String, optional: true, label: 'Paiement par chèque', allowedValues: ['check', 'card']},
   paymentAccepted: {type: Boolean, label: 'Paiement validé', optional: true},
   paymentDate: {type: Date, label: 'Date du paiement', optional: true}

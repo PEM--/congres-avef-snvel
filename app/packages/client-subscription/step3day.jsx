@@ -39,35 +39,34 @@ class InnerStepDay extends BaseReactMeteor {
     this.handleSubmit = (e) => {
       e.preventDefault();
       log.info('Valid forms');
-      // try {
-      //   let selectedPrograms = [];
-      //   this.programs.map((program) => {
-      //     const checkbox = findDOMNode(this.refs[program.name]);
-      //     log.debug(program.name, checkbox.checked);
-      //     if (checkbox.checked) {
-      //       selectedPrograms.push(program.name);
-      //     }
-      //   });
-      //   log.debug('User\'s selection:', selectedPrograms);
-      //   const profile = _.extend(_.clone(Meteor.user().profile), {
-      //     programs: selectedPrograms
-      //   });
-      //   check(profile, SD.Structure.UserSubscriberSharedSchema);
-      //   Meteor.call('updateProfile', profile, (error) => {
-      //     if (error) {
-      //       log.debug('Error while checking SubscriptionStep1 values', error);
-      //       this.setState({error});
-      //       return;
-      //     }
+      try {
+        let newRights = [], removedRights = [];
+        this.programPrices.map((prgPrice, idx) => {
+          console.warn('program', prgPrice.session, prgPrice.right);
+          const isSelected = findDOMNode(this.refs[String(idx)]).checked;
+          if (isSelected) {
+            newRights.push(prgPrice._id);
+          } else {
+            removedRights.push(prgPrice._id);
+          }
+        });
+        check(newRights, [String]);
+        check(removedRights, [String]);
+        Meteor.call('updateRights', newRights, removedRights, (error) => {
+          if (error) {
+            log.debug('Error while checking InnerStepDay values', error);
+            this.setState({error});
+            return;
+          }
           // Reset potential displayed error
           this.setState({error: ''});
           // Go to next inner step
           FlowRouter.go(this.nextUrl);
-      //   });
-      // } catch (error) {
-      //   log.debug('Error while checking InnerStepDay values', error);
-      //   this.setState({error});
-      // }
+        });
+      } catch (error) {
+        log.debug('Error while checking InnerStepDay values', error);
+        this.setState({error});
+      }
     };
   }
   getMeteorData() {
@@ -76,7 +75,10 @@ class InnerStepDay extends BaseReactMeteor {
     return {
       loading: !handlePricings.ready() && !handlePrograms.ready(),
       pricings: handlePricings.ready() ? SD.Structure.pricings.collection.find().fetch() : [],
-      programs: handlePrograms.ready() ? SD.Structure.programs.collection.find({day: this.props.substep}).fetch() : []
+      programs: handlePrograms.ready() ? SD.Structure.programs.collection.find(
+        {day: this.props.substep},
+        {sort: {begin: 1}}
+      ).fetch() : []
     };
   }
   render() {
@@ -87,12 +89,13 @@ class InnerStepDay extends BaseReactMeteor {
     const job = profile.job;
     const selectedPrograms = profile.programs;
     log.info('Rendering InnerStepDay', this.props.substep, job);
-    let programPrices = [];
+    this.programPrices = [];
     this.data.programs.map((program) => {
       if (_.intersection(program.programs, selectedPrograms).length !== 0) {
-        const found = _.findWhere(programPrices, {session: program.session, right: program.right});
+        const found = _.findWhere(this.programPrices, {session: program.session, right: program.right});
         if (!found) {
           let currentProgramPrice = {
+            _id: program._id,
             session: program.session,
             right: program.right
           };
@@ -116,13 +119,13 @@ class InnerStepDay extends BaseReactMeteor {
               .where({session: program.session, right: program.right})
               .map((prg) => _.pick(prg, 'begin', 'end', 'conference'))
               .value();
-            programPrices.push(currentProgramPrice);
+            this.programPrices.push(currentProgramPrice);
           }
         }
       }
     });
-    log.debug('programPrices', programPrices);
-    const nodes = programPrices.map((prgPrice, idx) => {
+    log.debug('programPrices', this.programPrices);
+    const nodes = this.programPrices.map((prgPrice, idx) => {
       const hours = prgPrice.hours.map((hour) => {
         const conference = hour.conference !== 'NA' ? ` :  ${hour.conference}` : '';
         return (
@@ -150,7 +153,7 @@ class InnerStepDay extends BaseReactMeteor {
           <div className='ui toggle checkbox'>
             <input
               type='checkbox'
-              ref={prgPrice.right}
+              ref={idx}
               name={prgPrice.right}
               checked={this.state['choice' + idx]}
               onChange={this.handleChange}
@@ -173,7 +176,7 @@ class InnerStepDay extends BaseReactMeteor {
           <form className='ui large form' onSubmit={this.handleSubmit} >
             <div className='fields'>
               {
-                programPrices.length === 0 ?
+                this.programPrices.length === 0 ?
                   (<div><p><i className='fa fa-bullhorn'></i>&nbsp;Aucune session disponible sur votre sélection de programme pour {this.props.substep}</p><br/></div>) :
                   (
                     <div className='sixteen wide field'>
