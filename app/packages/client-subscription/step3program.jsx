@@ -95,6 +95,9 @@ class InnerStepProgram extends Component {
       </div>
     );
   }
+  componentDidMount() {
+    $('.ui.checkbox').checkbox();
+  }
 }
 
 Client.InnerStepProgram = InnerStepProgram;
