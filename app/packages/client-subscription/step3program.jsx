@@ -7,7 +7,7 @@ class InnerStepProgram extends Component {
   constructor(props) {
     super(props);
     this.state = { error: '' };
-    const programs = [
+    this.programs = [
       { name: 'avef', text: 'AVEF'},
       { name: 'snvel', text: 'SNVEL'},
       { name: 'ebms', text: 'EBMS'}
@@ -59,9 +59,11 @@ class InnerStepProgram extends Component {
     log.info('Rendering InnerStepProgram');
     const nodes = this.programs.map((program) => {
       return (
-        <div className='ui toggle checkbox'>
-          <input type='checkbox' ref={program.name} name={program.name} />
-          <label>{program.text}</label>
+        <div className='sixteen wide field'>
+          <div className='ui toggle checkbox'>
+            <input type='checkbox' ref={program.name} name={program.name} />
+            <label>{program.text}</label>
+          </div>
         </div>
       );
     });
@@ -74,6 +76,8 @@ class InnerStepProgram extends Component {
           <form className='ui large form' onSubmit={this.handleSubmit} >
             <div className='fields'>
               {nodes}
+            </div>
+            <div className='fields'>
               <div className='three wide field'>
                 <BackButton url={`/subscription?step=3&substep=${backStep}`} text='Retour' />
               </div>
