@@ -136,7 +136,8 @@ FlowRouter.route(`/${ROUTE_NAME}`, {
       'Lundi',
       'Mardi',
       'Mercredi',
-      'Jeudi'
+      'Jeudi',
+      'product'
     ], substep))) {
       log.warn('Unrecognised substep', substep);
       substep = null;

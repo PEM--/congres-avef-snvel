@@ -4,6 +4,7 @@ const UserSubscriberSharedSchema = new SimpleSchema({
   snvel: {type: String, label: 'N° ordinal pour adhérent SNVEL', optional: true},
   lastname: {type: String, label: 'Nom', min: 2, max: 256},
   firstname: {type: String, label: 'Prénom', min: 2, max: 256},
+  road: {type: String, label: 'Rue', optional: true, min: 2, max: 256},
   postalcode: {
     type: String, label: 'Code postal',
     regEx: /^((0[1-9])|([1-8][0-9])|(9[0-8])|(2A)|(2B))[0-9]{3}$/,
@@ -24,6 +25,7 @@ const UserSubscriberSharedSchema = new SimpleSchema({
 SD.Structure.UserSubscriberSharedSchema = UserSubscriberSharedSchema;
 
 const CitySchema = new SimpleSchema({
+  road: {type: String, label: 'Rue', optional: true, min: 2, max: 256},
   postalcode: {
     type: String, label: 'Code postal',
     regEx: /^((0[1-9])|([1-8][0-9])|(9[0-8])|(2A)|(2B))[0-9]{3}$/,
