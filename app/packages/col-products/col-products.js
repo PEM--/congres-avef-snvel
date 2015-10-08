@@ -2,14 +2,8 @@
 const sharedOptions = {
   name: 'Products',
   schema: {
-    right: { type: String, label: 'Droit', min: 3, max: 32},
-    basic: {type: SD.Structure.RelevantAmountSchema, label: 'Vétérinaire non-adhérent'},
-    avef: {type: SD.Structure.RelevantAmountSchema, label: 'Adhérent AVEF'},
-    snvel: {type: SD.Structure.RelevantAmountSchema, label: 'Adhérent SNVEL'},
-    snvelDelegate: {type: SD.Structure.RelevantAmountSchema, label: 'Délégué SNVEL'},
-    seniorJuniorVetCcp: {type: SD.Structure.RelevantAmountSchema, label: 'Sénior/Jeune vétérinaire/CCP'},
-    nurseDentistSmith: {type: SD.Structure.RelevantAmountSchema, label: 'ASV/TDE/Maréchal'},
-    junior: {type: SD.Structure.RelevantAmountSchema, label: 'Vétérinaire junior (Jour1+Jour2)'}
+    name: { type: String, label: 'Nom', min: 1, max: 256},
+    right: { type: String, label: 'Droit', min: 2, max: 256 }
   },
   // Available subscriptions and publications
   subs: {
@@ -24,16 +18,6 @@ if (Meteor.isClient) {
   SD.Structure.products = new Products(sharedOptions);
 }
 
-let relevantAmountTranslator = function(token) {
-  const smallToken = token.trim().toLowerCase();
-  let relevancy = false, amount = 0;
-  if (smallToken !== 'na') {
-    relevancy = true;
-    amount = Number(smallToken);
-  }
-  return { relevancy, amount };
-};
-
 // Server only
 if (Meteor.isServer) {
   const log = Logger.createLogger('Collection Products');
@@ -45,14 +29,8 @@ if (Meteor.isServer) {
     if (pricingLine !== '') {
       const tokens = pricingLine.split(',');
       defaults.push({
-        right: tokens[0].trim(),
-        basic: relevantAmountTranslator(tokens[1]),
-        avef: relevantAmountTranslator(tokens[2]),
-        snvel: relevantAmountTranslator(tokens[3]),
-        snvelDelegate: relevantAmountTranslator(tokens[4]),
-        seniorJuniorVetCcp: relevantAmountTranslator(tokens[5]),
-        nurseDentistSmith: relevantAmountTranslator(tokens[6]),
-        junior: relevantAmountTranslator(tokens[7])
+        name: tokens[0].trim(),
+        right: tokens[1].trim()
       });
     }
   });
@@ -60,7 +38,7 @@ if (Meteor.isServer) {
   const serverOptions = {
     defaults,
     // Set indexes on collection
-    indexes: { right: 1 }
+    indexes: { name: 1 }
   };
   class Products extends SD.Structure.ServerBaseCollection {}
   // Export instance
