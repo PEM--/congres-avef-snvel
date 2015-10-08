@@ -17,7 +17,7 @@ class InnerStepProduct extends BaseReactMeteor {
       log.info('Valid forms');
       try {
         let newProducts = [], removedProducts = [];
-        this.programPrices.map((prdPrice, idx) => {
+        this.productPrices.map((prdPrice, idx) => {
           const isSelected = findDOMNode(this.refs[String(idx)]).checked;
           if (isSelected) {
             newProducts.push(prdPrice._id);

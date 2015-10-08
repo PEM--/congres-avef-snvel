@@ -117,10 +117,10 @@ FlowRouter.route(`/${ROUTE_NAME}`, {
         'admin', 'subscribed'
       ])) {
         step = 'report';
-      } else if (Roles.userIsInRole(userId, 'public')) {
-        step = 3;
       } else if (Roles.userIsInRole(userId, 'payment_pending')) {
         step = 4;
+      } else if (Roles.userIsInRole(userId, 'public')) {
+        step = 3;
       }
     }
     // Redirect to the appropriate step

@@ -258,7 +258,7 @@ if (Meteor.isServer) {
       );
       return true;
     },
-    updateProducts(newProducts, removedRights, cb) {
+    updateProducts(newProducts, removedProducts, cb) {
       if (!this.userId) {
         throw new Meteor.Error('User retrieval', '403: Non authorized');
       }
