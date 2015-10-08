@@ -7,7 +7,8 @@ class InnerStepCity extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      error: '', postalcode: props.postalcode, city: props.city
+      error: '',
+      road: props.road, postalcode: props.postalcode, city: props.city
     };
     this.onChange = (e) => {
       if (e.target) {
@@ -17,32 +18,45 @@ class InnerStepCity extends Component {
     };
     this.handleSubmit = (e) => {
       e.preventDefault();
-      log.info('Valid forms', this.state.city, this.state.postalcode);
+      log.info('Valid forms', this.state.road, this.state.postalcode, this.state.city);
       try {
         const fullCity = {
+          road: this.state.road,
           postalcode: this.state.postalcode,
           city: this.state.city
         };
         check(fullCity, SD.Structure.CitySchema);
         // Insert data on base if different from props
-        if (this.props.postalcode !== this.state.postalcode ||
-            this.props.postalcode !== this.state.postalcode) {
+        if (this.props.road !== this.state.road ||
+            this.props.postalcode !== this.state.postalcode ||
+            this.props.city !== this.state.city) {
           Meteor.call('updateCity', fullCity, (error) => {
             if (error) {
               log.debug('Error while checking SubscriptionStep1 values', error);
               this.setState({error});
+            } else {
+              // Reset potential displayed error
+              this.setState({error: ''});
+              // Go to next inner step
+              let substep = 'job';
+              // User was found as a subscriber
+              if (this.props.avef || this.props.snvel) {
+                substep = 'subscriber';
+              }
+              FlowRouter.go(`/subscription?step=3&substep=${substep}`);
             }
           });
+        } else {
+          // Reset potential displayed error
+          this.setState({error: ''});
+          // Go to next inner step
+          let substep = 'job';
+          // User was found as a subscriber
+          if (this.props.avef || this.props.snvel) {
+            substep = 'subscriber';
+          }
+          FlowRouter.go(`/subscription?step=3&substep=${substep}`);
         }
-        // Reset potential displayed error
-        this.setState({error: ''});
-        // Go to next inner step
-        let substep = 'job';
-        // User was found as a subscriber
-        if (this.props.avef || this.props.snvel) {
-          substep = 'subscriber';
-        }
-        FlowRouter.go(`/subscription?step=3&substep=${substep}`);
       } catch (error) {
         log.debug('Error while checking InnerStepCity values', error);
         this.setState({error});
@@ -50,7 +64,7 @@ class InnerStepCity extends Component {
     };
   }
   render() {
-    log.info('Rendering InnerStepCity', this.state.postalcode, this.state.city);
+    log.info('Rendering InnerStepCity', this.state.road, this.state.postalcode, this.state.city);
     return (
       <div className='ui segments inner-step'>
         <div className='ui segment'>
@@ -58,6 +72,23 @@ class InnerStepCity extends Component {
         </div>
         <div className='ui segment'>
           <form className='ui large form' onSubmit={this.handleSubmit} >
+            <div className='fields'>
+              <div className='sixteen wide field'>
+                <label>Rue</label>
+                <div className='ui left icon input'>
+                  <i className='fa fa-home icon'></i>
+                  <input
+                    type='text'
+                    ref='road'
+                    value={this.state.road}
+                    onChange={this.onChange}
+                    name='road'
+                    ref='road'
+                    placeholder='Rue, chemin, lieu-dit, ...'
+                  />
+                </div>
+              </div>
+            </div>
             <div className='fields'>
               <div className='six wide field'>
                 <label>Code postal</label>
@@ -103,6 +134,7 @@ class InnerStepCity extends Component {
   }
   componentWillReceiveProps(props) {
     this.setState({
+      road: props.road,
       postalcode: props.postalcode,
       city: props.city
     });

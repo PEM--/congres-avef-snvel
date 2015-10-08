@@ -25,13 +25,13 @@ const UserSubscriberSharedSchema = new SimpleSchema({
 SD.Structure.UserSubscriberSharedSchema = UserSubscriberSharedSchema;
 
 const CitySchema = new SimpleSchema({
-  road: {type: String, label: 'Rue', optional: true, min: 2, max: 256},
+  road: {type: String, label: 'Rue', min: 2, max: 256},
   postalcode: {
     type: String, label: 'Code postal',
     regEx: /^((0[1-9])|([1-8][0-9])|(9[0-8])|(2A)|(2B))[0-9]{3}$/,
-    optional: true, min: 5, max: 5
+    min: 5, max: 5
   },
-  city: {type: String, label: 'Ville', optional: true, min: 2, max: 128}
+  city: {type: String, label: 'Ville', min: 2, max: 128}
 });
 
 SD.Structure.CitySchema = CitySchema;

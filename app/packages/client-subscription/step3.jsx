@@ -32,8 +32,9 @@ class SubscriptionStep3 extends Component {
   render() {
     log.info('Rendering SubscriptionStep3', this.state.subscriber, this.props.substep);
     const { user, subscriber } = this.state;
-    let postalcode = null, city = null, avef = null, snvel = null, status = null;
+    let road, postalcode = null, city = null, avef = null, snvel = null, status = null;
     if (subscriber && subscriber.userInfo) {
+      road = subscriber.userInfo.road;
       postalcode = subscriber.userInfo.postalcode;
       city = subscriber.userInfo.city;
       avef = subscriber.userInfo.avef;
@@ -41,6 +42,7 @@ class SubscriptionStep3 extends Component {
       status = subscriber.userInfo.status;
     }
     if (user.profile) {
+      road = user.profile.road;
       postalcode = user.profile.postalcode;
       city = user.profile.city;
     }
@@ -49,7 +51,7 @@ class SubscriptionStep3 extends Component {
         <h2>Sélection des options</h2>
         {
           !this.props.substep ? <InnerStepCity
-            postalcode={postalcode} city={city}
+            road={road} postalcode={postalcode} city={city}
             avef={avef} snvel={snvel}
           /> : ''
         }

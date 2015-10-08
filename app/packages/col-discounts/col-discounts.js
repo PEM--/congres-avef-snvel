@@ -36,7 +36,7 @@ if (Meteor.isServer) {
     if (pricingLine !== '') {
       const tokens = pricingLine.split(',');
       defaults.push({
-        right: tokens[0].trim().spli('/'),
+        right: tokens[0].trim().split('/'),
         basic: tokens[1].trim(),
         avef: tokens[2].trim(),
         snvel: tokens[3].trim(),
