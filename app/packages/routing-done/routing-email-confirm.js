@@ -1,7 +1,6 @@
 // http://localhost:3000/verify-email/Ywfq7Ww2HFU751S-2SUJ43FT2IDDqNmBZLkqCTZVZrc
 FlowRouter.route('/verify-email/:token', {
   action(params) {
-    log.warn(params);
     check(params.token, String);
     if (Meteor.isClient) {
       Accounts.verifyEmail(params.token, function(error) {

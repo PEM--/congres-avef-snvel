@@ -83,6 +83,8 @@ pour poursuivre.`
   {
     page: 'subscription_step3',
     text: 'price_info',
-    content: `<i class='fa fa-exclamation-circle fa-lg'></i>&nbsp;Les montants indiqués ne prennent pas en considération la majoration de 20% sur les paiements par chèque.`
+    content: `<i class='fa fa-exclamation-circle fa-lg'></i>&nbsp;Les montants indiqués sont hors taxes.
+Ils ne prennent pas en considération la majoration de 10% sur les paiements par chèque.
+L'inscription sur place reste possible mais est majorée de 30%.`
   }
 ];
