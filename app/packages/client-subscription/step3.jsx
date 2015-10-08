@@ -3,7 +3,7 @@ const { Component, findDOMNode } = React;
 const { BaseReactMeteor, Client } = SD.Views;
 const {
   InnerStepCity, InnerStepJob, InnerStepSubscriber,
-  InnerStepProgram,
+  InnerStepProgram, InnerStepDay,
   AnimatedButton, BackButton, SimpleText, ErrorMessage
 } = Client;
 
@@ -64,7 +64,11 @@ class SubscriptionStep3 extends Component {
         {
           this.props.substep === 'program' ? <InnerStepProgram /> : ''
         }
-
+        {
+          this.props.substep === 'Lundi' || this.props.substep === 'Mardi' ||
+          this.props.substep === 'Mercredi' || this.props.substep === 'Jeudi'
+            ? <InnerStepDay substep={this.props.substep} /> : ''
+        }
       </div>
     );
   }

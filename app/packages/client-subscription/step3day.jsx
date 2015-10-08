@@ -3,7 +3,7 @@ const { Component, findDOMNode } = React;
 const { BaseReactMeteor, Client } = SD.Views;
 const { AnimatedButton, BackButton, SimpleText, ErrorMessage } = Client;
 
-class InnerStepProgram extends Component {
+class InnerStepDay extends BaseReactMeteor {
   constructor(props) {
     super(props);
     this.state = {
@@ -44,18 +44,28 @@ class InnerStepProgram extends Component {
           this.setState({error: ''});
           // Go to next inner step
           // @TODO Check program's availability FlowRouter.go(`/subscription?step=3&substep=program`);
-          FlowRouter.go('/subscription?step=3&substep=Lundi');
         });
       } catch (error) {
-        log.debug('Error while checking InnerStepProgram values', error);
+        log.debug('Error while checking InnerStepDay values', error);
         this.setState({error});
       }
     };
   }
+  getMeteorData() {
+    const handlePricings = SD.Structure.pricings.subAll();
+    const handlePrograms = SD.Structure.programs.subAll();
+    return {
+      loading: !handlePricings.ready() && !handlePrograms.ready(),
+      pricings: handlePricings.ready() ? SD.Structure.pricings.collection.find().fetch() : [],
+      programs: handlePrograms.ready() ? SD.Structure.programs.collection.find({day: this.props.substep}).fetch() : []
+    };
+  }
   render() {
+    if (this.data.loading) {
+      return this.loadingRenderer();
+    }
     const job = Meteor.user().profile.job;
-    const backStep = (job === 'avef' || job === 'snvel' || job === 'snvelDelegate') ? 'subscriber' : 'job';
-    log.info('Rendering InnerStepProgram');
+    log.info('Rendering InnerStepDay');
     const nodes = this.programs.map((program) => {
       return (
         <div className='sixteen wide field'>
@@ -75,7 +85,7 @@ class InnerStepProgram extends Component {
     return (
       <div className='ui segments inner-step'>
         <div className='ui segment'>
-          <h3>Sélectionner vos programmes</h3>
+          <h3>Sélectionner vos sessions pour {this.props.substep}</h3>
         </div>
         <div className='ui segment'>
           <form className='ui large form' onSubmit={this.handleSubmit} >
@@ -84,16 +94,16 @@ class InnerStepProgram extends Component {
             </div>
             <div className='fields'>
               <div className='three wide field'>
-                <BackButton url={`/subscription?step=3&substep=${backStep}`} text='Retour' />
+                <BackButton url='/subscription?step=3&substep=program' text='Retour' />
               </div>
               <div className='thirteen wide field'>
-                <AnimatedButton icon='arrow-right' text='Je valide ma sélection' />
+                <AnimatedButton icon='arrow-right' text={`Je valide ma sélection du ${this.props.substep}`} />
               </div>
             </div>
             <p><SimpleText page='subscription_step3' text='check_info' /></p>
           </form>
           <ErrorMessage
-            title="Votre sélection de programmes n'est pas valide."
+            title="Votre sélection de sessions n'est pas valide."
             error={ErrorMessage.asProps(this.state.error)}
           />
         </div>
@@ -105,4 +115,4 @@ class InnerStepProgram extends Component {
   }
 }
 
-Client.InnerStepProgram = InnerStepProgram;
+Client.InnerStepDay = InnerStepDay;
