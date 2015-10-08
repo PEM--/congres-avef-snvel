@@ -7,16 +7,12 @@ class InnerStepDay extends BaseReactMeteor {
   constructor(props) {
     super(props);
     this.state = {
-      error: '',
-      AVEF: { checked: true },
-      SNVEL: { checked: true },
-      EBMS: { checked: true }
+      error: ''
     };
-    this.programs = [
-      { name: 'AVEF', text: 'AVEF'},
-      { name: 'SNVEL', text: 'SNVEL'},
-      { name: 'EBMS', text: 'EBMS'}
-    ];
+    // Add 64 states for handling choices (hacky solution...)
+    for (let idx = 0; idx < 64; idx++) {
+      this.state['choice' + idx] = true;
+    }
     this.handleSubmit = (e) => {
       e.preventDefault();
       log.info('Valid forms');
@@ -57,7 +53,10 @@ class InnerStepDay extends BaseReactMeteor {
     return {
       loading: !handlePricings.ready() && !handlePrograms.ready(),
       pricings: handlePricings.ready() ? SD.Structure.pricings.collection.find().fetch() : [],
-      programs: handlePrograms.ready() ? SD.Structure.programs.collection.find({day: this.props.substep}).fetch() : []
+      programs: handlePrograms.ready() ? SD.Structure.programs.collection.find({
+        day: this.props.substep
+        // @TODO Filter on selectedPrograms
+      }).fetch() : []
     };
   }
   render() {
@@ -65,21 +64,59 @@ class InnerStepDay extends BaseReactMeteor {
       return this.loadingRenderer();
     }
     const job = Meteor.user().profile.job;
-    log.info('Rendering InnerStepDay');
-    const nodes = this.programs.map((program) => {
+    log.info('Rendering InnerStepDay', this.props.substep, job);
+    let programPrices = [];
+    this.data.programs.map((program) => {
+      const found = _.findWhere(programPrices, {session: program.session, right: program.right});
+      if (!found) {
+        let currentProgramPrice = {
+          session: program.session,
+          right: program.right
+        };
+        if (program.right !== 'gratuit') {
+          const pricing = _.findWhere(this.data.pricings, {right: program.right});
+          const pricingForJob = pricing[job];
+          if (pricingForJob && pricingForJob.relevancy) {
+            currentProgramPrice.amount = pricingForJob.amount;
+          } else {
+            currentProgramPrice = null;
+          }
+        } else {
+          currentProgramPrice.amount = 0;
+        }
+        if (currentProgramPrice) {
+          currentProgramPrice.hours = _.chain(this.data.programs)
+            .where({session: program.session, right: program.right})
+            .map((prg) => _.pick(prg, 'begin', 'end', 'conference'))
+            .value();
+          programPrices.push(currentProgramPrice);
+        }
+      }
+    });
+    log.debug('programPrices', programPrices);
+    const nodes = programPrices.map((prgPrice, idx) => {
+      const hours = prgPrice.hours.map((hour) => {
+        const conference = hour.conference !== 'NA' ? ` :  ${hour.conference}` : '';
+        return (
+          <li>De <b>{hour.begin}</b> à <b>{hour.end}</b>{conference}</li>
+        );
+      });
       return (
-        <div className='sixteen wide field'>
+        <li>
           <div className='ui toggle checkbox'>
             <input
               type='checkbox'
-              key={program.name}
-              ref={program.name}
-              name={program.name}
-              checked={this.state[program.name].checked}
+              key={prgPrice.right}
+              ref={prgPrice.right}
+              name={prgPrice.right}
+              checked={this.state['choice' + idx]}
             />
-            <label>{program.text}</label>
+          <label><h4>{prgPrice.session}</h4> - <code>{prgPrice.amount},00 €</code></label>
           </div>
-        </div>
+          <ul>
+            {hours}
+          </ul>
+        </li>
       );
     });
     return (
@@ -90,7 +127,11 @@ class InnerStepDay extends BaseReactMeteor {
         <div className='ui segment'>
           <form className='ui large form' onSubmit={this.handleSubmit} >
             <div className='fields'>
-              {nodes}
+              <div className='sixteen wide field'>
+                <ul>
+                  {nodes}
+                </ul>
+            </div>
             </div>
             <div className='fields'>
               <div className='three wide field'>

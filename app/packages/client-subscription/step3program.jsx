@@ -90,7 +90,6 @@ class InnerStepProgram extends Component {
                 <AnimatedButton icon='arrow-right' text='Je valide ma sélection' />
               </div>
             </div>
-            <p><SimpleText page='subscription_step3' text='check_info' /></p>
           </form>
           <ErrorMessage
             title="Votre sélection de programmes n'est pas valide."

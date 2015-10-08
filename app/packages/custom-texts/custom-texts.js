@@ -46,17 +46,17 @@ Nous souhaitons faire de cet évènement un moment d’échanges fructueux perme
   {
     page: 'subscription_step2',
     text: 'title',
-    content: `Validation de votre email`,
+    content: `Validation de votre email`
   },
   {
     page: 'subscription_step2',
     text: 'message',
-    content: `Un email de vérification vous a été transmis dans lequel vous trouverez un bouton de confirmation.`,
+    content: `Un email de vérification vous a été transmis dans lequel vous trouverez un bouton de confirmation.`
   },
   {
     page: 'subscription_step2',
     text: 'submessage',
-    content: `Veuillez cliquer sur ce bouton pour passer à l’étape suivante de votre inscription.`,
+    content: `Veuillez cliquer sur ce bouton pour passer à l’étape suivante de votre inscription.`
   },
   {
     page: 'subscription_step2',
@@ -64,20 +64,25 @@ Nous souhaitons faire de cet évènement un moment d’échanges fructueux perme
     content: `<i class='fa fa-exclamation-circle fa-lg'></i>&nbsp;Si vous avez validé votre email mais démarré votre inscription
 sur un navigateur ou appareil différent, il est nécessaire de
 &nbsp;<a class='animated' href='/login'>vous connecter</a>&nbsp;
-pour poursuivre.`,
+pour poursuivre.`
   },
   {
     page: 'subscription_step3',
     text: 'check_info',
     content: `<i class='fa fa-exclamation-circle fa-lg'></i>&nbsp;Si les informations retrouvées ne sont pas correctes, n'hésitez pas
 &nbsp;<a class='animated' href='mailto://avef.paris@wanadoo.fr'>à nous contacter</a>
-.`,
+.`
   },
   {
     page: 'subscription_step3',
     text: 'no_subscriber_info',
     content: `<i class='fa fa-question-circle fa-lg'></i>&nbsp;Vous n'êtes pas encore adhérent ?
 &nbsp;<a class='animated' href='mailto://avef.paris@wanadoo.fr'>Contactez-nous</a>
-.`,
+.`
+  },
+  {
+    page: 'subscription_step3',
+    text: 'price_info',
+    content: `<i class='fa fa-exclamation-circle fa-lg'></i>&nbsp;Les montants indiqués ne prennent pas en considération la majoration de 20% sur les paiements par chèque.`
   }
 ];

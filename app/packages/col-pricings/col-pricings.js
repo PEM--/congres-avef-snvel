@@ -52,12 +52,13 @@ if (Meteor.isServer) {
       const tokens = pricingLine.split(',');
       defaults.push({
         right: tokens[0].trim(),
-        avef: relevantAmountTranslator(tokens[1]),
-        snvel: relevantAmountTranslator(tokens[2]),
-        snvelDelegate: relevantAmountTranslator(tokens[3]),
-        seniorJuniorVetCcp: relevantAmountTranslator(tokens[4]),
-        nurseDentistSmith: relevantAmountTranslator(tokens[5]),
-        junior: relevantAmountTranslator(tokens[6])
+        basic: relevantAmountTranslator(tokens[1]),
+        avef: relevantAmountTranslator(tokens[2]),
+        snvel: relevantAmountTranslator(tokens[3]),
+        snvelDelegate: relevantAmountTranslator(tokens[4]),
+        seniorJuniorVetCcp: relevantAmountTranslator(tokens[5]),
+        nurseDentistSmith: relevantAmountTranslator(tokens[6]),
+        junior: relevantAmountTranslator(tokens[7])
       });
     }
   });
