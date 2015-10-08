@@ -71,6 +71,9 @@ class SubscriptionStep3 extends Component {
           this.props.substep === 'Mercredi' || this.props.substep === 'Jeudi'
             ? <InnerStepDay key={this.props.substep} substep={this.props.substep} /> : ''
         }
+        {
+          this.props.substep === 'product' ? <InnerStepProduct /> : ''
+        }
       </div>
     );
   }

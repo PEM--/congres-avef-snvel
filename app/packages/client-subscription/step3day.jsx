@@ -14,23 +14,23 @@ class InnerStepDay extends BaseReactMeteor {
       this.state['choice' + idx] = true;
     }
     this.backStep = '';
-    this.nextUrl = '/subscription';
+    this.nextUrl = '/subscription?step=3&substep=';
     switch (props.substep) {
     case 'Lundi':
       this.backStep = 'program';
-      this.nextUrl += '?step=3&substep=Mardi';
+      this.nextUrl += 'Mardi';
       break;
     case 'Mardi':
       this.backStep = 'Lundi';
-      this.nextUrl += '?step=3&substep=Mercredi';
+      this.nextUrl += 'Mercredi';
       break;
     case 'Mercredi':
       this.backStep = 'Mardi';
-      this.nextUrl += '?step=3&substep=Jeudi';
+      this.nextUrl += 'Jeudi';
       break;
     case 'Jeudi':
       this.backStep = 'Mercredi';
-      this.nextUrl += '?step=4';
+      this.nextUrl += 'product';
       break;
     default:
       log.warn('Unknown substep', props.substep);
