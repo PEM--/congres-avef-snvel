@@ -136,18 +136,19 @@ class InnerStepDay extends BaseReactMeteor {
       if (prgPrice.right === 'Jour1') {
         specialInfos = (<div>
           <p className='specialInfos'>Inclus dans Jour 1<br/>
-          <i className='fa fa-bullhorn'></i> Une remise est accordée lorsque les droits Jour 1 et Jour 2 sont sélectionnés.</p>
+          <i className='fa fa-bullhorn'></i> Une remise est accordée lorsque les droits Jour1 et Jour2 sont sélectionnés.</p>
         </div>);
       } else if (prgPrice.right === 'Jour2') {
         specialInfos = (<div>
           <p className='specialInfos'>Inclus dans Jour 2<br/>
-          <i className='fa fa-bullhorn'></i> Une remise est accordée lorsque les droits Jour 1 et Jour 2 sont sélectionnés.</p>
+          <i className='fa fa-bullhorn'></i> Une remise est accordée lorsque les droits Jour1 et Jour2 sont sélectionnés.</p>
         </div>);
       } else if (prgPrice.right === 'gratuit') {
         specialInfos = (<div>
-          <p className='specialInfos'><i className='fa fa-bullhorn'></i> Gratuit pour toute personne inscrite, soit au Jour 1, soit au jour 2.</p>
+          <p className='specialInfos'><i className='fa fa-bullhorn'></i> Gratuit pour toute personne inscrite, soit au Jour1, soit au Jour2.</p>
         </div>);
       }
+      const isPriceDisplayed = false;
       return (
         <li key={String(idx)}>
           <div className='ui toggle checkbox'>
@@ -158,7 +159,12 @@ class InnerStepDay extends BaseReactMeteor {
               checked={this.state['choice' + idx]}
               onChange={this.handleChange}
             />
-          <label><span className='ui header'>{prgPrice.session}</span> -&nbsp;<span className='price'>{prgPrice.amount},00&nbsp;€</span></label>
+          <label>
+            <span className='ui header'>{prgPrice.session}</span>
+            {
+              isPriceDisplayed ? <div>-&nbsp;<span className='price'>{prgPrice.amount},00&nbsp;€</span></div> : ''
+            }
+           </label>
           </div>
           {specialInfos}
           <ul>

@@ -3,7 +3,7 @@ const { Component, findDOMNode } = React;
 const { BaseReactMeteor, Client } = SD.Views;
 const {
   InnerStepCity, InnerStepJob, InnerStepSubscriber,
-  InnerStepProgram, InnerStepDay,
+  InnerStepProgram, InnerStepDay, InnerStepProduct,
   AnimatedButton, BackButton, SimpleText, ErrorMessage
 } = Client;
 

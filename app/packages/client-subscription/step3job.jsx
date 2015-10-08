@@ -48,9 +48,9 @@ class InnerStepJob extends Component {
     log.info('Rendering InnerStepJob');
     const choices = this.jobs.map((job) => {
       return (
-        <div className='field'>
+        <div className='field' key={job}>
           <div className='ui radio checkbox'>
-            <input type='radio' ref={'jobs' + job} key={job} value={job} name='jobs' tabIndex='0' className='hidden' />
+            <input type='radio' ref={'jobs' + job} value={job} name='jobs' tabIndex='0' className='hidden' />
             <label>{SD.Structure.pricings.schema.getDefinition(job).label}</label>
           </div>
         </div>

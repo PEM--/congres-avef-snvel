@@ -39,6 +39,7 @@ Package.onUse(function(api) {
     'step3subscriber.jsx',
     'step3program.jsx',
     'step3day.jsx',
+    'step3product.jsx',
     'step3.jsx',
     'step4.jsx',
     'report.jsx',
