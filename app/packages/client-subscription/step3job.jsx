@@ -31,6 +31,7 @@ class InnerStepJob extends Component {
           if (error) {
             log.debug('Error while checking InnerStepJob values', error);
             this.setState({error});
+            return;
           }
           // Reset potential displayed error
           this.setState({error: ''});

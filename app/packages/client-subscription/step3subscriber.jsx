@@ -29,6 +29,7 @@ class InnerStepSubscriber extends Component {
           if (error) {
             log.debug('Error while checking InnerStepSubscriber values', error);
             this.setState({error});
+            return;
           }
           // Reset potential displayed error
           this.setState({error: ''});
