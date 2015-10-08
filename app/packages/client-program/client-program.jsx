@@ -201,6 +201,7 @@ class Program extends BaseReactMeteor {
               <section className='row selectors'>
                 <div className='sixteen wide column'>
                   <Selector
+                    key={program}
                     type='program'
                     value={program}
                     unselectedValue='Sélectionner un programme'
@@ -210,6 +211,7 @@ class Program extends BaseReactMeteor {
                   {
                     !program ? '' :
                       <Selector
+                        key={day}
                         type= 'day'
                         value={day}
                         unselectedValue='Sélectionner un jour'
@@ -220,6 +222,7 @@ class Program extends BaseReactMeteor {
                   {
                     !day ? '' :
                       <Selector
+                        key={hour}
                         type='hour'
                         value={hour}
                         unselectedValue='Sélectionner un horraire de début'
@@ -231,7 +234,7 @@ class Program extends BaseReactMeteor {
               </section>
               {
                 !hour ? '' :
-                  <ProgramList selectedItems={this.selectedItems} />
+                  <ProgramList key={program + day + hour} selectedItems={this.selectedItems} />
               }
               {
                 !hour ? '' :
