@@ -55,15 +55,17 @@ class Cookie extends SD.Views.ReactDictionary {
   componentDidMount() {
     if (Meteor.isClient) {
       Tracker.autorun((computation) => {
-        const isRouterStarted = Session.get(SD.Utils.IS_ROUTER_STARTED);
-        this.cookie = SD.Utils.Cookie.get(this.data.dict);
-        let showCookieDisclaimer = false;
-        if (isRouterStarted) {
-          if (!this.cookie.isAccepted()) {
-            showCookieDisclaimer = true;
+        if (!this.data.loading) {
+          const isRouterStarted = Session.get(SD.Utils.IS_ROUTER_STARTED);
+          this.cookie = SD.Utils.Cookie.get(this.data.dict);
+          let showCookieDisclaimer = false;
+          if (isRouterStarted) {
+            if (!this.cookie.isAccepted()) {
+              showCookieDisclaimer = true;
+            }
           }
+          this.setState({show: showCookieDisclaimer});
         }
-        this.setState({show: showCookieDisclaimer});
       });
     }
   }
