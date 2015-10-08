@@ -76,9 +76,10 @@ if (Meteor.isServer) {
           snvel: tokens[2].trim(),
           lastname: textInputFormatter(tokens[3]),
           firstname: textInputFormatter(tokens[4]),
-          postalcode: tokens[5].trim(),
-          city: textInputFormatter(tokens[6]),
-          email: tokens[7].trim().toLowerCase()
+          road: textInputFormatter(tokens[5]),
+          postalcode: tokens[6].trim(),
+          city: textInputFormatter(tokens[7]),
+          email: tokens[8].trim().toLowerCase()
         },
         createdAt: new Date(),
         modifiedAt: new Date()

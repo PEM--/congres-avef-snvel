@@ -1,12 +1,6 @@
-const RelevantAmountSchema = new SimpleSchema({
-  relevancy: { type: Boolean, label: 'Applicable' },
-  amount: { type: Number, label: 'Montant (€)', min: 0, max: 2000 }
-});
-SD.Structure.RelevantAmountSchema = RelevantAmountSchema;
-
 // Options used on the server and the client
 const sharedOptions = {
-  name: 'Pricings',
+  name: 'Products',
   schema: {
     right: { type: String, label: 'Droit', min: 3, max: 32},
     basic: {type: SD.Structure.RelevantAmountSchema, label: 'Vétérinaire non-adhérent'},
@@ -25,9 +19,9 @@ const sharedOptions = {
 
 // Client only
 if (Meteor.isClient) {
-  class Pricings extends SD.Structure.BaseCollection {}
+  class Products extends SD.Structure.BaseCollection {}
   // Export instance
-  SD.Structure.pricings = new Pricings(sharedOptions);
+  SD.Structure.products = new Products(sharedOptions);
 }
 
 let relevantAmountTranslator = function(token) {
@@ -42,11 +36,11 @@ let relevantAmountTranslator = function(token) {
 
 // Server only
 if (Meteor.isServer) {
-  const log = Logger.createLogger('Collection Pricings');
-  // Get pricings as CSV
-  const pricingsCsv = Assets.getText('pricings.csv');
+  const log = Logger.createLogger('Collection Products');
+  // Get products as CSV
+  const productsCsv = Assets.getText('products.csv');
   let defaults = [];
-  pricingsCsv.split('\n').slice(1).map((pricingLine, idx) => {
+  productsCsv.split('\n').slice(1).map((pricingLine, idx) => {
     log.info('Analyzing line', idx, 'with content', pricingLine);
     if (pricingLine !== '') {
       const tokens = pricingLine.split(',');
@@ -68,7 +62,7 @@ if (Meteor.isServer) {
     // Set indexes on collection
     indexes: { right: 1 }
   };
-  class Pricings extends SD.Structure.ServerBaseCollection {}
+  class Products extends SD.Structure.ServerBaseCollection {}
   // Export instance
-  SD.Structure.pricings = new Pricings(sharedOptions, serverOptions);
+  SD.Structure.products = new Products(sharedOptions, serverOptions);
 }

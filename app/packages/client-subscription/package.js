@@ -24,7 +24,9 @@ Package.onUse(function(api) {
     'pierreeric:col-subscribers',
     'pierreeric:col-dictionary',
     'pierreeric:client-cookie',
-    'pierreeric:col-pricings'
+    'pierreeric:col-pricings',
+    'pierreeric:col-discounts',
+    'pierreeric:col-products'
   ]);
   // Included files in this packages
   // Files for server and client
