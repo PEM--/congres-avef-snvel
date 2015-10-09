@@ -126,7 +126,7 @@ class InnerStepProduct extends BaseReactMeteor {
           <p><SimpleText page='subscription_step3' text='usage_notice' /></p>
         </div>
         <div className='ui segment'>
-          <form className='ui large form' onSubmit={this.handleSubmit} >
+          <form className='ui large form' onSubmit={this.handleSubmit} onChange={this.handleChange}>
             <div className='fields'>
               {
                 this.productPrices.length === 0 ?

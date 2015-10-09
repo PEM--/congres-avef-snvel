@@ -190,7 +190,7 @@ class InnerStepDay extends BaseReactMeteor {
             ''
         }
         <div className='ui segment'>
-          <form className='ui large form' onSubmit={this.handleSubmit} >
+          <form className='ui large form' onSubmit={this.handleSubmit} onChange={this.handleChange}>
             <div className='fields'>
               {
                 this.programPrices.length === 0 ?
