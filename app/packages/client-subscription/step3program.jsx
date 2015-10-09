@@ -8,9 +8,9 @@ class InnerStepProgram extends Component {
     super(props);
     this.state = {
       error: '',
-      AVEF: { checked: true },
-      SNVEL: { checked: true },
-      EBMS: { checked: true }
+      AVEF: { checked: false },
+      SNVEL: { checked: false },
+      EBMS: { checked: false }
     };
     this.programs = [
       { name: 'AVEF', text: 'AVEF'},

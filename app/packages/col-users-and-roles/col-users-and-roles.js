@@ -185,31 +185,6 @@ if (Meteor.isServer) {
       log.info('Verification email sent for:', accountInfo.login.email);
       return true;
     },
-    availableSubscriberInfo(cb) {
-      if (!this.userId) {
-        throw new Meteor.Error('User retrieval', '403: Non authorized');
-      }
-      check(cb, Match.Any);
-      const user = Meteor.users.findOne(this.userId);
-      log.info('User', user.emails[0].address, 'is requesting subscriber info');
-      // Start by checking email
-      let subscriber = SD.Structure.subscribers.collection.findOne({
-        'userInfo.email': user.emails[0].address });
-      // If not found, check fistname and lastname
-      if (!subscriber) {
-        subscriber = SD.Structure.subscribers.collection.findOne({
-          $and: [
-            {'userInfo.lastname': user.profile.lastname},
-            {'userInfo.firstname': user.profile.firstname}
-          ]
-        });
-      }
-      if (subscriber) {
-        log.info('Found subscriber', subscriber);
-        return subscriber;
-      }
-      return subscriber;
-    },
     updateCity(fullCity, cb) {
       if (!this.userId) {
         throw new Meteor.Error('User retrieval', '403: Non authorized');
@@ -218,7 +193,7 @@ if (Meteor.isServer) {
       check(cb, Match.Any);
       const user = Meteor.users.findOne(this.userId);
       log.info('User', user.emails[0].address, 'updates', fullCity.road, fullCity.postalcode, fullCity.city);
-      Meteor.users._collection.update({_id: this.userId}, {
+      Meteor.users.update({_id: this.userId}, {
         $set: {
           'profile.road': fullCity.road,
           'profile.postalcode': fullCity.postalcode,
@@ -235,7 +210,7 @@ if (Meteor.isServer) {
       check(cb, Match.Any);
       const user = Meteor.users.findOne(this.userId);
       log.info('User', user.emails[0].address, 'updates', profile);
-      Meteor.users._collection.update({_id: this.userId}, { $set: { profile } });
+      Meteor.users.update({_id: this.userId}, { $set: { profile } });
       return true;
     },
     updateRights(newRights, removedRights, cb) {
@@ -252,7 +227,7 @@ if (Meteor.isServer) {
         .union(newRights)
         .difference(removedRights)
         .value();
-      Meteor.users._collection.update(
+      Meteor.users.update(
         {_id: this.userId},
         {$set: {'profile.rights': finalizedRight}}
       );
@@ -272,7 +247,7 @@ if (Meteor.isServer) {
         .union(newProducts)
         .difference(removedProducts)
         .value();
-      Meteor.users._collection.update(
+      Meteor.users.update(
         {_id: this.userId},
         {$set: {'profile.products': finalizedProducts}}
       );

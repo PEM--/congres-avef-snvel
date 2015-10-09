@@ -133,6 +133,7 @@ class InnerStepCity extends Component {
     );
   }
   componentWillReceiveProps(props) {
+    log.info('InnerStepCity received props', props);
     this.setState({
       road: props.road,
       postalcode: props.postalcode,

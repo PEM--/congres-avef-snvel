@@ -101,4 +101,33 @@ if (Meteor.isServer) {
   class Subscribers extends SD.Structure.ServerBaseCollection {}
   // Export instance
   SD.Structure.subscribers = new Subscribers(sharedOptions, serverOptions);
+
+  // Methods for extracting subscriber info
+  Meteor.methods({
+    availableSubscriberInfo(cb) {
+      if (!this.userId) {
+        throw new Meteor.Error('User retrieval', '403: Non authorized');
+      }
+      check(cb, Match.Any);
+      const user = Meteor.users.findOne(this.userId);
+      log.info('User', user.emails[0].address, 'is requesting subscriber info');
+      // Start by checking email
+      let subscriber = SD.Structure.subscribers.collection.findOne({
+        'userInfo.email': user.emails[0].address });
+      // If not found, check fistname and lastname
+      if (!subscriber) {
+        subscriber = SD.Structure.subscribers.collection.findOne({
+          $and: [
+            {'userInfo.lastname': user.profile.lastname},
+            {'userInfo.firstname': user.profile.firstname}
+          ]
+        });
+      }
+      if (subscriber) {
+        log.info('Found subscriber', subscriber);
+        return subscriber;
+      }
+      return subscriber;
+    },
+  });
 }

@@ -11,11 +11,7 @@ class SubscriptionStep3 extends Component {
   constructor(props) {
     super(props);
     log.info('Inner step', props.substep);
-    const user = Meteor.user();
-    this.state = {
-      user,
-      subscriber: {}
-    };
+    this.state = { subscriber: {} };
     Meteor.call('availableSubscriberInfo', (error, subscriber) => {
       if (error) {
         log.warn('Error received', error);
@@ -31,9 +27,12 @@ class SubscriptionStep3 extends Component {
   }
   render() {
     log.info('Rendering SubscriptionStep3', this.state.subscriber, this.props.substep);
-    const { user, subscriber } = this.state;
-    let road, postalcode = null, city = null, avef = null, snvel = null, status = null;
+    const { subscriber } = this.state;
+    const user = Meteor.user();
+    let firstname = null, lastname = null, road = null, postalcode = null, city = null, avef = null, snvel = null, status = null;
     if (subscriber && subscriber.userInfo) {
+      firstname = subscriber.userInfo.firstname;
+      lastname = subscriber.userInfo.lastname;
       road = subscriber.userInfo.road;
       postalcode = subscriber.userInfo.postalcode;
       city = subscriber.userInfo.city;
@@ -42,9 +41,21 @@ class SubscriptionStep3 extends Component {
       status = subscriber.userInfo.status;
     }
     if (user.profile) {
-      road = user.profile.road;
-      postalcode = user.profile.postalcode;
-      city = user.profile.city;
+      if (user.profile.firstname) {
+        firstname = user.profile.firstname;
+      }
+      if (user.profile.lastname) {
+        lastname = user.profile.lastname;
+      }
+      if (user.profile.road) {
+        road = user.profile.road;
+      }
+      if (user.profile.postalcode) {
+        postalcode = user.profile.postalcode;
+      }
+      if (user.profile.postalcode) {
+        city = user.profile.city;
+      }
     }
     return (
       <div>
@@ -60,6 +71,7 @@ class SubscriptionStep3 extends Component {
         }
         {
           this.props.substep === 'subscriber' ? <InnerStepSubscriber
+            firstname={firstname} lastname={lastname}
             avef={avef} snvel={snvel} status={status}
           /> : ''
         }

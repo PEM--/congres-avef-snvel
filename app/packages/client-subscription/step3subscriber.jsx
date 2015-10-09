@@ -13,7 +13,7 @@ class InnerStepSubscriber extends Component {
       e.preventDefault();
       log.info('Valid forms');
       try {
-        const {snvel, avef, status} = this.props;
+        const { firstname, lastname, snvel, avef, status } = this.props;
         let job = '';
         if (status) {
           job = 'snvelDelegate';
@@ -22,7 +22,7 @@ class InnerStepSubscriber extends Component {
         } else {
           job = 'avef';
         }
-        const profile = _.extend(_.clone(Meteor.user().profile), { snvel, avef, status, job });
+        const profile = _.extend(_.clone(Meteor.user().profile), { firstname, lastname, snvel, avef, status, job });
         check(profile, SD.Structure.UserSubscriberSharedSchema);
         // Insert data on base if different from props
         Meteor.call('updateProfile', profile, (error) => {
