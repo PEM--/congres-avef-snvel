@@ -73,7 +73,7 @@ class SubscriptionStep4 extends Component {
     );
   }
   componentDidMount() {
-    $('.ui.radio.checkbox').checkbox();
+    $('.checkbox').checkbox();
   }
 }
 

@@ -99,7 +99,7 @@ class InnerStepJob extends Component {
     );
   }
   componentDidMount() {
-    $('.ui.radio.checkbox').checkbox();
+    $('.checkbox').checkbox();
   }
 }
 

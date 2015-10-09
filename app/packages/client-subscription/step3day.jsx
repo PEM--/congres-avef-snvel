@@ -86,7 +86,7 @@ class InnerStepDay extends BaseReactMeteor {
     // Activate checkboxes
     if (Meteor.isClient) {
       // Wait for 2 cycles
-      Meteor.setTimeout(() => { $('.ui.checkbox').checkbox(); }, 32);
+      Meteor.setTimeout(() => { $('.checkbox').checkbox(); }, 32);
     }
     const profile = Meteor.user().profile;
     const job = profile.job;

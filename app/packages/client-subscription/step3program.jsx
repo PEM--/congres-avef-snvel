@@ -112,7 +112,7 @@ class InnerStepProgram extends Component {
     );
   }
   componentDidMount() {
-    $('.ui.checkbox').checkbox();
+    $('.checkbox').checkbox();
   }
 }
 
