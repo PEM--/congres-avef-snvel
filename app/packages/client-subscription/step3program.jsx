@@ -77,6 +77,7 @@ class InnerStepProgram extends Component {
               ref={program.name}
               name={program.name}
               checked={this.state[program.name].checked}
+              onChange={this.handleChange}
             />
             <label>{program.text}</label>
           </div>
