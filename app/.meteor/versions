@@ -43,6 +43,7 @@ fastclick@1.0.7
 flemay:less-autoprefixer@1.1.0
 force-ssl@1.0.6
 fortawesome:fontawesome@4.4.0
+gadicohen:reactive-window@1.0.6
 gadicohen:robots-txt@0.0.10
 gadicohen:sitemaps@0.0.23
 geojson-utils@1.0.4
@@ -77,9 +78,10 @@ mobile-status-bar@1.0.6
 momentjs:moment@2.10.6
 mongo@1.1.2
 mongo-id@1.0.1
-mquandalle:bower@0.1.11
+mquandalle:bower@1.5.2
 mquandalle:jade@0.4.3_1
 mquandalle:jade-compiler@0.4.3
+mrt:isolate-value@2.0.2
 npm-bcrypt@0.7.8_2
 npm-mongo@1.4.39_1
 numeral:languages@1.5.3

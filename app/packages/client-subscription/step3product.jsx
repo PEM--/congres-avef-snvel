@@ -144,7 +144,7 @@ class InnerStepProduct extends BaseReactMeteor {
                 <BackButton url='/subscription?step=3&substep=Jeudi' text='Retour' />
               </div>
               <div className='thirteen wide field'>
-                <AnimatedButton icon='shopping-cart' text='Je valide ma sélection et procède au paiement' />
+                <AnimatedButton anim='fade' icon='shopping-cart' text='Je valide ma sélection et procède au paiement' />
               </div>
             </div>
           </form>

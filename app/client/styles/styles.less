@@ -90,11 +90,23 @@ address {
   font-style: normal;
 }
 
-// Prices
+// Prices & invoices
+span.price, .invoice {
+  font-family: 'Droid Sans Mono', 'Roboto Mono', 'Andale Mono', monospace;
+}
 span.price {
   font-size: 120%;
   font-weight: bold;
-  font-family: 'Droid Sans Mono', 'Roboto Mono', 'Andale Mono', monospace;
+}
+.invoice {
+  margin: 1rem auto;
+  border: 1px solid #bcbcbc;
+  background-color: #f0f0f0;
+  max-width: 30rem;
+  text-align: center;
+  div {
+    color: #6b6b6b !important
+  }
 }
 
 // Mobile specifics

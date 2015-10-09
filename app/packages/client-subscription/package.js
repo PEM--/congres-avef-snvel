@@ -10,12 +10,15 @@ Package.onUse(function(api) {
   // Dependencies for server and client
   api.use([
     'tracker',
+    'jquery',
     'alanning:roles@1.2.14',
-    'mquandalle:bower',
+    'mquandalle:bower@1.5.2',
     'kadira:react-layout@1.3.1',
     'flemay:less-autoprefixer@1.1.0',
+    'gadicohen:reactive-window@1.0.6',
     'pierreeric:basereactmeteor',
     'pierreeric:routing-start',
+    'pierreeric:internationalization',
     'pierreeric:main-layout',
     'pierreeric:client-sharedstyles',
     'pierreeric:client-socialsharers',
