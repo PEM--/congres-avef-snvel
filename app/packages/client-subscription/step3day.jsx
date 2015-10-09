@@ -84,6 +84,11 @@ class InnerStepDay extends BaseReactMeteor {
     if (this.data.loading) {
       return this.loadingRenderer();
     }
+    // Activate checkboxes
+    if (Meteor.isClient) {
+      // Wait for 2 cycles
+      Meteor.setTimeout(() => { $('.ui.checkbox').checkbox(); }, 32);
+    }
     const profile = Meteor.user().profile;
     const job = profile.job;
     const selectedPrograms = profile.programs;
@@ -213,9 +218,6 @@ class InnerStepDay extends BaseReactMeteor {
         </div>
       </div>
     );
-  }
-  componentDidMount() {
-    $('.ui.checkbox').checkbox();
   }
 }
 

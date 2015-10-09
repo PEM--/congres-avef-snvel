@@ -64,6 +64,11 @@ class InnerStepProduct extends BaseReactMeteor {
     if (this.data.loading) {
       return this.loadingRenderer();
     }
+    // Activate checkboxes
+    if (Meteor.isClient) {
+      // Wait for 2 cycles
+      Meteor.setTimeout(() => { $('.ui.checkbox').checkbox(); }, 32);
+    }
     const job = Meteor.user().profile.job;
     this.productPrices = [];
     this.data.products.map((product) =>{
@@ -146,9 +151,6 @@ class InnerStepProduct extends BaseReactMeteor {
         </div>
       </div>
     );
-  }
-  componentDidMount() {
-    $('.ui.checkbox').checkbox();
   }
 }
 
