@@ -308,16 +308,21 @@ class SubscriptionStep4 extends BaseReactMeteor {
                 </div>
               ) : ''
             }
-            <div className='fields'>
-              <div className='sixteen wide field'>
-                <AnimatedButton
-                  anim='fade' icon='cart-arrow-down'
-                  text='Je valide mon paiement'
-                  disabled={this.state.disabled}
-                  textHidden={numeralAmountFormat(this.state.total)}
-                />
-              </div>
-            </div>
+            {
+              this.state.paymentByCard ?
+              (
+                <div className='fields fadeIn'>
+                  <div className='sixteen wide field'>
+                    <AnimatedButton
+                      anim='fade' icon='cart-arrow-down'
+                      text='Je valide mon paiement'
+                      disabled={this.state.disabled}
+                      textHidden={numeralAmountFormat(this.state.total)}
+                    />
+                  </div>
+                </div>
+              ) : ''
+            }
           </form>
           <ErrorMessage
             title="Votre paiment n'est pas valide."
