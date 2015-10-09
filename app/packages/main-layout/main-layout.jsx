@@ -111,7 +111,7 @@ class MainLayout extends SD.Views.BaseReactMeteor {
           // or a phone number.
           // contactPoint: {
           //   '@type': 'ContactPoint',
-          //   url: 'mailto://avef.paris@wanadoo.fr',
+          //   url: 'mailto:avef.paris@wanadoo.fr',
           //   contactType: 'customer service'
           // },
           // Events
