@@ -35,6 +35,7 @@ class InnerStepDay extends BaseReactMeteor {
     default:
       log.warn('Unknown substep', props.substep);
     }
+    // Dummy handle
     this.handleChange = (e) => {};
     this.handleSubmit = (e) => {
       e.preventDefault();

@@ -10,6 +10,8 @@ class InnerStepJob extends Component {
     this.state = {
       error: ''
     };
+    // Dummy handle
+    this.handleChange = (e) => {};
     this.handleSubmit = (e) => {
       e.preventDefault();
       let selectedJob = null;
@@ -46,11 +48,21 @@ class InnerStepJob extends Component {
   }
   render() {
     log.info('Rendering InnerStepJob');
+    const user = Meteor.user();
     const choices = this.jobs.map((job) => {
+      let defaultValue = user.profile && user.profile.job && user.profile.job === job;
       return (
         <div className='field' key={job}>
           <div className='ui radio checkbox'>
-            <input type='radio' ref={'jobs' + job} value={job} name='jobs' tabIndex='0' className='hidden' />
+            <input
+              type='radio'
+              ref={'jobs' + job}
+              value={job}
+              name='jobs'
+              className='hidden'
+              checked={defaultValue}
+              onChange={this.handleChange}
+            />
             <label>{SD.Structure.pricings.schema.getDefinition(job).label}</label>
           </div>
         </div>
