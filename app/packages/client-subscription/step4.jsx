@@ -1,19 +1,33 @@
 // Namespace flatteinng
 const { Component } = React;
-const { Client } = SD.Views;
+const { Client, BaseReactMeteor } = SD.Views;
 const { AnimatedButton, ErrorMessage, SimpleText, LineText } = Client;
 
 class Invoice extends Component {
   constructor(props) {
     super(props);
+    this.dashLine = s.repeat('-', 30);
   }
   render() {
-    const { total } = this.props;
+    const { products, total } = this.props;
+    log.debug('Rendering invoice', total, products);
+    let lines = '';
+    const LEFT = 20;
+    const RIGHT = 10;
+    products.forEach((line, idx) => {
+      lines += s.rpad(line.designation, LEFT, ' ') + s.lpad(numeralAmountFormat(line.value), RIGHT, ' ');
+      if (idx !== products.length - 1) {
+        lines += '\n';
+      }
+    });
     return (
       <div className='invoice'>
-        <div>Facture</div>
-        <div>Désignation, Montant</div>
-        <div>Total: {numeralAmountFormat(total)}</div>
+        <pre>{`Facture
+${this.dashLine}
+${lines}
+${this.dashLine}
+${s.rpad('TOTAL', LEFT, ' ')}${s.lpad(numeralAmountFormat(total), RIGHT, ' ')}
+`}</pre>
       </div>
     );
   }
@@ -24,11 +38,11 @@ class PaymentByCheck extends Component {
     super(props);
   }
   render() {
-    const { total } = this.props;
+    const { products, total } = this.props;
     return (
       <div className='fadeIn'>
         <h4>Paiement par chèque</h4>
-        <Invoice total={total} />
+        <Invoice products={products} total={total}/>
         <p><SimpleText page='subscription_step4' text='payment_by_check' /></p>
       </div>
     );
@@ -40,10 +54,11 @@ class PaymentByCard extends Component {
     super(props);
   }
   render() {
+    const { products, total } = this.props;
     return (
       <div className='fadeIn'>
         <h4>Paiement par carte</h4>
-        <Invoice total={this.props.total} />
+        <Invoice products={products} total={this.props.total}/>
         <div className='card-wrapper' />
       </div>
     );
@@ -73,12 +88,11 @@ class PaymentByCard extends Component {
   }
 }
 
-class SubscriptionStep4 extends Component {
+class SubscriptionStep4 extends BaseReactMeteor {
   constructor(props) {
     super(props);
     this.state = {
       error: '',
-      total: 1200,
       disabled: true,
       paymentByCheck: false,
       paymentByCard: false
@@ -94,7 +108,52 @@ class SubscriptionStep4 extends Component {
   setModifiedAmount(val) {
     return this.state.paymentByCheck ? 1.1 * val : val;
   }
+  getMeteorData() {
+    const handlePricings = SD.Structure.pricings.subAll();
+    const handlePrograms = SD.Structure.programs.subAll();
+    const handleProducts = SD.Structure.products.subAll();
+    return {
+      loading: !handlePricings.ready() && !handlePrograms.ready() && !handleProducts.ready(),
+      pricings: handlePricings.ready() ? SD.Structure.pricings.collection.find().fetch() : [],
+      programs: handlePrograms.ready() ? SD.Structure.programs.collection.find().fetch() : [],
+      products: handleProducts.ready() ? SD.Structure.products.collection.find().fetch() : []
+    };
+  }
   render() {
+    if (this.data.loading) {
+      return this.loadingRenderer();
+    }
+    // Activate radio button
+    if (Meteor.isClient) {
+      // Wait for 2 cycles
+      Meteor.setTimeout(() => {
+        let handleCheckbox = (name) => {
+          log.debug('Checkbox checked', name);
+          const other = name === 'paymentByCheck' ? 'paymentByCard' : 'paymentByCheck';
+          this.setState({
+            [name]: true, [other]: false,
+            disabled: false
+          });
+        };
+        $('#paymentByCheck').checkbox({
+          onChecked: handleCheckbox.bind(this, 'paymentByCheck'),
+        });
+        $('#paymentByCard').checkbox({
+          onChecked: handleCheckbox.bind(this, 'paymentByCard'),
+        });
+      }, 32);
+    }
+    // Caculate amounts
+    const user = Meteor.user();
+    const profile = user.profile;
+    const userRights = profile.rights;
+    const userProducts = profile.products;
+    const products = [
+      { designation: 'Jour1', value: this.setModifiedAmount(150) },
+      { designation: 'Jour2', value: this.setModifiedAmount(150) }
+    ];
+    this.state.total = 0;
+    products.forEach((product) => { this.state.total += product.value; });
     return (
       <div className='ui segments inner-step'>
         <div className='ui segment'>
@@ -138,14 +197,20 @@ class SubscriptionStep4 extends Component {
             {
               this.state.paymentByCheck ? (
                 <div className='paymentByCheck'>
-                  <PaymentByCheck total={this.setModifiedAmount(this.state.total)} />
+                  <PaymentByCheck
+                    products={products}
+                    total={this.state.total}
+                  />
                 </div>
               ) : ''
             }
             {
               this.state.paymentByCard ? (
                 <div className='paymentByCard'>
-                  <PaymentByCard total={this.setModifiedAmount(this.state.total)} />
+                  <PaymentByCard
+                    products={products}
+                    total={this.state.total}
+                  />
                   <div className='fields'>
                     <div className='five wide field'>
                       <div className='ui left icon input'>
@@ -181,7 +246,7 @@ class SubscriptionStep4 extends Component {
                   anim='fade' icon='cart-arrow-down'
                   text='Je valide mon paiement'
                   disabled={this.state.disabled}
-                  textHidden={numeralAmountFormat(this.setModifiedAmount(this.state.total))}
+                  textHidden={numeralAmountFormat(this.state.total)}
                 />
               </div>
             </div>
@@ -196,22 +261,6 @@ class SubscriptionStep4 extends Component {
         </div>
       </div>
     );
-  }
-  componentDidMount() {
-    let handleCheckbox = (name) => {
-      log.debug('Checkbox checked', name);
-      const other = name === 'paymentByCheck' ? 'paymentByCard' : 'paymentByCheck';
-      this.setState({
-        [name]: true, [other]: false,
-        disabled: false
-      });
-    };
-    $('#paymentByCheck').checkbox({
-      onChecked: handleCheckbox.bind(this, 'paymentByCheck'),
-    });
-    $('#paymentByCard').checkbox({
-      onChecked: handleCheckbox.bind(this, 'paymentByCard'),
-    });
   }
 }
 
