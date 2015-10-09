@@ -9,26 +9,11 @@ class Invoice extends Component {
     this.dashLine = s.repeat('-', 30);
   }
   render() {
-    const { prices, total } = this.props;
-    log.debug('Rendering invoice', total, prices);
-    let lines = '';
-    const LEFT = 20;
-    const RIGHT = 10;
-    prices.forEach((line, idx) => {
-      lines += s.rpad(s.prune(line.designation, LEFT - 3), LEFT, ' ') +
-        s.lpad(numeralAmountFormat(line.value), RIGHT, ' ');
-      if (idx !== prices.length - 1) {
-        lines += '\n';
-      }
-    });
+    const { prices, discounts, total } = this.props;
+    log.debug('Rendering invoice', total, prices, discounts);
     return (
       <div className='invoice'>
-        <pre>{`Facture
-${this.dashLine}
-${lines}
-${this.dashLine}
-${s.rpad('TOTAL', LEFT, ' ')}${s.lpad(numeralAmountFormat(total), RIGHT, ' ')}
-`}</pre>
+        <pre>{renderInvoice(prices, discounts, total)}</pre>
       </div>
     );
   }
@@ -39,11 +24,11 @@ class PaymentByCheck extends Component {
     super(props);
   }
   render() {
-    const { prices, total } = this.props;
+    const { prices, discounts, total } = this.props;
     return (
       <div className='fadeIn'>
         <h4>Paiement par chèque</h4>
-        <Invoice prices={prices} total={total}/>
+        <Invoice prices={prices} discounts={discounts} total={total}/>
         <p><SimpleText page='subscription_step4' text='payment_by_check' /></p>
       </div>
     );
@@ -55,11 +40,11 @@ class PaymentByCard extends Component {
     super(props);
   }
   render() {
-    const { prices, total } = this.props;
+    const { prices, discount, total } = this.props;
     return (
       <div className='fadeIn'>
         <h4>Paiement par carte</h4>
-        <Invoice prices={prices} total={this.props.total}/>
+        <Invoice prices={prices} discounts={discounts} total={this.props.total}/>
         <div className='card-wrapper' />
       </div>
     );
@@ -179,6 +164,10 @@ class SubscriptionStep4 extends BaseReactMeteor {
       });
     });
     // @TODO Missing discounts
+    let discounts = [
+      {designation: '2 journées', value: 200},
+      {designation: 'Paper & inscription', value: 130}
+    ];
     // const prices = [
     //   { designation: 'Jour1', value: this.setModifiedAmount(150) },
     //   { designation: 'Jour2', value: this.setModifiedAmount(150) }
@@ -231,6 +220,7 @@ class SubscriptionStep4 extends BaseReactMeteor {
                 <div className='paymentByCheck'>
                   <PaymentByCheck
                     prices={prices}
+                    discounts={discounts}
                     total={this.state.total}
                   />
                 </div>
@@ -241,6 +231,7 @@ class SubscriptionStep4 extends BaseReactMeteor {
                 <div className='paymentByCard'>
                   <PaymentByCard
                     prices={prices}
+                    discounts={discounts}
                     total={this.state.total}
                   />
                   <div className='fields'>

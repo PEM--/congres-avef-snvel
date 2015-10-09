@@ -31,7 +31,8 @@ Package.onUse(function(api) {
     'pierreeric:client-cookie',
     'pierreeric:col-pricings',
     'pierreeric:col-discounts',
-    'pierreeric:col-products'
+    'pierreeric:col-products',
+    'pierreeric:invoice'
   ]);
   // Included files in this packages
   // Files for server and client
