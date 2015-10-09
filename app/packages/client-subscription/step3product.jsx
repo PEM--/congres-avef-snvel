@@ -69,7 +69,9 @@ class InnerStepProduct extends BaseReactMeteor {
       // Wait for 2 cycles
       Meteor.setTimeout(() => { $('.ui.checkbox').checkbox(); }, 32);
     }
-    const job = Meteor.user().profile.job;
+    const profile = Meteor.user().profile;
+    const job = profile.job;
+    const userProducts = profile.products;
     this.productPrices = [];
     this.data.products.map((product) =>{
       let productPrice = {
@@ -92,6 +94,8 @@ class InnerStepProduct extends BaseReactMeteor {
     log.info('Rendering InnerStepProduct', this.productPrices);
     const isPriceDisplayed = false;
     const nodes = this.productPrices.map((prdPrice, idx) => {
+      // Get history of already selected products
+      this.state['choice' + idx] = userProducts && (userProducts.indexOf(prdPrice._id) > -1);
       return (
         <li key={String(idx)}>
           <div className='ui toggle checkbox'>

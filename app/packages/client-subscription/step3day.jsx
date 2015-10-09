@@ -93,6 +93,7 @@ class InnerStepDay extends BaseReactMeteor {
     const profile = Meteor.user().profile;
     const job = profile.job;
     const selectedPrograms = profile.programs;
+    const userRights = profile.rights;
     log.info('Rendering InnerStepDay', this.props.substep, job);
     this.programPrices = [];
     this.data.programs.map((program) => {
@@ -154,6 +155,8 @@ class InnerStepDay extends BaseReactMeteor {
         </div>);
       }
       const isPriceDisplayed = false;
+      // Get history of already selected program
+      this.state['choice' + idx] = userRights && (userRights.indexOf(prgPrice._id) > -1);
       return (
         <li key={String(idx)}>
           <div className='ui toggle checkbox'>
