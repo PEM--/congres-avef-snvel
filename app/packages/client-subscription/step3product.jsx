@@ -9,7 +9,7 @@ class InnerStepProduct extends BaseReactMeteor {
     this.state = {error: ''};
     // Add 64 states for handling choices (hacky solution...)
     for (let idx = 0; idx < 64; idx++) {
-      this.state['choice' + idx] = true;
+      this.state['choice' + idx] = false;
     }
     this.handleChange = (e) => {};
     this.handleSubmit = (e) => {
@@ -111,6 +111,9 @@ class InnerStepProduct extends BaseReactMeteor {
       <div className='ui segments inner-step'>
         <div className='ui segment'>
           <h3>Sélectionner vos produits</h3>
+        </div>
+        <div className='ui segment'>
+          <p><SimpleText page='subscription_step3' text='usage_notice' /></p>
         </div>
         <div className='ui segment'>
           <form className='ui large form' onSubmit={this.handleSubmit} >

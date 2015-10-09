@@ -56,6 +56,13 @@ class InnerStepProgram extends Component {
     const job = Meteor.user().profile.job;
     const backStep = (job === 'avef' || job === 'snvel' || job === 'snvelDelegate') ? 'subscriber' : 'job';
     log.info('Rendering InnerStepProgram');
+    // Update selection if user has made one previously
+    const userPrograms = Meteor.user().profile.programs;
+    if (userPrograms) {
+      userPrograms.forEach((prg) => {
+        this.state[prg].checked = true;
+      });
+    }
     const nodes = this.programs.map((program) => {
       return (
         <div className='sixteen wide field'>
@@ -76,6 +83,9 @@ class InnerStepProgram extends Component {
       <div className='ui segments inner-step'>
         <div className='ui segment'>
           <h3>Sélectionner vos programmes</h3>
+        </div>
+        <div className='ui segment'>
+          <p><SimpleText page='subscription_step3' text='usage_notice' /></p>
         </div>
         <div className='ui segment'>
           <form className='ui large form' onSubmit={this.handleSubmit} >

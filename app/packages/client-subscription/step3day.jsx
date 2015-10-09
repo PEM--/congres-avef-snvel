@@ -11,7 +11,7 @@ class InnerStepDay extends BaseReactMeteor {
     };
     // Add 64 states for handling choices (hacky solution...)
     for (let idx = 0; idx < 64; idx++) {
-      this.state['choice' + idx] = true;
+      this.state['choice' + idx] = false;
     }
     this.backStep = '';
     this.nextUrl = '/subscription?step=3&substep=';
@@ -178,6 +178,9 @@ class InnerStepDay extends BaseReactMeteor {
           <h3>Sélectionner vos sessions pour {this.props.substep}</h3>
         </div>
         <div className='ui segment'>
+          <p><SimpleText page='subscription_step3' text='usage_notice' /></p>
+        </div>
+        <div className='ui segment'>
           <form className='ui large form' onSubmit={this.handleSubmit} >
             <div className='fields'>
               {
@@ -200,7 +203,6 @@ class InnerStepDay extends BaseReactMeteor {
                 <AnimatedButton icon='arrow-right' text={`Je valide ma sélection du ${this.props.substep}`} />
               </div>
             </div>
-            <p><SimpleText page='subscription_step3' text='price_info' /></p>
           </form>
           <ErrorMessage
             title="Votre sélection de sessions n'est pas valide."

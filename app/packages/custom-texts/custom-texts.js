@@ -75,6 +75,11 @@ pour poursuivre.`
   },
   {
     page: 'subscription_step3',
+    text: 'usage_notice',
+    content: `<i class='fa fa-bullhorn fa-lg'></i>&nbsp;Par défaut les options ne sont pas sélectionnées (bouton orange clair). Pour selectionner, faites passer le bouton de l'état  "orange clair" à l'état "vert".`
+  },
+  {
+    page: 'subscription_step3',
     text: 'no_subscriber_info',
     content: `<i class='fa fa-question-circle fa-lg'></i>&nbsp;Vous n'êtes pas encore adhérent ?
 &nbsp;<a class='animated' href='mailto://avef.paris@wanadoo.fr'>Contactez-nous</a>
