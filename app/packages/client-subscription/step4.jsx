@@ -8,11 +8,12 @@ class Invoice extends Component {
     super(props);
   }
   render() {
+    const { total } = this.props;
     return (
       <div className='invoice'>
         <div>Facture</div>
         <div>Désignation, Montant</div>
-        <div>Total: {numeral(1200).format('0,0.00$')}</div>
+        <div>Total: {numeralAmountFormat(total)}</div>
       </div>
     );
   }
@@ -23,10 +24,13 @@ class PaymentByCheck extends Component {
     super(props);
   }
   render() {
+    const { total } = this.props;
+    const checkAmoutModifier = 1.1;
+    const modifiedTotal = checkAmoutModifier * total;
     return (
       <div className='fadeIn'>
         <h4>Paiement par chèque</h4>
-        <Invoice />
+        <Invoice total={modifiedTotal} />
         <p><SimpleText page='subscription_step4' text='payment_by_check' /></p>
       </div>
     );
@@ -41,7 +45,7 @@ class PaymentByCard extends Component {
     return (
       <div className='fadeIn'>
         <h4>Paiement par carte</h4>
-        <Invoice />
+        <Invoice total={this.props.total} />
         <div className='card-wrapper' />
       </div>
     );
@@ -76,6 +80,8 @@ class SubscriptionStep4 extends Component {
     super(props);
     this.state = {
       error: '',
+      total: 1200,
+      disabled: false,
       paymentByCheck: false,
       paymentByCard: false
     };
@@ -131,14 +137,14 @@ class SubscriptionStep4 extends Component {
             {
               this.state.paymentByCheck ? (
                 <div className='paymentByCheck'>
-                    <PaymentByCheck />
+                  <PaymentByCheck total={this.state.total} />
                 </div>
               ) : ''
             }
             {
               this.state.paymentByCard ? (
                 <div className='paymentByCard'>
-                  <PaymentByCard />
+                  <PaymentByCard total={this.state.total} />
                   <div className='fields'>
                     <div className='five wide field'>
                       <div className='ui left icon input'>
@@ -170,7 +176,12 @@ class SubscriptionStep4 extends Component {
             }
             <div className='fields'>
               <div className='sixteen wide field'>
-                <AnimatedButton anim='fade' icon='cart-arrow-down' text='Je valide mon paiement' />
+                <AnimatedButton
+                  anim='fade' icon='cart-arrow-down'
+                  text='Je valide mon paiement'
+                  disabled={this.state.disabled}
+                  textHidden={numeralAmountFormat(this.state.total)}
+                />
               </div>
             </div>
           </form>
@@ -178,7 +189,6 @@ class SubscriptionStep4 extends Component {
             title="Votre sélection de sessions n'est pas valide."
             error={ErrorMessage.asProps(this.state.error)}
           />
-
         </div>
         <div className='ui segment'>
           <p><SimpleText page='subscription_step3' text='price_info' /></p>

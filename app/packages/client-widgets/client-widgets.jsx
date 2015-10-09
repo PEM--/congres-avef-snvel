@@ -30,8 +30,8 @@ SD.Views.Client.BackButton = BackButton;
 // AnimatedButton component
 class AnimatedButton extends Component {
   render() {
-    log.debug('Rendering AnimatedButton');
-    const { disabled, anim, icon, text } = this.props;
+    const { disabled, anim, icon, text, textHidden } = this.props;
+    log.debug('Rendering AnimatedButton', disabled, anim, icon, text, textHidden);
     const disabledClass = disabled ? 'disabled' : '';
     const animName = anim ? anim : '';
     return (
@@ -41,6 +41,9 @@ class AnimatedButton extends Component {
         <div className='visible content'>{text}</div>
         <div className='hidden content'>
           <i className={`fa fa-lg fa-${icon} icon`}></i>
+          {
+            textHidden ? (<span>&nbsp;{textHidden}</span>) : ''
+          }
         </div>
       </button>
     );

@@ -31,5 +31,5 @@ Package.onUse(function(api) {
     'package-tap.i18n'
   ], ['client', 'server']);
   // Exporting symbols
-  api.export(['getUserLanguage']);
+  api.export(['getUserLanguage', 'numeralAmountFormat']);
 });

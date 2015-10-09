@@ -11,6 +11,7 @@ Package.onUse(function(api) {
   api.use([
     'tracker',
     'jquery',
+    'underscorestring:underscore.string@3.2.2',
     'alanning:roles@1.2.14',
     'mquandalle:bower@1.5.2',
     'kadira:react-layout@1.3.1',
