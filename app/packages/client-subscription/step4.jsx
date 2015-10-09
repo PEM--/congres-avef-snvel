@@ -3,16 +3,66 @@ const { Component } = React;
 const { SimpleText, LineText } = SD.Views.Client;
 
 class SubscriptionStep4 extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: '',
+      paymentByCheck: false,
+      paymentByCard: false
+    };
+    this.handleChange = (e) => {
+      e.preventDefault();
+      log.debug('User selected', e, name);
+    };
+    this.handleSubmit = (e) => {
+      e.preventDefault();
+    };
+  }
   render() {
     return (
       <div className='ui segments inner-step'>
         <div className='ui segment'>
-          <h3>Sélectionner votre moyen de paiement</h3>
+          <h3>Paiement</h3>
         </div>
         <div className='ui segment'>
-          <form className='ui large form' onSubmit={this.handleSubmit} >
+          <form className='ui large form' onSubmit={this.handleSubmit} onChange={this.handleChange}>
             <div className='fields'>
-              <p>Chéques, Cartes</p>
+              <div className='sixteen field'>
+                <label>Sélectionnez votre moyen de paiement</label>
+                <div className='field'>
+                  <div className='ui radio checkbox'>
+                    <input
+                      type='radio'
+                      ref='paymentByCheck'
+                      value='paymentByCheck'
+                      name='payment'
+                      className='hidden'
+                      checked={this.state.paymentByCheck}
+                      onChange={this.handleChange}
+                    />
+                    <label>Chèque</label>
+                  </div>
+                </div>
+                <div className='field'>
+                  <div className='ui radio checkbox'>
+                    <input
+                      type='radio'
+                      ref='paymentByCard'
+                      value='paymentByCard'
+                      name='payment'
+                      className='hidden'
+                      checked={this.state.paymentByCard}
+                      onChange={this.handleChange}
+                    />
+                    <label>Carte bancaire</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className='fields'>
+              <div className='sixteen inline field'>
+                <p>Chèques, Cartes</p>
+              </div>
             </div>
           </form>
         </div>
@@ -21,6 +71,9 @@ class SubscriptionStep4 extends Component {
         </div>
       </div>
     );
+  }
+  componentDidMount() {
+    $('.ui.radio.checkbox').checkbox();
   }
 }
 

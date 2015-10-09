@@ -6,9 +6,7 @@ const { AnimatedButton, BackButton, SimpleText, ErrorMessage } = Client;
 class InnerStepDay extends BaseReactMeteor {
   constructor(props) {
     super(props);
-    this.state = {
-      error: ''
-    };
+    this.state = { error: '' };
     // Add 64 states for handling choices (hacky solution...)
     for (let idx = 0; idx < 64; idx++) {
       this.state['choice' + idx] = false;

@@ -84,8 +84,8 @@ class SubscriptionStep1 extends ReactDictionary {
                     className={`field ${isCookieAccepted ? '' : 'disabled'}`}
                   >
                   <div className='ui left icon input'>
-                    <i className={`fa fa-${field.icon} icon`}></i>
                     <input type={field.type} name={field.name} ref={field.name} placeholder={field.text} />
+                    <i className={`fa fa-${field.icon} icon`}></i>
                   </div>
                 </div>
               );

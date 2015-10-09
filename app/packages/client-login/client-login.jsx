@@ -66,14 +66,14 @@ class LogInForm extends Component {
             <div className='ui stacked segment'>
               <div className='field'>
                 <div className='ui left icon input'>
-                  <i className='fa fa-envelope icon'></i>
                   <input type='text' name='email' ref='email' placeholder='Votre e-mail'/>
+                  <i className='fa fa-envelope icon'></i>
                 </div>
               </div>
               <div className='field'>
                 <div className='ui left icon input'>
-                  <i className='fa fa-unlock icon'></i>
                   <input type='password' name='password' ref='password' placeholder="Votre mot de passe"/>
+                  <i className='fa fa-unlock icon'></i>
                 </div>
               </div>
               <AnimatedButton anim='fade' icon='key' text='Je me connecte' />

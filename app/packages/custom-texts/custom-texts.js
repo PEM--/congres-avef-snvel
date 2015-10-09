@@ -81,16 +81,19 @@ pour poursuivre.`
   {
     page: 'subscription_step3',
     text: 'no_subscriber_info',
-    content: `<i class='fa fa-question-circle fa-lg'></i>&nbsp;Vous n'êtes pas encore adhérent ?
-&nbsp;<a class='animated' href='mailto://avef.paris@wanadoo.fr'>Contactez-nous</a>
-.`
+    content: `
+<i class='fa fa-question-circle fa-lg'></i>&nbsp;Vous n'êtes pas encore adhérent AVEF ?
+&nbsp;<a class='animated' href='mailto:avef.paris@wanadoo.fr?'>Contactez-nous</a>.
+
+<i class='fa fa-question-circle fa-lg'></i>&nbsp;Vous n'êtes pas encore adhérent SNVEL?
+Adhérez en ligne sur &nbsp;<a class='animated' target='_blank' href='http://www.snvel.fr'>www.snvel.fr</a>.
+`
   },
   {
     page: 'subscription_step3',
     text: 'price_info',
     content: `<i class='fa fa-exclamation-circle fa-lg'></i>&nbsp;Les montants indiqués sont hors taxes.
-Ils ne prennent pas en considération la majoration de 10% sur les paiements par chèque.
-L'inscription sur place reste possible mais est majorée de 30%.`
+Ils sont majorés de 10% sur les paiements par chèque. L'inscription sur place reste possible mais est majorée de 30%.`
   },
   {
     page: 'subscription_recap',
