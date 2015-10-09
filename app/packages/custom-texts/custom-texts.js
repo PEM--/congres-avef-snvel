@@ -98,17 +98,17 @@ Ils sont majorés de 10% sur les paiements par chèque. L'inscription sur place 
   {
     page: 'subscription_step4',
     text: 'payment_by_check',
-    content: `Vous avez sélectionné le paiement par chèque. Votre inscription sera prise en compte lors de l'encaissement de votre chèque. À ce moment, un courriel vous sera envoyé reprenant les élements de facturations tels qu'affichés dans cette page. L'émission de ce courriel valide votre inscription. Si vous ne recevez pas ce couriel, veuillez contacter nos services.
+    content: `Vous avez sélectionné le paiement par chèque. Votre inscription sera prise en compte lors de l'encaissement de votre chèque. À ce moment, un courriel vous sera envoyé reprenant les élements de facturation tels qu'affichés dans cette page. L'émission de ce courriel valide votre inscription. Si vous ne recevez pas ce couriel, veuillez contacter nos services.
 
 Le chèque est à transmettre à :
 <address>
   AVEF<br>
-  à l'attention de la trésorerie<br>
+  à l'attention du Trésorier<br>
   34 Rue Breguet<br>
   75011 Paris
 </address>
 
-<i class='fa fa-exclamation-circle'></i>&nbsp;Le chèque doit être à l'ordre de **AVEF**.`
+<i class='fa fa-exclamation-circle'></i>&nbsp;Le chèque doit être libellé à l'ordre de l'AVEF.`
   },
   {
     page: 'subscription_recap',

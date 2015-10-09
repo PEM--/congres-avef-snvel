@@ -25,12 +25,10 @@ class PaymentByCheck extends Component {
   }
   render() {
     const { total } = this.props;
-    const checkAmoutModifier = 1.1;
-    const modifiedTotal = checkAmoutModifier * total;
     return (
       <div className='fadeIn'>
         <h4>Paiement par chèque</h4>
-        <Invoice total={modifiedTotal} />
+        <Invoice total={total} />
         <p><SimpleText page='subscription_step4' text='payment_by_check' /></p>
       </div>
     );
@@ -81,7 +79,7 @@ class SubscriptionStep4 extends Component {
     this.state = {
       error: '',
       total: 1200,
-      disabled: false,
+      disabled: true,
       paymentByCheck: false,
       paymentByCard: false
     };
@@ -92,6 +90,9 @@ class SubscriptionStep4 extends Component {
     this.handleSubmit = (e) => {
       e.preventDefault();
     };
+  }
+  setModifiedAmount(val) {
+    return this.state.paymentByCheck ? 1.1 * val : val;
   }
   render() {
     return (
@@ -137,14 +138,14 @@ class SubscriptionStep4 extends Component {
             {
               this.state.paymentByCheck ? (
                 <div className='paymentByCheck'>
-                  <PaymentByCheck total={this.state.total} />
+                  <PaymentByCheck total={this.setModifiedAmount(this.state.total)} />
                 </div>
               ) : ''
             }
             {
               this.state.paymentByCard ? (
                 <div className='paymentByCard'>
-                  <PaymentByCard total={this.state.total} />
+                  <PaymentByCard total={this.setModifiedAmount(this.state.total)} />
                   <div className='fields'>
                     <div className='five wide field'>
                       <div className='ui left icon input'>
@@ -180,13 +181,13 @@ class SubscriptionStep4 extends Component {
                   anim='fade' icon='cart-arrow-down'
                   text='Je valide mon paiement'
                   disabled={this.state.disabled}
-                  textHidden={numeralAmountFormat(this.state.total)}
+                  textHidden={numeralAmountFormat(this.setModifiedAmount(this.state.total))}
                 />
               </div>
             </div>
           </form>
           <ErrorMessage
-            title="Votre sélection de sessions n'est pas valide."
+            title="Votre paiment n'est pas valide."
             error={ErrorMessage.asProps(this.state.error)}
           />
         </div>
@@ -200,7 +201,10 @@ class SubscriptionStep4 extends Component {
     let handleCheckbox = (name) => {
       log.debug('Checkbox checked', name);
       const other = name === 'paymentByCheck' ? 'paymentByCard' : 'paymentByCheck';
-      this.setState({[name]: true, [other]: false});
+      this.setState({
+        [name]: true, [other]: false,
+        disabled: false
+      });
     };
     $('#paymentByCheck').checkbox({
       onChecked: handleCheckbox.bind(this, 'paymentByCheck'),
