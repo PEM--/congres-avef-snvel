@@ -108,7 +108,7 @@ class SubscriptionStep4 extends BaseReactMeteor {
       pricings: handlePricings.ready() ? SD.Structure.pricings.collection.find().fetch() : [],
       programs: handlePrograms.ready() ? SD.Structure.programs.collection.find().fetch() : [],
       products: handleProducts.ready() ? SD.Structure.products.collection.find().fetch() : [],
-      discounts: handleDiscounts.ready() ? SD.Structure.products.collection.find().fetch() : []
+      discounts: handleDiscounts.ready() ? SD.Structure.discounts.collection.find().fetch() : []
     };
   }
   render() {
