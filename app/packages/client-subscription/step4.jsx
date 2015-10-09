@@ -1,6 +1,7 @@
 // Namespace flatteinng
 const { Component } = React;
-const { SimpleText, LineText } = SD.Views.Client;
+const { Client } = SD.Views;
+const { AnimatedButton, ErrorMessage, SimpleText, LineText } = Client;
 
 class SubscriptionStep4 extends Component {
   constructor(props) {
@@ -30,7 +31,7 @@ class SubscriptionStep4 extends Component {
               <div className='sixteen field'>
                 <label>Sélectionnez votre moyen de paiement</label>
                 <div className='field'>
-                  <div className='ui radio checkbox'>
+                  <div id='paymentByCheck' className='ui radio checkbox'>
                     <input
                       type='radio'
                       ref='paymentByCheck'
@@ -44,7 +45,7 @@ class SubscriptionStep4 extends Component {
                   </div>
                 </div>
                 <div className='field'>
-                  <div className='ui radio checkbox'>
+                  <div id='paymentByCard' className='ui radio checkbox'>
                     <input
                       type='radio'
                       ref='paymentByCard'
@@ -64,7 +65,17 @@ class SubscriptionStep4 extends Component {
                 <p>Chèques, Cartes</p>
               </div>
             </div>
+            <div className='fields'>
+              <div className='sixteen wide field'>
+                <AnimatedButton icon='cart-arrow-down' text='Je valide mon paiement' />
+              </div>
+            </div>
           </form>
+          <ErrorMessage
+            title="Votre sélection de sessions n'est pas valide."
+            error={ErrorMessage.asProps(this.state.error)}
+          />
+
         </div>
         <div className='ui segment'>
           <p><SimpleText page='subscription_step3' text='price_info' /></p>
@@ -73,7 +84,17 @@ class SubscriptionStep4 extends Component {
     );
   }
   componentDidMount() {
-    $('.checkbox').checkbox();
+    let handleCheckbox = (name) => {
+      log.debug('Checkbox checked', name);
+      const other = name === 'paymentByCheck' ? 'paymentByCard' : 'paymentByCheck';
+      this.setState({[name]: true, [other]: false});
+    };
+    $('#paymentByCheck').checkbox({
+      onChecked: handleCheckbox.bind(this, 'paymentByCheck'),
+    });
+    $('#paymentByCard').checkbox({
+      onChecked: handleCheckbox.bind(this, 'paymentByCard'),
+    });
   }
 }
 
