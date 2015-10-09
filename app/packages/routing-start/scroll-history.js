@@ -29,7 +29,7 @@ let jumpToPrevScrollPosition = function(context) {
     // we can scroll right away since we don't need to wait for rendering
     $('body')
       .velocity('scroll', {
-        duration: 300, offset: scrollPosition, easing: 'spring'
+        duration: 300, offset: scrollPosition, easing: 'easeInOutQuad'
       });
   } else {
     // Now we need to wait a bit for blaze/react does rendering.
@@ -38,7 +38,7 @@ let jumpToPrevScrollPosition = function(context) {
     setTimeout(function () {
       $('body')
         .velocity('scroll', {
-          duration: 300, offset: scrollPosition, easing: 'spring'
+          duration: 300, offset: scrollPosition, easing: 'easeInOutQuad'
         });
     }, 15);
   }

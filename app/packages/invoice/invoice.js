@@ -1,24 +1,27 @@
 const SIZE = 30;
 const LEFT = 20;
 const RIGHT = SIZE - LEFT;
-const dashLine = s.repeat('-', SIZE);
-const doubleDashLine = s.repeat('=', SIZE);
+const dashLine = s.repeat('-', SIZE) + '\n';
+const doubleDashLine = s.repeat('=', SIZE) + '\n';
+
+const truncateSmart = (text) => text.length <= LEFT ? text : s.truncate(text, LEFT - 3);
+
+const renderLine = (designation, value) => {
+  return s.rpad(truncateSmart(designation), LEFT, ' ') +
+    s.lpad(numeralAmountFormat(value), RIGHT, ' ') + '\n';
+};
 
 renderInvoice = (prices, discounts, total) => {
   let lines = '';
-  prices.forEach((line, idx) => {
-    lines += s.rpad(s.prune(line.designation, LEFT - 3), LEFT, ' ') +
-      s.lpad(numeralAmountFormat(line.value), RIGHT, ' ');
-    if (idx !== prices.length - 1) {
-      lines += '\n';
-    }
-  });
+  prices.forEach((line) => lines += renderLine(line.designation, line.value));
   if (discounts.length !== 0) {
-    lines += this.dashLine + '\n';
+    lines += dashLine +
+      s.rpad('Remises', SIZE, ' ') + '\n';
+    discounts.forEach((line) => lines += renderLine(line.designation, line.value));
   }
   return (
-    rpad('FACTURE', SIZE, ' ') + '\n' +
-    dashLine + '\n' +
+    s.lrpad('FACTURE', SIZE, ' ') + '\n' +
+    dashLine +
     lines +
     doubleDashLine +
     s.rpad('TOTAL', LEFT, ' ') + s.lpad(numeralAmountFormat(total), RIGHT, ' ')

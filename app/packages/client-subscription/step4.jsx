@@ -40,7 +40,7 @@ class PaymentByCard extends Component {
     super(props);
   }
   render() {
-    const { prices, discount, total } = this.props;
+    const { prices, discounts, total } = this.props;
     return (
       <div className='fadeIn'>
         <h4>Paiement par carte</h4>
@@ -98,11 +98,14 @@ class SubscriptionStep4 extends BaseReactMeteor {
     const handlePricings = SD.Structure.pricings.subAll();
     const handlePrograms = SD.Structure.programs.subAll();
     const handleProducts = SD.Structure.products.subAll();
+    const handleDiscounts = SD.Structure.discounts.subAll();
     return {
-      loading: !handlePricings.ready() && !handlePrograms.ready() && !handleProducts.ready(),
+      loading: !handlePricings.ready() && !handlePrograms.ready() &&
+        !handleProducts.ready() && !handleDiscounts.ready(),
       pricings: handlePricings.ready() ? SD.Structure.pricings.collection.find().fetch() : [],
       programs: handlePrograms.ready() ? SD.Structure.programs.collection.find().fetch() : [],
-      products: handleProducts.ready() ? SD.Structure.products.collection.find().fetch() : []
+      products: handleProducts.ready() ? SD.Structure.products.collection.find().fetch() : [],
+      discounts: handleDiscounts.ready() ? SD.Structure.products.collection.find().fetch() : []
     };
   }
   render() {
@@ -139,7 +142,15 @@ class SubscriptionStep4 extends BaseReactMeteor {
     let rights = [];
     userPrograms.forEach((prg) => {
       let realProgram = _.findWhere(this.data.programs, {_id: prg});
-      rights.push(realProgram.right);
+      if (realProgram) {
+        if (realProgram.right) {
+          rights.push(realProgram.right);
+        } else {
+          log.warn('Program has no right', realProgram.session);
+        }
+      } else {
+        log.warn('Unknown program', prg);
+      }
     });
     // Reduce list of rights for uniqueness on session
     rights = _.unique(rights);
@@ -148,33 +159,52 @@ class SubscriptionStep4 extends BaseReactMeteor {
     let prices = [];
     rights.forEach((right) => {
       const pricing = _.findWhere(this.data.pricings, {right});
-      prices.push({
-        designation: pricing.right,
-        value: this.setModifiedAmount(pricing[job].amount)
-      });
+      if (pricing) {
+        if (pricing.right && pricing[job] && pricing[job].amount) {
+          prices.push({
+            designation: pricing.right,
+            value: this.setModifiedAmount(pricing[job].amount)
+          });
+        } else {
+          log.warn('Pricing for', right, 'is inconsistent', job, pricing);
+        }
+      } else {
+        log.warn('Right has no pricing', right);
+      }
     });
     // List of prices and rights on products
     userProducts.forEach((prd) => {
       let realPrd = _.findWhere(this.data.products, {_id: prd});
-      rights.push(realPrd.right);
-      const pricing = _.findWhere(this.data.pricings, {right: realPrd.right});
-      prices.push({
-        designation: realPrd.name,
-        value: pricing[job].amount
-      });
+      if (realPrd) {
+        rights.push(realPrd.right);
+        const pricing = _.findWhere(this.data.pricings, {right: realPrd.right});
+        if (pricing) {
+          if (realPrd.name && pricing[job] && pricing[job].amount) {
+            prices.push({
+              designation: realPrd.name,
+              value: this.setModifiedAmount(pricing[job].amount)
+            });
+          } else {
+            log.warn('Inconsistent product or price', realPrd, job, pricing);
+          }
+        } else {
+          log.warn('Product has no price', prd);
+        }
+      } else {
+        log.warn('Unknown product', prd);
+      }
     });
     // @TODO Missing discounts
+    //
+    //
     let discounts = [
-      {designation: '2 journées', value: 200},
-      {designation: 'Paper & inscription', value: 130}
+      {designation: '2 journées', value: this.setModifiedAmount(200)},
+      {designation: 'Paper & inscription', value: this.setModifiedAmount(130)}
     ];
-    // const prices = [
-    //   { designation: 'Jour1', value: this.setModifiedAmount(150) },
-    //   { designation: 'Jour2', value: this.setModifiedAmount(150) }
-    // ];
     // Calculate total
     this.state.total = 0;
     prices.forEach((product) => { this.state.total += product.value; });
+    discounts.forEach((discount) => {this.state.total -= discount.value; });
     return (
       <div className='ui segments inner-step'>
         <div className='ui segment'>

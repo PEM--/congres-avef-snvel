@@ -17,6 +17,8 @@ class InnerStepProgram extends Component {
       { name: 'SNVEL', text: 'SNVEL'},
       { name: 'EBMS', text: 'EBMS'}
     ];
+    // Dummy handle (checkbox is handled by Semantic)
+    this.handleChange = (e) => {};
     this.handleSubmit = (e) => {
       e.preventDefault();
       log.info('Valid forms');

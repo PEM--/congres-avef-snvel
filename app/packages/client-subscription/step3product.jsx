@@ -11,6 +11,7 @@ class InnerStepProduct extends BaseReactMeteor {
     for (let idx = 0; idx < 64; idx++) {
       this.state['choice' + idx] = false;
     }
+    // Dummy handle (checkbox is handled by Semantic)
     this.handleChange = (e) => {};
     this.handleSubmit = (e) => {
       e.preventDefault();

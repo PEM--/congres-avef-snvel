@@ -10,7 +10,7 @@ class InnerStepJob extends Component {
     this.state = {
       error: ''
     };
-    // Dummy handle
+    // Dummy handle (radio is handled by Semantic)
     this.handleChange = (e) => {};
     this.handleSubmit = (e) => {
       e.preventDefault();
