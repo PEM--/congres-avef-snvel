@@ -120,7 +120,7 @@ class InnerStepProduct extends BaseReactMeteor {
             <div className='fields'>
               {
                 this.productPrices.length === 0 ?
-                  (<div><p><i className='fa fa-bullhorn'></i>&nbsp;Aucune produit disponible.</p><br/></div>) :
+                  (<div><p><i className='fa fa-bullhorn'></i>&nbsp;Aucun produit disponible.</p><br/></div>) :
                   (
                     <div className='sixteen wide field'>
                       <ul>

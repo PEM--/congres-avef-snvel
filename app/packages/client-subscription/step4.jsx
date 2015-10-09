@@ -1,6 +1,6 @@
 // Namespace flatteinng
 const { Component } = React;
-const { LineText } = SD.Views.Client;
+const { SimpleText, LineText } = SD.Views.Client;
 
 class SubscriptionStep4 extends Component {
   render() {
