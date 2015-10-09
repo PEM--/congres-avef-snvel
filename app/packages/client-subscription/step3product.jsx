@@ -138,7 +138,6 @@ class InnerStepProduct extends BaseReactMeteor {
                 <AnimatedButton icon='shopping-cart' text='Je valide ma sélection et procède au paiement' />
               </div>
             </div>
-            <p><SimpleText page='subscription_step3' text='price_info' /></p>
           </form>
           <ErrorMessage
             title="Votre sélection de produits n'est pas valide."

@@ -13,9 +13,11 @@ class SubscriptionStep4 extends Component {
           <form className='ui large form' onSubmit={this.handleSubmit} >
             <div className='fields'>
               <p>Chéques, Cartes</p>
-              <p><SimpleText page='subscription_step3' text='price_info' /></p>
             </div>
           </form>
+        </div>
+        <div className='ui segment'>
+          <p><SimpleText page='subscription_step3' text='price_info' /></p>
         </div>
       </div>
     );

@@ -177,9 +177,11 @@ class InnerStepDay extends BaseReactMeteor {
         <div className='ui segment'>
           <h3>Sélectionner vos sessions pour {this.props.substep}</h3>
         </div>
-        <div className='ui segment'>
-          <p><SimpleText page='subscription_step3' text='usage_notice' /></p>
-        </div>
+        {
+          this.programPrices.length !== 0 ?
+            (<div className='ui segment'><p><SimpleText page='subscription_step3' text='usage_notice' /></p></div>) :
+            ''
+        }
         <div className='ui segment'>
           <form className='ui large form' onSubmit={this.handleSubmit} >
             <div className='fields'>

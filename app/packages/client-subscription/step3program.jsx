@@ -33,6 +33,9 @@ class InnerStepProgram extends Component {
         const profile = _.extend(_.clone(Meteor.user().profile), {
           programs: selectedPrograms
         });
+        if (!profile.programs || profile.programs.length === 0) {
+          throw new Meteor.Error('empty_program', 'Votre sélection de programme est vide.');
+        }
         check(profile, SD.Structure.UserSubscriberSharedSchema);
         Meteor.call('updateProfile', profile, (error) => {
           if (error) {
@@ -65,11 +68,10 @@ class InnerStepProgram extends Component {
     }
     const nodes = this.programs.map((program) => {
       return (
-        <div className='sixteen wide field'>
+        <div key={program.name} className='sixteen wide field'>
           <div className='ui toggle checkbox'>
             <input
               type='checkbox'
-              key={program.name}
               ref={program.name}
               name={program.name}
               checked={this.state[program.name].checked}
