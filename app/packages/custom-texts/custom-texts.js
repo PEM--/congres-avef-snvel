@@ -86,5 +86,14 @@ pour poursuivre.`
     content: `<i class='fa fa-exclamation-circle fa-lg'></i>&nbsp;Les montants indiqués sont hors taxes.
 Ils ne prennent pas en considération la majoration de 10% sur les paiements par chèque.
 L'inscription sur place reste possible mais est majorée de 30%.`
+  },
+  {
+    page: 'subscription_recap',
+    text: 'congratulation',
+    content: `Nous vous remercions pour votre inscription au Congrès AVEF/SNVEL 2015.
+
+Votre QR-code sera disponible sur ce site lors de votre arrivée au Congrès et vous pourrez le présenter pour l'accès aux différentes salles.
+
+En l'absence de smartphone, votre badge sera disponible à l'accueil à votre arrivée au Congrès.`
   }
 ];
