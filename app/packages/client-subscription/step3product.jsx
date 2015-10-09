@@ -41,8 +41,8 @@ class InnerStepProduct extends BaseReactMeteor {
             }
             // Reset potential displayed error
             this.setState({error: ''});
-            // Go to next inner step
-            FlowRouter.go('/subscription?step=4');
+            // Go to next inner step with a wait of few ms so that user's roles get updated
+            Meteor.setTimeout((() => FlowRouter.go('/subscription?step=4')), 300);
           });
         });
       } catch (error) {
