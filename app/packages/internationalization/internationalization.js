@@ -77,6 +77,25 @@ SimpleSchema.messages({
   ]
 });
 
+// Set numeral to the default french language
+numeral.language('fr', {
+  delimiters: {
+    thousands: ' ',
+    decimal: ','
+  },
+  abbreviations: {
+    thousand: 'k',
+    million: 'm',
+    billion: 'b',
+    trillion: 't'
+  },
+  ordinal: ((number) => number === 1 ? 'er' : 'ème'),
+  currency: {
+    symbol: '€'
+  }
+});
+numeral.language('fr');
+
 // Settings for Accounts
 T9n.setLanguage(getUserLanguage());
 

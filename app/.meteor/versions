@@ -84,7 +84,6 @@ mquandalle:jade-compiler@0.4.3
 mrt:isolate-value@2.0.2
 npm-bcrypt@0.7.8_2
 npm-mongo@1.4.39_1
-numeral:languages@1.5.3
 numeral:numeral@1.5.3_1
 observe-sequence@1.0.7
 okgrow:analytics@0.4.1

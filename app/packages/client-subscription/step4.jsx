@@ -12,7 +12,7 @@ class Invoice extends Component {
       <div className='invoice'>
         <div>Facture</div>
         <div>Désignation, Montant</div>
-        <div>Total: {numeral(1200).format('0.0,00 €')}</div>
+        <div>Total: {numeral(1200).format('0,0.00$')}</div>
       </div>
     );
   }
@@ -128,28 +128,28 @@ class SubscriptionStep4 extends Component {
                 </div>
               </div>
             </div>
-            <div className='fields'>
-              <div className='sixteen inline field'>
-                {
-                  this.state.paymentByCheck ? (
-                    <div className='sixteen inline field'>
-                      <PaymentByCheck />
-                    </div>
-                  ) : ''
-                }
-                {
-                  this.state.paymentByCard ? (
-                    <div className='sixteen inline field'>
-                      <PaymentByCard />
-                      <input type="text" placeholder="N° de carte" name="number" autoComplete="off" noValidate="novalidate" autofocus="autofocus"/>
-                      <input type="text" placeholder="NOM COMPLET" name="name" autoComplete="off" noValidate="novalidate"/>
-                      <input type="text" placeholder="MM/AA" name="expiry" autoComplete="off" noValidate="novalidate"/>
-                      <input type="text" placeholder="CVC" name="cvc" autoComplete="off" noValidate="novalidate"/>
-                    </div>
-                  ) : ''
-                }
-              </div>
-            </div>
+            {
+              this.state.paymentByCheck ? (
+                <div>
+                    <PaymentByCheck />
+                </div>
+              ) : ''
+            }
+            {
+              this.state.paymentByCard ? (
+                <div>
+                  <PaymentByCard />
+                  <div className='fields'>
+                      <div className='sixteen field'>
+                        <input style={{color: 'black'}} type="text" placeholder="N° de carte" name="number" autoComplete="off" noValidate="novalidate" autofocus="autofocus"/>
+                        <input style={{color: 'black'}} type="text" placeholder="NOM COMPLET" name="name" autoComplete="off" noValidate="novalidate"/>
+                        <input style={{color: 'black'}} type="text" placeholder="MM/AA" name="expiry" autoComplete="off" noValidate="novalidate"/>
+                        <input style={{color: 'black'}} type="text" placeholder="CVC" name="cvc" autoComplete="off" noValidate="novalidate"/>
+                      </div>
+                  </div>
+                </div>
+              ) : ''
+            }
             <div className='fields'>
               <div className='sixteen wide field'>
                 <AnimatedButton anim='fade' icon='cart-arrow-down' text='Je valide mon paiement' />
