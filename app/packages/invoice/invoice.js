@@ -17,7 +17,7 @@ renderInvoice = (prices, discounts, total) => {
   if (discounts.length !== 0) {
     lines += dashLine +
       s.rpad('Remises', SIZE, ' ') + '\n';
-    discounts.forEach((line) => lines += renderLine(line.designation, line.value));
+    discounts.forEach((line) => lines += renderLine(line.designation, -line.value));
   }
   return (
     s.lrpad('FACTURE', SIZE, ' ') + '\n' +

@@ -9,6 +9,7 @@ class Invoice extends Component {
     this.dashLine = s.repeat('-', 30);
   }
   render() {
+    log.info('Render Invoice');
     const { prices, discounts, total } = this.props;
     log.debug('Rendering invoice', total, prices, discounts);
     return (
@@ -24,6 +25,7 @@ class PaymentByCheck extends Component {
     super(props);
   }
   render() {
+    log.info('Render PaymentByCheck');
     const { prices, discounts, total } = this.props;
     return (
       <div className='fadeIn'>
@@ -40,6 +42,7 @@ class PaymentByCard extends Component {
     super(props);
   }
   render() {
+    log.info('Render PaymentByCard');
     const { prices, discounts, total } = this.props;
     return (
       <div className='fadeIn'>
@@ -109,6 +112,7 @@ class SubscriptionStep4 extends BaseReactMeteor {
     };
   }
   render() {
+    log.info('Render SubscriptionStep4');
     if (this.data.loading) {
       return this.loadingRenderer();
     }
@@ -152,9 +156,12 @@ class SubscriptionStep4 extends BaseReactMeteor {
         log.warn('Unknown program', prg);
       }
     });
-    // Reduce list of rights for uniqueness on session
-    rights = _.unique(rights);
-    console.log(rights);
+    rights = _.chain(rights)
+      // Reduce list of rights for uniqueness on session
+      .unique()
+       // Remove free programs
+      .filter((right) => right !== 'gratuit')
+      .value();
     // Converts rights to prices
     let prices = [];
     rights.forEach((right) => {
@@ -194,13 +201,21 @@ class SubscriptionStep4 extends BaseReactMeteor {
         log.warn('Unknown product', prd);
       }
     });
-    // @TODO Missing discounts
-    //
-    //
-    let discounts = [
-      {designation: '2 journées', value: this.setModifiedAmount(200)},
-      {designation: 'Paper & inscription', value: this.setModifiedAmount(130)}
-    ];
+    // @TODO Missing a real discounts set of rules: Use PEG.js
+    let discounts = [];
+    if ((rights.indexOf('Jour1') > -1) && (rights.indexOf('Jour2') > -1)) {
+      discounts.push({
+        designation: '2 journées',
+        value: this.setModifiedAmount(this.data.discounts[0][job])
+      });
+    }
+    if ((rights.indexOf('proceedingpaper') > -1) &&
+      ((rights.indexOf('Jour1') > -1) || (rights.indexOf('Jour2') > -1))) {
+      discounts.push({
+        designation: 'Paper & inscription',
+        value: this.setModifiedAmount(this.data.discounts[1][job])
+      });
+    }
     // Calculate total
     this.state.total = 0;
     prices.forEach((product) => { this.state.total += product.value; });
