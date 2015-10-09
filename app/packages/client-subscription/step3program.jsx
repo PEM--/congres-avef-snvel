@@ -84,7 +84,7 @@ class InnerStepProgram extends Component {
     return (
       <div className='ui segments inner-step'>
         <div className='ui segment'>
-          <h3>Sélectionner vos programmes</h3>
+          <h3>Sélectionnez vos programmes</h3>
         </div>
         <div className='ui segment'>
           <p><SimpleText page='subscription_step3' text='usage_notice' /></p>

@@ -11,6 +11,7 @@ Package.onUse(function(api) {
   api.use([
     'tracker',
     'alanning:roles@1.2.14',
+    'mquandalle:bower',
     'kadira:react-layout@1.3.1',
     'flemay:less-autoprefixer@1.1.0',
     'pierreeric:basereactmeteor',
@@ -46,4 +47,8 @@ Package.onUse(function(api) {
     'client-subscription.jsx',
     'client-subscription.less'
   ]);
+  // Files for client only
+  api.addFiles([
+    'bower.json'
+  ], 'client');
 });

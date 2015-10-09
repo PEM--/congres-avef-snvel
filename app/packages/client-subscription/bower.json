@@ -1,0 +1,15 @@
+{
+  "name": "client-subscription",
+  "version": "1.0.0",
+  "dependencies": {
+    "card": "1.1.0",
+    "braintree-web": "2.14.2"
+  },
+  "ignoredDependencies": [
+    "jquery"
+  ],
+  "overrides": {
+    "card": { "arch": [ "client" ] },
+    "braintree-web": { "arch": [ "client" ] }
+  }
+}

@@ -119,7 +119,7 @@ class InnerStepProduct extends BaseReactMeteor {
     return (
       <div className='ui segments inner-step'>
         <div className='ui segment'>
-          <h3>Sélectionner vos produits</h3>
+          <h3>Sélectionnez vos produits</h3>
         </div>
         <div className='ui segment'>
           <p><SimpleText page='subscription_step3' text='usage_notice' /></p>

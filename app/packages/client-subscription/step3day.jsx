@@ -182,7 +182,7 @@ class InnerStepDay extends BaseReactMeteor {
     return (
       <div className='ui segments inner-step'>
         <div className='ui segment'>
-          <h3>Sélectionner vos sessions pour {this.props.substep}</h3>
+          <h3>Sélectionnez vos sessions pour {this.props.substep}</h3>
         </div>
         {
           this.programPrices.length !== 0 ?

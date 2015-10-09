@@ -96,7 +96,7 @@ class SubscriptionStep1 extends ReactDictionary {
     });
     return (
       <div>
-        <h2>Créer votre compte</h2>
+        <h2>Créez votre compte</h2>
         <form className='ui large form' onSubmit={this.handleSubmit}>
           <div className='ui stacked segment'>
             {nodes}

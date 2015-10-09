@@ -3,6 +3,49 @@ const { Component } = React;
 const { Client } = SD.Views;
 const { AnimatedButton, ErrorMessage, SimpleText, LineText } = Client;
 
+class Invoice extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div>
+        <p>Facturette.</p>
+      </div>
+    );
+  }
+}
+
+class PaymentByCheck extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div className='sixteen inline field'>
+        <p>Vous avez sélectionné le paiement par chèque.</p>
+        <Invoice />
+        <p>Blabla sur l'ordre.</p>
+      </div>
+    );
+  }
+}
+
+class PaymentByCard extends Component {
+  constructor(props) {
+    super(props);
+  }
+  render() {
+    return (
+      <div className='sixteen inline field'>
+        <p>Vous avez sélectionné le paiement par carte.</p>
+        <Invoice />
+        <p>Formulaire.</p>
+      </div>
+    );
+  }
+}
+
 class SubscriptionStep4 extends Component {
   constructor(props) {
     super(props);
@@ -62,7 +105,14 @@ class SubscriptionStep4 extends Component {
             </div>
             <div className='fields'>
               <div className='sixteen inline field'>
-                <p>Chèques, Cartes</p>
+                {
+                  this.state.paymentByCheck ?
+                    <PaymentByCheck /> : ''
+                }
+                {
+                  this.state.paymentByCard ?
+                    <PaymentByCard /> : ''
+                }
               </div>
             </div>
             <div className='fields'>
