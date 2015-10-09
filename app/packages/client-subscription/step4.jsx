@@ -1,5 +1,5 @@
 // Namespace flatteinng
-const { Component } = React;
+const { Component, findDOMNode } = React;
 const { Client, BaseReactMeteor } = SD.Views;
 const { AnimatedButton, ErrorMessage, SimpleText, LineText } = Client;
 
@@ -86,13 +86,90 @@ class SubscriptionStep4 extends BaseReactMeteor {
       paymentByCheck: false,
       paymentByCard: false
     };
-    this.handleChange = (e) => {
-      e.preventDefault();
-      log.debug('User selected', e, name);
-    };
+    // Dummy handle (checkbox is handled by Semantic)
+    this.handleChange = (e) => {};
     this.handleSubmit = (e) => {
       e.preventDefault();
+      let result;
+      try {
+        // Checking card number
+        result = this.checkCardNumber(findDOMNode(this.refs.number).value);
+        if (result !== '') {
+          throw new Meteor.Error('card_validation_error', result);
+        }
+        // Card's name
+        result = this.checkCardName(findDOMNode(this.refs.name).value);
+        if (result !== '') {
+          throw new Meteor.Error('card_validation_error', result);
+        }
+        // Checking card expiry
+        result = this.checkCardExpiry(findDOMNode(this.refs.expiry).value);
+        if (result !== '') {
+          throw new Meteor.Error('card_validation_error', result);
+        }
+        result = this.checkCardCvc(findDOMNode(this.refs.cvc).value);
+        if (result !== '') {
+          throw new Meteor.Error('card_validation_error', result);
+        }
+        log.debug('User validated form');
+
+
+
+
+      } catch (error) {
+        log.debug('Error while checking SubscriptionStep4 values', error);
+        this.setState({error});
+      }
     };
+  }
+  checkCardNumber(str) {
+    if (str.length > 19) {
+      return 'Votre n° de carte est trop long.';
+    }
+    if (str.length < 14) {
+      return 'Votre n° de carte est incomplet.';
+    }
+    if (_.isNaN(s.toNumber(s.replaceAll(str, ' ', '')))) {
+      return 'Votre n° de carte ne peut contenir de lettres.';
+    }
+    return '';
+  }
+  checkCardName(str) {
+    if (str.length < 2) {
+      return 'Entrez le nom inscrit sur votre carte.';
+    }
+    if (str.length > 26) {
+      return 'Entrez uniquement le nom inscrit sur votre carte.';
+    }
+    return '';
+  }
+  checkCardExpiry(str) {
+    log.warn(str);
+    if (str.length !== 7) {
+      return 'Entrez la date d\'expiration de votre carte.';
+    }
+    const [strMonth, strYear] = str.split(' / ');
+    const month = s.toNumber(strMonth);
+    if ((strMonth.length !== 2) || (_.isNaN(month)) ||
+        (month < 1) || (month > 12)) {
+      return 'Le mois d\'expiration est inconsistant.';
+    }
+    if ((_.isUndefined(strYear)) || (strYear.length !== 2)) {
+      return 'L\'année d\'expiration est inconsistante.';
+    }
+    const year = s.toNumber(strYear);
+    const currentYear = moment(new Date()).year() - 2000;
+    if ((_.isNaN(year)) || (year < currentYear)) {
+      return 'L\'année d\'expiration est inconsistante.';
+    }
+    return '';
+  }
+  checkCardCvc(str) {
+    if (((str.length !== 3) && (str.length !== 4)) ||
+        (_.isNaN(s.toNumber(str)))) {
+      return 'Le cryptogramme doit comporter 3 ou 4 chiffres.';
+    }
+    return '';
   }
   setModifiedAmount(val) {
     return this.state.paymentByCheck ? 1.1 * val : val;
@@ -282,25 +359,25 @@ class SubscriptionStep4 extends BaseReactMeteor {
                   <div className='fields'>
                     <div className='five wide field'>
                       <div className='ui left icon input'>
-                        <input type="text" placeholder="N° de carte" name="number" autoComplete="off" noValidate="novalidate" autofocus="autofocus"/>
+                        <input type="text" placeholder="N° de carte" ref="number" name="number" autoComplete="off" noValidate="novalidate" autofocus="autofocus"/>
                         <i className='fa fa-credit-card icon'></i>
                       </div>
                     </div>
                     <div className='five wide field'>
                       <div className='ui left icon input'>
-                        <input type="text" placeholder="NOM COMPLET" name="name" autoComplete="off" noValidate="novalidate"/>
+                        <input type="text" placeholder="NOM COMPLET" ref="name" name="name" autoComplete="off" noValidate="novalidate"/>
                         <i className='fa fa-user icon'></i>
                       </div>
                     </div>
                     <div className='three wide field'>
                       <div className='ui left icon input'>
-                        <input type="text" placeholder="MM/AA" name="expiry" autoComplete="off" noValidate="novalidate"/>
+                        <input type="text" placeholder="MM/AA" ref="expiry" name="expiry" autoComplete="off" noValidate="novalidate"/>
                         <i className='fa fa-calendar icon'></i>
                       </div>
                     </div>
                     <div className='three wide field'>
                       <div className='ui left icon input'>
-                        <input type="text" placeholder="CVC" name="cvc" autoComplete="off" noValidate="novalidate"/>
+                        <input type="text" placeholder="CVC" ref="cvc" name="cvc" autoComplete="off" noValidate="novalidate"/>
                         <i className='fa fa-credit-card icon'></i>
                       </div>
                     </div>

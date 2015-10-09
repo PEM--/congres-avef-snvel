@@ -11,6 +11,8 @@ Package.onUse(function(api) {
   api.use([
     'tracker',
     'jquery',
+    'underscore',
+    'momentjs:moment@2.10.6',
     'underscorestring:underscore.string@3.2.2',
     'alanning:roles@1.2.14',
     'mquandalle:bower@1.5.2',
