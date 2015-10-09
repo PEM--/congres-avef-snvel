@@ -25,9 +25,9 @@ class PaymentByCheck extends Component {
   render() {
     return (
       <div className='fadeIn'>
-        <p>Vous avez sélectionné le paiement par chèque.</p>
+        <h4>Paiement par chèque</h4>
         <Invoice />
-        <p>Blabla sur l'ordre.</p>
+        <p><SimpleText page='subscription_step4' text='payment_by_check' /></p>
       </div>
     );
   }
@@ -40,7 +40,7 @@ class PaymentByCard extends Component {
   render() {
     return (
       <div className='fadeIn'>
-        <p>Vous avez sélectionné le paiement par carte.</p>
+        <h4>Paiement par carte</h4>
         <Invoice />
         <div className='card-wrapper' />
       </div>
@@ -130,7 +130,7 @@ class SubscriptionStep4 extends Component {
             </div>
             {
               this.state.paymentByCheck ? (
-                <div>
+                <div className='paymentByCheck'>
                     <PaymentByCheck />
                 </div>
               ) : ''
