@@ -9,14 +9,15 @@ class Invoice extends Component {
     this.dashLine = s.repeat('-', 30);
   }
   render() {
-    const { products, total } = this.props;
-    log.debug('Rendering invoice', total, products);
+    const { prices, total } = this.props;
+    log.debug('Rendering invoice', total, prices);
     let lines = '';
     const LEFT = 20;
     const RIGHT = 10;
-    products.forEach((line, idx) => {
-      lines += s.rpad(line.designation, LEFT, ' ') + s.lpad(numeralAmountFormat(line.value), RIGHT, ' ');
-      if (idx !== products.length - 1) {
+    prices.forEach((line, idx) => {
+      lines += s.rpad(s.prune(line.designation, LEFT - 3), LEFT, ' ') +
+        s.lpad(numeralAmountFormat(line.value), RIGHT, ' ');
+      if (idx !== prices.length - 1) {
         lines += '\n';
       }
     });
@@ -38,11 +39,11 @@ class PaymentByCheck extends Component {
     super(props);
   }
   render() {
-    const { products, total } = this.props;
+    const { prices, total } = this.props;
     return (
       <div className='fadeIn'>
         <h4>Paiement par chèque</h4>
-        <Invoice products={products} total={total}/>
+        <Invoice prices={prices} total={total}/>
         <p><SimpleText page='subscription_step4' text='payment_by_check' /></p>
       </div>
     );
@@ -54,11 +55,11 @@ class PaymentByCard extends Component {
     super(props);
   }
   render() {
-    const { products, total } = this.props;
+    const { prices, total } = this.props;
     return (
       <div className='fadeIn'>
         <h4>Paiement par carte</h4>
-        <Invoice products={products} total={this.props.total}/>
+        <Invoice prices={prices} total={this.props.total}/>
         <div className='card-wrapper' />
       </div>
     );
@@ -146,14 +147,45 @@ class SubscriptionStep4 extends BaseReactMeteor {
     // Caculate amounts
     const user = Meteor.user();
     const profile = user.profile;
-    const userRights = profile.rights;
-    const userProducts = profile.products;
-    const products = [
-      { designation: 'Jour1', value: this.setModifiedAmount(150) },
-      { designation: 'Jour2', value: this.setModifiedAmount(150) }
-    ];
+    const job = profile.job;
+    const userPrograms = profile.rights ? profile.rights : [];
+    const userProducts = profile.products ? profile.products : [];
+    // List of rights on programs
+    let rights = [];
+    userPrograms.forEach((prg) => {
+      let realProgram = _.findWhere(this.data.programs, {_id: prg});
+      rights.push(realProgram.right);
+    });
+    // Reduce list of rights for uniqueness on session
+    rights = _.unique(rights);
+    console.log(rights);
+    // Converts rights to prices
+    let prices = [];
+    rights.forEach((right) => {
+      const pricing = _.findWhere(this.data.pricings, {right});
+      prices.push({
+        designation: pricing.right,
+        value: this.setModifiedAmount(pricing[job].amount)
+      });
+    });
+    // List of prices and rights on products
+    userProducts.forEach((prd) => {
+      let realPrd = _.findWhere(this.data.products, {_id: prd});
+      rights.push(realPrd.right);
+      const pricing = _.findWhere(this.data.pricings, {right: realPrd.right});
+      prices.push({
+        designation: realPrd.name,
+        value: pricing[job].amount
+      });
+    });
+    // @TODO Missing discounts
+    // const prices = [
+    //   { designation: 'Jour1', value: this.setModifiedAmount(150) },
+    //   { designation: 'Jour2', value: this.setModifiedAmount(150) }
+    // ];
+    // Calculate total
     this.state.total = 0;
-    products.forEach((product) => { this.state.total += product.value; });
+    prices.forEach((product) => { this.state.total += product.value; });
     return (
       <div className='ui segments inner-step'>
         <div className='ui segment'>
@@ -198,7 +230,7 @@ class SubscriptionStep4 extends BaseReactMeteor {
               this.state.paymentByCheck ? (
                 <div className='paymentByCheck'>
                   <PaymentByCheck
-                    products={products}
+                    prices={prices}
                     total={this.state.total}
                   />
                 </div>
@@ -208,7 +240,7 @@ class SubscriptionStep4 extends BaseReactMeteor {
               this.state.paymentByCard ? (
                 <div className='paymentByCard'>
                   <PaymentByCard
-                    products={products}
+                    prices={prices}
                     total={this.state.total}
                   />
                   <div className='fields'>
