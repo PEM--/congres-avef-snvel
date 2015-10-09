@@ -137,15 +137,33 @@ class SubscriptionStep4 extends Component {
             }
             {
               this.state.paymentByCard ? (
-                <div>
+                <div className='paymentByCard'>
                   <PaymentByCard />
                   <div className='fields'>
-                      <div className='sixteen field'>
-                        <input style={{color: 'black'}} type="text" placeholder="N° de carte" name="number" autoComplete="off" noValidate="novalidate" autofocus="autofocus"/>
-                        <input style={{color: 'black'}} type="text" placeholder="NOM COMPLET" name="name" autoComplete="off" noValidate="novalidate"/>
-                        <input style={{color: 'black'}} type="text" placeholder="MM/AA" name="expiry" autoComplete="off" noValidate="novalidate"/>
-                        <input style={{color: 'black'}} type="text" placeholder="CVC" name="cvc" autoComplete="off" noValidate="novalidate"/>
+                    <div className='five wide field'>
+                      <div className='ui left icon input'>
+                        <input type="text" placeholder="N° de carte" name="number" autoComplete="off" noValidate="novalidate" autofocus="autofocus"/>
+                        <i className='fa fa-credit-card icon'></i>
                       </div>
+                    </div>
+                    <div className='five wide field'>
+                      <div className='ui left icon input'>
+                        <input type="text" placeholder="NOM COMPLET" name="name" autoComplete="off" noValidate="novalidate"/>
+                        <i className='fa fa-user icon'></i>
+                      </div>
+                    </div>
+                    <div className='three wide field'>
+                      <div className='ui left icon input'>
+                        <input type="text" placeholder="MM/AA" name="expiry" autoComplete="off" noValidate="novalidate"/>
+                        <i className='fa fa-calendar icon'></i>
+                      </div>
+                    </div>
+                    <div className='three wide field'>
+                      <div className='ui left icon input'>
+                        <input type="text" placeholder="CVC" name="cvc" autoComplete="off" noValidate="novalidate"/>
+                        <i className='fa fa-credit-card icon'></i>
+                      </div>
+                    </div>
                   </div>
                 </div>
               ) : ''
