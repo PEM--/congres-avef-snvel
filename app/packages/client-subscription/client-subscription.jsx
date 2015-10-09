@@ -113,9 +113,7 @@ FlowRouter.route(`/${ROUTE_NAME}`, {
     const userId = Meteor.userId();
     if (userId) {
     // Check user's roles
-      if (Roles.userIsInRole(userId, [
-        'admin', 'subscribed'
-      ])) {
+      if (Roles.userIsInRole(userId, 'admin') || Roles.userIsInRole(userId, 'subscribed')) {
         step = 'report';
       } else if (Roles.userIsInRole(userId, 'payment_pending')) {
         step = 4;
