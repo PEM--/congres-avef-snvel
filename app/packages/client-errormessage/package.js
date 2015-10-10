@@ -14,7 +14,7 @@ Package.onUse(function(api) {
   api.use(shared.concat([
     'flemay:less-autoprefixer@1.1.0',
     'pierreeric:basereactmeteor',
-    'pierreeric:client-sharedstyles'
+    'pierreeric:sharedstyles'
   ]));
   api.imply(shared);
   // Included files in this packages

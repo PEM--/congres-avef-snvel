@@ -14,7 +14,7 @@ Package.onUse(function(api) {
     'react',
     'spacedrop:namespaces',
     'pierreeric:logger',
-    'pierreeric:client-sharedstyles'
+    'pierreeric:sharedstyles'
   ]);
   // Included files in this packages
   // Files for server and client

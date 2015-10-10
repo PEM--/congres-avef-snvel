@@ -22,7 +22,7 @@ Package.onUse(function(api) {
     'pierreeric:routing-start',
     'pierreeric:internationalization',
     'pierreeric:main-layout',
-    'pierreeric:client-sharedstyles',
+    'pierreeric:sharedstyles',
     'pierreeric:client-socialsharers',
     'pierreeric:client-errormessage',
     'pierreeric:client-widgets',

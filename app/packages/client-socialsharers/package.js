@@ -12,7 +12,7 @@ Package.onUse(function(api) {
     'underscore',
     'flemay:less-autoprefixer@1.1.0',
     'pierreeric:basereactmeteor',
-    'pierreeric:client-sharedstyles',
+    'pierreeric:sharedstyles',
     'pierreeric:routing-start'
   ]);
   // Included files in this packages

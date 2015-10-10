@@ -15,7 +15,7 @@ Package.onUse(function(api) {
     'dburles:google-maps@1.1.4',
     'mquandalle:jade@0.4.3_1',
     'pierreeric:basereactmeteor',
-    'pierreeric:client-sharedstyles',
+    'pierreeric:sharedstyles',
     'pierreeric:routing-start',
     'pierreeric:col-dictionary'
   ]);

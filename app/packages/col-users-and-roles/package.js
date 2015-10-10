@@ -19,7 +19,7 @@ Package.onUse(function(api) {
     'pierreeric:logger',
     'pierreeric:routing-start',
     'pierreeric:col-subscribers',
-    'pierreeric:client-sharedstyles',
+    'pierreeric:sharedstyles',
     'pierreeric:emails'
   ]));
   api.imply(shared);

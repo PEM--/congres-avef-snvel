@@ -15,7 +15,7 @@ Package.onUse(function(api) {
     'pierreeric:basereactmeteor',
     'pierreeric:routing-start',
     'pierreeric:main-layout',
-    'pierreeric:client-sharedstyles',
+    'pierreeric:sharedstyles',
     'pierreeric:col-users-and-roles',
     'pierreeric:client-errormessage',
     'pierreeric:client-widgets'

@@ -13,7 +13,7 @@ Package.onUse(function(api) {
     'pierreeric:basereactmeteor',
     'pierreeric:col-basicpages',
     'pierreeric:col-sociallinks',
-    'pierreeric:client-sharedstyles'
+    'pierreeric:sharedstyles'
   ]);
   // Dependencies for server only
   api.use([], 'server');

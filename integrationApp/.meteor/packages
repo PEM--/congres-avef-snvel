@@ -3,7 +3,7 @@ fortawesome:fontawesome
 semantic:ui
 flemay:less-autoprefixer
 mquandalle:jade
-pierreeric:client-sharedstyles
+pierreeric:sharedstyles
 kadira:flow-router
 kadira:blaze-layout
 fastclick

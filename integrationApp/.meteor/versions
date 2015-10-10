@@ -47,7 +47,7 @@ mquandalle:jade-compiler@0.4.3
 npm-mongo@1.4.39_1
 observe-sequence@1.0.7
 ordered-dict@1.0.4
-pierreeric:client-sharedstyles@0.0.1
+pierreeric:sharedstyles@0.0.1
 promise@0.4.8
 random@1.0.4
 reactive-dict@1.1.1

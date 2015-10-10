@@ -1,5 +1,5 @@
 // Color theme
-SD.Views.Client.ColorTheme = {
+ColorTheme = {
   brandColor: '#FF7100',
   secondaryColor: '#007E5F',
   transBrandColor: 'rgba(255, 113, 0, .2)',
@@ -14,7 +14,7 @@ SD.Views.Client.ColorTheme = {
 };
 
 // Fonts
-SD.Views.Client.Fonts = {
+Fonts = {
   header: '"Impact", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif',
   body: '"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif'
 };

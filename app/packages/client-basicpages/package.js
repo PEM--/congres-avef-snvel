@@ -15,7 +15,7 @@ Package.onUse(function(api) {
     'pierreeric:routing-start',
     'pierreeric:col-basicpages',
     'pierreeric:main-layout',
-    'pierreeric:client-sharedstyles',
+    'pierreeric:sharedstyles',
     'pierreeric:client-spinkit',
     'pierreeric:markdown'
   ]);

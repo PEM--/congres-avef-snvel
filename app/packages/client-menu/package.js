@@ -12,7 +12,7 @@ Package.onUse(function(api) {
     'flemay:less-autoprefixer@1.1.0',
     'pierreeric:routing-start',
     'pierreeric:basereactmeteor',
-    'pierreeric:client-sharedstyles',
+    'pierreeric:sharedstyles',
     'pierreeric:col-users-and-roles'
   ]);
   // Included files in this packages

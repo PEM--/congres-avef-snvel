@@ -1,5 +1,5 @@
 Package.describe({
-  name: 'pierreeric:client-sharedstyles',
+  name: 'pierreeric:sharedstyles',
   version: '0.0.1'
 });
 
@@ -18,7 +18,8 @@ Package.onUse(function(api) {
   // Included files in this packages
   // Files for server and client
   api.addFiles([
-    'client-sharedstyles.js',
-    'client-sharedstyles.less'
+    'sharedstyles.js',
+    'sharedstyles.less'
   ]);
+  api.export([ColorTheme, Fonts], ['server', 'client']);
 });

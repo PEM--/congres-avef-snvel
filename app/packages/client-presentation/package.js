@@ -14,7 +14,7 @@ Package.onUse(function(api) {
     'pierreeric:basereactmeteor',
     'pierreeric:routing-start',
     'pierreeric:main-layout',
-    'pierreeric:client-sharedstyles',
+    'pierreeric:sharedstyles',
     'pierreeric:client-socialsharers',
     'pierreeric:client-googlemap',
     'pierreeric:client-linetext'

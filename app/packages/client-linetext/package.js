@@ -11,7 +11,7 @@ Package.onUse(function(api) {
   api.use([
     'underscorestring:underscore.string@3.2.2',
     'pierreeric:basereactmeteor',
-    'pierreeric:client-sharedstyles',
+    'pierreeric:sharedstyles',
     'pierreeric:client-spinkit',
     'pierreeric:markdown',
     'pierreeric:col-texts'

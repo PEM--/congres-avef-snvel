@@ -23,7 +23,7 @@ ecmascript
 
 # Utils
 pierreeric:logger
-pierreeric:client-sharedstyles
+pierreeric:sharedstyles
 pierreeric:emails
 
 # Security
@@ -70,10 +70,11 @@ pierreeric:routing-done
 
 # Dev only
 spacedrop:namespaces
-pierreeric:col-subscribers
+#pierreeric:col-subscribers
 pierreeric:markdown
 #underscorestring:underscore.string
-alanning:roles
+#alanning:roles
 #kadira:flow-router-ssr
-pierreeric:payment
-react
+#pierreeric:payment
+#react
+pierreeric:ssrpdf
