@@ -74,14 +74,14 @@ Meteor.methods({
     const result = SD.Utils.braintreeGateway.clientToken.generate({
       customerId: braintreeCustomerId
     });
-    if (!result || !result.token) {
+    if (!result || !result.clientToken) {
       log.warn('Braintree Error for', email, result);
       throw new Meteor.Error(ERROR_TYPE, 'Paiement impossible pour le moment pour', email);
     }
     log.info('Payment token createad for', email);
     return {
       braintreeCustomerId,
-      token: result.token
+      token: result.clientToken
     };
   },
   // Braintree card payment using nonce

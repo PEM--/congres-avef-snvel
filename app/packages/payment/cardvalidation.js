@@ -21,10 +21,10 @@ SD.Utils.CardValidation = {
     return '';
   },
   expiry(str) {
-    if (str.length !== 7) {
+    if (str.length !== 5) {
       return 'Entrez la date d\'expiration de votre carte.';
     }
-    const [strMonth, strYear] = str.split(' / ');
+    const [strMonth, strYear] = str.split('/');
     const month = s.toNumber(strMonth);
     if ((strMonth.length !== 2) || (_.isNaN(month)) ||
         (month < 1) || (month > 12)) {

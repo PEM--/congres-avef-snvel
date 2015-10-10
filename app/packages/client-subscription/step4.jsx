@@ -94,30 +94,84 @@ class SubscriptionStep4 extends BaseReactMeteor {
       let result;
       try {
         // Checking card number
-        result = CardValidation.number(findDOMNode(this.refs.number).value);
+        const cardNumber = s.replaceAll(findDOMNode(this.refs.number).value.trim(), ' ', '');
+        result = CardValidation.number(cardNumber);
         if (result !== '') {
           throw new Meteor.Error('card_validation_error', result);
         }
         // Card's name
-        result = CardValidation.name(findDOMNode(this.refs.name).value);
+        const cardName = findDOMNode(this.refs.name).value.trim().toUpperCase();
+        result = CardValidation.name(cardName);
         if (result !== '') {
           throw new Meteor.Error('card_validation_error', result);
         }
         // Checking card expiry
-        result = CardValidation.expiry(findDOMNode(this.refs.expiry).value);
+        const cardExpiry = s.replaceAll(findDOMNode(this.refs.expiry).value.trim(), ' ', '');
+        console.log('*** cardExpiry', cardExpiry, findDOMNode(this.refs.expiry).value);
+        result = CardValidation.expiry(cardExpiry);
         if (result !== '') {
           throw new Meteor.Error('card_validation_error', result);
         }
-        result = CardValidation.cvc(findDOMNode(this.refs.cvc).value);
+        const cardCvc = findDOMNode(this.refs.cvc).value.trim();
+        result = CardValidation.cvc(cardCvc);
         if (result !== '') {
           throw new Meteor.Error('card_validation_error', result);
         }
         log.debug('User validated form');
         log.info('Creating a Braintree token');
-
-
-
-
+        // Prevent user from submitting the form
+        this.setState({disabled: true});
+        // Request a client token
+        Meteor.call('clientToken', (error, braintreeCustomerAndToken) => {
+          if (error) {
+            log.warn('Received error from server side Braintree', error);
+            this.setState({error});
+            // Reactivate form in 2 secs
+            Meteor.setTimeout(() => this.setState({disabled: true}), 2000);
+            return;
+          }
+          log.info('You are now a registered Braintree customer', braintreeCustomerAndToken.braintreeCustomerId);
+          const user = Meteor.user();
+          // Creating a payment nonce
+          client = new braintree.api.Client({
+            clientToken: braintreeCustomerAndToken.token
+          });
+          client.tokenizeCard({
+            number: cardNumber,
+            cardholderName: cardName,
+            expirationDate: cardExpiry,
+            cvv: cardCvc,
+            billingAddress: {
+              streetAddress: user.profile.streetAddress,
+              postalCode: user.profile.postalCode,
+              locality: user.profile.city
+            }
+          }, (errorNounce, nonce) => {
+            if (errorNounce) {
+              log.warn('Received error from client side Braintree', errorNounce);
+              this.setState({errorNounce});
+              // Reactivate form in 2 secs
+              Meteor.setTimeout(() => this.setState({disabled: true}), 2000);
+              return;
+            }
+            // Perform the payment using the nonce
+            Meteor.call('cardPayment', nonce, {
+              prices: this.prices,
+              discounts: this.discounts,
+              total: this.state.total
+            }, (errorPayment, resultPayment) => {
+              if (errorPayment) {
+                log.warn('Received error from server side payment', errorPayment);
+                this.setState({errorPayment});
+                // Reactivate form in 2 secs
+                Meteor.setTimeout(() => this.setState({disabled: true}), 2000);
+                return;
+              }
+              // Payment succeed wait few ms so that Roles are settled
+              Meteor.setTimeout(() => FlowRouter.go('/subscription?step=report'), 300);
+            });
+          });
+        });
 
       } catch (error) {
         log.debug('Error while checking SubscriptionStep4 values', error);
@@ -195,12 +249,12 @@ class SubscriptionStep4 extends BaseReactMeteor {
       .filter((right) => right !== 'gratuit')
       .value();
     // Converts rights to prices
-    let prices = [];
+    this.prices = [];
     rights.forEach((right) => {
       const pricing = _.findWhere(this.data.pricings, {right});
       if (pricing) {
         if (pricing.right && pricing[job] && pricing[job].amount) {
-          prices.push({
+          this.prices.push({
             designation: pricing.right,
             value: this.setModifiedAmount(pricing[job].amount)
           });
@@ -219,7 +273,7 @@ class SubscriptionStep4 extends BaseReactMeteor {
         const pricing = _.findWhere(this.data.pricings, {right: realPrd.right});
         if (pricing) {
           if (realPrd.name && pricing[job] && pricing[job].amount) {
-            prices.push({
+            this.prices.push({
               designation: realPrd.name,
               value: this.setModifiedAmount(pricing[job].amount)
             });
@@ -234,24 +288,24 @@ class SubscriptionStep4 extends BaseReactMeteor {
       }
     });
     // @TODO Missing a real discounts set of rules: Use PEG.js
-    let discounts = [];
+    this.discounts = [];
     if ((rights.indexOf('Jour1') > -1) && (rights.indexOf('Jour2') > -1)) {
-      discounts.push({
+      this.discounts.push({
         designation: '2 journées',
         value: this.setModifiedAmount(this.data.discounts[0][job])
       });
     }
     if ((rights.indexOf('proceedingpaper') > -1) &&
       ((rights.indexOf('Jour1') > -1) || (rights.indexOf('Jour2') > -1))) {
-      discounts.push({
+      this.discounts.push({
         designation: 'Paper & inscription',
         value: this.setModifiedAmount(this.data.discounts[1][job])
       });
     }
     // Calculate total
     this.state.total = 0;
-    prices.forEach((product) => { this.state.total += product.value; });
-    discounts.forEach((discount) => {this.state.total -= discount.value; });
+    this.prices.forEach((product) => { this.state.total += product.value; });
+    this.discounts.forEach((discount) => {this.state.total -= discount.value; });
     return (
       <div className='ui segments inner-step'>
         <div className='ui segment'>
@@ -296,8 +350,8 @@ class SubscriptionStep4 extends BaseReactMeteor {
               this.state.paymentByCheck ? (
                 <div className='paymentByCheck'>
                   <PaymentByCheck
-                    prices={prices}
-                    discounts={discounts}
+                    prices={this.prices}
+                    discounts={this.discounts}
                     total={this.state.total}
                   />
                 </div>
@@ -307,8 +361,8 @@ class SubscriptionStep4 extends BaseReactMeteor {
               this.state.paymentByCard ? (
                 <div className='paymentByCard'>
                   <PaymentByCard
-                    prices={prices}
-                    discounts={discounts}
+                    prices={this.prices}
+                    discounts={this.discounts}
                     total={this.state.total}
                   />
                   <div className='fields'>
