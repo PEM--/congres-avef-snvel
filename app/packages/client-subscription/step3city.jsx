@@ -8,7 +8,7 @@ class InnerStepCity extends Component {
     super(props);
     this.state = {
       error: '',
-      road: props.road, postalcode: props.postalcode, city: props.city
+      streetAddress: props.streetAddress, postalCode: props.postalCode, city: props.city
     };
     this.onChange = (e) => {
       if (e.target) {
@@ -18,17 +18,17 @@ class InnerStepCity extends Component {
     };
     this.handleSubmit = (e) => {
       e.preventDefault();
-      log.info('Valid forms', this.state.road, this.state.postalcode, this.state.city);
+      log.info('Valid forms', this.state.streetAddress, this.state.postalCode, this.state.city);
       try {
         const fullCity = {
-          road: this.state.road,
-          postalcode: this.state.postalcode,
+          streetAddress: this.state.streetAddress,
+          postalCode: this.state.postalCode,
           city: this.state.city
         };
         check(fullCity, SD.Structure.CitySchema);
         // Insert data on base if different from props
-        if (this.props.road !== this.state.road ||
-            this.props.postalcode !== this.state.postalcode ||
+        if (this.props.streetAddress !== this.state.streetAddress ||
+            this.props.postalCode !== this.state.postalCode ||
             this.props.city !== this.state.city) {
           Meteor.call('updateCity', fullCity, (error) => {
             if (error) {
@@ -64,7 +64,7 @@ class InnerStepCity extends Component {
     };
   }
   render() {
-    log.info('Rendering InnerStepCity', this.state.road, this.state.postalcode, this.state.city);
+    log.info('Rendering InnerStepCity', this.state.streetAddress, this.state.postalCode, this.state.city);
     return (
       <div className='ui segments inner-step'>
         <div className='ui segment'>
@@ -79,11 +79,11 @@ class InnerStepCity extends Component {
                   <i className='fa fa-home icon'></i>
                   <input
                     type='text'
-                    ref='road'
-                    value={this.state.road}
+                    ref='streetAddress'
+                    value={this.state.streetAddress}
                     onChange={this.onChange}
-                    name='road'
-                    ref='road'
+                    name='streetAddress'
+                    ref='streetAddress'
                     placeholder='Rue, chemin, lieu-dit, ...'
                   />
                 </div>
@@ -96,11 +96,11 @@ class InnerStepCity extends Component {
                   <i className='fa fa-home icon'></i>
                   <input
                     type='text'
-                    ref='postalcode'
-                    value={this.state.postalcode}
+                    ref='postalCode'
+                    value={this.state.postalCode}
                     onChange={this.onChange}
-                    name='postalcode'
-                    ref='postalcode'
+                    name='postalCode'
+                    ref='postalCode'
                     placeholder='Code postal'
                   />
                 </div>
@@ -135,8 +135,8 @@ class InnerStepCity extends Component {
   componentWillReceiveProps(props) {
     log.info('InnerStepCity received props', props);
     this.setState({
-      road: props.road,
-      postalcode: props.postalcode,
+      streetAddress: props.streetAddress,
+      postalCode: props.postalCode,
       city: props.city
     });
   }

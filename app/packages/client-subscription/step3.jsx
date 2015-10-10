@@ -29,12 +29,12 @@ class SubscriptionStep3 extends Component {
     log.info('Rendering SubscriptionStep3', this.state.subscriber, this.props.substep);
     const { subscriber } = this.state;
     const user = Meteor.user();
-    let firstname = null, lastname = null, road = null, postalcode = null, city = null, avef = null, snvel = null, status = null;
+    let firstname = null, lastname = null, streetAddress = null, postalCode = null, city = null, avef = null, snvel = null, status = null;
     if (subscriber && subscriber.userInfo) {
       firstname = subscriber.userInfo.firstname;
       lastname = subscriber.userInfo.lastname;
-      road = subscriber.userInfo.road;
-      postalcode = subscriber.userInfo.postalcode;
+      streetAddress = subscriber.userInfo.streetAddress;
+      postalCode = subscriber.userInfo.postalCode;
       city = subscriber.userInfo.city;
       avef = subscriber.userInfo.avef;
       snvel = subscriber.userInfo.snvel;
@@ -47,13 +47,13 @@ class SubscriptionStep3 extends Component {
       if (user.profile.lastname) {
         lastname = user.profile.lastname;
       }
-      if (user.profile.road) {
-        road = user.profile.road;
+      if (user.profile.streetAddress) {
+        streetAddress = user.profile.streetAddress;
       }
-      if (user.profile.postalcode) {
-        postalcode = user.profile.postalcode;
+      if (user.profile.postalCode) {
+        postalCode = user.profile.postalCode;
       }
-      if (user.profile.postalcode) {
+      if (user.profile.postalCode) {
         city = user.profile.city;
       }
     }
@@ -62,7 +62,7 @@ class SubscriptionStep3 extends Component {
         <h2>Sélection des options</h2>
         {
           !this.props.substep ? <InnerStepCity
-            road={road} postalcode={postalcode} city={city}
+            streetAddress={streetAddress} postalCode={postalCode} city={city}
             avef={avef} snvel={snvel}
           /> : ''
         }

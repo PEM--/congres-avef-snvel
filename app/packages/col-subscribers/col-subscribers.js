@@ -4,8 +4,8 @@ const UserSubscriberSharedSchema = new SimpleSchema({
   snvel: {type: String, label: 'N° ordinal pour adhérent SNVEL', optional: true},
   lastname: {type: String, label: 'Nom', min: 2, max: 256},
   firstname: {type: String, label: 'Prénom', min: 2, max: 256},
-  road: {type: String, label: 'Rue', optional: true, min: 2, max: 256},
-  postalcode: {
+  streetAddress: {type: String, label: 'Rue', optional: true, min: 2, max: 256},
+  postalCode: {
     type: String, label: 'Code postal',
     regEx: /^((0[1-9])|([1-8][0-9])|(9[0-8])|(2A)|(2B))[0-9]{3}$/,
     optional: true, min: 5, max: 5
@@ -27,8 +27,8 @@ const UserSubscriberSharedSchema = new SimpleSchema({
 SD.Structure.UserSubscriberSharedSchema = UserSubscriberSharedSchema;
 
 const CitySchema = new SimpleSchema({
-  road: {type: String, label: 'Rue', min: 2, max: 256},
-  postalcode: {
+  streetAddress: {type: String, label: 'Rue', min: 2, max: 256},
+  postalCode: {
     type: String, label: 'Code postal',
     regEx: /^((0[1-9])|([1-8][0-9])|(9[0-8])|(2A)|(2B))[0-9]{3}$/,
     min: 5, max: 5
@@ -78,8 +78,8 @@ if (Meteor.isServer) {
           snvel: tokens[2].trim(),
           lastname: textInputFormatter(tokens[3]),
           firstname: textInputFormatter(tokens[4]),
-          road: textInputFormatter(tokens[5]),
-          postalcode: tokens[6].trim(),
+          streetAddress: textInputFormatter(tokens[5]),
+          postalCode: tokens[6].trim(),
           city: textInputFormatter(tokens[7]),
           email: tokens[8].trim().toLowerCase()
         },

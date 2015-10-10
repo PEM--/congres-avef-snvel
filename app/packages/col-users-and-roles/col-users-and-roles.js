@@ -192,11 +192,11 @@ if (Meteor.isServer) {
       check(fullCity, SD.Structure.CitySchema);
       check(cb, Match.Any);
       const user = Meteor.users.findOne(this.userId);
-      log.info('User', user.emails[0].address, 'updates', fullCity.road, fullCity.postalcode, fullCity.city);
+      log.info('User', user.emails[0].address, 'updates', fullCity.streetAddress, fullCity.postalCode, fullCity.city);
       Meteor.users.update({_id: this.userId}, {
         $set: {
-          'profile.road': fullCity.road,
-          'profile.postalcode': fullCity.postalcode,
+          'profile.streetAddress': fullCity.streetAddress,
+          'profile.postalCode': fullCity.postalCode,
           'profile.city': fullCity.city
         }
       });

@@ -20,8 +20,8 @@ Package.onUse(function(api) {
     'momentjs:moment@2.10.6',
     'underscorestring:underscore.string@3.2.2',
     'patrickml:braintree@1.29.0',
-    'spacedrop:namespaces',
-    'mquandalle:bower@1.5.2'
+    'mquandalle:bower@1.5.2',
+    'spacedrop:namespaces'
   ];
   api.use(sharedServerAndClient.concat([
     'pierreeric:logger@0.1.0'
@@ -31,9 +31,12 @@ Package.onUse(function(api) {
   // Files for server and client
   api.addFiles([
     'logger.js',
-    'cardvalidation.js',
-    'braintree.js'
+    'cardvalidation.js'
   ]);
+  // Files for server only
+  api.addFiles([
+    'braintree.js'
+  ], 'server');
   // Files for client only
   api.addFiles([
     'bower.json'
