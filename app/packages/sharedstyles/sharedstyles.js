@@ -1,22 +1,55 @@
+const orange = '#FF7100';
+const lightOrange = '#FCA94F';
+const veryLightOrange = '#FFF9E1';
+const green = '#007E5F';
+const lightGreen = '#7bb4ab';
+const blue = '#008DDA';
+const red = '#FC3D00';
+const white = '#FFFFFF';
+const black = '#000000';
+const lightGrey = '#f0f0f0';
+const grey = '#bcbcbc';
+const darkGrey = '#6b6b6b';
+
 // Color theme
 ColorTheme = {
-  brandColor: '#FF7100',
-  secondaryColor: '#007E5F',
-  transBrandColor: 'rgba(255, 113, 0, .2)',
-  bgBrandColor: '#7bb4ab',
-  textColor: '#000000',
-  invertedTextColor: '#FFF9E1',
-  bgColor: '#7bb4ab',
-  waterColor: '#008DDA',
-  highwayColor: '#FF7100',
-  roadColor: '#FCA94F',
-  grassColor: '#007E5F'
+  // Semantic Theme
+  primary: orange,
+  success: orange,
+  info: blue,
+  warning: orange,
+  danger: red,
+  textColor: black,
+  invertedTextColor: veryLightOrange,
+  brandColor: orange,
+  secondaryColor: green,
+  bgBrandColor: veryLightOrange,
+
+  // Used for emails
+  bg: veryLightOrange,
+  header: green,
+  border: orange,
+  footer: green,
+  bgFooter: veryLightOrange,
+
+  // Used for invoices in emails
+  invoiceBorder: grey,
+  invoiceBg: lightGrey,
+  invoiceText: darkGrey,
+
+  // Used for Google Maps
+  bgColor: lightGreen,
+  waterColor: blue,
+  highwayColor: orange,
+  roadColor: lightOrange,
+  grassColor: green
 };
 
 // Fonts
 Fonts = {
   header: '"Impact", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif',
-  body: '"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif'
+  body: '"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif',
+  invoice: '"Droid Sans Mono", "Roboto Mono", "Andale Mono", monospace'
 };
 
 // Link modifier

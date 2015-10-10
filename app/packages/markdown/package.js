@@ -16,7 +16,7 @@ Package.onUse(function(api) {
   api.use([
     'ecmascript',
     'es5-shim',
-    'cosmos:browserify@0.8.0'
+    'cosmos:browserify@0.8.1'
   ]);
   // Included files in this packages
   // Client only

@@ -21,5 +21,5 @@ Package.onUse(function(api) {
     'sharedstyles.js',
     'sharedstyles.less'
   ]);
-  api.export([ColorTheme, Fonts], ['server', 'client']);
+  api.export(['ColorTheme', 'Fonts']);
 });
