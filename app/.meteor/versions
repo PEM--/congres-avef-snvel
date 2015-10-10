@@ -128,6 +128,7 @@ pierreeric:invoice@0.0.1
 pierreeric:logger@0.1.0
 pierreeric:main-layout@0.0.1
 pierreeric:markdown@0.0.1
+pierreeric:payment@0.0.2
 pierreeric:routing-done@0.0.1
 pierreeric:routing-start@0.0.1
 pierreeric:security@0.0.1

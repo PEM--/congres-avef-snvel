@@ -34,7 +34,8 @@ Package.onUse(function(api) {
     'pierreeric:col-pricings',
     'pierreeric:col-discounts',
     'pierreeric:col-products',
-    'pierreeric:invoice'
+    'pierreeric:invoice',
+    'pierreeric:payment'
   ]);
   // Included files in this packages
   // Files for server and client

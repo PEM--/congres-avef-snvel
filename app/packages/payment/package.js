@@ -1,6 +1,6 @@
 Package.describe({
   name: 'pierreeric:payment',
-  version: '0.0.1'
+  version: '0.0.2'
 });
 
 Package.onUse(function(api) {
@@ -18,7 +18,8 @@ Package.onUse(function(api) {
     'es5-shim',
     'underscore',
     'momentjs:moment@2.10.6',
-    'underscorestring:underscore.string@3.2.2'
+    'underscorestring:underscore.string@3.2.2',
+    'spacedrop:namespaces'
   ];
   api.use(sharedServerAndClient.concat([
     'pierreeric:logger@0.1.0'
@@ -26,7 +27,11 @@ Package.onUse(function(api) {
   // api.use(serverOnly, 'server');
   // api.imply(serverOnly, 'server');
   // Files for server and client
-  api.addFiles(['braintree.js']);
+  api.addFiles([
+    'logger.js',
+    'cardvalidation.js',
+    'braintree.js'
+  ]);
   // Exported symbols
   // Symbols for server only
   // api.export(['sendConfirmationEmail'], 'server');
