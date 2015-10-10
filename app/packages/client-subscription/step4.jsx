@@ -112,6 +112,8 @@ class SubscriptionStep4 extends BaseReactMeteor {
           throw new Meteor.Error('card_validation_error', result);
         }
         log.debug('User validated form');
+        log.info('Creating a Braintree token');
+
 
 
 

@@ -79,14 +79,14 @@ momentjs:moment@2.10.6
 mongo@1.1.2
 mongo-id@1.0.1
 mquandalle:bower@1.5.2
-mquandalle:jade@0.4.3_1
-mquandalle:jade-compiler@0.4.3
+mquandalle:jade@0.4.4
+mquandalle:jade-compiler@0.4.4
 mrt:isolate-value@2.0.2
 npm-bcrypt@0.7.8_2
 npm-mongo@1.4.39_1
 numeral:numeral@1.5.3_1
 observe-sequence@1.0.7
-okgrow:analytics@0.4.1
+okgrow:analytics@0.4.2
 ordered-dict@1.0.4
 pierreeric:admin-home@0.0.1
 pierreeric:admin-layout@0.0.1
