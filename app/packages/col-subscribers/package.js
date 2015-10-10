@@ -13,7 +13,9 @@ Package.onUse(function(api) {
     'underscorestring:underscore.string@3.2.2'
   ];
   api.use(shared.concat([
-    'spacedrop:basecollection'
+    'spacedrop:basecollection',
+    'spacedrop:namespaces',
+    'pierreeric:invoice'
   ]));
   api.imply(shared);
   // Included files in this packages

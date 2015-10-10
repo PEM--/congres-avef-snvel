@@ -9,10 +9,10 @@ Package.onUse(function(api) {
     'ecmascript',
     'es5-shim',
     'underscorestring:underscore.string@3.2.2',
-    'pierreeric:internationalization'
+    'pierreeric:internationalization',
+    'spacedrop:namespaces'
   ];
   api.use(shared);
   api.imply(shared);
   api.addFiles('invoice.js');
-  api.export('renderInvoice');
 });

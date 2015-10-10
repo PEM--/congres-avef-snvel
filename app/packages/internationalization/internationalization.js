@@ -95,7 +95,6 @@ numeral.language('fr', {
   }
 });
 numeral.language('fr');
-
 numeralAmountFormat = (val) => numeral(val).format('0,0.00$');
 
 // Settings for Accounts

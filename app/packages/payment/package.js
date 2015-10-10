@@ -16,11 +16,15 @@ Package.onUse(function(api) {
     'momentjs:moment@2.10.6',
     'underscorestring:underscore.string@3.2.2',
     'mquandalle:bower@1.5.2',
-
+    'aldeed:simple-schema@1.3.3',
+    'numeral:numeral@1.5.3_1',
+    'alanning:roles@1.2.14'
   ];
   api.use(sharedServerAndClient.concat([
     'spacedrop:namespaces',
-    'pierreeric:logger@0.1.0'
+    'pierreeric:logger@0.1.0',
+    'pierreeric:invoice',
+    'pierreeric:internationalization',
   ]));
   api.imply(sharedServerAndClient);
   // Server only
@@ -36,11 +40,12 @@ Package.onUse(function(api) {
   ]);
   // Files for server only
   api.addFiles([
-    'braintree.js'
+    'braintree_server.js'
   ], 'server');
   // Files for client only
   api.addFiles([
-    'bower.json'
+    'bower.json',
+    'braintree_client.js'
   ], 'client');
   // Exported symbols
   // Symbols for server only

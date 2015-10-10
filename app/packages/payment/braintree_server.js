@@ -37,10 +37,14 @@ Meteor.methods({
     if (!user.profile.lastname || !user.profile.firstName ||
       !user.emails || !user.emails[0] || !user.emails[0].address || !user.emails[0].verified ||
       !user.profile.streetAddress || !user.profile.postalCode || !user.profile.city) {
-      log.warn('Fraud attempt', user);
+      log.warn('Fraud attempt: not enough user information', user);
       throw new Meteor.Error(ERROR_TYPE, 'Client inconnu pour le paiement', this.userId);
     }
     const email = user.emails[0].address;
+    if (!Roles.userIsInRole(this.userId, 'payment_peding')) {
+      log.warn('Fraud attempt: wrong role for user', user, 'whit roles', Roles.getRolesForUser(this.userId));
+      throw new Meteor.Error(ERROR_TYPE, 'Client inconnu pour le paiement', this.userId);
+    }
     // Check if customer already owns a Braintree customer ID
     let braintreeCustomerId;
     if (!user.profile.braintreeCustomerId) {
@@ -51,7 +55,8 @@ Meteor.methods({
         email,
         streetAddress: user.profile.streetAddress,
         postalCode: user.profile.postalCode,
-        locality: user.profile.city
+        locality: user.profile.city,
+        countryCodeAlpha2: 'FR'
       });
       if (!result || !result.success || !result.customer || !result.customer.id) {
         log.warn('Braintree Error for', email, result);
@@ -83,47 +88,49 @@ Meteor.methods({
     };
   },
   // Braintree card payment using nonce
-  cardPayment(nonce, amount, cb) {
+  cardPayment(nonce, invoice, cb) {
     // Check of client is connected
     if (!this.userId) {
       throw new Meteor.Error('payment', '403: Non authorized');
     }
     // Check transimtted data consistency
     check(nonce, String);
-    check(amount, String);
+    check(invoice, SD.Structure.InvoiceSchema);
     check(cb, Match.Any);
-    if (amount <= 0 || amount > 10000) {
-      throw new Meteor.Error('payment', '403: Non authorized');
-    }
     const user = Meteor.users.findOne(this.userId);
-    log.info('Creating customer on Braintree');
-
+    const email = user.emails[0].address;
+    if (!user.profile.braintreeCustomerId) {
+      log.warn('Fraud alert: missing braintreeCustomerId', email);
+      throw new Meteor.Error(ERROR_TYPE, 'Paiement impossible pour le moment pour', email);
+    }
+    Meteor.users.update({_id: this.userId}, {
+      $set: {
+        invoice,
+        modifiedAt: new Date()
+      }
+    });
+    // Get amount in UK/EN/US format and switch back current language
+    numeral.language('en');
+    amount = numeral(invoice.total).format('00.00');
+    numeral.language(getUserLanguage());
+    result = braintreeGateway.transaction.sale({
+      amount: amount,
+      customer: {
+        id: user.profile.braintreeCustomerId
+      },
+      paymentMethodNonce: nonce,
+      options: {
+        submitForSettlement: true
+      }
+    });
+    if (!result || !result.success) {
+      log.warn('Braintree Error for', email, result);
+      throw new Meteor.Error(ERROR_TYPE, 'Paiement impossible pour le moment pour', email);
+    }
+    log.info('Payment for user', email, 'with amount', invoice.total);
+    // Set proper roles for user
+    Roles.addUsersToRoles(this.userId, 'subscribed');
+    Roles.removeUsersFromRoles(this.userId, 'payment_pending');
+    return true;
   }
 });
-
-  // cardPayment: (customerId, nonce) ->
-  //   log.info 'Payment by card'
-  //   # Check if client is in the database
-  //   try
-  //     check customerId, String
-  //     check nonce, String
-  //     log.info 'Find client in DB', customerId
-  //     clientDb = Subscribers.findOne braintreeCustomerId: customerId
-  //     unless clientDb?
-  //       throw new Meteor.Error 'payment', 'Client inconnu pour le paiement'
-  //     # Perform the payment
-  //     log.info 'Creating a sale transaction', clientDb, nonce
-  //     result = BrainTreeConnect.transaction.sale
-  //       amount: s.numberFormat PRICING_TABLE[clientDb.profile].amount, 2
-  //       paymentMethodNonce: nonce
-  //     log.info 'Updating DB for the payment', result
-  //     throw new Meteor.Error 'payment', result.message unless result.success
-  //     Subscribers.update clientDb._id, $set:
-  //       paymentStatus: true
-  //       paymentTransactionId: result.transaction.id
-  //     log.info 'Payment request performed'
-  //     return result
-  //   catch error
-  //     log.warn 'Fraud attempt:', error.message
-  //     throw new Meteor.Error 'payment',
-  //       'Vos informations de paiement ne sont pas consistantes.'

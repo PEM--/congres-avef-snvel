@@ -15,7 +15,7 @@ class Invoice extends Component {
     log.debug('Rendering invoice', total, prices, discounts);
     return (
       <div className='invoice'>
-        <pre>{renderInvoice(prices, discounts, total)}</pre>
+        <pre>{SD.Utils.renderInvoice(prices, discounts, total)}</pre>
       </div>
     );
   }

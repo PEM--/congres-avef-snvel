@@ -11,7 +11,7 @@ const renderLine = (designation, value) => {
     s.lpad(numeralAmountFormat(value), RIGHT, ' ') + '\n';
 };
 
-renderInvoice = (prices, discounts, total) => {
+SD.Utils.renderInvoice = (prices, discounts, total) => {
   let lines = '';
   prices.forEach((line) => lines += renderLine(line.designation, line.value));
   if (discounts.length !== 0) {
@@ -27,3 +27,16 @@ renderInvoice = (prices, discounts, total) => {
     s.rpad('TOTAL', LEFT, ' ') + s.lpad(numeralAmountFormat(total), RIGHT, ' ')
   );
 };
+
+// Schema of expected invoice information
+SD.Structure.InvoiceSchema = new SimpleSchema({
+  prices: {type: Array, label: 'Prix facturés', min: 1, max: 256},
+  'prices.$': {type: Object, label: 'Prix facturé', min: 1, max: 256},
+  'prices.$.designation': {type: String, label: 'Désignation'},
+  'prices.$.value': {type: Number, label: 'Valeur en € HT', min: 0, max: 1000},
+  discounts: {type: Array, label: 'Remises appliquées', min: 0, max: 256},
+  'discounts.$': {type: Object, label: 'Prix facturé'},
+  'discounts.$.designation': {type: String, label: 'Remise appliquée'},
+  'discounts.$.value': {type: Number, label: 'Valeur en € HT', min: 0, max: 1000},
+  total: {type: Number, label: 'Montant total en € HT', min: 0, max: 10000}
+});
