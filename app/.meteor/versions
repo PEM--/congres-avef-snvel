@@ -88,6 +88,7 @@ numeral:numeral@1.5.3_1
 observe-sequence@1.0.7
 okgrow:analytics@0.4.2
 ordered-dict@1.0.4
+patrickml:braintree@1.29.0
 pierreeric:admin-home@0.0.1
 pierreeric:admin-layout@0.0.1
 pierreeric:basereactmeteor@0.0.1
@@ -128,7 +129,7 @@ pierreeric:invoice@0.0.1
 pierreeric:logger@0.1.0
 pierreeric:main-layout@0.0.1
 pierreeric:markdown@0.0.1
-pierreeric:payment@0.0.2
+pierreeric:payment@0.0.1
 pierreeric:routing-done@0.0.1
 pierreeric:routing-start@0.0.1
 pierreeric:security@0.0.1

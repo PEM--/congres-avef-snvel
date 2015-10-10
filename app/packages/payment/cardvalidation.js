@@ -21,7 +21,6 @@ SD.Utils.CardValidation = {
     return '';
   },
   expiry(str) {
-    log.warn(str);
     if (str.length !== 7) {
       return 'Entrez la date d\'expiration de votre carte.';
     }
