@@ -15,14 +15,14 @@ class SubscriptionStep1 extends ReactDictionary {
       const email = findDOMNode(this.refs.email).value.trim().toLowerCase();
       const password = findDOMNode(this.refs.password).value.trim();
       const repassword = findDOMNode(this.refs.repassword).value.trim();
-      const lastname = findDOMNode(this.refs.lastname).value.trim();
-      const firstname = findDOMNode(this.refs.firstname).value.trim();
+      const lastName = findDOMNode(this.refs.lastName).value.trim();
+      const firstName = findDOMNode(this.refs.firstName).value.trim();
       log.debug('Submit with value', email);
       try {
         let accountInfo = {
           login: {email, password},
           repassword,
-          userInfo: {firstname, lastname}
+          userInfo: {firstName, lastName}
         };
         // Check user's imputs
         check(accountInfo, SD.Structure.AccountCreationSchema);
@@ -67,8 +67,8 @@ class SubscriptionStep1 extends ReactDictionary {
       },
       {
         name: 'Identification', fields: [
-          {icon: 'user', type: 'text', name: 'lastname', text: 'Votre nom'},
-          {icon: 'user', type: 'text', name: 'firstname', text: 'Votre prénom'}
+          {icon: 'user', type: 'text', name: 'lastName', text: 'Votre nom'},
+          {icon: 'user', type: 'text', name: 'firstName', text: 'Votre prénom'}
         ]
       }
     ];

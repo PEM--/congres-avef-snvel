@@ -2,8 +2,8 @@ const UserSubscriberSharedSchema = new SimpleSchema({
   status: { type: String, label: 'Statut', optional: true},
   avef: {type: String, label: 'N° adhérent AVEF', optional: true},
   snvel: {type: String, label: 'N° ordinal pour adhérent SNVEL', optional: true},
-  lastname: {type: String, label: 'Nom', min: 2, max: 256},
-  firstname: {type: String, label: 'Prénom', min: 2, max: 256},
+  lastName: {type: String, label: 'Nom', min: 2, max: 256},
+  firstName: {type: String, label: 'Prénom', min: 2, max: 256},
   streetAddress: {type: String, label: 'Rue', optional: true, min: 2, max: 256},
   postalCode: {
     type: String, label: 'Code postal',
@@ -78,8 +78,8 @@ if (Meteor.isServer) {
           status: tokens[0].trim(),
           avef: tokens[1].trim(),
           snvel: tokens[2].trim(),
-          lastname: textInputFormatter(tokens[3]),
-          firstname: textInputFormatter(tokens[4]),
+          lastName: textInputFormatter(tokens[3]),
+          firstName: textInputFormatter(tokens[4]),
           streetAddress: textInputFormatter(tokens[5]),
           postalCode: tokens[6].trim(),
           city: textInputFormatter(tokens[7]),
@@ -95,8 +95,8 @@ if (Meteor.isServer) {
     defaults,
     // Set indexes on collection
     indexes: {
-      'userInfo.lastname': 1,
-      'userInfo.firstname': 1,
+      'userInfo.lastName': 1,
+      'userInfo.firstName': 1,
       'userInfo.email': 1
     }
   };
@@ -116,12 +116,12 @@ if (Meteor.isServer) {
       // Start by checking email
       let subscriber = SD.Structure.subscribers.collection.findOne({
         'userInfo.email': user.emails[0].address });
-      // If not found, check fistname and lastname
+      // If not found, check fistname and lastName
       if (!subscriber) {
         subscriber = SD.Structure.subscribers.collection.findOne({
           $and: [
-            {'userInfo.lastname': user.profile.lastname},
-            {'userInfo.firstname': user.profile.firstname}
+            {'userInfo.lastName': user.profile.lastName},
+            {'userInfo.firstName': user.profile.firstName}
           ]
         });
       }

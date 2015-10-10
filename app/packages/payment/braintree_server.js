@@ -34,7 +34,7 @@ Meteor.methods({
     log.info('Creating customer on Braintree');
     // Check profile consistency
     const user = Meteor.users.findOne(this.userId);
-    if (!user.profile.lastname || !user.profile.firstName ||
+    if (!user.profile.lastName || !user.profile.firstName ||
       !user.emails || !user.emails[0] || !user.emails[0].address || !user.emails[0].verified ||
       !user.profile.streetAddress || !user.profile.postalCode || !user.profile.city) {
       log.warn('Fraud attempt: not enough user information', user);
@@ -99,6 +99,10 @@ Meteor.methods({
     check(cb, Match.Any);
     const user = Meteor.users.findOne(this.userId);
     const email = user.emails[0].address;
+    if (!Roles.userIsInRole(this.userId, 'payment_peding')) {
+      log.warn('Fraud attempt: wrong role for user', user, 'whit roles', Roles.getRolesForUser(this.userId));
+      throw new Meteor.Error(ERROR_TYPE, 'Client inconnu pour le paiement', this.userId);
+    }
     if (!user.profile.braintreeCustomerId) {
       log.warn('Fraud alert: missing braintreeCustomerId', email);
       throw new Meteor.Error(ERROR_TYPE, 'Paiement impossible pour le moment pour', email);

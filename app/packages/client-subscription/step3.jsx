@@ -29,10 +29,10 @@ class SubscriptionStep3 extends Component {
     log.info('Rendering SubscriptionStep3', this.state.subscriber, this.props.substep);
     const { subscriber } = this.state;
     const user = Meteor.user();
-    let firstname = null, lastname = null, streetAddress = null, postalCode = null, city = null, avef = null, snvel = null, status = null;
+    let firstName = null, lastName = null, streetAddress = null, postalCode = null, city = null, avef = null, snvel = null, status = null;
     if (subscriber && subscriber.userInfo) {
-      firstname = subscriber.userInfo.firstname;
-      lastname = subscriber.userInfo.lastname;
+      firstName = subscriber.userInfo.firstName;
+      lastName = subscriber.userInfo.lastName;
       streetAddress = subscriber.userInfo.streetAddress;
       postalCode = subscriber.userInfo.postalCode;
       city = subscriber.userInfo.city;
@@ -41,11 +41,11 @@ class SubscriptionStep3 extends Component {
       status = subscriber.userInfo.status;
     }
     if (user.profile) {
-      if (user.profile.firstname) {
-        firstname = user.profile.firstname;
+      if (user.profile.firstName) {
+        firstName = user.profile.firstName;
       }
-      if (user.profile.lastname) {
-        lastname = user.profile.lastname;
+      if (user.profile.lastName) {
+        lastName = user.profile.lastName;
       }
       if (user.profile.streetAddress) {
         streetAddress = user.profile.streetAddress;
@@ -71,7 +71,7 @@ class SubscriptionStep3 extends Component {
         }
         {
           this.props.substep === 'subscriber' ? <InnerStepSubscriber
-            firstname={firstname} lastname={lastname}
+            firstName={firstName} lastName={lastName}
             avef={avef} snvel={snvel} status={status}
           /> : ''
         }
