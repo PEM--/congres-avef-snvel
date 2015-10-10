@@ -1,7 +1,7 @@
 // Server only
 
 // Global Braintree gateway
-braintreeGateway = null;
+SD.Utils.braintreeGateway = null;
 
 const ERROR_TYPE = 'payment';
 
@@ -11,12 +11,13 @@ Meteor.startup(() => {
   log.info('Connecting server to Braintree in', settings.accountType, 'mode');
   try {
     const envType = Braintree.Environment[settings.accountType];
-    braintreeGateway = BrainTreeConnect({
+    SD.Utils.braintreeGateway = BrainTreeConnect({
       environment: envType,
       merchantId: settings.merchantId,
       publicKey: settings.publicKey,
       privateKey: settings.privateKey
     });
+    log.info('Braintree gateway', SD.Utils.braintreeGateway);
   } catch (error) {
     throw new Meteor.Error(ERROR_TYPE, error.message);
   }
@@ -49,14 +50,10 @@ Meteor.methods({
     let braintreeCustomerId;
     if (!user.profile.braintreeCustomerId) {
       // Create a Braintree customer ID
-      const result = braintreeGateway.customer.create({
+      const result = SD.Utils.braintreeGateway.customer.create({
         firstName: user.profile.firstName,
         lastName: user.profile.lastName,
-        email,
-        streetAddress: user.profile.streetAddress,
-        postalCode: user.profile.postalCode,
-        locality: user.profile.city,
-        countryCodeAlpha2: 'FR'
+        email
       });
       if (!result || !result.success || !result.customer || !result.customer.id) {
         log.warn('Braintree Error for', email, result);
@@ -74,7 +71,7 @@ Meteor.methods({
       braintreeCustomerId = user.profile.braintreeCustomerId;
     }
     // Create token for customer
-    const result = braintreeGateway.clientToken.generate({
+    const result = SD.Utils.braintreeGateway.clientToken.generate({
       customerId: braintreeCustomerId
     });
     if (!result || !result.token) {
@@ -117,7 +114,7 @@ Meteor.methods({
     numeral.language('en');
     amount = numeral(invoice.total).format('00.00');
     numeral.language(getUserLanguage());
-    result = braintreeGateway.transaction.sale({
+    result = SD.Utils.braintreeGateway.transaction.sale({
       amount: amount,
       customer: {
         id: user.profile.braintreeCustomerId

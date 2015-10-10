@@ -7,24 +7,18 @@ const bodyParser = Npm.require('body-parser');
 Picker.middleware(bodyParser.json());
 Picker.middleware(bodyParser.urlencoded({extended: false}));
 
-const data = [
-  {id: 1, author: 'Pete Hunt', text: 'This is one comment'},
-  {id: 2, author: 'Jordan Walke', text: 'This is *another* comment'}
-];
-
-const SERVER_SIDE_ROUTE_COMMENTS = '/comments.json';
-Picker.route(SERVER_SIDE_ROUTE_COMMENTS, function(params, req, res, next) {
-  if (req.method === 'GET') {
-    res.end(JSON.stringify(data));
-  } else if (req.method === 'POST') {
-    data.push({
-      id: data.length + 1,
-      author: req.body.author,
-      text: req.body.text
-    });
-    res.end(JSON.stringify(data));
-  } else {
-    res.status(404).send('Not found');
-  }
+const BRAINTREE_TOKEN_ROUTE = '/client_token';
+Picker.route(BRAINTREE_TOKEN_ROUTE, function(params, req, res, next) {
+  // Create a client token
+  SD.Utils.braintreeGateway.clientToken.generate({}, (err, response) => {
+    if (err) {
+      log.warn('Error while creating client token', err);
+      res.status(500).send('Internal server error');
+      return;
+    }
+    log.info('Client token generated', response);
+    // Send the client token
+    res.send(response.clientToken);
+  });
 });
-log.info(SERVER_SIDE_ROUTE_COMMENTS, 'created');
+log.info(BRAINTREE_TOKEN_ROUTE, 'created');

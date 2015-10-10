@@ -18,7 +18,8 @@ Package.onUse(function(api) {
   // Dependencies server only
   api.use([
     'accounts-base',
-    'meteorhacks:picker@1.0.3'
+    'meteorhacks:picker@1.0.3',
+    'pierreeric:payment'
   ], 'server');
   // Included files in this packages
   // Server only

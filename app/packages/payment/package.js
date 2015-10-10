@@ -47,7 +47,4 @@ Package.onUse(function(api) {
     'bower.json',
     'braintree_client.js'
   ], 'client');
-  // Exported symbols
-  // Symbols for server only
-  api.export(['braintreeGateway'], 'server');
 });
