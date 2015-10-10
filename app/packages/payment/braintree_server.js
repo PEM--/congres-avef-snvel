@@ -41,7 +41,7 @@ Meteor.methods({
       throw new Meteor.Error(ERROR_TYPE, 'Client inconnu pour le paiement', this.userId);
     }
     const email = user.emails[0].address;
-    if (!Roles.userIsInRole(this.userId, 'payment_peding')) {
+    if (!Roles.userIsInRole(this.userId, 'payment_pending')) {
       log.warn('Fraud attempt: wrong role for user', user, 'whit roles', Roles.getRolesForUser(this.userId));
       throw new Meteor.Error(ERROR_TYPE, 'Client inconnu pour le paiement', this.userId);
     }
@@ -99,7 +99,7 @@ Meteor.methods({
     check(cb, Match.Any);
     const user = Meteor.users.findOne(this.userId);
     const email = user.emails[0].address;
-    if (!Roles.userIsInRole(this.userId, 'payment_peding')) {
+    if (!Roles.userIsInRole(this.userId, 'payment_pending')) {
       log.warn('Fraud attempt: wrong role for user', user, 'whit roles', Roles.getRolesForUser(this.userId));
       throw new Meteor.Error(ERROR_TYPE, 'Client inconnu pour le paiement', this.userId);
     }
