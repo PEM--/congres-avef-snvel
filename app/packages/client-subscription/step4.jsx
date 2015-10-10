@@ -149,9 +149,9 @@ class SubscriptionStep4 extends BaseReactMeteor {
           }, (errorNounce, nonce) => {
             if (errorNounce) {
               log.warn('Received error from client side Braintree', errorNounce);
-              this.setState({errorNounce});
+              this.setState({error: errorNounce});
               // Reactivate form in 2 secs
-              Meteor.setTimeout(() => this.setState({disabled: true}), 2000);
+              Meteor.setTimeout(() => this.setState({disabled: false}), 2000);
               return;
             }
             // Perform the payment using the nonce
@@ -162,24 +162,24 @@ class SubscriptionStep4 extends BaseReactMeteor {
             }, (errorPayment, resultPayment) => {
               if (errorPayment) {
                 log.warn('Received error from server side payment', errorPayment);
-                this.setState({errorPayment});
+                this.setState({error: errorPayment});
                 // Reactivate form in 2 secs
-                Meteor.setTimeout(() => this.setState({disabled: true}), 2000);
+                Meteor.setTimeout(() => this.setState({disabled: false}), 2000);
                 return;
               }
               // Payment succeed wait few ms so that Roles are settled
+              this.setState({error: ''});
+              log.info('Payment succeed');
               Meteor.setTimeout(() => FlowRouter.go('/subscription?step=report'), 300);
             });
           });
         });
-
       } catch (error) {
         log.debug('Error while checking SubscriptionStep4 values', error);
         this.setState({error});
       }
     };
   }
-
   setModifiedAmount(val) {
     return this.state.paymentByCheck ? 1.1 * val : val;
   }

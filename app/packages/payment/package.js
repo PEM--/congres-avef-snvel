@@ -44,7 +44,6 @@ Package.onUse(function(api) {
   ], 'server');
   // Files for client only
   api.addFiles([
-    'bower.json',
-    'braintree_client.js'
+    'bower.json'
   ], 'client');
 });

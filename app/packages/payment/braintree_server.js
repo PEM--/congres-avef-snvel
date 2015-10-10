@@ -17,7 +17,7 @@ Meteor.startup(() => {
       publicKey: settings.publicKey,
       privateKey: settings.privateKey
     });
-    log.info('Braintree gateway', SD.Utils.braintreeGateway);
+    log.info('Braintree gateway configured.');
   } catch (error) {
     throw new Meteor.Error(ERROR_TYPE, error.message);
   }
@@ -86,6 +86,7 @@ Meteor.methods({
   },
   // Braintree card payment using nonce
   cardPayment(nonce, invoice, cb) {
+    console.log(invoice);
     // Check of client is connected
     if (!this.userId) {
       throw new Meteor.Error('payment', '403: Non authorized');
@@ -116,9 +117,6 @@ Meteor.methods({
     numeral.language(getUserLanguage());
     result = SD.Utils.braintreeGateway.transaction.sale({
       amount: amount,
-      customer: {
-        id: user.profile.braintreeCustomerId
-      },
       paymentMethodNonce: nonce,
       options: {
         submitForSettlement: true
