@@ -197,7 +197,8 @@ if (Meteor.isServer) {
         $set: {
           'profile.streetAddress': fullCity.streetAddress,
           'profile.postalCode': fullCity.postalCode,
-          'profile.city': fullCity.city
+          'profile.city': fullCity.city,
+          modifiedAt: new Date()
         }
       });
       return true;
@@ -210,7 +211,12 @@ if (Meteor.isServer) {
       check(cb, Match.Any);
       const user = Meteor.users.findOne(this.userId);
       log.info('User', user.emails[0].address, 'updates', profile);
-      Meteor.users.update({_id: this.userId}, { $set: { profile } });
+      Meteor.users.update({_id: this.userId}, {
+        $set: {
+          profile,
+          modifiedAt: new Date()
+        }
+      });
       return true;
     },
     updateRights(newRights, removedRights, cb) {
@@ -227,10 +233,12 @@ if (Meteor.isServer) {
         .union(newRights)
         .difference(removedRights)
         .value();
-      Meteor.users.update(
-        {_id: this.userId},
-        {$set: {'profile.rights': finalizedRight}}
-      );
+      Meteor.users.update({_id: this.userId}, {
+        $set: {
+          'profile.rights': finalizedRight,
+          modifiedAt: new Date()
+        }
+      });
       return true;
     },
     updateProducts(newProducts, removedProducts, cb) {
@@ -247,10 +255,12 @@ if (Meteor.isServer) {
         .union(newProducts)
         .difference(removedProducts)
         .value();
-      Meteor.users.update(
-        {_id: this.userId},
-        {$set: {'profile.products': finalizedProducts}}
-      );
+      Meteor.users.update({_id: this.userId}, {
+        $set: {
+          'profile.products': finalizedProducts,
+          modifiedAt: new Date()
+        }
+      });
       return true;
     },
     setPaymentPending(cb) {
