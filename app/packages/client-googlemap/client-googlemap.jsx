@@ -5,7 +5,6 @@ const log = Logger.createLogger('Client GoogleMap');
 
 // Namespace flatteinng
 const { Component, findDOMNode } = React;
-const { ColorTheme } = SD.Views.Client;
 
 // Client only
 if (Meteor.isClient) {

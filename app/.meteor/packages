@@ -40,7 +40,7 @@ meteorhacks:zones
 #meteorhacks:kadira-profiler
 
 # WPO & Meteor optimizations
-#appcache
+appcache
 
 # CSS
 fortawesome:fontawesome
@@ -69,12 +69,12 @@ pierreeric:client-subscription
 pierreeric:routing-done
 
 # Dev only
-spacedrop:namespaces
+#spacedrop:namespaces
 #pierreeric:col-subscribers
-pierreeric:markdown
+#pierreeric:markdown
 #underscorestring:underscore.string
 #alanning:roles
 #kadira:flow-router-ssr
 #pierreeric:payment
-react
+#react
 #pierreeric:ssrpdf

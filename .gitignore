@@ -21,3 +21,4 @@ node_modules
 bundle
 subscribers.csv
 packages/client-subscription/.meteor/
+.vagrant
