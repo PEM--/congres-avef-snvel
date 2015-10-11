@@ -1,8 +1,8 @@
 DEFAULT_CGV = `
 ## Préambule
-L'AVEF, est une association de type loi 1901, à but non lucratif, fondée en 1965. Elle est immatriculée au répertoire SIREN sous le numéro et son siège social est situé 34, rue Bréguet à Paris (75 011).   Les relations courtoises entre confrères ayant une activité en médecine et chirurgie équine, l’enrichissement scientifique et technique par l’échange » sont restés les
+L'AVEF, est une association de type loi 1901, à but non lucratif, fondée en 1965. Elle est immatriculée au répertoire SIRET sous le numéro 785 735 333 00037 et son siège social est situé 34, rue Bréguet à Paris (75 011).   Les relations courtoises entre confrères ayant une activité en médecine et chirurgie équine, l’enrichissement scientifique et technique par l’échange » sont restés les
 principes fondamentaux de l’association. Depuis, l’AVEF a développé son activité, notamment dans la formation continue, mais aussi dans différentes actions de valorisation, de défense et de représentation de la profession.
-Le SNVEL est un syndicat professionnel fondé en 1993, immatriculé sous le numéro SIREN
+Le SNVEL est un syndicat professionnel fondé en 1993, immatriculé sous le numéro SIRET  399 284 298 00011.
 
 ## Conditions générales de vente des inscriptions pour le "Congrès AVEF/SNVEL 2015" » (ci-après l'Événement).
 L'évènement est organisé conjointement par l'AVEF et le SNVEL (ci-après « Les organisateurs »).

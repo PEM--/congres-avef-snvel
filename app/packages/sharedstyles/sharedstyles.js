@@ -6,7 +6,7 @@ const lightGreen = '#7bb4ab';
 const blue = '#008DDA';
 const red = '#FC3D00';
 const white = '#FFFFFF';
-const black = '#000000';
+const black = '#282828';
 const lightGrey = '#f0f0f0';
 const grey = '#bcbcbc';
 const darkGrey = '#6b6b6b';
@@ -47,9 +47,9 @@ ColorTheme = {
 
 // Fonts
 Fonts = {
-  header: '"Impact", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif',
-  body: '"Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif',
-  invoice: '"Droid Sans Mono", "Roboto Mono", "Andale Mono", monospace'
+  header: "Impact,sans-serif",
+  body: "'Helvetica Neue',Helvetica,Arial,sans-serif",
+  invoice: "'Droid Sans Mono',monospace"
 };
 
 // Link modifier
