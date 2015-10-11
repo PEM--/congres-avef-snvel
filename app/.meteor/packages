@@ -28,7 +28,7 @@ pierreeric:emails
 
 # Security
 audit-argument-checks
-force-ssl
+#force-ssl
 pierreeric:security
 
 # Development helpers
