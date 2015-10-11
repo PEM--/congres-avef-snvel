@@ -25,6 +25,9 @@ Package.onUse(function(api) {
     'pierreeric:logger@0.1.0',
     'pierreeric:invoice',
     'pierreeric:internationalization',
+    'pierreeric:col-basicpages',
+    'pierreeric:markdown',
+    'pierreeric:emails'
   ]));
   api.imply(sharedServerAndClient);
   // Server only

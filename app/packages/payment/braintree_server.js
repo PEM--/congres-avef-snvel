@@ -130,6 +130,12 @@ Meteor.methods({
     // Set proper roles for user
     Roles.addUsersToRoles(this.userId, 'subscribed');
     Roles.removeUsersFromRoles(this.userId, 'payment_pending');
+    // Send the billing email
+    this.unblock();
+    const cgv = SD.Structure.basicPages.collection.findOne({url: 'cgv'});
+    const html = s.replaceAll(marked(cgv.content), '\n', '');
+    const invoiceTxt = SD.Utils.renderInvoice(invoice.prices, invoice.discounts, invoice.total);
+    sendBillingEmail(email, invoiceTxt, cgv.title, html);
     return true;
   }
 });
