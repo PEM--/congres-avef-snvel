@@ -104,7 +104,6 @@ Site d'inscription commun pour l'AVEF et le SNVEL.
 * [CSS in JS](http://react-components.com/component/obscene-stylesheet)
 * [CSS in JS](https://github.com/petehunt/jsxstyle)
 
-
 ### Security articles
 * https://dweldon.silvrback.com/browser-policy
 * http://paris.meteor.com/presentations/uByDe8qDLrNGJLzMC
