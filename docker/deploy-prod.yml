@@ -1,13 +1,13 @@
 # Persistence layer: Mongo
 db:
-  image: pemarchandet/mongo-congres-avef-snvel:v1.0.0
+  image: pemarchandet/mongo-congres-avef-snvel:v1.1.0
   extends:
     file: common.yml
     service: db
   restart: always
 # Application server: NodeJS (Meteor)
 server:
-  image: pemarchandet/meteor-congres-avef-snvel:v1.0.0
+  image: pemarchandet/meteor-congres-avef-snvel:v1.1.0
   extends:
     file: common.yml
     service: server
@@ -18,7 +18,7 @@ server:
   restart: always
 # Front layer, static file, SSL, proxy cache: NGinx
 front:
-  image: pemarchandet/nginx-congres-avef-snvel:v1.0.0
+  image: pemarchandet/nginx-congres-avef-snvel:v1.1.0
   extends:
     file: common.yml
     service: front
