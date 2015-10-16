@@ -9,13 +9,14 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
-    'kadira:react-layout@1.3.1',
+    'kadira:react-layout@1.4.1',
     'flemay:less-autoprefixer@1.1.0',
     'pierreeric:basereactmeteor',
     'pierreeric:routing-start',
     'pierreeric:main-layout',
     'pierreeric:sharedstyles',
     'pierreeric:col-programs',
+    'pierreeric:client-linetext',
     'pierreeric:client-socialsharers'
   ]);
   // Included files in this packages

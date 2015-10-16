@@ -88,6 +88,19 @@ class InnerStepProgram extends Component {
       <div className='ui segments inner-step'>
         <div className='ui segment'>
           <h3>Sélectionnez vos programmes</h3>
+          <p>Le Congrès AVEF/SNVEL 2015 est composé de plusieurs programmes : un
+            programme AVEF, un programme SNVEL, un programme commun AVEF/SNVEL et
+            un programme EBMS. Pour faciliter la sélection, nous vous invitons à
+            sélectionner le (ou les) programmes au(x)quel(s) vous souhaitez participez.<br/><br/>
+            Ensuite vous seront proposés, par journée (du lundi (seulement l’EBMS) au jeudi),
+            les sessions possibles dans votre(s) programme(s) choisi(s).<br/><br/>
+            Certaines sessions (travaux pratiques, travaux dirigés et tables-rondes)
+            sont en option avec coût supplémentaire. Les sessions incluses dans le
+            tarif à la journée ou pour deux jours sont identifiés par la mention
+            "Inclus dans Jour 1 » ou "Inclus dans Jour 2 ». Le diner « Soirée AVEF/SNVEL »
+            du mercredi soir est également en option au tarif de 80 euros HT.
+            De même les proceeding papiers sont en option.
+          </p>
         </div>
         <div className='ui segment'>
           <p><SimpleText page='subscription_step3' text='usage_notice' /></p>

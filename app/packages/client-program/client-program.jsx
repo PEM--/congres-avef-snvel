@@ -198,6 +198,21 @@ class Program extends BaseReactMeteor {
           <div className='sixteen wide column'>
             <div className='ui grid container'>
               <h1>Programme</h1>
+              <p>
+                Le Congrès AVEF/SNVEL 2015 est composé de plusieurs programmes :
+                un programme AVEF, un programme SNVEL, un programme commun AVEF/SNVEL
+                et un programme EBMS.<br/><br/>
+                Pour faciliter la visualisation nous invitons à sélectionner
+                (choix multiples possibles) le ou les programmes à afficher.
+                Le programme commun AVEF/SNVEL s’affiche dans les deux sélections
+                AVEF ou SNVEL.<br/><br/>
+                Vous êtes également invités à sélectionner le jour
+                et les horaires. Si vous souhaitez visualiser le programme complet,
+                vous pouvez vous cliquer ici :&nbsp;
+                <a href='http://www.snvel.fr/fichiers/20150929162725_Programme_congres_2015.pdf)' className='animated'>
+                  programme complet
+                </a>
+              </p>
               <section className='row selectors'>
                 <div className='sixteen wide column'>
                   <Selector

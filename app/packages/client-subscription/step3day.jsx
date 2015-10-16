@@ -79,6 +79,20 @@ class InnerStepDay extends BaseReactMeteor {
       ).fetch() : []
     };
   }
+  getDateText(text) {
+    switch (text) {
+    case 'Lundi':
+      return 'lundi 2 novembre';
+    case 'Mardi':
+      return 'mardi 3 novembre';
+    case 'Mercredi':
+      return 'mercredi 4 novembre';
+    case 'Jeudi':
+      return 'jeudi 5 novembre';
+    default:
+      return '';
+    }
+  }
   render() {
     if (this.data.loading) {
       return this.loadingRenderer();
@@ -182,7 +196,7 @@ class InnerStepDay extends BaseReactMeteor {
     return (
       <div className='ui segments inner-step'>
         <div className='ui segment'>
-          <h3>Sélectionnez vos sessions pour {this.props.substep}</h3>
+          <h3>Sélectionnez vos sessions pour {this.getDateText(this.props.substep)}</h3>
         </div>
         {
           this.programPrices.length !== 0 ?

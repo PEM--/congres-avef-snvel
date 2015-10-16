@@ -15,7 +15,7 @@ Package.onUse(function(api) {
     'momentjs:moment@2.10.6',
     'underscorestring:underscore.string@3.2.2',
     'alanning:roles@1.2.14',
-    'kadira:react-layout@1.3.1',
+    'kadira:react-layout@1.4.1',
     'flemay:less-autoprefixer@1.1.0',
     'gadicohen:reactive-window@1.0.6',
     'pierreeric:basereactmeteor',

@@ -11,7 +11,7 @@ Package.onUse(function(api) {
   const shared = [
     'underscore',
     'templating',
-    'tap:i18n@1.6.1',
+    'tap:i18n@1.7.0',
     'aldeed:simple-schema@1.3.3',
     'softwarerero:accounts-t9n@1.1.4',
     'rzymek:moment-locale-fr@2.9.0',

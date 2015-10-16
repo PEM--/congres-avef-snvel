@@ -12,7 +12,7 @@ Package.onUse(function(api) {
     'ecmascript',
     'es5-shim',
     'session',
-    'kadira:flow-router-ssr@3.3.0',
+    'kadira:flow-router-ssr@3.4.0',
     'okgrow:analytics@0.4.1',
     'spacedrop:namespaces',
     'pierreeric:logger'

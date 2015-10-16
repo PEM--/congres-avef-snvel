@@ -44,6 +44,25 @@ Nous souhaitons faire de cet évènement un moment d’échanges fructueux perme
   * Economie des cliniques vétérinaires équines en Europe`
   },
   {
+    page: 'program',
+    text: 'intro',
+    content: `Le Congrès AVEF/SNVEL 2015 est composé de plusieurs programmes :
+un programme AVEF, un programme SNVEL, un programme commun AVEF/SNVEL
+et un programme EBMS.
+
+Pour faciliter la visualisation nous invitons à sélectionner
+(choix multiples possibles) le ou les programmes à afficher.
+Le programme commun AVEF/SNVEL s’affiche dans les deux sélections
+AVEF ou SNVEL.
+
+Vous êtes également invités à sélectionner le jour
+et les horaires. Si vous souhaitez visualiser le programme complet,
+vous pouvez vous cliquer ici :&nbsp;
+<a href='http://www.snvel.fr/fichiers/20150929162725_Programme_congres_2015.pdf)' className='animated'>
+  programme complet
+</a>`
+  },
+  {
     page: 'subscription_step2',
     text: 'title',
     content: `Validation de votre email`

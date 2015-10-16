@@ -61,8 +61,8 @@ class SubscriptionStep1 extends ReactDictionary {
       {
         name: 'Authentification', fields: [
           {icon: 'envelope', type: 'text', name: 'email', text: 'Votre e-mail'},
-          {icon: 'unlock', type: 'password', name: 'password', text: 'Votre mot de passe'},
-          {icon: 'unlock', type: 'password', name: 'repassword', text: 'Confirmer votre mot de passe'}
+          {icon: 'unlock', type: 'password', name: 'password', text: 'Choisissez votre mot de passe'},
+          {icon: 'unlock', type: 'password', name: 'repassword', text: 'Confirmez votre mot de passe'}
         ]
       },
       {
