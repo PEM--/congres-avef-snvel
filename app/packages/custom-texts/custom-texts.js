@@ -112,7 +112,7 @@ Adhérez en ligne sur &nbsp;<a class='animated' target='_blank' href='http://www
     page: 'subscription_step3',
     text: 'price_info',
     content: `<i class='fa fa-exclamation-circle fa-lg'></i>&nbsp;Les montants indiqués sont hors taxes.
-Ils sont majorés de 10% sur les paiements par chèque. L'inscription sur place reste possible mais est majorée de 30%.`
+Ils sont majorés de 2% sur les paiements par chèque. L'inscription sur place reste possible mais est majorée de 30%.`
   },
   {
     page: 'subscription_step4',

@@ -181,7 +181,7 @@ class SubscriptionStep4 extends BaseReactMeteor {
     };
   }
   setModifiedAmount(val) {
-    return this.state.paymentByCheck ? 1.1 * val : val;
+    return this.state.paymentByCheck ? 1.02 * val : val;
   }
   getMeteorData() {
     const handlePricings = SD.Structure.pricings.subAll();
@@ -410,13 +410,11 @@ class SubscriptionStep4 extends BaseReactMeteor {
               ) : ''
             }
           </form>
+          <p><LineText page='subscription_step3' text='price_info' /></p>
           <ErrorMessage
             title="Votre paiment n'est pas valide."
             error={ErrorMessage.asProps(this.state.error)}
           />
-        </div>
-        <div className='ui segment'>
-          <p><SimpleText page='subscription_step3' text='price_info' /></p>
         </div>
       </div>
     );

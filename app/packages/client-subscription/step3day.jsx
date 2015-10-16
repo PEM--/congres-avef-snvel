@@ -114,6 +114,7 @@ class InnerStepDay extends BaseReactMeteor {
         if (!found) {
           let currentProgramPrice = {
             _id: program._id,
+            programs: program.programs.join(' / '),
             session: program.session,
             right: program.right
           };
@@ -165,6 +166,10 @@ class InnerStepDay extends BaseReactMeteor {
         specialInfos = (<div>
           <p className='specialInfos'><i className='fa fa-bullhorn'></i> Gratuit pour toute personne inscrite, soit au Jour1, soit au Jour2.</p>
         </div>);
+      } else {
+        specialInfos = (<div>
+          <p className='specialInfos text-warning'><i className='fa fa-bullhorn'></i> En option payante.</p>
+        </div>);
       }
       const isPriceDisplayed = false;
       // Get history of already selected program
@@ -180,7 +185,7 @@ class InnerStepDay extends BaseReactMeteor {
               onChange={this.handleChange}
             />
           <label>
-            <span className='ui header'>{prgPrice.session}</span>
+            <span className='ui header'>{prgPrice.programs} - {prgPrice.session}</span>
             {
               isPriceDisplayed ? <div>-&nbsp;<span className='price'>{prgPrice.amount},00&nbsp;€</span></div> : ''
             }
