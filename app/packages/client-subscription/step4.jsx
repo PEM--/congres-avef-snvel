@@ -92,19 +92,26 @@ class SubscriptionStep4 extends BaseReactMeteor {
     this.goBack = (e) => {
       e.preventDefault();
       try {
-
-
-
-
-
-
+        Meteor.call('removePaymentPending', (error) => {
+          if (error) {
+            log.warn('Received error from server', error);
+            this.setState({error});
+            // Reactivate form in 2 secs
+            Meteor.setTimeout(() => this.setState({disabled: true}), 2000);
+            return;
+          }
+          this.setState({disabled: true});
+          // Wait for the roles to settle
+          Meteor.setTimeout(() => FlowRouter.go('/subscription?step=3&substep=product'), 300);
+        });
       } catch (error) {
-
-
-
-
-
-
+        if (error) {
+          log.warn('Received error from server', error);
+          this.setState({error});
+          // Reactivate form in 2 secs
+          Meteor.setTimeout(() => this.setState({disabled: true}), 2000);
+          return;
+        }
       }
     };
     this.handleSubmit = (e) => {

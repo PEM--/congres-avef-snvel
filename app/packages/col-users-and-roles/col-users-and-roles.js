@@ -272,6 +272,16 @@ if (Meteor.isServer) {
       log.info('User', user.emails[0].address, 'proceeds to payment');
       Roles.addUsersToRoles(this.userId, 'payment_pending');
       return true;
+    },
+    removePaymentPending(cb) {
+      if (!this.userId) {
+        throw new Meteor.Error('User retrieval', '403: Non authorized');
+      }
+      check(cb, Match.Any);
+      const user = Meteor.users.findOne(this.userId);
+      log.info('User', user.emails[0].address, 'go back to options selection');
+      Roles.removeUsersFromRoles(this.userId, 'payment_pending');
+      return true;
     }
   });
 }
