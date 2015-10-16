@@ -113,7 +113,7 @@ Meteor.methods({
     });
     // Get amount in UK/EN/US format and switch back current language
     numeral.language('en');
-    amount = numeral(invoice.total).format('00.00');
+    amount = numeral(invoice.totalTTC).format('00.00');
     numeral.language(getUserLanguage());
     result = SD.Utils.braintreeGateway.transaction.sale({
       amount: amount,
@@ -126,7 +126,7 @@ Meteor.methods({
       log.warn('Braintree Error for', email, result);
       throw new Meteor.Error(ERROR_TYPE, 'Paiement impossible pour le moment pour', email);
     }
-    log.info('Payment for user', email, 'with amount', invoice.total);
+    log.info('Payment for user', email, 'with amount', invoice.totalTTC);
     // Set proper roles for user
     Roles.addUsersToRoles(this.userId, 'subscribed');
     Roles.removeUsersFromRoles(this.userId, 'payment_pending');
@@ -134,7 +134,7 @@ Meteor.methods({
     this.unblock();
     const cgv = SD.Structure.basicPages.collection.findOne({url: 'cgv'});
     const html = s.replaceAll(marked(cgv.content), '\n', '');
-    const invoiceTxt = SD.Utils.renderInvoice(invoice.prices, invoice.discounts, invoice.total);
+    const invoiceTxt = SD.Utils.renderInvoice(invoice.prices, invoice.discounts, invoice.totalHT, invoice.totalTTC);
     sendBillingEmail(email, invoiceTxt, cgv.title, html);
     return true;
   }

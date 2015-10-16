@@ -11,7 +11,7 @@ const renderLine = (designation, value) => {
     s.lpad(numeralAmountFormat(value), RIGHT, ' ') + '\n';
 };
 
-SD.Utils.renderInvoice = (prices, discounts, total) => {
+SD.Utils.renderInvoice = (prices, discounts, totalHT, totalTTC) => {
   let lines = '';
   prices.forEach((line) => lines += renderLine(line.designation, line.value));
   if (discounts.length !== 0) {
@@ -23,8 +23,10 @@ SD.Utils.renderInvoice = (prices, discounts, total) => {
     s.lrpad('FACTURE', SIZE, ' ') + '\n' +
     dashLine +
     lines +
+    dashLine +
+    s.rpad('TOTAL (HT)', LEFT, ' ') + s.lpad(numeralAmountFormat(totalHT), RIGHT, ' ') + '\n' +
     doubleDashLine +
-    s.rpad('TOTAL', LEFT, ' ') + s.lpad(numeralAmountFormat(total), RIGHT, ' ')
+    s.rpad('TOTAL (TTC)', LEFT, ' ') + s.lpad(numeralAmountFormat(totalTTC), RIGHT, ' ')
   );
 };
 
@@ -38,5 +40,6 @@ SD.Structure.InvoiceSchema = new SimpleSchema({
   'discounts.$': {type: Object, label: 'Prix facturé'},
   'discounts.$.designation': {type: String, label: 'Remise appliquée'},
   'discounts.$.value': {type: Number, label: 'Valeur en € HT', min: 0, max: 1000},
-  total: {type: Number, label: 'Montant total en € HT', min: 0, max: 10000}
+  totalHT: {type: Number, label: 'Montant total en € HT', min: 0, max: 10000},
+  totalTTC: {type: Number, label: 'Montant total en € TTC', min: 0, max: 10000}
 });

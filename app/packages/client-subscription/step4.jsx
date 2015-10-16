@@ -11,11 +11,11 @@ class Invoice extends Component {
   }
   render() {
     log.info('Render Invoice');
-    const { prices, discounts, total } = this.props;
-    log.debug('Rendering invoice', total, prices, discounts);
+    const { prices, discounts, totalHT, totalTTC } = this.props;
+    log.debug('Rendering invoice', totalHT, totalTTC, prices, discounts);
     return (
       <div className='invoice'>
-        <pre>{SD.Utils.renderInvoice(prices, discounts, total)}</pre>
+        <pre>{SD.Utils.renderInvoice(prices, discounts, totalHT, totalTTC)}</pre>
       </div>
     );
   }
@@ -27,11 +27,11 @@ class PaymentByCheck extends Component {
   }
   render() {
     log.info('Render PaymentByCheck');
-    const { prices, discounts, total } = this.props;
+    const { prices, discounts, totalHT, totalTTC } = this.props;
     return (
       <div className='fadeIn'>
         <h4>Paiement par chèque</h4>
-        <Invoice prices={prices} discounts={discounts} total={total}/>
+        <Invoice prices={prices} discounts={discounts} totalHT={totalHT} totalTTC={totalTTC} />
         <p><SimpleText page='subscription_step4' text='payment_by_check' /></p>
       </div>
     );
@@ -44,11 +44,11 @@ class PaymentByCard extends Component {
   }
   render() {
     log.info('Render PaymentByCard');
-    const { prices, discounts, total } = this.props;
+    const { prices, discounts, totalHT, totalTTC } = this.props;
     return (
       <div className='fadeIn'>
         <h4>Paiement par carte</h4>
-        <Invoice prices={prices} discounts={discounts} total={this.props.total}/>
+        <Invoice prices={prices} discounts={discounts} totalHT={totalHT} totalTTC={totalTTC} />
         <div className='card-wrapper' />
       </div>
     );
@@ -83,12 +83,30 @@ class SubscriptionStep4 extends BaseReactMeteor {
     super(props);
     this.state = {
       error: '',
-      disabled: true,
+      disabled: false,
       paymentByCheck: false,
       paymentByCard: false
     };
     // Dummy handle (checkbox is handled by Semantic)
     this.handleChange = (e) => {};
+    this.goBack = (e) => {
+      e.preventDefault();
+      try {
+
+
+
+
+
+
+      } catch (error) {
+
+
+
+
+
+
+      }
+    };
     this.handleSubmit = (e) => {
       e.preventDefault();
       let result;
@@ -107,7 +125,6 @@ class SubscriptionStep4 extends BaseReactMeteor {
         }
         // Checking card expiry
         const cardExpiry = s.replaceAll(findDOMNode(this.refs.expiry).value.trim(), ' ', '');
-        console.log('*** cardExpiry', cardExpiry, findDOMNode(this.refs.expiry).value);
         result = CardValidation.expiry(cardExpiry);
         if (result !== '') {
           throw new Meteor.Error('card_validation_error', result);
@@ -158,7 +175,8 @@ class SubscriptionStep4 extends BaseReactMeteor {
             Meteor.call('cardPayment', nonce, {
               prices: this.prices,
               discounts: this.discounts,
-              total: this.state.total
+              totalHT: this.state.totalHT,
+              totalTTC: this.state.totalTTC
             }, (errorPayment, resultPayment) => {
               if (errorPayment) {
                 log.warn('Received error from server side payment', errorPayment);
@@ -303,9 +321,10 @@ class SubscriptionStep4 extends BaseReactMeteor {
       });
     }
     // Calculate total
-    this.state.total = 0;
-    this.prices.forEach((product) => { this.state.total += product.value; });
-    this.discounts.forEach((discount) => {this.state.total -= discount.value; });
+    this.state.totalHT = 0;
+    this.prices.forEach((product) => { this.state.totalHT += product.value; });
+    this.discounts.forEach((discount) => {this.state.totalHT -= discount.value; });
+    this.state.totalTTC = this.state.totalHT * 1.2;
     return (
       <div className='ui segments inner-step'>
         <div className='ui segment'>
@@ -352,7 +371,8 @@ class SubscriptionStep4 extends BaseReactMeteor {
                   <PaymentByCheck
                     prices={this.prices}
                     discounts={this.discounts}
-                    total={this.state.total}
+                    totalHT={this.state.totalHT}
+                    totalTTC={this.state.totalTTC}
                   />
                 </div>
               ) : ''
@@ -363,7 +383,8 @@ class SubscriptionStep4 extends BaseReactMeteor {
                   <PaymentByCard
                     prices={this.prices}
                     discounts={this.discounts}
-                    total={this.state.total}
+                    totalHT={this.state.totalHT}
+                    totalTTC={this.state.totalTTC}
                   />
                   <div className='fields'>
                     <div className='five wide field'>
@@ -403,7 +424,7 @@ class SubscriptionStep4 extends BaseReactMeteor {
                       anim='fade' icon='cart-arrow-down'
                       text='Je valide mon paiement'
                       disabled={this.state.disabled}
-                      textHidden={numeralAmountFormat(this.state.total)}
+                      textHidden={numeralAmountFormat(this.state.totalTTC) + ' (TTC)'}
                     />
                   </div>
                 </div>
@@ -415,6 +436,18 @@ class SubscriptionStep4 extends BaseReactMeteor {
             title="Votre paiment n'est pas valide."
             error={ErrorMessage.asProps(this.state.error)}
           />
+        </div>
+        <div className='ui segment'>
+          <form id='backButton' autoComplete='off' className='ui large form' onSubmit={this.goBack}>
+            <div className='fields'>
+              <div className='sixteen field'>
+                <AnimatedButton
+                  icon='arrow-left' text='Je retourne à la sélection des options'
+                  disabled={this.state.disabled}
+                />
+              </div>
+            </div>
+          </form>
         </div>
       </div>
     );
