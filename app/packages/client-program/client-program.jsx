@@ -209,7 +209,7 @@ class Program extends BaseReactMeteor {
                 Vous êtes également invités à sélectionner le jour
                 et les horaires. Si vous souhaitez visualiser le programme complet,
                 vous pouvez vous cliquer ici :&nbsp;
-                <a href='http://www.snvel.fr/fichiers/20150929162725_Programme_congres_2015.pdf)' className='animated'>
+                <a href='http://www.snvel.fr/fichiers/20150929162725_Programme_congres_2015.pdf' className='animated'>
                   programme complet
                 </a>
               </p>

@@ -15,8 +15,8 @@ class SubscriptionStep1 extends ReactDictionary {
       const email = findDOMNode(this.refs.email).value.trim().toLowerCase();
       const password = findDOMNode(this.refs.password).value.trim();
       const repassword = findDOMNode(this.refs.repassword).value.trim();
-      const lastName = findDOMNode(this.refs.lastName).value.trim();
-      const firstName = findDOMNode(this.refs.firstName).value.trim();
+      const lastName = textInputFormatter(findDOMNode(this.refs.lastName).value.trim());
+      const firstName = textInputFormatter(findDOMNode(this.refs.firstName).value.trim());
       log.debug('Submit with value', email);
       try {
         let accountInfo = {
