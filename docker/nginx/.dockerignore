@@ -1,3 +1,4 @@
+.DS_Store
 bundle/README
 bundle/packages/*/.build*
 bundle/packages/*/.styl

@@ -26,7 +26,7 @@ check@1.0.6
 chuangbo:cookie@1.1.0
 coffeescript@1.0.10
 cosmos:browserify@0.8.1
-dburles:collection-helpers@1.0.3
+dburles:collection-helpers@1.0.4
 dburles:google-maps@1.1.5
 ddp@1.2.2
 ddp-client@1.2.1
@@ -61,15 +61,13 @@ launch-screen@1.0.4
 livedata@1.0.15
 localstorage@1.0.5
 logging@1.0.8
-matteodem:easy-security@0.1.4
+matteodem:easy-security@0.1.5
 meteor@1.1.9
 meteor-base@1.0.1
 meteorhacks:fast-render@2.10.0
 meteorhacks:inject-data@1.4.1
-meteorhacks:inject-initial@1.0.2
 meteorhacks:picker@1.0.3
 meteorhacks:subs-manager@1.6.2
-meteorhacks:zones@1.6.0
 meteorspark:util@0.2.0
 minifiers@1.1.7
 minimongo@1.0.10
