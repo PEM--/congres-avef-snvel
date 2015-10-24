@@ -1,6 +1,6 @@
 # Persistence layer: Mongo
 db:
-  image: pemarchandet/mongo-congres-avef-snvel:v1.2.0
+  image: pemarchandet/mongo-congres-avef-snvel:v1.1.0
   extends:
     file: common.yml
     service: db
