@@ -1,0 +1,20 @@
+@import (reference) '/client/bootstrap/custom.bootstrap.import.less';
+
+.login {
+  width: 100%;
+  height: 100vh;
+  background: @brand-primary;
+  .login-box {
+    background: white;
+    border: 3px solid darken(@brand-primary, 10%);
+    border-radius: 4px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    max-width: 600px;
+    transform: translate3d(-50%,-50%,0);
+    h3 {
+      display: none;
+    }
+  }
+}
