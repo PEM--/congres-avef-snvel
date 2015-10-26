@@ -21,6 +21,7 @@ check
 # Routing
 kadira:flow-router
 kadira:blaze-layout
+tomwasd:flow-router-autoscroll
 
 # Development
 audit-argument-checks
@@ -34,6 +35,13 @@ aldeed:collection2
 aldeed:autoform
 aldeed:simple-schema
 aldeed:tabular
+aldeed:autoform-bs-datepicker
+aldeed:autoform-bs-datetimepicker
+aldeed:autoform-select2
+aldeed:autoform-bs-button-group-input
+mpowaga:autoform-summernote
+q42:autoform-markdown
+comerc:autoform-typeahead
 
 # Accounts
 #accounts-base
