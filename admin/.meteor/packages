@@ -26,12 +26,14 @@ kadira:blaze-layout
 audit-argument-checks
 mquandalle:jade
 mquandalle:bower
+flemay:less-autoprefixer
 
 # Collections
 dburles:collection-helpers
 aldeed:collection2
 aldeed:autoform
 aldeed:simple-schema
+aldeed:tabular
 
 # Accounts
 #accounts-base
@@ -40,7 +42,7 @@ alanning:roles
 useraccounts:bootstrap
 
 # CSS
-twbs:bootstrap
+nemo64:bootstrap
 fortawesome:fontawesome
 
 # Collections
@@ -58,3 +60,6 @@ pierreeric:col-users-and-roles
 
 # Admin
 sach:flow-db-admin
+
+# Utils
+momentjs:moment
