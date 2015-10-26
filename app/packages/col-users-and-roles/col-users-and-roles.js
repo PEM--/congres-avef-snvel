@@ -15,11 +15,8 @@ SD.Structure.AvailableRoles = AvailableRoles;
 // Schema for client and server
 SD.Structure.SchemaUser = new SimpleSchema({
   emails: {
-    type: Array,
+    type: [Object],
     label: 'Emails'
-  },
-  'emails.$': {
-    type: Object
   },
   'emails.$.address': {
     type: String,
