@@ -25,6 +25,7 @@ kadira:blaze-layout
 # Development
 audit-argument-checks
 mquandalle:jade
+mquandalle:bower
 
 # Collections
 dburles:collection-helpers
@@ -41,6 +42,19 @@ useraccounts:bootstrap
 # CSS
 twbs:bootstrap
 fortawesome:fontawesome
+
+# Collections
+spacedrop:namespaces
+pierreeric:col-basicpages
+pierreeric:col-dictionary
+pierreeric:col-discounts
+pierreeric:col-partners
+pierreeric:col-products
+pierreeric:col-programs
+pierreeric:col-sociallinks
+pierreeric:col-subscribers
+pierreeric:col-texts
+pierreeric:col-users-and-roles
 
 # Admin
 sach:flow-db-admin

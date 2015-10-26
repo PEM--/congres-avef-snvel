@@ -18,9 +18,7 @@ Package.onUse(function(api) {
     'pierreeric:internationalization',
     'pierreeric:logger',
     'pierreeric:routing-start',
-    'pierreeric:col-subscribers',
-    'pierreeric:sharedstyles',
-    'pierreeric:emails'
+    'pierreeric:col-subscribers'
   ]));
   api.imply(shared);
   // Included files in this packages

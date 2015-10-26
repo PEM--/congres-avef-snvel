@@ -127,11 +127,6 @@ if (Meteor.isServer) {
   }
 }
 
-// Accounts options
-Accounts.config({
-  sendVerificationEmail: true,
-  forbidClientAccountCreation: false
-});
 // Client only
 if (Meteor.isClient) {
   // When user logged in, we go back to the previous URL, he was visiting.

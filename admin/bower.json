@@ -1,0 +1,11 @@
+{
+  "name": "Congres",
+  "version": "0.0.1",
+  "dependencies": {
+    "slimScroll": "1.3.6"
+  },
+  "ignoredDependencies": [
+    "jquery"
+  ],
+   "private": true
+}
