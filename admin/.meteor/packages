@@ -16,19 +16,27 @@ tracker                 # Meteor's client-side reactive programming library
 standard-minifiers      # JS/CSS minifiers run for production mode
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
+check
 
 # Routing
 kadira:flow-router
 kadira:blaze-layout
 
+# Development
+audit-argument-checks
+mquandalle:jade
+
 # Collections
 dburles:collection-helpers
 aldeed:collection2
+aldeed:autoform
+aldeed:simple-schema
 
 # Accounts
-accounts-base
+#accounts-base
 accounts-password
 alanning:roles
+useraccounts:bootstrap
 
 # CSS
 twbs:bootstrap
