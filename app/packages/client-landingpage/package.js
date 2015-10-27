@@ -5,12 +5,11 @@ Package.describe({
 
 Package.onUse(function(api) {
   // Meteor's API version
-  api.versionsFrom('1.2.0.2');
+  api.versionsFrom('1.2.1');
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
     'kadira:react-layout@1.4.1',
-    'flemay:less-autoprefixer@1.2.0',
     'pierreeric:basereactmeteor',
     'pierreeric:routing-start',
     'pierreeric:main-layout',
@@ -20,7 +19,6 @@ Package.onUse(function(api) {
   // Included files in this packages
   // Files for server and client
   api.addFiles([
-    'client-landingpage.jsx',
-    'client-landingpage.less'
+    'client-landingpage.jsx'
   ]);
 });

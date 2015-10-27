@@ -5,13 +5,12 @@ Package.describe({
 
 Package.onUse(function(api) {
   // Meteor's API version
-  api.versionsFrom('1.2.0.2');
+  api.versionsFrom('1.2.1');
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
     'spacebars',
     'blaze-html-templates',
-    'flemay:less-autoprefixer@1.2.0',
     'dburles:google-maps@1.1.4',
     'mquandalle:jade@0.4.3_1',
     'pierreeric:basereactmeteor',
@@ -23,7 +22,6 @@ Package.onUse(function(api) {
   // Files for server and client
   api.addFiles([
     'BlazeContainerMap.tpl.jade',
-    'client-googlemap.jsx',
-    'client-googlemap.less'
+    'client-googlemap.jsx'
   ]);
 });

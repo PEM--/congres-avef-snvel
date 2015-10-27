@@ -5,7 +5,7 @@ Package.describe({
 
 Package.onUse(function(api) {
   // Meteor's API version
-  api.versionsFrom('1.2.0.2');
+  api.versionsFrom('1.2.1');
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
@@ -16,7 +16,6 @@ Package.onUse(function(api) {
     'underscorestring:underscore.string@3.2.2',
     'alanning:roles@1.2.14',
     'kadira:react-layout@1.4.1',
-    'flemay:less-autoprefixer@1.2.0',
     'gadicohen:reactive-window@1.0.6',
     'pierreeric:basereactmeteor',
     'pierreeric:routing-start',
@@ -51,7 +50,6 @@ Package.onUse(function(api) {
     'step3.jsx',
     'step4.jsx',
     'report.jsx',
-    'client-subscription.jsx',
-    'client-subscription.less'
+    'client-subscription.jsx'
   ]);
 });

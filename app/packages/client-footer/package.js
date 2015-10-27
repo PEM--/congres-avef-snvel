@@ -5,11 +5,10 @@ Package.describe({
 
 Package.onUse(function(api) {
   // Meteor's API version
-  api.versionsFrom('1.2.0.2');
+  api.versionsFrom('1.2.1');
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
-    'flemay:less-autoprefixer@1.2.0',
     'pierreeric:basereactmeteor',
     'pierreeric:col-basicpages',
     'pierreeric:col-sociallinks',
@@ -23,7 +22,6 @@ Package.onUse(function(api) {
     'logger.js',
     'client-footer-basicpages.jsx',
     'client-footer-sociallinks.jsx',
-    'client-footer.jsx',
-    'client-footer.less'
+    'client-footer.jsx'
   ]);
 });

@@ -5,11 +5,10 @@ Package.describe({
 
 Package.onUse(function(api) {
   // Meteor's API version
-  api.versionsFrom('1.2.0.2');
+  api.versionsFrom('1.2.1');
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
-    'flemay:less-autoprefixer@1.2.0',
     'pierreeric:routing-start',
     'pierreeric:basereactmeteor',
     'pierreeric:sharedstyles',
@@ -18,7 +17,6 @@ Package.onUse(function(api) {
   // Included files in this packages
   // Files for server and client
   api.addFiles([
-    'client-menu.jsx',
-    'client-menu.less'
+    'client-menu.jsx'
   ]);
 });

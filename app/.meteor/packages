@@ -57,8 +57,6 @@ pierreeric:client-program
 pierreeric:client-login
 pierreeric:client-notfound
 pierreeric:client-cookie
-# Admin only packages
-pierreeric:admin-home
 
 # Authentifications
 accounts-password

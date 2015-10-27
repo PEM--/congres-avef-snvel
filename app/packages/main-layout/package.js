@@ -5,7 +5,7 @@ Package.describe({
 
 Package.onUse(function(api) {
   // Meteor's API version
-  api.versionsFrom('1.2.0.2');
+  api.versionsFrom('1.2.1');
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
@@ -18,7 +18,6 @@ Package.onUse(function(api) {
     'pierreeric:client-footer',
     'blaze-html-templates',
     'kadira:dochead@1.3.0',
-    'flemay:less-autoprefixer@1.2.0',
     'pierreeric:logger',
     'pierreeric:col-dictionary',
     'pierreeric:col-sociallinks'
@@ -27,7 +26,6 @@ Package.onUse(function(api) {
   // Files for server and client
   api.addFiles([
     'index.html',
-    'main-layout.jsx',
-    'main-layout.less'
+    'main-layout.jsx'
   ]);
 });

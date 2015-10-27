@@ -5,11 +5,10 @@ Package.describe({
 
 Package.onUse(function(api) {
   // Meteor's API version
-  api.versionsFrom('1.2.0.2');
+  api.versionsFrom('1.2.1');
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
-    'flemay:less-autoprefixer@1.2.0',
     'pierreeric:basereactmeteor'
   ]);
   // Included files in this packages
@@ -17,35 +16,4 @@ Package.onUse(function(api) {
   api.addFiles([
     'client-spinkit.jsx'
   ]);
-
-// /
-// ├── mixins
-// │   ├── chasing-dots.less
-// │   ├── circle.less
-// │   ├── cube-grid.less
-// │   ├── double-bounce.less
-// │   ├── fading-circle.less
-// │   ├── pulse.less
-// │   ├── rotating-plane.less
-// │   ├── three-bounce.less
-// │   ├── trace-circle.less
-// │   ├── wandering-cubes.less
-// │   ├── wave.less
-// │   └── wordpress.less
-// ├── spinkit.less
-// ├── standalone
-// │   ├── chasing-dots.less
-// │   ├── circle.less
-// │   ├── cube-grid.less
-// │   ├── double-bounce.less
-// │   ├── fading-circle.less
-// │   ├── pulse.less
-// │   ├── rotating-plane.less
-// │   ├── three-bounce.less
-// │   ├── trace-circle.less
-// │   ├── wandering-cubes.less
-// │   ├── wave.less
-// │   └── wordpress.less
-// └── variables.less
-
 });
