@@ -58,13 +58,11 @@ class Cookie extends SD.Views.ReactDictionary {
         if (!this.data.loading) {
           const isRouterStarted = Session.get(SD.Utils.IS_ROUTER_STARTED);
           this.cookie = SD.Utils.Cookie.get(this.data.dict);
-          let showCookieDisclaimer = false;
           if (isRouterStarted) {
             if (!this.cookie.isAccepted()) {
-              showCookieDisclaimer = true;
+              Meteor.setTimeout(() => this.setState({show: true}), 1000);
             }
           }
-          this.setState({show: showCookieDisclaimer});
         }
       });
     }

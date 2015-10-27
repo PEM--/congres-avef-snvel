@@ -63,10 +63,12 @@ div.client.subscription {
 // Mobile specifics
 @media screen and (max-width: @largestMobileScreen) {
   .client.subscription {
-    .ui.message span { color: @veryLightOrange; }
     .ui.attached.segment {
       background-color: white !important;
       h1, h2, h3, h4, label, p, ul, li { color: @green !important; }
+    }
+    .ui.message, .ui.error.message {
+      p, span { color: @veryLightOrange !important; }
     }
   }
 }
