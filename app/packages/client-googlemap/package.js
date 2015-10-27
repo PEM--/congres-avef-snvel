@@ -11,7 +11,7 @@ Package.onUse(function(api) {
   api.use([
     'spacebars',
     'blaze-html-templates',
-    'flemay:less-autoprefixer@1.1.0',
+    'flemay:less-autoprefixer@1.2.0',
     'dburles:google-maps@1.1.4',
     'mquandalle:jade@0.4.3_1',
     'pierreeric:basereactmeteor',

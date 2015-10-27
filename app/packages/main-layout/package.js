@@ -17,8 +17,8 @@ Package.onUse(function(api) {
     'pierreeric:client-menu',
     'pierreeric:client-footer',
     'blaze-html-templates',
-    'kadira:dochead@1.1.0',
-    'flemay:less-autoprefixer@1.1.0',
+    'kadira:dochead@1.3.0',
+    'flemay:less-autoprefixer@1.2.0',
     'pierreeric:logger',
     'pierreeric:col-dictionary',
     'pierreeric:col-sociallinks'

@@ -11,7 +11,7 @@ Package.onUse(function(api) {
   api.use([
     'ecmascript',
     'es5-shim',
-    'flemay:less-autoprefixer@1.1.0',
+    'flemay:less-autoprefixer@1.2.0',
     'underscorestring:underscore.string@3.2.2',
     'spacedrop:namespaces'
   ]);

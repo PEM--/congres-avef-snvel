@@ -10,7 +10,7 @@ Package.onUse(function(api) {
   // Dependencies for server and client
   api.use([
     'underscore',
-    'flemay:less-autoprefixer@1.1.0',
+    'flemay:less-autoprefixer@1.2.0',
     'pierreeric:basereactmeteor',
     'pierreeric:sharedstyles',
     'pierreeric:routing-start'

@@ -12,7 +12,7 @@ Package.onUse(function(api) {
     'pierreeric:internationalization'
   ];
   api.use(shared.concat([
-    'flemay:less-autoprefixer@1.1.0',
+    'flemay:less-autoprefixer@1.2.0',
     'pierreeric:basereactmeteor',
     'pierreeric:sharedstyles'
   ]));

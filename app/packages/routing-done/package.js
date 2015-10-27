@@ -19,7 +19,7 @@ Package.onUse(function(api) {
     'underscore',
     'accounts-base',
     'alanning:roles@1.2.14',
-    'kadira:flow-router-ssr@3.4.0',
+    'kadira:flow-router-ssr@3.5.0',
     'kadira:react-layout@1.4.1',
     'meteorhacks:fast-render@2.10.0',
     'underscorestring:underscore.string@3.2.2',

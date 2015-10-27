@@ -4,7 +4,6 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-# Meteor official packages
 meteor-base             # Packages every Meteor app needs to have
 mobile-experience       # Packages for a great mobile UX
 mongo                   # The database Meteor supports right now
@@ -16,58 +15,23 @@ tracker                 # Meteor's client-side reactive programming library
 standard-minifiers      # JS/CSS minifiers run for production mode
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
-check
+
+
+# Development
+audit-argument-checks
+mquandalle:jade
+flemay:less-autoprefixer
 
 # Routing
 kadira:flow-router
 kadira:blaze-layout
 tomwasd:flow-router-autoscroll
 
-# Development
-audit-argument-checks
-mquandalle:jade
-mquandalle:bower
-flemay:less-autoprefixer
-
-# Collections
-dburles:collection-helpers
-aldeed:collection2
-aldeed:autoform
-aldeed:simple-schema
-aldeed:tabular
-aldeed:autoform-bs-datepicker
-aldeed:autoform-bs-datetimepicker
-aldeed:autoform-select2
-aldeed:autoform-bs-button-group-input
-mpowaga:autoform-summernote
-q42:autoform-markdown
-comerc:autoform-typeahead
-
-# Accounts
-#accounts-base
-accounts-password
-alanning:roles
-useraccounts:bootstrap
-
 # CSS
 nemo64:bootstrap
 fortawesome:fontawesome
+natestrauser:animate-css
 
-# Collections
-spacedrop:namespaces
-pierreeric:col-basicpages
-pierreeric:col-dictionary
-pierreeric:col-discounts
-pierreeric:col-partners
-pierreeric:col-products
-pierreeric:col-programs
-pierreeric:col-sociallinks
-pierreeric:col-subscribers
-pierreeric:col-texts
-pierreeric:col-users-and-roles
-
-# Admin
-sach:flow-db-admin
-
-# Utils
-momentjs:moment
+# Accounts
+accounts-base
+accounts-password

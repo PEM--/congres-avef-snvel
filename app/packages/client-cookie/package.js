@@ -15,7 +15,7 @@ Package.onUse(function(api) {
   ];
   api.use(shared.concat([
     'chuangbo:cookie@1.1.0',
-    'flemay:less-autoprefixer@1.1.0',
+    'flemay:less-autoprefixer@1.2.0',
     'pierreeric:basereactmeteor'
   ]));
   api.imply(shared);

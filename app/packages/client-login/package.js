@@ -11,7 +11,7 @@ Package.onUse(function(api) {
   api.use([
     'accounts-base',
     'kadira:react-layout@1.4.1',
-    'flemay:less-autoprefixer@1.1.0',
+    'flemay:less-autoprefixer@1.2.0',
     'pierreeric:basereactmeteor',
     'pierreeric:routing-start',
     'pierreeric:main-layout',
