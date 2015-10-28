@@ -3,7 +3,7 @@
     img.image.ui.tiny.circular(src='apple-touch-icon.png')
     .content
       | Connexion nécessaire
-  form.ui.large.form
+  form.ui.large.form(method='post')
     .ui.stacked.segment
       .field
         .ui.left.icon.input
@@ -13,7 +13,7 @@
         .ui.left.icon.input
           i.lock.icon
           input(type='password', name='password', placeholder='Mot de masse')
-      .ui.fluid.large.submit.orange.button(type='submit') Connexion
+      button.ui.fluid.large.submit.orange.button(type='submit') Connexion
     .ui.error.message
   .ui.message
     | Vous n'avez pas de compte administratif ?

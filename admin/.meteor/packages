@@ -22,6 +22,7 @@ audit-argument-checks
 mquandalle:jade
 flemay:less-autoprefixer
 
+
 # Routing
 kadira:flow-router
 kadira:blaze-layout
@@ -49,3 +50,6 @@ alanning:roles
 momentjs:moment
 numeral:numeral
 underscorestring:underscore.string
+
+juliancwirko:s-alert
+juliancwirko:s-alert-slide

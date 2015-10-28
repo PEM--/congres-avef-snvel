@@ -11,11 +11,14 @@ Template.login.helpers({
 
 Template.login.events({
   'submit form': function(e, t) {
-    // e.preventDefault();
-    console.log('Form', e);
-  },
-  'click button': function(e, t) {
-    // e.preventDefault();
+    e.preventDefault();
     console.log('Event', e);
+    Meteor.loginWithPassword(e.target.email.value, e.target.password.value, function(err) {
+      if (err) {
+        return sAlert.error(err.toString);
+      }
+      sAlert.success('Connexion réussie');
+      // FlowRouter.go('dashboard');
+    });
   }
 });
