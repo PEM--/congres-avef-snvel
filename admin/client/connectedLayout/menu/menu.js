@@ -1,5 +1,5 @@
-// Template.menu.helpers({
-//   collections() {
-//     return
-//   }
-// });
+Template.menu.helpers({
+  collections() {
+    return SharedTablesDefinition;
+  }
+});

@@ -6,12 +6,9 @@ a.item
     i.fa.fa-database
     span Collections
   .active.content.menu
-    .item
-      span Title 1
-    .item
-      span Title 2
-    .item
-      span Title 3
+    +each collections
+      .item
+        span=name
 a.item 
   i.fa.fa-heartbeat
   span Statut système
