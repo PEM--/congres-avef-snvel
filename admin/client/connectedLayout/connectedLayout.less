@@ -17,14 +17,16 @@
 }
 
 .mainContent {
-  // margin-top: @header-height;
   padding-top: 1em;
   display: inline-block;
   width: 100%;
   position: absolute;
   top: @header-height;
   left: 0;
-  background: @yellow;
+  .ui.container {
+    overflow-x: hidden;
+    overflow-y: auto !important;
+  }
 }
 
 @media only screen and (max-width: @largestMobileScreen) {
@@ -35,7 +37,7 @@
 
 @media only screen and (min-width: @tabletBreakpoint) {
   .leftMenu {
-    position: absolute;
+    position: fixed;
     top: @header-height;
     left: 0;
   }

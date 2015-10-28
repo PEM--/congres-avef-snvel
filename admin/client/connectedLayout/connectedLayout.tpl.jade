@@ -1,9 +1,11 @@
-+Template.dynamic template=header
-//- .pusher
-.full-height.fadeInUp
-  .leftMenu.fadeInRight
-    .ui.vertical.inverted.orange.sticky.menu
-      +Template.dynamic template=menu
-  .mainContent.fadeInLeft
-    .ui.container
-      +Template.dynamic template=main
+.ui.sidebar.slide.along.inverted.orange.vertical.menu
+  +Template.dynamic template=menu
+.pusher
+  +Template.dynamic template=header
+  .full-height.fadeInUp
+    .leftMenu.fadeInRight
+      .ui.vertical.inverted.orange.sticky.menu
+        +Template.dynamic template=menu
+    .mainContent.fadeInLeft
+      .ui.container
+        +Template.dynamic template=main
