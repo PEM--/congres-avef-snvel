@@ -1,4 +1,5 @@
 FlowRouter.route('/', {
+  name: 'login',
   triggersEnter: [
     function(context, redirect) {
       if (Meteor.userId() &&
