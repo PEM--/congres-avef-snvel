@@ -28,9 +28,17 @@ kadira:blaze-layout
 tomwasd:flow-router-autoscroll
 
 # CSS
-nemo64:bootstrap
+semantic:ui
 fortawesome:fontawesome
 natestrauser:animate-css
+
+# Collection
+aldeed:simple-schema
+aldeed:collection2
+dburles:collection-helpers
+fabienb4:autoform-semantic-ui
+spacedrop:namespaces
+pierreeric:col-users-and-roles
 
 # Accounts
 accounts-base

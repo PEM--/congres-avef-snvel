@@ -11,6 +11,7 @@ Package.onUse(function(api) {
   api.use([
     'react',
     'underscore',
+    'mquandalle:jade@0.4.5',
     'momentjs:moment',
     'spacedrop:namespaces',
     'pierreeric:client-cookie',
@@ -25,7 +26,7 @@ Package.onUse(function(api) {
   // Included files in this packages
   // Files for server and client
   api.addFiles([
-    'index.html',
+    'index.jade',
     'main-layout.jsx'
   ]);
 });
