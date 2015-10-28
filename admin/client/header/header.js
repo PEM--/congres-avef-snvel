@@ -1,3 +1,7 @@
+Template.header.onRendered(function() {
+  this.$('.dropdown').dropdown();
+});
+
 Template.header.helpers({
   email() {
     const user = Meteor.user();

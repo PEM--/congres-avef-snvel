@@ -1,3 +1,27 @@
 +Template.dynamic template=header
-+Template.dynamic template=menu
-+Template.dynamic template=main
+.pusher.dimmed
+  .full.height
+    .leftMenu
+      .ui.vertical.inverted.orange.sticky.menu
+        .item: p Collection 1
+        .item: p Collection 2
+        .item: p Collection 3
+    .mainContent
+      .ui.container
+        +Template.dynamic template=main
+
+//.ui.grid
+  .row
+    .sixteen.column
+      +Template.dynamic template=header
+  .row
+    .four.column
+      +Template.dynamic template=menu
+    .twelve.column
+      
+
+
+//.ui.vertical.inverted.sidebar.menu.left
+  a.item 1
+  a.item 2
+  a.item 3
