@@ -19,3 +19,7 @@ FlowRouter.route('/dashboard', {
     });
   }
 });
+
+Template.connectedLayout.onRendered(function() {
+  this.$('.ui.accordion').accordion();
+});
