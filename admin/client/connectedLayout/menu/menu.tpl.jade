@@ -2,13 +2,13 @@ a.item
   i.fa.fa-gears
   span Réglages
 .item.menu
-  a.active.title
+  .active.title
     i.fa.fa-database
     span Collections
+    i.dropdown.icon
   .active.content.menu
     +each collections
-      .item
-        span=name
+      +menuCollectionItem item=this
 a.item 
   i.fa.fa-heartbeat
   span Statut système
