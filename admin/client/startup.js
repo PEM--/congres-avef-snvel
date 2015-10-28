@@ -16,3 +16,5 @@ sAlert.config({
   //     warning: '/beep-warning.mp3'
   // }
 });
+
+AutoForm.setDefaultTemplate('semanticUI');

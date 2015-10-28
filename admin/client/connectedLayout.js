@@ -12,6 +12,10 @@ FlowRouter.route('/dashboard', {
     }
   ],
   action() {
-    BlazeLayout.render('connectedLayout', {main: 'dashboard'});
+    BlazeLayout.render('connectedLayout', {
+      header: 'header',
+      menu: 'menu',
+      main: 'dashboard'
+    });
   }
 });

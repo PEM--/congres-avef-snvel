@@ -36,6 +36,7 @@ natestrauser:animate-css
 # Collection
 aldeed:simple-schema
 aldeed:collection2
+aldeed:autoform
 dburles:collection-helpers
 fabienb4:autoform-semantic-ui
 spacedrop:namespaces
