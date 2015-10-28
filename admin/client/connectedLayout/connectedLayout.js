@@ -1,4 +1,5 @@
-FlowRouter.route('/dashboard', {
+let dashboardRoutes = FlowRouter.group({
+  prefix: '/dashboard',
   name: 'dashboard',
   triggersEnter: [
     function(context, redirect) {
@@ -10,13 +11,12 @@ FlowRouter.route('/dashboard', {
         FlowRouter.redirect('/');
       }
     }
-  ],
+  ]
+});
+
+dashboardRoutes.route('/', {
   action() {
-    BlazeLayout.render('connectedLayout', {
-      header: 'header',
-      menu: 'menu',
-      main: 'dashboard'
-    });
+    BlazeLayout.render('connectedLayout', {header: 'header', menu: 'menu', main: 'dashboard'});
   }
 });
 

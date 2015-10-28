@@ -1,4 +1,8 @@
 Template.menuCollectionItem.helpers({
+  href() {
+    const instance = Template.instance();
+    return `/dashboard/${instance.data.item.name.toLowerCase()}`;
+  },
   className() {
     const instance = Template.instance();
     return `fa fa-${instance.data.item.conf.icon}`;
