@@ -11,16 +11,20 @@
 .leftMenu {
   display: inline-block;
   width: 100%;
-  min-height: 100vh;
+  min-height: 100%;
   max-width: @menu-width;
   background-color: @orange;
 }
 
 .mainContent {
-  margin-top: @header-height;
+  // margin-top: @header-height;
   padding-top: 1em;
   display: inline-block;
   width: 100%;
+  position: absolute;
+  top: @header-height;
+  left: 0;
+  background: @yellow;
 }
 
 @media only screen and (max-width: @largestMobileScreen) {
@@ -30,7 +34,17 @@
 }
 
 @media only screen and (min-width: @tabletBreakpoint) {
+  .leftMenu {
+    position: absolute;
+    top: @header-height;
+    left: 0;
+  }
+  .full-height, .leftMenu {
+    min-height: ~"calc(100vh - "(@header-height)~")" !important;
+  }
   .mainContent {
-    max-width: ~"calc(100% - "(@menu-width + 10px)~")";
+    max-width: ~"calc(100% - "(@menu-width + 28px)~")";
+    left: @menu-width;
+    margin-left: 1em;
   }
 }
