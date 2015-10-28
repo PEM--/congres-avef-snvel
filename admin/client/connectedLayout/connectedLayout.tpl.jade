@@ -1,26 +1,9 @@
 +Template.dynamic template=header
 .pusher.dimmed
-  //.full-height
-    .leftMenu
+  .full-height
+    //- .leftMenu.fadeInRight
       .ui.vertical.inverted.orange.sticky.menu
-        .item: p Collection 1
-        .item: p Collection 2
-        .item: p Collection 3
-  .mainContent.fadeInLeft
-    +Template.dynamic template=main
-
-//.ui.grid
-  .row
-    .sixteen.column
-      +Template.dynamic template=header
-  .row
-    .four.column
-      +Template.dynamic template=menu
-    .twelve.column
-      
-
-
-//.ui.vertical.inverted.sidebar.menu.left
-  a.item 1
-  a.item 2
-  a.item 3
+        +Template.dynamic template=menu
+    .mainContent.fadeInLeft
+      .ui.container
+        +Template.dynamic template=main

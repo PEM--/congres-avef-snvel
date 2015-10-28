@@ -1,18 +1,25 @@
 @import '../lib/semanticui/site/globals/site.variables.import.less';
 
 @header-height: 54px;
+@menu-width: 210px;
 
 .full-height {
   min-height: 100vh;
-  max-width: 210px;
-  background-color: @orange;
+  width: 100%;
 }
 
 .leftMenu {
-  width: inherit;
-  margin-top: @header-height;
+  display: inline-block;
+  width: 100%;
+  min-height: 100vh;
+  max-width: @menu-width;
+  background-color: @orange;
 }
 
 .mainContent {
   margin-top: @header-height;
+  padding-top: 1em;
+  display: inline-block;
+  width: 100%;
+  // max-width: ~"calc(100% - "(@menu-width + 10px)~")";
 }

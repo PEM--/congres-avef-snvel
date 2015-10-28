@@ -13,6 +13,10 @@ Template.header.helpers({
 });
 
 Template.header.events({
+  'click .menu-toggle': function(e, t) {
+    e.preventDefault();
+    console.log('Toggle menu');
+  },
   'click .exit': function(e, t) {
     e.preventDefault();
     Meteor.logout();
