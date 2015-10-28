@@ -36,11 +36,13 @@ natestrauser:animate-css
 # Collection
 aldeed:simple-schema
 aldeed:collection2
+cycore:tabular-nobootstrap
 aldeed:autoform
 dburles:collection-helpers
 fabienb4:autoform-semantic-ui
 spacedrop:namespaces
 pierreeric:col-users-and-roles
+pierreeric:col-basicpages
 
 # Accounts
 accounts-base

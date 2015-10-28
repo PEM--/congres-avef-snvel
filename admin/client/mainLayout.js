@@ -5,7 +5,7 @@ FlowRouter.route('/', {
       if (Meteor.userId() &&
         Roles.userIsInRole(Meteor.userId(), 'admin')
       ) {
-        FlowRouter.redirect('dashboard');
+        FlowRouter.go('/dashboard');
       }
     }
   ],
@@ -20,7 +20,7 @@ Tracker.autorun(function(computation) {
   if (!computation.firstRun) {
     if (userId) {
       if (Roles.userIsInRole(Meteor.userId(), 'admin')) {
-        FlowRouter.go('dashboard');
+        FlowRouter.go('/dashboard');
       } else {
         sAlert.error('Deconnexion: droits administratifs manquants');
         Meteor.logout();

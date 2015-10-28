@@ -22,6 +22,7 @@ check@1.1.0
 chuangbo:cookie@1.1.0
 coffeescript@1.0.11
 cosmos:browserify@0.5.1
+cycore:tabular-nobootstrap@1.4.1
 dburles:collection-helpers@1.0.4
 ddp@1.2.2
 ddp-client@1.2.1
@@ -79,8 +80,10 @@ numeral:numeral@1.5.3_1
 observe-sequence@1.0.7
 okgrow:analytics@0.4.3
 ordered-dict@1.0.4
+pierreeric:col-basicpages@0.0.1
 pierreeric:col-subscribers@0.0.1
 pierreeric:col-users-and-roles@0.0.1
+pierreeric:custom-basicpages@0.0.1
 pierreeric:internationalization@0.0.1
 pierreeric:invoice@0.0.1
 pierreeric:logger@0.1.0
