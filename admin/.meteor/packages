@@ -44,6 +44,15 @@ fabienb4:autoform-semantic-ui
 spacedrop:namespaces
 pierreeric:col-users-and-roles
 pierreeric:col-basicpages
+pierreeric:col-dictionary
+pierreeric:col-discounts
+pierreeric:col-partners
+pierreeric:col-pricings
+pierreeric:col-products
+pierreeric:col-programs
+pierreeric:col-sociallinks
+pierreeric:col-subscribers
+pierreeric:col-texts
 
 # Accounts
 accounts-base
