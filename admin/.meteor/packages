@@ -43,6 +43,7 @@ pierreeric:col-users-and-roles
 # Accounts
 accounts-base
 accounts-password
+alanning:roles
 
 # Utils
 momentjs:moment

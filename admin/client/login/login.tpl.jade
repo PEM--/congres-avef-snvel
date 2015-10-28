@@ -1,4 +1,4 @@
-.login: .login-container.fadeInDown
+.login: .fadeInDown: .login-container
   h2.ui.orange.image.header
     img.image.ui.tiny.circular(src='apple-touch-icon.png')
     .content
@@ -13,7 +13,7 @@
         .ui.left.icon.input
           i.lock.icon
           input(type='password', name='password', placeholder='Mot de masse')
-      .ui.fluid.large.submit.button Connexion
+      .ui.fluid.large.submit.orange.button(type='submit') Connexion
     .ui.error.message
   .ui.message
     | Vous n'avez pas de compte administratif ?
