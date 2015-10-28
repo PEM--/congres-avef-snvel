@@ -43,3 +43,8 @@ pierreeric:col-users-and-roles
 # Accounts
 accounts-base
 accounts-password
+
+# Utils
+momentjs:moment
+numeral:numeral
+underscorestring:underscore.string

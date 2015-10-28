@@ -1,0 +1,20 @@
+.login: .login-container.fadeInDown
+  h2.ui.orange.image.header
+    img.image.ui.tiny.circular(src='apple-touch-icon.png')
+    .content
+      | Connexion nécessaire
+  form.ui.large.form
+    .ui.stacked.segment
+      .field
+        .ui.left.icon.input
+          i.user.icon
+          input(type='text', name='email', placeholder='E-mail')
+      .field
+        .ui.left.icon.input
+          i.lock.icon
+          input(type='password', name='password', placeholder='Mot de masse')
+      .ui.fluid.large.submit.button Connexion
+    .ui.error.message
+  .ui.message
+    | Vous n'avez pas de compte administratif ?
+    a(href=mailto) Demandez un compte
