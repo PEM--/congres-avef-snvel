@@ -1,1 +1,14 @@
-h1 header
+.ui.fixed.menu
+  .ui.container.fadeInDown
+    a.header.item(href='/dashboard')
+      img.ui.avatar.circular.image(src='apple-touch-icon.png')
+      span Congrès 2015
+    .right.menu
+      a.ui.simple.dropdown.item(href='#')
+        i.fa.fa-user
+        span &nbsp;{{email}}
+        i.dropdown.icon
+        .menu
+          a.item.exit(href='#')
+            i.fa.fa-sign-out
+            span &nbsp;Déconnexion
