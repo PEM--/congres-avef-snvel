@@ -80,6 +80,7 @@ numeral:numeral@1.5.3_1
 observe-sequence@1.0.7
 okgrow:analytics@0.4.3
 ordered-dict@1.0.4
+percolate:migrations@0.9.6
 pierreeric:col-basicpages@0.0.1
 pierreeric:col-dictionary@0.0.1
 pierreeric:col-discounts@0.0.1
