@@ -138,7 +138,7 @@ SharedTablesDefinition = [
       icon: 'share-alt',
       collection: SD.Structure.socialLinks.collection,
       columns: [
-        {data: 'title', title: 'Nom'}
+        {data: 'title', title: 'Nom', render(val) { return s.capitalize(val); }}
       ]
     }
   }, {
