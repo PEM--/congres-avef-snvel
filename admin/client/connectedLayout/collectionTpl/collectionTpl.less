@@ -1,0 +1,31 @@
+@import '../../lib/semanticui/site/globals/site.variables.import.less';
+
+th {
+  &::after {
+    font-family: FontAwesome;
+    content: '\f0dc';
+    color: @purple;
+    margin-left: .5rem;
+  }
+}
+
+th.sorting_disabled {
+  &::after {
+    font-family: FontAwesome;
+    content: '\f0dc';
+    color: fade(@lightPurple, 50%);
+    margin-left: .5rem;
+  }
+}
+
+th.sorting_asc {
+  &::after {
+    content: '\f160';
+  }
+}
+
+th.sorting_desc {
+  &::after {
+    content: '\f161';
+  }
+}

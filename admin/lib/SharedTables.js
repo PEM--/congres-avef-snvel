@@ -11,6 +11,8 @@ SharedTablesDefinition = [
       columns: [{
         data: 'address()', title: 'Email'
       }, {
+        data: 'fullName()', title: 'Nom et prénom'
+      }, {
         data: 'createdAt', title: 'Crée le', render(val) {
           return moment(val).format('DD/MM/YYYY HH:mm');
         }
@@ -23,7 +25,7 @@ SharedTablesDefinition = [
       icon: 'file-text-o',
       collection: SD.Structure.basicPages.collection,
       columns: [
-        {data: 'title', label: 'Titre'}
+        {data: 'title', title: 'Titre'}
       ]
     }
   }, {
@@ -33,7 +35,7 @@ SharedTablesDefinition = [
       icon: 'gift',
       collection: SD.Structure.discounts.collection,
       columns: [
-        {data: 'right', label: 'Droits applicables'}
+        {data: 'right', title: 'Droits applicables'}
       ]
     }
   }, {
@@ -43,7 +45,7 @@ SharedTablesDefinition = [
       icon: 'diamond',
       collection: SD.Structure.partners.collection,
       columns: [
-        {data: 'title', label: 'Nom'}
+        {data: 'title', title: 'Nom'}
       ]
     }
   }, {
@@ -53,7 +55,7 @@ SharedTablesDefinition = [
       icon: 'credit-card',
       collection: SD.Structure.pricings.collection,
       columns: [
-        {data: 'right', label: 'Nom'}
+        {data: 'right', title: 'Nom'}
       ]
     }
   }, {
@@ -63,7 +65,7 @@ SharedTablesDefinition = [
       icon: 'industry',
       collection: SD.Structure.products.collection,
       columns: [
-        {data: 'name', label: 'Nom'}
+        {data: 'name', title: 'Nom'}
       ]
     }
   }, {
@@ -73,7 +75,7 @@ SharedTablesDefinition = [
       icon: 'calendar',
       collection: SD.Structure.programs.collection,
       columns: [
-        {data: 'session', label: 'Session'}
+        {data: 'session', title: 'Session'}
       ]
     }
   }, {
@@ -83,7 +85,7 @@ SharedTablesDefinition = [
       icon: 'share-alt',
       collection: SD.Structure.socialLinks.collection,
       columns: [
-        {data: 'title', label: 'Nom'}
+        {data: 'title', title: 'Nom'}
       ]
     }
   }, {
@@ -93,7 +95,7 @@ SharedTablesDefinition = [
       icon: 'user-md',
       collection: SD.Structure.subscribers.collection,
       columns: [
-        {data: 'userInfo', label: 'Nom'}
+        {data: 'userInfo', title: 'Nom'}
       ]
     }
   }, {
@@ -103,8 +105,8 @@ SharedTablesDefinition = [
       icon: 'pencil-square-o',
       collection: SD.Structure.texts.collection,
       columns: [
-        {data: 'page', label: 'Page'},
-        {data: 'text', label: 'Texte'}
+        {data: 'page', title: 'Page'},
+        {data: 'text', title: 'Texte'}
       ]
     }
   }
@@ -118,7 +120,8 @@ SharedTablesDefinition.forEach(def => {
     allow(userId) { return Roles.userIsInRole(userId, 'admin'); },
     collection: def.conf.collection,
     extraFields: def.conf.extraFields ? def.conf.extraFields : [],
-    columns: def.conf.columns
+    columns: def.conf.columns,
+    stateSave: true
   });
   console.log('Tabular declared', def.name);
 });
