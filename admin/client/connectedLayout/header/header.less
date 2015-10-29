@@ -1,14 +1,30 @@
 @import '../../lib/semanticui/site/globals/site.variables.import.less';
 
-.main-title {
-  .ui.header {
-    text-overflow: ellipsis;
-    color: white !important;
+.main-header {
+  background-color: fade(@white, 5%) !important;
+  .item {
+    border-radius: 0 !important;
   }
-}
-
-@media only screen and (min-width: @tabletBreakpoint) {
-  a.icon.item.menu-toggle {
-    display: none !important;
+  .fa::before {
+    color: @orange !important;
+  }
+  .main-title {
+    .ui.header {
+      text-overflow: ellipsis;
+      color: white !important;
+    }
+  }
+  .brand {
+    background: fade(white, 10%) !important;
+  }
+  @media only screen and (min-width: @tabletBreakpoint) {
+    .brand {
+      width: 100%;
+      max-width: 210px;
+      text-align: center;
+    }
+    a.icon.item.menu-toggle {
+      display: none !important;
+    }
   }
 }

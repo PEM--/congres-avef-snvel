@@ -13,11 +13,13 @@
   width: 100%;
   // min-height: 100%;
   max-width: @menu-width;
-  background-color: @orange;
+  background-color: fade(white, 10%);
 }
 
 .mainContent {
+  background-color: fade(white, 80%);
   padding-top: 1em;
+  margin: 0 !important;
   display: inline-block;
   width: 100%;
   position: absolute;
@@ -46,8 +48,9 @@
     min-height: ~"calc(100vh - "(@header-height)~")" !important;
   }
   .mainContent {
-    max-width: ~"calc(100% - "(@menu-width + 28px)~")";
+    max-width: ~"calc(100% - "(@menu-width)~")";
     left: @menu-width;
-    margin-left: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
   }
 }

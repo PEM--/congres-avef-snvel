@@ -1,5 +1,17 @@
 @import '../../lib/semanticui/site/globals/site.variables.import.less';
 
-.item.menu-collection-item {
-  margin-left: 1em;
+.main-menu {
+  .fa::before {
+    color: @yellow;
+  }
+  .item.menu-collection-item {
+    margin-left: 1em;
+    .fa::before {
+      color: @orange;
+    }
+  }
+}
+
+.sidebar.main-menu {
+  background: @pageBackground !important;
 }
