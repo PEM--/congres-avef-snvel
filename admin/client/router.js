@@ -53,14 +53,15 @@ let dashboardRoutes = FlowRouter.group({
 const connectedRoutes = [
   {route: '/', tpl: 'dashboard'},
   {route: '/settings', tpl: 'settings'},
-  {route: '/monitor', tpl: 'monitor'}
+  {route: '/monitor', tpl: 'monitor'},
+  {route: '/content/:collection', tpl: 'collectionTpl'}
 ];
 
 const setDynamicRoutes = () => {
   connectedRoutes.forEach(route => {
     dashboardRoutes.route(route.route, {
-      action() {
-        console.log('Render route', route.route);
+      action(params, queryParams) {
+        console.log('Render route', route.route, params);
         BlazeLayout.render('connectedLayout', { header: 'header', menu: 'menu', main: route.tpl});
       }
     });

@@ -13,17 +13,17 @@ Template.dashboard.helpers({
   },
   usersCount() {
     const count = Meteor.users.find().count();
-    return numeral(count).format('0a');
+    return numeral(count).format('0,0');
   },
-  usersLabel() { return 'Nombre d\'inscrits'; },
+  usersLabel() { return 'Inscrits'; },
   subscribersCount() {
     const count = SD.Structure.subscribers.collection.find().count();
-    return numeral(count).format('0a');
+    return numeral(count).format('0,0');
   },
-  subscribersLabel() { return 'Nombre d\'adhérents'; },
+  subscribersLabel() { return 'Adhérents'; },
   programsCount() {
     const count = SD.Structure.programs.collection.find().count();
-    return numeral(count).format('0a');
+    return numeral(count).format('0,0');
   },
-  programsLabel() { return 'Nombre de programmes'; }
+  programsLabel() { return 'Programmes & sessions'; }
 });
