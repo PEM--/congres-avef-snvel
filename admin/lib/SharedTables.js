@@ -7,12 +7,9 @@ SharedTablesDefinition = [
       title: 'Inscrits',
       icon: 'user',
       collection: Meteor.users,
+      extraFields: ['emails', 'profile', 'roles'],
       columns: [{
-        data: 'emails', title: 'Email', render(val, type, doc) {
-          const user = Meteor.users.findOne(doc._id);
-          console.log('user', user, doc);
-          return user.emails[0].address;
-        }
+        data: 'address()', title: 'Email'
       }, {
         data: 'createdAt', title: 'Crée le', render(val) {
           return moment(val).format('DD/MM/YYYY HH:mm');
@@ -120,6 +117,7 @@ SharedTablesDefinition.forEach(def => {
     sub: globalSubManager,
     allow(userId) { return Roles.userIsInRole(userId, 'admin'); },
     collection: def.conf.collection,
+    extraFields: def.conf.extraFields ? def.conf.extraFields : [],
     columns: def.conf.columns
   });
   console.log('Tabular declared', def.name);
