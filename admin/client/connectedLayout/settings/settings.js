@@ -1,17 +1,26 @@
-Template.settings.onCreated(function() {
-  this.subscribe('DictionaryAll'/*, {
-    onReady: () => { this.data = SD.Structure.dictionary.collection.findOne(); }
-  }*/);
-  console.log('currentTemplate', this);
+AutoForm.hooks({
+  dictionaryUpdate: {
+    onSuccess() {
+      sAlert.success('Réglages mis à jour');
+      FlowRouter.go('/dashboard');
+    },
+    onError(type, error) {
+      sAlert.error('Impossible de mettre à jour les réglages :', error.toString());
+    }
+  }
 });
 
-Template.settings.helpers({
-  data() {
-    console.log('Data', SD.Structure.dictionary.collection.findOne());
-    return SD.Structure.dictionary.collection.findOne();
-  }
+
+Template.settings.onCreated(function() {
+  this.subscribe('DictionaryAll');
 });
 
 Template.settings.onRendered(function() {
   $('.main-title').children().text('Réglages');
+});
+
+Template.settings.helpers({
+  data() {
+    return SD.Structure.dictionary.collection.findOne();
+  }
 });
