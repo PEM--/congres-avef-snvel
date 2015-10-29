@@ -3,4 +3,5 @@ unless Template.subscriptionsReady
     +spinner
 else
   .fadeIn
-    h1 Collection
+    if tableAvailable
+      +tabular table=sharedTable class="table table-striped table-bordered table-condensed"
