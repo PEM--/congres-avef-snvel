@@ -7,11 +7,17 @@ SharedTablesDefinition = [
       title: 'Inscrits',
       icon: 'user',
       collection: Meteor.users,
-      extraFields: ['emails', 'profile', 'roles'],
+      extraFields: ['roles'],
       columns: [{
-        data: 'address()', title: 'Email'
+        data: 'emails[0].address', title: 'Email'
       }, {
-        data: 'fullName()', title: 'Nom et prénom'
+        data: 'profile.lastName', title: 'Nom'
+      }, {
+        data: 'profile.firstName', title: 'Prénom'
+      }, {
+        data: 'profile.snvel', title: 'N° SNVEL'
+      }, {
+        data: 'profile.avef', title: 'N° AVEF'
       }, {
         data: 'createdAt', title: 'Crée le', render(val) {
           return moment(val).format('DD/MM/YYYY HH:mm');
@@ -19,13 +25,51 @@ SharedTablesDefinition = [
       }]
     }
   }, {
-    name: 'BasicPages',
+    name: 'Subscribers',
     conf: {
-      title: 'Pages dynamiques',
-      icon: 'file-text-o',
-      collection: SD.Structure.basicPages.collection,
+      title: 'Adhérents',
+      icon: 'user-md',
+      collection: SD.Structure.subscribers.collection,
+      columns: [{
+        data: 'userInfo.lastName', title: 'Nom'
+      }, {
+        data: 'userInfo.firstName', title: 'Prénom'
+      }, {
+        data: 'userInfo.email', title: 'Email'
+      }, {
+        data: 'userInfo.snvel', title: 'N° SNVEL'
+      }, {
+        data: 'userInfo.avef', title: 'N° AVEF'
+      }]
+    }
+  }, {
+    name: 'Programs',
+    conf: {
+      title: 'Programmes & Sessions',
+      icon: 'calendar',
+      collection: SD.Structure.programs.collection,
       columns: [
-        {data: 'title', title: 'Titre'}
+        {data: 'session', title: 'Session'}
+      ]
+    }
+  }, {
+    name: 'Products',
+    conf: {
+      title: 'Produits',
+      icon: 'industry',
+      collection: SD.Structure.products.collection,
+      columns: [
+        {data: 'name', title: 'Nom'}
+      ]
+    }
+  }, {
+    name: 'Pricings',
+    conf: {
+      title: 'Prix et droits',
+      icon: 'credit-card',
+      collection: SD.Structure.pricings.collection,
+      columns: [
+        {data: 'right', title: 'Nom'}
       ]
     }
   }, {
@@ -49,36 +93,6 @@ SharedTablesDefinition = [
       ]
     }
   }, {
-    name: 'Pricings',
-    conf: {
-      title: 'Prix et droits',
-      icon: 'credit-card',
-      collection: SD.Structure.pricings.collection,
-      columns: [
-        {data: 'right', title: 'Nom'}
-      ]
-    }
-  }, {
-    name: 'Products',
-    conf: {
-      title: 'Produits',
-      icon: 'industry',
-      collection: SD.Structure.products.collection,
-      columns: [
-        {data: 'name', title: 'Nom'}
-      ]
-    }
-  }, {
-    name: 'Programs',
-    conf: {
-      title: 'Programmes & Sessions',
-      icon: 'calendar',
-      collection: SD.Structure.programs.collection,
-      columns: [
-        {data: 'session', title: 'Session'}
-      ]
-    }
-  }, {
     name: 'SocialLinks',
     conf: {
       title: 'Partages sociaux',
@@ -89,13 +103,13 @@ SharedTablesDefinition = [
       ]
     }
   }, {
-    name: 'Subscribers',
+    name: 'BasicPages',
     conf: {
-      title: 'Adhérents',
-      icon: 'user-md',
-      collection: SD.Structure.subscribers.collection,
+      title: 'Pages dynamiques',
+      icon: 'file-text-o',
+      collection: SD.Structure.basicPages.collection,
       columns: [
-        {data: 'userInfo', title: 'Nom'}
+        {data: 'title', title: 'Titre'}
       ]
     }
   }, {
