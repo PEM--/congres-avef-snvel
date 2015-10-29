@@ -50,21 +50,28 @@ let dashboardRoutes = FlowRouter.group({
   // ]
 });
 
+Session.setDefault('collectionRoute', null);
+
 const connectedRoutes = [
   {route: '/', tpl: 'dashboard'},
   {route: '/settings', tpl: 'settings'},
   {route: '/monitor', tpl: 'monitor'},
-  {route: '/content/:collection', tpl: 'collectionTpl'}
+  {
+    route: '/content/:collection',
+    action(params, queryParams) {
+      Session.set('collectionRoute', params.collection);
+      BlazeLayout.render('connectedLayout', { header: 'header', menu: 'menu', main: 'collectionTpl'});
+    }
+  }
 ];
 
 const setDynamicRoutes = () => {
   connectedRoutes.forEach(route => {
-    dashboardRoutes.route(route.route, {
-      action(params, queryParams) {
-        console.log('Render route', route.route, params);
-        BlazeLayout.render('connectedLayout', { header: 'header', menu: 'menu', main: route.tpl});
-      }
-    });
+    const action = route.action ? route.action : () => {
+      console.log('Render route', route.route);
+      BlazeLayout.render('connectedLayout', { header: 'header', menu: 'menu', main: route.tpl});
+    };
+    dashboardRoutes.route(route.route, { action });
   });
   console.log('All routes declared');
   FlowRouter.initialize();
