@@ -1,2 +1,6 @@
-.fadeIn
-  h1 Collection
+unless Template.subscriptionsReady
+  .fadeIn
+    +spinner
+else
+  .fadeIn
+    h1 Collection

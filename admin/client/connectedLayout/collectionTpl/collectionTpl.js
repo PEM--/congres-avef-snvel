@@ -10,5 +10,6 @@ Template.collectionTpl.onRendered(function() {
     }
     const title = routeDef.conf.title;
     $('.main-title').children().text(title);
+    this.subscribe(`${currentRoute}All`);
   });
 });
