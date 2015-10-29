@@ -1,10 +1,11 @@
-.fadeIn
-  h1.ui.header Dashboard
-  p Cards avec liens vers collections
-  p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil voluptatum velit accusamus quo reprehenderit voluptates ad repudiandae unde aliquid cumque. Deleniti ea nam officia, asperiores consectetur unde doloremque vel porro!
-  p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil voluptatum velit accusamus quo reprehenderit voluptates ad repudiandae unde aliquid cumque. Deleniti ea nam officia, asperiores consectetur unde doloremque vel porro!
-  p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil voluptatum velit accusamus quo reprehenderit voluptates ad repudiandae unde aliquid cumque. Deleniti ea nam officia, asperiores consectetur unde doloremque vel porro!
-  p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil voluptatum velit accusamus quo reprehenderit voluptates ad repudiandae unde aliquid cumque. Deleniti ea nam officia, asperiores consectetur unde doloremque vel porro!
-  p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nihil voluptatum velit accusamus quo reprehenderit voluptates ad repudiandae unde aliquid cumque. Deleniti ea nam officia, asperiores consectetur unde doloremque vel porro!
-
-  //+tabular table=table class='ui celled table'
+.ui.three.column.middle.aligned.stackable.grid.fadeIn.dashboard
+  .row
+    .centered.aligned.column.text-centered
+      +statistics value=usersCount label=usersLabel
+    .ui.vertical.divider &amp;
+    .centered.aligned.column.text-centered
+      +statistics value=subscribersCount label=subscribersLabel
+    .ui.vertical.divider &amp;
+    .centered.aligned.column.text-centered
+      +statistics value=programsCount label=programsLabel
+  .ui.divider
