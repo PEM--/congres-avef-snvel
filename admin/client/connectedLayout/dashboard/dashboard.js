@@ -1,7 +1,6 @@
-Template.dashboard.onCreated(function() {
-  console.log('Dashboard created');
+Template.dashboard.onRendered(function() {
+  $('.main-title').children().text('Dashboard');
 });
-
 
 Template.dashboard.helpers({
   table() {

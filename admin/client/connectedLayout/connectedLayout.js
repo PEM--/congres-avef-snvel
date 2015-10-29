@@ -14,10 +14,18 @@ let dashboardRoutes = FlowRouter.group({
   ]
 });
 
-dashboardRoutes.route('/', {
-  action() {
-    BlazeLayout.render('connectedLayout', {header: 'header', menu: 'menu', main: 'dashboard'});
-  }
+const connectedRoutes = [
+  {route: '/', tpl: 'dashboard'},
+  {route: '/settings', tpl: 'settings'},
+  {route: '/monitor', tpl: 'monitor'}
+];
+
+connectedRoutes.forEach(route => {
+  dashboardRoutes.route(route.route, {
+    action() {
+      BlazeLayout.render('connectedLayout', { header: 'header', menu: 'menu', main: route.tpl});
+    }
+  });
 });
 
 Template.connectedLayout.onRendered(function() {
