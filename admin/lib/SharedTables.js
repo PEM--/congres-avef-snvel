@@ -8,21 +8,18 @@ SharedTablesDefinition = [
       icon: 'user',
       collection: Meteor.users,
       extraFields: ['roles'],
-      columns: [{
-        data: 'emails[0].address', title: 'Email'
-      }, {
-        data: 'profile.lastName', title: 'Nom'
-      }, {
-        data: 'profile.firstName', title: 'Prénom'
-      }, {
-        data: 'profile.snvel', title: 'N° SNVEL'
-      }, {
-        data: 'profile.avef', title: 'N° AVEF'
-      }, {
-        data: 'createdAt', title: 'Crée le', render(val) {
-          return moment(val).format('DD/MM/YYYY HH:mm');
+      columns: [
+        {data: 'emails[0].address', title: 'Email'},
+        {data: 'profile.lastName', title: 'Nom'},
+        {data: 'profile.firstName', title: 'Prénom'},
+        {data: 'profile.snvel', title: 'N° SNVEL'},
+        {data: 'profile.avef', title: 'N° AVEF'},
+        {
+          data: 'createdAt', title: 'Crée le', render(val) {
+            return moment(val).format('DD/MM/YYYY HH:mm');
+          }
         }
-      }]
+      ]
     }
   }, {
     name: 'Subscribers',
@@ -30,17 +27,13 @@ SharedTablesDefinition = [
       title: 'Adhérents',
       icon: 'user-md',
       collection: SD.Structure.subscribers.collection,
-      columns: [{
-        data: 'userInfo.lastName', title: 'Nom'
-      }, {
-        data: 'userInfo.firstName', title: 'Prénom'
-      }, {
-        data: 'userInfo.email', title: 'Email'
-      }, {
-        data: 'userInfo.snvel', title: 'N° SNVEL'
-      }, {
-        data: 'userInfo.avef', title: 'N° AVEF'
-      }]
+      columns: [
+        {data: 'userInfo.lastName', title: 'Nom'},
+        {data: 'userInfo.firstName', title: 'Prénom'},
+        {data: 'userInfo.email', title: 'Email'},
+        {data: 'userInfo.snvel', title: 'N° SNVEL'},
+        {data: 'userInfo.avef', title: 'N° AVEF'}
+      ]
     }
   }, {
     name: 'Programs',
@@ -48,8 +41,12 @@ SharedTablesDefinition = [
       title: 'Programmes & Sessions',
       icon: 'calendar',
       collection: SD.Structure.programs.collection,
+      extraFields: ['programs[0]', 'programs[1]', 'programs[3]'],
       columns: [
-        {data: 'session', title: 'Session'}
+        {data: 'session', title: 'Session'},
+        {data: 'conference', title: 'Conférence'},
+        {data: 'day', title: 'Jour'},
+        {data: 'begin', title: 'Début'},
       ]
     }
   }, {
@@ -69,7 +66,28 @@ SharedTablesDefinition = [
       icon: 'credit-card',
       collection: SD.Structure.pricings.collection,
       columns: [
-        {data: 'right', title: 'Nom'}
+        {data: 'right', title: 'Nom'},
+        {data: 'basic.amount', title: 'Vét', searcheable: false, render(val) {
+          return numeral(val).format('0,0 $');
+        }},
+        {data: 'avef.amount', title: 'Adh AVEF', searcheable: false, render(val) {
+          return numeral(val).format('0,0 $');
+        }},
+        {data: 'snvel.amount', title: 'Adh SNVEL', searcheable: false, render(val) {
+          return numeral(val).format('0,0 $');
+        }},
+        {data: 'snvelDelegate.amount', title: 'Dél SNVEL', searcheable: false, render(val) {
+          return numeral(val).format('0,0 $');
+        }},
+        {data: 'seniorJuniorVetCcp.amount', title: 'Junior/Senior/CCP', searcheable: false, render(val) {
+          return numeral(val).format('0,0 $');
+        }},
+        {data: 'nurseDentistSmith.amount', title: 'ASV/Dentiste/Maréchal', searcheable: false, render(val) {
+          return numeral(val).format('0,0 $');
+        }},
+        {data: 'junior.amount', title: 'Junior', searcheable: false, render(val) {
+          return numeral(val).format('0,0 $');
+        }}
       ]
     }
   }, {
@@ -79,7 +97,28 @@ SharedTablesDefinition = [
       icon: 'gift',
       collection: SD.Structure.discounts.collection,
       columns: [
-        {data: 'right', title: 'Droits applicables'}
+        {data: 'right', title: 'Droits applicables'},
+        {data: 'basic', title: 'Vét', searcheable: false, render(val) {
+          return numeral(val).format('0,0 $');
+        }},
+        {data: 'avef', title: 'Adh AVEF', searcheable: false, render(val) {
+          return numeral(val).format('0,0 $');
+        }},
+        {data: 'snvel', title: 'Adh SNVEL', searcheable: false, render(val) {
+          return numeral(val).format('0,0 $');
+        }},
+        {data: 'snvelDelegate', title: 'Dél SNVEL', searcheable: false, render(val) {
+          return numeral(val).format('0,0 $');
+        }},
+        {data: 'seniorJuniorVetCcp', title: 'Junior/Senior/CCP', searcheable: false, render(val) {
+          return numeral(val).format('0,0 $');
+        }},
+        {data: 'nurseDentistSmith', title: 'ASV/Dentiste/Maréchal', searcheable: false, render(val) {
+          return numeral(val).format('0,0 $');
+        }},
+        {data: 'junior', title: 'Junior', searcheable: false, render(val) {
+          return numeral(val).format('0,0 $');
+        }}
       ]
     }
   }, {
