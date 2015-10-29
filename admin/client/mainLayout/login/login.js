@@ -17,7 +17,7 @@ Template.login.events({
         return sAlert.error(err.toString);
       }
       sAlert.success('Connexion réussie');
-      FlowRouter.go('dashboard');
+      FlowRouter.go('/dashboard');
     });
   }
 });

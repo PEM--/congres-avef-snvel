@@ -1,1 +1,7 @@
-h1 Settings
+unless Template.subscriptionsReady
+  .fadeIn
+    +spinner
+else
+  .fadeIn
+    h1 Display settings
+  

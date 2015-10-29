@@ -108,6 +108,7 @@ reload@1.1.4
 retry@1.0.4
 routepolicy@1.0.6
 rzymek:moment-locale-fr@2.9.0
+sacha:spin@2.3.1
 semantic:ui@2.1.4_5
 semantic:ui-data@2.1.4_5
 service-configuration@1.0.5
