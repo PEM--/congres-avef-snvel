@@ -1,6 +1,5 @@
 Template.dashboard.onCreated(function() {
-  this.subscribe('SubscribersAll');
-  this.subscribe('ProgramsAll');
+  this.subscribe('dasboardCollections');
 });
 
 Template.dashboard.onRendered(function() {
