@@ -21,6 +21,12 @@ body {
 
 // Typography
 .text-centered { text-align: center; }
+.text-warning {
+  color: @orange !important;
+  &::before {
+    color: @orange !important;
+  }
+}
 
 // Animate.css as class
 .fadeIn { animation: fadeIn @defaultDuration @defaultEasing; }

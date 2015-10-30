@@ -1,3 +1,19 @@
+.ui.small.basic.modal.delete-action
+  .ui.icon.header
+    i.fa.fa-trash.icon
+    | Souhaitez-vous effacer cet enregistrement ?
+  .content
+    p.text-centered
+      i.fa.fa-warning.fa-lg.text-warning
+      | Cette action est irréversible.
+  .actions
+    .ui.cancel.basic.inverted.button
+      i.fa.fa-remove.icon
+      | Non
+    .ui.approve.red.inverted.button
+      i.fa.fa-trash-o.icon
+      | Je suis sûr(e)
+
 unless Template.subscriptionsReady
   .fadeIn
     +spinner
