@@ -18,7 +18,7 @@
 
     /* Set the defaults for DataTables initialisation */
     $.extend(true, DataTable.defaults, {
-      dom: "<'row'<'col-xs-6'l><'col-xs-6'f>r>" +
+      dom: "<'inline fields'<'inline'l><'col-xs-6'f>r>" +
         "<'row'<'col-xs-12't>>" +
         "<'row'<'col-xs-6'i><'col-xs-6'p>>",
       renderer: 'bootstrap'
@@ -28,8 +28,8 @@
     /* Default class modification */
     $.extend(DataTable.ext.classes, {
       sWrapper: "dataTables_wrapper ui form",
-      sFilterInput: "inline field",
-      sLengthSelect: "inline field"
+      sFilterInput: "",
+      sLengthSelect: ""
     });
 
 
@@ -56,7 +56,7 @@
             attach(container, button);
           } else {
             btnDisplay = '';
-            btnClass = '';
+            btnClass = 'ui button';
 
             switch (button) {
               case 'ellipsis':
@@ -96,18 +96,16 @@
             }
 
             if (btnDisplay) {
-              node = $('<li>', {
-                  'class': classes.sPageButton + ' ' + btnClass,
+              node = $('<a>', {
+                  // 'class': classes.sPageButton + ' ' + btnClass,
+                  class: 'item ' + classes.sPageButton + ' ' + btnClass,
+                  href: '#',
                   'aria-controls': settings.sTableId,
                   'tabindex': settings.iTabIndex,
                   'id': idx === 0 && typeof button === 'string' ?
-                    settings.sTableId + '_' + button : null
+                    settings.sTableId + '_' + button : null,
+                  html: btnDisplay
                 })
-                .append($('<a>', {
-                    'href': '#'
-                  })
-                  .html(btnDisplay)
-                )
                 .appendTo(container);
 
               settings.oApi._fnBindAction(
@@ -121,7 +119,7 @@
       };
 
       attach(
-        $(host).empty().html('<ul class="pagination"/>').children('ul'),
+        $(host).empty().html('<div class="ui right floated pagination menu"/>').children('div.ui.pagination.menu'),
         buttons
       );
     };
@@ -134,15 +132,15 @@
     if (DataTable.TableTools) {
       // Set the classes that TableTools uses to something suitable for Bootstrap
       $.extend(true, DataTable.TableTools.classes, {
-        "container": "DTTT btn-group",
+        "container": "DTTT buttons",
         "buttons": {
-          "normal": "btn btn-default",
+          "normal": "ui button",
           "disabled": "disabled"
         },
         "collection": {
           "container": "DTTT_dropdown dropdown-menu",
           "buttons": {
-            "normal": "",
+            "normal": "ui button",
             "disabled": "disabled"
           }
         },
@@ -157,8 +155,8 @@
       // Have the collection use a bootstrap compatible drop down
       $.extend(true, DataTable.TableTools.DEFAULTS.oTags, {
         "collection": {
-          "container": "ul",
-          "button": "li",
+          "container": "div",
+          "button": "div",
           "liner": "a"
         }
       });

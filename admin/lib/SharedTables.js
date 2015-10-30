@@ -185,7 +185,7 @@ SharedTablesDefinition.forEach(def => {
       "infoEmpty": "Affiche 0 à 0 sur 0 entrées",
       "infoFiltered": "(filtré sur un total de _MAX_ entrées)",
       "infoPostFix": "",
-      "thousands": ",",
+      "thousands": " ",
       "lengthMenu": "Affiche _MENU_ entrées",
       "loadingRecords": "Chargement...",
       "processing": "Traitement...",
