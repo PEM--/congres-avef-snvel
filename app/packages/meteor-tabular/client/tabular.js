@@ -92,18 +92,52 @@ var tabularOnRendered = function () {
         data: template.tabular.data
       });
 
-      // Modify DOM for setting up a tablefooter
-      console.log('$tableElement', $tableElement);
       if ($tableElement.find('tfoot').length === 0) {
+        // Modify DOM for reformating table lengh and search
+        var $tableForm = template.$('.ui.form');
+        var $tableFields = $tableForm.find('.inline.fields');
+        var $fieldNbDisplay = $('<div class="eight wide field">/');
+        var $fieldSearch = $fieldNbDisplay.clone();
+        $tableFields
+          .prepend($fieldNbDisplay)
+          .append($fieldSearch);
+        $fieldNbDisplay.html("<label>Nombre d'entrées</label>");
+        var $tableLength = template.$('.dataTables_length');
+        var $select = $tableLength.find('select');
+        $select
+          .detach()
+          .addClass('ui dropdown')
+          .css('max-width', 80);
+        $tableLength.html($select);
+        $fieldNbDisplay.append($tableLength);
+        var $tableFilter = $tableForm.find('.dataTables_filter');
+        $tableFilter.detach();
+        var $input = $tableFilter.find('input');
+        $input
+          .detach()
+          .attr('placeholder', 'Rechercher...');
+        $tableFilter
+          .html("<div class='ui icon input'/>")
+          .css('width', '100%');
+        var $tableFilterContent = $tableFilter.find('.ui.icon.input');
+        $tableFilterContent
+          .html($input)
+          .append("<i class='icon fa fa-search'/>");
+        $fieldSearch.html($tableFilter);
+        // Modify DOM for setting up a tablefooter
         $tableElement.append(
           `<tfoot><tr><th colspan="${$tableElement.find('thead tr th').length}"></th></tr></tfoot>`
         );
-        $tfootContent = $tableElement.find('tfoot tr th');
-        console.log('$tfootContent', $tfootContent);
-        $tableInfo = template.$('.dataTables_info');
-        // $tableInfo.detach();
-        // $tfootContent.appendTo($tableInfo);
-        console.log('$tableInfo', $tableInfo);
+        var $tfootContent = $tableElement.find('tfoot tr th');
+        // Move the table info in the table footer
+        var $tableInfo = template.$('.dataTables_info');
+        $tableInfo.detach();
+        $tableInfo.addClass('ui left floated basic button');
+        $tfootContent.html($tableInfo);
+        // Move the table pagination in the table footer
+        var $paginate = template.$('.dataTables_paginate');
+        $paginate.detach();
+        $tfootContent.append($paginate);
       }
     }
   };
