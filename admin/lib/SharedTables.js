@@ -173,8 +173,35 @@ SharedTablesDefinition.forEach(def => {
     allow(userId) { return Roles.userIsInRole(userId, 'admin'); },
     collection: def.conf.collection,
     extraFields: def.conf.extraFields ? def.conf.extraFields : [],
-    columns: def.conf.columns,
-    stateSave: true
+    columns: def.conf.columns.concat({
+      data: '_id', title: 'Actions',
+      tmpl: Meteor.isClient && Template.tableItem, searcheable: false
+    }),
+    stateSave: true,
+    language: {
+      "decimal": "",
+      "emptyTable": "Aucune information disponible",
+      "info": "Affiche _START_ à _END_ sur _TOTAL_ entrées",
+      "infoEmpty": "Affiche 0 à 0 sur 0 entrées",
+      "infoFiltered": "(filtré sur un total de _MAX_ entrées)",
+      "infoPostFix": "",
+      "thousands": ",",
+      "lengthMenu": "Affiche _MENU_ entrées",
+      "loadingRecords": "Chargement...",
+      "processing": "Traitement...",
+      "search": "Rechercher :",
+      "zeroRecords": "Aucun résultat trouvé",
+      "paginate": {
+        "first": "Premier",
+        "last": "Dernier",
+        "next": "Suivant",
+        "previous": "Précédant"
+      },
+      "aria": {
+        "sortAscending": " : activer le tri ascendant de la colonne",
+        "sortDescending": " : activer le tri descendant de la colonne"
+      }
+    }
   });
   console.log('Tabular declared', def.name);
 });
