@@ -1,4 +1,5 @@
 Template.collectionItem.onCreated(function() {
+  this.dataAvailable = new ReactiveVar(false);
   this.autorun(() => {
     const currentRoute = Session.get('collectionRoute');
     const currentDocument = Session.get('documentRoute');
@@ -15,17 +16,20 @@ Template.collectionItem.onCreated(function() {
     this.subscribe('uniqueItem', currentDocument, currentRoute, {
       onReady: () => {
         console.log('Subscription done');
-        this.data = this.routeDef.conf.collection.findOne(currentDocument);
+        this.document = this.routeDef.conf.collection.findOne(currentDocument);
         if (!this.data) {
           console.warn('Document invalide', currentRoute, currentDocument);
           sAlert.error('Document invalide');
           return FlowRouter.go('/dashboard');
         }
+        this.dataAvailable.set(true);
       },
       onStop: () => {
-        console.warn('Subscription stopped', currentRoute, currentDocument);
-        sAlert.error('Document invalide');
-        return FlowRouter.go('/dashboard');
+        if (!this.dataAvailable.get()) {
+          console.warn('Subscription stopped', currentRoute, currentDocument);
+          sAlert.error('Document invalide');
+          return FlowRouter.go('/dashboard');
+        }
       }
     });
   });
@@ -34,7 +38,11 @@ Template.collectionItem.onCreated(function() {
 Template.collectionItem.helpers({
   dataAvailable() {
     const instance = Template.instance();
-    console.log('Data available ?', instance);
-    return instance.routeDef && instance.data;
+    console.log('Data available', instance.dataAvailable.get());
+    return instance.dataAvailable.get();
+  },
+  document() {
+    const instance = Template.instance();
+    return instance.document;
   }
 });
