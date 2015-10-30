@@ -117,7 +117,6 @@
           }
         }
       };
-
       attach(
         $(host).empty().html('<div class="ui right floated pagination menu"/>').children('div.ui.pagination.menu'),
         buttons

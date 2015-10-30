@@ -10,8 +10,8 @@ Template.tabular.helpers({
 
 var tabularOnRendered = function () {
   var template = this,
-      table, resetTablePaging = false,
-      $tableElement = template.$('table');
+    table, resetTablePaging = false,
+    $tableElement = template.$('table');
 
   template.tabular = {};
   template.tabular.data = [];
@@ -92,6 +92,19 @@ var tabularOnRendered = function () {
         data: template.tabular.data
       });
 
+      // Modify DOM for setting up a tablefooter
+      console.log('$tableElement', $tableElement);
+      if ($tableElement.find('tfoot').length === 0) {
+        $tableElement.append(
+          `<tfoot><tr><th colspan="${$tableElement.find('thead tr th').length}"></th></tr></tfoot>`
+        );
+        $tfootContent = $tableElement.find('tfoot tr th');
+        console.log('$tfootContent', $tfootContent);
+        $tableInfo = template.$('.dataTables_info');
+        // $tableInfo.detach();
+        // $tfootContent.appendTo($tableInfo);
+        console.log('$tableInfo', $tableInfo);
+      }
     }
   };
 
