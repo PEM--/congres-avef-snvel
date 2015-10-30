@@ -9,6 +9,7 @@ Vagrant.configure(2) do |config|
   hosts.each do |name, ip|
     config.vm.define name do |vm|
       vm.vm.hostname = "%s" % name
+      vm.vm.memory = 1024
       # vm.vm.network "private_network", ip: ip
       vm.vm.network "public_network", bridge: "en0: Wi-Fi (AirPort)", ip: ip
       vm.vm.provider "virtualbox" do |v|
