@@ -48,24 +48,47 @@ Template.collectionItem.helpers({
 });
 
 AutoForm.hooks({
-  collectionItemUpdate: {
+  collectionItemInsertOrUpdate: {
     onSubmit(insertDoc, updateDoc, currentDoc) {
-      Meteor.call('updateDocument', updateDoc,
-        Session.get('documentRoute'), Session.get('collectionRoute'), (error) => {
+      const currentDocument = Session.get('documentRoute');
+      // Document is being updated
+      if (currentDocument !== 'new') {
+        Meteor.call('updateDocument', updateDoc,
+          Session.get('documentRoute'), Session.get('collectionRoute'), error => {
+            if (error) {
+              return this.done(error);
+            }
+            this.done();
+          }
+        );
+      // This is a new document
+      } else {
+        console.log('insertDoc', insertDoc);
+        Meteor.call('insertDocument', insertDoc, Session.get('collectionRoute'), error => {
           if (error) {
             return this.done(error);
           }
           this.done();
-        }
-      );
+        });
+      }
       return false;
     },
     onSuccess() {
-      sAlert.success('Document mis à jour');
+      const currentDocument = Session.get('documentRoute');
+      if (currentDocument !== 'new') {
+        sAlert.success('Document mis à jour');
+      } else {
+        sAlert.success('Document inséré');
+      }
       FlowRouter.go(`/dashboard/content/${Session.get('collectionRoute')}`);
     },
     onError(type, error) {
-      sAlert.error('Impossible de mettre à jour le document :', error.toString());
+      const currentDocument = Session.get('documentRoute');
+      let errorText = currentDocument !== 'new' ? 'Impossible de mettre à jour le document : ' :
+        'Impossible de créer le document : ';
+      errorText += error.toString();
+      console.warn(errorText);
+      sAlert.error(errorText);
     }
   }
 });

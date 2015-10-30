@@ -4,7 +4,7 @@ unless Template.subscriptionsReady
 else
   if dataAvailable
     .fadeIn
-      +autoForm id='collectionItemUpdate' doc=document schema=schema type='normal'
+      +autoForm id='collectionItemInsertOrUpdate' doc=document schema=schema type='normal'
         +afQuickFields
         +formCancelSubmitButtons
   else
