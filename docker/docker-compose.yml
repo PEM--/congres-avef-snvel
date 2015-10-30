@@ -12,6 +12,15 @@ server:
     - db
   environment:
     ROOT_URL: "https://192.168.1.50"
+# Admin server: NodeJS (Meteor)
+admin:
+  extends:
+    file: common.yml
+    service: admin
+  links:
+    - db
+  environment:
+    ROOT_URL: "https://192.168.1.50"
 # Front layer, static file, SSL, proxy cache: NGinx
 front:
   extends:
@@ -19,6 +28,7 @@ front:
     service: front
   links:
     - server
+    - admin
   environment:
     # Can be: dev, pre, prod
     HOST_TARGET: "dev"

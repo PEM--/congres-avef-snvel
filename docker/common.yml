@@ -21,7 +21,7 @@ server:
   ports:
     - "3000:3000"
 # Admin server: NodeJS (Meteor)
-server:
+admin:
   build: admin
   log_driver: "json-file"
   environment:
