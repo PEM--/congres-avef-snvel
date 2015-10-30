@@ -36,13 +36,7 @@ Template.collectionItem.onCreated(function() {
 });
 
 Template.collectionItem.helpers({
-  dataAvailable() {
-    const instance = Template.instance();
-    console.log('Data available', instance.dataAvailable.get());
-    return instance.dataAvailable.get();
-  },
-  document() {
-    const instance = Template.instance();
-    return instance.document;
-  }
+  dataAvailable() { return Template.instance().dataAvailable.get(); },
+  schema() { return Template.instance().routeDef.conf.schema; },
+  document() { return Template.instance().document; }
 });
