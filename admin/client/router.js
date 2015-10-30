@@ -51,6 +51,7 @@ let dashboardRoutes = FlowRouter.group({
 });
 
 Session.setDefault('collectionRoute', null);
+Session.setDefault('documentRoute', null);
 
 const connectedRoutes = [
   {route: '/', tpl: 'dashboard'},
@@ -61,6 +62,14 @@ const connectedRoutes = [
     action(params, queryParams) {
       Session.set('collectionRoute', params.collection);
       BlazeLayout.render('connectedLayout', { header: 'header', menu: 'menu', main: 'collectionTpl'});
+    }
+  },
+  {
+    route: '/content/:collection/:document',
+    action(params, queryParams) {
+      Session.set('collectionRoute', params.collection);
+      Session.set('documentRoute', params.document);
+      BlazeLayout.render('connectedLayout', { header: 'header', menu: 'menu', main: 'collectionItem'});
     }
   }
 ];
