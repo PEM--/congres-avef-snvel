@@ -33,6 +33,10 @@ Template.collectionTpl.events({
   },
   'click .csv': function(e, t) {
     e.preventDefault();
-    console.log('Extracting a CSV', e);
+    const data = this.routeDef.conf.collection.find().fetch();
+    let csv = '';
+    data.forEach(item => csv += '\n' + _.values(sub).join(';'));
+    // Automatic download of the CSV as a Blob file
+    blobDownload(csv, 'subscribers.csv', 'text/csv');
   }
 });
