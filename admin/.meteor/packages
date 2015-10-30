@@ -19,7 +19,7 @@ check
 reactive-var
 
 # Development
-coffee-script
+coffeescript
 audit-argument-checks
 mquandalle:jade
 flemay:less-autoprefixer

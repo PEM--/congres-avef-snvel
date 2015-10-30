@@ -33,10 +33,10 @@ Template.collectionTpl.events({
   },
   'click .csv': function(e, t) {
     e.preventDefault();
-    const data = this.routeDef.conf.collection.find().fetch();
+    const data = t.routeDef.conf.collection.find().fetch();
     let csv = '';
-    data.forEach(item => csv += '\n' + _.values(sub).join(';'));
+    data.forEach(item => csv += '\n' + _.values(item).join(';'));
     // Automatic download of the CSV as a Blob file
-    blobDownload(csv, 'subscribers.csv', 'text/csv');
+    blobDownload(csv, `${t.routeDef.name}.csv`, 'text/csv');
   }
 });
