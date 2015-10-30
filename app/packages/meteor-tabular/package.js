@@ -8,7 +8,7 @@ Package.describe({
 });
 
 Npm.depends({
-  datatables: '1.10.7'
+  datatables: '1.10.9'
 });
 
 Package.onUse(function(api) {
@@ -21,6 +21,8 @@ Package.onUse(function(api) {
     'templating',
     'reactive-var',
     'tracker',
+    'es5-shim',
+    'ecmascript',
     'mquandalle:jade@0.4.5'
   ]);
 
@@ -29,7 +31,7 @@ Package.onUse(function(api) {
   // before any tabular tables are rendered
   api.use(['jquery'], 'client', {weak: true});
 
-  api.use(['meteorhacks:subs-manager@1.2.0'], ['client', 'server'], {weak: true});
+  api.use(['meteorhacks:subs-manager@1.6.2'], ['client', 'server'], {weak: true});
 
   api.export('Tabular');
 
