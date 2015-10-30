@@ -6,7 +6,7 @@ else
     .fadeIn
       +autoForm id='collectionItemUpdate' doc=document schema=schema type='method-update' meteormethod='dictionaryUpdate'
         +afQuickFields
-        button.ui.button.purple(type='submit') Mettre à jour
+        +formCancelSubmitButtons
   else
     .fadeIn
       +spinner
