@@ -27,10 +27,6 @@ Template.collectionTpl.helpers({
 });
 
 Template.collectionTpl.events({
-  'click .new': function(e, t) {
-    e.preventDefault();
-    console.log('New document', e);
-  },
   'click .csv': function(e, t) {
     e.preventDefault();
     const data = t.routeDef.conf.collection.find().fetch();

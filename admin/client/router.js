@@ -77,8 +77,6 @@ const connectedRoutes = [
 const setDynamicRoutes = () => {
   connectedRoutes.forEach(route => {
     const action = route.action ? route.action : () => {
-      Session.set('collectionRoute', null);
-      Session.set('documentRoute', null);
       BlazeLayout.render('connectedLayout', { header: 'header', menu: 'menu', main: route.tpl});
     };
     dashboardRoutes.route(route.route, { action });
