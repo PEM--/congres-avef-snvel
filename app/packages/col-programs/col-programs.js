@@ -3,18 +3,27 @@ const sharedOptions = {
   name: 'Programs',
   schema: {
     programs: { type: [String], label: 'Programme(s)', min: 1, max: 8 },
-    'programs.$': { type: String, label: 'Programme', min: 2, max: 256 },
+    'programs.$': { type: String, label: 'Programme', allowedValues: ['AVEF', 'SNVEL', 'EBMS'] },
     session: { type: String, label: 'Session', min: 2, max: 256 },
     conference: { type: String, label: 'Conférence', min: 2, max: 256 },
     day: { type: String, label: 'Jour', min: 2, max: 256 },
     begin: { type: String, label: 'Début', min: 2, max: 256 },
     end: { type: String, label: 'Fin', min: 2, max: 256 },
     moderator: { type: String, label: 'Modérateur', min: 2, max: 256 },
-    speakers: { type: Array, label: 'Intervenant(s)', min: 1, max: 16 },
+    speakers: { type: [String], label: 'Intervenant(s)', min: 1, max: 16 },
     'speakers.$': { type: String, label: 'Intervenant', min: 2, max: 256 },
-    rooms: { type: Array, label: 'Salle(s)', min: 1, max: 4 },
-    'rooms.$': { type: String, label: 'Salle', min: 2, max: 256 },
-    right: { type: String, label: 'Droit', min: 2, max: 256 },
+    rooms: { type: [String], label: 'Salle(s)', min: 1, max: 4 },
+    'rooms.$': { type: String, label: 'Salle', allowedValues: [
+      'Pays-Bas', 'Amphithéatre', 'Italie', 'Espagne', 'Grèce',
+      'Rome', 'Genève', 'Liège', 'Expo commerciale', 'Dock Haussman',
+      'Terrasse Hotel', 'NA', ''
+    ]},
+    right: { type: String, label: 'Droit', min: 2, max: 256, allowedValues: [
+      'AM1', 'GdC', 'Jour1', 'TR1', 'TD1', 'TD2', 'TP1', 'TP2', 'TR2', 'TD3',
+      'TD4', 'TP3', 'TP4', 'TR3', 'TD5', 'TD6', 'TP5', 'Exhib', 'Diner', 'Jour2',
+      'TD7', 'TD8', 'TP6', 'TD9', 'TD10', 'TP7', 'TD11', 'TD12', 'TP8', 'EBMS1',
+      'EBMS2', 'EBMS3', 'EBMS4', 'EBMS5', 'EBMS6', 'EBMS7'
+    ]},
   },
   // Available subscriptions and publications
   subs: {

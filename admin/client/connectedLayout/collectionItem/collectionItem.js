@@ -38,12 +38,13 @@ Template.collectionItem.onCreated(function() {
 Template.collectionItem.helpers({
   dataAvailable() { return Template.instance().dataAvailable.get(); },
   schema() { return Template.instance().routeDef.conf.schema; },
-  document() { return Template.instance().document; }
+  document() { return Template.instance().document; },
+  method() { return 'updateDocument'; }
 });
 
-Template.collectionItem.events({
-  'submit form': function(e, t) {
-    e.preventDefault();
-    console.log('Submission prevented');
-  }
-});
+// Template.collectionItem.events({
+//   'submit form': function(e, t) {
+//     e.preventDefault();
+//     console.log('Submission prevented');
+//   }
+// });

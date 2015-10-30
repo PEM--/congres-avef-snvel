@@ -4,7 +4,7 @@ unless Template.subscriptionsReady
 else
   if dataAvailable
     .fadeIn
-      +autoForm id='collectionItemUpdate' doc=document schema=schema type='method-update' meteormethod='dictionaryUpdate'
+      +autoForm id='collectionItemUpdate' doc=document schema=schema type='method-update' meteormethod=method
         +afQuickFields
         +formCancelSubmitButtons
   else
