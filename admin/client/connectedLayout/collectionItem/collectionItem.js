@@ -40,3 +40,10 @@ Template.collectionItem.helpers({
   schema() { return Template.instance().routeDef.conf.schema; },
   document() { return Template.instance().document; }
 });
+
+Template.collectionItem.events({
+  'submit form': function(e, t) {
+    e.preventDefault();
+    console.log('Submission prevented');
+  }
+});
