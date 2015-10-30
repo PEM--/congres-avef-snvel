@@ -20,7 +20,7 @@ const UserSubscriberSharedSchema = new SimpleSchema({
   products: {type: Array, optional: true, label: 'Produits'},
   'products.$': {type: String, optional: true, label: 'Produit'},
   paymentType: {type: String, optional: true, label: 'Type de paiement', allowedValues: ['check', 'card']},
-  checkNumner: {type: String, label: 'N° de chèque', optional: true},
+  checkNumber: {type: String, label: 'N° de chèque', optional: true},
   paymentAccepted: {type: Boolean, label: 'Paiement validé', optional: true},
   paymentDate: {type: Date, label: 'Date du paiement', optional: true},
   braintreeCustomerId: {type: String, optional: true, label: 'Indentifiant de paiement Braintree'},

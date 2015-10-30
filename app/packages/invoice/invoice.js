@@ -32,14 +32,14 @@ SD.Utils.renderInvoice = (prices, discounts, totalHT, totalTTC) => {
 
 // Schema of expected invoice information
 SD.Structure.InvoiceSchema = new SimpleSchema({
-  prices: {type: Array, label: 'Prix facturés', min: 1, max: 256},
-  'prices.$': {type: Object, label: 'Prix facturé', min: 1, max: 256},
-  'prices.$.designation': {type: String, label: 'Désignation'},
-  'prices.$.value': {type: Number, label: 'Valeur en € HT', min: 0, max: 1000},
-  discounts: {type: Array, label: 'Remises appliquées', min: 0, max: 256},
-  'discounts.$': {type: Object, label: 'Prix facturé'},
-  'discounts.$.designation': {type: String, label: 'Remise appliquée'},
-  'discounts.$.value': {type: Number, label: 'Valeur en € HT', min: 0, max: 1000},
-  totalHT: {type: Number, label: 'Montant total en € HT', min: 0, max: 10000},
-  totalTTC: {type: Number, label: 'Montant total en € TTC', min: 0, max: 10000}
+  prices: {type: Array, label: 'Prix facturés', min: 1, max: 256, optional: true},
+  'prices.$': {type: Object, label: 'Prix facturé', min: 1, max: 256, optional: true},
+  'prices.$.designation': {type: String, label: 'Désignation', optional: true},
+  'prices.$.value': {type: Number, label: 'Valeur en € HT', min: 0, max: 1000, optional: true},
+  discounts: {type: Array, label: 'Remises appliquées', min: 0, max: 256, optional: true},
+  'discounts.$': {type: Object, label: 'Prix facturé', optional: true},
+  'discounts.$.designation': {type: String, label: 'Remise appliquée', optional: true},
+  'discounts.$.value': {type: Number, label: 'Valeur en € HT', min: 0, max: 1000, optional: true},
+  totalHT: {type: Number, label: 'Montant total en € HT', min: 0, max: 10000, optional: true},
+  totalTTC: {type: Number, label: 'Montant total en € TTC', min: 0, max: 10000, optional: true}
 });
