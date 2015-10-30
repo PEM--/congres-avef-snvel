@@ -3,6 +3,7 @@ unless Template.subscriptionsReady
     +spinner
 else
   .fadeIn
-    //+autoForm id='collectionItemUpdate' doc=data schema=schema type='method-update' meteormethod='dictionaryUpdate'
-      +afQuickFields
-      button.ui.button.purple(type='submit') Mettre à jour
+    if dataAvailable
+      //+autoForm id='collectionItemUpdate' doc=data schema=schema type='method-update' meteormethod='dictionaryUpdate'
+        +afQuickFields
+        button.ui.button.purple(type='submit') Mettre à jour

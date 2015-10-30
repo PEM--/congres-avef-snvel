@@ -7,6 +7,7 @@ Template.collectionTpl.onRendered(function() {
     if (!this.routeDef) {
       console.warn('Adresse invalide', currentRoute);
       sAlert.error('Adresse invalide');
+      return FlowRouter.go('/dashboard');
     }
     const title = this.routeDef.conf.title;
     $('.main-title').children().text(title);
