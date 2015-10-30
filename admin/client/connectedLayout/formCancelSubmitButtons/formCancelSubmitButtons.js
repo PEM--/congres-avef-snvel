@@ -5,5 +5,8 @@ Template.formCancelSubmitButtons.helpers({
       return `/dashboard/content/${currentRoute}`;
     }
     return '/dashboard/';
+  },
+  isModify: function() {
+    return Session.get('documentRoute') !== 'new';
   }
 });

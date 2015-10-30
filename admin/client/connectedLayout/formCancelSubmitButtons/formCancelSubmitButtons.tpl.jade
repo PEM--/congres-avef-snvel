@@ -4,6 +4,10 @@
       i.fa.fa-remove.icon
       | Annuler
     button.ui.icon.button.purple(type='submit')
-      i.fa.fa-check.icon
-      | Mettre à jour
+      if isModify
+        i.fa.fa-check.icon
+        | Mettre à jour
+      else
+        i.fa.fa-plus-circle.icon
+        | Ajouter le document
   

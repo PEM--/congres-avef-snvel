@@ -124,6 +124,7 @@ spacedrop:subscription-cache@0.0.1
 srp@1.0.4
 standard-minifiers@1.0.2
 tap:i18n@1.7.0
+tauruscolvin:papaparse@4.2.1
 templating@1.1.5
 templating-tools@1.0.0
 tomwasd:flow-router-autoscroll@0.0.2

@@ -44,6 +44,7 @@ aldeed:autoform
 dburles:collection-helpers
 fabienb4:autoform-semantic-ui
 percolate:migrations
+tauruscolvin:papaparse
 spacedrop:namespaces
 pierreeric:col-users-and-roles
 pierreeric:col-basicpages

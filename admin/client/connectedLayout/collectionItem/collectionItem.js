@@ -13,25 +13,31 @@ Template.collectionItem.onCreated(function() {
     }
     const title = this.routeDef.conf.title;
     $('.main-title').children().text(title);
-    this.subscribe('uniqueItem', currentDocument, currentRoute, {
-      onReady: () => {
-        console.log('Subscription done');
-        this.document = this.routeDef.conf.collection.findOne(currentDocument);
-        if (!this.data) {
-          console.warn('Document invalide', currentRoute, currentDocument);
-          sAlert.error('Document invalide');
-          return FlowRouter.go('/dashboard');
+    // Document is being updated
+    if (currentDocument !== 'new') {
+      this.subscribe('uniqueItem', currentDocument, currentRoute, {
+        onReady: () => {
+          console.log('Subscription done');
+          this.document = this.routeDef.conf.collection.findOne(currentDocument);
+          if (!this.data) {
+            console.warn('Document invalide', currentRoute, currentDocument);
+            sAlert.error('Document invalide');
+            return FlowRouter.go('/dashboard');
+          }
+          this.dataAvailable.set(true);
+        },
+        onStop: () => {
+          if (!this.dataAvailable.get()) {
+            console.warn('Subscription stopped', currentRoute, currentDocument);
+            sAlert.error('Document invalide');
+            return FlowRouter.go('/dashboard');
+          }
         }
-        this.dataAvailable.set(true);
-      },
-      onStop: () => {
-        if (!this.dataAvailable.get()) {
-          console.warn('Subscription stopped', currentRoute, currentDocument);
-          sAlert.error('Document invalide');
-          return FlowRouter.go('/dashboard');
-        }
-      }
-    });
+      });
+    // This is a new document
+    } else {
+      this.dataAvailable.set(true);
+    }
   });
 });
 

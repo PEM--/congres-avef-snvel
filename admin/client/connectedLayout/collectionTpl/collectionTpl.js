@@ -23,6 +23,9 @@ Template.collectionTpl.helpers({
   sharedTable() {
     const instance = Template.instance();
     return SharedTables[instance.routeDef.name];
+  },
+  newDocUrl() {
+    return `/dashboard/content/${Session.get('collectionRoute')}/new`;
   }
 });
 
