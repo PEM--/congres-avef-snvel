@@ -19,5 +19,13 @@ unless Template.subscriptionsReady
     +spinner
 else
   .fadeIn
+    .two.ui.buttons
+      button.ui.icon.button.green.new
+        i.fa.fa-plus-circle.icon
+        | Ajouter un nouveau document
+      button.ui.icon.button.purple.csv
+        i.fa.fa-table.icon
+        | Extraire la liste des documents
+    .ui.divider
     if tableAvailable
       +tabular table=sharedTable class="ui fixed single line celled striped table"

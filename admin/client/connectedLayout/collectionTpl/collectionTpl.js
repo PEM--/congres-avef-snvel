@@ -25,3 +25,14 @@ Template.collectionTpl.helpers({
     return SharedTables[instance.routeDef.name];
   }
 });
+
+Template.collectionTpl.events({
+  'click .new': function(e, t) {
+    e.preventDefault();
+    console.log('New document', e);
+  },
+  'click .csv': function(e, t) {
+    e.preventDefault();
+    console.log('Extracting a CSV', e);
+  }
+});
