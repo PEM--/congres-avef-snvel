@@ -38,13 +38,28 @@ Template.collectionItem.onCreated(function() {
 Template.collectionItem.helpers({
   dataAvailable() { return Template.instance().dataAvailable.get(); },
   schema() { return Template.instance().routeDef.conf.schema; },
-  document() { return Template.instance().document; },
-  method() { return 'updateDocument'; }
+  document() { return Template.instance().document; }
 });
 
-// Template.collectionItem.events({
-//   'submit form': function(e, t) {
-//     e.preventDefault();
-//     console.log('Submission prevented');
-//   }
-// });
+AutoForm.hooks({
+  collectionItemUpdate: {
+    onSubmit(insertDoc, updateDoc, currentDoc) {
+      Meteor.call('updateDocument', updateDoc,
+        Session.get('documentRoute'), Session.get('collectionRoute'), (error) => {
+          if (error) {
+            return this.done(error);
+          }
+          this.done();
+        }
+      );
+      return false;
+    },
+    onSuccess() {
+      sAlert.success('Document mis à jour');
+      FlowRouter.go(`/dashboard/content/${Session.get('collectionRoute')}`);
+    },
+    onError(type, error) {
+      sAlert.error('Impossible de mettre à jour le document :', error.toString());
+    }
+  }
+});
