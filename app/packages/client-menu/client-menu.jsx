@@ -49,11 +49,14 @@ class SignonSignoffItem extends Component {
 
 // Admin access item
 class AdminAccessIem extends Component {
+  leaveApplication() {
+    window.location = '/admin';
+  }
   render() {
-    const { closeMenu, isAdminUser } = this.props;
+    const { isAdminUser } = this.props;
     const disableClass = isAdminUser ? '' : 'disabled';
     return (
-      <a href='/admin' onClick={closeMenu} className={`item ${disableClass}`}>
+      <a href='/admin' onClick={this.leaveApplication} className={`item ${disableClass}`}>
         <i className='fa fa-cogs'></i>
         <span className='readability-black'>Administration</span>
       </a>

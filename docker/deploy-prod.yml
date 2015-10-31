@@ -6,24 +6,36 @@ db:
     service: db
   restart: always
 # Application server: NodeJS (Meteor)
-server:
-  image: pemarchandet/meteor-congres-avef-snvel:v1.2.0
+appserver:
+  image: pemarchandet/appserver-congres-avef-snvel:v2.0.0
   extends:
     file: common.yml
-    service: server
+    service: appserver
   links:
     - db
   environment:
     ROOT_URL: "https://congres-avef-snvel.fr"
   restart: always
+# Admin server: NodeJS (Meteor)
+adminserver:
+  image: pemarchandet/adminserver-congres-avef-snvel:v2.0.0
+  extends:
+    file: common.yml
+    service: adminserver
+  links:
+    - db
+  environment:
+    ROOT_URL: "https://congres-avef-snvel.fr/admin"
+  restart: always
 # Front layer, static file, SSL, proxy cache: NGinx
 front:
-  image: pemarchandet/nginx-congres-avef-snvel:v1.2.0
+  image: pemarchandet/nginx-congres-avef-snvel:v2.0.0
   extends:
     file: common.yml
     service: front
   links:
-    - server
+    - appserver
+    - adminserver
   environment:
     # Can be: dev, pre, prod
     HOST_TARGET: "prod"
