@@ -27,6 +27,7 @@ flemay:less-autoprefixer
 
 # Routing
 kadira:flow-router
+arillo:flow-router-helpers
 kadira:blaze-layout
 tomwasd:flow-router-autoscroll
 

@@ -7,8 +7,8 @@ db:
   expose:
     - "27017"
 # Application server: NodeJS (Meteor)
-server:
-  build: meteor
+appserver:
+  build: appserver
   log_driver: "json-file"
   environment:
     MONGO_URL: "mongodb://db:27017"
@@ -16,13 +16,14 @@ server:
     PORT: 3000
   volumes:
     - /etc/meteor:/etc/meteor
-  ports:
-    - "3000:3000"
-  # expose:
-  #   - "3000"
+  # Debug only
+  # ports:
+  #   - "3000:3000"
+  expose:
+    - "3000"
 # Admin server: NodeJS (Meteor)
-admin:
-  build: admin
+adminserver:
+  build: adminserver
   log_driver: "json-file"
   environment:
     MONGO_URL: "mongodb://db:27017"
@@ -30,10 +31,11 @@ admin:
     PORT: 3010
   volumes:
     - /etc/meteor:/etc/meteor
-  ports:
-    - "3010:3010"
-  # expose:
-  #   - "3010"
+  # Debug only
+  # ports:
+  #   - "3010:3010"
+  expose:
+    - "3010"
 # Front layer, static file, SSL, proxy cache: NGinx
 front:
   log_driver: "json-file"
@@ -45,3 +47,4 @@ front:
   ports:
     - "80:80"
     - "443:443"
+    - "3010:3010"

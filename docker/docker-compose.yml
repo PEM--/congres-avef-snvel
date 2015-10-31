@@ -4,31 +4,31 @@ db:
     file: common.yml
     service: db
 # Application server: NodeJS (Meteor)
-server:
+appserver:
   extends:
     file: common.yml
-    service: server
+    service: appserver
   links:
     - db
   environment:
     ROOT_URL: "https://192.168.1.50"
 # Admin server: NodeJS (Meteor)
-admin:
+adminserver:
   extends:
     file: common.yml
-    service: admin
+    service: adminserver
   links:
     - db
   environment:
-    ROOT_URL: "https://192.168.1.50"
+    ROOT_URL: "https://192.168.1.50/admin"
 # Front layer, static file, SSL, proxy cache: NGinx
 front:
   extends:
     file: common.yml
     service: front
   links:
-    - server
-    - admin
+    - appserver
+    - adminserver
   environment:
     # Can be: dev, pre, prod
     HOST_TARGET: "dev"
