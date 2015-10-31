@@ -1,4 +1,4 @@
-a.item(href='/dashboard/settings')
+a.item(href="{{pathFor '/dashboard/settings'}}")
   i.fa.fa-gears
   span Réglages
 .item.menu
@@ -9,6 +9,6 @@ a.item(href='/dashboard/settings')
   .active.content.menu
     +each collections
       +menuCollectionItem item=this
-//a.item(href='/dashboard/monitor')
-  i.fa.fa-heartbeat
-  span Statut système
+//- a.item(href="{{pathFor '/dashboard/monitor'}}")
+//-   i.fa.fa-heartbeat
+//-   span Statut système

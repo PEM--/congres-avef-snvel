@@ -25,7 +25,7 @@ Template.collectionTpl.helpers({
     return SharedTables[instance.routeDef.name];
   },
   newDocUrl() {
-    return `/dashboard/content/${Session.get('collectionRoute')}/new`;
+    return FlowRouter.path(`/dashboard/content/${Session.get('collectionRoute')}/new`);
   }
 });
 

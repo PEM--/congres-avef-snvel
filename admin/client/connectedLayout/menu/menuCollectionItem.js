@@ -1,7 +1,7 @@
 Template.menuCollectionItem.helpers({
   href() {
     const instance = Template.instance();
-    return `/dashboard/content/${instance.data.item.name.toLowerCase()}`;
+    return FlowRouter.path(`/dashboard/content/${instance.data.item.name.toLowerCase()}`);
   },
   className() {
     const instance = Template.instance();

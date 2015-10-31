@@ -4,7 +4,7 @@ Template.header.onRendered(function() {
 
 Template.header.helpers({
   profileUrl() {
-    return `/dashboard/content/users/${Meteor.userId()}`;
+    return FlowRouter.path(`/dashboard/content/users/${Meteor.userId()}`);
   },
   email() {
     const user = Meteor.user();

@@ -40,7 +40,7 @@ pierreeric:security
 #meteorhacks:kadira-profiler
 
 # WPO & Meteor optimizations
-appcache
+#appcache
 
 # CSS
 fortawesome:fontawesome
