@@ -18,7 +18,7 @@ Package.onUse(function(api) {
     'pierreeric:client-menu',
     'pierreeric:client-footer',
     'blaze-html-templates',
-    'kadira:dochead@1.3.0',
+    'kadira:dochead@1.3.2',
     'pierreeric:logger',
     'pierreeric:col-dictionary',
     'pierreeric:col-sociallinks'

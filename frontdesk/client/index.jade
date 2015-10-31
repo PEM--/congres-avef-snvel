@@ -1,6 +1,10 @@
 head
   title Test
 body
+  +ionBody
+    +ionNavBar
+    +ionNavView
+      +yield
 
 template(name='home')
   h1 Crosswalk added!
@@ -8,5 +12,6 @@ template(name='home')
   h2 Yes, it works with hot code push
   h2 With foreign packages.
   h2 With Cordova plugins?
-  h3 Step 1
+  h3 Step 1: MDG plugins
   button.photo Photo
+  h3 Step 2: Cordova plugins?
