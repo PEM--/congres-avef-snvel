@@ -98,6 +98,7 @@ pierreeric:internationalization@0.0.1
 pierreeric:invoice@0.0.1
 pierreeric:logger@0.1.0
 pierreeric:markdown@0.0.1
+pierreeric:qr-user-images@0.0.1
 pierreeric:routing-start@0.0.1
 pierreric:tabular-semanticui@1.4.2
 promise@0.5.1

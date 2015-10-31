@@ -24,7 +24,8 @@ const UserSubscriberSharedSchema = new SimpleSchema({
   paymentAccepted: {type: Boolean, label: 'Paiement validé', optional: true},
   paymentDate: {type: Date, label: 'Date du paiement', optional: true},
   braintreeCustomerId: {type: String, optional: true, label: 'Indentifiant de paiement Braintree'},
-  invoice: {type: SD.Structure.InvoiceSchema, optional: true }
+  invoice: {type: SD.Structure.InvoiceSchema, optional: true },
+  qrImage: {type: String, optional: true, label: 'QR code'}
 });
 
 SD.Structure.UserSubscriberSharedSchema = UserSubscriberSharedSchema;

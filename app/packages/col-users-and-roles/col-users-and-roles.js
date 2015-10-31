@@ -14,46 +14,23 @@ SD.Structure.AvailableRoles = AvailableRoles;
 
 // Schema for client and server
 SD.Structure.SchemaUser = new SimpleSchema({
-  emails: {
-    type: [Object],
-    label: 'Emails'
-  },
+  emails: {type: [Object], label: 'Emails'},
   'emails.$.address': {
     type: String,
     label: 'Email',
     regEx: SimpleSchema.RegEx.Email
   },
-  'emails.$.verified': {
-    type: Boolean,
-    label: 'Email vérifié'
-  },
-  createdAt: {
-    type: Date,
-    label: 'Créé le',
-    defaultValue: new Date()
-  },
-  modifiedAt: {
-    type: Date,
-    label: 'Modifié le',
-    defaultValue: new Date()
-  },
+  'emails.$.verified': {type: Boolean, label: 'Email vérifié'},
+  createdAt: {type: Date, label: 'Créé le', defaultValue: new Date()},
+  modifiedAt: {type: Date, label: 'Modifié le', defaultValue: new Date() },
   services: {
     type: Object,
     label: 'Services d\'authentification',
     optional: true,
     blackbox: true
   },
-  roles: {
-    type: [String],
-    label: 'Rôles',
-    optional: true,
-    defaultValue: ['public']
-  },
-  lastConnection: {
-    type: Date,
-    label: 'Dernière connexion réalisée le',
-    defaultValue: new Date()
-  },
+  roles: { type: [String], label: 'Rôles', optional: true, defaultValue: ['public']},
+  lastConnection: {type: Date, label: 'Dernière connexion réalisée le', defaultValue: new Date()},
   profile: {
     type: SD.Structure.UserSubscriberSharedSchema,
     label: 'Information utilisateur',
@@ -66,16 +43,8 @@ log.info('Schema defined');
 
 // A reduced Schema for Login validation purpose
 LoginSchema = new SimpleSchema({
-  email: {
-    label: 'Email',
-    type: String,
-    regEx: SimpleSchema.RegEx.Email
-  },
-  password: {
-    label: 'Mot de passe',
-    type: String,
-    min: 7, max: 256
-  }
+  email: {label: 'Email', type: String, regEx: SimpleSchema.RegEx.Email},
+  password: {label: 'Mot de passe', type: String, min: 7, max: 256}
 });
 
 SD.Structure.LoginSchema = LoginSchema;
