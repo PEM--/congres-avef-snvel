@@ -19,7 +19,7 @@ MainController = RouteController.extend({
 
 if (Meteor.isClient) {
   Meteor.startup(function() {
-    Router.go('/frontdesk');
+    Router.go('home');
   });
 }
 

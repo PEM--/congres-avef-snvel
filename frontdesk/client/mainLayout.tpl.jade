@@ -1,11 +1,14 @@
 // Sidebar
 ul#slide-out.side-nav
-  li: a.text-white(href='/frontdesk')
-    i.fa.fa-lock.orange-text
-  li: a.text-white(href='/frontdesk/session')
-    i.fa.fa-calendar.orange-text
-  li: a.text-white(href='/frontdesk/checkin')
-    i.fa.fa-tag.orange-text
+  li: a.text-white(class="{{isActiveRoute 'home'}}", href="{{pathFor 'home'}}")
+    i.fa.fa-lock.fa-lg.orange-text
+    span Connexion
+  li: a.text-white(class="{{isActiveRoute 'session'}}", href="{{pathFor 'session'}}")
+    i.fa.fa-calendar.fa-lg.orange-text
+    span Session
+  li: a.text-white(class="{{isActiveRoute 'checkin'}}", href="{{pathFor 'checkin'}}")
+    i.fa.fa-tag.fa-lg.orange-text
+    span Enregistrement
 // Main content
 .main-content.orange.lighten-3
   // Upper bar
