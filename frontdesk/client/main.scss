@@ -76,3 +76,16 @@ $defaultEasing: ease-in-out;
 .fadeIn { animation: fadeIn $defaultDuration $defaultEasing; }
 .fadeInUp { animation: fadeInUp $defaultDuration $defaultEasing; }
 .fadeInDown { animation: fadeInDown $defaultDuration $defaultEasing; }
+
+// Logout screen
+.logout-content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  a.logout {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+  }
+}

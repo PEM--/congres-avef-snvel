@@ -1,2 +1,9 @@
-.content.fadeInUp
-  +atForm state='signUp'
+.content
+  if isConnected
+    .fadeInUp
+      +atForm
+  else
+    .fadeInUp: .logout-content
+      a.waves-effect.waves-light.btn.logout
+        i.fa.fa-sign-out.fa-lg
+        | Je me déconnecte
