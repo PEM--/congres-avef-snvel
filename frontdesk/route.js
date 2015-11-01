@@ -21,5 +21,18 @@ if (Meteor.isClient) {
 
 // Accounts configuration
 AccountsTemplates.configure({ defaultLayout: 'mainLayout' });
+AccountsTemplates.configureRoute('signIn', {
+  path: '/frontdesk/sign-in',
+  redirect() { if (Meteor.user()) { Router.go('session'); } }
+});
+AccountsTemplates.configureRoute('signUp', {
+  path: '/frontdesk/sign-up',
+  redirect() { if (Meteor.user()) { Router.go('session'); } }
+});
 // Prevent routing when not connected except on login (home)
-Router.plugin('ensureSignedIn', { except: ['home'] });
+Router.plugin('ensureSignedIn', { except: ['home', 'signIn', 'signUp'] });
+// Alerts on Login success or failure
+if (Meteor.isClient) {
+  Accounts.onLogin(function() { sAlert.success('Identification réussie'); });
+  Accounts.onLoginFailure(function() { sAlert.error('Problème d\'identification'); });
+}

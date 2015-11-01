@@ -127,6 +127,23 @@ FlowRouter.route(`/${ROUTE_NAME}`, {
   }
 });
 
+// Client side only
+if (Meteor.isClient) {
+  // When user logged in, we go back to the previous URL, he was visiting.
+  Accounts.onLogin(function() {
+    const path = FlowRouter.current().path;
+    log.debug('Historizing current URL before login', path);
+    // If user was visiting the login page directly, we orient it on the home page
+    if (path === '/login') {
+      FlowRouter.go('/');
+    }
+  });
+  Accounts.onEmailVerificationLink(function(token, done) {
+    logger.info('Received confirmation', token);
+    done();
+  });
+}
+
 if (Meteor.isServer) {
   log.info(`Route ${ROUTE_NAME} declared`);
 }

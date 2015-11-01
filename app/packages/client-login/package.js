@@ -10,6 +10,7 @@ Package.onUse(function(api) {
   // Dependencies for server and client
   api.use([
     'accounts-base',
+    'accounts-password',
     'kadira:react-layout@1.5.2',
     'pierreeric:basereactmeteor',
     'pierreeric:routing-start',
