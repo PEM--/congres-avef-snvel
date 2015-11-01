@@ -14,7 +14,7 @@ $secondary-color: color("orange", "darken-1") !default;
 $success-color: color("green", "base") !default;
 $error-color: color("red", "base") !default;
 
-$link-color: color("light-blue", "darken-1") !default;
+$link-color: $secondary-color !default;
 
 // import main scss file
 @import "{poetic:materialize-scss}/bower_components/materialize/sass/materialize.scss";

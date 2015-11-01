@@ -1,11 +1,7 @@
-Router.configure({
-  fastRender: true
-});
+Router.configure({ fastRender: true });
 
 // Create a global router controller
-MainController = RouteController.extend({
-  layoutTemplate: 'mainLayout',
-});
+MainController = RouteController.extend({ layoutTemplate: 'mainLayout' });
 
 // Routes working on the MainController
 [
@@ -23,6 +19,7 @@ if (Meteor.isClient) {
   });
 }
 
-AccountsTemplates.configure({
-  defaultLayout: 'mainLayout',
-});
+// Accounts configuration
+AccountsTemplates.configure({ defaultLayout: 'mainLayout' });
+// Prevent routing when not connected except on login (home)
+Router.plugin('ensureSignedIn', { except: ['home'] });
