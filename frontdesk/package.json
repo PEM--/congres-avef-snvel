@@ -1,0 +1,6 @@
+{
+  "name": "frontdeskserver",
+  "scripts": {
+    "start": "env MOGO_URL=mongodb://localhoast:3001/meteor meteor run android-device --port 3500 --settings dev.json"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "appserver",
+  "scripts": {
+    "start": "meteor --settings dev.json"
+  }
+}

@@ -36,6 +36,21 @@ adminserver:
   #   - "3010:3010"
   expose:
     - "3010"
+# FrontDesk server: NodeJS (Meteor)
+frontdeskserver:
+  build: frontdeskserver
+  log_driver: "json-file"
+  environment:
+    MONGO_URL: "mongodb://db:27017"
+    MONGO_OPLOG_URL: "mongodb://db:27017/local"
+    PORT: 3020
+  volumes:
+    - /etc/meteor:/etc/meteor
+  # Debug only
+  # ports:
+  #   - "3020:3020"
+  expose:
+    - "3020"
 # Front layer, static file, SSL, proxy cache: NGinx
 front:
   log_driver: "json-file"
