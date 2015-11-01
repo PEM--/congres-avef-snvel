@@ -1,5 +1,20 @@
 @import "{poetic:materialize-scss}/bower_components/materialize/sass/components/_color.scss";
+
+// Overrde Material default theme
 $primary-color: color("purple", "darken-3");
+$primary-color-light: false !default;
+$primary-color-dark: false !default;
+@if not $primary-color-light {
+  $primary-color-light: lighten($primary-color, 15%);
+}
+@if not $primary-color-dark {
+  $primary-color-dark: darken($primary-color, 15%);
+}
+$secondary-color: color("orange", "darken-1") !default;
+$success-color: color("green", "base") !default;
+$error-color: color("red", "base") !default;
+
+$link-color: color("light-blue", "darken-1") !default;
 
 // import main scss file
 @import "{poetic:materialize-scss}/bower_components/materialize/sass/materialize.scss";
@@ -46,6 +61,14 @@ ul#slide-out.side-nav {
     pointer-events: none;
   }
 }
+
+// Typography
+h1 { font-size: 1.9em; }
+h2 { font-size: 1.7em; }
+h3 { font-size: 1.5em; }
+h4 { font-size: 1.3em; }
+h5 { font-size: 1.2em; }
+h6 { font-size: 1.1em; }
 
 // Simple animation transitions
 $defaultDuration: .3s;
