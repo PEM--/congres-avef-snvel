@@ -1,6 +1,8 @@
 {
   "name": "adminserver",
   "scripts": {
-    "start": "env MONGO_URL=mongodb://localhost:3001/meteor meteor --port 2500 --settings dev.json"
+    "start": "env MONGO_URL=mongodb://localhost:3001/meteor meteor --port 2500 --settings dev.json",
+    "build": "meteor build --architecture os.linux.x86_64 --directory ../docker/adminserver/",
+    "clean": "rm -rf ../docker/adminserver/bundle"
   }
 }

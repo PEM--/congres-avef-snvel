@@ -1,6 +1,8 @@
 {
   "name": "appserver",
   "scripts": {
-    "start": "meteor --settings dev.json"
+    "start": "meteor --settings dev.json",
+    "build": "meteor build --architecture os.linux.x86_64 --directory ../docker/appserver/",
+    "clean": "rm -rf ../docker/appserver/bundle"
   }
 }
