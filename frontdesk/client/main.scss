@@ -21,14 +21,14 @@ $link-color: $secondary-color !default;
 
 body, html {
   background: color("orange", "lighten-5");
-  height: 100%;
+  // height: 100%;
 }
 .main-content {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;
@@ -37,15 +37,27 @@ body, html {
     flex-grow: 0;
     flex-shrink: 0;
   }
-  main {
+  .content-and-footer {
     flex-grow: 1;
     flex-shrink: 0;
     background: color("orange", "lighten-3");
     color: $primary-color;
-  }
-  footer {
-    flex-grow: 0;
-    flex-shrink: 0;
+    position: relative;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 100%;
+    max-height: calc(100vh - 64px);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    main {
+      flex-grow: 1;
+      flex-shrink: 0;
+    }
+    footer {
+      flex-grow: 0;
+      flex-shrink: 0;
+    }
   }
 }
 

@@ -18,19 +18,20 @@ ul#slide-out.side-nav
       ul.right.hide-on-med-and-down
       a.button-collapse(href='#', data-activates='slide-out')
         i.material-icons menu
-  // Content for each page
-  main.container
-    .section
-      .row
-        .col.s12.center.orange.lighten-3
-          +yield
-  // Footer
-  footer.page-footer.orange.fadeInUp
-    .container
-      .row
-        .col.s12
-          h6.white-text Congrès 2015 - AVEF - SNVEL
-    .footer-copyright
+  .content-and-footer
+    // Content for each page
+    main.container
+      .section
+        .row
+          .col.s12.center.orange.lighten-3
+            +yield
+    // Footer
+    footer.page-footer.orange.fadeInUp
       .container
-        | Créer par
-        a.orange-text.text-darken-4(href='http://pem-musing.blogspot.fr/') Pierre-Eric Marchandet
+        .row
+          .col.s12
+            h6.white-text Congrès 2015 - AVEF - SNVEL
+      .footer-copyright
+        .container
+          | Créer par
+          a.orange-text.text-darken-4(href='http://pem-musing.blogspot.fr/') Pierre-Eric Marchandet
