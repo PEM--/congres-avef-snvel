@@ -29,6 +29,7 @@ iron:layout
 
 # CSS
 fourseven:scss
+fortawesome:fontawesome
 poetic:materialize-scss
 
 # Accounts
