@@ -1,0 +1,33 @@
+@import "{poetic:materialize-scss}/bower_components/materialize/sass/components/_color.scss";
+$primary-color: color("purple", "darken-3");
+
+// import main scss file
+@import "{poetic:materialize-scss}/bower_components/materialize/sass/materialize.scss";
+
+body, html {
+  background: color("orange", "lighten-3");
+  height: 100%;
+}
+main {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  background: red;
+  nav {
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+  >div {
+    flex-grow: 1;
+    flex-shrink: 0;
+  }
+  footer {
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+}

@@ -28,13 +28,21 @@ iron:router
 iron:layout
 
 # CSS
-fourseven:scss@2.0.0
-meteoric:ionic-sass
-meteoric:ionicons-sass
-meteoric:ionic
-#meteoric:autoform-ionic
+fourseven:scss
+poetic:materialize-scss
+
+# Accounts
+#useraccounts:iron-routing
+#useraccounts:materialize
+
+# Collections
+aldeed:simple-schema
+aldeed:collection2
+aldeed:autoform
+gildaspk:autoform-materialize
 
 # Utils
+meteorhacks:fast-render
 pierreeric:frontdesk-specific
 
 # Collections
