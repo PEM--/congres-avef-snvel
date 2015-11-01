@@ -4,6 +4,10 @@ Router.configure({
 
 Router.map(function() {
   this.route('home', {
-    path: '/'
+    path: '/fontdesk'
   });
+});
+
+Meteor.startup(function() {
+  Router.go('/fontdesk');
 });
