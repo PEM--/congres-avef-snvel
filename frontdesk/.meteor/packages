@@ -38,6 +38,7 @@ softwarerero:accounts-t9n
 useraccounts:iron-routing
 useraccounts:materialize
 accounts-password
+alanning:roles
 
 # Collections
 aldeed:simple-schema

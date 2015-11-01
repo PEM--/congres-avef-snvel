@@ -30,7 +30,7 @@ AccountsTemplates.configureRoute('signUp', {
   redirect() { if (Meteor.user()) { Router.go('session'); } }
 });
 // Prevent routing when not connected except on login (home)
-Router.plugin('ensureSignedIn', { except: ['home', 'signIn', 'signUp'] });
+Router.plugin('ensureSignedIn', { except: ['home', 'atSignIn', 'atSignUp'] });
 // Alerts on Login success or failure
 if (Meteor.isClient) {
   Accounts.onLogin(function() { sAlert.success('Identification réussie'); });
