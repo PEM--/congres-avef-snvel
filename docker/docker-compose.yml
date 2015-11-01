@@ -21,6 +21,15 @@ adminserver:
     - db
   environment:
     ROOT_URL: "https://192.168.1.50/admin"
+# Frontdesk server: NodeJS (Meteor)
+frontdeskserver:
+  extends:
+    file: common.yml
+    service: frontdeskserver
+  links:
+    - db
+  environment:
+    ROOT_URL: "https://192.168.1.50/frontdesk"
 # Front layer, static file, SSL, proxy cache: NGinx
 front:
   extends:
@@ -29,6 +38,7 @@ front:
   links:
     - appserver
     - adminserver
+    - frontdeskserver
   environment:
     # Can be: dev, pre, prod
     HOST_TARGET: "dev"
