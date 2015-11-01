@@ -41,6 +41,10 @@ ul#slide-out.side-nav {
   li a {
     color: white;
   }
+  li a.disabled {
+    opacity: .5;
+    pointer-events: none;
+  }
 }
 
 // Simple animation transitions

@@ -48,6 +48,8 @@ gildaspk:autoform-materialize
 # Utils
 meteorhacks:fast-render
 pierreeric:frontdesk-specific
+juliancwirko:s-alert
+juliancwirko:s-alert-genie
 
 # Collections
 pierreeric:col-users-and-roles
