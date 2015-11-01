@@ -14,7 +14,7 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
-    'cosmos:browserify@0.8.1',
+    'cosmos:browserify@0.8.3',
     'pierreeric:basereactmeteor'
   ]);
   // Included files in this packages

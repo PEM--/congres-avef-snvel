@@ -13,14 +13,14 @@ Package.onUse(function(api) {
     'tracker'
   ];
   api.use(shared.concat([
-    'react',
+    'react@0.14.1_1',
     'ecmascript',
     'es5-shim',
     'underscore',
     'accounts-base',
     'alanning:roles@1.2.14',
     'kadira:flow-router-ssr@3.5.0',
-    'kadira:react-layout@1.4.1',
+    'kadira:react-layout@1.5.2',
     'meteorhacks:fast-render@2.10.0',
     'underscorestring:underscore.string@3.2.2',
     'gadicohen:sitemaps@0.0.23',

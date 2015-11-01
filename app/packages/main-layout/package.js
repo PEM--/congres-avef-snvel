@@ -9,7 +9,7 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
-    'react',
+    'react@0.14.1_1',
     'underscore',
     'mquandalle:jade@0.4.5',
     'momentjs:moment',

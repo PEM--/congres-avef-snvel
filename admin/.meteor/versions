@@ -22,7 +22,7 @@ cfs:http-methods@0.0.30
 check@1.1.0
 chuangbo:cookie@1.1.0
 coffeescript@1.0.11
-cosmos:browserify@0.8.1
+cosmos:browserify@0.8.3
 dburles:collection-helpers@1.0.4
 ddp@1.2.2
 ddp-client@1.2.1
@@ -78,7 +78,7 @@ npm-bcrypt@0.7.8_2
 npm-mongo@1.4.39_1
 numeral:numeral@1.5.3_1
 observe-sequence@1.0.7
-okgrow:analytics@0.4.3
+okgrow:analytics@1.0.1
 ordered-dict@1.0.4
 percolate:migrations@0.9.6
 pierreeric:col-basicpages@0.0.1

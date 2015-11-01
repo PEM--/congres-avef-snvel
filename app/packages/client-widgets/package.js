@@ -11,7 +11,7 @@ Package.onUse(function(api) {
   api.use([
     'es5-shim',
     'ecmascript',
-    'react',
+    'react@0.14.1_1',
     'spacedrop:namespaces',
     'pierreeric:logger',
     'pierreeric:sharedstyles'

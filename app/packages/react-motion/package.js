@@ -14,11 +14,11 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
-    'react'
+    'react@0.14.1_1'
   ]);
   // Dependencies for client only
   const sharedClient = [
-    'cosmos:browserify@0.8.1'
+    'cosmos:browserify@0.8.3'
   ];
   api.use(sharedClient, 'client');
   api.imply(sharedClient, 'client');

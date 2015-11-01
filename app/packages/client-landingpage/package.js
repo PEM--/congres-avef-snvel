@@ -9,7 +9,7 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   api.use([
-    'kadira:react-layout@1.4.1',
+    'kadira:react-layout@1.5.2',
     'pierreeric:basereactmeteor',
     'pierreeric:routing-start',
     'pierreeric:main-layout',

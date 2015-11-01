@@ -9,7 +9,7 @@ Package.onUse(function(api) {
   // Dependencies of this package
   // Dependencies for server and client
   const shared = [
-    'react',
+    'react@0.14.1_1',
     'ecmascript',
     'es5-shim',
     'pierreeric:logger',
