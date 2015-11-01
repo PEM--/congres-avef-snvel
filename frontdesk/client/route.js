@@ -21,3 +21,7 @@ if (Meteor.isClient) {
     Router.go('/frontdesk');
   });
 }
+
+AccountsTemplates.configure({
+  defaultLayout: 'mainLayout',
+});

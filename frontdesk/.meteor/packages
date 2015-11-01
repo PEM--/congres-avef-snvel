@@ -32,8 +32,9 @@ fourseven:scss
 poetic:materialize-scss
 
 # Accounts
-#useraccounts:iron-routing
-#useraccounts:materialize
+useraccounts:iron-routing
+useraccounts:materialize
+accounts-password
 
 # Collections
 aldeed:simple-schema
