@@ -1,6 +1,6 @@
 sAlert.config({
   effect: 'genie',
-  position: 'bottom-right',
+  position: 'bottom',
   timeout: 3000,
   html: false,
   onRouteClose: false,
