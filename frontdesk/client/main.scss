@@ -34,6 +34,15 @@ body, html {
   }
 }
 
+// Sidebar menu
+ul#slide-out.side-nav {
+  background: $primary-color;
+  color: white;
+  li a {
+    color: white;
+  }
+}
+
 // Simple animation transitions
 $defaultDuration: .3s;
 $defaultEasing: ease-in-out;
