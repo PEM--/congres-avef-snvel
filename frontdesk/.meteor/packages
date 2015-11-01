@@ -26,11 +26,13 @@ mquandalle:jade
 # Router
 iron:router
 iron:layout
+zimme:active-route
 
 # CSS
 fourseven:scss
 fortawesome:fontawesome
 poetic:materialize-scss
+natestrauser:animate-css
 
 # Accounts
 useraccounts:iron-routing

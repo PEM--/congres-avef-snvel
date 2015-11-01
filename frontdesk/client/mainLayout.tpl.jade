@@ -1,6 +1,6 @@
-main.orange.lighten-3
-  nav.purple.darken-3(role='navigation')
-    .nav-wrapper.container
+.main-content.orange.lighten-3
+  nav(role='navigation').fadeInDown
+    .nav-wrapper.container.purple.darken-3
       a#logo-container.brand-logo(href='#') Congrès 2015
       ul.right.hide-on-med-and-down
       ul#nav-mobile.side-nav
@@ -16,12 +16,12 @@ main.orange.lighten-3
             span.white-text Enregistrement
       a.button-collapse(href='#', data-activates='nav-mobile')
         i.material-icons menu
-  .container
+  main.container
     .section
       .row
         .col.s12.center.orange.lighten-3
           +yield
-  footer.page-footer.orange
+  footer.page-footer.orange.fadeInUp
     .container
       .row
         .col.s12

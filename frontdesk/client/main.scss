@@ -8,7 +8,7 @@ body, html {
   background: color("orange", "lighten-5");
   height: 100%;
 }
-main {
+.main-content {
   position: fixed;
   top: 0;
   left: 0;
@@ -22,7 +22,7 @@ main {
     flex-grow: 0;
     flex-shrink: 0;
   }
-  >div {
+  main {
     flex-grow: 1;
     flex-shrink: 0;
     background: color("orange", "lighten-3");
@@ -33,3 +33,10 @@ main {
     flex-shrink: 0;
   }
 }
+
+// Simple animation transitions
+$defaultDuration: .3s;
+$defaultEasing: ease-in-out;
+.fadeIn { animation: fadeIn $defaultDuration $defaultEasing; }
+.fadeInUp { animation: fadeInUp $defaultDuration $defaultEasing; }
+.fadeInDown { animation: fadeInDown $defaultDuration $defaultEasing; }
