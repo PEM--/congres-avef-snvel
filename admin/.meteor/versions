@@ -20,7 +20,6 @@ caching-html-compiler@1.0.2
 callback-hook@1.0.4
 cfs:http-methods@0.0.30
 check@1.1.0
-chuangbo:cookie@1.1.0
 coffeescript@1.0.11
 cosmos:browserify@0.8.3
 dburles:collection-helpers@1.0.4
@@ -40,7 +39,6 @@ fabienb4:autoform-semantic-ui@0.7.2
 fastclick@1.0.7
 flemay:less-autoprefixer@1.2.0
 fortawesome:fontawesome@4.4.0
-gadicohen:robots-txt@0.0.10
 geojson-utils@1.0.4
 hot-code-push@1.0.0
 html-tools@1.0.5
@@ -52,16 +50,12 @@ juliancwirko:s-alert@3.1.1
 juliancwirko:s-alert-slide@3.1.0
 kadira:blaze-layout@2.2.0
 kadira:flow-router@2.7.0
-kadira:flow-router-ssr@3.5.0
 launch-screen@1.0.4
 livedata@1.0.15
 localstorage@1.0.5
 logging@1.0.8
 meteor@1.1.10
 meteor-base@1.0.1
-meteorhacks:fast-render@2.10.0
-meteorhacks:inject-data@1.4.1
-meteorhacks:picker@1.0.3
 meteorhacks:subs-manager@1.6.2
 meteorspark:util@0.2.0
 minifiers@1.1.7
@@ -78,7 +72,6 @@ npm-bcrypt@0.7.8_2
 npm-mongo@1.4.39_1
 numeral:numeral@1.5.3_1
 observe-sequence@1.0.7
-okgrow:analytics@1.0.1
 ordered-dict@1.0.4
 percolate:migrations@0.9.6
 pierreeric:col-basicpages@0.0.1
@@ -99,7 +92,6 @@ pierreeric:invoice@0.0.1
 pierreeric:logger@0.1.0
 pierreeric:markdown@0.0.1
 pierreeric:qr-user-images@0.0.1
-pierreeric:routing-start@0.0.1
 pierreric:tabular-semanticui@1.4.2
 promise@0.5.1
 raix:eventemitter@0.1.3
@@ -135,7 +127,6 @@ ui@1.0.8
 underscore@1.0.4
 underscorestring:underscore.string@3.2.2
 url@1.0.5
-velocityjs:velocityjs@1.2.1
 webapp@1.2.3
 webapp-hashing@1.0.5
 zimme:active-route@2.3.2

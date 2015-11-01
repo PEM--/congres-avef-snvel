@@ -1,9 +1,7 @@
 .content
-  if isConnected
+  unless currentUser
     .fadeInUp
       +atForm
   else
     .fadeInUp: .logout-content
-      a.waves-effect.waves-light.btn.logout
-        i.fa.fa-sign-out.fa-lg
-        | Je me déconnecte
+      a.waves-effect.waves-light.btn-large.logout Déconnexion
