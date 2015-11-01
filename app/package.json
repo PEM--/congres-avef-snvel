@@ -2,7 +2,7 @@
   "name": "appserver",
   "scripts": {
     "start": "meteor --settings dev.json",
-    "build": "meteor build --architecture os.linux.x86_64 --directory ../docker/appserver/",
-    "clean": "rm -rf ../docker/appserver/bundle"
+    "build": "meteor build --architecture os.linux.x86_64 --directory ../docker/appserver/; cp -R ../docker/appserver/bundle ../docker/nginx",
+    "clean": "rm -rf ../docker/appserver/bundle; rm -rf ../docker/nginx/bundle"
   }
 }

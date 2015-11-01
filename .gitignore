@@ -19,6 +19,7 @@ node_modules
 *.key
 *.csr
 bundle
+docker/**/android
 subscribers.csv
 packages/client-subscription/.meteor/
 .vagrant
