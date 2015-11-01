@@ -6,6 +6,9 @@ Package.describe({
 Package.onUse(function(api) {
   // Meteor's API version
   api.versionsFrom('1.2.1');
+  Cordova.depends({
+    'phonegap-plugin-barcodescanner': '4.1.0'
+  });
   api.use([
     'es5-shim',
     'ecmascript',

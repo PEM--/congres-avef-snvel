@@ -25,6 +25,7 @@ mquandalle:jade
 
 # Router
 iron:router
+iron:layout
 
 # CSS
 fourseven:scss@2.0.0
