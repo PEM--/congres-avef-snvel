@@ -75,7 +75,7 @@ Template.checkin.events({
         }
         scanSuccess(scannedUser.profile.firstName + ' ' + scannedUser.profile.lastName + ', bienvenu à la session : ' + session.session + '.');
         // Update user's presence
-        Meteor.call('updatePresence', scannedUser, selectedSession, function(error) {
+        Meteor.call('updatePresence', scannedUser._id, selectedSession, function(error) {
           if (error) {
             return sAlert.error('Une erreur en base est survenue.');
           }
