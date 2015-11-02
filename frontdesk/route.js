@@ -40,7 +40,8 @@ if (Meteor.isClient) {
     sAlert.success('Identification réussie');
     globalSubManager.subscribe('UserAndPrograms');
     Tracker.autorun(function() {
-      if (globalSubManager) {
+      if (globalSubManager.ready()) {
+        console.log('All subscription ready');
         Session.set('allSubsReady', true);
       }
     });

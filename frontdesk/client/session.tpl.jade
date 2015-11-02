@@ -1,4 +1,4 @@
-unless isProgramsLoaded
+unless isAllSubsReady
   +loaderContent
 else
   .content.left-align.fadeInUp
@@ -7,8 +7,8 @@ else
     .input-field.col.s12
       select
         option(value='', selected) Sélectionner une journée
-        each dayValues
-          option(value='1') Blablabla
+        +each dayValues
+          option(value=this)=this
     //- .input-field.col.s12
       select
         option(value='', selected) Sélectionner un horraire
