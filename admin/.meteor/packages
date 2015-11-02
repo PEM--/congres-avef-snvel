@@ -22,6 +22,7 @@ reactive-var
 coffeescript
 audit-argument-checks
 mquandalle:jade
+mquandalle:bower
 flemay:less-autoprefixer
 
 
@@ -73,3 +74,4 @@ juliancwirko:s-alert
 juliancwirko:s-alert-slide
 sacha:spin
 pierreeric:internationalization
+pierreeric:pdfrenderer

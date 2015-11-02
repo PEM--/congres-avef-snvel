@@ -1,0 +1,7 @@
+{
+  "name": "frontdesk",
+  "version": "0.0.1",
+  "dependencies": {
+    "file-saver.js": "1.20150507.2"
+  }
+}
