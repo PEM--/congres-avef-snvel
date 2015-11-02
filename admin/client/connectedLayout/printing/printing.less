@@ -1,5 +1,35 @@
 @import '../../lib/semanticui/site/globals/site.variables.import.less';
 
-// .printing-content {
-//   // Disabled class for preventing
-// }
+.print-container {
+  display: block;
+  width: 550px;
+  height: 244px;
+  overflow: none;
+  background: white;
+  position: relative;
+  .side {
+    width: 275px;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background: white;
+    border: 1px solid #bababa;
+    &.left {
+      left:0;
+      border-right: none;
+      p.job { margin-top: 40px; font-size: 20px; }
+      p.lastName { font-size: 25px; }
+      p.firstName { font-size: 20px; }
+      p.city { font-size: 18px; }
+    }
+    &.right {
+      right:0;
+      .qr-code-container {
+        position: absolute;
+        left: 16px;
+        width: 244px;
+        height: 244px;
+      }
+    }
+  }
+}

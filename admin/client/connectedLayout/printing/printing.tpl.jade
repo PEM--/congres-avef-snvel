@@ -10,3 +10,13 @@ else
         |  Badges
       a.ui.basic.violet.left.pointing.label
         | {{usersCount}}
+    .ui.divider
+    p Prévisualisation :
+    .print-container
+      .side.left
+        p.text-centered.job=job
+        p.text-centered.lastName=lastName
+        p.text-centered.firstName=firstName
+        p.text-centered.city=city
+      .side.right
+        .qr-code-container

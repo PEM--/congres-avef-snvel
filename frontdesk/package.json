@@ -3,6 +3,7 @@
   "scripts": {
     "start": "env MONGO_URL=mongodb://localhost:3001/meteor meteor run android-device --port 3500 --settings dev.json --mobile-settings dev.json",
     "build-dev": "meteor build --architecture os.linux.x86_64 --server=http://192.168.1.50/frontdesk --directory ../docker/frontdeskserver/",
+    "build-android-prod": "env ROOT_URL=https://congres-avef-snvel.fr/frontdesk  meteor run android-device --mobile-server=https://congres-avef-snvel.fr/frontdesk  --port 3500 --settings prod.json",
     "build-prod": "meteor build --server=https://congres-avef-snvel.fr/frontdesk --directory ../docker/frontdeskserver/ --mobile-settings prod.json",
     "clean": "rm -rf ../docker/frontdeskserver/bundle"
   }
