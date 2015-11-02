@@ -68,15 +68,18 @@ Template.checkin.events({
         if (!pricing) {
           return sAlert.error('Le droit de cette session n\'est pas en base.');
         }
-        if (scannedUser.profile.rights.indexOf(pricing._id) === -1) {
-          return scanWarning(scannedUser.profile.firstName + ' ' + scannedUser.profile.firstName + ', votre inscription ne vous permet pas l\'accès à cette session.');
+        const allUserSessions = SD.Structure.programs.collection.find({_id: {$in: scannedUser.profile.rights}}).fetch();
+        const allUserRights = SD.Structure.pricings.collection.find({right: {$in: _.pluck(allUserSessions, 'right')}}).fetch();
+        if (_.pluck(allUserRights, 'right').indexOf(pricing.right) === -1) {
+          return scanWarning(scannedUser.profile.firstName + ' ' + scannedUser.profile.lastName + ', votre inscription ne vous permet pas l\'accès à cette session.');
         }
-        scanSuccess(scannedUser.profile.firstName + ' ' + scannedUser.profile.firstName + ', bienvenu à la session : ' + session.session + '.');
+        scanSuccess(scannedUser.profile.firstName + ' ' + scannedUser.profile.lastName + ', bienvenu à la session : ' + session.session + '.');
         // Update user's presence
-        // @TODO Meteor.call('updatePresence', )
-
-
-        sAlert.success('Result: ' + result.toString());
+        Meteor.call('updatePresence', scannedUser, selectedSession, function(error) {
+          if (error) {
+            return sAlert.error('Une erreur en base est survenue.');
+          }
+        });
       },
       function(error) { scanError(error); }
     );
