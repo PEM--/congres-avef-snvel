@@ -10,7 +10,6 @@ AutoForm.hooks({
   }
 });
 
-
 Template.settings.onCreated(function() {
   this.subscribe('DictionaryAll');
 });

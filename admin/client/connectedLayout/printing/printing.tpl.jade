@@ -1,0 +1,12 @@
+unless Template.subscriptionsReady
+  .fadeIn
+    +spinner
+else
+  .fadeIn.printing-content
+    h2.header Impressions des planches de badges
+    a.ui.labeled.button(href='#').print
+      .ui.violet.button
+        i.print.icon
+        |  Badges
+      a.ui.basic.violet.left.pointing.label
+        | {{usersCount}}

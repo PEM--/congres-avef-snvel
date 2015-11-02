@@ -9,6 +9,9 @@ a.item(href="{{pathFor '/dashboard/settings'}}")
   .active.content.menu
     +each collections
       +menuCollectionItem item=this
+a.item(href="{{pathFor '/dashboard/printing'}}")
+  i.fa.fa-qrcode
+  span Impressions
 //- a.item(href="{{pathFor '/dashboard/monitor'}}")
 //-   i.fa.fa-heartbeat
 //-   span Statut système

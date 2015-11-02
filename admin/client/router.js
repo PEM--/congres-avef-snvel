@@ -57,6 +57,7 @@ const connectedRoutes = [
   {route: '/', tpl: 'dashboard'},
   {route: '/settings', tpl: 'settings'},
   {route: '/monitor', tpl: 'monitor'},
+  {route: '/printing', tpl: 'printing'},
   {
     route: '/content/:collection',
     action(params, queryParams) {
