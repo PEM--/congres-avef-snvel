@@ -4,19 +4,17 @@ else
   .content.left-align.fadeInUp
     h3 Sélectionner une session
     p Vous validez les entrées pour la session :
-    .input-field.col.s12
+    .input-field.days.col.s12
       select.days
         each dayValues
           option(value=value) {{label}}
     +if isHourSelectable
-      p Hello hours
-      .input-field.col.s12
+      .input-field.hours.col.s12
           select.hours
             each hourValues
               option(value=value) {{label}}
-    +if isProgramSelectable
-      p Hello programs
-      .input-field.col.s12
-          select.programs
-            each programValues
+    +if isSessionSelectable
+      .input-field.sessions.col.s12
+          select.sessions
+            each sessionValues
               option(value=value) {{label}}
