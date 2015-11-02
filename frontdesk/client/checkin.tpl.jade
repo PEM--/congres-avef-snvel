@@ -1,6 +1,20 @@
-.content.fadeInUp
-  h3 Enregistrement
-  p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  h3 Test
-  p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+.content
+  unless isSessionSelected
+    .fadeInUp
+      h1.center-align.red-text
+        i.medium.material-icons warning
+      h2 Veuillez sélectionner une session
+      .col.s12
+        a.waves-effect.waves-light.btn-large(href="{{pathFor 'session'}}") Retour
+  else
+    .fadeInUp
+      h3.left-align Session courante :
+      +with sessionValue
+        p.left-align=session
+        p.left-align=conference
+        p.left-align {{hours}}
+        p.left-align Salle(s)
+        each rooms
+          p=this
+      .col.s12
+        a.waves-effect.waves-light.btn-large.scan Valider inscription
