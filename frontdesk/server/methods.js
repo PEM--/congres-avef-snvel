@@ -5,7 +5,7 @@ Meteor.methods({
     }
     check(userId, String);
     check(programId, String);
-    let user = Meteor.users.find(userId);
+    let user = Meteor.users.findOne(userId);
     if (!user) {
       console.warn('Error retrieving user in DB', userId);
       throw new Meteor.Error('frontdesk', 'Unknow user');
@@ -15,11 +15,10 @@ Meteor.methods({
         user.profile.presence = [];
       }
       user.profile.presence.push(programId);
-      Meteor.users.update(userId, {$set: {
-        'profile.presence': user.profile.presence
-      }});
+      Meteor.users.update(userId, {$set: {'profile.presence': user.profile.presence}});
+      console.log('Presence updated for', user, 'by', this.userId, 'with', programId);
     } catch (error) {
-      console.warn('Error while updating user presence', userId, 'with program', programId);
+      console.warn('Error while updating user presence', userId, 'with program', programId, ':', error);
       throw new Meteor.Error('frontdesk', 'Error while updating user presence');
     }
   }
