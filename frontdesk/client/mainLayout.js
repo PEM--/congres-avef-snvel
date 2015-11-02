@@ -9,8 +9,3 @@ Template.mainLayout.helpers({
     return Meteor.userId() ? '' : 'disabled';
   }
 });
-
-// Template.mainLayout.events(function() {
-//   'click a'
-//   $(".button-collapse").sideNav('hide');
-// });

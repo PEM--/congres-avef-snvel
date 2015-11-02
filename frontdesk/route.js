@@ -33,6 +33,17 @@ AccountsTemplates.configureRoute('signUp', {
 Router.plugin('ensureSignedIn', { except: ['home', 'atSignIn', 'atSignUp'] });
 // Alerts on Login success or failure
 if (Meteor.isClient) {
-  Accounts.onLogin(function() { sAlert.success('Identification réussie'); });
+  // Set a global session for waiting on all data subscription
+  Session.setDefault('allSubsReady', false);
+  // When login is OK, get all subscription
+  Accounts.onLogin(function() {
+    sAlert.success('Identification réussie');
+    globalSubManager.subscribe('UserAndPrograms');
+    Tracker.autorun(function() {
+      if (globalSubManager) {
+        Session.set('allSubsReady', true);
+      }
+    });
+  });
   Accounts.onLoginFailure(function() { sAlert.error('Problème d\'identification'); });
 }

@@ -15,6 +15,8 @@ tracker                 # Meteor's client-side reactive programming library
 standard-minifiers      # JS/CSS minifiers run for production mode
 es5-shim                # ECMAScript 5 compatibility for older browsers.
 ecmascript              # Enable ECMAScript2015+ syntax in app code
+reactive-var
+underscore
 
 # Mobile
 crosswalk
@@ -41,16 +43,13 @@ accounts-password
 alanning:roles
 
 # Collections
-aldeed:simple-schema
-aldeed:collection2
-aldeed:autoform
-gildaspk:autoform-materialize
+meteorhacks:subs-manager
+spacedrop:namespaces
+pierreeric:col-users-and-roles
+pierreeric:col-programs
 
 # Utils
 meteorhacks:fast-render
 pierreeric:frontdesk-specific
 juliancwirko:s-alert
 juliancwirko:s-alert-genie
-
-# Collections
-pierreeric:col-users-and-roles
