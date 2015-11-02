@@ -80,6 +80,7 @@ npm-mongo@1.4.39_1
 numeral:numeral@1.5.3_1
 observe-sequence@1.0.7
 ordered-dict@1.0.4
+pierreeric:col-pricings@0.0.1
 pierreeric:col-programs@0.0.1
 pierreeric:col-subscribers@0.0.1
 pierreeric:col-users-and-roles@0.0.1

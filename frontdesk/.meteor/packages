@@ -47,6 +47,8 @@ meteorhacks:subs-manager
 spacedrop:namespaces
 pierreeric:col-users-and-roles
 pierreeric:col-programs
+pierreeric:col-pricings
+pierreeric:col-subscribers
 
 # Utils
 meteorhacks:fast-render

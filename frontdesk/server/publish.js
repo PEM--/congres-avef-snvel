@@ -4,6 +4,7 @@ Meteor.publish('UserAndPrograms', function() {
   }
   return [
     Meteor.users.find(),
-    SD.Structure.programs.collection.find()
+    SD.Structure.programs.collection.find(),
+    SD.Structure.pricings.collection.find()
   ];
 });
