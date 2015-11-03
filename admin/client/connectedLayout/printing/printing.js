@@ -1,6 +1,5 @@
 Template.printing.onCreated(function() {
   this.subscribe('dasboardCollections');
-  this.job = new ReactiveVar(null);
   this.lastName = new ReactiveVar(null);
   this.firstName = new ReactiveVar(null);
   this.city = new ReactiveVar(null);
@@ -8,7 +7,6 @@ Template.printing.onCreated(function() {
 
 Template.printing.onRendered(function() {
   $('.main-title').children().text('Impression');
-  this.$('.qr-code-container').html(Meteor.user().profile.qrImage);
 });
 
 Template.printing.helpers({
@@ -30,6 +28,23 @@ Template.printing.helpers({
   }
 });
 
+let printableUsers = [];
+const printUsers = function(self, pdf, cb) {
+  const user = printableUsers.pop();
+  console.log(user);
+  if (user.profile) {
+    self.lastName.set(user.profile.lastName);
+    self.firstName.set(user.profile.firstName);
+    self.city.set(user.profile.city);
+    self.$('.qr-code-container').html(user.profile.qrImage);
+  }
+  if (printableUsers.length > 0) {
+    Meteor.setTimeout(() => printUsers(self, pdf, cb), 64);
+  } else {
+    cb();
+  }
+};
+
 Template.printing.events({
   'click a.print': function(e, t) {
     e.preventDefault();
@@ -42,8 +57,11 @@ Template.printing.events({
         left: 23, right: 23
       }
     });
-    pdf.finish('test.pdf', function() {
-      t.$('a.print').toggleClass('disabled');
+    printableUsers = Meteor.users.find().fetch();
+    printUsers(t, pdf, function() {
+      pdf.finish('test.pdf', function() {
+        t.$('a.print').toggleClass('disabled');
+      });
     });
   }
 });
