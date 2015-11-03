@@ -2,15 +2,15 @@ FlowRouter.wait();
 
 FlowRouter.route('/', {
   name: 'login',
-  // triggersEnter: [
-  //   function(context, redirect) {
-  //     if (Meteor.userId() &&
-  //       Roles.userIsInRole(Meteor.userId(), 'admin')
-  //     ) {
-  //       FlowRouter.go('/dashboard');
-  //     }
-  //   }
-  // ],
+  triggersEnter: [
+    function(context, redirect) {
+      if (Meteor.userId() &&
+        Roles.userIsInRole(Meteor.userId(), 'admin')
+      ) {
+        FlowRouter.go('/dashboard');
+      }
+    }
+  ],
   action() {
     BlazeLayout.render('mainLayout', {main: 'login'});
   }
@@ -37,17 +37,17 @@ Tracker.autorun(function(computation) {
 let dashboardRoutes = FlowRouter.group({
   prefix: '/dashboard',
   name: 'dashboard',
-  // triggersEnter: [
-  //   function(context, redirect) {
-  //     if (!Meteor.userId() ||
-  //       !Roles.userIsInRole(Meteor.userId(), 'admin')
-  //     ) {
-  //       console.warn('User', Meteor.userId(), 'Roles', Roles.userIsInRole(Meteor.userId(), 'admin'));
-  //       sAlert.error('Connexion requise');
-  //       FlowRouter.redirect('/');
-  //     }
-  //   }
-  // ]
+  triggersEnter: [
+    function(context, redirect) {
+      if (!Meteor.userId() ||
+        !Roles.userIsInRole(Meteor.userId(), 'admin')
+      ) {
+        console.warn('User', Meteor.userId(), 'Roles', Roles.userIsInRole(Meteor.userId(), 'admin'));
+        sAlert.error('Connexion requise');
+        FlowRouter.redirect('/');
+      }
+    }
+  ]
 });
 
 Session.setDefault('collectionRoute', null);

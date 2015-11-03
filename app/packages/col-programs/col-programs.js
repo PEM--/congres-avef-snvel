@@ -2,8 +2,7 @@
 const sharedOptions = {
   name: 'Programs',
   schema: {
-    programs: { type: [String], label: 'Programme(s)', min: 1, max: 8 },
-    'programs.$': { type: String, label: 'Programme', allowedValues: ['AVEF', 'SNVEL', 'EBMS'] },
+    programs: { type: [String], label: 'Programme(s)', allowedValues: ['AVEF', 'SNVEL', 'EBMS'] },
     session: { type: String, label: 'Session', min: 2, max: 256 },
     conference: { type: String, label: 'Conférence', min: 2, max: 256 },
     day: { type: String, label: 'Jour', min: 2, max: 256 },
