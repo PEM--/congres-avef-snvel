@@ -16,10 +16,6 @@ Template.printing.helpers({
     const count = Meteor.users.find().count();
     return numeral(count).format('0,0');
   },
-  job() {
-    const instance = Template.instance();
-    return instance.job.get();
-  },
   lastName() {
     const instance = Template.instance();
     return instance.lastName.get();
@@ -31,9 +27,6 @@ Template.printing.helpers({
   city() {
     const instance = Template.instance();
     return instance.city.get();
-  },
-  qrImage() {
-    return '<p><Hello</p>';
   }
 });
 
@@ -49,14 +42,8 @@ Template.printing.events({
         left: 23, right: 23
       }
     });
-    t.autorun(function() {
-      if (pdf.ready()) {
-        // pdf.addPage();
-        pdf.h1('Testing');
-        pdf.finish('test.pdf', function() {
-          t.$('a.print').toggleClass('disabled');
-        });
-      }
+    pdf.finish('test.pdf', function() {
+      t.$('a.print').toggleClass('disabled');
     });
   }
 });
