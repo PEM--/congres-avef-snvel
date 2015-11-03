@@ -25,7 +25,6 @@ mquandalle:jade
 mquandalle:bower
 flemay:less-autoprefixer
 
-
 # Routing
 kadira:flow-router
 arillo:flow-router-helpers
