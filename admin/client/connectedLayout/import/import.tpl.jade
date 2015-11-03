@@ -3,22 +3,26 @@ unless Template.subscriptionsReady
     +spinner
 else
   .fadeIn
-    .importers(class=classDisabled)
-        .ui.grid
-          .row
-            .four.wide.column
-              button.ui.labeled.icon.violet.button.file
-                i.cloud.icon
-                | Sélectionner un fichier
-            .twelve.wide.column
-              input.file(type='file', accept='.csv,text/csv')
-              .ui.active.green.progress
-                .bar
-                .label Chargement du fichier
-      //- +upload_semanticUI contentType='text/csv' fileTypes='.csv' multiple=true callbacks=importCallbacks
+    .ui.grid
+      .row
+        .four.wide.column
+          .importers(class=classDisabled)
+            button.ui.labeled.icon.violet.button.file
+              i.cloud.icon
+              | Sélectionner un fichier
+            input.file(type='file', accept='.csv,text/csv')
+        .twelve.wide.column
+          .ui.grey.progress.file-upload
+            .bar
+              .progress 0%
+            .label Chargement du fichier
+      .row
+        .sixteen.wide.column
+          .ui.grey.progress.user-insertion
+            .bar
+              .progress 0%
+            .label Insertion des inscriptions
     .ui.divider
     p Zone d'import :
     .importers(class=classDisabled)
       #dropzone.dropzone Déposez votre fichier ici.
-      //- +dropzone
-      //- +dropzone contentType='text/csv' fileTypes='.csv' multiple=true callbacks=importCallbacks
