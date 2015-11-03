@@ -15,16 +15,23 @@ Template.import.helpers({
   }
 });
 
+const treatFile = function(e, t) {
+  e.preventDefault();
+  t.pending.set(true);
+  FS.Utility.eachFile(e, function(file) {
+    const fsFile = new FS.File(file);
+    console.log('fsFile', fsFile);
+    if (fsFile.type() !== 'text/csv') {
+      return sAlert.error('Mauvais format');
+    }
+    
+  });
+};
+
 Template.import.events({
   'click .button.file': function(e, t) {
     t.$('input.file').click();
-    t.pending(true);
   },
-  'dropped #dropzone': function(e, t) {
-    e.preventDefault();
-    t.pending(true);
-    FS.Utility.eachFile(e, function(file) {
-      console.log('file', file);
-    });
-  }
+  'dropped #dropzone': treatFile,
+  'change input.file': treatFile
 });

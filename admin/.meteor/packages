@@ -77,3 +77,4 @@ pierreeric:pdfrenderer
 #pierreeric:upload-jquery
 raix:ui-dropped-event
 cfs:base-package
+cfs:file
