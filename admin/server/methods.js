@@ -20,6 +20,7 @@ Meteor.methods({
       const streetAddress = textInputFormatter(tokens[6]) !== '' ? tokens[6].trim().toLowerCase() : '?????';
       const postalCode = tokens[6].trim();
       const city = textInputFormatter(tokens[7]);
+      let setAdmin = false;
       let job = '';
       let avef = '';
       let snvel = '';
@@ -39,6 +40,9 @@ Meteor.methods({
       // ['basic', 'avef', 'snvel', 'snvelDelegate', 'seniorJuniorVetCcp', 'nurseDentistSmith', 'junior']
       if (status !== '' && subscriber && subscriber.userInfo && subscriber.userInfo.snvel) {
         job = 'snvelDelegate';
+        if (status === 'administrateur') {
+          setAdmin = true;
+        }
       } else if (subscriber && subscriber.userInfo && subscriber.userInfo.snvel) {
         job = 'snvel';
       } else if (subscriber && subscriber.userInfo && subscriber.userInfo.avef) {
@@ -85,6 +89,24 @@ Meteor.methods({
         case 'Vétérinaire ou Etudiant Non Adhérent AVEF ou SNVEL':
           job = 'basic';
           break;
+        case 'EBMS':
+          job = 'basic';
+          break;
+        case 'Staff':
+          job = 'basic';
+          setAdmin = true;
+          break;
+        case 'Conférencier':
+          job = 'basic';
+          setAdmin = true;
+          break;
+        case 'INVITE':
+          job = 'basic';
+          setAdmin = true;
+          break;
+        case 'Exposant':
+          job = 'basic';
+          break;
         default:
           throw new Meteor.Error('admin', 'Profession indéterminée');
         }
@@ -112,7 +134,29 @@ Meteor.methods({
         }
         rights.push(session);
       }
-      // @TODO AddRoles /!\ aux delegate
+      userId = Accounts.createUser({
+        email,
+        password,
+        profile: {
+          status,
+          avef,
+          snvel,
+          lastName,
+          firstName,
+          streetAddress,
+          postalCode,
+          city,
+          email,
+          job,
+          programs,
+          rights,
+          products
+        }
+      });
+      // Set admin rights
+      if (setAdmin) {
+        Roles.addUsersToRoles(userId);
+      }
       console.log(this.userId, 'has inserted a new user', userLine);
     } catch (error) {
       console.warn('Error inserting user', error);
