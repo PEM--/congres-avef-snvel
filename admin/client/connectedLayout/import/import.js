@@ -20,7 +20,6 @@ Template.import.helpers({
 const treatUsers = (function(t) {
   // Parse each line
   const line = t.usersToInsert.shift();
-  console.log(t.totalToInsert, t.usersToInsert.length);
   t.$('.progress.user-insertion')
     .progress({percent: 100 * (t.totalToInsert - t.usersToInsert.length) / t.totalToInsert});
   Meteor.call('automaticInscription', line, (error) => {

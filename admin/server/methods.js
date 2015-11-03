@@ -148,7 +148,7 @@ Meteor.methods({
       if (setAdmin) {
         Roles.addUsersToRoles(userId, 'admin');
       }
-      console.log(this.userId, 'has inserted a new user', userLine);
+      console.log(this.userId, 'has inserted a new user: ', email, userId);
     } catch (error) {
       console.warn('Error inserting user', error);
       // Relaunch error done by this function
