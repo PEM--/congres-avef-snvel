@@ -17,9 +17,9 @@ Meteor.methods({
       let status = tokens[1].trim().toLowerCase();
       const lastName = textInputFormatter(tokens[4]);
       const firstName = textInputFormatter(tokens[5]);
-      const streetAddress = textInputFormatter(tokens[6]) !== '' ? tokens[6].trim().toLowerCase() : '?????';
-      const postalCode = tokens[6].trim();
-      const city = textInputFormatter(tokens[7]);
+      const streetAddress = tokens[6] !== '' ? textInputFormatter(tokens[6]) : '?????';
+      const postalCode = tokens[7] ? tokens[7].trim() : '?????';
+      const city = tokens[8] ? textInputFormatter(tokens[8]) : '?????';
       let setAdmin = false;
       let job = '';
       let avef = '';
@@ -31,8 +31,8 @@ Meteor.methods({
       if (!subscriber) {
         subscriber = SD.Structure.subscribers.collection.findOne({
           $and: [
-            {'userInfo.lastName': user.profile.lastName},
-            {'userInfo.firstName': user.profile.firstName}
+            {'userInfo.lastName': lastName},
+            {'userInfo.firstName': firstName}
           ]
         });
       }
@@ -115,24 +115,16 @@ Meteor.methods({
       const programs = ['EBMS', 'SNVEL', 'AVEF'];
       // Rights
       let rights = [];
-      // EBMS column
-      if (tokens[12]) {
-        sessions = tokens[12].split('/');
-        sessions.forEach(session => {
-          if (session.length !== 24) {
-            throw new Meteor.Error('admin', 'Droit incohérent en colonne 12');
-          }
-          rights.push(session);
-        }
-        );
-      }
       // Concatenated column
       if (tokens[54]) {
         sessions = tokens[54].split('/');
-        if (session.length !== 24 && session.length !== 0) {
-          throw new Meteor.Error('admin', `Droit incohérent : longueur ${session.length}, droit: ${session}`);
-        }
-        rights.push(session);
+        sessions.forEach(session => {
+          session = session.trim();
+          if (session.length !== 24 && session.length !== 0) {
+            throw new Meteor.Error('admin', `Droit incohérent : longueur ${session.length}, droit: ${session}`);
+          }
+          rights.push(session);
+        });
       }
       userId = Accounts.createUser({
         email,
@@ -149,13 +141,12 @@ Meteor.methods({
           email,
           job,
           programs,
-          rights,
-          products
+          rights
         }
       });
       // Set admin rights
       if (setAdmin) {
-        Roles.addUsersToRoles(userId);
+        Roles.addUsersToRoles(userId, 'admin');
       }
       console.log(this.userId, 'has inserted a new user', userLine);
     } catch (error) {

@@ -5,11 +5,13 @@ const UserSubscriberSharedSchema = new SimpleSchema({
   lastName: {type: String, label: 'Nom', min: 2, max: 256},
   firstName: {type: String, label: 'Prénom', min: 2, max: 256},
   streetAddress: {type: String, label: 'Rue', optional: true, min: 2, max: 256},
-  postalCode: {
-    type: String, label: 'Code postal',
-    regEx: /^((0[1-9])|([1-8][0-9])|(9[0-8])|(2A)|(2B))[0-9]{3}$/,
-    optional: true, min: 5, max: 5
-  },
+  // @NOTE Only for France
+  // postalCode: {
+  //   type: String, label: 'Code postal',
+  //   regEx: /^((0[1-9])|([1-8][0-9])|(9[0-8])|(2A)|(2B))[0-9]{3}$/,
+  //   optional: true, min: 5, max: 5
+  // },
+  postalCode: {type: String, label: 'Code postal', optional: true, min: 3, max: 8},
   city: {type: String, label: 'Ville', optional: true, min: 2, max: 128},
   email: {type: String, regEx: SimpleSchema.RegEx.Email, label: 'E-mail', optional: true},
   job: {type: String, optional: true, label: 'Profession', allowedValues: ['basic', 'avef', 'snvel', 'snvelDelegate', 'seniorJuniorVetCcp', 'nurseDentistSmith', 'junior']},

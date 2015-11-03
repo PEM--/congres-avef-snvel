@@ -22,7 +22,7 @@ const treatUsers = (function(t) {
   const line = t.usersToInsert.shift();
   console.log(t.totalToInsert, t.usersToInsert.length);
   t.$('.progress.user-insertion')
-    .progress({percent: (t.totalToInsert - t.usersToInsert.length) / t.totalToInsert});
+    .progress({percent: 100 * (t.totalToInsert - t.usersToInsert.length) / t.totalToInsert});
   Meteor.call('automaticInscription', line, (error) => {
     if (error) {
       sAlert.error(error.toString());
@@ -44,7 +44,7 @@ const treatUsers = (function(t) {
       t.$('input.file').val('');
       t.pending.set(false);
     } else {
-      Meteor.defer(() => treatUsers(t));
+      Meteor.setTimeout(() => treatUsers(t), 64);
     }
   });
 });
