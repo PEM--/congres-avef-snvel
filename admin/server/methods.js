@@ -1,4 +1,128 @@
 Meteor.methods({
+  automaticInscription(userLine) {
+    if (!Meteor.userId() || !Roles.userIsInRole(Meteor.userId(), 'admin')) {
+      throw new Meteor.Error('admin', 'Unauthorized');
+    }
+    try {
+      check(userLine, String);
+      const tokens = userLine.split(',');
+      if (!tokens) {
+        throw new Meteor.Error('admin', 'Grammaire invalide');
+      }
+      let email = tokens[0].trim().toLowerCase();
+      if (email === '') {
+        email = `fake-${Meteor.users.find().count()}@congres-avef-snvel.fr`;
+      }
+      const password = textInputFormatter(tokens[4]) + '-' + textInputFormatter(tokens[5]);
+      let status = tokens[1].trim().toLowerCase();
+      const lastName = textInputFormatter(tokens[4]);
+      const firstName = textInputFormatter(tokens[5]);
+      const streetAddress = textInputFormatter(tokens[6]) !== '' ? tokens[6].trim().toLowerCase() : '?????';
+      const postalCode = tokens[6].trim();
+      const city = textInputFormatter(tokens[7]);
+      let job = '';
+      let avef = '';
+      let snvel = '';
+      // Try to find user in the subscribers
+      let subscriber = SD.Structure.subscribers.collection.findOne({
+        'userInfo.email': email });
+      // If not found, check fistname and lastName
+      if (!subscriber) {
+        subscriber = SD.Structure.subscribers.collection.findOne({
+          $and: [
+            {'userInfo.lastName': user.profile.lastName},
+            {'userInfo.firstName': user.profile.firstName}
+          ]
+        });
+      }
+      // If found, user is a veterinary with subscriber number
+      // ['basic', 'avef', 'snvel', 'snvelDelegate', 'seniorJuniorVetCcp', 'nurseDentistSmith', 'junior']
+      if (status !== '' && subscriber && subscriber.userInfo && subscriber.userInfo.snvel) {
+        job = 'snvelDelegate';
+      } else if (subscriber && subscriber.userInfo && subscriber.userInfo.snvel) {
+        job = 'snvel';
+      } else if (subscriber && subscriber.userInfo && subscriber.userInfo.avef) {
+        job = 'avef';
+      } else {
+        switch (tokens[10]) {
+        case 'Adhérent Senior':
+          job = 'seniorJuniorVetCcp';
+          break;
+        case 'Adhérent Normal':
+          job = 'basic';
+          break;
+        case 'Délégué SNVEL':
+          job = 'snvelDelegate';
+          status = 'delegue';
+          break;
+        case 'Adhérent Jeune Vétérinaire':
+          job = 'seniorJuniorVetCcp';
+          break;
+        case 'Adhérent Junior':
+          job = 'junior';
+          break;
+        case 'ASV':
+          job = 'nurseDentistSmith';
+          break;
+        case 'ASV':
+          job = 'nurseDentistSmith';
+          break;
+        case 'Auteur Courte Communication ou Poster':
+          job = 'seniorJuniorVetCcp';
+          break;
+        case 'Maréchal Ferrant':
+          job = 'nurseDentistSmith';
+          break;
+        case 'ASV':
+          job = 'nurseDentistSmith';
+          break;
+        case 'TDE':
+          job = 'nurseDentistSmith';
+          break;
+        case 'ASV ou TDE':
+          job = 'nurseDentistSmith';
+          break;
+        case 'Vétérinaire ou Etudiant Non Adhérent AVEF ou SNVEL':
+          job = 'basic';
+          break;
+        default:
+          throw new Meteor.Error('admin', 'Profession indéterminée');
+        }
+      }
+      // Programs
+      const programs = ['EBMS', 'SNVEL', 'AVEF'];
+      // Rights
+      let rights = [];
+      // EBMS column
+      if (tokens[12]) {
+        sessions = tokens[12].split('/');
+        sessions.forEach(session => {
+          if (session.length !== 24) {
+            throw new Meteor.Error('admin', 'Droit incohérent en colonne 12');
+          }
+          rights.push(session);
+        }
+        );
+      }
+      // Concatenated column
+      if (tokens[54]) {
+        sessions = tokens[54].split('/');
+        if (session.length !== 24 && session.length !== 0) {
+          throw new Meteor.Error('admin', `Droit incohérent : longueur ${session.length}, droit: ${session}`);
+        }
+        rights.push(session);
+      }
+      // @TODO AddRoles /!\ aux delegate
+      console.log(this.userId, 'has inserted a new user', userLine);
+    } catch (error) {
+      console.warn('Error inserting user', error);
+      // Relaunch error done by this function
+      if (error.error === 'admin') {
+        throw error;
+      }
+      throw new Meteor.Error('admin', error.toString());
+    }
+  },
   insertDocument(newDocument, collectionName) {
     if (!Meteor.userId() || !Roles.userIsInRole(Meteor.userId(), 'admin')) {
       throw new Meteor.Error('admin', 'Unauthorized');
@@ -23,7 +147,6 @@ Meteor.methods({
       throw new Meteor.Error('admin', error.toString());
     }
   },
-
   updateDocument(update, documentId, collectionName) {
     if (!Meteor.userId() || !Roles.userIsInRole(Meteor.userId(), 'admin')) {
       throw new Meteor.Error('admin', 'Unauthorized');

@@ -20,26 +20,33 @@ Template.import.helpers({
 const treatUsers = (function(t) {
   // Parse each line
   const line = t.usersToInsert.shift();
-  console.log(line);
+  console.log(t.totalToInsert, t.usersToInsert.length);
   t.$('.progress.user-insertion')
     .progress({percent: (t.totalToInsert - t.usersToInsert.length) / t.totalToInsert});
-  // Handle end of list or re-execution of insertion
-  if (t.usersToInsert.length === 0) {
-    t.totalToInsert = 0;
-    sAlert.success('Insertion terminée');
-    t.$('.progress.file-upload')
-      .removeClass('active violet success')
-      .progress({percent: 0})
-      .addClass('grey');
-    t.$('.progress.user-insertion')
-      .removeClass('active blue success')
-      .progress({percent: 0})
-      .addClass('grey');
-    t.$('input.file').val('');
-    t.pending.set(false);
-  } else {
-    Meteor.defer(() => treatUsers(t));
-  }
+  Meteor.call('automaticInscription', line, (error) => {
+    if (error) {
+      sAlert.error(error.toString());
+      t.$('.ui.error.message ul.content')
+        .append(`<li>${error.toString()} sur la ligne: ${line}</li>`);
+    }
+    // Handle end of list or re-execution of insertion
+    if (t.usersToInsert.length === 0) {
+      t.totalToInsert = 0;
+      sAlert.success('Insertion terminée');
+      t.$('.progress.file-upload')
+        .removeClass('active violet success')
+        .progress({percent: 0})
+        .addClass('grey');
+      t.$('.progress.user-insertion')
+        .removeClass('active blue success')
+        .progress({percent: 0})
+        .addClass('grey');
+      t.$('input.file').val('');
+      t.pending.set(false);
+    } else {
+      Meteor.defer(() => treatUsers(t));
+    }
+  });
 });
 
 const treatFile = function(e, t) {
@@ -72,6 +79,11 @@ const treatFile = function(e, t) {
         let lines = frEvent.target.result.split('\n');
         // Remove header
         lines.shift();
+        // Remove last line if empty
+        if (_.last(lines) === '') {
+          lines.pop();
+        }
+        // Launch user insertion
         t.usersToInsert = lines;
         t.totalToInsert = lines.length;
         treatUsers(t);
