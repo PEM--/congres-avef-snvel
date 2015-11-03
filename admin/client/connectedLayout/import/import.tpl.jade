@@ -1,0 +1,24 @@
+unless Template.subscriptionsReady
+  .fadeIn
+    +spinner
+else
+  .fadeIn
+    .importers(class=classDisabled)
+        .ui.grid
+          .row
+            .four.wide.column
+              button.ui.labeled.icon.violet.button.file
+                i.cloud.icon
+                | Sélectionner un fichier
+            .twelve.wide.column
+              input.file(type='file', accept='.csv,text/csv')
+              .ui.active.green.progress
+                .bar
+                .label Chargement du fichier
+      //- +upload_semanticUI contentType='text/csv' fileTypes='.csv' multiple=true callbacks=importCallbacks
+    .ui.divider
+    p Zone d'import :
+    .importers(class=classDisabled)
+      #dropzone.dropzone Déposez votre fichier ici.
+      //- +dropzone
+      //- +dropzone contentType='text/csv' fileTypes='.csv' multiple=true callbacks=importCallbacks
