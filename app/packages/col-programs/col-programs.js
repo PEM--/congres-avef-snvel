@@ -10,10 +10,8 @@ const sharedOptions = {
     begin: { type: String, label: 'Début', min: 2, max: 256 },
     end: { type: String, label: 'Fin', min: 2, max: 256 },
     moderator: { type: String, label: 'Modérateur', min: 2, max: 256 },
-    speakers: { type: [String], label: 'Intervenant(s)', min: 1, max: 16 },
-    'speakers.$': { type: String, label: 'Intervenant', min: 2, max: 256 },
-    rooms: { type: [String], label: 'Salle(s)', min: 1, max: 4 },
-    'rooms.$': { type: String, label: 'Salle', allowedValues: [
+    speakers: { type: [String], label: 'Intervenant(s)', min: 2, max: 256 },
+    rooms: { type: [String], label: 'Salle(s)', allowedValues: [
       'Pays-Bas', 'Amphithéatre', 'Italie', 'Espagne', 'Grèce',
       'Rome', 'Genève', 'Liège', 'Expo commerciale', 'Dock Haussman',
       'Terrasse Hotel', 'NA', ''
