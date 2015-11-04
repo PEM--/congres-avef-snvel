@@ -18,7 +18,7 @@ appserver:
   restart: always
 # Admin server: NodeJS (Meteor)
 adminserver:
-  image: pemarchandet/adminserver-congres-avef-snvel:v3.0.0
+  image: pemarchandet/adminserver-congres-avef-snvel:v4.0.0
   extends:
     file: common.yml
     service: adminserver
